@@ -4,6 +4,8 @@
 CREATE TABLE /*_*/geo_tags (
 	-- page_id
 	gt_page_id int unsigned NOT NULL,
+	-- Name of planet or other astronomic body on which the coordinates reside
+	gt_globe varchar(32) NOT NULL,
 	-- Whether this coordinate is primary (defines the principal location of article subject)
 	-- or secondary (just mentioned in text)
 	gt_primary bool NOT NULL,
@@ -12,7 +14,15 @@ CREATE TABLE /*_*/geo_tags (
 	-- Longitude of the point in degrees
 	gt_lon float NOT NULL,
 	-- Approximate viewing radius in meters, gives an idea how large the object is
-	gt_dim int default 1
+	gt_dim int NULL,
+	-- Type of the point
+	gt_type varchar(32) NULL,
+	-- Point name on the map
+	gt_name varchar(255) binary NULL,
+	-- Two character ISO 3166-1 alpha-2 country code
+	gt_country char(2) NULL,
+	-- Second part of ISO 3166-2 region code, up to 3 alphanumeric chars
+	gt_region varchar(3) NULL
 )/*$wgDBTableOptions*/;
 
 -- @todo

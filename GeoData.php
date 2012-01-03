@@ -29,8 +29,16 @@ $wgHooks['LanguageGetMagic'][] = 'GeoDataHooks::onLanguageGetMagic';
 $wgHooks['ArticleDeleteComplete'][] = 'GeoDataHooks::onArticleDeleteComplete';
 $wgHooks['LinksUpdate'][] = 'GeoDataHooks::onLinksUpdate';
 
+// =================== start configuration settings ===================
+
 /**
  * Maximum radius for geospatial searches.
  * The greater this variable is, the louder your server ouches.
  */
 $wgMaxGeoSearchRadius = 10000; // 10km
+
+/**
+ * Default value for the globe (planet/astral body the coordinate is on)
+ */
+$wgDefaultGlobe = 'earth';
+

@@ -126,32 +126,41 @@ class GeoData {
 	 * @param Array $args 
 	 */
 	public static function parseTagArgs( Coord $coord, $args ) {
-		$result = $args;
-		// fear not of overwriting stuff we've just received from the geohack param, it has minimum precedence
+		global $wgDefaultGlobe, $wgContLang;
+		$result = Status::newGood();
+		// fear not of overwriting the stuff we've just received from the geohack param, it has minimum precedence
 		if ( isset( $args['geohack'] ) ) {
-			$result = array_merge( self::parseGeoHackArgs( $args['geohack'] ), $result );
-		}
-		if ( isset( $args['dim'] ) && is_numeric( $args['dim'] ) && $args['dim'] > 0 ) {
-			$coord->dim = $args['dim'];
-		} else {
-			$coord->dim = null;
+			$args = array_merge( self::parseGeoHackArgs( $args['geohack'] ), $args );
 		}
 		$coord->primary = isset( $args['primary'] );
-		return Status::newGood( $result );
+		$coord->globe = isset( $args['globe'] ) ? $wgContLang->lc( $args['globe'] ) : $wgDefaultGlobe;
+		$coord->dim = isset( $args['dim'] ) && is_numeric( $args['dim'] ) && $args['dim'] > 0
+				? $args['dim']
+				: null;
+		$coord->type = isset( $args['type'] ) ? $args['type'] : null;
+		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
+		if ( isset( $args['region'] ) ) {
+			$code = strtoupper( $args['region'] );
+			if ( preg_match( '/([A-Z]{2})(?:-([A-Z0-9]{1,3}))/', $code, $m ) ) {
+				$coord->country = $m[1];
+				$coord->region = $m[2];
+			} else {
+				$result->warning( 'geodata-bad-region', $args['region'] ); //@todo: actually use this warning
+			}
+		}
+		return $result;
 	}
 
 	public static function parseGeoHackArgs( $str ) {
 		$result = array();
-		$parts = explode( '_', $str );
+		$str = str_replace( '_', ' ', $str ); // per GeoHack docs, spaces and underscores are equivalent
+		$parts = explode( ' ', $str );
 		foreach ( $parts as $arg ) {
-			if ( !preg_match( '/(\\S+?):(.*)/', $arg, $matches ) ) {
+			$keyVal = explode( ':', $arg, 2 );
+			if ( count( $keyVal ) != 2 ) {
 				continue;
 			}
-			$key = $m[1];
-			$value = $m[2];
-			if ( $key == 'dim' ) {
-				$result['dim'] = $value;
-			}
+			$result[$keyVal[0]] = $keyVal[1];
 		}
 		return $result;
 	}
@@ -174,22 +183,35 @@ class GeoData {
 }
 
 /**
- * CLass representing one coordinate
+ * Class representing coordinates
  */
 class Coord {
 	public $lat, 
 		$lon,
-		$primary,
+		$globe,
+		$primary = false,
 		$dim,
-		$params;
+		$type,
+		$name,
+		$country,
+		$region;
 
 	public function __construct( $lat, $lon ) {
+		global $wgDefaultGlobe;
 		$this->lat = $lat;
 		$this->lon = $lon;
+		$this->globe = $wgDefaultGlobe;
 	}
-
+	
 	public static function newFromRow( $row ) {
-		return new Coord( $row->gt_lat, $row->gt_lon );
+		global $wgDefaultGlobe;
+		$c = new Coord();
+		foreach ( self::$fieldMapping as $field => $column ) {
+			if ( isset( $row->$column ) ) {
+				$c->$field = $row->$column;
+			}
+		}
+		return $c;
 	}
 
 	/**
@@ -205,12 +227,22 @@ class Coord {
 	}
 
 	public function getRow( $pageId = null ) {
-		return array(
-			'gt_page_id' => $pageId,
-			'gt_primary' => $this->primary,
-			'gt_lat' => $this->lat,
-			'gt_lon' => $this->lon,
-			'gt_dim' => $this->dim,
-		);
+		$row =  array( 'gt_page_id' => $pageId );
+		foreach ( self::$fieldMapping as $field => $column ) {
+			$row[$column] = $this->$field;
+		}
+		return $row;
 	}
+
+	private static $fieldMapping = array(
+		'lat' => 'gt_lat',
+		'lon' => 'gt_lon',
+		'globe' => 'gt_globe',
+		'primary' => 'gt_primary',
+		'dim' => 'gt_dim',
+		'type' => 'gt_type',
+		'name' => 'gt_name',
+		'country' => 'gt_country',
+		'region' => 'gt_region',
+	);
 }

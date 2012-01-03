@@ -52,6 +52,8 @@ class GeoDataHooks {
 			$value = trim( $frame->expand( $bits['value'] ) );
 			if ( $bits['index'] === '' ) {
 				$named[trim( $frame->expand( $bits['name'] ) )] = $value;
+			} elseif ( preg_match( '/\S+?:\S*?([ _]+\S+?:\S*?)*/', $value ) ) {
+				$named['geohack'] = $value;
 			} else {
 				$unnamed[] = $value;
 			}
@@ -61,7 +63,7 @@ class GeoDataHooks {
 			$coord = $status->value;
 			$status = GeoData::parseTagArgs( $coord, $named );
 			if ( $status->isGood() ) {
-				$status = self::applyCoord( $output, $coord, $status->value );
+				$status = self::applyCoord( $output, $coord );
 				if ( $status->isGood() ) {
 					return '';
 				}
