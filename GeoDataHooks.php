@@ -14,7 +14,7 @@ class GeoDataHooks {
 	 * @param Parser $parser 
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
-		$parser->setFunctionHook( 'coordinate', 'GeoDataHooks::coordinateHandler', SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 'coordinates', 'GeoDataHooks::coordinateHandler', SFH_OBJECT_ARGS );
 		return true;
 	}
 
@@ -25,12 +25,12 @@ class GeoDataHooks {
 	 * @param String $langCode
 	 */
 	public static function onLanguageGetMagic( &$magicWords, $langCode ) {
-		$magicWords['coordinate'] = array( 0, 'coordinate' );
+		$magicWords['coordinates'] = array( 0, 'coordinates' );
 		return true;
 	}
 
 	/**
-	 * Handler for the #coordinate parser function
+	 * Handler for the #coordinates parser function
 	 * 
 	 * @param Parser $parser
 	 * @param PPFrame $frame

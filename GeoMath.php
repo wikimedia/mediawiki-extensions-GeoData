@@ -12,8 +12,8 @@
 
 	/**
 	 * Calculates distance between two coordinates
-	 * See https://en.wikipedia.org/wiki/Haversine_formula
-	 * 
+	 * @see https://en.wikipedia.org/wiki/Haversine_formula
+	 *
 	 * @param float $lat1
 	 * @param float $lon1
 	 * @param float $lat2

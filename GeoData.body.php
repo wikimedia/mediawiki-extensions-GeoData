@@ -14,6 +14,11 @@ class GeoData {
 			&& abs( $lon ) <= 180;
 	}
 
+	/**
+	 * Returns primary coordinates of the given page, if any
+	 * @param Title $title
+	 * @return Coord: Coordinates or false
+	 */
 	public static function getPageCoordinates( Title $title ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( 'geo_tags', 
