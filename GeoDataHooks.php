@@ -5,6 +5,7 @@ class GeoDataHooks {
 		$dir = dirname( __FILE__ ) . "/tests";
 		$files[] = "$dir/ParseCoordTest.php";
 		$files[] = "$dir/GeoMathTest.php";
+		$files[] = "$dir/TagTest.php";
 		return true;
 	}
 
@@ -40,6 +41,8 @@ class GeoDataHooks {
 	public static function coordinateHandler( $parser, $frame, $args ) {
 		$output = $parser->getOutput();
 		self::prepareOutput( $output );
+		$info = GeoData::getCoordInfo();
+		$primary = $info['primary'];
 
 		$unnamed = array();
 		$named = array();
@@ -52,6 +55,8 @@ class GeoDataHooks {
 			$value = trim( $frame->expand( $bits['value'] ) );
 			if ( $bits['index'] === '' ) {
 				$named[trim( $frame->expand( $bits['name'] ) )] = $value;
+			} elseif ( isset( $primary[$value] ) ) {
+				$named['primary'] = true;
 			} elseif ( preg_match( '/\S+?:\S*?([ _]+\S+?:\S*?)*/', $value ) ) {
 				$named['geohack'] = $value;
 			} else {

@@ -165,20 +165,29 @@ class GeoData {
 		return $result;
 	}
 
-	private static function getCoordInfo() {
-		//@todo: internationalisation?
-		return array(
-			'lat' => array(
-				'range' => 90,
-				'+' => array( 'N' ),
-				'-' => array( 'S' ),
-			),
-			'lon' => array(
-				'range' => 180,
-				'+' => array( 'E' ),
-				'-' => array( 'W' ),
-			),
-		);
+	public static function getCoordInfo() {
+		global $wgContLang;
+		static $result = null;
+		if ( !$result ) {
+			$result = array(
+				'lat' => array(
+					'range' => 90,
+					'+' => array( 'N' ),
+					'-' => array( 'S' ),
+				),
+				'lon' => array(
+					'range' => 180,
+					'+' => array( 'E' ),
+					'-' => array( 'W' ),
+				),
+				'primary' => array( 'primary' ),
+			);
+			if ( $wgContLang->getCode() != 'en' ) {
+				$result['primary'][] = wfMessage( 'geodata-primary-coordinate' )->plain();
+			}
+			$result['primary'] = array_flip( $result['primary'] );
+		}
+		return $result;
 	}
 }
 
