@@ -65,7 +65,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		);
 		// retrieve some fields only if page set needs them
 		if ( is_null( $resultPageSet ) ) {
-			$this->addFields( 'page_id', 'page_namespace', 'page_title' );
+			$this->addFields( array( 'page_id', 'page_namespace', 'page_title' ) );
 		} else {
 			$this->addFields( array( "{$dbr->tableName( 'page' )}.*" ) );
 		}
