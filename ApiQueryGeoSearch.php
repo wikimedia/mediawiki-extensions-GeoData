@@ -60,9 +60,15 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$this->addTables( array( 'geo_tags', 'page' ) );
-		$this->addFields( array( 'page_namespace', 'page_title', 'gt_lat', 'gt_lon', 
+		$this->addFields( array( 'gt_lat', 'gt_lon', 
 			"{$dbr->tablePrefix()}gd_distance( {$lat}, {$lon}, gt_lat, gt_lon ) AS dist" )
 		);
+		// retrieve some fields only if page set needs them
+		if ( is_null( $resultPageSet ) ) {
+			$this->addFields( 'page_id', 'page_namespace', 'page_title' );
+		} else {
+			$this->addFields( array( "{$dbr->tableName( 'page' )}.*" ) );
+		}
 		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
 		$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
 		//$this->addWhere( 'dist < ' . intval( $radius ) ); hasta be in HAVING, not WHERE
@@ -165,6 +171,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryGeoSearch.php 106945 2011-12-21 15:00:59Z maxsem $';
+		return __CLASS__ . ': $Id$';
 	}
 }
