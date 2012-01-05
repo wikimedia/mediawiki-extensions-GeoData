@@ -42,3 +42,7 @@ $wgMaxGeoSearchRadius = 10000; // 10km
  */
 $wgDefaultGlobe = 'earth';
 
+/**
+ * Maximum number of coordinates per page
+ */
+$wgMaxCoordinatesPerPage = 50;

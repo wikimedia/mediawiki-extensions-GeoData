@@ -82,7 +82,13 @@ class GeoDataHooks {
 				$parser->getTitle()->getText()
 			);
 		}
-		return array( "<span class=\"error\">{$status->getWikiText()}</span>", 'noparse' => false );
+		$errorText = $status->getWikiText();
+		if ( $errorText == '&lt;&gt;' ) {
+			// Error condition that doesn't require a message,
+			// can't think of a better way to pass this condition
+			return '';
+		}
+		return array( "<span class=\"error\">{$errorText}</span>", 'noparse' => false );
 	}
 
 	/**
@@ -95,6 +101,7 @@ class GeoDataHooks {
 				'primary' => false,
 				'secondary' => array(),
 				'failures' => false,
+				'limitExceeded' => false,
 			);
 		}
 	}
@@ -107,6 +114,15 @@ class GeoDataHooks {
 	 * @return Status: whether save went OK
 	 */
 	private static function applyCoord( ParserOutput $output, Coord $coord ) {
+		global $wgMaxCoordinatesPerPage;
+		$count = count( $output->geoData['secondary'] ) + $output->geoData['primary'] ? 1 : 0;
+		if ( $count >= $wgMaxCoordinatesPerPage ) {
+			if ( $output->geoData['limitExceeded'] ) {
+				return Status::newFatal( '' );
+			}
+			$output->geoData['limitExceeded'] = true;
+			return Status::newFatal( 'geodata-limit-exceeded' );
+		}
 		if ( $coord->primary ) {
 			if ( $output->geoData['primary'] ) {
 				$output->geoData['secondary'][] = $coord;
