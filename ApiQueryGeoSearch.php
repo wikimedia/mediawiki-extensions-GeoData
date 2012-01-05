@@ -97,8 +97,8 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 					'pageid' => intval( $row->page_id ),
 					'ns' => intval( $title->getNamespace() ),
 					'title' => $title->getPrefixedText(),
-					'lat' => $row->gt_lat,
-					'lon' => $row->gt_lon,
+					'lat' => floatval( $row->gt_lat ),
+					'lon' => floatval( $row->gt_lon ),
 					'dist' => round( $row->dist, 1 ),
 				);
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
