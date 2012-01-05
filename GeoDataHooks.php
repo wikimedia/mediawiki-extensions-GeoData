@@ -115,7 +115,7 @@ class GeoDataHooks {
 	 */
 	private static function applyCoord( ParserOutput $output, Coord $coord ) {
 		global $wgMaxCoordinatesPerPage;
-		$count = count( $output->geoData['secondary'] ) + $output->geoData['primary'] ? 1 : 0;
+		$count = count( $output->geoData['secondary'] ) + ( $output->geoData['primary'] ? 1 : 0 );
 		if ( $count >= $wgMaxCoordinatesPerPage ) {
 			if ( $output->geoData['limitExceeded'] ) {
 				return Status::newFatal( '' );

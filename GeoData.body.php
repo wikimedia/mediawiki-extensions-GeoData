@@ -243,7 +243,7 @@ class Coord {
 		return $row;
 	}
 
-	private static $fieldMapping = array(
+	public static $fieldMapping = array(
 		'lat' => 'gt_lat',
 		'lon' => 'gt_lon',
 		'globe' => 'gt_globe',

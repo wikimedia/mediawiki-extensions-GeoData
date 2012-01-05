@@ -60,7 +60,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$this->addTables( array( 'geo_tags', 'page' ) );
-		$this->addFields( array( 'gt_lat', 'gt_lon', 
+		$this->addFields( array( 'gt_lat', 'gt_lon', 'gt_primary',
 			"{$dbr->tablePrefix()}gd_distance( {$lat}, {$lon}, gt_lat, gt_lon ) AS dist" )
 		);
 		// retrieve some fields only if page set needs them
@@ -68,6 +68,11 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			$this->addFields( array( 'page_id', 'page_namespace', 'page_title' ) );
 		} else {
 			$this->addFields( array( "{$dbr->tableName( 'page' )}.*" ) );
+		}
+		foreach( $params['prop'] as $prop ) {
+			if ( isset( Coord::$fieldMapping[$prop] ) ) {
+				$this->addFields( Coord::$fieldMapping[$prop] );
+			}
 		}
 		$this->addWhereFld( 'gt_globe', $params['globe'] );
 		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
@@ -81,6 +86,9 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		if ( isset( $params['maxdim'] ) ) {
 			$this->addWhere( 'gt_dim < ' . intval( $params['maxdim'] ) ); 
 		}
+		$primary = array_flip( $params['primary'] );
+		$this->addWhereIf( array( 'gt_primary' => 1 ), isset( $primary['yes'] ) && !isset( $primary['no'] )	);
+		$this->addWhereIf( array( 'gt_primary' => 0 ), !isset( $primary['yes'] ) && isset( $primary['no'] )	);
 		$this->addOption( 'ORDER BY', 'dist' );
 
 		$limit = $params['limit'];
@@ -101,6 +109,15 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 					'lon' => floatval( $row->gt_lon ),
 					'dist' => round( $row->dist, 1 ),
 				);
+				if ( $row->gt_primary ) {
+					$vals['primary'] = '';
+				}
+				foreach( $params['prop'] as $prop ) {
+					if ( isset( Coord::$fieldMapping[$prop] ) ) {
+						$field = Coord::$fieldMapping[$prop];
+						$vals[$prop] = $row->$field;
+					}
+				}
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
 				if ( !$fit ) {
 					break;
@@ -145,7 +162,16 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_TYPE => 'namespace',
 				ApiBase::PARAM_DFLT => NS_MAIN,
 				ApiBase::PARAM_ISMULTI => true,
-			)
+			),
+			'prop' => array(
+				ApiBase::PARAM_TYPE => array( 'type', 'name', 'country', 'region' ),
+				ApiBase::PARAM_ISMULTI => true,
+			),
+			'primary' => array(
+				ApiBase::PARAM_TYPE => array( 'yes', 'no' ),
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_DFLT => 'yes',
+			),
 		);
 	}
 
@@ -159,6 +185,8 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			'limit' => 'Maximum number of pages to return',
 			'globe' => "Globe to search on (by default `{$wgDefaultGlobe}')",
 			'namespace' => 'Namespace(s) to search',
+			'prop' => 'What additional coordinate properties to return',
+			'primary' => "Whether to return only primary coordinates (`yes'), secondary (`no') or both (`yes|no')",
 		);
 	}
 
