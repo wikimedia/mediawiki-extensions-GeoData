@@ -73,6 +73,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
 		$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
 		//$this->addWhere( 'dist < ' . intval( $radius ) ); hasta be in HAVING, not WHERE
+		$this->addWhereFld( 'page_namespace', $params['namespace'] );
 		$this->addWhere( 'gt_page_id = page_id' );
 		if ( $exclude ) {
 			$this->addWhere( "gt_page_id <> {$exclude}" );
@@ -140,6 +141,11 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_DFLT => $wgDefaultGlobe,
 			),
+			'namespace' => array(
+				ApiBase::PARAM_TYPE => 'namespace',
+				ApiBase::PARAM_DFLT => NS_MAIN,
+				ApiBase::PARAM_ISMULTI => true,
+			)
 		);
 	}
 
@@ -149,9 +155,10 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			'coord' => 'Coordinate around which to search: two floating-point values separated by pipe (|)',
 			'page' => 'Page around which to search',
 			'radius' => 'Search radius in meters',
-			'maxdim' => 'Restrict search to onjects no larger than this, in meters',
+			'maxdim' => 'Restrict search to objects no larger than this, in meters',
 			'limit' => 'Maximum number of pages to return',
 			'globe' => "Globe to search on (by default `{$wgDefaultGlobe}')",
+			'namespace' => 'Namespace(s) to search',
 		);
 	}
 
