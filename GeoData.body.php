@@ -230,7 +230,7 @@ class Coord {
 	
 	public static function newFromRow( $row ) {
 		global $wgDefaultGlobe;
-		$c = new Coord();
+		$c = new Coord( $row->lat, $row->lon );
 		foreach ( self::$fieldMapping as $field => $column ) {
 			if ( isset( $row->$column ) ) {
 				$c->$field = $row->$column;

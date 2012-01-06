@@ -165,6 +165,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			),
 			'prop' => array(
 				ApiBase::PARAM_TYPE => array( 'type', 'name', 'country', 'region' ),
+				ApiBase::PARAM_DFLT => '',
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'primary' => array(
