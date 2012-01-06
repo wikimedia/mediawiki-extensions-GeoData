@@ -182,7 +182,7 @@ class GeoDataHooks {
 		foreach ( $coords as $coord ) {
 			$rows[] = $coord->getRow( $pageId );
 		}
-		$dbw->insert( 'geo_tags', $data, __METHOD__ );
+		$dbw->insert( 'geo_tags', $rows, __METHOD__ );
 	}
 
 	private static function doSmartUpdate( $coords, $pageId ) {
