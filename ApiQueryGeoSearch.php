@@ -24,8 +24,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	 * @return
 	 */
 	private function run( $resultPageSet = null ) {
-		global $wgMaxGeoSearchRadius;
-
 		$params = $this->extractRequestParams();
 		$exclude = false;
 
@@ -96,7 +94,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		
 		$res = $this->select( __METHOD__ );
 
-		$count = 0;
 		$result = $this->getResult();
 		foreach ( $res as $row ) {
 			if ( is_null( $resultPageSet ) ) {
