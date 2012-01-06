@@ -194,22 +194,17 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => '_invalid-page', 'info' => "Invalid page title provided" ),
+			array( 'code' => '_nonexistent-page', 'info' => "Page does not exist" ),
+			array( 'code' => '_no-coordinates', 'info' => 'Page coordinates unknown' ),
 		) );//@todo:
 	}
 
 	public function getExamples() {
-		global $wgVersion;
-		if ( version_compare( $wgVersion, '1.19alpha', '>=' ) ) {
-			return array(
-				"api.php?action=query&list=geosearch&gsccord=37.786971|-122.399677" => 
-					"Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
-			);
-		} else {
-			return array(
+		return array(
+			"api.php?action=query&list=geosearch&gsccord=37.786971|-122.399677" => 
 				"Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
-				"    api.php?action=query&list=geosearch&gsccord=37.786971|-122.399677"
-			);
-		}
+		);
 	}
 
 	public function getVersion() {
