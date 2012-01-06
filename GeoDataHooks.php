@@ -176,7 +176,7 @@ class GeoDataHooks {
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
 		global $wgUseDumbLinkUpdate;
-		$out = $linksUpdate->mParserOutput;
+		$out = $linksUpdate->getParserOutput();
 		$data = array();
 		if ( isset( $out->geoData ) ) {
 			$geoData = $out->geoData;
