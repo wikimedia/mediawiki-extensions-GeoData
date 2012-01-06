@@ -103,7 +103,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			'limit' => 'How many coordinates to return',
 			'continue' => 'When more results are available, use this to continue',
 			'prop' => 'What additional coordinate properties to return',
-			'primary' => "Whether to return only primary coordinates (`yes'), secondary (`no') or both (`yes|no')",
+			'primary' => "Whether to return only primary coordinates (``yes''), secondary (``no'') or both (``yes|no'')",
 		);
 	}
 

@@ -38,10 +38,10 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		} elseif ( isset( $params['page'] ) ) {
 			$t = Title::newFromText( $params['page'] );
 			if ( !$t || !$t->canExist() ) {
-				$this->dieUsage( "Invalid page title `{$params['page']}' provided", '_invalid-page' );
+				$this->dieUsage( "Invalid page title ``{$params['page']}'' provided", '_invalid-page' );
 			}
 			if ( !$t->exists() ) {
-				$this->dieUsage( "Page `{$params['page']}' does not exist", '_nonexistent-page' );
+				$this->dieUsage( "Page ``{$params['page']}'' does not exist", '_nonexistent-page' );
 			}
 			$coord = GeoData::getPageCoordinates( $t );
 			if ( !$coord ) {
@@ -181,10 +181,10 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			'radius' => 'Search radius in meters',
 			'maxdim' => 'Restrict search to objects no larger than this, in meters',
 			'limit' => 'Maximum number of pages to return',
-			'globe' => "Globe to search on (by default `{$wgDefaultGlobe}')",
+			'globe' => "Globe to search on (by default ``{$wgDefaultGlobe}'')",
 			'namespace' => 'Namespace(s) to search',
 			'prop' => 'What additional coordinate properties to return',
-			'primary' => "Whether to return only primary coordinates (`yes'), secondary (`no') or both (`yes|no')",
+			'primary' => "Whether to return only primary coordinates (``yes''), secondary (``no'') or both (``yes|no'')",
 		);
 	}
 
