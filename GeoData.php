@@ -23,6 +23,7 @@ $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/ApiQueryCoordinates.php";
 $wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch';
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
 
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoDataHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'GeoDataHooks::onParserFirstCallInit';
 $wgHooks['UnitTestsList'][] = 'GeoDataHooks::onUnitTestsList';
 $wgHooks['LanguageGetMagic'][] = 'GeoDataHooks::onLanguageGetMagic';

@@ -1,6 +1,24 @@
 <?php
 
 class GeoDataHooks {
+	/**
+	 * LoadExtensionSchemaUpdates hook handler
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
+	 * @param DatabaseUpdater $updater
+	 */
+	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
+		if ( $updater->getDB()->getType() != 'mysql' ) {
+			throw new MWException( 'GeoData extension currently supports only MySQL' );
+		}
+		$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/GeoData.sql' );
+		return true;
+	}
+
+	/**
+	 * UnitTestsList hook handler
+	 * @see: https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
+	 * @param Array $files 
+	 */
 	public static function onUnitTestsList( &$files ) {
 		$dir = dirname( __FILE__ ) . "/tests";
 		$files[] = "$dir/ParseCoordTest.php";
