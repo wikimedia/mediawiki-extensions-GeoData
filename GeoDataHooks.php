@@ -157,21 +157,60 @@ class GeoDataHooks {
 	 * @param LinksUpdate $linksUpdate
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
+		global $wgUseDumbLinkUpdate;
 		$out = $linksUpdate->mParserOutput;
-		//@todo: less dumb update
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $linksUpdate->mId ), __METHOD__ );
+		$data = array();
 		if ( isset( $out->geoData ) ) {
 			$geoData = $out->geoData;
-			$data = array();
 			if ( $geoData['primary'] ) {
-				$data[] = $geoData['primary']->getRow( $linksUpdate->mId );
+				$data[] = $geoData['primary'];
 			}
-			foreach ( $geoData['secondary'] as $coord ) {
-				$data[] = $coord->getRow( $linksUpdate->mId );
-			}
-			$dbw->insert( 'geo_tags', $data, __METHOD__ );
+			$data = array_merge( $data, $geoData['secondary'] );
+		}
+		if ( $wgUseDumbLinkUpdate || !count( $data ) ) {
+			self::doDumbUpdate( $data, $linksUpdate->mId );
+		} else {
+			self::doSmartUpdate( $data, $linksUpdate->mId );
 		}
 		return true;
+	}
+
+	private static function doDumbUpdate( $coords, $pageId ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $pageId ), __METHOD__ );
+		$rows = array();
+		foreach ( $coords as $coord ) {
+			$rows[] = $coord->getRow( $pageId );
+		}
+		$dbw->insert( 'geo_tags', $data, __METHOD__ );
+	}
+
+	private static function doSmartUpdate( $coords, $pageId ) {
+		$prevCoords = GeoData::getAllCoordinates( $pageId, array(), DB_MASTER );
+		$add = array();
+		$delete = array();
+		foreach ( $prevCoords as $old ) {
+			$delete[$old->id] = $old;
+		}
+		foreach ( $coords as $new ) {
+			$match = false;
+			foreach ( $delete as $id => $old ) {
+				if ( $new->fullyEqualsTo( $old ) ) {
+					unset( $delete[$id] );
+					$match = true;
+					break;
+				}
+			}
+			if ( !$match ) {
+				$add[] = $new->getRow( $pageId );
+			}
+		}
+		$dbw = wfGetDB( DB_MASTER );
+		if ( count( $delete) ) {
+			$dbw->delete( 'geo_tags', array( 'gt_id' => array_keys( $delete ) ), __METHOD__ );
+		}
+		if ( count( $add ) ) {
+			$dbw->insert( 'geo_tags', $add, __METHOD__ );
+		}
 	}
 }

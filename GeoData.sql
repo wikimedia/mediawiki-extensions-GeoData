@@ -2,6 +2,8 @@
 
 -- Stores information about geographical coordinates in articles
 CREATE TABLE /*_*/geo_tags (
+	-- Tag id, needed for selective replacement and paging
+	gt_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	-- page_id
 	gt_page_id int unsigned NOT NULL,
 	-- Name of planet or other astronomic body on which the coordinates reside

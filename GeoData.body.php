@@ -17,18 +17,33 @@ class GeoData {
 	/**
 	 * Returns primary coordinates of the given page, if any
 	 * @param Title $title
-	 * @return Coord: Coordinates or false
+	 * @return Coord|false: Coordinates or false
 	 */
 	public static function getPageCoordinates( Title $title ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( 'geo_tags', 
-			array( 'gt_lat', 'gt_lon' ),
-			array( 'gt_page_id' => $title->getArticleID(), 'gt_primary' => 1 )
-		);
-		if ( !$row ) {
-			return false;
+		$coords = self::getAllCoordinates( $title->getArticleID(), array( 'gt_primary' => 1 ) );
+		if ( $coords ) {
+			return $coords[0];
 		}
-		return Coord::newFromRow( $row );
+		return false;
+	}
+
+	/**
+	 * Retrieves all coordinates for the given page id
+	 *
+	 * @param int $pageId: ID of the page
+	 * @param Array $conds: Conditions for Database::select()
+	 * @param int $dbType: Database to select from DM_MASTER or DB_SLAVE
+	 * @return Array: Array of Coord objects
+	 */
+	public static function getAllCoordinates( $pageId, $conds = array(), $dbType = DB_SLAVE ) {
+		$db = wfGetDB( $dbType );
+		$conds['gt_page_id'] = $pageId;
+		$res = $db->select( 'geo_tags', array_values( Coord::$fieldMapping ), $conds, __METHOD__ );
+		$coords = array();
+		foreach ( $res as $row ) {
+			$coords[] = Coord::newFromRow( $row );
+		}
+		return $coords;
 	}
 
 	/**
@@ -197,6 +212,7 @@ class GeoData {
 class Coord {
 	public $lat, 
 		$lon,
+		$id,
 		$globe,
 		$primary = false,
 		$dim,
@@ -224,7 +240,7 @@ class Coord {
 	}
 
 	/**
-	 * Compares this coordinate with the given coordinate
+	 * Compares this coordinates with the given coordinates
 	 *
 	 * @param Coord $coord: Coordinate to compare with
 	 * @param int $precision: Comparison precision
@@ -233,6 +249,25 @@ class Coord {
 	public function equalsTo( Coord $coord, $precision = 6 ) {
 		return round( $this->lat, $precision ) == round( $coord->lat, $precision )
 			&& round( $this->lon, $precision ) == round( $coord->lon, $precision );
+	}
+
+	/**
+	 * Compares all the fields of this object with the given coordinates object
+	 *
+	 * @param Coord $coord: Coordinate to compare with
+	 * @param int $precision: Comparison precision
+	 * @return Boolean
+	 */
+	public function fullyEqualsTo( Coord $coord, $precision = 6 ) {
+		return round( $this->lat, $precision ) == round( $coord->lat, $precision )
+			&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
+			&& $this->globe == $coord->globe
+			&& $this->primary == $coord->primary
+			&& $this->dim == $coord->dim
+			&& $this->type == $coord->type
+			&& $this->name == $coord->name
+			&& $this->country == $coord->country
+			&& $this->region == $coord->region;
 	}
 
 	public function getRow( $pageId = null ) {
@@ -244,6 +279,7 @@ class Coord {
 	}
 
 	public static $fieldMapping = array(
+		'id' => 'gt_id',
 		'lat' => 'gt_lat',
 		'lon' => 'gt_lon',
 		'globe' => 'gt_globe',
