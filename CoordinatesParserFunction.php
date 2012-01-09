@@ -136,9 +136,12 @@ class CoordinatesParserFunction {
 		}
 		$coord->primary = isset( $args['primary'] );
 		$coord->globe = isset( $args['globe'] ) ? $wgContLang->lc( $args['globe'] ) : $wgDefaultGlobe;
-		$coord->dim = isset( $args['dim'] ) && is_numeric( $args['dim'] ) && $args['dim'] > 0
-				? $args['dim']
-				: null;
+		if ( isset( $args['dim'] ) ) {
+			$dim = $this->parseDim( $args['dim'] );
+			if ( $dim !== '' ) {
+				$coord->dim = $dim;
+			}
+		}
 		$coord->type = isset( $args['type'] ) ? $args['type'] : null;
 		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
 		if ( isset( $args['region'] ) ) {
@@ -165,6 +168,19 @@ class CoordinatesParserFunction {
 			$result[$keyVal[0]] = $keyVal[1];
 		}
 		return $result;
+	}
+
+	private function parseDim( $str ) {
+		if ( is_numeric( $str ) ) {
+			return $str > 0;
+		}
+		if ( !preg_match( '/^(\d+)(km|m)$/i', $str, $m ) ) {
+			return false;
+		}
+		if ( strtolower( $m[2] ) == 'km' ) {
+			return $m[1] * 1000;
+		}
+		return $m[1];
 	}
 
 	/**

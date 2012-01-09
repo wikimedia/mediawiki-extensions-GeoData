@@ -42,6 +42,18 @@ class TagTest extends MediaWikiTestCase {
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-mos}}',
 				array( 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU', 'region' => 'MOS' ),
 			),
+			array(
+				'{{#coordinates: 10|20|primary|_dim:3Km_}}', 
+				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true, 'dim' => 3000 ),
+			),
+			array(
+				'{{#coordinates: 10|20|primary|foo:bar dim:100m}}', 
+				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 100 ),
+			),
+			array(
+				'{{#coordinates: 10|20|primary|dim:1L}}', 
+				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth' ),
+			),
 		);
 	}
 }
