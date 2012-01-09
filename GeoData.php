@@ -1,6 +1,6 @@
 <?php
 /**
- * API sandbox extension. Initial author Max Semenik
+ * GeoData extension. Initial author Max Semenik
  * License: WTFPL 2.0
  */
 $wgExtensionCredits['other'][] = array(
