@@ -20,6 +20,7 @@ $wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/CoordinatesParserFunctio
 $wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
 $wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
 $wgAutoloadClasses['GeoMath'] = "$dir/GeoMath.php";
+$wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesParserFunction.php";
 
 $wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch';
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';

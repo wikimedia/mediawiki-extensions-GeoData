@@ -1,6 +1,9 @@
 <?php
 
 
+/**
+ * Handler for the #coordinates parser function
+ */
 class CoordinatesParserFunction {
 	/**
 	 * @var Parser
@@ -16,13 +19,17 @@ class CoordinatesParserFunction {
 		$unnamed = array(),
 		$info;
 
+	/**
+	 * Constructor
+	 * @param Parser $parser: Parser object to associate with
+	 */
 	public function __construct( Parser $parser ) {
 		$this->parser = $parser;
 		$this->info = GeoData::getCoordInfo();
 	}
 
 	/**
-	 * Handler for the #coordinates parser function
+	 * #coordinates parser function callback
 	 * 
 	 * @param Parser $parser
 	 * @param PPFrame $frame
@@ -30,8 +37,13 @@ class CoordinatesParserFunction {
 	 * @return Mixed
 	 */
 	public function coordinates( $parser, $frame, $args ) {
+		if ( $parser != $this->parser ) {
+			throw new MWException( __METHOD__ . '() called by wrong parser' );
+		}
 		$this->output = $parser->getOutput();
-		$this->prepareOutput();
+		if ( !isset( $this->output->geoData ) ) {
+			$this->output->geoData = new CoordinatesOutput();
+		}
 
 		$this->unnamed = array();
 		$this->named = array();
@@ -68,6 +80,10 @@ class CoordinatesParserFunction {
 		return array( "<span class=\"error\">{$errorText}</span>", 'noparse' => false );
 	}
 
+	/**
+	 * Add an unnamed parameter to the list, turining it into a named one if needed
+	 * @param String $value: Parameter
+	 */
 	private function addArg( $value ) {
 		if ( isset( $this->info['primary'][$value] ) ) {
 			$this->named['primary'] = true;
@@ -75,18 +91,6 @@ class CoordinatesParserFunction {
 			$this->named['geohack'] = $value;
 		} elseif ( $value != '' ) {
 			$this->unnamed[] = $value;
-		}
-	}
-	/**
-	 * Make sure that parser output has our storage array
-	 */
-	private function prepareOutput() {
-		if ( !isset( $this->output->geoData ) ) {
-			$this->output->geoData = array(
-				'primary' => false,
-				'secondary' => array(),
-				'limitExceeded' => false,
-			);
 		}
 	}
 
@@ -98,24 +102,22 @@ class CoordinatesParserFunction {
 	 */
 	private function applyCoord( Coord $coord ) {
 		global $wgMaxCoordinatesPerPage;
-		$output = $this->output;
-		$count = count( $output->geoData['secondary'] ) + ( $output->geoData['primary'] ? 1 : 0 );
-		if ( $count >= $wgMaxCoordinatesPerPage ) {
-			if ( $output->geoData['limitExceeded'] ) {
+		$geoData = $this->output->geoData;
+		if ( $geoData->getCount() >= $wgMaxCoordinatesPerPage ) {
+			if ( $geoData->limitExceeded ) {
 				return Status::newFatal( '' );
 			}
-			$output->geoData['limitExceeded'] = true;
+			$geoData->limitExceeded = true;
 			return Status::newFatal( 'geodata-limit-exceeded' );
 		}
 		if ( $coord->primary ) {
-			if ( $output->geoData['primary'] ) {
-				$output->geoData['secondary'][] = $coord;
+			if ( $geoData->getPrimary() ) {
 				return Status::newFatal( 'geodata-multiple-primary' );
 			} else {
-				$output->geoData['primary'] = $coord;
+				$geoData->addPrimary( $coord );
 			}
 		} else {
-			$output->geoData['secondary'][] = $coord;
+			$geoData->addSecondary( $coord );
 		}
 		return Status::newGood();
 	}
@@ -175,5 +177,42 @@ class CoordinatesParserFunction {
 			$name = $name->inContentLanguage()->text();
 		}
 		$this->output->addCategory( $name, $this->parser->getTitle()->getText() );
+	}
+}
+
+class CoordinatesOutput {
+	public $limitExceeded = false;
+	private $primary = false,
+		$secondary = array();
+
+	public function getCount() {
+		return count( $this->secondary ) + ( $this->primary ? 1 : 0 );
+	}
+
+	public function addPrimary( Coord $c ) {
+		if ( $this->primary ) {
+			throw new MWException( 'Attempted to insert second primary function into ' . __CLASS__ );
+		}
+		$this->primary = $c;
+	}
+
+	public function addSecondary( Coord $c ) {
+		$this->secondary[] = $c;
+	}
+
+	public function getPrimary() {
+		return $this->primary;
+	}
+
+	public function getSecondary() {
+		return $this->secondary;
+	}
+
+	public function getAll() {
+		$res = $this->secondary;
+		if ( $this->primary ) {
+			array_unshift( $res, $this->primary );
+		}
+		return $res;
 	}
 }

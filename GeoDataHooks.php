@@ -77,10 +77,7 @@ class GeoDataHooks {
 		$data = array();
 		if ( isset( $out->geoData ) ) {
 			$geoData = $out->geoData;
-			if ( $geoData['primary'] ) {
-				$data[] = $geoData['primary'];
-			}
-			$data = array_merge( $data, $geoData['secondary'] );
+			$data = $geoData->getAll();
 		}
 		if ( $wgUseDumbLinkUpdate || !count( $data ) ) {
 			self::doDumbUpdate( $data, $linksUpdate->mId );

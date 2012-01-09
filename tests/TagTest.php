@@ -17,7 +17,8 @@ class TagTest extends MediaWikiTestCase {
 			$this->assertEmpty( $out->geoData['secondary'] );
 			return;
 		}
-		$coord = $out->geoData['primary'] ? $out->geoData['primary'] : $out->geoData['secondary'][0];
+		$all = $out->geoData->getAll();
+		$coord = $all[0];
 		foreach ( $expected as $field => $value ) {
 			$this->assertEquals( $value, $coord->$field, "Checking field $field" );
 		}
