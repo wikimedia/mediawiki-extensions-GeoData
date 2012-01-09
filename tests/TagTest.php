@@ -12,6 +12,11 @@ class TagTest extends MediaWikiTestCase {
 		$opt = new ParserOptions();
 		$out = $p->parse( $input, Title::newMainPage(), $opt );
 		$this->assertTrue( isset( $out->geoData ) );
+		if ( !$expected ) {
+			$this->assertFalse( $out->geoData['primary'] );
+			$this->assertEmpty( $out->geoData['secondary'] );
+			return;
+		}
 		$coord = $out->geoData['primary'] ? $out->geoData['primary'] : $out->geoData['secondary'][0];
 		foreach ( $expected as $field => $value ) {
 			$this->assertEquals( $value, $coord->$field, "Checking field $field" );
@@ -22,6 +27,14 @@ class TagTest extends MediaWikiTestCase {
 		return array(
 			array(
 				'{{#coordinates: 10|20|primary}}', 
+				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ),
+			),
+			array(
+				'{{#coordinates: 10| primary		|	20}}', 
+				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ),
+			),
+			array(
+				'{{#coordinates: primary|10|20}}', 
 				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ),
 			),
 			array( 

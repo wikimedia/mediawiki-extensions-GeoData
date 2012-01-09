@@ -135,51 +135,6 @@ class GeoData {
 		return 0;
 	}
 
-	/**
-	 *
-	 * @param Coord $coord
-	 * @param Array $args 
-	 */
-	public static function parseTagArgs( Coord $coord, $args ) {
-		global $wgDefaultGlobe, $wgContLang;
-		$result = Status::newGood();
-		// fear not of overwriting the stuff we've just received from the geohack param, it has minimum precedence
-		if ( isset( $args['geohack'] ) ) {
-			$args = array_merge( self::parseGeoHackArgs( $args['geohack'] ), $args );
-		}
-		$coord->primary = isset( $args['primary'] );
-		$coord->globe = isset( $args['globe'] ) ? $wgContLang->lc( $args['globe'] ) : $wgDefaultGlobe;
-		$coord->dim = isset( $args['dim'] ) && is_numeric( $args['dim'] ) && $args['dim'] > 0
-				? $args['dim']
-				: null;
-		$coord->type = isset( $args['type'] ) ? $args['type'] : null;
-		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
-		if ( isset( $args['region'] ) ) {
-			$code = strtoupper( $args['region'] );
-			if ( preg_match( '/([A-Z]{2})(?:-([A-Z0-9]{1,3}))/', $code, $m ) ) {
-				$coord->country = $m[1];
-				$coord->region = $m[2];
-			} else {
-				$result->warning( 'geodata-bad-region', $args['region'] ); //@todo: actually use this warning
-			}
-		}
-		return $result;
-	}
-
-	public static function parseGeoHackArgs( $str ) {
-		$result = array();
-		$str = str_replace( '_', ' ', $str ); // per GeoHack docs, spaces and underscores are equivalent
-		$parts = explode( ' ', $str );
-		foreach ( $parts as $arg ) {
-			$keyVal = explode( ':', $arg, 2 );
-			if ( count( $keyVal ) != 2 ) {
-				continue;
-			}
-			$result[$keyVal[0]] = $keyVal[1];
-		}
-		return $result;
-	}
-
 	public static function getCoordInfo() {
 		global $wgContLang;
 		static $result = null;

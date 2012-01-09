@@ -13,12 +13,13 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname( __FILE__ );
 
+$wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/ApiQueryCoordinates.php";
+$wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/ApiQueryGeoSearch.php";
 $wgAutoloadClasses['Coord'] = "$dir/GeoData.body.php";
+$wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/CoordinatesParserFunction.php";
 $wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
 $wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
 $wgAutoloadClasses['GeoMath'] = "$dir/GeoMath.php";
-$wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/ApiQueryGeoSearch.php";
-$wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/ApiQueryCoordinates.php";
 
 $wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch';
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';

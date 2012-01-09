@@ -33,7 +33,10 @@ class GeoDataHooks {
 	 * @param Parser $parser 
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
-		$parser->setFunctionHook( 'coordinates', 'GeoDataHooks::coordinateHandler', SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 'coordinates', 
+			array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
+			SFH_OBJECT_ARGS
+		);
 		return true;
 	}
 
@@ -46,112 +49,6 @@ class GeoDataHooks {
 	public static function onLanguageGetMagic( &$magicWords, $langCode ) {
 		$magicWords['coordinates'] = array( 0, 'coordinates' );
 		return true;
-	}
-
-	/**
-	 * Handler for the #coordinates parser function
-	 * 
-	 * @param Parser $parser
-	 * @param PPFrame $frame
-	 * @param Array $args
-	 * @return Mixed
-	 */
-	public static function coordinateHandler( $parser, $frame, $args ) {
-		$output = $parser->getOutput();
-		self::prepareOutput( $output );
-		$info = GeoData::getCoordInfo();
-		$primary = $info['primary'];
-
-		$unnamed = array();
-		$named = array();
-		$first = trim( $frame->expand( array_shift( $args ) ) );
-		if ( $first !== '' ) {
-			$unnamed[] = $first;
-		}
-		foreach ( $args as $arg ) {
-			$bits = $arg->splitArg();
-			$value = trim( $frame->expand( $bits['value'] ) );
-			if ( $bits['index'] === '' ) {
-				$named[trim( $frame->expand( $bits['name'] ) )] = $value;
-			} elseif ( isset( $primary[$value] ) ) {
-				$named['primary'] = true;
-			} elseif ( preg_match( '/\S+?:\S*?([ _]+\S+?:\S*?)*/', $value ) ) {
-				$named['geohack'] = $value;
-			} else {
-				$unnamed[] = $value;
-			}
-		}
-		$status = GeoData::parseCoordinates( $unnamed );
-		if ( $status->isGood() ) {
-			$coord = $status->value;
-			$status = GeoData::parseTagArgs( $coord, $named );
-			if ( $status->isGood() ) {
-				$status = self::applyCoord( $output, $coord );
-				if ( $status->isGood() ) {
-					return '';
-				}
-			}
-		}
-		// Apply tracking category
-		if ( !$output->geoData['failures'] ) {
-			$output->geoData['failures'] = true;
-			$output->addCategory(
-				wfMessage( 'geodata-broken-tags-category' )->inContentLanguage()->text(),
-				$parser->getTitle()->getText()
-			);
-		}
-		$errorText = $status->getWikiText();
-		if ( $errorText == '&lt;&gt;' ) {
-			// Error condition that doesn't require a message,
-			// can't think of a better way to pass this condition
-			return '';
-		}
-		return array( "<span class=\"error\">{$errorText}</span>", 'noparse' => false );
-	}
-
-	/**
-	 * Make sure that parser output has our storage array
-	 * @param ParserOutput $output
-	 */
-	private static function prepareOutput( ParserOutput $output ) {
-		if ( !isset( $output->geoData ) ) {
-			$output->geoData = array(
-				'primary' => false,
-				'secondary' => array(),
-				'failures' => false,
-				'limitExceeded' => false,
-			);
-		}
-	}
-
-	/**
-	 * Applies a coordinate to parser output
-	 *
-	 * @param ParserOutput $output
-	 * @param Coord $coord
-	 * @return Status: whether save went OK
-	 */
-	private static function applyCoord( ParserOutput $output, Coord $coord ) {
-		global $wgMaxCoordinatesPerPage;
-		$count = count( $output->geoData['secondary'] ) + ( $output->geoData['primary'] ? 1 : 0 );
-		if ( $count >= $wgMaxCoordinatesPerPage ) {
-			if ( $output->geoData['limitExceeded'] ) {
-				return Status::newFatal( '' );
-			}
-			$output->geoData['limitExceeded'] = true;
-			return Status::newFatal( 'geodata-limit-exceeded' );
-		}
-		if ( $coord->primary ) {
-			if ( $output->geoData['primary'] ) {
-				$output->geoData['secondary'][] = $coord;
-				return Status::newFatal( 'geodata-multiple-primary' );
-			} else {
-				$output->geoData['primary'] = $coord;
-			}
-		} else {
-			$output->geoData['secondary'][] = $coord;
-		}
-		return Status::newGood();
 	}
 
 	/**
