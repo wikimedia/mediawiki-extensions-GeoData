@@ -41,17 +41,6 @@ class GeoDataHooks {
 	}
 
 	/**
-	 * LanguageGetMagic hook handler
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LanguageGetMagic
-	 * @param Array $magicWords
-	 * @param String $langCode
-	 */
-	public static function onLanguageGetMagic( &$magicWords, $langCode ) {
-		$magicWords['coordinates'] = array( 0, 'coordinates' );
-		return true;
-	}
-
-	/**
 	 * ArticleDeleteComplete hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete
 	 *

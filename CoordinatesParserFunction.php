@@ -101,14 +101,14 @@ class CoordinatesParserFunction {
 	 * @return Status: whether save went OK
 	 */
 	private function applyCoord( Coord $coord ) {
-		global $wgMaxCoordinatesPerPage;
+		global $wgMaxCoordinatesPerPage, $wgContLang;
 		$geoData = $this->output->geoData;
 		if ( $geoData->getCount() >= $wgMaxCoordinatesPerPage ) {
 			if ( $geoData->limitExceeded ) {
 				return Status::newFatal( '' );
 			}
 			$geoData->limitExceeded = true;
-			return Status::newFatal( 'geodata-limit-exceeded' );
+			return Status::newFatal( 'geodata-limit-exceeded', $wgContLang->formatNum( $wgMaxCoordinatesPerPage ) );
 		}
 		if ( $coord->primary ) {
 			if ( $geoData->getPrimary() ) {

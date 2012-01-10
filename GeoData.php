@@ -22,13 +22,15 @@ $wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
 $wgAutoloadClasses['GeoMath'] = "$dir/GeoMath.php";
 $wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesParserFunction.php";
 
+$wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
+$wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
+
 $wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch';
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoDataHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'GeoDataHooks::onParserFirstCallInit';
 $wgHooks['UnitTestsList'][] = 'GeoDataHooks::onUnitTestsList';
-$wgHooks['LanguageGetMagic'][] = 'GeoDataHooks::onLanguageGetMagic';
 $wgHooks['ArticleDeleteComplete'][] = 'GeoDataHooks::onArticleDeleteComplete';
 $wgHooks['LinksUpdate'][] = 'GeoDataHooks::onLinksUpdate';
 
