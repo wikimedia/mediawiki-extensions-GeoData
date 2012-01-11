@@ -70,7 +70,7 @@ class CoordinatesParserFunction {
 			}
 		}
 
-		$this->addCategory( wfMessage( 'geodata-broken-tags-category' ) );
+		$parser->addTrackingCategory( 'geodata-broken-tags-category' );
 		$errorText = $this->errorText( $status );
 		if ( $errorText == '&lt;&gt;' ) {
 			// Error that doesn't require a message,
@@ -181,18 +181,6 @@ class CoordinatesParserFunction {
 			return $m[1] * 1000;
 		}
 		return $m[1];
-	}
-
-	/**
-	 * Adds a category to the output
-	 *
-	 * @param String|Message $name: Category name
-	 */
-	private function addCategory( $name ) {
-		if ( $name instanceof Message ) {
-			$name = $name->inContentLanguage()->text();
-		}
-		$this->output->addCategory( $name, $this->parser->getTitle()->getText() );
 	}
 
 	/**
