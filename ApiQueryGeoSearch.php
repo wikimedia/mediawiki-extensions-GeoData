@@ -110,7 +110,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 					$vals['primary'] = '';
 				}
 				foreach( $params['prop'] as $prop ) {
-					if ( isset( Coord::$fieldMapping[$prop] ) ) {
+					if ( isset( Coord::$fieldMapping[$prop] ) && isset( $row->$field ) ) {
 						$field = Coord::$fieldMapping[$prop];
 						$vals[$prop] = $row->$field;
 					}
