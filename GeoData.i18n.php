@@ -26,3 +26,7 @@ $messages['qqq'] = array(
 	'geodata-broken-tags-category' => 'Name of the tracking category',
 	'geodata-primary-coordinate' => 'Localised name of parameter that makes <nowiki>{{#coordinates:}}</nowiki> tag primary',
 );
+
+$messages['ru'] = array(
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: нельзя иметь более одной первичной метки на странице',
+);

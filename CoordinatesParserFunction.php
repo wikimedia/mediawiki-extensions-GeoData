@@ -71,7 +71,7 @@ class CoordinatesParserFunction {
 		}
 
 		$this->addCategory( wfMessage( 'geodata-broken-tags-category' ) );
-		$errorText = $status->getWikiText();
+		$errorText = $this->errorText( $status );
 		if ( $errorText == '&lt;&gt;' ) {
 			// Error that doesn't require a message,
 			// can't think of a better way to pass this condition
@@ -193,6 +193,22 @@ class CoordinatesParserFunction {
 			$name = $name->inContentLanguage()->text();
 		}
 		$this->output->addCategory( $name, $this->parser->getTitle()->getText() );
+	}
+
+	/**
+	 * Returns wikitext of status error message in content language
+	 *
+	 * @param Status $s
+	 * @return String
+	 */
+	private function errorText( Status $s ) {
+		$errors = array_merge( $s->getErrorsArray(), $s->getWarningsArray() );
+		if ( !count( $errors ) ) {
+			return '';
+		}
+		$err = $errors[0];
+		$message = array_shift( $err );
+		return wfMessage( $message )->params( $err )->inContentLanguage()->plain();
 	}
 }
 
