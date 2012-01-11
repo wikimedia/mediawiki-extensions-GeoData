@@ -146,9 +146,9 @@ class CoordinatesParserFunction {
 		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
 		if ( isset( $args['region'] ) ) {
 			$code = strtoupper( $args['region'] );
-			if ( preg_match( '/([A-Z]{2})(?:-([A-Z0-9]{1,3}))/', $code, $m ) ) {
+			if ( preg_match( '/([A-Z]{2})(?:-([A-Z0-9]{1,3}))?/', $code, $m ) ) {
 				$coord->country = $m[1];
-				$coord->region = $m[2];
+				$coord->region = isset( $m[2] ) ? $m[2] : null;
 			} else {
 				$result->warning( 'geodata-bad-region', $args['region'] ); //@todo: actually use this warning
 			}

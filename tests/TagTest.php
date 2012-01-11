@@ -18,6 +18,7 @@ class TagTest extends MediaWikiTestCase {
 			return;
 		}
 		$all = $out->geoData->getAll();
+		$this->assertEquals( 1, count( $all ), 'A result was expected' );
 		$coord = $all[0];
 		foreach ( $expected as $field => $value ) {
 			$this->assertEquals( $value, $coord->$field, "Checking field $field" );
@@ -41,6 +42,10 @@ class TagTest extends MediaWikiTestCase {
 			array( 
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-mos}}',
 				array( 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU', 'region' => 'MOS' ),
+			),
+			array( 
+				'{{#coordinates:10|20|globe:Moon dim:10_region:RU}}',
+				array( 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU' ),
 			),
 			array(
 				'{{#coordinates: 10|20|primary|_dim:3Km_}}', 
