@@ -109,8 +109,7 @@ class CoordinatesParserFunction {
 			}
 			$geoData->limitExceeded = true;
 			return Status::newFatal( 'geodata-limit-exceeded',
-				$wgContLang->formatNum( $wgMaxCoordinatesPerPage ),
-				$wgMaxCoordinatesPerPage
+				$wgContLang->formatNum( $wgMaxCoordinatesPerPage )
 			);
 		}
 		if ( $coord->primary ) {
