@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: invalid longitude',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: invalid region code format',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: cannot have more than one primary tag per page',
-	'geodata-limit-exceeded' => 'The limit of $1 <nowiki>{{#coordinates:}}</nowiki> tags per page has been exceeded',
+	'geodata-limit-exceeded' => 'The limit of $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$2|tag|tags}} per page has been exceeded',
 	'geodata-broken-tags-category' => 'Pages with malformed coordinate tags',
 	'geodata-primary-coordinate' => 'primary',
 );
