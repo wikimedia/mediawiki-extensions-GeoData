@@ -103,7 +103,7 @@ class CoordinatesParserFunction {
 	private function applyCoord( Coord $coord ) {
 		global $wgMaxCoordinatesPerPage, $wgContLang;
 		$geoData = $this->output->geoData;
-		if ( $geoData->getCount() >= $wgMaxCoordinatesPerPage ) {
+		if ( $wgMaxCoordinatesPerPage >= 0 && $geoData->getCount() >= $wgMaxCoordinatesPerPage ) {
 			if ( $geoData->limitExceeded ) {
 				return Status::newFatal( '' );
 			}
