@@ -12,7 +12,7 @@ $messages = array();
  * @author Max Semenik
  */
 $messages['en'] = array(
-	'geodata-desc' => 'Adds geographical coordinates storage and retrieval functionality.',
+	'geodata-desc' => 'Adds geographical coordinates storage and retrieval functionality',
 	'geodata-bad-input' => 'Invalid arguments have been passed to the <nowiki>{{#coordinates:}}</nowiki> function',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: invalid latitude',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: invalid longitude',
