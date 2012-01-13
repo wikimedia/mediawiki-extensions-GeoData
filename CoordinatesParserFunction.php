@@ -129,7 +129,7 @@ class CoordinatesParserFunction {
 	 * @param Coord $coord
 	 */
 	private function parseTagArgs( Coord $coord ) {
-		global $wgDefaultGlobe, $wgContLang;
+		global $wgDefaultGlobe, $wgContLang, $wgTypeToDim, $wgDefaultDim;
 		$result = Status::newGood();
 		$args = $this->named;
 		// fear not of overwriting the stuff we've just received from the geohack param, it has minimum precedence
@@ -138,14 +138,19 @@ class CoordinatesParserFunction {
 		}
 		$coord->primary = isset( $args['primary'] );
 		$coord->globe = isset( $args['globe'] ) ? $wgContLang->lc( $args['globe'] ) : $wgDefaultGlobe;
-		if ( isset( $args['dim'] ) ) {
-			$dim = $this->parseDim( $args['dim'] );
-			if ( $dim !== '' ) {
-				$coord->dim = $dim;
-			}
-		}
+		$coord->dim = $wgDefaultDim;
 		if ( isset( $args['type'] ) ) {
 			$coord->type = preg_replace( '/\(.*?\).*$/', '', $args['type'] );
+			$coord->dim = isset( $wgTypeToDim[$coord->type] ) ? isset( $wgTypeToDim[$coord->type] ) : $wgDefaultDim;
+		}
+		if ( isset( $args['scale'] ) ) {
+			$coord->dim = $args['scale'] / 10;
+		}
+		if ( isset( $args['dim'] ) ) {
+			$dim = $this->parseDim( $args['dim'] );
+			if ( $dim !== false ) {
+				$coord->dim = $dim;
+			}
 		}
 		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
 		if ( isset( $args['region'] ) ) {
@@ -176,7 +181,7 @@ class CoordinatesParserFunction {
 
 	private function parseDim( $str ) {
 		if ( is_numeric( $str ) ) {
-			return $str > 0;
+			return $str > 0 ? $str : false;
 		}
 		if ( !preg_match( '/^(\d+)(km|m)$/i', $str, $m ) ) {
 			return false;
