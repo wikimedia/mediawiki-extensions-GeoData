@@ -144,7 +144,9 @@ class CoordinatesParserFunction {
 				$coord->dim = $dim;
 			}
 		}
-		$coord->type = isset( $args['type'] ) ? $args['type'] : null;
+		if ( isset( $args['type'] ) ) {
+			$coord->type = preg_replace( '/\(.*?\).*$/', '', $args['type'] );
+		}
 		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
 		if ( isset( $args['region'] ) ) {
 			$code = strtoupper( $args['region'] );
