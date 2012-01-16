@@ -30,7 +30,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->requireOnlyOneParameter( $params, 'coord', 'page' );
 		if ( isset( $params['coord'] ) ) {
 			$arr = explode( '|', $params['coord'] );
-			if ( count( $arr ) != 2 || !GeoData::validateCoord( $arr[0], $arr[1] ) ) {
+			if ( count( $arr ) != 2 || !GeoData::validateCoord( $arr[0], $arr[1], $params['globe'] ) ) {
 				$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
 			}
 			$lat = $arr[0];

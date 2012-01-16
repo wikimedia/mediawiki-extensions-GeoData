@@ -7,17 +7,18 @@ class ParseCoordTest extends MediaWikiTestCase {
 	/**
 	 * @dataProvider getCases
 	 */
-	public function testParseCoordinates( $parts, $result ) {
+	public function testParseCoordinates( $parts, $result, $globe = 'earth' ) {
 		$formatted = '"' . implode( $parts, '|' ) . '"';
-		$s = GeoData::parseCoordinates( $parts );
+		$s = GeoData::parseCoordinates( $parts, $globe );
 		$val = $s->value;
 		if ( $result === false ) {
 			$this->assertFalse( $s->isGood(), "Parsing of $formatted was expected to fail" );
 		} else {
-			$this->assertTrue( $s->isGood(), "Parsing of $formatted was expected to suceed, but it failed" );
+			$msg = $s->isGood() ? '' : $s->getWikiText();
+			$this->assertTrue( $s->isGood(), "Parsing of $formatted was expected to succeed, but it failed: $msg" );
 			$this->assertTrue( $val->equalsTo( $result ),
-					"Parsing of $formatted was expected to yield something close to"
-					. " ({$result->lat}, {$result->lon}), but yielded ({$val->lat}, {$val->lon})"
+				"Parsing of $formatted was expected to yield something close to"
+				. " ({$result->lat}, {$result->lon}), but yielded ({$val->lat}, {$val->lon})"
 			);
 		}
 	}
@@ -57,6 +58,21 @@ class ParseCoordTest extends MediaWikiTestCase {
 			array( array( 1, 2, 3, 'N', 'E' ), false ),
 			array( array( 1, 2, 3, 'N', 1, 'E' ), false ),
 			array( array( 1, 2, 3, 'N', 1, 2, 'E' ), false ),
+			// coordinate validation (Earth)
+			array( array( -90, 180 ), new Coord( -90, 180 ) ),
+			array( array( 90.0000001, -180.00000001 ), false ),
+			array( array( 90, 1, 180, 0 ), false ),
+			array( array( 10, -1, 20, 0 ), false ),
+			array( array( 25, 60, 10, 0 ), false ),
+			array( array( 25, 0, 0, 10, 0, 60 ), false ),
+			// @todo: only the last component of the coordinate should be non-integer
+			//array( array( 10.5, 0, 20, 0 ), false ),
+			//array( array( 10, 30.5, 0, 20, 0, 0 ), false ),
+			// coordinate validation and normalisation (non-Earth)
+			array( array( 10, 20 ), new Coord( 10, 20 ), 'mars' ),
+			array( array( 110, 20 ), false, 'mars' ),
+			array( array( 47, 0, 'S', 355, 3, 'W' ), new Coord( -47, 4.95 ), 'mars' ), // Asimov Crater
+			array( array( 68, 'S', 357, 'E' ), new Coord( -68, 357 ), 'venus' ), // Quetzalpetlatl Corona
 		);
 	}
 }

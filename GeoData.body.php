@@ -7,11 +7,16 @@ class GeoData {
 	 * @param type $lon
 	 * @return Boolean: Whether the coordinate is valid
 	 */
-	public static function validateCoord( $lat, $lon ) {
-		return is_numeric( $lat )
-			&& is_numeric( $lon )
-			&& abs( $lat ) <= 90
-			&& abs( $lon ) <= 180;
+	public static function validateCoord( $lat, $lon, $globe ) {
+		global $wgGlobes;
+		if ( !is_numeric( $lat ) || !is_numeric( $lon ) || abs( $lat ) > 90 ) {
+			return false;
+		}
+		if ( !isset( $wgGlobes[$globe] ) ) {
+			return abs( $lon ) <= 360;
+		} else {
+			return $lon >= $wgGlobes[$globe]['min'] && $lon <= $wgGlobes[$globe]['max'];
+		}
 	}
 
 	/**
@@ -50,11 +55,12 @@ class GeoData {
 	 * Parses coordinates
 	 * See https://en.wikipedia.org/wiki/Template:Coord for sample inputs
 	 * 
-	 * @param String $str: 
+	 * @param Array $parts: Array of coordinate components
+	 * @param String $globe: Globe name
 	 * @returns Status: Status object, in case of success its value is a Coord object.
 	 */
-	public static function parseCoordinates( $parts ) {
-		global $wgContLang;
+	public static function parseCoordinates( $parts, $globe ) {
+		global $wgContLang, $wgGlobes;
 
 		$count = count( $parts );
 		if ( !is_array( $parts ) || $count < 2 || $count > 8 || ( $count % 2 ) ) {
@@ -67,7 +73,16 @@ class GeoData {
 		if ( $lat === false ) {
 			return Status::newFatal( 'geodata-bad-latitude' );
 		}
-		$lon = self::parseOneCoord( $lonArr, $coordInfo['lon'] );
+		$lonInfo = isset( $wgGlobes[$globe] )
+			? $wgGlobes[$globe]
+			: array(
+				'min' => -360,
+				'mid' => 0,
+				'max' => 360,
+				'abbr' => array( 'E' => 1, 'W' => -1 ),
+				'wrap' => true,
+			);
+		$lon = self::parseOneCoord( $lonArr, $lonInfo );
 		if ( $lon === false ) {
 			return Status::newFatal( 'geodata-bad-longitude' );
 		}
@@ -96,8 +111,8 @@ class GeoData {
 				}
 			}
 			$part = $wgContLang->parseFormattedNumber( $part );
-			$min = $i == 0 ? -$coordInfo['range'] : 0;
-			$max = $i == 0 ? $coordInfo['range'] : 59.999999;
+			$min = $i == 0 ? $coordInfo['min'] : 0;
+			$max = $i == 0 ? $coordInfo['max'] : 59.999999;
 			if ( !is_numeric( $part )
 				|| $part < $min
 				|| $part > $max ) {
@@ -106,7 +121,10 @@ class GeoData {
 			$value += $part * $multiplier * GeoMath::sign( $value );
 			$multiplier /= 60;
 		}
-		if ( abs( $value ) > $coordInfo['range'] ) {
+		if ( $coordInfo['wrap']  && $value < 0 ) {
+			$value = $coordInfo['max'] + $value;
+		}
+		if ( $value < $coordInfo['min'] || $value > $coordInfo['max'] ) {
 			return false;
 		}
 		return $value;
@@ -122,17 +140,7 @@ class GeoData {
 	private static function parseSuffix( $str, $coordInfo ) {
 		global $wgContLang;
 		$str = $wgContLang->uc( trim( $str ) );
-		foreach ( $coordInfo['-'] as $suffix ) {
-			if ( $suffix == $str ) {
-				return -1;
-			}
-		}
-		foreach ( $coordInfo['+'] as $suffix ) {
-			if ( $suffix == $str ) {
-				return 1;
-			}
-		}
-		return 0;
+		return isset( $coordInfo['abbr'][$str] ) ? $coordInfo['abbr'][$str] : 0;
 	}
 
 	public static function getCoordInfo() {
@@ -141,19 +149,16 @@ class GeoData {
 		if ( !$result ) {
 			$result = array(
 				'lat' => array(
-					'range' => 90,
-					'+' => array( 'N' ),
-					'-' => array( 'S' ),
-				),
-				'lon' => array(
-					'range' => 180,
-					'+' => array( 'E' ),
-					'-' => array( 'W' ),
+					'min' => -90,
+					'mid' => 0,
+					'max' => 90,
+					'abbr' => array( 'N' => 1, 'S' => -1 ),
+					'wrap' => false,
 				),
 				'primary' => array( 'primary' ),
 			);
 			if ( $wgContLang->getCode() != 'en' ) {
-				$result['primary'][] = wfMessage( 'geodata-primary-coordinate' )->plain();
+				$result['primary'][] = wfMessage( 'geodata-primary-coordinate' )->inContentLanguage()->plain();
 			}
 			$result['primary'] = array_flip( $result['primary'] );
 		}

@@ -82,3 +82,47 @@ $wgTypeToDim = array(
  * Default value of dim if it is unknown
  */
 $wgDefaultDim = 1000;
+
+$earth = array( 'min' => -180, 'mid' => 0, 'max' => 180, 'abbr' => array( 'E' => +1, 'W' => -1 ), 'wrap' => false );
+$east360 = array( 'min' => 0, 'mid' => 180, 'max' => 360, 'abbr' => array( 'E' => +1, 'W' => -1 ), 'wrap' => true );
+$west360 = array( 'min' => 0, 'mid' => 180, 'max' => 360, 'abbr' => array( 'E' => -1, 'W' => +1 ), 'wrap' => true );
+
+/**
+ * Description of coordinate systems, mostly taken from http://planetarynames.wr.usgs.gov/TargetCoordinates
+ */
+$wgGlobes = array(
+	'earth' => $earth,
+	'mercury' => $west360,
+	'venus' => $east360,
+	'moon' => $earth,
+	'mars' => $east360,
+	'phobos' => $west360,
+	'deimos' => $west360,
+	//'ceres' => ???,
+	//'vesta' => ???,
+	'ganymede' => $west360,
+	'callisto' => $west360,
+	'io' => $west360,
+	'europa' => $west360,
+	'mimas' => $west360,
+	'enceladus' => $west360,
+	'tethys' => $west360,
+	'dione' => $west360,
+	'rhea' => $west360,
+	'titan' => $west360,
+	'hyperion' => $west360,
+	'iapetus' => $west360,
+	'phoebe' => $west360,
+	'miranda' => $east360,
+	'ariel' => $east360,
+	'umbriel' => $east360,
+	'titania' => $east360,
+	'oberon' => $east360,
+	'triton' => $east360,
+	'pluto' => $east360, // ???
+);
+
+unset( $earth );
+unset( $east360 );
+unset( $west360 );
+

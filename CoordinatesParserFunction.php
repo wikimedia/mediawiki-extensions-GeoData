@@ -58,10 +58,11 @@ class CoordinatesParserFunction {
 				$this->addArg( $value );
 			}
 		}
-		$status = GeoData::parseCoordinates( $this->unnamed );
+		$this->parseTagArgs();
+		$status = GeoData::parseCoordinates( $this->unnamed, $this->named['globe'] );
 		if ( $status->isGood() ) {
 			$coord = $status->value;
-			$status = $this->parseTagArgs( $coord );
+			$status = $this->applyTagArgs( $coord );
 			if ( $status->isGood() ) {
 				$status = $this->applyCoord( $coord );
 				if ( $status->isGood() ) {
@@ -128,14 +129,21 @@ class CoordinatesParserFunction {
 	 *
 	 * @param Coord $coord
 	 */
-	private function parseTagArgs( Coord $coord ) {
-		global $wgDefaultGlobe, $wgContLang, $wgTypeToDim, $wgDefaultDim;
+	private function parseTagArgs() {
+		global $wgDefaultGlobe, $wgContLang;
+		// fear not of overwriting the stuff we've just received from the geohack param, it has minimum precedence
+		if ( isset( $this->named['geohack'] ) ) {
+			$this->named = array_merge( $this->parseGeoHackArgs( $this->named['geohack'] ), $this->named );
+		}
+		$this->named['globe'] = isset( $this->named['globe'] )
+			? $wgContLang->lc( $this->named['globe'] )
+			: $wgDefaultGlobe;
+	}
+
+	private function applyTagArgs( Coord $coord ) {
+		global $wgContLang, $wgTypeToDim, $wgDefaultDim;
 		$result = Status::newGood();
 		$args = $this->named;
-		// fear not of overwriting the stuff we've just received from the geohack param, it has minimum precedence
-		if ( isset( $args['geohack'] ) ) {
-			$args = array_merge( $this->parseGeoHackArgs( $args['geohack'] ), $args );
-		}
 		$coord->primary = isset( $args['primary'] );
 		$coord->globe = isset( $args['globe'] ) ? $wgContLang->lc( $args['globe'] ) : $wgDefaultGlobe;
 		$coord->dim = $wgDefaultDim;
