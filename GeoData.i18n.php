@@ -65,10 +65,15 @@ $messages['de'] = array(
 	'geodata-bad-input' => 'Es wurden ungültige Argumente an die Funktion <code><nowiki>{{#coordinates:}}</nowiki></code> übergeben.',
 	'geodata-bad-latitude' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültige Längenangabe',
 	'geodata-bad-longitude' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültige Breitenangabe',
+	'geodata-bad-type' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: unbekannter Koordinatentyp „$1“',
+	'geodata-bad-globe' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: unbekannter Globus „$1“',
 	'geodata-bad-region' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültiges Regionscodeformat',
 	'geodata-multiple-primary' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: Es kann nicht mehr als eine primäre Auszeichnung angegeben werden.',
 	'geodata-limit-exceeded' => 'Die Begrenzung zur Funktion <code><nowiki>{{#coordinates:}}</nowiki></code> von {{PLURAL:$1|einer Auszeichnung|$1 Auszeichnungen}} je Seite, wurde überschritten.',
-	'geodata-broken-tags-category' => 'Seiten mit fehlerhaften Auszeichnungen zu Geokoordinaten',
+	'geodata-broken-tags-category' => 'Seiten mit fehlerhaften Auszeichnungen zu Koordinaten',
+	'geodata-unknown-type-category' => 'Seiten mit unbekanntem Koordinatentyp',
+	'geodata-unknown-globe-category' => 'Seiten mit unbekanntem Codewert für den Globus',
+	'geodata-unknown-region-category' => 'Seiten mit unbekanntem Codewert für die Region',
 	'geodata-primary-coordinate' => 'primäre',
 );
 
@@ -95,10 +100,15 @@ $messages['gl'] = array(
 	'geodata-bad-input' => 'Pasáronselle argumentos incorrectos á función <nowiki>{{#coordinates:}}</nowiki>',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: Latitude incorrecta',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: Lonxitude incorrecta',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: Non se recoñece o tipo "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: Non se recoñece o globo "$1"',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: Formato do código de rexión incorrecto',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: Non pode haber máis dunha etiqueta primaria por páxina',
 	'geodata-limit-exceeded' => 'Superouse o límite de $1 {{PLURAL:$1|etiqueta|etiquetas}} <nowiki>{{#coordinates:}}</nowiki> por páxina',
 	'geodata-broken-tags-category' => 'Páxinas con etiquetas de coordenadas con formato incorrecto',
+	'geodata-unknown-type-category' => 'Páxinas con coordenadas descoñecidas',
+	'geodata-unknown-globe-category' => 'Páxinas con valores descoñecidos',
+	'geodata-unknown-region-category' => 'Páxinas con valores de rexión incorrectos',
 	'geodata-primary-coordinate' => 'primaria',
 );
 
@@ -110,10 +120,15 @@ $messages['hsb'] = array(
 	'geodata-bad-input' => 'Njepłaćiwe argumenty su so funkciji <nowiki>{{#coordinates:}}</nowiki> přepodali',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwa šěrina',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwa dołhosć',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: Njespóznaty typ "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: Njespóznaty globus "$1"',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwy format regionalneho koda',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: njemóže wjace hač jednu primarnu marku na stronu měć',
 	'geodata-limit-exceeded' => 'Limit $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|marki|markow|markow|markow}} na stronu je so překročił',
 	'geodata-broken-tags-category' => 'Strony z deformowanymi koordinatowymi markami',
+	'geodata-unknown-type-category' => 'Strony z njeznatym typom koordinatow',
+	'geodata-unknown-globe-category' => 'Strony z njeznatej globusowej hódnotu',
+	'geodata-unknown-region-category' => 'Strony z njepłaćiwej regionowej hódnotu',
 	'geodata-primary-coordinate' => 'primarne',
 );
 
