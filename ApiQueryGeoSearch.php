@@ -123,6 +123,10 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				$resultPageSet->processDbRow( $row );
 			}
 		}
+		if ( is_null( $resultPageSet ) ) {
+			$result->setIndexedTagName_internal(
+				 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
+		}
 	}
 
 	public function getAllowedParams() {
