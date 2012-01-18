@@ -126,3 +126,15 @@ unset( $earth );
 unset( $east360 );
 unset( $west360 );
 
+/**
+ * Controls what GeoData should do when it encounters some problem.
+ * Reaction type:
+ *  - track - Add tracking category
+ *  - fail - Consider the tag invalid, display message and add tracking category
+ *  - none - Do nothing
+ */
+$wgGeoDataWarningLevel = array(
+	'unknown type' => 'track',
+	'unknown globe' => 'track',
+	'invalid region' => 'track',
+);

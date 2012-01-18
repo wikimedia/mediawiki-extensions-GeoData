@@ -141,15 +141,29 @@ class CoordinatesParserFunction {
 	}
 
 	private function applyTagArgs( Coord $coord ) {
-		global $wgContLang, $wgTypeToDim, $wgDefaultDim;
-		$result = Status::newGood();
+		global $wgContLang, $wgTypeToDim, $wgDefaultDim, $wgGeoDataWarningLevel, $wgGlobes ;
 		$args = $this->named;
 		$coord->primary = isset( $args['primary'] );
 		$coord->globe = isset( $args['globe'] ) ? $wgContLang->lc( $args['globe'] ) : $wgDefaultGlobe;
+		if ( !isset( $wgGlobes[$coord->globe] ) ) {
+			if ( $wgGeoDataWarningLevel['unknown globe'] == 'fail' ) {
+				return Status::newFatal( 'geodata-bad-globe', $coord->globe );
+			} elseif ( $wgGeoDataWarningLevel['unknown globe'] == 'warn' ) {
+				$this->parser->addTrackingCategory( 'geodata-unknown-globe-category' );
+			}
+		}
 		$coord->dim = $wgDefaultDim;
 		if ( isset( $args['type'] ) ) {
 			$coord->type = preg_replace( '/\(.*?\).*$/', '', $args['type'] );
-			$coord->dim = isset( $wgTypeToDim[$coord->type] ) ? isset( $wgTypeToDim[$coord->type] ) : $wgDefaultDim;
+			if ( isset( $wgTypeToDim[$coord->type] ) ) {
+				$coord->dim = $wgTypeToDim[$coord->type];
+			} else {
+				if ( $wgGeoDataWarningLevel['unknown type'] == 'fail' ) {
+					return Status::newFatal( 'geodata-bad-type', $coord->type );
+				} elseif ( $wgGeoDataWarningLevel['unknown type'] == 'warn' ) {
+					$this->parser->addTrackingCategory( 'geodata-unknown-type-category' );
+				}
+			}
 		}
 		if ( isset( $args['scale'] ) ) {
 			$coord->dim = $args['scale'] / 10;
@@ -163,14 +177,18 @@ class CoordinatesParserFunction {
 		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
 		if ( isset( $args['region'] ) ) {
 			$code = strtoupper( $args['region'] );
-			if ( preg_match( '/([A-Z]{2})(?:-([A-Z0-9]{1,3}))?/', $code, $m ) ) {
+			if ( preg_match( '/^([A-Z]{2})(?:-([A-Z0-9]{1,3}))?$/', $code, $m ) ) {
 				$coord->country = $m[1];
 				$coord->region = isset( $m[2] ) ? $m[2] : null;
 			} else {
-				$result->warning( 'geodata-bad-region', $args['region'] ); //@todo: actually use this warning
+				if ( $wgGeoDataWarningLevel['invalid region'] == 'fail' ) {
+					return Status::newFatal( 'geodata-bad-region', $args['region'] );
+				} elseif ( $wgGeoDataWarningLevel['invalid region'] == 'warn' ) {
+					$this->parser->addTrackingCategory( 'geodata-unknown-region-category' );
+				}
 			}
 		}
-		return $result;
+		return Status::newGood();
 	}
 
 	private function parseGeoHackArgs( $str ) {

@@ -16,10 +16,15 @@ $messages['en'] = array(
 	'geodata-bad-input' => 'Invalid arguments have been passed to the <nowiki>{{#coordinates:}}</nowiki> function',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: invalid latitude',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: invalid longitude',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: unrecognised type "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: unrecognised globe "$1"',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: invalid region code format',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: cannot have more than one primary tag per page',
 	'geodata-limit-exceeded' => 'The limit of $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tags}} per page has been exceeded',
 	'geodata-broken-tags-category' => 'Pages with malformed coordinate tags',
+	'geodata-unknown-type-category' => 'Pages with unknown type of coordinates',
+	'geodata-unknown-globe-category' => 'Pages with unknown globe value',
+	'geodata-unknown-region-category' => 'Pages with invalid region value',
 	'geodata-primary-coordinate' => 'primary',
 );
 
@@ -30,6 +35,9 @@ $messages['qqq'] = array(
 	'geodata-desc' => '{{desc}}',
 	'geodata-limit-exceeded' => '$1 is a number',
 	'geodata-broken-tags-category' => 'Name of the tracking category',
+	'geodata-unknown-type-category' => 'Name of the tracking category',
+	'geodata-unknown-globe-category' => 'Name of the tracking category',
+	'geodata-unknown-region-category' => 'Name of the tracking category',
 	'geodata-primary-coordinate' => 'Localised name of parameter that makes <nowiki>{{#coordinates:}}</nowiki> tag primary',
 );
 
