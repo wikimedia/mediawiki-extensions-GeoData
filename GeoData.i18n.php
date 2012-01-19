@@ -85,10 +85,15 @@ $messages['fr'] = array(
 	'geodata-bad-input' => 'Des arguments non valides ont été transmis à la focntion <nowiki>{{#coordinates:}}</nowiki>',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitude invalide',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitude invalide',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: type "$1" non reconnu',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globe "$1" non reconnu',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: format du code de région invalide',
 	'geodata-multiple-primary' => "<nowiki>{{#coordinates:}}</nowiki>: impossible d'avoir plus d'une balise primaire par page",
 	'geodata-limit-exceeded' => 'La limite de $1 {{PLURAL:$1|balise|balises}} <nowiki>{{#coordinates:}}</nowiki> par page a été dépassée',
 	'geodata-broken-tags-category' => 'Pages avec des balises de coordonnées mal formées',
+	'geodata-unknown-type-category' => 'Pages avec un type de coordonnées inconnu',
+	'geodata-unknown-globe-category' => 'Pages avec une valeur de globe inconnue',
+	'geodata-unknown-region-category' => 'Pages avec une valeur de région invalide',
 	'geodata-primary-coordinate' => 'primaire',
 );
 
@@ -155,10 +160,15 @@ $messages['ia'] = array(
 	'geodata-bad-input' => 'Parametros invalide ha essite passate al function <nowiki>{{#coordinates:}}</nowiki>',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitude invalide',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitude invalide',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: typo "$1" non recognoscite',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globo "$1" non recognoscite',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: formato de codice de region invalide',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: non pote haber plus de un etiquetta primari per pagina',
 	'geodata-limit-exceeded' => 'Le limite de $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|etiquetta|etiquettas}} per pagina ha essite excedite',
 	'geodata-broken-tags-category' => 'Paginas con etiquettas mal formate de coordinatas',
+	'geodata-unknown-type-category' => 'Paginas con typo incognite de coordinatas',
+	'geodata-unknown-globe-category' => 'Paginas con valor de globo incognite',
+	'geodata-unknown-region-category' => 'Paginas con valor de region incognite',
 	'geodata-primary-coordinate' => 'primari',
 );
 
@@ -170,10 +180,15 @@ $messages['mk'] = array(
 	'geodata-bad-input' => 'На функцијата <nowiki>{{#coordinates:}}</nowiki> ѝ се дадени неважечки аргументи',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: неважечка геог. ширина',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: неважечка геог. должина',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: непрепознаен тип „$1“',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: непрепознаен глобус „$1“',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: неважечки коден формат за регион',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: не може да има повеќе од една главна ознака по страница',
 	'geodata-limit-exceeded' => 'Ја надминавте границата од $1 {{PLURAL:$1|ознака|ознаки}} <nowiki>{{#coordinates:}}</nowiki> по страница',
 	'geodata-broken-tags-category' => 'Страници со неправилно напишани координатни ознаки',
+	'geodata-unknown-type-category' => 'Страници со непознат тип на координати',
+	'geodata-unknown-globe-category' => 'Страници со непозната вредност за глобус',
+	'geodata-unknown-region-category' => 'Страници со непозната вредност за регион',
 	'geodata-primary-coordinate' => 'главна',
 );
 
