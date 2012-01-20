@@ -135,6 +135,6 @@ unset( $west360 );
  */
 $wgGeoDataWarningLevel = array(
 	'unknown type' => 'track',
-	'unknown globe' => 'track',
+	'unknown globe' => 'none',
 	'invalid region' => 'track',
 );
