@@ -69,6 +69,10 @@ class TagTest extends MediaWikiTestCase {
 				'{{#coordinates: 10| primary		|	20}}', 
 				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ),
 			),
+			array( // empty parameter instead of primary
+				'{{#coordinates: 10 | |	20 }}', 
+				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => false ),
+			),
 			array(
 				'{{#coordinates: primary|10|20}}', 
 				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ),
