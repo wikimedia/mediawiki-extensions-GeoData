@@ -206,7 +206,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 	public function getExamples() {
 		return array(
-			"api.php?action=query&list=geosearch&gsccord=37.786971|-122.399677" => 
+			"api.php?action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677" => 
 				"Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
 		);
 	}
