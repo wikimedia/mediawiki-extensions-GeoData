@@ -181,7 +181,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		global $wgDefaultGlobe;
 		return array(
 			'coord' => 'Coordinate around which to search: two floating-point values separated by pipe (|)',
-			'page' => 'Page around which to search',
+			'page' => 'Title of page around which to search',
 			'radius' => 'Search radius in meters',
 			'maxdim' => 'Restrict search to objects no larger than this, in meters',
 			'limit' => 'Maximum number of pages to return',
