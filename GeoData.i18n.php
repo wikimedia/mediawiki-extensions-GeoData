@@ -172,6 +172,15 @@ $messages['ia'] = array(
 	'geodata-primary-coordinate' => 'primari',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'geodata-unknown-type-category' => 'Säite mat engem onbekannten Typ vu Koordinaten',
+	'geodata-unknown-globe-category' => 'Säite mat engem onbekannte Wäert fir de Globus',
+	'geodata-unknown-region-category' => "Säite mat engem onbekannte Wäert fir d'Regioun",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
