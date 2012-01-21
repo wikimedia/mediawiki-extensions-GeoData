@@ -30,15 +30,17 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Max Semenik
+ * @author SPQRobin
  */
 $messages['qqq'] = array(
 	'geodata-desc' => '{{desc}}',
+	'geodata-bad-globe' => 'Terrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...',
 	'geodata-limit-exceeded' => '$1 is a number',
 	'geodata-broken-tags-category' => 'Name of the tracking category',
 	'geodata-unknown-type-category' => 'Name of the tracking category',
 	'geodata-unknown-globe-category' => 'Name of the tracking category',
 	'geodata-unknown-region-category' => 'Name of the tracking category',
-	'geodata-primary-coordinate' => 'Localised name of parameter that makes <nowiki>{{#coordinates:}}</nowiki> tag primary',
+	'geodata-primary-coordinate' => "Localised name of parameter that makes <nowiki>{{#coordinates:}}</nowiki> tag primary (i.e. containing the primary coordinates of the page's subject)",
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -202,11 +204,24 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'geodata-desc' => 'Voegt geografische coördinatenopslag en weergavefunctionaliteit toe',
+	'geodata-bad-input' => 'Er zijn ongeldige argumenten in de <nowiki>{{#coordinates:}}</nowiki>-functie opgegeven',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>:ongeldige breedtegraad',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>:ongeldige lengtegraad',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: type "$1" niet herkend',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: wereldbol "$1" niet herkend',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: ongeldig formaat van de regiocode',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: er kan niet meer dan één primaire tag per pagina zijn',
+	'geodata-limit-exceeded' => 'De limiet van $1 <nowiki>{{#coordinates:}}</nowiki>-{{PLURAL:$1|tag|tags}} per pagina is overschreden',
 	'geodata-broken-tags-category' => "Pagina's met onjuiste coördinatenlabels",
+	'geodata-unknown-type-category' => "Pagina's met onbekend type coördinaten",
+	'geodata-unknown-globe-category' => "Pagina's met onbekende waarde voor wereldbol",
+	'geodata-unknown-region-category' => "Pagina's met ongeldige waarde voor regio",
+	'geodata-primary-coordinate' => 'primair',
 );
 
 /** Russian (Русский)
