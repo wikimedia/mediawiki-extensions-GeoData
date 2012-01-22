@@ -178,9 +178,11 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'geodata-broken-tags-category' => 'Säite mat Koordinaten, wou e Feeler an de Koordinaten ass',
 	'geodata-unknown-type-category' => 'Säite mat engem onbekannten Typ vu Koordinaten',
 	'geodata-unknown-globe-category' => 'Säite mat engem onbekannte Wäert fir de Globus',
 	'geodata-unknown-region-category' => "Säite mat engem onbekannte Wäert fir d'Regioun",
+	'geodata-primary-coordinate' => 'primaire',
 );
 
 /** Macedonian (Македонски)
