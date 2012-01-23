@@ -125,6 +125,10 @@ class ApiQueryCoordinates extends ApiQueryBase {
 	}
 
 
+	public function getHelpUrls() {
+		return 'https://www.mediawiki.org/wiki/Extension:GeoData#prop.3Dcoordinates';
+	}
+
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

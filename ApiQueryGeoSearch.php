@@ -165,7 +165,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'prop' => array(
-				ApiBase::PARAM_TYPE => array( 'type', 'name', 'country', 'region' ),
+				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region' ),
 				ApiBase::PARAM_DFLT => '',
 				ApiBase::PARAM_ISMULTI => true,
 			),
@@ -209,6 +209,10 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			"api.php?action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677" => 
 				"Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
 		);
+	}
+
+	public function getHelpUrls() {
+		return 'https://www.mediawiki.org/wiki/Extension:GeoData#list.3Dgeosearch';
 	}
 
 	public function getVersion() {
