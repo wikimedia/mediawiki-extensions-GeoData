@@ -57,7 +57,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 				$vals['primary'] = '';
 			}
 			foreach( $params['prop'] as $prop ) {
-				if ( isset( Coord::$fieldMapping[$prop] ) && isset( $row->$field ) ) {
+				if ( isset( Coord::$fieldMapping[$prop] ) && isset( $row->{Coord::$fieldMapping[$prop]} ) ) {
 					$field = Coord::$fieldMapping[$prop];
 					$vals[$prop] = $row->$field;
 				}
