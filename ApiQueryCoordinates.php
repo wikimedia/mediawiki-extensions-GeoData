@@ -86,7 +86,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'string',
 			),
 			'prop' => array(
-				ApiBase::PARAM_TYPE => array( 'type', 'name', 'country', 'region' ),
+				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region' ),
 				ApiBase::PARAM_DFLT => '',
 				ApiBase::PARAM_ISMULTI => true,
 			),
