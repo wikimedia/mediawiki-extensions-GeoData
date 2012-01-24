@@ -60,8 +60,4 @@ class GeoDataQueryExtender {
 			'withoutcoordinates' => 'Return only pages without coordinates',
 		);
 	}
-
-	public static function getDescription() {
-		return ' (extended by the GeoData extension)';
-	}
 }

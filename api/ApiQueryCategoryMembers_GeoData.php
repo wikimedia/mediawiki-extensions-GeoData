@@ -14,7 +14,7 @@ class ApiQueryCategoryMembers_GeoData extends ApiQueryCategoryMembers {
 		if ( !$this->alreadyAltered ) {
 			$params = $this->extractRequestParams();
 
-			$this->requireMaxOneParameter( $params, 'withcoordinates', 'withoutcoordinates' );
+			$this->requireOnlyOneParameter( $params, 'withcoordinates', 'withoutcoordinates' );
 
 			list( $tables, $fields, $joins, $options, $where ) = 
 				GeoDataQueryExtender::alterQuery( $params, 'cl_from', $this->useIndex );
@@ -43,7 +43,7 @@ class ApiQueryCategoryMembers_GeoData extends ApiQueryCategoryMembers {
 	}
 
 	public function getDescription() {
-		return parent::getDescription() . GeoDataQueryExtender::getDescription();
+		return 'Lists pages with or without coordinates in a given category';
 	}
 
 	public function getAllowedParams() {

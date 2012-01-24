@@ -30,10 +30,8 @@ $wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
 
 $wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch';
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
-
-// overriding core
-$wgAPIListModules['allpages'] = 'ApiQueryAllPages_GeoData';
-$wgAPIListModules['categorymembers'] = 'ApiQueryCategoryMembers_GeoData';
+$wgAPIListModules['geopages'] = 'ApiQueryAllPages_GeoData';
+$wgAPIListModules['geopagesincategory'] = 'ApiQueryCategoryMembers_GeoData';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoDataHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'GeoDataHooks::onParserFirstCallInit';

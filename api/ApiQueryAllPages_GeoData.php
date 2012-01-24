@@ -14,7 +14,7 @@ class ApiQueryAllPages_GeoData extends ApiQueryAllPages {
 		if ( !$this->alreadyAltered ) {
 			$params = $this->extractRequestParams();
 
-			$this->requireMaxOneParameter( $params, 'withcoordinates', 'withoutcoordinates' );
+			$this->requireOnlyOneParameter( $params, 'withcoordinates', 'withoutcoordinates' );
 
 			list( $tables, $fields, $joins, $options, $where ) = 
 				GeoDataQueryExtender::alterQuery( $params, 'page_id', $this->useIndex );
@@ -43,7 +43,7 @@ class ApiQueryAllPages_GeoData extends ApiQueryAllPages {
 	}
 
 	public function getDescription() {
-		return parent::getDescription() . GeoDataQueryExtender::getDescription();
+		return 'Lists pages with or without coordinates';
 	}
 
 	public function getAllowedParams() {
