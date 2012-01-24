@@ -15,6 +15,9 @@ $dir = dirname( __FILE__ );
 
 $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
+$wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoData.php";
+$wgAutoloadClasses['ApiQueryCategoryMembers_GeoData'] = "$dir/api/ApiQueryCategoryMembers_GeoData.php";
+$wgAutoloadClasses['GeoDataQueryExtender'] = "$dir/api/GeoDataQueryExtender.php";
 $wgAutoloadClasses['Coord'] = "$dir/GeoData.body.php";
 $wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/CoordinatesParserFunction.php";
 $wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
@@ -27,6 +30,10 @@ $wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
 
 $wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch';
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
+
+// overriding core
+$wgAPIListModules['allpages'] = 'ApiQueryAllPages_GeoData';
+$wgAPIListModules['categorymembers'] = 'ApiQueryCategoryMembers_GeoData';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoDataHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'GeoDataHooks::onParserFirstCallInit';
