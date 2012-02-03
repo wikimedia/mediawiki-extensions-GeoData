@@ -11,6 +11,10 @@ CREATE TABLE /*_*/geo_tags (
 	-- Whether this coordinate is primary (defines the principal location of article subject)
 	-- or secondary (just mentioned in text)
 	gt_primary bool NOT NULL,
+	-- Latitude in tenths of degree
+	gt_lat_int smallint NOT NULL,
+	-- Longitude in tenths of degree
+	gt_lon_int smallint NOT NULL,
 	-- Latitude of the point in degrees
 	gt_lat float NOT NULL,
 	-- Longitude of the point in degrees
@@ -27,23 +31,6 @@ CREATE TABLE /*_*/geo_tags (
 	gt_region varchar(3) NULL
 )/*$wgDBTableOptions*/;
 
--- @todo
 CREATE INDEX /*i*/gt_page_id ON /*_*/geo_tags ( gt_page_id );
-CREATE INDEX /*i*/gt_lat_lon ON /*_*/geo_tags ( gt_lat, gt_lon );
-
-DELIMITER //
--- Calculates distance in meters between two points
--- See https://en.wikipedia.org/wiki/Haversine_formula
-CREATE FUNCTION /*_*/gd_distance( lat1 double, lon1 double, lat2 double, lon2 double )
-	RETURNS double DETERMINISTIC
-BEGIN
-	SET lat1 = radians( lat1 );
-	SET lon1 = radians( lon1 );
-	SET lat2 = radians( lat2 );
-	SET lon2 = radians( lon2 );
-	SET @sin1 = sin( ( lat2 - lat1 ) / 2 );
-	SET @sin2 = sin( ( lon2 - lon1 ) / 2 );
-	RETURN 2 * 6371010 * asin( sqrt( @sin1 * @sin1 + cos( lat1 ) * cos( lat2 ) * @sin2 * @sin2 ) );
-END//
-
-DELIMITER ;
+CREATE INDEX /*i*/gt_id_page_id ON /*_*/geo_tags ( gt_page_id, gt_id );
+CREATE INDEX /*i*/gt_spatial ON /*_*/geo_tags ( gt_lati, gt_loni, gt_lon );

@@ -20,7 +20,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	}
 
 	/**
-	 * @param $resultPageSet ApiPageSet
+	 * @param ApiPageSet $resultPageSet
 	 * @return
 	 */
 	private function run( $resultPageSet = null ) {
@@ -57,15 +57,13 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$rect = GeoMath::rectAround( $lat, $lon, $radius );
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$this->addTables( array( 'geo_tags', 'page' ) );
-		$this->addFields( array( 'gt_lat', 'gt_lon', 'gt_primary',
-			"{$dbr->tablePrefix()}gd_distance( {$lat}, {$lon}, gt_lat, gt_lon ) AS dist" )
-		);
+		$this->addTables( array( 'page', 'geo_tags' ) );
+		$this->addFields( array( 'gt_lat', 'gt_lon', 'gt_primary' ) );
 		// retrieve some fields only if page set needs them
 		if ( is_null( $resultPageSet ) ) {
 			$this->addFields( array( 'page_id', 'page_namespace', 'page_title' ) );
 		} else {
-			$this->addFields( array( "{$dbr->tableName( 'page' )}.*" ) );
+			$this->addFields( WikiPage::selectFields() );
 		}
 		foreach( $params['prop'] as $prop ) {
 			if ( isset( Coord::$fieldMapping[$prop] ) ) {
@@ -73,9 +71,10 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			}
 		}
 		$this->addWhereFld( 'gt_globe', $params['globe'] );
+		$this->addWhereFld( 'gt_lat_int', self::intRange( $rect["minLat"], $rect["maxLat"] ) );
+		$this->addWhereFld( 'gt_lon_int', self::intRange( $rect["minLon"], $rect["maxLon"] ) );
 		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
 		$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
-		//$this->addWhere( 'dist < ' . intval( $radius ) ); hasta be in HAVING, not WHERE
 		$this->addWhereFld( 'page_namespace', $params['namespace'] );
 		$this->addWhere( 'gt_page_id = page_id' );
 		if ( $exclude ) {
@@ -87,15 +86,24 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$primary = array_flip( $params['primary'] );
 		$this->addWhereIf( array( 'gt_primary' => 1 ), isset( $primary['yes'] ) && !isset( $primary['no'] )	);
 		$this->addWhereIf( array( 'gt_primary' => 0 ), !isset( $primary['yes'] ) && isset( $primary['no'] )	);
-		$this->addOption( 'ORDER BY', 'dist' );
+		$this->addOption( 'USE INDEX', 'gt_spatial' );
 
 		$limit = $params['limit'];
-		$this->addOption( 'LIMIT', $limit );
 		
 		$res = $this->select( __METHOD__ );
 
-		$result = $this->getResult();
+		$rows = array();
 		foreach ( $res as $row ) {
+			$row->dist = GeoMath::distance( $lat, $lon, $row->gt_lat, $row->gt_lon );
+			$rows[] = $row;
+		}
+		// sort in PHP because sorting via SQL involves a filesort
+		usort( $rows, 'ApiQueryGeoSearch::compareRows' );
+		$result = $this->getResult();
+		foreach ( $rows as $row ) {
+			if ( !$limit-- ) {
+				break;
+			}
 			if ( is_null( $resultPageSet ) ) {
 				$title = Title::newFromRow( $row );
 				$vals = array(
@@ -127,6 +135,27 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			$result->setIndexedTagName_internal(
 				 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
 		}
+	}
+
+	private static function compareRows( $row1, $row2 ) {
+		if ( $row1->dist < $row2->dist ) {
+			return -1;
+		} elseif ( $row1->dist > $row2->dist ) {
+			return 1;
+		}
+		return 0;
+	}
+
+	/**
+	 * Returns a range of tenths
+	 * @todo: wrap around
+	 * @param float $start
+	 * @param float $end
+	 * @return Array 
+	 */
+	public static function intRange( $start, $end ) {
+		$start = round( $start * 10 );
+		return range( $start, round( $end * 10 ) - $start + 1 );
 	}
 
 	public function getAllowedParams() {

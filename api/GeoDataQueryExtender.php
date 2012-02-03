@@ -16,12 +16,13 @@ class GeoDataQueryExtender {
 		$tables = array();
 		$fields = array();
 		$joins = array();
-		$options = array();
+		$options = array( 'USE INDEX' => array() );
 		$where = array();
 
 		if ( isset( $params['withcoordinates'] ) || $params['withoutcoordinates'] ) {
 			$tables[] = 'geo_tags';
 			$joins['geo_tags'] = array( 'LEFT JOIN', "$joinField = gt_page_id" );
+			$options['USE INDEX']['geo_tags'] = 'gt_page_id'; // Yes, MySQL is THAT stupid
 			if ( isset( $params['withcoordinates'] ) ) {
 				switch ( $params['withcoordinates'] ) {
 					case 'primary':
@@ -40,7 +41,7 @@ class GeoDataQueryExtender {
 				$where[] = 'gt_primary IS NULL';
 			}
 		} elseif ( $useIndex ) {
-			$options['USE INDEX'] = $useIndex;
+			$options['USE INDEX']['page'] = $useIndex;
 		}
 		return array( $tables, $fields, $joins, $options, $where );
 	}

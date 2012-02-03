@@ -4,7 +4,7 @@
  * Overrides and extends core's list=categorymembers query module
  */
 class ApiQueryCategoryMembers_GeoData extends ApiQueryCategoryMembers {
-	private $useIndex, $alreadyAltered;
+	private $useIndex = false, $alreadyAltered;
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName );
@@ -22,7 +22,7 @@ class ApiQueryCategoryMembers_GeoData extends ApiQueryCategoryMembers {
 			$this->addFields( $fields );
 			$this->addJoinConds( $joins );
 			foreach ( $options as $name => $value ) {
-				$this->addOption( $name, $value );
+				parent::addOption( $name, $value );
 			}
 			$this->addWhere( $where );
 			$this->alreadyAltered = true;

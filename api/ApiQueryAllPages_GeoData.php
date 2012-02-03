@@ -4,7 +4,7 @@
  * Overrides and extends core's list=allpages query module
  */
 class ApiQueryAllPages_GeoData extends ApiQueryAllPages {
-	private $useIndex, $alreadyAltered;
+	private $useIndex = false, $alreadyAltered;
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName );
@@ -22,7 +22,7 @@ class ApiQueryAllPages_GeoData extends ApiQueryAllPages {
 			$this->addFields( $fields );
 			$this->addJoinConds( $joins );
 			foreach ( $options as $name => $value ) {
-				$this->addOption( $name, $value );
+				parent::addOption( $name, $value );
 			}
 			$this->addWhere( $where );
 			$this->alreadyAltered = true;
