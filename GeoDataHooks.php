@@ -7,10 +7,14 @@ class GeoDataHooks {
 	 * @param DatabaseUpdater $updater
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
-		if ( $updater->getDB()->getType() != 'mysql' ) {
-			throw new MWException( 'GeoData extension currently supports only MySQL' );
+		switch ( $updater->getDB()->getType() ) {
+			case 'mysql':
+			case 'sqlite':
+				$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/GeoData.sql' );
+				break;
+			default:
+				throw new MWException( 'GeoData extension currently supports only MySQL and SQLite' );
 		}
-		$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/GeoData.sql' );
 		return true;
 	}
 

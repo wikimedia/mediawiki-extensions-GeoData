@@ -33,4 +33,4 @@ CREATE TABLE /*_*/geo_tags (
 
 CREATE INDEX /*i*/gt_page_id ON /*_*/geo_tags ( gt_page_id );
 CREATE INDEX /*i*/gt_id_page_id ON /*_*/geo_tags ( gt_page_id, gt_id );
-CREATE INDEX /*i*/gt_spatial ON /*_*/geo_tags ( gt_lati, gt_loni, gt_lon );
+CREATE INDEX /*i*/gt_spatial ON /*_*/geo_tags ( gt_lat_int, gt_lon_int, gt_lon );
