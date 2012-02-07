@@ -28,6 +28,7 @@ class GeoDataHooks {
 		$files[] = "$dir/ParseCoordTest.php";
 		$files[] = "$dir/GeoMathTest.php";
 		$files[] = "$dir/TagTest.php";
+		$files[] = "$dir/MiscGeoDataTest.php";
 		return true;
 	}
 

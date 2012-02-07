@@ -27,4 +27,23 @@ class GeoMathTest extends MediaWikiTestCase {
 			$this->assertEquals( 10000, GeoMath::distance( $r['minLat'], $i, $r['maxLat'], $i ), 'rectAround(): test latitude', 1 );
 		}
 	}
+
+	/**
+	 * @dataProvider getRectData
+	 */
+	public function testRectWrapAround( $lon ) {
+		$r = GeoMath::rectAround( 20, $lon, 10000 );
+		$this->assertGreaterThan( $r['maxLon'], $r['minLon'] );
+		$this->assertGreaterThanOrEqual( -180, $r['minLon'] );
+		$this->assertLessThanOrEqual( 180, $r['maxLon'] );
+	}
+
+	public function getRectData() {
+		return array(
+			array( 180 ),
+			array( -180 ),
+			array( 179.95 ),
+			array( -17995 ),
+		);
+	}
 }

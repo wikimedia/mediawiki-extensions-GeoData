@@ -52,12 +52,24 @@
 		} else {
 			$r2lon = 0.1;
 		}
-		return array(
+		$res = array(
 			'minLat' => $lat - $r2lat,
 			'maxLat' => $lat + $r2lat,
 			'minLon' => $lon - $r2lon,
 			'maxLon' => $lon + $r2lon
 		);
+		self::wrapAround( $res['minLat'], $res['maxLat'], -90, 90 );
+		self::wrapAround( $res['minLon'], $res['maxLon'], -180, 180 );
+		return $res;
+	}
+
+	private static function wrapAround( &$from, &$to, $min, $max ) {
+		if ( $from < $min ) {
+			$from = $max - ( $min - $from );
+		}
+		if ( $to > $max ) {
+			$to = $min + $to - $max;
+		}
 	}
 
 	/**

@@ -73,8 +73,13 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->addWhereFld( 'gt_globe', $params['globe'] );
 		$this->addWhereFld( 'gt_lat_int', self::intRange( $rect["minLat"], $rect["maxLat"] ) );
 		$this->addWhereFld( 'gt_lon_int', self::intRange( $rect["minLon"], $rect["maxLon"] ) );
+
 		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
-		$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
+		if ( $rect["minLon"] > $rect["maxLon"] ) {
+			$this->addWhere( "gt_lon < {$rect['maxLon']} OR gt_lon > {$rect['minLon']}" );
+		} else {
+			$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
+		}
 		$this->addWhereFld( 'page_namespace', $params['namespace'] );
 		$this->addWhere( 'gt_page_id = page_id' );
 		if ( $exclude ) {
@@ -147,15 +152,23 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	}
 
 	/**
-	 * Returns a range of tenths
-	 * @todo: wrap around
+	 * Returns a range of tenths of degree
 	 * @param float $start
 	 * @param float $end
 	 * @return Array 
 	 */
 	public static function intRange( $start, $end ) {
 		$start = round( $start * 10 );
-		return range( $start, round( $end * 10 ) - $start + 1 );
+		$end = round( $end * 10 );
+		// @todo: works only on Earth
+		if ( $start > $end ) {
+			return array_merge(
+				range( -1800, $end ),
+				range( $start, 1800 )
+			);
+		} else {
+			return range( $start, $end );
+		}
 	}
 
 	public function getAllowedParams() {
@@ -184,8 +197,9 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
+			// @todo: globe selection disabled until we have a real use case
 			'globe' => array(
-				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_TYPE => (array)$wgDefaultGlobe,
 				ApiBase::PARAM_DFLT => $wgDefaultGlobe,
 			),
 			'namespace' => array(
@@ -230,7 +244,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			array( 'code' => '_invalid-page', 'info' => "Invalid page title provided" ),
 			array( 'code' => '_nonexistent-page', 'info' => "Page does not exist" ),
 			array( 'code' => '_no-coordinates', 'info' => 'Page coordinates unknown' ),
-		) );//@todo:
+		) );
 	}
 
 	public function getExamples() {
