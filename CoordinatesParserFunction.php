@@ -235,6 +235,9 @@ class CoordinatesParserFunction {
 	}
 }
 
+/**
+ * Class that holds output of a parse opertion
+ */
 class CoordinatesOutput {
 	public $limitExceeded = false;
 	private $primary = false,
@@ -246,12 +249,15 @@ class CoordinatesOutput {
 
 	public function addPrimary( Coord $c ) {
 		if ( $this->primary ) {
-			throw new MWException( 'Attempted to insert second primary function into ' . __CLASS__ );
+			throw new MWException( 'Attempted to insert a second primary coordinate into ' . __CLASS__ );
 		}
 		$this->primary = $c;
 	}
 
 	public function addSecondary( Coord $c ) {
+		if ( $c->primary ) {
+			throw new MWException( 'Attempted to pass a primary coordinate into ' . __METHOD__ );
+		}
 		$this->secondary[] = $c;
 	}
 
