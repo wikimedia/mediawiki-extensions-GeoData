@@ -230,9 +230,13 @@ $messages['nl'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author Max Semenik
  */
 $messages['ru'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: недопустимая широта',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: недопустимая долгота',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: неопознанный тип «$1»',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: нельзя иметь более одной первичной метки на странице',
 );
 
