@@ -181,6 +181,8 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'geodata-desc' => 'Setzt Fonctionalitéite vum Späicheren an Ofruffe vu geografesche Koordinaten derbäi',
+	'geodata-bad-input' => "Et goufen net valabel Argumenter un d'Fonctioun <nowiki>{{#coordinates:}}</nowiki> virugereecht",
 	'geodata-broken-tags-category' => 'Säite mat Koordinaten, wou e Feeler an de Koordinaten ass',
 	'geodata-unknown-type-category' => 'Säite mat engem onbekannten Typ vu Koordinaten',
 	'geodata-unknown-globe-category' => 'Säite mat engem onbekannte Wäert fir de Globus',
