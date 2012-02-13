@@ -52,10 +52,15 @@ $messages['be-tarask'] = array(
 	'geodata-bad-input' => 'У функцыю <nowiki>{{#coordinates:}}</nowiki> быў перададзены няслушны аргумэнт',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: няслушная шырата',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: няслушная даўгата',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: нераспазнаны тып «$1»',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: нераспазнаны астранамічны аб’екі «$1»',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: няслушны фармат коду рэгіёну',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: нельга мець больш за адну першасную метку на старонцы',
 	'geodata-limit-exceeded' => 'Было перавышана абмежаваньне ў $1 {{PLURAL:$1|выклік|выклікі|выклікаў}} <nowiki>{{#coordinates:}}</nowiki> на старонку',
 	'geodata-broken-tags-category' => 'Старонкі зь няслушнымі каардынатнымі меткамі',
+	'geodata-unknown-type-category' => 'Старонкі зь невядомымі тыпамі каардынатаў',
+	'geodata-unknown-globe-category' => 'Старонкі зь невядомым тыпам астранамічнага аб’екту',
+	'geodata-unknown-region-category' => 'Старонкі зь няслушным рэгіёнам',
 	'geodata-primary-coordinate' => 'першасная',
 );
 
