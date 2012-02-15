@@ -45,6 +45,7 @@ $messages['qqq'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -59,7 +60,7 @@ $messages['be-tarask'] = array(
 	'geodata-limit-exceeded' => 'Было перавышана абмежаваньне ў $1 {{PLURAL:$1|выклік|выклікі|выклікаў}} <nowiki>{{#coordinates:}}</nowiki> на старонку',
 	'geodata-broken-tags-category' => 'Старонкі зь няслушнымі каардынатнымі меткамі',
 	'geodata-unknown-type-category' => 'Старонкі зь невядомымі тыпамі каардынатаў',
-	'geodata-unknown-globe-category' => 'Старонкі зь невядомым тыпам астранамічнага аб’екту',
+	'geodata-unknown-globe-category' => 'Старонкі зь невядомым глябальным значэньнем',
 	'geodata-unknown-region-category' => 'Старонкі зь няслушным рэгіёнам',
 	'geodata-primary-coordinate' => 'першасная',
 );
