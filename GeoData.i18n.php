@@ -237,6 +237,26 @@ $messages['nl'] = array(
 	'geodata-primary-coordinate' => 'primair',
 );
 
+/** Polish (Polski)
+ * @author BeginaFelicysym
+ */
+$messages['pl'] = array(
+	'geodata-desc' => 'Dodaje funkcje przechowywania i pobierania współrzędnych geograficznych',
+	'geodata-bad-input' => 'Nieprawidłowe argumenty zostały przekazane do funkcji <nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: nieprawidłowa szerokość geograficzna',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: nieprawidłowa długość geograficzna',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: nieprawidłowy typ "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: nierozpoznany glob "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: nieprawidłowy format kodu regionu',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: nie można podać więcej niż jednego tagu podstawowego na stronie',
+	'geodata-limit-exceeded' => 'Ograniczenie $1 {{PLURAL:$1|znacznika|znaczników|znaczników}} <nowiki>{{#coordinates:}}</nowiki>  na stronie zostało przekroczone',
+	'geodata-broken-tags-category' => 'Strony niepoprawnymi znacznikami współrzędnych',
+	'geodata-unknown-type-category' => 'Strony ze współrzędnymi nieznanego typu',
+	'geodata-unknown-globe-category' => 'Strony z nieznaną wartością globu',
+	'geodata-unknown-region-category' => 'Strony z nieprawidłową wartością regionu',
+	'geodata-primary-coordinate' => 'podstawowy',
+);
+
 /** Russian (Русский)
  * @author Eleferen
  * @author Max Semenik
