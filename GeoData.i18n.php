@@ -43,6 +43,26 @@ $messages['qqq'] = array(
 	'geodata-primary-coordinate' => "Localised name of parameter that makes <nowiki>{{#coordinates:}}</nowiki> tag primary (i.e. containing the primary coordinates of the page's subject)",
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'geodata-desc' => "Amiesta una función d'almacenamientu y recuperación de coordenaes xeográfiques.",
+	'geodata-bad-input' => 'Se pasaron argumentos inválidos a la función <nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: Llatitú inválida',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: Llonxitú inválida',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: Tipu "$1" non reconocíu',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globu "$1" non reconocíu',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: formatu inválidu de códigu de rexón',
+	'geodata-multiple-primary' => "<nowiki>{{#coordinates:}}</nowiki>: nun pue haber más d'una etiqueta primaria por páxina",
+	'geodata-limit-exceeded' => 'Se pasó del llímite de $1 {{PLURAL:$1|etiqueta|etiquetes}} <nowiki>{{#coordinates:}}</nowiki> por páxina',
+	'geodata-broken-tags-category' => 'Páxines con etiquetes de coordenadas con formatu incorreutu',
+	'geodata-unknown-type-category' => 'Páxines con coordenaes de tipu desconocíu',
+	'geodata-unknown-globe-category' => 'Páxines con valores de globu desconocíos',
+	'geodata-unknown-region-category' => 'Páxines con valores de rexón inválidos',
+	'geodata-primary-coordinate' => 'primaria',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
