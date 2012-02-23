@@ -105,6 +105,21 @@ $messages['de'] = array(
 	'geodata-primary-coordinate' => 'primäre',
 );
 
+/** Spanish (Español)
+ * @author Armando-Martin
+ */
+$messages['es'] = array(
+	'geodata-desc' => 'Agrega la funcionalidad de almacenamiento y recuperación de coordenadas geográficas',
+	'geodata-bad-input' => 'Se han pasado argumentos no válidos a la función <nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitud no válida',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitud no válida',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tipo "$1" no reconocido',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globo "$1" no reconocido',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: formato de código de región no válido',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: no puede tener más de una etiqueta principal por página',
+	'geodata-limit-exceeded' => 'El límite de $1 {{PLURAL:$1|etiqueta|etiquetas}} <nowiki>{{#coordinates:}}</nowiki> por página ha sido superado',
+);
+
 /** French (Français)
  * @author Gomoko
  */
