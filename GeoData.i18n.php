@@ -118,6 +118,11 @@ $messages['es'] = array(
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: formato de código de región no válido',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: no puede tener más de una etiqueta principal por página',
 	'geodata-limit-exceeded' => 'El límite de $1 {{PLURAL:$1|etiqueta|etiquetas}} <nowiki>{{#coordinates:}}</nowiki> por página ha sido superado',
+	'geodata-broken-tags-category' => 'Páginas con etiquetas de coordenadas con formato incorrecto',
+	'geodata-unknown-type-category' => 'Páginas con tipo de coordenadas desconocido',
+	'geodata-unknown-globe-category' => 'Páginas con valor de mundo desconocido',
+	'geodata-unknown-region-category' => 'Páginas con valor de región no válido',
+	'geodata-primary-coordinate' => 'primaria',
 );
 
 /** French (Français)
