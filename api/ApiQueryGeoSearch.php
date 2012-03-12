@@ -26,6 +26,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	private function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
 		$exclude = false;
+		$useIndex = array();
 
 		$this->requireOnlyOneParameter( $params, 'coord', 'page' );
 		if ( isset( $params['coord'] ) ) {
@@ -91,7 +92,17 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$primary = array_flip( $params['primary'] );
 		$this->addWhereIf( array( 'gt_primary' => 1 ), isset( $primary['yes'] ) && !isset( $primary['no'] )	);
 		$this->addWhereIf( array( 'gt_primary' => 0 ), !isset( $primary['yes'] ) && isset( $primary['no'] )	);
-		$this->addOption( 'USE INDEX', 'gt_spatial' );
+		$useIndex['geo_tags'] = 'gt_spatial';
+
+		// Use information from PageImages
+		if ( defined( 'PAGE_IMAGES_INSTALLED' ) && $params['withoutphotos'] ) {
+			$this->addTables( 'page_props' );
+			$this->addJoinConds( array( 'page_props' => array( 'LEFT JOIN',
+				"gt_page_id=pp_page AND pp_propname='has_photos'" )
+			) );
+			$this->addWhere( 'pp_page IS NULL' );
+		}
+		$this->addOption( 'USE INDEX', $useIndex );
 
 		$limit = $params['limit'];
 		
@@ -173,7 +184,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 	public function getAllowedParams() {
 		global $wgMaxGeoSearchRadius, $wgDefaultGlobe;
-		return array (
+		$params = array (
 			'coord' => array(
 				ApiBase::PARAM_TYPE => 'string',
 			),
@@ -218,11 +229,15 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_DFLT => 'yes',
 			),
 		);
+		if ( defined( 'PAGE_IMAGES_INSTALLED' ) ) {
+			$params['withoutphotos'] = false;
+		}
+		return $params;
 	}
 
 	public function getParamDescription() {
 		global $wgDefaultGlobe;
-		return array(
+		$params = array(
 			'coord' => 'Coordinate around which to search: two floating-point values separated by pipe (|)',
 			'page' => 'Title of page around which to search',
 			'radius' => 'Search radius in meters',
@@ -231,8 +246,12 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			'globe' => "Globe to search on (by default ``{$wgDefaultGlobe}'')",
 			'namespace' => 'Namespace(s) to search',
 			'prop' => 'What additional coordinate properties to return',
-			'primary' => "Whether to return only primary coordinates (``yes''), secondary (``no'') or both (``yes|no'')",
+			'primary' => "Whether to return only primary coordinates (``yes''), secondary (``no'') or both (``yes|no'')"
 		);
+		if ( defined( 'PAGE_IMAGES_INSTALLED' ) ) {
+			$params['withoutphotos'] = 'Return only pages without photos';
+		}
+		return $params;
 	}
 
 	public function getDescription() {
