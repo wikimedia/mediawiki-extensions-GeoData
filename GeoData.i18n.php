@@ -256,6 +256,26 @@ $messages['mk'] = array(
 	'geodata-primary-coordinate' => 'главна',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'geodata-desc' => 'Menambahkan kefungsian storan dan pengambilan koordinat geografi',
+	'geodata-bad-input' => 'Hujah-hujah yang tidak sah telah diserahkan kepada fungsi <nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: garis lintang tidak sah',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: garis bujur tidak sah',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: jenis "$1" tidak dikenali',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: glob "$1" tidak dikenali',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: format kod kawasan tidak sah',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: tidak boleh ada lebih daripada satu teg utama sehalaman',
+	'geodata-limit-exceeded' => 'Had $1 <nowiki>{{#coordinates:}}</nowiki> teg sehalaman telah dilampaui',
+	'geodata-broken-tags-category' => 'Halaman dengan teg koordinat yang tidak elok',
+	'geodata-unknown-type-category' => 'Halaman dengan jenis koordinat yang tidak dikenali',
+	'geodata-unknown-globe-category' => 'Halaman dengan nilai glob yang tidak dikenali',
+	'geodata-unknown-region-category' => 'Halaman dengan nilai kawasan yang tidak sah',
+	'geodata-primary-coordinate' => 'primer',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
