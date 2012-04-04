@@ -38,6 +38,7 @@ $wgHooks['ParserFirstCallInit'][] = 'GeoDataHooks::onParserFirstCallInit';
 $wgHooks['UnitTestsList'][] = 'GeoDataHooks::onUnitTestsList';
 $wgHooks['ArticleDeleteComplete'][] = 'GeoDataHooks::onArticleDeleteComplete';
 $wgHooks['LinksUpdate'][] = 'GeoDataHooks::onLinksUpdate';
+$wgHooks['FileUpload'][] = 'GeoDataHooks::onFileUpload';
 
 // =================== start configuration settings ===================
 

@@ -137,7 +137,7 @@ class GeoData {
 	 * @param Array $coordInfo
 	 * @return int: Sign modifier or 0 if not a suffix
 	 */
-	private static function parseSuffix( $str, $coordInfo ) {
+	public static function parseSuffix( $str, $coordInfo ) {
 		global $wgContLang;
 		$str = $wgContLang->uc( trim( $str ) );
 		return isset( $coordInfo['abbr'][$str] ) ? $coordInfo['abbr'][$str] : 0;

@@ -69,9 +69,16 @@ class GeoDataHooks {
 		global $wgUseDumbLinkUpdate;
 		$out = $linksUpdate->getParserOutput();
 		$data = array();
+		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
 		if ( isset( $out->geoData ) ) {
 			$geoData = $out->geoData;
+			// Use coordinates from file metadata unless overridden on description page
+			if ( $coordFromMetadata && !$geoData->getPrimary() ) {
+				$geoData->addPrimary( $coordFromMetadata );
+			}
 			$data = $geoData->getAll();
+		} elseif ( $coordFromMetadata ) {
+			$data[] = $coordFromMetadata;
 		}
 		if ( $wgUseDumbLinkUpdate || !count( $data ) ) {
 			self::doDumbUpdate( $data, $linksUpdate->mId );
@@ -79,6 +86,46 @@ class GeoDataHooks {
 			self::doSmartUpdate( $data, $linksUpdate->mId );
 		}
 		return true;
+	}
+
+	private static function getCoordinatesIfFile( Title $title ) {
+		if ( $title->getNamespace() != NS_FILE ) {
+			return null;
+		}
+		$file = wfFindFile( $title );
+		if ( !$file ) {
+			return null;
+		}
+		$metadata = $file->getMetadata();
+		wfSuppressWarnings();
+		$metadata = unserialize( $metadata );
+		wfRestoreWarnings();
+		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
+			$lat = $metadata['GPSLatitude'];
+			$lon = $metadata['GPSLongitude'];
+			$refs = self::decodeRefs( $metadata );
+			$lat *= $refs[0];
+			$lon *= $refs[1];
+			if ( GeoData::validateCoord( $lat, $lon, 'earth' ) ) {
+				$coord = new Coord( $lat, $lon );
+				$coord->primary = true;
+				return $coord;
+			}
+		}
+		return null;
+	}
+
+	private static function decodeRefs( $metadata ) {
+		global $wgGlobes;
+		if ( isset( $metadata['GPSLatitudeRef'] ) && isset( $metadata['GPSLongitudeRef'] ) ) {
+			$coordInfo = GeoData::getCoordInfo();
+			$latRef = GeoData::parseSuffix( $metadata['GPSLatitudeRef'], $coordInfo['lat'] );
+			$lonRef = GeoData::parseSuffix( $metadata['GPSLongitudeRef'], $wgGlobes['earth'] );
+			if ( $latRef != 0 && $lonRef != 0 ) {
+				return array( $latRef, $lonRef );
+			}
+		}
+		return array( 1, 1 );
 	}
 
 	private static function doDumbUpdate( $coords, $pageId ) {
@@ -118,5 +165,21 @@ class GeoDataHooks {
 		if ( count( $add ) ) {
 			$dbw->insert( 'geo_tags', $add, __METHOD__ );
 		}
+	}
+
+	/**
+	 * FileUpload hook handler
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileUpload
+	 *
+	 * @param LocalFile $file
+	 * @return bool
+	 */
+	public static function onFileUpload( LocalFile $file ) {
+		$wp = WikiPage::factory( $file->getTitle() );
+		$po = new ParserOptions();
+		$pout = $wp->getParserOutput( $po );
+		$lu = new LinksUpdate( $file->getTitle(), $pout );
+		self::onLinksUpdate( $lu );
+		return true;
 	}
 }
