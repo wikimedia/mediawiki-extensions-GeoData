@@ -3,9 +3,10 @@
 class GeoData {
 	/**
 	 *
-	 * @param type $lat
-	 * @param type $lon
-	 * @return Boolean: Whether the coordinate is valid
+	 * @param float $lat
+	 * @param float $lon
+	 * @param string $globe
+	 * @return bool: Whether the coordinate is valid
 	 */
 	public static function validateCoord( $lat, $lon, $globe ) {
 		global $wgGlobes;
@@ -22,7 +23,7 @@ class GeoData {
 	/**
 	 * Returns primary coordinates of the given page, if any
 	 * @param Title $title
-	 * @return Coord|false: Coordinates or false
+	 * @return Coord|bool: Coordinates or false
 	 */
 	public static function getPageCoordinates( Title $title ) {
 		$coords = self::getAllCoordinates( $title->getArticleID(), array( 'gt_primary' => 1 ) );
@@ -57,10 +58,10 @@ class GeoData {
 	 * 
 	 * @param Array $parts: Array of coordinate components
 	 * @param String $globe: Globe name
-	 * @returns Status: Status object, in case of success its value is a Coord object.
+	 * @return Status: Status object, in case of success its value is a Coord object.
 	 */
 	public static function parseCoordinates( $parts, $globe ) {
-		global $wgContLang, $wgGlobes;
+		global $wgGlobes;
 
 		$count = count( $parts );
 		if ( !is_array( $parts ) || $count < 2 || $count > 8 || ( $count % 2 ) ) {

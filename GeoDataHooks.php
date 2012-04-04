@@ -4,7 +4,9 @@ class GeoDataHooks {
 	/**
 	 * LoadExtensionSchemaUpdates hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
+	 *
 	 * @param DatabaseUpdater $updater
+	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		switch ( $updater->getDB()->getType() ) {
@@ -20,8 +22,10 @@ class GeoDataHooks {
 
 	/**
 	 * UnitTestsList hook handler
-	 * @see: https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
-	 * @param Array $files 
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
+	 *
+	 * @param Array $files
+	 * @return bool
 	 */
 	public static function onUnitTestsList( &$files ) {
 		$dir = dirname( __FILE__ ) . "/tests";
@@ -34,8 +38,10 @@ class GeoDataHooks {
 
 	/**
 	 * ParserFirstCallInit hook handler
-	 * @see: https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
-	 * @param Parser $parser 
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
+	 *
+	 * @param Parser $parser
+	 * @return bool
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
 		$parser->setFunctionHook( 'coordinates', 
@@ -53,6 +59,7 @@ class GeoDataHooks {
 	 * @param User $user
 	 * @param String $reason
 	 * @param int $id
+	 * @return bool
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -63,7 +70,9 @@ class GeoDataHooks {
 	/**
 	 * LinksUpdate hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LinksUpdate
+	 *
 	 * @param LinksUpdate $linksUpdate
+	 * @return bool
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
 		global $wgUseDumbLinkUpdate;

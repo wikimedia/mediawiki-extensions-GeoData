@@ -21,7 +21,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 	/**
 	 * @param ApiPageSet $resultPageSet
-	 * @return
 	 */
 	private function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
@@ -57,7 +56,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$radius = intval( $params['radius'] );
 		$rect = GeoMath::rectAround( $lat, $lon, $radius );
 
-		$dbr = wfGetDB( DB_SLAVE );
 		$this->addTables( array( 'page', 'geo_tags' ) );
 		$this->addFields( array( 'gt_lat', 'gt_lon', 'gt_primary' ) );
 		// retrieve some fields only if page set needs them

@@ -33,6 +33,8 @@ class ApiQueryAllPages_GeoData extends ApiQueryAllPages {
 
 	/**
 	 * Only allow USE INDEX if not joining, otherwise it errors out
+	 * @param string $name
+	 * @param string|null $value
 	 */
 	protected function addOption( $name, $value = null ) {
 		if ( $name == 'USE INDEX' ) {

@@ -126,8 +126,7 @@ class CoordinatesParserFunction {
 	}
 
 	/**
-	 *
-	 * @param Coord $coord
+	 * Merges parameters with decoded GeoHack data, sets default globe
 	 */
 	private function parseTagArgs() {
 		global $wgDefaultGlobe, $wgContLang;
