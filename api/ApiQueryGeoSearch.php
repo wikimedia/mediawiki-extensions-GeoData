@@ -167,13 +167,14 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	 * @return Array 
 	 */
 	public static function intRange( $start, $end ) {
-		$start = round( $start * 10 );
-		$end = round( $end * 10 );
+		global $wgGeoDataIndexGranularity;
+		$start = round( $start * $wgGeoDataIndexGranularity );
+		$end = round( $end * $wgGeoDataIndexGranularity );
 		// @todo: works only on Earth
 		if ( $start > $end ) {
 			return array_merge(
-				range( -1800, $end ),
-				range( $start, 1800 )
+				range( -180 * $wgGeoDataIndexGranularity, $end ),
+				range( $start, 180 * $wgGeoDataIndexGranularity )
 			);
 		} else {
 			return range( $start, $end );

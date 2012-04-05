@@ -237,12 +237,13 @@ class Coord {
 	 * @return Array: Associative array in format 'field' => 'value'
 	 */
 	public function getRow( $pageId ) {
+		global $wgGeoDataIndexGranularity;
 		$row =  array( 'gt_page_id' => $pageId );
 		foreach ( self::$fieldMapping as $field => $column ) {
 			$row[$column] = $this->$field;
 		}
-		$row['gt_lat_int'] = round( $this->lat * 10 );
-		$row['gt_lon_int'] = round( $this->lon * 10 );
+		$row['gt_lat_int'] = round( $this->lat * $wgGeoDataIndexGranularity );
+		$row['gt_lon_int'] = round( $this->lon * $wgGeoDataIndexGranularity );
 		return $row;
 	}
 

@@ -144,3 +144,9 @@ $wgGeoDataWarningLevel = array(
 	'unknown globe' => 'none',
 	'invalid region' => 'track',
 );
+
+/**
+ * How many gt_(lat|lon)_int units per degree
+ * Run updateIndexGranularity.php after changing this
+ */
+$wgGeoDataIndexGranularity = 10;
