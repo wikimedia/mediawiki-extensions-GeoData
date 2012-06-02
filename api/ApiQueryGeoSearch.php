@@ -93,16 +93,17 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$useIndex['geo_tags'] = 'gt_spatial';
 
 		// Use information from PageImages
-		if ( defined( 'PAGE_IMAGES_INSTALLED' ) && $params['withoutphotos'] ) {
-			$this->addTables( 'page_props' );
-			$this->addJoinConds( array( 'page_props' => array( 'LEFT JOIN',
-				"gt_page_id=pp_page AND pp_propname='has_photos'" )
-			) );
-			$this->addWhere( 'pp_page IS NULL' );
-		}
+		//if ( defined( 'PAGE_IMAGES_INSTALLED' ) && $params['withoutphotos'] ) {
+		//	$this->addTables( 'page_props' );
+		//	$this->addJoinConds( array( 'page_props' => array( 'LEFT JOIN',
+		//		"gt_page_id=pp_page AND pp_propname='has_photos'" )
+		//	) );
+		//	$this->addWhere( 'pp_page IS NULL' );
+		//}
 		$this->addOption( 'USE INDEX', $useIndex );
 
 		$limit = $params['limit'];
+		$this->addOption( 'LIMIT', $limit );
 		
 		$res = $this->select( __METHOD__ );
 

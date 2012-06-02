@@ -11,9 +11,9 @@ CREATE TABLE /*_*/geo_tags (
 	-- Whether this coordinate is primary (defines the principal location of article subject)
 	-- or secondary (just mentioned in text)
 	gt_primary bool NOT NULL,
-	-- Latitude in tenths of degree
+	-- Latitude in fractional parts of degree (by default 1/10th)
 	gt_lat_int smallint NOT NULL,
-	-- Longitude in tenths of degree
+	-- Longitude in fractional parts of degree (by default 1/10th)
 	gt_lon_int smallint NOT NULL,
 	-- Latitude of the point in degrees
 	gt_lat float NOT NULL,
@@ -31,6 +31,6 @@ CREATE TABLE /*_*/geo_tags (
 	gt_region varchar(3) NULL
 )/*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/gt_page_id ON /*_*/geo_tags ( gt_page_id );
-CREATE INDEX /*i*/gt_id_page_id ON /*_*/geo_tags ( gt_page_id, gt_id );
-CREATE INDEX /*i*/gt_spatial ON /*_*/geo_tags ( gt_lat_int, gt_lon_int, gt_lon );
+CREATE INDEX /*i*/gt_page_primary ON /*_*/geo_tags ( gt_page_id, gt_primary );
+CREATE INDEX /*i*/gt_page_id_id ON /*_*/geo_tags ( gt_page_id, gt_id );
+CREATE INDEX /*i*/gt_spatial ON /*_*/geo_tags ( gt_lat_int, gt_lon_int, gt_lon, gt_primary );
