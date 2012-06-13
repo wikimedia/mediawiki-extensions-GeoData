@@ -140,7 +140,7 @@ class CoordinatesParserFunction {
 	}
 
 	private function applyTagArgs( Coord $coord ) {
-		global $wgContLang, $wgTypeToDim, $wgDefaultDim, $wgGeoDataWarningLevel, $wgGlobes ;
+		global $wgContLang, $wgTypeToDim, $wgDefaultDim, $wgGeoDataWarningLevel, $wgGlobes, $wgDefaultGlobe;
 		$args = $this->named;
 		$coord->primary = isset( $args['primary'] );
 		$coord->globe = isset( $args['globe'] ) ? $wgContLang->lc( $args['globe'] ) : $wgDefaultGlobe;

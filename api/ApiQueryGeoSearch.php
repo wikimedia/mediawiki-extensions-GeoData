@@ -103,8 +103,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->addOption( 'USE INDEX', $useIndex );
 
 		$limit = $params['limit'];
-		$this->addOption( 'LIMIT', $limit );
-		
+
 		$res = $this->select( __METHOD__ );
 
 		$rows = array();

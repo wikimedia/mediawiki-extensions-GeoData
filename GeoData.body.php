@@ -190,7 +190,6 @@ class Coord {
 	}
 	
 	public static function newFromRow( $row ) {
-		global $wgDefaultGlobe;
 		$c = new Coord( $row->gt_lat, $row->gt_lon );
 		foreach ( self::$fieldMapping as $field => $column ) {
 			if ( isset( $row->$column ) ) {
