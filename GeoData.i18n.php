@@ -43,7 +43,7 @@ $messages['qqq'] = array(
 	'geodata-primary-coordinate' => "Localised name of parameter that makes <nowiki>{{#coordinates:}}</nowiki> tag primary (i.e. containing the primary coordinates of the page's subject)",
 );
 
-/** Asturian (Asturianu)
+/** Asturian (asturianu)
  * @author Xuacu
  */
 $messages['ast'] = array(
@@ -105,7 +105,7 @@ $messages['de'] = array(
 	'geodata-primary-coordinate' => 'primäre',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Armando-Martin
  */
 $messages['es'] = array(
@@ -125,7 +125,7 @@ $messages['es'] = array(
 	'geodata-primary-coordinate' => 'primaria',
 );
 
-/** French (Français)
+/** French (français)
  * @author Gomoko
  */
 $messages['fr'] = array(
@@ -185,7 +185,7 @@ $messages['hsb'] = array(
 	'geodata-primary-coordinate' => 'primarne',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Dj
  */
 $messages['hu'] = array(
@@ -203,7 +203,7 @@ $messages['hu'] = array(
 	'geodata-primary-coordinate' => 'elsődleges',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -248,7 +248,7 @@ $messages['lb'] = array(
 	'geodata-primary-coordinate' => 'primaire',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
@@ -309,7 +309,7 @@ $messages['nl'] = array(
 	'geodata-primary-coordinate' => 'primair',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author BeginaFelicysym
  */
 $messages['pl'] = array(
@@ -329,7 +329,7 @@ $messages['pl'] = array(
 	'geodata-primary-coordinate' => 'podstawowy',
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author Eleferen
  * @author Max Semenik
  */
