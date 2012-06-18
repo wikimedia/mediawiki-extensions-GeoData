@@ -234,6 +234,17 @@ $messages['ja'] = array(
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>：地域コードの書式が正しくありません',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'geodata-bad-input' => 'Onjöltijje Daate sin aan di Funxjuhn <nowiki>{{#coordinates:}}</nowiki> övverjävve woode.',
+	'geodata-bad-latitude' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: onjöltijje Längde om Jloobus',
+	'geodata-bad-globe' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: Dä Jlobus „$1“ känne mer nit.',
+	'geodata-unknown-globe-category' => 'Sigge med enem unbikannte Jlobus',
+	'geodata-unknown-region-category' => 'Sigge med en onjöltijje Rejon',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
