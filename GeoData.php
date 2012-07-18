@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'geodata-desc',
 );
 
-$dir = dirname( __FILE__ );
+$dir = __DIR__;
 
 $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
@@ -24,6 +24,7 @@ $wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
 $wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
 $wgAutoloadClasses['GeoMath'] = "$dir/GeoMath.php";
 $wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesParserFunction.php";
+$wgAutoloadClasses['SphinxClient'] = "$dir/lib/sphinxapi.php";
 
 $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
 $wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
@@ -150,3 +151,23 @@ $wgGeoDataWarningLevel = array(
  * Run updateIndexGranularity.php after changing this
  */
 $wgGeoDataIndexGranularity = 10;
+
+/**
+ * Set this to true to enable geospatial queries using Sphinx search
+ */
+$wgGeoDataUseSphinx = false;
+
+/**
+ * Sphinx index name
+ */
+$wgGeoDataSphinxIndex = 'geodata';
+
+/**
+ * Sphinx host
+ */
+$wgGeoDataSphinxHost = 'localhost';
+
+/**
+ * Sphinx port
+ */
+$wgGeoDataSphinxPort = 9312;

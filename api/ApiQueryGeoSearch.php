@@ -25,7 +25,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	private function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
 		$exclude = false;
-		$useIndex = array();
 
 		$this->requireOnlyOneParameter( $params, 'coord', 'page' );
 		if ( isset( $params['coord'] ) ) {
@@ -54,7 +53,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$lat = floatval( $lat );
 		$lon = floatval( $lon );
 		$radius = intval( $params['radius'] );
-		$rect = GeoMath::rectAround( $lat, $lon, $radius );
+		$this->addSpatialSearch( $lat, $lon, $radius );
 
 		$this->addTables( array( 'page', 'geo_tags' ) );
 		$this->addFields( array( 'gt_lat', 'gt_lon', 'gt_primary' ) );
@@ -70,15 +69,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			}
 		}
 		$this->addWhereFld( 'gt_globe', $params['globe'] );
-		$this->addWhereFld( 'gt_lat_int', self::intRange( $rect["minLat"], $rect["maxLat"] ) );
-		$this->addWhereFld( 'gt_lon_int', self::intRange( $rect["minLon"], $rect["maxLon"] ) );
-
-		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
-		if ( $rect["minLon"] > $rect["maxLon"] ) {
-			$this->addWhere( "gt_lon < {$rect['maxLon']} OR gt_lon > {$rect['minLon']}" );
-		} else {
-			$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
-		}
 		$this->addWhereFld( 'page_namespace', $params['namespace'] );
 		$this->addWhere( 'gt_page_id = page_id' );
 		if ( $exclude ) {
@@ -90,7 +80,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$primary = array_flip( $params['primary'] );
 		$this->addWhereIf( array( 'gt_primary' => 1 ), isset( $primary['yes'] ) && !isset( $primary['no'] )	);
 		$this->addWhereIf( array( 'gt_primary' => 0 ), !isset( $primary['yes'] ) && isset( $primary['no'] )	);
-		$useIndex['geo_tags'] = 'gt_spatial';
 
 		// Use information from PageImages
 		//if ( defined( 'PAGE_IMAGES_INSTALLED' ) && $params['withoutphotos'] ) {
@@ -100,7 +89,6 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		//	) );
 		//	$this->addWhere( 'pp_page IS NULL' );
 		//}
-		$this->addOption( 'USE INDEX', $useIndex );
 
 		$limit = $params['limit'];
 
@@ -151,6 +139,75 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		}
 	}
 
+	private function addSpatialSearch( $lat, $lon, $radius ) {
+		global $wgGeoDataUseSphinx;
+
+		if ( $wgGeoDataUseSphinx ) {
+			$this->sphinxSearch( $lat, $lon, $radius );
+		} else {
+			$this->dbSearch( $lat, $lon, $radius );
+		}
+	}
+
+	private function sphinxSearch( $lat, $lon, $radius ) {
+		global $wgGeoDataSphinxHost, $wgGeoDataSphinxPort, $wgGeoDataSphinxIndex;
+		$search = new SphinxClient();
+		$search->SetServer( $wgGeoDataSphinxHost, $wgGeoDataSphinxPort );
+		$search->SetMatchMode( SPH_MATCH_BOOLEAN );
+		$search->SetArrayResult( true );
+		$search->SetLimits( 0, 1000 );
+		$search->SetGeoAnchor( 'lat', 'lon', deg2rad( $lat ), deg2rad( $lon ) );
+
+		$search->SetFilterFloatRange( '@geodist', 0.0, floatval( $radius ) );
+		$search->SetSortMode( SPH_SORT_ATTR_ASC, '@geodist' );
+
+		// Build a tiled query that uses full-text index to improve search performance
+		// equivalent to ( <lat1> || <lat2> || ... ) && ( <lon1> || <lon2> || ... )
+		$rect = GeoMath::rectAround( $lat, $lon, $radius );
+		$vals = array();
+		foreach ( self::intRange( $rect["minLat"], $rect["maxLat"], 10 ) as $latInt ) {
+			$vals[] = '"LAT' . round( $latInt ) . '"';
+		}
+		$query = implode( ' | ', $vals );
+		$vals = array();
+		foreach ( self::intRange( $rect["minLon"], $rect["maxLon"], 10 ) as $lonInt ) {
+			$vals[] = '"LON' . round( $lonInt ) . '"';
+		}
+		$query .= ' ' . implode( ' | ', $vals );
+
+		$result = $search->Query( $query, $wgGeoDataSphinxIndex );
+		$err = $search->GetLastError();
+		if ( $err ) {
+			throw new MWException( "SphinxSearch error: $err" );
+		}
+		$warning = $search->GetLastWarning();
+		if ( $warning ) {
+			$this->setWarning( "SphinxSearch warning: $warning" );
+		}
+		if ( !is_array( $result ) || !isset( $result['matches'] ) ) {
+			throw new MWException( 'SphinxClient::Query() returned unexpected result' );
+		}
+		$ids = array();
+		foreach ( $result['matches'] as $match ) {
+			$ids[] = $match['id'];
+		}
+		$this->addWhere( array( 'gt_id' => $ids ) );
+	}
+
+	private function dbSearch( $lat, $lon, $radius ) {
+		$rect = GeoMath::rectAround( $lat, $lon, $radius );
+		$this->addWhereFld( 'gt_lat_int', self::intRange( $rect["minLat"], $rect["maxLat"] ) );
+		$this->addWhereFld( 'gt_lon_int', self::intRange( $rect["minLon"], $rect["maxLon"] ) );
+
+		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
+		if ( $rect["minLon"] > $rect["maxLon"] ) {
+			$this->addWhere( "gt_lon < {$rect['maxLon']} OR gt_lon > {$rect['minLon']}" );
+		} else {
+			$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
+		}
+		$this->addOption( 'USE INDEX', array( 'geo_tags' => 'gt_spatial' ) );
+	}
+
 	private static function compareRows( $row1, $row2 ) {
 		if ( $row1->dist < $row2->dist ) {
 			return -1;
@@ -162,19 +219,26 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 	/**
 	 * Returns a range of tenths of degree
+	 *
 	 * @param float $start
 	 * @param float $end
-	 * @return Array 
+	 * @param int|null $granularity
+	 *
+	 * @return Array
 	 */
-	public static function intRange( $start, $end ) {
+	public static function intRange( $start, $end, $granularity = null ) {
 		global $wgGeoDataIndexGranularity;
-		$start = round( $start * $wgGeoDataIndexGranularity );
-		$end = round( $end * $wgGeoDataIndexGranularity );
+
+		if ( !$granularity ) {
+			$granularity = $wgGeoDataIndexGranularity;
+		}
+		$start = round( $start * $granularity );
+		$end = round( $end * $granularity );
 		// @todo: works only on Earth
 		if ( $start > $end ) {
 			return array_merge(
-				range( -180 * $wgGeoDataIndexGranularity, $end ),
-				range( $start, 180 * $wgGeoDataIndexGranularity )
+				range( -180 * $granularity, $end ),
+				range( $start, 180 * $granularity )
 			);
 		} else {
 			return range( $start, $end );

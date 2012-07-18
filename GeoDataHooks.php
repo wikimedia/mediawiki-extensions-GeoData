@@ -9,10 +9,19 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
+		global $wgGeoDataUseSphinx;
 		switch ( $updater->getDB()->getType() ) {
-			case 'mysql':
 			case 'sqlite':
-				$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/GeoData.sql' );
+				if ( $wgGeoDataUseSphinx ) {
+					throw new MWException( 'Sphinx search doesn\'t support SQLite' );
+				}
+				// no break
+			case 'mysql':
+				if ( $wgGeoDataUseSphinx ) {
+					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sphinx-backed.sql' );
+				} else {
+					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/db-backed.sql' );
+				}
 				break;
 			default:
 				throw new MWException( 'GeoData extension currently supports only MySQL and SQLite' );
@@ -75,7 +84,7 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
-		global $wgUseDumbLinkUpdate;
+		global $wgUseDumbLinkUpdate, $wgGeoDataUseSphinx;
 		$out = $linksUpdate->getParserOutput();
 		$data = array();
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
@@ -89,7 +98,7 @@ class GeoDataHooks {
 		} elseif ( $coordFromMetadata ) {
 			$data[] = $coordFromMetadata;
 		}
-		if ( $wgUseDumbLinkUpdate || !count( $data ) ) {
+		if ( !$wgGeoDataUseSphinx && ( $wgUseDumbLinkUpdate || !count( $data ) ) ) {
 			self::doDumbUpdate( $data, $linksUpdate->mId );
 		} else {
 			self::doSmartUpdate( $data, $linksUpdate->mId );
@@ -148,6 +157,8 @@ class GeoDataHooks {
 	}
 
 	private static function doSmartUpdate( $coords, $pageId ) {
+		global $wgGeoDataUseSphinx;
+
 		$prevCoords = GeoData::getAllCoordinates( $pageId, array(), DB_MASTER );
 		$add = array();
 		$delete = array();
@@ -169,7 +180,14 @@ class GeoDataHooks {
 		}
 		$dbw = wfGetDB( DB_MASTER );
 		if ( count( $delete) ) {
-			$dbw->delete( 'geo_tags', array( 'gt_id' => array_keys( $delete ) ), __METHOD__ );
+			$deleteIds = array_keys( $delete );
+			$dbw->delete( 'geo_tags', array( 'gt_id' => $deleteIds ), __METHOD__ );
+			if ( $wgGeoDataUseSphinx ) {
+				$rows = array_map( function( $id ) {
+					return array( 'gk_id' => $id );
+				}, $deleteIds );
+				$dbw->insert( 'geo_killist', $rows, __METHOD__ );
+			}
 		}
 		if ( count( $add ) ) {
 			$dbw->insert( 'geo_tags', $add, __METHOD__ );

@@ -1,4 +1,4 @@
--- SQL schema for GeoData extension
+-- SQL schema for GeoData extension, Sphinx-aware
 
 -- Stores information about geographical coordinates in articles
 CREATE TABLE /*_*/geo_tags (
@@ -11,10 +11,6 @@ CREATE TABLE /*_*/geo_tags (
 	-- Whether this coordinate is primary (defines the principal location of article subject)
 	-- or secondary (just mentioned in text)
 	gt_primary bool NOT NULL,
-	-- Latitude in fractional parts of degree (by default 1/10th)
-	gt_lat_int smallint NOT NULL,
-	-- Longitude in fractional parts of degree (by default 1/10th)
-	gt_lon_int smallint NOT NULL,
 	-- Latitude of the point in degrees
 	gt_lat float NOT NULL,
 	-- Longitude of the point in degrees
@@ -28,9 +24,27 @@ CREATE TABLE /*_*/geo_tags (
 	-- Two character ISO 3166-1 alpha-2 country code
 	gt_country char(2) NULL,
 	-- Second part of ISO 3166-2 region code, up to 3 alphanumeric chars
-	gt_region varchar(3) NULL
+	gt_region varchar(3) NULL,
+	-- Last change timestamp
+	gt_touched timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )/*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/gt_page_primary ON /*_*/geo_tags ( gt_page_id, gt_primary );
 CREATE INDEX /*i*/gt_page_id_id ON /*_*/geo_tags ( gt_page_id, gt_id );
-CREATE INDEX /*i*/gt_spatial ON /*_*/geo_tags ( gt_lat_int, gt_lon_int, gt_lon, gt_primary );
+CREATE INDEX /*i*/gt_touched ON /*_*/geo_tags ( gt_touched );
+
+-- Stores Sphinx search kill-list (ids of records deleted from geo_tags)
+CREATE TABLE /*_*/geo_killist (
+	-- gt_id of a row deleted from geo_tags
+	gk_id int unsigned NOT NULL PRIMARY KEY,
+	-- Last change timestamp
+	gk_touched timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)/*$wgTableOptions*/;
+
+CREATE INDEX /*i*/gk_touched ON /*_*/geo_killist ( gk_touched );
+
+-- Stores information about the last index update time
+CREATE TABLE /*_*/geo_updates (
+	gu_wiki varchar(64) NOT NULL PRIMARY KEY,
+	gu_last_update timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)/*$wgTableOptions*/;

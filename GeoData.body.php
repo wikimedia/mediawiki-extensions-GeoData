@@ -236,13 +236,15 @@ class Coord {
 	 * @return Array: Associative array in format 'field' => 'value'
 	 */
 	public function getRow( $pageId ) {
-		global $wgGeoDataIndexGranularity;
+		global $wgGeoDataIndexGranularity, $wgGeoDataUseSphinx;
 		$row =  array( 'gt_page_id' => $pageId );
 		foreach ( self::$fieldMapping as $field => $column ) {
 			$row[$column] = $this->$field;
 		}
-		$row['gt_lat_int'] = round( $this->lat * $wgGeoDataIndexGranularity );
-		$row['gt_lon_int'] = round( $this->lon * $wgGeoDataIndexGranularity );
+		if ( !$wgGeoDataUseSphinx ) {
+			$row['gt_lat_int'] = round( $this->lat * $wgGeoDataIndexGranularity );
+			$row['gt_lon_int'] = round( $this->lon * $wgGeoDataIndexGranularity );
+		}
 		return $row;
 	}
 
