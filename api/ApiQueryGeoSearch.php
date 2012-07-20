@@ -155,7 +155,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$search->SetServer( $wgGeoDataSphinxHost, $wgGeoDataSphinxPort );
 		$search->SetMatchMode( SPH_MATCH_BOOLEAN );
 		$search->SetArrayResult( true );
-		$search->SetLimits( 0, 1000 );
+		$search->SetLimits( 0, 1000, 1000 );
 		$search->SetGeoAnchor( 'lat', 'lon', deg2rad( $lat ), deg2rad( $lon ) );
 
 		$search->SetFilterFloatRange( '@geodist', 0.0, floatval( $radius ) );
