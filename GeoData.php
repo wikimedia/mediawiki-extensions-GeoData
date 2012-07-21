@@ -161,7 +161,7 @@ $wgGeoDataUseSphinx = false;
 /**
  * Sphinx index name
  */
-$wgGeoDataSphinxIndex = 'geodata';
+$wgGeoDataSphinxIndex = 'geodata, geodata_delta';
 
 /**
  * Sphinx hosts list, string or array( 'host1' => weight1, 'host2' => weight2 ... )
