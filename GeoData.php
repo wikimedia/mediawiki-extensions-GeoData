@@ -164,9 +164,9 @@ $wgGeoDataUseSphinx = false;
 $wgGeoDataSphinxIndex = 'geodata';
 
 /**
- * Sphinx host
+ * Sphinx hosts list, string or array( 'host1' => weight1, 'host2' => weight2 ... )
  */
-$wgGeoDataSphinxHost = 'localhost';
+$wgGeoDataSphinxHosts = 'localhost';
 
 /**
  * Sphinx port

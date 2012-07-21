@@ -150,9 +150,12 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	}
 
 	private function sphinxSearch( $lat, $lon, $radius ) {
-		global $wgGeoDataSphinxHost, $wgGeoDataSphinxPort, $wgGeoDataSphinxIndex;
+		global $wgGeoDataSphinxHosts, $wgGeoDataSphinxPort, $wgGeoDataSphinxIndex;
 		$search = new SphinxClient();
-		$search->SetServer( $wgGeoDataSphinxHost, $wgGeoDataSphinxPort );
+		$server = is_array( $wgGeoDataSphinxHosts )
+			? $this->pickRandom( $wgGeoDataSphinxHosts )
+			: $wgGeoDataSphinxHosts;
+		$search->SetServer( $server, $wgGeoDataSphinxPort );
 		$search->SetMatchMode( SPH_MATCH_BOOLEAN );
 		$search->SetArrayResult( true );
 		$search->SetLimits( 0, 1000, 1000 );
@@ -207,6 +210,39 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		}
 		$this->addOption( 'USE INDEX', array( 'geo_tags' => 'gt_spatial' ) );
 	}
+
+	/**
+	 * Given an array of non-normalised probabilities, this function will select
+	 * an element and return the appropriate key.
+	 *
+	 * Borrowed from LoadBalancer
+	 *
+	 * @param $weights array
+	 *
+	 * @return int
+	 */
+	function pickRandom( $weights ) {
+		if ( !is_array( $weights ) || count( $weights ) == 0 ) {
+			return false;
+		}
+
+		$sum = array_sum( $weights );
+		if ( $sum == 0 ) {
+			throw new MWException( __METHOD__ . '(): zero weight sum or no servers specified');
+		}
+		$max = mt_getrandmax();
+		$rand = mt_rand( 0, $max ) / $max * $sum;
+
+		$sum = 0;
+		foreach ( $weights as $i => $w ) {
+			$sum += $w;
+			if ( $sum >= $rand ) {
+				break;
+			}
+		}
+		return $i;
+	}
+
 
 	private static function compareRows( $row1, $row2 ) {
 		if ( $row1->dist < $row2->dist ) {
