@@ -187,7 +187,7 @@ class GeoDataHooks {
 				$rows = array_map( function( $id ) {
 					return array( 'gk_id' => $id );
 				}, $deleteIds );
-				$dbw->insert( 'geo_killist', $rows, __METHOD__ );
+				$dbw->insert( 'geo_killlist', $rows, __METHOD__ );
 			}
 		}
 		if ( count( $add ) ) {

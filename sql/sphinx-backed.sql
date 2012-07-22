@@ -31,17 +31,17 @@ CREATE TABLE /*_*/geo_tags (
 
 CREATE INDEX /*i*/gt_page_primary ON /*_*/geo_tags ( gt_page_id, gt_primary );
 CREATE INDEX /*i*/gt_page_id_id ON /*_*/geo_tags ( gt_page_id, gt_id );
-CREATE INDEX /*i*/gt_touched ON /*_*/geo_tags ( gt_touched );
+CREATE INDEX /*i*/gt_touched_id ON /*_*/geo_tags ( gt_touched, gt_id );
 
 -- Stores Sphinx search kill-list (ids of records deleted from geo_tags)
-CREATE TABLE /*_*/geo_killist (
+CREATE TABLE /*_*/geo_killlist (
 	-- gt_id of a row deleted from geo_tags
 	gk_id int unsigned NOT NULL PRIMARY KEY,
 	-- Last change timestamp
 	gk_touched timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )/*$wgTableOptions*/;
 
-CREATE INDEX /*i*/gk_touched ON /*_*/geo_killist ( gk_touched );
+CREATE INDEX /*i*/gk_touched_id ON /*_*/geo_killist ( gk_touched, gk_id );
 
 -- Stores information about the last index update time
 CREATE TABLE /*_*/geo_updates (

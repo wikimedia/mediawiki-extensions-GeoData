@@ -51,7 +51,7 @@ source geodata_delta : geodata
 
 	# ids of deleted geo_tags rows
 	sql_query_killlist  = \
-		SELECT gk_id FROM geo_killist WHERE gk_touched BETWEEN @last_update AND @cutoff
+		SELECT gk_id FROM geo_killlist WHERE gk_touched BETWEEN @last_update AND @cutoff
 
 	sql_query_post      = REPLACE INTO geo_updates( gu_wiki, gu_last_update ) VALUES ( '<wiki name>', @cutoff )
 }
