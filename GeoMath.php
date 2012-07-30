@@ -4,7 +4,7 @@
  * Class that performs basic coordinate calculations
  * Note that the formulas are useful only for our specific purposes, some of them may be
  * inaccurate for long distances. Oh well.
- * 
+ *
  * All the functions that accept coordinates assume that they're in degrees, not radians.
  */
 /* static */class GeoMath {
@@ -32,11 +32,11 @@
 
 	/**
 	 * Returns a bounding rectangle around a given point
-	 * 
+	 *
 	 * @param float $lat
 	 * @param float $lon
 	 * @param float $radius
-	 * @return Array 
+	 * @return Array
 	 */
 	public static function rectAround( $lat, $lon, $radius ) {
 		if ( !$radius ) {
@@ -74,7 +74,7 @@
 
 	/**
 	 * Sign function
-	 * 
+	 *
 	 * @param Float $x: Value to get sinng of
 	 * @return int
 	 */

@@ -53,7 +53,7 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
-		$parser->setFunctionHook( 'coordinates', 
+		$parser->setFunctionHook( 'coordinates',
 			array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
 			SFH_OBJECT_ARGS
 		);
@@ -179,7 +179,7 @@ class GeoDataHooks {
 			}
 		}
 		$dbw = wfGetDB( DB_MASTER );
-		if ( count( $delete) ) {
+		if ( count( $delete ) ) {
 			$deleteIds = array_keys( $delete );
 			$dbw->delete( 'geo_tags', array( 'gt_id' => $deleteIds ), __METHOD__ );
 			if ( $wgGeoDataUseSphinx ) {

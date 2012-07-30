@@ -30,7 +30,7 @@ class CoordinatesParserFunction {
 
 	/**
 	 * #coordinates parser function callback
-	 * 
+	 *
 	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 * @param Array $args

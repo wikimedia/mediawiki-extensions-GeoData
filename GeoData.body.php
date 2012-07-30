@@ -55,7 +55,7 @@ class GeoData {
 	/**
 	 * Parses coordinates
 	 * See https://en.wikipedia.org/wiki/Template:Coord for sample inputs
-	 * 
+	 *
 	 * @param Array $parts: Array of coordinate components
 	 * @param String $globe: Globe name
 	 * @return Status: Status object, in case of success its value is a Coord object.
@@ -69,7 +69,7 @@ class GeoData {
 		}
 		list( $latArr, $lonArr ) = array_chunk( $parts, $count / 2 );
 		$coordInfo = self::getCoordInfo();
-		
+
 		$lat = self::parseOneCoord( $latArr, $coordInfo['lat'] );
 		if ( $lat === false ) {
 			return Status::newFatal( 'geodata-bad-latitude' );
@@ -133,7 +133,7 @@ class GeoData {
 
 	/**
 	 * Parses coordinate suffix such as N, S, E or W
-	 * 
+	 *
 	 * @param String $str: String to test
 	 * @param Array $coordInfo
 	 * @return int: Sign modifier or 0 if not a suffix
@@ -171,7 +171,7 @@ class GeoData {
  * Class representing coordinates
  */
 class Coord {
-	public $lat, 
+	public $lat,
 		$lon,
 		$id,
 		$globe,
@@ -188,7 +188,7 @@ class Coord {
 		$this->lon = $lon;
 		$this->globe = $wgDefaultGlobe;
 	}
-	
+
 	public static function newFromRow( $row ) {
 		$c = new Coord( $row->gt_lat, $row->gt_lon );
 		foreach ( self::$fieldMapping as $field => $column ) {
@@ -231,7 +231,7 @@ class Coord {
 	}
 
 	/**
-	 * Returns this object's representation suitable for insertion  into the DB via Databse::insert()
+	 * Returns this object's representation suitable for insertion into the DB via Databse::insert()
 	 * @param int $pageId: ID of page associated with this coordinate
 	 * @return Array: Associative array in format 'field' => 'value'
 	 */
