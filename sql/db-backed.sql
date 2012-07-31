@@ -32,5 +32,5 @@ CREATE TABLE /*_*/geo_tags (
 )/*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/gt_page_primary ON /*_*/geo_tags ( gt_page_id, gt_primary );
-CREATE INDEX /*i*/gt_page_id_id ON /*_*/geo_tags ( gt_page_id, gt_id );
+CREATE INDEX /*i*/gt_page_id_id ON /*_*/geo_tags ( gt_page_id );
 CREATE INDEX /*i*/gt_spatial ON /*_*/geo_tags ( gt_lat_int, gt_lon_int, gt_lon, gt_primary );
