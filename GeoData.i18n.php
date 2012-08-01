@@ -105,6 +105,13 @@ $messages['de'] = array(
 	'geodata-primary-coordinate' => 'primäre',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'geodata-primary-coordinate' => 'Sıfteyên',
+);
+
 /** Spanish (español)
  * @author Armando-Martin
  */
