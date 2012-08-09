@@ -230,6 +230,26 @@ $messages['ia'] = array(
 	'geodata-primary-coordinate' => 'primari',
 );
 
+/** Italian (italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'geodata-desc' => 'Aggiunge funzionalità di archiviazione e recupero di coordinate geografiche',
+	'geodata-bad-input' => 'Sono stati passati degli argomenti non validi alla funzione <nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitudine non valida',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitudine non valida',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tipo "$1" non riconosciuto',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globo "$1" non riconosciuto',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: formato codice regionale non valido',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: non è possibile avere più di un tag principale per pagina',
+	'geodata-limit-exceeded' => 'Il limite di $1 {{PLURAL:$1|tag}} <nowiki>{{#coordinates:}}</nowiki> per pagina è stato superato',
+	'geodata-broken-tags-category' => 'Pagine con tag coordinate non validi',
+	'geodata-unknown-type-category' => 'Pagine con un tipo di coordinate sconosciuto',
+	'geodata-unknown-globe-category' => 'Pagine con un valore globo sconosciuto',
+	'geodata-unknown-region-category' => 'Pagine con un valore regione non valido',
+	'geodata-primary-coordinate' => 'principale',
+);
+
 /** Japanese (日本語)
  * @author Shirayuki
  */
@@ -239,6 +259,15 @@ $messages['ja'] = array(
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>：緯度が正しくありません',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>：経度が正しくありません',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>：地域コードの書式が正しくありません',
+);
+
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: არასწორი განედი',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: არასწორი გრძედი',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: რეგიონის კოდის არასწორი ფორმატი',
 );
 
 /** Colognian (Ripoarisch)
@@ -345,6 +374,13 @@ $messages['pl'] = array(
 	'geodata-unknown-globe-category' => 'Strony z nieznaną wartością globu',
 	'geodata-unknown-region-category' => 'Strony z nieprawidłową wartością regionu',
 	'geodata-primary-coordinate' => 'podstawowy',
+);
+
+/** Romanian (română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'geodata-primary-coordinate' => 'primar',
 );
 
 /** Russian (русский)
