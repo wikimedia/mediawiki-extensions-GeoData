@@ -172,6 +172,19 @@ $messages['gl'] = array(
 	'geodata-primary-coordinate' => 'primaria',
 );
 
+/** Hebrew (עברית)
+ * @author Inkbug
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'geodata-desc' => 'מוסיף אפשרות לאכסון ואחזור של קוארדינטות גיאוגרפיות',
+	'geodata-bad-input' => 'פרמטרים בלתי חוקיים הועברו לפונקציית ה<nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: קו רוחב לא חוקי',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: קו אורך לא חוקי',
+	'geodata-unknown-type-category' => 'דפים עם סוג לא ידוע של קואורדינטות',
+	'geodata-primary-coordinate' => 'עיקרי',
+);
+
 /** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
@@ -392,6 +405,13 @@ $messages['ru'] = array(
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: недопустимая долгота',
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: неопознанный тип «$1»',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: нельзя иметь более одной первичной метки на странице',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'geodata-primary-coordinate' => 'ප්‍රාථමික',
 );
 
 /** Tagalog (Tagalog)
