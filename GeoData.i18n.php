@@ -43,6 +43,13 @@ $messages['qqq'] = array(
 	'geodata-primary-coordinate' => "Localised name of parameter that makes <nowiki>{{#coordinates:}}</nowiki> tag primary (i.e. containing the primary coordinates of the page's subject)",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'geodata-primary-coordinate' => 'أساسي',
+);
+
 /** Asturian (asturianu)
  * @author Xuacu
  */
@@ -83,6 +90,25 @@ $messages['be-tarask'] = array(
 	'geodata-unknown-globe-category' => 'Старонкі зь невядомым глябальным значэньнем',
 	'geodata-unknown-region-category' => 'Старонкі зь няслушным рэгіёнам',
 	'geodata-primary-coordinate' => 'першасная',
+);
+
+/** Czech (česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'geodata-desc' => 'Přidá funkci samostatného uchovávání a vyhledávání zeměpisných souřadnic',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: nesprávná zeměpisná šířka',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: nesprávná zeměpisná délka',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: nerozpoznán typ "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: nerozpoznána planeta "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: nesprávný kód regionu',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: na stránce není možné mít více než jeden hlavní štítek',
+	'geodata-limit-exceeded' => 'Limit $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|štítku|štítků}} na stránku byl překročen',
+	'geodata-broken-tags-category' => 'Stránky s nesprávnými štítky zeměpisných souřadnic',
+	'geodata-unknown-type-category' => 'Stránky s neznámým typem zeměpisných souřadnic',
+	'geodata-unknown-globe-category' => 'Stránky s neznámým označením planety',
+	'geodata-unknown-region-category' => 'Stránky s nesprávným regionem',
+	'geodata-primary-coordinate' => 'hlavní',
 );
 
 /** German (Deutsch)
@@ -281,6 +307,26 @@ $messages['ka'] = array(
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: არასწორი განედი',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: არასწორი გრძედი',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: რეგიონის კოდის არასწორი ფორმატი',
+);
+
+/** Korean (한국어)
+ * @author 아라
+ */
+$messages['ko'] = array(
+	'geodata-desc' => '지리적 좌표 저장 및 검색 기능 추가',
+	'geodata-bad-input' => '<nowiki>{{#coordinates:}}</nowiki> 함수에 잘못된 인수를 전달했습니다',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: 잘못된 위도',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: 잘못된 경도',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: 인식할 수 없는 "$1" 유형',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: 인식할 수 없는 "$1" 세계',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: 잘못된 지역 코드 형식',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: 문서당 기본 태그 하나 이상을 가질 수 없습니다',
+	'geodata-limit-exceeded' => '문서당 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|태그}} $1개 제한을 초과했습니다',
+	'geodata-broken-tags-category' => '형식이 잘못된 좌표 태그로 된 문서',
+	'geodata-unknown-type-category' => '알 수 없는 좌표 유형으로 된 문서',
+	'geodata-unknown-globe-category' => '알 수 없는 세계 값으로 된 문서',
+	'geodata-unknown-region-category' => '잘못된 지역 값으로 된 문서',
+	'geodata-primary-coordinate' => '기본',
 );
 
 /** Colognian (Ripoarisch)
