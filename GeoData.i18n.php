@@ -199,16 +199,25 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Inkbug
  * @author YaronSh
  */
 $messages['he'] = array(
-	'geodata-desc' => 'מוסיף אפשרות לאכסון ואחזור של קוארדינטות גיאוגרפיות',
-	'geodata-bad-input' => 'פרמטרים בלתי חוקיים הועברו לפונקציית ה<nowiki>{{#coordinates:}}</nowiki>',
-	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: קו רוחב לא חוקי',
-	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: קו אורך לא חוקי',
-	'geodata-unknown-type-category' => 'דפים עם סוג לא ידוע של קואורדינטות',
-	'geodata-primary-coordinate' => 'עיקרי',
+	'geodata-desc' => 'מוסיף אפשרות לאכסון ואחזור של נקודות ציון גאוגרפיות',
+	'geodata-bad-input' => 'פרמטרים בלתי־תקינים הועברו לפונקציה <nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: קו רוחב בלתי־תקין',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: קו אורך בלתי־תקין',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: סוג לא מוּכר "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: גלובוס לא מוּכר "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: תסדיר קוד אזור בלתי־תקין',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: אי־אפשר שיהיה יותר מתג ראשי אחד בכל דף',
+	'geodata-limit-exceeded' => 'נחצתה המגבלה של {{PLURAL:|תג <nowiki>{{#coordinates:}}</nowiki> אחד|$1 תגי <nowiki>{{#coordinates:}}</nowiki>}} לדף',
+	'geodata-broken-tags-category' => 'דפים על תגי נקודות ציון בלתי־תקינים',
+	'geodata-unknown-type-category' => 'דפים עם סוג לא ידוע של נקודות ציון',
+	'geodata-unknown-globe-category' => 'דפים עם ערך גלובוס לא ידוע',
+	'geodata-unknown-region-category' => 'דפים עם ערך אזור לא ידוע',
+	'geodata-primary-coordinate' => 'ראשי',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -457,6 +466,7 @@ $messages['ru'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'geodata-unknown-globe-category' => 'නොදන්නා ගෝලීය අගයක් සහිත පිටු',
 	'geodata-primary-coordinate' => 'ප්‍රාථමික',
 );
 
