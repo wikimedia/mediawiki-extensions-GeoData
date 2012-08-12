@@ -54,10 +54,14 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
-		$parser->setFunctionHook( 'coordinates',
-			array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
-			SFH_OBJECT_ARGS
-		);
+		global $wgGeoDataDisableParserFunction;
+
+		if ( !$wgGeoDataDisableParserFunction ) {
+			$parser->setFunctionHook( 'coordinates',
+				array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
+				SFH_OBJECT_ARGS
+			);
+		}
 		return true;
 	}
 
