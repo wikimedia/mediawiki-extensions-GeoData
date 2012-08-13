@@ -466,8 +466,22 @@ $messages['ru'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: වලංගු නොවන අක්ෂාංශය',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: වලංගු නොවන දේශාංශය',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: හදුනා නොගත් වර්ගය "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: හදුනා නොගත් වර්තිකාව "$1"',
 	'geodata-unknown-globe-category' => 'නොදන්නා ගෝලීය අගයක් සහිත පිටු',
 	'geodata-primary-coordinate' => 'ප්‍රාථමික',
+);
+
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'geodata-unknown-type-category' => 'Странице са непознатом врстом координата',
+	'geodata-unknown-globe-category' => 'Странице са непознатом вредности за глобус',
+	'geodata-unknown-region-category' => 'Странице са неисправном вредности за регион',
+	'geodata-primary-coordinate' => 'главна',
 );
 
 /** Tagalog (Tagalog)
