@@ -484,6 +484,27 @@ $messages['sr-ec'] = array(
 	'geodata-primary-coordinate' => 'главна',
 );
 
+/** Swedish (svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: ogiltig latitud',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: ogiltig longitud',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: oigenkänd typ "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: oigenkänd glob "$1"',
+	'geodata-unknown-type-category' => 'Sidor med okänd typ av koordinater',
+	'geodata-unknown-globe-category' => 'Sidor med okänt globvärde',
+	'geodata-unknown-region-category' => 'Sidor med ogiltigt regionvärde',
+	'geodata-primary-coordinate' => 'primär',
+);
+
+/** Tamil (தமிழ்)
+ * @author மதனாஹரன்
+ */
+$messages['ta'] = array(
+	'geodata-primary-coordinate' => 'முதன்மை',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
