@@ -315,7 +315,11 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: არასწორი განედი',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: არასწორი გრძედი',
+	'geodata-bad-type' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: ამოუცნობი ტიპი „$1“',
+	'geodata-bad-globe' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: ამოუცნობი მსოფლიო „$1“',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: რეგიონის კოდის არასწორი ფორმატი',
+	'geodata-unknown-type-category' => 'გვერდები კოორდინატთა უცნობი ტიპით',
+	'geodata-primary-coordinate' => 'მთავარი',
 );
 
 /** Korean (한국어)
@@ -452,6 +456,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (русский)
+ * @author David1010
  * @author Eleferen
  * @author Max Semenik
  */
@@ -460,6 +465,7 @@ $messages['ru'] = array(
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: недопустимая долгота',
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: неопознанный тип «$1»',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: нельзя иметь более одной первичной метки на странице',
+	'geodata-primary-coordinate' => 'Основная',
 );
 
 /** Sinhala (සිංහල)
