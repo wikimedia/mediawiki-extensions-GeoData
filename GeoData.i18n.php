@@ -309,6 +309,25 @@ $messages['ja'] = array(
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>：地域コードの書式が正しくありません',
 );
 
+/** Javanese (Basa Jawa)
+ * @author NoiX180
+ */
+$messages['jv'] = array(
+	'geodata-desc' => 'Tambah fungsi panyimpenan lan pambenahan koordinat geografi',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: garis lintang ora sah',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: garis bujur ora sah',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: jinis "$1" ora dikenal',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globe "$1" ora dikenal',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: format kodhé dhaèrah ora sah',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: ora bisa luwih saka siji tag utama per kaca',
+	'geodata-limit-exceeded' => 'Wates $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tag}} per kaca wis karanggèh',
+	'geodata-broken-tags-category' => 'Kaca mawa tag koordinat cacat',
+	'geodata-unknown-type-category' => 'Kaca mawa jinis koordinat ora dingertèni',
+	'geodata-unknown-globe-category' => 'Kaca mawa nilé globe ora dingertèni',
+	'geodata-unknown-region-category' => 'Kaca mawa nilé dhaèrah ora sah',
+	'geodata-primary-coordinate' => 'utama',
+);
+
 /** Georgian (ქართული)
  * @author David1010
  */
@@ -529,5 +548,15 @@ $messages['tl'] = array(
 	'geodata-unknown-globe-category' => 'Mga pahinang mayroong hindi nakikilalang halaga ng globo',
 	'geodata-unknown-region-category' => 'Mga pahinang may hindi katanggap-tanggap na halaga ng rehiyon',
 	'geodata-primary-coordinate' => 'pangunahin',
+);
+
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'geodata-unknown-type-category' => 'نقاط مقام کی نامعلوم قسم کے ساتھ صفحات',
+	'geodata-unknown-globe-category' => 'نامعلوم دنیا کی قدر کے ساتھ صفحات',
+	'geodata-unknown-region-category' => 'باطل کے علاقے کی قدر کے ساتھ صفحات',
+	'geodata-primary-coordinate' => 'بنیادی',
 );
 
