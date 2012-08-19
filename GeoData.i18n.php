@@ -92,6 +92,14 @@ $messages['be-tarask'] = array(
 	'geodata-primary-coordinate' => 'першасная',
 );
 
+/** Breton (brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki> : ledred direizh',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki> : hedred direizh',
+);
+
 /** Czech (česky)
  * @author Jkjk
  */
@@ -477,13 +485,23 @@ $messages['ro'] = array(
 /** Russian (русский)
  * @author David1010
  * @author Eleferen
+ * @author Kalan
  * @author Max Semenik
  */
 $messages['ru'] = array(
+	'geodata-desc' => 'Добавляет возможность хранить и получать географические координаты',
+	'geodata-bad-input' => 'В функцию <nowiki>{{#coordinates:}}</nowiki> были переданы некорректные аргументы',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: недопустимая широта',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: недопустимая долгота',
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: неопознанный тип «$1»',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: неизвестный глобус «$1»',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: некорректный формат кода региона',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: нельзя иметь более одной первичной метки на странице',
+	'geodata-limit-exceeded' => 'Ограничение в $1 {{PLURAL:$1|тег|тега|тегов}} <nowiki>{{#coordinates:}}</nowiki> на страницу было исчерпано',
+	'geodata-broken-tags-category' => 'Страницы с некорректными тегами координат',
+	'geodata-unknown-type-category' => 'Страницы с неизвестным типом координат',
+	'geodata-unknown-globe-category' => 'Страницы с неизвестным глобусом',
+	'geodata-unknown-region-category' => 'Страницы с некорректным регионом',
 	'geodata-primary-coordinate' => 'Основная',
 );
 
@@ -558,5 +576,17 @@ $messages['ur'] = array(
 	'geodata-unknown-globe-category' => 'نامعلوم دنیا کی قدر کے ساتھ صفحات',
 	'geodata-unknown-region-category' => 'باطل کے علاقے کی قدر کے ساتھ صفحات',
 	'geodata-primary-coordinate' => 'بنیادی',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'geodata-desc' => 'Cho phép lưu trữ và truy cập dữ liệu tọa độ',
+	'geodata-broken-tags-category' => 'Trang có thẻ tọa độ hỏng',
+	'geodata-unknown-type-category' => 'Trang có kiểu tọa độ không rõ',
+	'geodata-unknown-globe-category' => 'Trang có giá trị địa cầu không rõ',
+	'geodata-unknown-region-category' => 'Trang có giá trị khu vực không hợp lệ',
+	'geodata-primary-coordinate' => 'chính',
 );
 
