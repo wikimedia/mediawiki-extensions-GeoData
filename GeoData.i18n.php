@@ -166,6 +166,13 @@ $messages['es'] = array(
 	'geodata-primary-coordinate' => 'primaria',
 );
 
+/** Persian (فارسی)
+ * @author جواد
+ */
+$messages['fa'] = array(
+	'geodata-primary-coordinate' => 'اولیه',
+);
+
 /** French (français)
  * @author Gomoko
  */
