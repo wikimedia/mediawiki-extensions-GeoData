@@ -33,6 +33,7 @@ $wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch';
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
 $wgAPIListModules['geopages'] = 'ApiQueryAllPages_GeoData';
 $wgAPIListModules['geopagesincategory'] = 'ApiQueryCategoryMembers_GeoData';
+$wgAPIGeneratorModules['geosearch'] = 'ApiQueryGeoSearch';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoDataHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'GeoDataHooks::onParserFirstCallInit';
