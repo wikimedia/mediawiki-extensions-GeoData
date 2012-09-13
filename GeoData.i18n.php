@@ -102,9 +102,11 @@ $messages['br'] = array(
 
 /** Czech (česky)
  * @author Jkjk
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'geodata-desc' => 'Přidá funkci samostatného uchovávání a vyhledávání zeměpisných souřadnic',
+	'geodata-bad-input' => 'Funkci <nowiki>{{#coordinates:}}</nowiki> byly předány neplatné parametry',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: nesprávná zeměpisná šířka',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: nesprávná zeměpisná délka',
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: nerozpoznán typ "$1"',
