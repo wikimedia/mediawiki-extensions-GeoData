@@ -565,6 +565,14 @@ $messages['sr-ec'] = array(
 	'geodata-primary-coordinate' => 'главна',
 );
 
+/** Serbian (Latin script) (srpski (latinica)‎) */
+$messages['sr-el'] = array(
+	'geodata-unknown-type-category' => 'Stranice sa nepoznatom vrstom koordinata',
+	'geodata-unknown-globe-category' => 'Stranice sa nepoznatom vrednosti za globus',
+	'geodata-unknown-region-category' => 'Stranice sa neispravnom vrednosti za region',
+	'geodata-primary-coordinate' => 'glavna',
+);
+
 /** Swedish (svenska)
  * @author WikiPhoenix
  */
