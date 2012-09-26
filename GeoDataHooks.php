@@ -6,6 +6,7 @@ class GeoDataHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
 	 *
 	 * @param DatabaseUpdater $updater
+	 * @throws MWException
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {

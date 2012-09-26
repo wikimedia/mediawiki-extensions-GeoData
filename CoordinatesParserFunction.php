@@ -34,6 +34,7 @@ class CoordinatesParserFunction {
 	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 * @param Array $args
+	 * @throws MWException
 	 * @return Mixed
 	 */
 	public function coordinates( $parser, $frame, $args ) {
