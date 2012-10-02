@@ -70,7 +70,7 @@ $messages['ast'] = array(
 	'geodata-primary-coordinate' => 'primaria',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -555,7 +555,7 @@ $messages['si'] = array(
 	'geodata-primary-coordinate' => 'ප්‍රාථමික',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  */
 $messages['sr-ec'] = array(
