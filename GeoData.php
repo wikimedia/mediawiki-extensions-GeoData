@@ -15,6 +15,9 @@ $dir = __DIR__;
 
 $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
+$wgAutoloadClasses['ApiQueryGeoSearchDB'] = "$dir/api/ApiQueryGeoSearchDB.php";
+$wgAutoloadClasses['ApiQueryGeoSearchSphinx'] = "$dir/api/ApiQueryGeoSearchSphinx.php";
+$wgAutoloadClasses['ApiQueryGeoSearchSolr'] = "$dir/api/ApiQueryGeoSearchSolr.php";
 $wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoData.php";
 $wgAutoloadClasses['ApiQueryCategoryMembers_GeoData'] = "$dir/api/ApiQueryCategoryMembers_GeoData.php";
 $wgAutoloadClasses['GeoDataQueryExtender'] = "$dir/api/GeoDataQueryExtender.php";
@@ -24,12 +27,12 @@ $wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
 $wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
 $wgAutoloadClasses['GeoMath'] = "$dir/GeoMath.php";
 $wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesParserFunction.php";
-$wgAutoloadClasses['SphinxClient'] = "$dir/lib/sphinxapi.php";
+$wgAutoloadClasses['SphinxClient'] = "$dir/sphinx/sphinxapi.php";
+$wgAutoloadClasses['SolrGeoData'] = "$dir/solr/SolrGeoData.php";
 
 $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
 $wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
 
-$wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch';
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
 $wgAPIListModules['geopages'] = 'ApiQueryAllPages_GeoData';
 $wgAPIListModules['geopagesincategory'] = 'ApiQueryCategoryMembers_GeoData';
@@ -41,6 +44,12 @@ $wgHooks['UnitTestsList'][] = 'GeoDataHooks::onUnitTestsList';
 $wgHooks['ArticleDeleteComplete'][] = 'GeoDataHooks::onArticleDeleteComplete';
 $wgHooks['LinksUpdate'][] = 'GeoDataHooks::onLinksUpdate';
 $wgHooks['FileUpload'][] = 'GeoDataHooks::onFileUpload';
+
+// Use the proper search backend
+$wgExtensionFunctions[] = function() {
+	global $wgGeoDataBackend, $wgAPIListModules;
+	$wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend );
+};
 
 // =================== start configuration settings ===================
 
@@ -161,9 +170,9 @@ $wgGeoDataDisableParserFunction = false;
 $wgGeoDataIndexGranularity = 10;
 
 /**
- * Set this to true to enable geospatial queries using Sphinx search
+ * Which backend should be used by spatial searhces: 'db', 'solr' or 'sphinx'
  */
-$wgGeoDataUseSphinx = false;
+$wgGeoDataBackend = 'db';
 
 /**
  * Sphinx index name
@@ -179,3 +188,27 @@ $wgGeoDataSphinxHosts = 'localhost';
  * Sphinx port
  */
 $wgGeoDataSphinxPort = 9312;
+
+// Solr-specific settings
+
+/**
+ * Generic Solr connection options, see Solarium docs.
+ * Note: host must be set in $wgGeoDataSolrHosts for load-balancicng.
+ */
+$wgGeoDataSolrOptions = array(
+	'adapteroptions' => array(
+		//'host' => '127.0.0.1',
+		'port' => 8983,
+		'path' => '/solr/',
+	),
+);
+
+/**
+ * @var string|array: Solr host, string "hostname" or array( 'host1' => weight1, 'host2' => weight2 ... )
+ */
+$wgGeoDataSolrHosts = 'localhost';
+
+/**
+ * @var string: Solr master used for updates
+ */
+$wgGeoDataSolrMaster = 'localhost';

@@ -1,7 +1,9 @@
 <?php
 
-class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
+abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	const MIN_RADIUS = 10;
+
+	protected $lat, $lon, $radius, $idToExclude;
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'gs' );
@@ -22,9 +24,8 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	/**
 	 * @param ApiPageSet $resultPageSet
 	 */
-	private function run( $resultPageSet = null ) {
+	protected function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
-		$exclude = false;
 
 		$this->requireOnlyOneParameter( $params, 'coord', 'page' );
 		if ( isset( $params['coord'] ) ) {
@@ -48,209 +49,26 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			}
 			$lat = $coord->lat;
 			$lon = $coord->lon;
-			$exclude = $t->getArticleID();
+			$this->idToExclude = $t->getArticleID();
 		}
-		$lat = floatval( $lat );
-		$lon = floatval( $lon );
-		$radius = intval( $params['radius'] );
-		$this->addSpatialSearch( $lat, $lon, $radius );
 
-		$this->addTables( array( 'page', 'geo_tags' ) );
-		$this->addFields( array( 'gt_lat', 'gt_lon', 'gt_primary' ) );
+		$this->addTables( 'page' );
 		// retrieve some fields only if page set needs them
 		if ( is_null( $resultPageSet ) ) {
 			$this->addFields( array( 'page_id', 'page_namespace', 'page_title' ) );
 		} else {
 			$this->addFields( WikiPage::selectFields() );
 		}
-		foreach( $params['prop'] as $prop ) {
-			if ( isset( Coord::$fieldMapping[$prop] ) ) {
-				$this->addFields( Coord::$fieldMapping[$prop] );
-			}
-		}
-		$this->addWhereFld( 'gt_globe', $params['globe'] );
 		$this->addWhereFld( 'page_namespace', $params['namespace'] );
-		$this->addWhere( 'gt_page_id = page_id' );
-		if ( $exclude ) {
-			$this->addWhere( "gt_page_id <> {$exclude}" );
-		}
-		if ( isset( $params['maxdim'] ) ) {
-			$this->addWhere( 'gt_dim < ' . intval( $params['maxdim'] ) ); 
-		}
-		$primary = array_flip( $params['primary'] );
-		$this->addWhereIf( array( 'gt_primary' => 1 ), isset( $primary['yes'] ) && !isset( $primary['no'] )	);
-		$this->addWhereIf( array( 'gt_primary' => 0 ), !isset( $primary['yes'] ) && isset( $primary['no'] )	);
 
-		// Use information from PageImages
-		//if ( defined( 'PAGE_IMAGES_INSTALLED' ) && $params['withoutphotos'] ) {
-		//	$this->addTables( 'page_props' );
-		//	$this->addJoinConds( array( 'page_props' => array( 'LEFT JOIN',
-		//		"gt_page_id=pp_page AND pp_propname='has_photos'" )
-		//	) );
-		//	$this->addWhere( 'pp_page IS NULL' );
-		//}
+		$this->lat = floatval( $lat );
+		$this->lon = floatval( $lon );
+		$this->radius = intval( $params['radius'] );
 
-		$limit = $params['limit'];
-
-		$res = $this->select( __METHOD__ );
-
-		$rows = array();
-		foreach ( $res as $row ) {
-			$row->dist = GeoMath::distance( $lat, $lon, $row->gt_lat, $row->gt_lon );
-			$rows[] = $row;
-		}
-		// sort in PHP because sorting via SQL involves a filesort
-		usort( $rows, 'ApiQueryGeoSearch::compareRows' );
-		$result = $this->getResult();
-		foreach ( $rows as $row ) {
-			if ( !$limit-- ) {
-				break;
-			}
-			if ( is_null( $resultPageSet ) ) {
-				$title = Title::newFromRow( $row );
-				$vals = array(
-					'pageid' => intval( $row->page_id ),
-					'ns' => intval( $title->getNamespace() ),
-					'title' => $title->getPrefixedText(),
-					'lat' => floatval( $row->gt_lat ),
-					'lon' => floatval( $row->gt_lon ),
-					'dist' => round( $row->dist, 1 ),
-				);
-				if ( $row->gt_primary ) {
-					$vals['primary'] = '';
-				}
-				foreach( $params['prop'] as $prop ) {
-					if ( isset( Coord::$fieldMapping[$prop] ) && isset( $row->{Coord::$fieldMapping[$prop]} ) ) {
-						$field = Coord::$fieldMapping[$prop];
-						$vals[$prop] = $row->$field;
-					}
-				}	
-				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
-				if ( !$fit ) {
-					break;
-				}
-			} else {
-				$resultPageSet->processDbRow( $row );
-			}
-		}
 		if ( is_null( $resultPageSet ) ) {
-			$result->setIndexedTagName_internal(
+			$this->getResult()->setIndexedTagName_internal(
 				 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
 		}
-	}
-
-	private function addSpatialSearch( $lat, $lon, $radius ) {
-		global $wgGeoDataUseSphinx;
-
-		if ( $wgGeoDataUseSphinx ) {
-			$this->sphinxSearch( $lat, $lon, $radius );
-		} else {
-			$this->dbSearch( $lat, $lon, $radius );
-		}
-	}
-
-	private function sphinxSearch( $lat, $lon, $radius ) {
-		global $wgGeoDataSphinxHosts, $wgGeoDataSphinxPort, $wgGeoDataSphinxIndex;
-		$search = new SphinxClient();
-		$server = is_array( $wgGeoDataSphinxHosts )
-			? $this->pickRandom( $wgGeoDataSphinxHosts )
-			: $wgGeoDataSphinxHosts;
-		$search->SetServer( $server, $wgGeoDataSphinxPort );
-		$search->SetMatchMode( SPH_MATCH_BOOLEAN );
-		$search->SetArrayResult( true );
-		$search->SetLimits( 0, 1000, 1000 );
-		$search->SetGeoAnchor( 'lat', 'lon', deg2rad( $lat ), deg2rad( $lon ) );
-
-		$search->SetFilterFloatRange( '@geodist', 0.0, floatval( $radius ) );
-		$search->SetSortMode( SPH_SORT_ATTR_ASC, '@geodist' );
-
-		// Build a tiled query that uses full-text index to improve search performance
-		// equivalent to ( <lat1> || <lat2> || ... ) && ( <lon1> || <lon2> || ... )
-		$rect = GeoMath::rectAround( $lat, $lon, $radius );
-		$vals = array();
-		foreach ( self::intRange( $rect["minLat"], $rect["maxLat"], 10 ) as $latInt ) {
-			$vals[] = '"LAT' . round( $latInt ) . '"';
-		}
-		$query = implode( ' | ', $vals );
-		$vals = array();
-		foreach ( self::intRange( $rect["minLon"], $rect["maxLon"], 10 ) as $lonInt ) {
-			$vals[] = '"LON' . round( $lonInt ) . '"';
-		}
-		$query .= ' ' . implode( ' | ', $vals );
-
-		$result = $search->Query( $query, $wgGeoDataSphinxIndex );
-		$err = $search->GetLastError();
-		if ( $err ) {
-			throw new MWException( "SphinxSearch error: $err" );
-		}
-		$warning = $search->GetLastWarning();
-		if ( $warning ) {
-			$this->setWarning( "SphinxSearch warning: $warning" );
-		}
-		if ( !is_array( $result ) || !isset( $result['matches'] ) ) {
-			throw new MWException( 'SphinxClient::Query() returned unexpected result' );
-		}
-		$ids = array();
-		foreach ( $result['matches'] as $match ) {
-			$ids[] = $match['id'];
-		}
-		$this->addWhere( array( 'gt_id' => $ids ) );
-	}
-
-	private function dbSearch( $lat, $lon, $radius ) {
-		$rect = GeoMath::rectAround( $lat, $lon, $radius );
-		$this->addWhereFld( 'gt_lat_int', self::intRange( $rect["minLat"], $rect["maxLat"] ) );
-		$this->addWhereFld( 'gt_lon_int', self::intRange( $rect["minLon"], $rect["maxLon"] ) );
-
-		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
-		if ( $rect["minLon"] > $rect["maxLon"] ) {
-			$this->addWhere( "gt_lon < {$rect['maxLon']} OR gt_lon > {$rect['minLon']}" );
-		} else {
-			$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
-		}
-		$this->addOption( 'USE INDEX', array( 'geo_tags' => 'gt_spatial' ) );
-	}
-
-	/**
-	 * Given an array of non-normalised probabilities, this function will select
-	 * an element and return the appropriate key.
-	 *
-	 * Borrowed from LoadBalancer
-	 *
-	 * @param $weights array
-	 *
-	 * @return int
-	 */
-	function pickRandom( $weights ) {
-		if ( !is_array( $weights ) || count( $weights ) == 0 ) {
-			return false;
-		}
-
-		$sum = array_sum( $weights );
-		if ( $sum == 0 ) {
-			throw new MWException( __METHOD__ . '(): zero weight sum or no servers specified');
-		}
-		$max = mt_getrandmax();
-		$rand = mt_rand( 0, $max ) / $max * $sum;
-
-		$sum = 0;
-		foreach ( $weights as $i => $w ) {
-			$sum += $w;
-			if ( $sum >= $rand ) {
-				break;
-			}
-		}
-		return $i;
-	}
-
-
-	private static function compareRows( $row1, $row2 ) {
-		if ( $row1->dist < $row2->dist ) {
-			return -1;
-		} elseif ( $row1->dist > $row2->dist ) {
-			return 1;
-		}
-		return 0;
 	}
 
 	/**

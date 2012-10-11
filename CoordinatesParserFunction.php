@@ -38,6 +38,7 @@ class CoordinatesParserFunction {
 	 * @return Mixed
 	 */
 	public function coordinates( $parser, $frame, $args ) {
+		wfProfileIn( __METHOD__ );
 		if ( $parser != $this->parser ) {
 			throw new MWException( __METHOD__ . '() called by wrong parser' );
 		}
@@ -67,6 +68,7 @@ class CoordinatesParserFunction {
 			if ( $status->isGood() ) {
 				$status = $this->applyCoord( $coord );
 				if ( $status->isGood() ) {
+					wfProfileOut( __METHOD__ );
 					return '';
 				}
 			}
@@ -77,8 +79,10 @@ class CoordinatesParserFunction {
 		if ( $errorText == '&lt;&gt;' ) {
 			// Error that doesn't require a message,
 			// can't think of a better way to pass this condition
+			wfProfileOut( __METHOD__ );
 			return '';
 		}
+		wfProfileOut( __METHOD__ );
 		return array( "<span class=\"error\">{$errorText}</span>", 'noparse' => false );
 	}
 
