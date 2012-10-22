@@ -565,7 +565,8 @@ $messages['sr-ec'] = array(
 	'geodata-primary-coordinate' => 'главна',
 );
 
-/** Serbian (Latin script) (srpski (latinica)‎) */
+/** Serbian (Latin script) (srpski (latinica)‎)
+ */
 $messages['sr-el'] = array(
 	'geodata-unknown-type-category' => 'Stranice sa nepoznatom vrstom koordinata',
 	'geodata-unknown-globe-category' => 'Stranice sa nepoznatom vrednosti za globus',
@@ -643,4 +644,3 @@ $messages['vi'] = array(
 	'geodata-unknown-region-category' => 'Trang có giá trị khu vực không hợp lệ',
 	'geodata-primary-coordinate' => 'chính',
 );
-
