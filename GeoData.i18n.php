@@ -319,11 +319,11 @@ $messages['it'] = array(
  * @author Shirayuki
  */
 $messages['ja'] = array(
-	'geodata-desc' => '地理的な緯度経度を格納/取得する機能を追加する',
+	'geodata-desc' => '緯度経度を保存/取得する機能を追加する',
 	'geodata-bad-input' => '<nowiki>{{#coordinates:}}</nowiki> 関数に正しくない引数が渡されました',
-	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>：緯度が正しくありません',
-	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>：経度が正しくありません',
-	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>：地域コードの書式が正しくありません',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: 緯度が正しくありません',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: 経度が正しくありません',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: 地域コードの書式が正しくありません',
 );
 
 /** Javanese (Basa Jawa)
