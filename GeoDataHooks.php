@@ -10,18 +10,18 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
-		global $wgGeoDataUseSphinx;
+		global $wgGeoDataBackend;
 		switch ( $updater->getDB()->getType() ) {
 			case 'sqlite':
-				if ( $wgGeoDataUseSphinx ) {
-					throw new MWException( 'Sphinx search doesn\'t support SQLite' );
+				if ( $wgGeoDataBackend != 'db' ) {
+					throw new MWException( 'External search doesn\'t support SQLite' );
 				}
 				// no break
 			case 'mysql':
-				if ( $wgGeoDataUseSphinx ) {
-					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sphinx-backed.sql' );
+				if ( $wgGeoDataBackend != 'db' ) {
+					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sql/externally-backed.sql' );
 				} else {
-					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/db-backed.sql' );
+					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sql/db-backed.sql' );
 				}
 				break;
 			default:
@@ -54,10 +54,14 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
-		$parser->setFunctionHook( 'coordinates',
-			array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
-			SFH_OBJECT_ARGS
-		);
+		global $wgGeoDataDisableParserFunction;
+
+		if ( !$wgGeoDataDisableParserFunction ) {
+			$parser->setFunctionHook( 'coordinates',
+				array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
+				SFH_OBJECT_ARGS
+			);
+		}
 		return true;
 	}
 
@@ -185,9 +189,9 @@ class GeoDataHooks {
 			$dbw->delete( 'geo_tags', array( 'gt_id' => $deleteIds ), __METHOD__ );
 			if ( $wgGeoDataUseSphinx ) {
 				$rows = array_map( function( $id ) {
-					return array( 'gk_id' => $id );
+					return array( 'gk_killed_id' => $id );
 				}, $deleteIds );
-				$dbw->insert( 'geo_killist', $rows, __METHOD__ );
+				$dbw->insert( 'geo_killlist', $rows, __METHOD__ );
 			}
 		}
 		if ( count( $add ) ) {

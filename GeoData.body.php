@@ -165,6 +165,41 @@ class GeoData {
 		}
 		return $result;
 	}
+
+	/**
+	 * Given an array of non-normalised probabilities, this function will select
+	 * an element and return the appropriate key.
+	 *
+	 * Borrowed from LoadBalancer
+	 *
+	 * @param $weights array
+	 *
+	 * @return int
+	 */
+	public static function pickRandom( $weights ) {
+		if ( !is_array( $weights ) ) {
+			return $weights;
+		}
+		if ( count( $weights ) == 0 ) {
+			return false;
+		}
+
+		$sum = array_sum( $weights );
+		if ( $sum == 0 ) {
+			throw new MWException( __METHOD__ . '(): zero weight sum or no hosts specified');
+		}
+		$max = mt_getrandmax();
+		$rand = mt_rand( 0, $max ) / $max * $sum;
+
+		$sum = 0;
+		foreach ( $weights as $i => $w ) {
+			$sum += $w;
+			if ( $sum >= $rand ) {
+				break;
+			}
+		}
+		return $i;
+	}
 }
 
 /**
@@ -236,12 +271,12 @@ class Coord {
 	 * @return Array: Associative array in format 'field' => 'value'
 	 */
 	public function getRow( $pageId ) {
-		global $wgGeoDataIndexGranularity, $wgGeoDataUseSphinx;
+		global $wgGeoDataIndexGranularity, $wgGeoDataBackend;
 		$row =  array( 'gt_page_id' => $pageId );
 		foreach ( self::$fieldMapping as $field => $column ) {
 			$row[$column] = $this->$field;
 		}
-		if ( !$wgGeoDataUseSphinx ) {
+		if ( $wgGeoDataBackend == 'db' ) {
 			$row['gt_lat_int'] = round( $this->lat * $wgGeoDataIndexGranularity );
 			$row['gt_lon_int'] = round( $this->lon * $wgGeoDataIndexGranularity );
 		}

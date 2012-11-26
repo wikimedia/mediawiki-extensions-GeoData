@@ -1,0 +1,100 @@
+#
+# Sphinx configuration sample for GeoData. Replace <placeholders> with actual values
+#
+
+# This source will be used for initial indexing
+source geodata
+{
+	type                = mysql
+
+	# MySQL credentials
+	sql_host            = <host>
+	sql_user            = <user>
+	sql_pass            = <password>
+	sql_db              = <database name>
+	sql_port            = 3306	# optional, default is 3306
+
+	sql_query_pre       = SET NAMES utf8
+	sql_query_pre       = SET @cutoff = ( SELECT MAX( gt_touched ) FROM geo_tags )
+
+	sql_query_range     = SELECT MIN(gt_id),MAX(gt_id) FROM geo_tags
+	sql_range_step      = 5000
+	sql_ranged_throttle = 1000
+
+	sql_query           = \
+		SELECT gt_id AS id, RADIANS( gt_lat ) AS lat, RADIANS( gt_lon ) AS lon, \
+		CONCAT( 'LAT', ROUND( gt_lat * 10 ), ' ', 'LON', ROUND( gt_lon * 10 ) ) AS tiles \
+		FROM geo_tags WHERE gt_id >= $start AND gt_id <= $end AND gt_globe = 'earth' AND gt_touched <= @cutoff
+
+	# <wiki name> is $wgDBname or $wgDBprefix if the latter is not empty
+	sql_query_post      = REPLACE INTO geo_updates( gu_wiki, gu_last_update ) VALUES ( '<wiki name>', @cutoff )
+
+	sql_attr_float      = lat
+	sql_attr_float      = lon
+
+	sql_query_info		= SELECT * FROM geo_tags WHERE gt_id = $id
+}
+
+# This source will be used for delta updates
+source geodata_delta : geodata
+{
+	sql_query_pre       = SET NAMES utf8
+	sql_query_pre       = SET @last_update = ( SELECT gu_last_update FROM geo_updates WHERE gu_wiki = '<wiki name>' )
+	sql_query_pre       = SET @cutoff = CURRENT_TIMESTAMP
+
+	sql_query           = \
+		SELECT gt_id AS id, RADIANS( gt_lat ) AS lat, RADIANS( gt_lon ) AS lon, \
+			CONCAT( 'LAT', ROUND( gt_lat * 10 ), ' ', 'LON', ROUND( gt_lon * 10 ) ) AS tiles \
+		FROM geo_tags \
+		WHERE gt_id >= $start AND gt_id <= $end AND gt_globe = 'earth' \
+			AND gt_touched BETWEEN @last_update AND @cutoff
+
+	# ids of deleted geo_tags rows
+	sql_query_killlist  = \
+		SELECT gk_id FROM geo_killlist WHERE gk_touched BETWEEN @last_update AND @cutoff
+
+	sql_query_post      = REPLACE INTO geo_updates( gu_wiki, gu_last_update ) VALUES ( '<wiki name>', @cutoff )
+}
+
+index geodata
+{
+	source             = geodata
+	path               = <data directory>/geodata
+	docinfo            = extern
+	charset_type	   = utf-8
+	mlock              = 0
+	morphology         = none
+	min_word_len       = 1
+	charset_table      = 0..9, A..Z->a..z, -, _, a..z
+	ignore_chars       = U+00AD
+	html_strip         = 0
+	enable_star        = 0
+}
+
+index geodata_delta : geodata
+{
+	source             = geodata_delta
+	path               = <data directory>/geodata_delta
+}
+
+indexer
+{
+	mem_limit          = 32M
+}
+
+searchd
+{
+	listen             = 9312
+	listen             = 9306:mysql41
+	log                = <log directory>/searchd.log
+	query_log          = <log directory>/query.log
+	read_timeout       = 5
+	max_children       = 30
+	pid_file           = <log directory>/searchd.pid
+	max_matches        = 1000
+	seamless_rotate    = 1
+	preopen_indexes    = 1
+	unlink_old         = 1
+	workers            = threads # for RT to work
+	binlog_path        = <data directory>
+}
