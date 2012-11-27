@@ -84,7 +84,7 @@
    <field name="id" type="string" indexed="true" stored="true" required="true" /> 
    <field name="wiki" type="string" indexed="true" stored="false" required="true" omitNorms="true"/> 
    <field name="coord" type="location" indexed="true" stored="true" required="true"/>
-   <field name="page_id" type="tlong" indexed="false" stored="true" required="true"/>
+   <field name="page_id" type="tlong" indexed="true" stored="true" required="true"/>
    <field name="globe" type="string" indexed="true" stored="true" omitNorms="true" required="true"/>
    <field name="primary" type="boolean" indexed="true" stored="true" required="true"/>
    <field name="dim" type="float" indexed="true" stored="true" required="false"/>
