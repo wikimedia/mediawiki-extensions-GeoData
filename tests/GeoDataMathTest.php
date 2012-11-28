@@ -3,12 +3,12 @@
 /**
  * @group GeoData
  */
-class GeoMathTest extends MediaWikiTestCase {
+class GeoDataMathTest extends MediaWikiTestCase {
 	/**
 	 * @dataProvider getDistanceData
 	 */
 	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist, $name ) {
-		$this->assertEquals( $dist, GeoMath::distance( $lat1, $lon1, $lat2, $lon2 ), "testDistance():  $name", $dist / 1000 );
+		$this->assertEquals( $dist, GeoDataMath::distance( $lat1, $lon1, $lat2, $lon2 ), "testDistance():  $name", $dist / 1000 );
 	}
 
 	public function getDistanceData() {
@@ -22,9 +22,9 @@ class GeoMathTest extends MediaWikiTestCase {
 
 	public function testRectAround() {
 		for ( $i = 0; $i < 90; $i += 5 ) {
-			$r = GeoMath::rectAround( $i, $i, 5000 );
-			$this->assertEquals( 10000, GeoMath::distance( $i, $r['minLon'], $i, $r['maxLon'] ), 'rectAround(): test longitude', 1 );
-			$this->assertEquals( 10000, GeoMath::distance( $r['minLat'], $i, $r['maxLat'], $i ), 'rectAround(): test latitude', 1 );
+			$r = GeoDataMath::rectAround( $i, $i, 5000 );
+			$this->assertEquals( 10000, GeoDataMath::distance( $i, $r['minLon'], $i, $r['maxLon'] ), 'rectAround(): test longitude', 1 );
+			$this->assertEquals( 10000, GeoDataMath::distance( $r['minLat'], $i, $r['maxLat'], $i ), 'rectAround(): test latitude', 1 );
 		}
 	}
 
@@ -32,7 +32,7 @@ class GeoMathTest extends MediaWikiTestCase {
 	 * @dataProvider getRectData
 	 */
 	public function testRectWrapAround( $lon ) {
-		$r = GeoMath::rectAround( 20, $lon, 10000 );
+		$r = GeoDataMath::rectAround( 20, $lon, 10000 );
 		$this->assertGreaterThan( $r['maxLon'], $r['minLon'] );
 		$this->assertGreaterThanOrEqual( -180, $r['minLon'] );
 		$this->assertLessThanOrEqual( 180, $r['maxLon'] );

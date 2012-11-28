@@ -79,7 +79,7 @@ class ApiQueryGeoSearchSolr extends ApiQueryGeoSearch {
 					'title' => $title->getPrefixedText(),
 					'lat' => floatval( $lat ),
 					'lon' => floatval( $lon ),
-					'dist' => round( GeoMath::distance( $lat, $lon, $this->lat, $this->lon ), 1 ),
+					'dist' => round( GeoDataMath::distance( $lat, $lon, $this->lat, $this->lon ), 1 ),
 				);
 
 				if ( $doc->primary ) {

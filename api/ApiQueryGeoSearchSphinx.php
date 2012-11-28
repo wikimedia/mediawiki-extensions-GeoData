@@ -23,7 +23,7 @@ class ApiQueryGeoSearchSphinx extends ApiQueryGeoSearch {
 
 		// Build a tiled query that uses full-text index to improve search performance
 		// equivalent to ( <lat1> || <lat2> || ... ) && ( <lon1> || <lon2> || ... )
-		$rect = GeoMath::rectAround( $this->lat, $this->lon, $this->radius );
+		$rect = GeoDataMath::rectAround( $this->lat, $this->lon, $this->radius );
 		$vals = array();
 		foreach ( self::intRange( $rect["minLat"], $rect["maxLat"], 10 ) as $latInt ) {
 			$vals[] = '"LAT' . round( $latInt ) . '"';

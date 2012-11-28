@@ -119,7 +119,7 @@ class GeoData {
 				|| $part > $max ) {
 				return false;
 			}
-			$value += $part * $multiplier * GeoMath::sign( $value );
+			$value += $part * $multiplier * GeoDataMath::sign( $value );
 			$multiplier /= 60;
 		}
 		if ( $coordInfo['wrap']  && $value < 0 ) {

@@ -41,7 +41,7 @@ class ApiQueryGeoSearchDB extends ApiQueryGeoSearch {
 
 		$rows = array();
 		foreach ( $res as $row ) {
-			$row->dist = GeoMath::distance( $this->lat, $this->lon, $row->gt_lat, $row->gt_lon );
+			$row->dist = GeoDataMath::distance( $this->lat, $this->lon, $row->gt_lat, $row->gt_lon );
 			$rows[] = $row;
 		}
 		// sort in PHP because sorting via SQL would involve a filesort
@@ -87,7 +87,7 @@ class ApiQueryGeoSearchDB extends ApiQueryGeoSearch {
 	}
 
 	protected  function addCoordFilter() {
-		$rect = GeoMath::rectAround( $this->lat, $this->lon, $this->radius );
+		$rect = GeoDataMath::rectAround( $this->lat, $this->lon, $this->radius );
 		$this->addWhereFld( 'gt_lat_int', self::intRange( $rect["minLat"], $rect["maxLat"] ) );
 		$this->addWhereFld( 'gt_lon_int', self::intRange( $rect["minLon"], $rect["maxLon"] ) );
 

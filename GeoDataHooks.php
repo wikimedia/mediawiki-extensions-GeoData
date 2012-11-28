@@ -40,7 +40,7 @@ class GeoDataHooks {
 	public static function onUnitTestsList( &$files ) {
 		$dir = dirname( __FILE__ ) . "/tests";
 		$files[] = "$dir/ParseCoordTest.php";
-		$files[] = "$dir/GeoMathTest.php";
+		$files[] = "$dir/GeoDataMathTest.php";
 		$files[] = "$dir/TagTest.php";
 		$files[] = "$dir/MiscGeoDataTest.php";
 		return true;
