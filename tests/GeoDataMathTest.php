@@ -43,7 +43,7 @@ class GeoDataMathTest extends MediaWikiTestCase {
 			array( 180 ),
 			array( -180 ),
 			array( 179.95 ),
-			array( -17995 ),
+			array( -179.95 ),
 		);
 	}
 }
