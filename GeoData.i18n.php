@@ -148,6 +148,14 @@ $messages['diq'] = array(
 	'geodata-primary-coordinate' => 'Sıfteyên',
 );
 
+/** British English (British English)
+ * @author Amire80
+ */
+$messages['en-gb'] = array(
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: unrecognised type "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: unrecognised globe "$1"',
+);
+
 /** Spanish (español)
  * @author Armando-Martin
  */
@@ -230,10 +238,10 @@ $messages['he'] = array(
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: תסדיר קוד אזור בלתי־תקין',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: אי־אפשר שיהיה יותר מתג ראשי אחד בכל דף',
 	'geodata-limit-exceeded' => 'נחצתה המגבלה של {{PLURAL:|תג <nowiki>{{#coordinates:}}</nowiki> אחד|$1 תגי <nowiki>{{#coordinates:}}</nowiki>}} לדף',
-	'geodata-broken-tags-category' => 'דפים על תגי נקודות ציון בלתי־תקינים',
-	'geodata-unknown-type-category' => 'דפים עם סוג לא ידוע של נקודות ציון',
-	'geodata-unknown-globe-category' => 'דפים עם ערך גלובוס לא ידוע',
-	'geodata-unknown-region-category' => 'דפים עם ערך אזור לא ידוע',
+	'geodata-broken-tags-category' => 'דפים עם תגי נקודות ציון בלתי־תקינים',
+	'geodata-unknown-type-category' => 'דפים עם סוג בלתי־ידוע של נקודות ציון',
+	'geodata-unknown-globe-category' => 'דפים עם ערך גלובוס בלתי־ידוע',
+	'geodata-unknown-region-category' => 'דפים עם ערך אזור בלתי־ידוע',
 	'geodata-primary-coordinate' => 'ראשי',
 );
 
