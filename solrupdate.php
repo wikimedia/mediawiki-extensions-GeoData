@@ -11,13 +11,31 @@ class SolrUpdate extends Maintenance {
 	const READ_BATCH_SIZE = 5000;
 	const READ_DELAY = 500000; // 500 ms
 
+	private $jobMode = false;
+
 	public function __construct() {
 		$this->mDescription = 'Updates Solr index';
 		$this->addOption( 'reset', 'Reset last update timestamp (next feed will return whole database)' );
 		$this->addOption( 'clean-killlist', 'Purge killlist entries older than this value (in days)', false, true );
 	}
 
+	public function enableJobMode() {
+		$this->mQuiet = true;
+		$this->jobMode = true;
+	}
+
 	public function execute() {
+		// Make sure that the index is being updated only once
+		$work = new SolrUpdateWork( $this );
+		if ( !$work->execute() ) {
+			$this->error( __METHOD__ . '(): PoolCounter error!', true );
+		}
+	}
+
+	/**
+	 * Called internally
+	 */
+	public function safeExecute() {
 		global $wgGeoDataBackend;
 		if ( $wgGeoDataBackend != 'solr' ) {
 			$this->error( "This script is only for wikis with Solr GeoData backend", true );
@@ -151,6 +169,22 @@ class SolrUpdate extends Maintenance {
 			array( 'gu_wiki' => $wikiId, 'gu_last_tag' => $lastTag, 'gu_last_kill' => $lastKill ),
 			__METHOD__
 		);
+	}
+
+	/**
+	 * Overrides Maintenace::error() to throw exceptions instead of writing to stderr when called from a job
+	 * @param String $err
+	 * @param int $die
+	 */
+	protected function error( $err, $die = 0 ) {
+		if ( $this->jobMode ) {
+			if ( $die ) {
+				throw new MWException( $err );
+			} else {
+				wfDebug( "$err\n" );
+			}
+		}
+		parent::error( $err, $die );
 	}
 }
 

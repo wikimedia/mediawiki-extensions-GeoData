@@ -21,12 +21,17 @@ $wgAutoloadClasses['ApiQueryGeoSearchSolr'] = "$dir/api/ApiQueryGeoSearchSolr.ph
 $wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoData.php";
 $wgAutoloadClasses['ApiQueryCategoryMembers_GeoData'] = "$dir/api/ApiQueryCategoryMembers_GeoData.php";
 $wgAutoloadClasses['GeoDataQueryExtender'] = "$dir/api/GeoDataQueryExtender.php";
+
 $wgAutoloadClasses['Coord'] = "$dir/GeoData.body.php";
+$wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesParserFunction.php";
 $wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/CoordinatesParserFunction.php";
 $wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
 $wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
 $wgAutoloadClasses['GeoDataMath'] = "$dir/GeoDataMath.php";
-$wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesParserFunction.php";
+$wgAutoloadClasses['SolrUpdate'] = "$dir/solrupdate.php";
+$wgAutoloadClasses['SolrUpdateJob'] = "$dir/solr/SolrUpdateJob.php";
+$wgAutoloadClasses['SolrUpdateWork'] = "$dir/solr/SolrUpdateWork.php";
+
 $wgAutoloadClasses['SphinxClient'] = "$dir/sphinx/sphinxapi.php";
 $wgAutoloadClasses['SolrGeoData'] = "$dir/solr/SolrGeoData.php";
 
@@ -50,6 +55,8 @@ $wgExtensionFunctions[] = function() {
 	global $wgGeoDataBackend, $wgAPIListModules;
 	$wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend );
 };
+
+$wgJobClasses['solrUpdate'] = 'SolrUpdateJob';
 
 // =================== start configuration settings ===================
 
@@ -212,3 +219,8 @@ $wgGeoDataSolrHosts = 'localhost';
  * @var string: Solr master used for updates
  */
 $wgGeoDataSolrMaster = 'localhost';
+
+/**
+ * Whether search index should be updated via jobs. Supported only for Solr.
+ */
+$wgGeoDataUpdatesViaJob = false;

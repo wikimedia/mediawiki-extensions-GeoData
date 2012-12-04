@@ -78,6 +78,7 @@ class GeoDataHooks {
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $id ), __METHOD__ );
+		GeoData::maybeUpdate();
 		return true;
 	}
 
@@ -108,6 +109,7 @@ class GeoDataHooks {
 		} else {
 			self::doSmartUpdate( $data, $linksUpdate->mId );
 		}
+		GeoData::maybeUpdate();
 		return true;
 	}
 

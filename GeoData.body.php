@@ -200,6 +200,17 @@ class GeoData {
 		}
 		return $i;
 	}
+
+	/**
+	 * Adds an update job if needed
+	 */
+	public static function maybeUpdate() {
+		global $wgGeoDataBackend, $wgGeoDataUpdatesViaJob;
+
+		if ( $wgGeoDataBackend == 'solr' && $wgGeoDataUpdatesViaJob ) {
+			JobQueueGroup::singleton()->push( new SolrUpdateJob() );
+		}
+	}
 }
 
 /**
