@@ -76,7 +76,18 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id ) {
+		global $wgGeoDataBackend;
 		$dbw = wfGetDB( DB_MASTER );
+		if ( $wgGeoDataBackend != 'db' ) {
+			$res = $dbw->select( 'geo_tags', 'gt_id', array( 'gt_page_id' => $id ), __METHOD__ );
+			$killlist = array();
+			foreach ( $res as $row ) {
+				$killlist[] = array( 'gk_killed_id' => $row->gt_id );
+			}
+			if ( $killlist ) {
+				$dbw->insert( 'geo_killlist', $killlist, __METHOD__ );
+			}
+		}
 		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $id ), __METHOD__ );
 		GeoData::maybeUpdate();
 		return true;
@@ -90,7 +101,7 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
-		global $wgUseDumbLinkUpdate, $wgGeoDataUseSphinx;
+		global $wgUseDumbLinkUpdate, $wgGeoDataBackend;
 		$out = $linksUpdate->getParserOutput();
 		$data = array();
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
@@ -104,7 +115,7 @@ class GeoDataHooks {
 		} elseif ( $coordFromMetadata ) {
 			$data[] = $coordFromMetadata;
 		}
-		if ( !$wgGeoDataUseSphinx && ( $wgUseDumbLinkUpdate || !count( $data ) ) ) {
+		if ( $wgGeoDataBackend == 'db' && ( $wgUseDumbLinkUpdate || !count( $data ) ) ) {
 			self::doDumbUpdate( $data, $linksUpdate->mId );
 		} else {
 			self::doSmartUpdate( $data, $linksUpdate->mId );
@@ -164,7 +175,7 @@ class GeoDataHooks {
 	}
 
 	private static function doSmartUpdate( $coords, $pageId ) {
-		global $wgGeoDataUseSphinx;
+		global $wgGeoDataBackend;
 
 		$prevCoords = GeoData::getAllCoordinates( $pageId, array(), DB_MASTER );
 		$add = array();
@@ -189,7 +200,7 @@ class GeoDataHooks {
 		if ( count( $delete ) ) {
 			$deleteIds = array_keys( $delete );
 			$dbw->delete( 'geo_tags', array( 'gt_id' => $deleteIds ), __METHOD__ );
-			if ( $wgGeoDataUseSphinx ) {
+			if ( $wgGeoDataBackend != 'db' ) {
 				$rows = array_map( function( $id ) {
 					return array( 'gk_killed_id' => $id );
 				}, $deleteIds );

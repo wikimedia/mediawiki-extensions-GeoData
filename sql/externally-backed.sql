@@ -33,7 +33,7 @@ CREATE INDEX /*i*/gt_page_id_id ON /*_*/geo_tags ( gt_page_id, gt_id );
 -- Stores Sphinx search kill-list (ids of records deleted from geo_tags)
 CREATE TABLE /*_*/geo_killlist (
 	-- Row ID
-	gk_id int unsigned NOT NULL PRIMARY KEY,
+	gk_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	-- gt_id of a row deleted from geo_tags
 	gk_killed_id int unsigned NOT NULL,
 	-- Last change timestamp

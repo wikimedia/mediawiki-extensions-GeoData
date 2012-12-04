@@ -16,7 +16,7 @@ class SolrUpdate extends Maintenance {
 	public function __construct() {
 		$this->mDescription = 'Updates Solr index';
 		$this->addOption( 'reset', 'Reset last update timestamp (next feed will return whole database)' );
-		$this->addOption( 'clean-killlist', 'Purge killlist entries older than this value (in days)', false, true );
+		$this->addOption( 'clear-killlist', 'Purge killlist entries older than this value (in days)', false, true );
 	}
 
 	public function enableJobMode() {
@@ -51,10 +51,10 @@ class SolrUpdate extends Maintenance {
 			return;
 		}
 
-		if ( $this->hasOption( 'clean-killlist' ) ) {
-			$days = intval( $this->getOption( 'clean-killlist' ) );
+		if ( $this->hasOption( 'clear-killlist' ) ) {
+			$days = intval( $this->getOption( 'clear-killlist' ) );
 			if ( $days <= 0 ) {
-				$this->error( '--clean-killlist: please specify a positive integer number of days', true );
+				$this->error( '--clear-killlist: please specify a positive integer number of days', true );
 			}
 			$this->output( "Deleting killlist entries older than $days days...\n" );
 			$table = $dbr->tableName( 'geo_killlist' );
@@ -63,7 +63,7 @@ class SolrUpdate extends Maintenance {
 					. self::WRITE_BATCH_SIZE;
 				$res = $dbw->query( $sql, __METHOD__ );
 				wfWaitForSlaves();
-			} while ( $res->numRows() != self::WRITE_BATCH_SIZE );
+			} while ( $dbw->affectedRows() == self::WRITE_BATCH_SIZE );
 		}
 
 		$res = $dbr->select( 'geo_updates',
