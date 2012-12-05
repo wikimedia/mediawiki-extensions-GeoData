@@ -53,7 +53,9 @@ $wgHooks['FileUpload'][] = 'GeoDataHooks::onFileUpload';
 // Use the proper search backend
 $wgExtensionFunctions[] = function() {
 	global $wgGeoDataBackend, $wgAPIListModules;
-	$wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend );
+	if ( !isset( $wgAPIListModules['geosearch'] ) ) {
+		$wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend );
+	}
 };
 
 $wgJobClasses['solrUpdate'] = 'SolrUpdateJob';
