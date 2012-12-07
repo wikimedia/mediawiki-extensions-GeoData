@@ -6,7 +6,7 @@
  */
 class CoordinatesParserFunction {
 	/**
-	 * @var Parser
+	 * @var Parser used for processing the current coordinates() call
 	 */
 	private $parser;
 
@@ -21,10 +21,8 @@ class CoordinatesParserFunction {
 
 	/**
 	 * Constructor
-	 * @param Parser $parser: Parser object to associate with
 	 */
-	public function __construct( Parser $parser ) {
-		$this->parser = $parser;
+	public function __construct() {
 		$this->info = GeoData::getCoordInfo();
 	}
 
@@ -39,9 +37,8 @@ class CoordinatesParserFunction {
 	 */
 	public function coordinates( $parser, $frame, $args ) {
 		wfProfileIn( __METHOD__ );
-		if ( $parser != $this->parser ) {
-			throw new MWException( __METHOD__ . '() called by wrong parser' );
-		}
+
+		$this->parser = $parser;
 		$this->output = $parser->getOutput();
 		if ( !isset( $this->output->geoData ) ) {
 			$this->output->geoData = new CoordinatesOutput();
