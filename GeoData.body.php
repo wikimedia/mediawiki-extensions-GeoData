@@ -145,7 +145,6 @@ class GeoData {
 	}
 
 	public static function getCoordInfo() {
-		global $wgContLang;
 		static $result = null;
 		if ( !$result ) {
 			$result = array(
@@ -158,10 +157,6 @@ class GeoData {
 				),
 				'primary' => array( 'primary' ),
 			);
-			if ( $wgContLang->getCode() != 'en' ) {
-				$result['primary'][] = wfMessage( 'geodata-primary-coordinate' )->inContentLanguage()->plain();
-			}
-			$result['primary'] = array_flip( $result['primary'] );
 		}
 		return $result;
 	}

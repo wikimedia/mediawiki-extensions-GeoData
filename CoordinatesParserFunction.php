@@ -88,7 +88,8 @@ class CoordinatesParserFunction {
 	 * @param String $value: Parameter
 	 */
 	private function addArg( $value ) {
-		if ( isset( $this->info['primary'][$value] ) ) {
+		$primary = MagicWord::get( 'primary' );
+		if ( $primary->match( $value ) ) {
 			$this->named['primary'] = true;
 		} elseif ( preg_match( '/\S+?:\S*?([ _]+\S+?:\S*?)*/', $value ) ) {
 			$this->named['geohack'] = $value;

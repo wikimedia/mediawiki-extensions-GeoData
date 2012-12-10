@@ -25,7 +25,6 @@ $messages['en'] = array(
 	'geodata-unknown-type-category' => 'Pages with unknown type of coordinates',
 	'geodata-unknown-globe-category' => 'Pages with unknown globe value',
 	'geodata-unknown-region-category' => 'Pages with invalid region value',
-	'geodata-primary-coordinate' => 'primary',
 );
 
 /** Message documentation (Message documentation)
