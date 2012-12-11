@@ -38,7 +38,7 @@ CREATE TABLE /*_*/geo_killlist (
 	gk_killed_id int unsigned NOT NULL,
 	-- Last change timestamp
 	gk_touched timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)/*$wgTableOptions*/;
+)/*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/gk_touched ON /*_*/geo_killlist ( gk_touched );
 
@@ -47,4 +47,4 @@ CREATE TABLE /*_*/geo_updates (
 	gu_wiki varchar(64) NOT NULL PRIMARY KEY,
 	gu_last_tag int NOT NULL,
 	gu_last_kill int NOT NULL
-)/*$wgTableOptions*/;
+)/*$wgDBTableOptions*/;
