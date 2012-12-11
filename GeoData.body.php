@@ -203,7 +203,7 @@ class GeoData {
 		global $wgGeoDataBackend, $wgGeoDataUpdatesViaJob;
 
 		if ( $wgGeoDataBackend == 'solr' && $wgGeoDataUpdatesViaJob ) {
-			JobQueueGroup::singleton()->push( new SolrUpdateJob() );
+			JobQueueGroup::singleton()->push( new SolrUpdateJob( null ) );
 		}
 	}
 }
