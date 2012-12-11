@@ -639,7 +639,6 @@ $messages['uk'] = array(
 	'geodata-unknown-type-category' => 'Сторінки з невідомим типом координат',
 	'geodata-unknown-globe-category' => 'Сторінки з невідомим глобусом',
 	'geodata-unknown-region-category' => 'Сторінки з некоректним регіоном',
-	'geodata-primary-coordinate' => 'основний',
 );
 
 /** Urdu (اردو)
