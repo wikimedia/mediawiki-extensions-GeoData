@@ -73,9 +73,8 @@ class CoordinatesParserFunction {
 
 		$parser->addTrackingCategory( 'geodata-broken-tags-category' );
 		$errorText = $this->errorText( $status );
-		if ( $errorText == '&lt;&gt;' ) {
+		if ( $errorText === '' ) {
 			// Error that doesn't require a message,
-			// can't think of a better way to pass this condition
 			wfProfileOut( __METHOD__ );
 			return '';
 		}
@@ -233,6 +232,9 @@ class CoordinatesParserFunction {
 		}
 		$err = $errors[0];
 		$message = array_shift( $err );
+		if ( $message === '' ) {
+			return '';
+		}
 		return wfMessage( $message )->params( $err )->inContentLanguage()->plain();
 	}
 }
