@@ -2,8 +2,8 @@
 
 class SolrUpdateJob extends Job {
 
-	public function __construct() {
-		parent::__construct( 'solrUpdate', Title::newMainPage() );
+	public function __construct( $title, $params = array(), $id = 0 ) {
+		parent::__construct( 'solrUpdate', Title::newMainPage(), $params, $id );
 		$this->removeDuplicates = true;
 	}
 
