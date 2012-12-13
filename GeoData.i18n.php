@@ -670,3 +670,22 @@ $messages['vi'] = array(
 	'geodata-unknown-region-category' => 'Trang có giá trị khu vực không hợp lệ',
 	'geodata-primary-coordinate' => 'chính',
 );
+
+/** Simplified Chinese (中文（简体）‎)
+ * @author Shizhao
+ */
+$messages['zh-hans'] = array(
+	'geodata-desc' => '添加地理坐标存储和检索功能',
+	'geodata-bad-input' => '无效参数传递至<nowiki>{{#coordinates：}}</nowiki>函数',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates：}}</nowiki>： 无效的纬度',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates：}}</nowiki>： 无效的经度',
+	'geodata-bad-type' => '<nowiki>{{#coordinates：}}</nowiki>： 未识别类型" $1 "',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates：}}</nowiki>： 未识别星球" $1 "',
+	'geodata-bad-region' => '<nowiki>{{#coordinates：}}</nowiki>： 无效的地区代码格式',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates：}}</nowiki>： 每页不能有多个主标签',
+	'geodata-limit-exceeded' => '<nowiki>{{#coordinates：}}</nowiki>每页的标签数量已超出$1个的最大限制',
+	'geodata-broken-tags-category' => '格式不正确的坐标标签页面',
+	'geodata-unknown-type-category' => '未知坐标类型的页面',
+	'geodata-unknown-globe-category' => '未知星球值的页面',
+	'geodata-unknown-region-category' => '无效地区值的页面',
+);
