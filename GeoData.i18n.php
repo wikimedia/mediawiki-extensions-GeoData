@@ -30,16 +30,16 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Max Semenik
  * @author SPQRobin
+ * @author Shirayuki
  */
 $messages['qqq'] = array(
-	'geodata-desc' => '{{desc}}',
+	'geodata-desc' => '{{desc|name=Geo Data|url=http://www.mediawiki.org/wiki/Extension:GeoData}}',
 	'geodata-bad-globe' => 'Terrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...',
 	'geodata-limit-exceeded' => '$1 is a number',
 	'geodata-broken-tags-category' => 'Name of the tracking category',
 	'geodata-unknown-type-category' => 'Name of the tracking category',
 	'geodata-unknown-globe-category' => 'Name of the tracking category',
 	'geodata-unknown-region-category' => 'Name of the tracking category',
-	'geodata-primary-coordinate' => "Localised name of parameter that makes <nowiki>{{#coordinates:}}</nowiki> tag primary (i.e. containing the primary coordinates of the page's subject)",
 );
 
 /** Arabic (العربية)
