@@ -14,9 +14,10 @@ class SolrUpdate extends Maintenance {
 	private $jobMode = false;
 
 	public function __construct() {
-		$this->mDescription = 'Updates Solr index';
+		$this->mDescription = 'Performs updates and other operations with Solr index';
 		$this->addOption( 'reset', 'Reset last update timestamp (next feed will return whole database)' );
 		$this->addOption( 'clear-killlist', 'Purge killlist entries older than this value (in days)', false, true );
+		$this->addOption( 'noindex', 'Don\'t update index' );
 	}
 
 	public function enableJobMode() {
@@ -47,8 +48,8 @@ class SolrUpdate extends Maintenance {
 		$wikiId = wfWikiID();
 
 		if ( $this->hasOption( 'reset' ) ) {
+			$this->output( "Resetting update tracking...\n" );
 			$dbw->delete( 'geo_updates', array( 'gu_wiki' => $wikiId ), __METHOD__ );
-			return;
 		}
 
 		if ( $this->hasOption( 'clear-killlist' ) ) {
@@ -57,15 +58,25 @@ class SolrUpdate extends Maintenance {
 				$this->error( '--clear-killlist: please specify a positive integer number of days', true );
 			}
 			$this->output( "Deleting killlist entries older than $days days...\n" );
+			$timestamp = $dbw->addQuotes( wfTimestamp( TS_DB, strtotime( "$days days ago" ) ) );
 			$table = $dbr->tableName( 'geo_killlist' );
+			$count = 0;
 			do {
-				$sql = "DELETE FROM $table WHERE gk_touched < ADDDATE( CURRENT_TIMESTAMP, INTERVAL -$days DAY ) LIMIT "
+				$sql = "DELETE FROM $table WHERE gk_touched < $timestamp LIMIT "
 					. self::WRITE_BATCH_SIZE;
-				$res = $dbw->query( $sql, __METHOD__ );
-				wfWaitForSlaves();
-			} while ( $dbw->affectedRows() == self::WRITE_BATCH_SIZE );
+				$dbw->query( $sql, __METHOD__ );
+				$deleted = $dbw->affectedRows();
+				$count += $deleted;
+				if ( $deleted ) {
+					wfWaitForSlaves();
+					$this->output( "  $count\n" );
+				}
+			} while ( $deleted > 0 );
 		}
 
+		if ( $this->hasOption( 'noindex' ) ) {
+			return;
+		}
 		$res = $dbr->select( 'geo_updates',
 			array( 'gu_last_tag', 'gu_last_kill' ),
 			array( 'gu_wiki' => $wikiId ),
