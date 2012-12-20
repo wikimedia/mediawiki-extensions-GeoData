@@ -12,9 +12,14 @@ class SolrUpdateJob extends Job {
 	 * @return boolean success
 	 */
 	public function run() {
-		$maint = new SolrUpdate();
-		$maint->enableJobMode();
-		$maint->execute();
+		global $wgGeoDataUpdatesViaJob;
+
+		// Allow disabling jobs on the fly
+		if ( $wgGeoDataUpdatesViaJob ) {
+			$maint = new SolrUpdate();
+			$maint->enableJobMode();
+			$maint->execute();
+		}
 		return true;
 	}
 }
