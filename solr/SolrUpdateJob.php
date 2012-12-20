@@ -15,5 +15,6 @@ class SolrUpdateJob extends Job {
 		$maint = new SolrUpdate();
 		$maint->enableJobMode();
 		$maint->execute();
+		return true;
 	}
 }
