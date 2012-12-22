@@ -176,10 +176,12 @@ $messages['es'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Mjbmr
  * @author جواد
  */
 $messages['fa'] = array(
-	'geodata-primary-coordinate' => 'اولیه',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: عرض جغرافیایی نامعتبر',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: طول جغرافیایی نامعتبر',
 );
 
 /** French (français)
@@ -300,6 +302,22 @@ $messages['ia'] = array(
 	'geodata-unknown-globe-category' => 'Paginas con valor de globo incognite',
 	'geodata-unknown-region-category' => 'Paginas con valor de region incognite',
 	'geodata-primary-coordinate' => 'primari',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: lintang salah',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: bujur salah',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: jenis tidak dikenal "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globe tidak dikenal "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: format kode wilayah tidak sah',
+	'geodata-limit-exceeded' => 'Batas $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tag}} per halaman telah dilewati',
+	'geodata-broken-tags-category' => 'Halaman dengan tag koordinat rusak',
+	'geodata-unknown-type-category' => 'Halaman dengan jenis koordinat tidak dikenal',
+	'geodata-unknown-globe-category' => 'Halaman dengan nilai globe tidak dikenal',
+	'geodata-unknown-region-category' => 'Halaman dengan nilai wilayah tidak dikenal',
 );
 
 /** Italian (italiano)
@@ -485,7 +503,7 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'geodata-desc' => 'Voegt geografische coördinatenopslag en weergavefunctionaliteit toe',
-	'geodata-bad-input' => 'Er zijn ongeldige argumenten in de <nowiki>{{#coordinates:}}</nowiki>-functie opgegeven',
+	'geodata-bad-input' => 'Er zijn ongeldige argumenten opgegeven in de functie <nowiki>{{#coordinates:}}</nowiki>',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: ongeldige breedtegraad',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: ongeldige lengtegraad',
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: type "$1" niet herkend',
@@ -497,7 +515,6 @@ $messages['nl'] = array(
 	'geodata-unknown-type-category' => "Pagina's met onbekend type coördinaten",
 	'geodata-unknown-globe-category' => "Pagina's met onbekende waarde voor wereldbol",
 	'geodata-unknown-region-category' => "Pagina's met ongeldige waarde voor regio",
-	'geodata-primary-coordinate' => 'primair',
 );
 
 /** Polish (polski)
