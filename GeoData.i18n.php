@@ -497,6 +497,21 @@ $messages['ms'] = array(
 	'geodata-primary-coordinate' => 'primer',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitudni ħażina',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: lonġitudni ħażina',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tip "$1" mhux rikonoxxut',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globu "$1" mhux rikonoxxut',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: format ħażin tal-kodiċi tar-reġjun',
+	'geodata-broken-tags-category' => "Paġni b'''tags'' ta' koordinati ħżiena",
+	'geodata-unknown-type-category' => "Paġni b'tip ta' koordinati mhux magħrufa",
+	'geodata-unknown-globe-category' => "Paġni b'valur mhux magħruf għall-globu",
+	'geodata-unknown-region-category' => "Paġni b'valur ħażin għar-reġjun",
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
