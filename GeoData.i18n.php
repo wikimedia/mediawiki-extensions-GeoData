@@ -175,6 +175,14 @@ $messages['es'] = array(
 	'geodata-primary-coordinate' => 'primaria',
 );
 
+/** Estonian (eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: vigane laius',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: vigane pikkus',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  * @author جواد
