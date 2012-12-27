@@ -192,6 +192,19 @@ $messages['fa'] = array(
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: طول جغرافیایی نامعتبر',
 );
 
+/** Finnish (suomi)
+ * @author VezonThunder
+ */
+$messages['fi'] = array(
+	'geodata-desc' => 'Lisää maantieteellisten koordinaattien säilöntä- ja hakutoiminnot',
+	'geodata-bad-input' => '<nowiki>{{#coordinates:}}</nowiki>-funktioon on annettu virheellisiä argumentteja',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: virheellinen leveysaste',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: virheellinen pituusaste',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tuntematon tyyppi "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: tuntematon karttapallo "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: virheellinen aluekoodin muoto',
+);
+
 /** French (français)
  * @author Gomoko
  */
