@@ -1,7 +1,7 @@
 <?php
 
 
-class ApiQueryGeoSearchDB extends ApiQueryGeoSearch {
+class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName );
 	}

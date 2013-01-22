@@ -15,7 +15,7 @@ $dir = __DIR__;
 
 $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
-$wgAutoloadClasses['ApiQueryGeoSearchDB'] = "$dir/api/ApiQueryGeoSearchDB.php";
+$wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
 $wgAutoloadClasses['ApiQueryGeoSearchSphinx'] = "$dir/api/ApiQueryGeoSearchSphinx.php";
 $wgAutoloadClasses['ApiQueryGeoSearchSolr'] = "$dir/api/ApiQueryGeoSearchSolr.php";
 $wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoData.php";
