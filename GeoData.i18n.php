@@ -66,7 +66,6 @@ $messages['ast'] = array(
 	'geodata-unknown-type-category' => 'Páxines con coordenaes de tipu desconocíu',
 	'geodata-unknown-globe-category' => 'Páxines con valores de globu desconocíos',
 	'geodata-unknown-region-category' => 'Páxines con valores de rexón inválidos',
-	'geodata-primary-coordinate' => 'primaria',
 );
 
 /** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
@@ -88,7 +87,6 @@ $messages['be-tarask'] = array(
 	'geodata-unknown-type-category' => 'Старонкі зь невядомымі тыпамі каардынатаў',
 	'geodata-unknown-globe-category' => 'Старонкі зь невядомым глябальным значэньнем',
 	'geodata-unknown-region-category' => 'Старонкі зь няслушным рэгіёнам',
-	'geodata-primary-coordinate' => 'першасная',
 );
 
 /** Breton (brezhoneg)
@@ -117,7 +115,6 @@ $messages['cs'] = array(
 	'geodata-unknown-type-category' => 'Stránky s neznámým typem zeměpisných souřadnic',
 	'geodata-unknown-globe-category' => 'Stránky s neznámým označením planety',
 	'geodata-unknown-region-category' => 'Stránky s nesprávným regionem',
-	'geodata-primary-coordinate' => 'hlavní',
 );
 
 /** German (Deutsch)
@@ -137,7 +134,6 @@ $messages['de'] = array(
 	'geodata-unknown-type-category' => 'Seiten mit unbekanntem Koordinatentyp',
 	'geodata-unknown-globe-category' => 'Seiten mit unbekanntem Codewert für den Globus',
 	'geodata-unknown-region-category' => 'Seiten mit unbekanntem Codewert für die Region',
-	'geodata-primary-coordinate' => 'primäre',
 );
 
 /** Zazaki (Zazaki)
@@ -172,7 +168,6 @@ $messages['es'] = array(
 	'geodata-unknown-type-category' => 'Páginas con tipo de coordenadas desconocido',
 	'geodata-unknown-globe-category' => 'Páginas con valor de mundo desconocido',
 	'geodata-unknown-region-category' => 'Páginas con valor de región no válido',
-	'geodata-primary-coordinate' => 'primaria',
 );
 
 /** Estonian (eesti)
@@ -222,7 +217,6 @@ $messages['fr'] = array(
 	'geodata-unknown-type-category' => 'Pages avec un type de coordonnées inconnu',
 	'geodata-unknown-globe-category' => 'Pages avec une valeur de globe inconnue',
 	'geodata-unknown-region-category' => 'Pages avec une valeur de région invalide',
-	'geodata-primary-coordinate' => 'primaire',
 );
 
 /** Galician (galego)
@@ -242,7 +236,6 @@ $messages['gl'] = array(
 	'geodata-unknown-type-category' => 'Páxinas con coordenadas descoñecidas',
 	'geodata-unknown-globe-category' => 'Páxinas con valores descoñecidos',
 	'geodata-unknown-region-category' => 'Páxinas con valores de rexión incorrectos',
-	'geodata-primary-coordinate' => 'primaria',
 );
 
 /** Hebrew (עברית)
@@ -264,7 +257,6 @@ $messages['he'] = array(
 	'geodata-unknown-type-category' => 'דפים עם סוג בלתי־ידוע של נקודות ציון',
 	'geodata-unknown-globe-category' => 'דפים עם ערך גלובוס בלתי־ידוע',
 	'geodata-unknown-region-category' => 'דפים עם ערך אזור בלתי־ידוע',
-	'geodata-primary-coordinate' => 'ראשי',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -284,7 +276,6 @@ $messages['hsb'] = array(
 	'geodata-unknown-type-category' => 'Strony z njeznatym typom koordinatow',
 	'geodata-unknown-globe-category' => 'Strony z njeznatej globusowej hódnotu',
 	'geodata-unknown-region-category' => 'Strony z njepłaćiwej regionowej hódnotu',
-	'geodata-primary-coordinate' => 'primarne',
 );
 
 /** Hungarian (magyar)
@@ -302,7 +293,6 @@ $messages['hu'] = array(
 	'geodata-broken-tags-category' => 'Hibás koordináta címkékkel rendelkező oldalak',
 	'geodata-unknown-type-category' => 'Ismeretlen típusú koordinátákat tartalmazó oldalak',
 	'geodata-unknown-region-category' => 'Érvénytelen régió értéket tartalmazó oldalak',
-	'geodata-primary-coordinate' => 'elsődleges',
 );
 
 /** Interlingua (interlingua)
@@ -322,7 +312,6 @@ $messages['ia'] = array(
 	'geodata-unknown-type-category' => 'Paginas con typo incognite de coordinatas',
 	'geodata-unknown-globe-category' => 'Paginas con valor de globo incognite',
 	'geodata-unknown-region-category' => 'Paginas con valor de region incognite',
-	'geodata-primary-coordinate' => 'primari',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -358,7 +347,6 @@ $messages['it'] = array(
 	'geodata-unknown-type-category' => 'Pagine con un tipo di coordinate sconosciuto',
 	'geodata-unknown-globe-category' => 'Pagine con un valore globo sconosciuto',
 	'geodata-unknown-region-category' => 'Pagine con un valore regione non valido',
-	'geodata-primary-coordinate' => 'principale',
 );
 
 /** Japanese (日本語)
@@ -388,7 +376,6 @@ $messages['jv'] = array(
 	'geodata-unknown-type-category' => 'Kaca mawa jinis koordinat ora dingertèni',
 	'geodata-unknown-globe-category' => 'Kaca mawa nilé globe ora dingertèni',
 	'geodata-unknown-region-category' => 'Kaca mawa nilé dhaèrah ora sah',
-	'geodata-primary-coordinate' => 'utama',
 );
 
 /** Georgian (ქართული)
@@ -401,7 +388,6 @@ $messages['ka'] = array(
 	'geodata-bad-globe' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: ამოუცნობი მსოფლიო „$1“',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: რეგიონის კოდის არასწორი ფორმატი',
 	'geodata-unknown-type-category' => 'გვერდები კოორდინატთა უცნობი ტიპით',
-	'geodata-primary-coordinate' => 'მთავარი',
 );
 
 /** Korean (한국어)
@@ -421,7 +407,6 @@ $messages['ko'] = array(
 	'geodata-unknown-type-category' => '알 수 없는 좌표 유형으로 된 문서',
 	'geodata-unknown-globe-category' => '알 수 없는 세계 값으로 된 문서',
 	'geodata-unknown-region-category' => '잘못된 지역 값으로 된 문서',
-	'geodata-primary-coordinate' => '기본',
 );
 
 /** Colognian (Ripoarisch)
@@ -441,7 +426,6 @@ $messages['ksh'] = array(
 	'geodata-unknown-type-category' => "Sigge med ene onbekannte Zoote Ko'ordenaate",
 	'geodata-unknown-globe-category' => 'Sigge med enem unbikannte Jlobus',
 	'geodata-unknown-region-category' => 'Sigge med ene onjöltijje Rejon',
-	'geodata-primary-coordinate' => 'vörjetroke',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -455,7 +439,6 @@ $messages['lb'] = array(
 	'geodata-unknown-type-category' => 'Säite mat engem onbekannten Typ vu Koordinaten',
 	'geodata-unknown-globe-category' => 'Säite mat engem onbekannte Wäert fir de Globus',
 	'geodata-unknown-region-category' => "Säite mat engem onbekannte Wäert fir d'Regioun",
-	'geodata-primary-coordinate' => 'primaire',
 );
 
 /** Macedonian (македонски)
@@ -475,7 +458,6 @@ $messages['mk'] = array(
 	'geodata-unknown-type-category' => 'Страници со непознат тип на координати',
 	'geodata-unknown-globe-category' => 'Страници со непозната вредност за глобус',
 	'geodata-unknown-region-category' => 'Страници со непозната вредност за регион',
-	'geodata-primary-coordinate' => 'главна',
 );
 
 /** Malayalam (മലയാളം)
@@ -495,7 +477,6 @@ $messages['ml'] = array(
 	'geodata-unknown-type-category' => 'അപരിചിതമായ തരത്തിലുള്ള സ്ഥിരാങ്കങ്ങൾ ഉള്ള താളുകൾ',
 	'geodata-unknown-globe-category' => 'ഭൂഗോളമാതൃകയുടെ വില അപരിചിതമായ താളുകൾ',
 	'geodata-unknown-region-category' => 'പ്രദേശത്തിന്റെ വില അസാധുവായ താളുകൾ',
-	'geodata-primary-coordinate' => 'പ്രാഥമികം',
 );
 
 /** Malay (Bahasa Melayu)
@@ -515,7 +496,6 @@ $messages['ms'] = array(
 	'geodata-unknown-type-category' => 'Halaman dengan jenis koordinat yang tidak dikenali',
 	'geodata-unknown-globe-category' => 'Halaman dengan nilai glob yang tidak dikenali',
 	'geodata-unknown-region-category' => 'Halaman dengan nilai kawasan yang tidak sah',
-	'geodata-primary-coordinate' => 'primer',
 );
 
 /** Maltese (Malti)
@@ -570,7 +550,6 @@ $messages['pl'] = array(
 	'geodata-unknown-type-category' => 'Strony ze współrzędnymi nieznanego typu',
 	'geodata-unknown-globe-category' => 'Strony z nieznaną wartością globu',
 	'geodata-unknown-region-category' => 'Strony z nieprawidłową wartością regionu',
-	'geodata-primary-coordinate' => 'podstawowy',
 );
 
 /** Piedmontese (Piemontèis)
@@ -619,7 +598,6 @@ $messages['ru'] = array(
 	'geodata-unknown-type-category' => 'Страницы с неизвестным типом координат',
 	'geodata-unknown-globe-category' => 'Страницы с неизвестным глобусом',
 	'geodata-unknown-region-category' => 'Страницы с некорректным регионом',
-	'geodata-primary-coordinate' => 'Основная',
 );
 
 /** Sinhala (සිංහල)
@@ -631,7 +609,6 @@ $messages['si'] = array(
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: හදුනා නොගත් වර්ගය "$1"',
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: හදුනා නොගත් වර්තිකාව "$1"',
 	'geodata-unknown-globe-category' => 'නොදන්නා ගෝලීය අගයක් සහිත පිටු',
-	'geodata-primary-coordinate' => 'ප්‍රාථමික',
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
@@ -641,7 +618,6 @@ $messages['sr-ec'] = array(
 	'geodata-unknown-type-category' => 'Странице са непознатом врстом координата',
 	'geodata-unknown-globe-category' => 'Странице са непознатом вредности за глобус',
 	'geodata-unknown-region-category' => 'Странице са неисправном вредности за регион',
-	'geodata-primary-coordinate' => 'главна',
 );
 
 /** Serbian (Latin script) (srpski (latinica)‎)
@@ -650,7 +626,6 @@ $messages['sr-el'] = array(
 	'geodata-unknown-type-category' => 'Stranice sa nepoznatom vrstom koordinata',
 	'geodata-unknown-globe-category' => 'Stranice sa nepoznatom vrednosti za globus',
 	'geodata-unknown-region-category' => 'Stranice sa neispravnom vrednosti za region',
-	'geodata-primary-coordinate' => 'glavna',
 );
 
 /** Swedish (svenska)
@@ -692,7 +667,6 @@ $messages['tl'] = array(
 	'geodata-unknown-type-category' => 'Mga pahinang mayroong hindi nakikilalang mga uri ng mga tugmaan',
 	'geodata-unknown-globe-category' => 'Mga pahinang mayroong hindi nakikilalang halaga ng globo',
 	'geodata-unknown-region-category' => 'Mga pahinang may hindi katanggap-tanggap na halaga ng rehiyon',
-	'geodata-primary-coordinate' => 'pangunahin',
 );
 
 /** Ukrainian (українська)
@@ -721,7 +695,6 @@ $messages['ur'] = array(
 	'geodata-unknown-type-category' => 'نقاط مقام کی نامعلوم قسم کے ساتھ صفحات',
 	'geodata-unknown-globe-category' => 'نامعلوم دنیا کی قدر کے ساتھ صفحات',
 	'geodata-unknown-region-category' => 'باطل کے علاقے کی قدر کے ساتھ صفحات',
-	'geodata-primary-coordinate' => 'بنیادی',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -741,7 +714,6 @@ $messages['vi'] = array(
 	'geodata-unknown-type-category' => 'Trang có kiểu tọa độ không rõ',
 	'geodata-unknown-globe-category' => 'Trang có giá trị địa cầu không rõ',
 	'geodata-unknown-region-category' => 'Trang có giá trị khu vực không hợp lệ',
-	'geodata-primary-coordinate' => 'chính',
 );
 
 /** Simplified Chinese (中文（简体）‎)
