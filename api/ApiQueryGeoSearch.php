@@ -145,9 +145,6 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_DFLT => 'primary',
 			),
 		);
-		if ( defined( 'PAGE_IMAGES_INSTALLED' ) ) {
-			$params['withoutphotos'] = false;
-		}
 		return $params;
 	}
 
@@ -164,9 +161,6 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			'prop' => 'What additional coordinate properties to return',
 			'primary' => "Whether to return only primary coordinates (``primary''), secondary (``secondary'') or both (``all'')"
 		);
-		if ( defined( 'PAGE_IMAGES_INSTALLED' ) ) {
-			$params['withoutphotos'] = 'Return only pages without photos';
-		}
 		return $params;
 	}
 
