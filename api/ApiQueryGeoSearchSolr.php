@@ -26,9 +26,9 @@ class ApiQueryGeoSearchSolr extends ApiQueryGeoSearch {
 			if ( isset( $params['maxdim'] ) ) {
 				$query->addFilterQuery( "dim:[* TO {$params['maxdim']}]" );
 			}
-			$primary = array_flip( $params['primary'] );
-			if ( isset( $primary['yes'] ) != isset( $primary['no'] ) ) {
-				$query->createFilterQuery( 'primary' )->setQuery( 'primary:' . intval( isset( $primary['yes'] ) ) );
+			$primary = $params['primary'];
+			if ( $primary !== 'all' ) {
+				$query->createFilterQuery( 'primary' )->setQuery( 'primary:' . intval( $primary === 'primary' ) );
 			}
 			$query->createFilterQuery( 'coord' )->setQuery( $helper->geofilt( $this->lat, $this->lon, 'coord', $this->radius / 1000 ) );
 			$query->addSort( $helper->geodist( $this->lat, $this->lon, 'coord' ), Solarium_Query_Select::SORT_ASC );

@@ -23,9 +23,8 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			}
 		}
 		$this->addWhereFld( 'gt_page_id', array_keys( $titles ) );
-		$primary = array_flip( $params['primary'] );
-		$this->addWhereIf( array( 'gt_primary' => 1 ), isset( $primary['yes'] ) && !isset( $primary['no'] )	);
-		$this->addWhereIf( array( 'gt_primary' => 0 ), !isset( $primary['yes'] ) && isset( $primary['no'] )	);
+		$primary = $params['primary'];
+		$this->addWhereIf( array( 'gt_primary' => intval( $primary === 'primary' ) ), $primary !== 'all' );
 
 		if ( isset( $params['continue'] ) ) {
 			$parts = explode( '|', $params['continue'] );
@@ -93,9 +92,8 @@ class ApiQueryCoordinates extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'primary' => array(
-				ApiBase::PARAM_TYPE => array( 'yes', 'no' ),
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'yes',
+				ApiBase::PARAM_TYPE => array( 'primary', 'secondary', 'all' ),
+				ApiBase::PARAM_DFLT => 'primary',
 			),
 		);
 	}
@@ -105,7 +103,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			'limit' => 'How many coordinates to return',
 			'continue' => 'When more results are available, use this to continue',
 			'prop' => 'What additional coordinate properties to return',
-			'primary' => "Whether to return only primary coordinates (``yes''), secondary (``no'') or both (``yes|no'')",
+			'primary' => "Whether to return only primary coordinates (``primary''), secondary (``secondary'') or both (``all'')",
 		);
 	}
 

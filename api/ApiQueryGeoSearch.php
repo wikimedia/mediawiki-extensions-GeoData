@@ -141,9 +141,8 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'primary' => array(
-				ApiBase::PARAM_TYPE => array( 'yes', 'no' ),
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'yes',
+				ApiBase::PARAM_TYPE => array( 'primary', 'secondary', 'all' ),
+				ApiBase::PARAM_DFLT => 'primary',
 			),
 		);
 		if ( defined( 'PAGE_IMAGES_INSTALLED' ) ) {
@@ -163,7 +162,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			'globe' => "Globe to search on (by default ``{$wgDefaultGlobe}'')",
 			'namespace' => 'Namespace(s) to search',
 			'prop' => 'What additional coordinate properties to return',
-			'primary' => "Whether to return only primary coordinates (``yes''), secondary (``no'') or both (``yes|no'')"
+			'primary' => "Whether to return only primary coordinates (``primary''), secondary (``secondary'') or both (``all'')"
 		);
 		if ( defined( 'PAGE_IMAGES_INSTALLED' ) ) {
 			$params['withoutphotos'] = 'Return only pages without photos';

@@ -29,9 +29,8 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 		if ( isset( $params['maxdim'] ) ) {
 			$this->addWhere( 'gt_dim < ' . intval( $params['maxdim'] ) );
 		}
-		$primary = array_flip( $params['primary'] );
-		$this->addWhereIf( array( 'gt_primary' => 1 ), isset( $primary['yes'] ) && !isset( $primary['no'] )	);
-		$this->addWhereIf( array( 'gt_primary' => 0 ), !isset( $primary['yes'] ) && isset( $primary['no'] )	);
+		$primary = $params['primary'];
+		$this->addWhereIf( array( 'gt_primary' => intval( $primary === 'primary' ) ), $primary !== 'all' );
 
 		$this->addCoordFilter();
 
