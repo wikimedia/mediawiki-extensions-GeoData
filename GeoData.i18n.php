@@ -629,14 +629,20 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (svenska)
+ * @author Ainali
  * @author Boivie
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
+	'geodata-desc' => 'Lägger till funktionalitet för att lagra och hämta geografiska koordinater',
+	'geodata-bad-input' => 'Ogiltiga argument har skickats till <nowiki>{{#coordinates:}}</nowiki>funktionen',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: ogiltig latitud',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: ogiltig longitud',
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: oigenkänd typ "$1"',
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: oigenkänd glob "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: ogiltig regionkodsformat',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: kan inte ha mer än en primär tagg per sida',
+	'geodata-limit-exceeded' => 'Gränsen på $1 <nowiki>{{#coordinates:}}</nowiki>{{PLURAL:$1|tagg|taggar}} per sida har överskridits',
 	'geodata-broken-tags-category' => 'Sidor med felaktiga koordinattaggar',
 	'geodata-unknown-type-category' => 'Sidor med okänd typ av koordinater',
 	'geodata-unknown-globe-category' => 'Sidor med okänt globvärde',
