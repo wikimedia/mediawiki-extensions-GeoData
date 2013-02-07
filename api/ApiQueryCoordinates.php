@@ -9,6 +9,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 	}
 
 	public function execute() {
+		global $wgDefaultGlobe;
 		$titles = $this->getPageSet()->getGoodTitles();
 		if ( count( $titles ) == 0 ) {
 			return;
@@ -60,7 +61,10 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			foreach( $params['prop'] as $prop ) {
 				if ( isset( Coord::$fieldMapping[$prop] ) && isset( $row->{Coord::$fieldMapping[$prop]} ) ) {
 					$field = Coord::$fieldMapping[$prop];
-					$vals[$prop] = $row->$field;
+					// Don't output default globe
+					if ( !( $prop === 'globe' && $row->$field === $wgDefaultGlobe ) ) {
+						$vals[$prop] = $row->$field;
+					}
 				}
 			}
 			$fit = $this->addPageSubItem( $row->gt_page_id, $vals );
@@ -87,8 +91,8 @@ class ApiQueryCoordinates extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'string',
 			),
 			'prop' => array(
-				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region' ),
-				ApiBase::PARAM_DFLT => '',
+				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region', 'globe' ),
+				ApiBase::PARAM_DFLT => 'globe',
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'primary' => array(
