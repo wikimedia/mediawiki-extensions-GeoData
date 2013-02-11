@@ -97,6 +97,25 @@ $messages['br'] = array(
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki> : hedred direizh',
 );
 
+/** Catalan (català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'geodata-desc' => "Afegeix la funcionalitat d'emmagatzematge i recuperació de coordenades geogràfiques",
+	'geodata-bad-input' => "S'han passat arguments no vàlids a la funció <nowiki>{{#coordinates:}}</nowiki>",
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitud no vàlida',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitud no vàlida',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tipus «$1» no reconegut',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globus «$1» no reconegut',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: format de codi de regió no vàlid',
+	'geodata-multiple-primary' => "<nowiki>{{#coordinates:}}</nowiki>: no hi pot haver més d'una etiqueta primària per pàgina",
+	'geodata-limit-exceeded' => "S'ha superat el límit {{PLURAL:$1|d'$1 etiqueta|de $1 etiquetes}} <nowiki>{{#coordinates:}}</nowiki> per pàgina",
+	'geodata-broken-tags-category' => 'Pàgines amb etiquetes de coordenades amb format incorrecte',
+	'geodata-unknown-type-category' => 'Pàgines amb tipus de coordenades desconegut',
+	'geodata-unknown-globe-category' => 'Pàgines amb valor de globus desconegut',
+	'geodata-unknown-region-category' => 'Pàgines amb valor de regió no vàlid',
+);
+
 /** Czech (česky)
  * @author Jkjk
  * @author Mormegil
@@ -576,6 +595,14 @@ $messages['pms'] = array(
  */
 $messages['ro'] = array(
 	'geodata-primary-coordinate' => 'primar',
+);
+
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitudine invalide',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitudine invalide',
 );
 
 /** Russian (русский)
