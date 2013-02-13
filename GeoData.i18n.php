@@ -572,22 +572,37 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'geodata-desc' => 'A gionta funsion ëd memorisassion e reperiment ëd coordinà geogràfiche',
-	'geodata-bad-input' => "N'argoment pa bon a l'é stàit passà a la funsion <nowiki>{{#coordinates:}}</nowiki>",
+	'geodata-desc' => "A gionta la funsion ëd memorisassion e d'estrassion ëd le coordinà geogràfiche",
+	'geodata-bad-input' => "Dj'argoment pa bon a son ëstàit mandà a la funsion <nowiki>{{#coordinates:}}</nowiki>",
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitùdin pa bon-a',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitùdin pa bon-a',
-	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tipo "$1" pa arconossù',
-	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: glòb "$1" pa arconossù',
-	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: formà ëd còdes region pa bon',
-	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: as peul pa avèisse pi che na tichëtta primaria për pagina',
-	'geodata-limit-exceeded' => "El lìmit ëd $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tichëtta|tichëtte}} për pagina a l'é stàit superà",
-	'geodata-broken-tags-category' => 'Pagine con tichëtte ëd coordinà malformà',
-	'geodata-unknown-type-category' => 'Pagine con sòrt ëd coordinà pa bon',
-	'geodata-unknown-globe-category' => 'Pagine con valor ëd glòb pa conossù',
-	'geodata-unknown-region-category' => 'Pagine con valor ëd region pa bon',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tipo «$1» nen arconossù',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: glòb «$1» nen arconossù',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: formà dël còdes ëd region pa bon',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: as peul pa avèisse pi che na tichëtta primaria për pàgina',
+	'geodata-limit-exceeded' => "El lìmit ëd $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tichëtta|tichëtte}} për pàgina a l'é stàit passà",
+	'geodata-broken-tags-category' => 'Pàgine con dle tichëtte ëd coordinà mal formà',
+	'geodata-unknown-type-category' => 'Pàgine con na sòrt ëd coordinà nen conossùa',
+	'geodata-unknown-globe-category' => 'Pàgine con un valor ëd glòb nen conossù',
+	'geodata-unknown-region-category' => 'Pàgine con un valor ëd region pa bon',
+);
+
+/** Portuguese (português)
+ * @author Helder.wiki
+ */
+$messages['pt'] = array(
+	'geodata-broken-tags-category' => 'Páginas com etiquetas de coordenadas com formato incorreto',
+);
+
+/** Brazilian Portuguese (português do Brasil)
+ * @author Helder.wiki
+ */
+$messages['pt-br'] = array(
+	'geodata-broken-tags-category' => 'Páginas com etiquetas de coordenadas com formato incorreto',
 );
 
 /** Romanian (română)
