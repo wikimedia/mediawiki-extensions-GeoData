@@ -593,16 +593,18 @@ $messages['pms'] = array(
 
 /** Portuguese (português)
  * @author Helder.wiki
+ * @author Opraco
  */
 $messages['pt'] = array(
-	'geodata-broken-tags-category' => 'Páginas com etiquetas de coordenadas com formato incorreto',
+	'geodata-broken-tags-category' => 'Páginas com coordenadas formatadas incorretamente',
 );
 
 /** Brazilian Portuguese (português do Brasil)
  * @author Helder.wiki
+ * @author Opraco
  */
 $messages['pt-br'] = array(
-	'geodata-broken-tags-category' => 'Páginas com etiquetas de coordenadas com formato incorreto',
+	'geodata-broken-tags-category' => 'Páginas com coordenadas formatadas incorretamente',
 );
 
 /** Romanian (română)
