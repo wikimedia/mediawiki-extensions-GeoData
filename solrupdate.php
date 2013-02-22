@@ -50,7 +50,14 @@ class SolrUpdate extends Maintenance {
 		if ( $this->hasOption( 'reset' ) ) {
 			$this->output( "Resetting update tracking...\n" );
 			$dbw->delete( 'geo_updates', array( 'gu_wiki' => $wikiId ), __METHOD__ );
+			$this->output( "Truncating killlist...\n" );
+			$table = $dbw->tableName( 'geo_killlist' );
+			$dbw->query( "TRUNCATE TABLE $table", __METHOD__ );
+			$cutoffKilllist = false;
+		} else {
+			$cutoffKilllist = $dbr->selectField( 'geo_killlist', 'MAX( gk_killed_id )', '', __METHOD__ );
 		}
+		$cutoffTags = $dbr->selectField( 'geo_tags', 'MAX( gt_id )', '', __METHOD__ );
 
 		if ( $this->hasOption( 'clear-killlist' ) ) {
 			$days = intval( $this->getOption( 'clear-killlist' ) );
@@ -88,9 +95,6 @@ class SolrUpdate extends Maintenance {
 			$lastTag = $row->gu_last_tag;
 			$lastKill = $row->gu_last_kill;
 		}
-
-		$cutoffTags = $dbr->selectField( 'geo_tags', 'MAX( gt_id )', '', __METHOD__ );
-		$cutoffKilllist = $dbr->selectField( 'geo_killlist', 'MAX( gk_killed_id )', '', __METHOD__ );
 
 		$solr = SolrGeoData::newClient( 'master' );
 
