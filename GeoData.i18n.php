@@ -349,6 +349,25 @@ $messages['id'] = array(
 	'geodata-unknown-region-category' => 'Halaman dengan nilai wilayah tidak dikenal',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'geodata-desc' => 'Agnayon ti pagipenpenan kadagiti heograpikal a nagsasabtan ken panagala a pamay-an',
+	'geodata-bad-input' => 'Adda dagiti saan nga husto nga argumento ti naipasa iti <nowiki>{{#coordinates:}}</nowiki> fa pamay-an',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: saan a husto a latitud',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: saan a husto a longitud',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: saan a mabigbigan a kita ti "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: saan a mabigbigan a globo ti "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: saaan a husto a porma ti kodigo ti rehion',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: saan a mabalin ti ad-adu ngem maysa a nangruna nga etiketa ti tungngal maysa a panid',
+	'geodata-limit-exceeded' => 'Ti patingga ti $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|nga etiketa|nga et-etiketa}} ti tunggal maysa a panid ket nasurokanen',
+	'geodata-broken-tags-category' => 'Dagiti panid nga adda dagiti nadadael nga etiketa ti nagsasabtan',
+	'geodata-unknown-type-category' => 'Dagiti panid nga adda dagiti di ammo a kita dagiti nagsasabtan',
+	'geodata-unknown-globe-category' => 'Dagiti panid nga adda ti di ammo a pateg ti globo',
+	'geodata-unknown-region-category' => 'Dagiti panid nga adda ti saan a husto a pateg ti rehion',
+);
+
 /** Italian (italiano)
  * @author Darth Kule
  */
