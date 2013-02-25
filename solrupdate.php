@@ -8,8 +8,8 @@ require_once( "$IP/maintenance/Maintenance.php" );
 
 class SolrUpdate extends Maintenance {
 	const WRITE_BATCH_SIZE = 500;
-	const READ_BATCH_SIZE = 5000;
-	const READ_DELAY = 500000; // 500 ms
+	const READ_BATCH_SIZE = 1000;
+	const READ_DELAY = 0; // In microseconds
 
 	private $jobMode = false;
 
