@@ -368,6 +368,17 @@ $messages['ilo'] = array(
 	'geodata-unknown-region-category' => 'Dagiti panid nga adda ti saan a husto a pateg ti rehion',
 );
 
+/** Icelandic (íslenska)
+ * @author Snævar
+ */
+$messages['is'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: ógild breiddargráða',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: ógild lengdargráða',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: óþekktur hnöttur "$1"',
+	'geodata-broken-tags-category' => 'Síður með vitlaus hnita tög',
+	'geodata-unknown-type-category' => 'Síður með vitlausa gerð hnita',
+);
+
 /** Italian (italiano)
  * @author Darth Kule
  */
