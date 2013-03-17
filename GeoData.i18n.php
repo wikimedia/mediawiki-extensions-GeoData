@@ -34,7 +34,20 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'geodata-desc' => '{{desc|name=Geo Data|url=http://www.mediawiki.org/wiki/Extension:GeoData}}',
+	'geodata-bad-input' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
+Used as error message.',
+	'geodata-bad-latitude' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
+Used as error message.',
+	'geodata-bad-longitude' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
+Used as error message.',
+	'geodata-bad-type' => '{{doc-important|Do not translate <code>coordinates</code> and <code>nowiki</code>.}}
+Parameters:
+* $1 - coordinate type. valid types are: country, airport, landmark, etc.',
 	'geodata-bad-globe' => 'Terrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...',
+	'geodata-bad-region' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
+Used as error message.',
+	'geodata-multiple-primary' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
+Used as error message.',
 	'geodata-limit-exceeded' => '$1 is a number',
 	'geodata-broken-tags-category' => 'Name of the tracking category',
 	'geodata-unknown-type-category' => 'Name of the tracking category',
