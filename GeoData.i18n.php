@@ -41,9 +41,13 @@ Used as error message.',
 	'geodata-bad-longitude' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
 Used as error message.',
 	'geodata-bad-type' => '{{doc-important|Do not translate <code>coordinates</code> and <code>nowiki</code>.}}
+"type" is the argument name.
+
 Parameters:
 * $1 - coordinate type. valid types are: country, airport, landmark, etc.',
-	'geodata-bad-globe' => 'Terrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...',
+	'geodata-bad-globe' => 'Terrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...
+
+"globe" is the argument name.',
 	'geodata-bad-region' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
 Used as error message.',
 	'geodata-multiple-primary' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
@@ -412,6 +416,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Shirayuki
  */
 $messages['ja'] = array(
@@ -419,7 +424,15 @@ $messages['ja'] = array(
 	'geodata-bad-input' => '<nowiki>{{#coordinates:}}</nowiki> 関数に正しくない引数が渡されました',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: 緯度が正しくありません',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: 経度が正しくありません',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: 引数 type の値「$1」を認識できません',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: 引数 globe の値「$1」を認識できません',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: 地域コードの書式が正しくありません',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: primary を指定したタグは各ページに1個しかあってはなりません',
+	'geodata-limit-exceeded' => '<nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|タグ}}の各ページ$1個までという上限を超えています',
+	'geodata-broken-tags-category' => '座標タグに誤りがあるページ',
+	'geodata-unknown-type-category' => '種別不明の座標があるページ',
+	'geodata-unknown-globe-category' => '天体不明の座標があるページ',
+	'geodata-unknown-region-category' => '地域不明の座標があるページ',
 );
 
 /** Javanese (Basa Jawa)
