@@ -34,23 +34,41 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'geodata-desc' => '{{desc|name=Geo Data|url=http://www.mediawiki.org/wiki/Extension:GeoData}}',
-	'geodata-bad-input' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
-Used as error message.',
-	'geodata-bad-latitude' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
-Used as error message.',
-	'geodata-bad-longitude' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
-Used as error message.',
-	'geodata-bad-type' => '{{doc-important|Do not translate <code>coordinates</code> and <code>nowiki</code>.}}
+	'geodata-bad-input' => '{{doc-important|Do not translate <code>#coordinates</code>.}}
+Used as error message.
+
+This message means that number of the arguments is invalid.',
+	'geodata-bad-latitude' => '{{doc-important|Do not translate <code>#coordinates</code>.}}
+Used as error message.
+
+This message means the value of the "lat" argument is invalid.',
+	'geodata-bad-longitude' => '{{doc-important|Do not translate <code>#coordinates</code>.}}
+Used as error message.
+
+This message means the value of the "lon" argument is invalid.',
+	'geodata-bad-type' => '{{doc-important|Do not translate <code>coordinates</code>.}}
 "type" is the argument name.
+This message means that the value of the argument "type" is unrecognized.
 
 Parameters:
 * $1 - coordinate type. valid types are: country, airport, landmark, etc.',
-	'geodata-bad-globe' => 'Terrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...
+	'geodata-bad-globe' => '{{doc-important|Do not translate <code>coordinates</code>.}}
+"globe" is the argument name.
+This message means that the value of the argument "globe" is unrecognized.
 
-"globe" is the argument name.',
-	'geodata-bad-region' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
-Used as error message.',
-	'geodata-multiple-primary' => '{{doc-important|Do not translate <code>nowiki</code> and <code>#coordinates</code>.}}
+Parameters:
+* $1 - value of the argument "globe"
+
+Terrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...',
+	'geodata-bad-region' => '{{doc-important|Do not translate <code>#coordinates</code>.}}
+Used as error message.
+
+"region" is the argument name.
+This message means that the value of the argument "region" is unrecognized.
+
+Parameters:
+* $1 - region code',
+	'geodata-multiple-primary' => '{{doc-important|Do not translate <code>#coordinates</code>.}}
 Used as error message.',
 	'geodata-limit-exceeded' => '$1 is a number',
 	'geodata-broken-tags-category' => 'Name of the tracking category',
@@ -421,13 +439,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'geodata-desc' => '緯度経度を保存/取得する機能を追加する',
-	'geodata-bad-input' => '<nowiki>{{#coordinates:}}</nowiki> 関数に正しくない引数が渡されました',
-	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: 緯度が正しくありません',
-	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: 経度が正しくありません',
+	'geodata-bad-input' => '<nowiki>{{#coordinates:}}</nowiki> 関数に無効な引数が渡されました',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: 緯度 (lat) の値が無効です',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: 経度 (lon) の値が無効です',
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: 引数 type の値「$1」を認識できません',
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: 引数 globe の値「$1」を認識できません',
-	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: 地域コードの書式が正しくありません',
-	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: primary を指定したタグは各ページに1個しかあってはなりません',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: 地域 (region) コードの書式が無効です',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: 各ページで primary のタグは複数指定できません',
 	'geodata-limit-exceeded' => '<nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|タグ}}の各ページ$1個までという上限を超えています',
 	'geodata-broken-tags-category' => '座標タグに誤りがあるページ',
 	'geodata-unknown-type-category' => '種別不明の座標があるページ',
