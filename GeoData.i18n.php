@@ -774,6 +774,13 @@ $messages['ta'] = array(
 	'geodata-primary-coordinate' => 'முதன்மை',
 );
 
+/** Thai (ไทย)
+ * @author Nullzero
+ */
+$messages['th'] = array(
+	'geodata-broken-tags-category' => 'หน้าที่เรียกใช้แม่แบบพิกัดภูมิศาสตร์ไม่ถูกต้อง',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
