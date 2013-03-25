@@ -801,19 +801,21 @@ $messages['tl'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Ahonc
  * @author Base
+ * @author DixonD
  */
 $messages['uk'] = array(
 	'geodata-desc' => 'Додає можливість зберігати і отримувати географічні координати',
-	'geodata-bad-input' => 'Фунцкції <nowiki>{{#coordinates:}}</nowiki> було передано некоретні аргументи',
+	'geodata-bad-input' => 'Функції <nowiki>{{#coordinates:}}</nowiki> було передано некоректні аргументи',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: недопустима широта',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: недопустима довгота',
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: невпізнаний тип «$1»',
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: невпізнаний глобус «$1»',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: недопустимий формат коду регіону',
-	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: не можна мати більш ніж одну первинний теґ на сторінці',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: не можна мати більш ніж один первинний теґ на сторінку',
 	'geodata-limit-exceeded' => 'Було перевершено обмеження в $1 {{PLURAL:$1|теґ|теґи|теґів}} <nowiki>{{#coordinates:}}</nowiki> на сторінку',
-	'geodata-broken-tags-category' => 'Сторінки з некоректними теґами координат',
+	'geodata-broken-tags-category' => 'Сторінки з некоректно вказаними координатами',
 	'geodata-unknown-type-category' => 'Сторінки з невідомим типом координат',
 	'geodata-unknown-globe-category' => 'Сторінки з невідомим глобусом',
 	'geodata-unknown-region-category' => 'Сторінки з некоректним регіоном',
