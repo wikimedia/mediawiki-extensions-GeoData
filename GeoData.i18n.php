@@ -694,6 +694,8 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitudine invalide',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitudine invalide',
+	'geodata-bad-region' => "<nowiki>{{#coordinates:}}</nowiki>: formate d'u codece d'a reggione invalide",
+	'geodata-multiple-primary' => "<nowiki>{{#coordinates:}}</nowiki>: non ge pozze avè cchiù de 'nu tag prengepàle pe pàgene",
 );
 
 /** Russian (русский)
