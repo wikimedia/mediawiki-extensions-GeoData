@@ -116,7 +116,9 @@ class GeoData {
 					return false;
 				}
 			}
-			$part = $wgContLang->parseFormattedNumber( $part );
+			if ( !is_numeric( $part ) ) {
+				$part = $wgContLang->parseFormattedNumber( $part );
+			}
 			$min = $i == 0 ? $coordInfo['min'] : 0;
 			$max = $i == 0 ? $coordInfo['max'] : 59.999999;
 			if ( !is_numeric( $part )

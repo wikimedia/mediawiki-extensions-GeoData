@@ -4,9 +4,17 @@
  * @group GeoData
  */
 class TagTest extends MediaWikiTestCase {
+	private $contLang;
+
 	public function setUp() {
 		$GLOBALS['wgDefaultDim'] = 1000; // reset to default
+		$this->contLang = $GLOBALS['wgContLang'];
 		parent::setUp();
+	}
+
+	public function tearDown() {
+		$GLOBALS['wgContLang'] = $this->contLang;
+		parent::tearDown();
 	}
 
 	private function setWarnings( $level ) {
@@ -38,7 +46,11 @@ class TagTest extends MediaWikiTestCase {
 	/**
 	 * @dataProvider getLooseData
 	 */
-	public function testLooseTagParsing( $input, $expected ) {
+	public function testLooseTagParsing( $input, $expected, $langCode = false ) {
+		if ( $langCode ) {
+			global $wgContLang;
+			$wgContLang = Language::factory( $langCode );
+		}
 		$this->setWarnings( 'none' );
 		$this->assertParse( $input, $expected );
 	}
@@ -136,6 +148,12 @@ class TagTest extends MediaWikiTestCase {
 			array(
 				'{{#coordinates: 10|20|scale:50000}}', 
 				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 5000 ),
+			),
+			// https://bugzilla.wikimedia.org/show_bug.cgi?id=46181
+			array(
+				'{{#coordinates: 2.5|3,5}}',
+				array( 'lat' => 2.5, 'lon' => 3.5 ),
+				'de',
 			),
 		);
 	}
