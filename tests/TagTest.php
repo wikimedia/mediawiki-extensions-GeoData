@@ -154,6 +154,10 @@ class TagTest extends MediaWikiTestCase {
 				'{{#coordinates: 2.5|3,5}}',
 				array( 'lat' => 2.5, 'lon' => 3.5 ),
 				'de',
+			// https://bugzilla.wikimedia.org/show_bug.cgi?id=47090
+			array(
+				'{{#coordinates: -3.29237|-60.624889|globe=}}',
+				array( 'lat' => -3.29237, 'lon' => -60.624889, 'globe' => 'earth' ),
 			),
 		);
 	}

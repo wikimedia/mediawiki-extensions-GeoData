@@ -136,7 +136,7 @@ class CoordinatesParserFunction {
 		if ( isset( $this->named['geohack'] ) ) {
 			$this->named = array_merge( $this->parseGeoHackArgs( $this->named['geohack'] ), $this->named );
 		}
-		$this->named['globe'] = isset( $this->named['globe'] )
+		$this->named['globe'] = ( isset( $this->named['globe'] ) && $this->named['globe'] )
 			? $wgContLang->lc( $this->named['globe'] )
 			: $wgDefaultGlobe;
 	}
