@@ -136,8 +136,8 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'prop' => array(
-				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region' ),
-				ApiBase::PARAM_DFLT => '',
+				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region', 'globe' ),
+				ApiBase::PARAM_DFLT => 'globe',
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'primary' => array(

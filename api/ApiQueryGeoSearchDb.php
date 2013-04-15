@@ -10,6 +10,8 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 	 * @param ApiPageSet $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ) {
+		global $wgDefaultGlobe;
+
 		wfProfileIn( __METHOD__ );
 		parent::run( $resultPageSet );
 		$params = $this->extractRequestParams();
@@ -71,7 +73,10 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 				foreach( $params['prop'] as $prop ) {
 					if ( isset( Coord::$fieldMapping[$prop] ) && isset( $row->{Coord::$fieldMapping[$prop]} ) ) {
 						$field = Coord::$fieldMapping[$prop];
-						$vals[$prop] = $row->$field;
+						// Don't output default globe
+						if ( !( $prop === 'globe' && $row->$field === $wgDefaultGlobe ) ) {
+							$vals[$prop] = $row->$field;
+						}
 					}
 				}
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );

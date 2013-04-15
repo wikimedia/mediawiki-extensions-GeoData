@@ -9,6 +9,8 @@ class ApiQueryGeoSearchSolr extends ApiQueryGeoSearch {
 	 * @param ApiPageSet $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ) {
+		global $wgDefaultGlobe;
+
 		wfProfileIn( __METHOD__ );
 		parent::run( $resultPageSet );
 
@@ -87,7 +89,10 @@ class ApiQueryGeoSearchSolr extends ApiQueryGeoSearch {
 						$vals['primary'] = '';
 					}
 					foreach( $params['prop'] as $prop ) {
-						$vals[$prop] = $doc->$prop;
+						// Don't output default globe
+						if ( !( $prop === 'globe' && $doc->$prop === $wgDefaultGlobe ) ) {
+							$vals[$prop] = $doc->$prop;
+						}
 					}
 					$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
 					if ( !$fit ) {
