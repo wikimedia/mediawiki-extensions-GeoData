@@ -165,35 +165,12 @@ class GeoData {
 	 * Given an array of non-normalised probabilities, this function will select
 	 * an element and return the appropriate key.
 	 *
-	 * Borrowed from LoadBalancer
-	 *
 	 * @param $weights array
 	 *
 	 * @return int
 	 */
 	public static function pickRandom( $weights ) {
-		if ( !is_array( $weights ) ) {
-			return $weights;
-		}
-		if ( count( $weights ) == 0 ) {
-			return false;
-		}
-
-		$sum = array_sum( $weights );
-		if ( $sum == 0 ) {
-			throw new MWException( __METHOD__ . '(): zero weight sum or no hosts specified');
-		}
-		$max = mt_getrandmax();
-		$rand = mt_rand( 0, $max ) / $max * $sum;
-
-		$sum = 0;
-		foreach ( $weights as $i => $w ) {
-			$sum += $w;
-			if ( $sum >= $rand ) {
-				break;
-			}
-		}
-		return $i;
+		return ArrayUtils::pickRandom( $weights );
 	}
 
 	/**
