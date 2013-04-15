@@ -256,16 +256,17 @@ $messages['fi'] = array(
 
 /** French (français)
  * @author Gomoko
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'geodata-desc' => "Ajoute la fonctionnalité de stockage et d'extraction des coordonnées géographiques.",
-	'geodata-bad-input' => 'Des arguments non valides ont été transmis à la focntion <nowiki>{{#coordinates:}}</nowiki>',
-	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitude invalide',
-	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitude invalide',
-	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: type "$1" non reconnu',
-	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: globe "$1" non reconnu',
-	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: format du code de région invalide',
-	'geodata-multiple-primary' => "<nowiki>{{#coordinates:}}</nowiki>: impossible d'avoir plus d'une balise primaire par page",
+	'geodata-bad-input' => 'Des arguments non valides ont été transmis à la fonction <nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki> : latitude invalide',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki> : longitude invalide',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki> : type « $1 » non reconnu',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki> : globe « $1 » non reconnu',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki> : format du code de région invalide',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki> : impossible d’avoir plus d’une balise primaire par page',
 	'geodata-limit-exceeded' => 'La limite de $1 {{PLURAL:$1|balise|balises}} <nowiki>{{#coordinates:}}</nowiki> par page a été dépassée',
 	'geodata-broken-tags-category' => 'Pages avec des balises de coordonnées mal formées',
 	'geodata-unknown-type-category' => 'Pages avec un type de coordonnées inconnu',
@@ -604,6 +605,24 @@ $messages['mt'] = array(
 	'geodata-unknown-type-category' => "Paġni b'tip ta' koordinati mhux magħrufa",
 	'geodata-unknown-globe-category' => "Paġni b'valur mhux magħruf għall-globu",
 	'geodata-unknown-region-category' => "Paġni b'valur ħażin għar-reġjun",
+);
+
+/** Norwegian Bokmål (norsk bokmål)
+ */
+$messages['nb'] = array(
+	'geodata-desc' => 'Legger til lagring av geografiske koordinater og funksjonalitet for henting av disse',
+	'geodata-bad-input' => 'Ugyldige argumenter ble sendt til <nowiki>{{#coordinates:}}</nowiki>-funksjonen',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: ugyldig breddegrad',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: ugyldig lengdegrad',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: ukjent type «$1»',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: ukjent globe «$1»',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: ugyldig regionkodeformat',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: kan ikke har mer enn én primærtagg per side',
+	'geodata-limit-exceeded' => 'Grensen på $1 <nowiki>{{#coordinates:}}</nowiki>-{{PLURAL:$1|tagg|tagger}} er overskredet',
+	'geodata-broken-tags-category' => 'Sider med feilaktige koordinattagger',
+	'geodata-unknown-type-category' => 'Sider med ukjente koordinattyper',
+	'geodata-unknown-globe-category' => 'Sider med ukjent globeverdi',
+	'geodata-unknown-region-category' => 'Sider med ugyldig regionverdi',
 );
 
 /** Dutch (Nederlands)
