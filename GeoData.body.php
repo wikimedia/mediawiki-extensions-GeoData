@@ -96,8 +96,13 @@ class GeoData {
 		$count = count( $parts );
 		$multiplier = 1;
 		$value = 0;
+		$alreadyFractional = false;
 
 		for ( $i = 0; $i < $count; $i++ ) {
+			// 20° 15.5' 20" is wrong
+			if ( $alreadyFractional ) {
+				return false;
+			}
 			$part = $parts[$i];
 			if ( $i > 0 && $i == $count - 1 ) {
 				$suffix = self::parseSuffix( $part, $coordInfo );
@@ -119,6 +124,7 @@ class GeoData {
 				|| $part > $max ) {
 				return false;
 			}
+			$alreadyFractional = $part != intval( $part );
 			$value += $part * $multiplier * GeoDataMath::sign( $value );
 			$multiplier /= 60;
 		}

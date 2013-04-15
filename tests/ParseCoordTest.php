@@ -58,6 +58,12 @@ class ParseCoordTest extends MediaWikiTestCase {
 			array( array( 1, 2, 3, 'N', 'E' ), false ),
 			array( array( 1, 2, 3, 'N', 1, 'E' ), false ),
 			array( array( 1, 2, 3, 'N', 1, 2, 'E' ), false ),
+			// Fractional numbers inconsistency
+			array( array( 1, 2.1, 3, 1, 2, 3 ), false ),
+			array( array( 1, 2.1, 3.2, 1, 2, 3 ), false ),
+			array( array( 1.00000001, 2.1, 3.2, 1, 2, 3 ), false ),
+			array( array( 1.00000001, 2.1, 3, 1, 2, 3 ), false ),
+			array( array( 1.00000001, 2, 3, 1, 2, 3 ), false ),
 			// coordinate validation (Earth)
 			array( array( -90, 180 ), new Coord( -90, 180 ) ),
 			array( array( 90.0000001, -180.00000001 ), false ),
