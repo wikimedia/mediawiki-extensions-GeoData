@@ -485,6 +485,7 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Kwj2772
  * @author 아라
  */
 $messages['ko'] = array(
@@ -497,7 +498,7 @@ $messages['ko'] = array(
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: 잘못된 지역 코드 형식',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: 문서당 기본 태그 하나 이상을 가질 수 없습니다',
 	'geodata-limit-exceeded' => '문서당 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|태그}} $1개 제한을 초과했습니다',
-	'geodata-broken-tags-category' => '형식이 잘못된 좌표 태그로 된 문서',
+	'geodata-broken-tags-category' => '좌표 태그가 잘못된 문서',
 	'geodata-unknown-type-category' => '알 수 없는 좌표 유형으로 된 문서',
 	'geodata-unknown-globe-category' => '알 수 없는 세계 값으로 된 문서',
 	'geodata-unknown-region-category' => '잘못된 지역 값으로 된 문서',
