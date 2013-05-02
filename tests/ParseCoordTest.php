@@ -32,8 +32,8 @@ class ParseCoordTest extends MediaWikiTestCase {
 			array( array( -20, 30, 40, 45 ), new Coord( -20.5, 40.75 ) ),
 			array( array( 20, 30, 40, 40, 45, 55 ), new Coord( 20.511111111111, 40.765277777778 ) ),
 			// NESW
-			array( array( 20, 'N', 30, 'E' ), new Coord( 20, 30 ) ),
-			array( array( 20, 'N', 30, 'W' ), new Coord( 20, -30 ) ),
+			array( array( 20.1, 'N', 30, 'E' ), new Coord( 20.1, 30 ) ),
+			array( array( 20, 'N', 30.5, 'W' ), new Coord( 20, -30.5 ) ),
 			array( array( 20, 'S', 30, 'E' ), new Coord( -20, 30 ) ),
 			array( array( 20, 'S', 30, 'W' ), new Coord( -20, -30 ) ),
 			array( array( 20, 30, 40, 'S', 40, 45, 55, 'E' ), new Coord( -20.511111111111, 40.765277777778 ) ),
@@ -71,9 +71,9 @@ class ParseCoordTest extends MediaWikiTestCase {
 			array( array( 10, -1, 20, 0 ), false ),
 			array( array( 25, 60, 10, 0 ), false ),
 			array( array( 25, 0, 0, 10, 0, 60 ), false ),
-			// @todo: only the last component of the coordinate should be non-integer
-			//array( array( 10.5, 0, 20, 0 ), false ),
-			//array( array( 10, 30.5, 0, 20, 0, 0 ), false ),
+			// only the last component of the coordinate should be non-integer
+			array( array( 10.5, 0, 20, 0 ), false ),
+			array( array( 10, 30.5, 0, 20, 0, 0 ), false ),
 			// coordinate validation and normalisation (non-Earth)
 			array( array( 10, 20 ), new Coord( 10, 20 ), 'mars' ),
 			array( array( 110, 20 ), false, 'mars' ),

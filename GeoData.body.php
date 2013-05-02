@@ -99,10 +99,6 @@ class GeoData {
 		$alreadyFractional = false;
 
 		for ( $i = 0; $i < $count; $i++ ) {
-			// 20° 15.5' 20" is wrong
-			if ( $alreadyFractional ) {
-				return false;
-			}
 			$part = $parts[$i];
 			if ( $i > 0 && $i == $count - 1 ) {
 				$suffix = self::parseSuffix( $part, $coordInfo );
@@ -115,6 +111,10 @@ class GeoData {
 				} elseif ( $i == 3 ) {
 					return false;
 				}
+			}
+			// 20° 15.5' 20" is wrong
+			if ( $alreadyFractional ) {
+				return false;
 			}
 			if ( !is_numeric( $part ) ) {
 				$part = $wgContLang->parseFormattedNumber( $part );
