@@ -64,6 +64,12 @@ class ParseCoordTest extends MediaWikiTestCase {
 			array( array( 1.00000001, 2.1, 3.2, 1, 2, 3 ), false ),
 			array( array( 1.00000001, 2.1, 3, 1, 2, 3 ), false ),
 			array( array( 1.00000001, 2, 3, 1, 2, 3 ), false ),
+			// only the last component of the coordinate should be non-integer
+			array( array( 10.5, 1, 20, 0 ), false ),
+			array( array( 10, 30.5, 1, 20, 0, 0 ), false ),
+			// Exception per https://bugzilla.wikimedia.org/show_bug.cgi?id=48488
+			array( array( 1.5, 0, 2.5, 0 ), new Coord( 1.5, 2.5 ) ),
+			array( array( 1, 2.5, 0, 3, 4.5, 0 ), new Coord( 1.0416666666667, 3.075 ) ),
 			// coordinate validation (Earth)
 			array( array( -90, 180 ), new Coord( -90, 180 ) ),
 			array( array( 90.0000001, -180.00000001 ), false ),
@@ -71,9 +77,6 @@ class ParseCoordTest extends MediaWikiTestCase {
 			array( array( 10, -1, 20, 0 ), false ),
 			array( array( 25, 60, 10, 0 ), false ),
 			array( array( 25, 0, 0, 10, 0, 60 ), false ),
-			// only the last component of the coordinate should be non-integer
-			array( array( 10.5, 0, 20, 0 ), false ),
-			array( array( 10, 30.5, 0, 20, 0, 0 ), false ),
 			// coordinate validation and normalisation (non-Earth)
 			array( array( 10, 20 ), new Coord( 10, 20 ), 'mars' ),
 			array( array( 110, 20 ), false, 'mars' ),

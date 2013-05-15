@@ -113,7 +113,7 @@ class GeoData {
 				}
 			}
 			// 20° 15.5' 20" is wrong
-			if ( $alreadyFractional ) {
+			if ( $alreadyFractional && $part ) {
 				return false;
 			}
 			if ( !is_numeric( $part ) ) {
