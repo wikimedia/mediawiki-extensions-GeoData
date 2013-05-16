@@ -1,4 +1,4 @@
--- SQL schema for GeoData extension, Sphinx-aware
+-- SQL schema for GeoData extension, Solr-aware
 
 -- Stores information about geographical coordinates in articles
 CREATE TABLE /*_*/geo_tags (
@@ -30,7 +30,7 @@ CREATE TABLE /*_*/geo_tags (
 CREATE INDEX /*i*/gt_page_primary ON /*_*/geo_tags ( gt_page_id, gt_primary );
 CREATE INDEX /*i*/gt_page_id_id ON /*_*/geo_tags ( gt_page_id, gt_id );
 
--- Stores Sphinx search kill-list (ids of records deleted from geo_tags)
+-- Stores kill-list (ids of records deleted from geo_tags that need to be deleted from the Solr index)
 CREATE TABLE /*_*/geo_killlist (
 	-- Row ID
 	gk_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
