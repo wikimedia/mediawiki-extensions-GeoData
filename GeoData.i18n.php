@@ -530,6 +530,7 @@ $messages['lb'] = array(
 	'geodata-desc' => 'Setzt Fonctionalitéite vum Späicheren an Ofruffe vu geografesche Koordinaten derbäi',
 	'geodata-bad-input' => "Et goufen net valabel Argumenter un d'Fonctioun <nowiki>{{#coordinates:}}</nowiki> virugereecht",
 	'geodata-bad-type' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: onbekannte Koordinatentyp "$1"',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: Et kann nëmmen e primären Tag pro Säit ginn',
 	'geodata-broken-tags-category' => 'Säite mat Koordinaten, wou e Feeler an de Koordinaten ass',
 	'geodata-unknown-type-category' => 'Säite mat engem onbekannten Typ vu Koordinaten',
 	'geodata-unknown-globe-category' => 'Säite mat engem onbekannte Wäert fir de Globus',
