@@ -61,10 +61,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			foreach( $params['prop'] as $prop ) {
 				if ( isset( Coord::$fieldMapping[$prop] ) && isset( $row->{Coord::$fieldMapping[$prop]} ) ) {
 					$field = Coord::$fieldMapping[$prop];
-					// Don't output default globe
-					if ( !( $prop === 'globe' && $row->$field === $wgDefaultGlobe ) ) {
-						$vals[$prop] = $row->$field;
-					}
+					$vals[$prop] = $row->$field;
 				}
 			}
 			$fit = $this->addPageSubItem( $row->gt_page_id, $vals );
