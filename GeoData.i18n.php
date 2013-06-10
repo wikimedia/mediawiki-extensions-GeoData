@@ -891,3 +891,10 @@ $messages['zh-hans'] = array(
 	'geodata-unknown-globe-category' => '包含未知星球值的页面',
 	'geodata-unknown-region-category' => '包含无效地区值的页面',
 );
+
+/** Traditional Chinese (中文（繁體）‎)
+ * @author Justincheng12345
+ */
+$messages['zh-hant'] = array(
+	'geodata-desc' => '添加地理座標存儲及取回功能',
+);
