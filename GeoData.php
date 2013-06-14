@@ -7,7 +7,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'GeoData',
 	'author' => array( 'Max Semenik' ),
-	'url' => 'https://mediawiki.org/wiki/Extension:GeoData',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:GeoData',
 	'descriptionmsg' => 'geodata-desc',
 );
 
