@@ -16,7 +16,6 @@ $dir = __DIR__;
 $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
 $wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
-$wgAutoloadClasses['ApiQueryGeoSearchSphinx'] = "$dir/api/ApiQueryGeoSearchSphinx.php";
 $wgAutoloadClasses['ApiQueryGeoSearchSolr'] = "$dir/api/ApiQueryGeoSearchSolr.php";
 $wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoData.php";
 $wgAutoloadClasses['ApiQueryCategoryMembers_GeoData'] = "$dir/api/ApiQueryCategoryMembers_GeoData.php";
@@ -32,7 +31,6 @@ $wgAutoloadClasses['SolrUpdate'] = "$dir/solrupdate.php";
 $wgAutoloadClasses['SolrUpdateJob'] = "$dir/solr/SolrUpdateJob.php";
 $wgAutoloadClasses['SolrUpdateWork'] = "$dir/solr/SolrUpdateWork.php";
 
-$wgAutoloadClasses['SphinxClient'] = "$dir/sphinx/sphinxapi.php";
 $wgAutoloadClasses['SolrGeoData'] = "$dir/solr/SolrGeoData.php";
 
 $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
@@ -181,24 +179,10 @@ $wgGeoDataDisableParserFunction = false;
 $wgGeoDataIndexGranularity = 10;
 
 /**
- * Which backend should be used by spatial searhces: 'db', 'solr' or 'sphinx'
+ * Which backend should be used by spatial searhces: 'db' or 'solr'
  */
 $wgGeoDataBackend = 'db';
 
-/**
- * Sphinx index name
- */
-$wgGeoDataSphinxIndex = 'geodata';
-
-/**
- * Sphinx hosts list, string or array( 'host1' => weight1, 'host2' => weight2 ... )
- */
-$wgGeoDataSphinxHosts = 'localhost';
-
-/**
- * Sphinx port
- */
-$wgGeoDataSphinxPort = 9312;
 
 // Solr-specific settings
 
