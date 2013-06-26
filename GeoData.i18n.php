@@ -233,12 +233,14 @@ $messages['et'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Mjbmr
  * @author جواد
  */
 $messages['fa'] = array(
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: عرض جغرافیایی نامعتبر',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: طول جغرافیایی نامعتبر',
+	'geodata-broken-tags-category' => 'صفحه‌های دارای برچسب مختصات ناقص',
 );
 
 /** Finnish (suomi)
