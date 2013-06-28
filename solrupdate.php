@@ -37,7 +37,7 @@ class SolrUpdate extends Maintenance {
 	 * Called internally
 	 */
 	public function safeExecute() {
-		global $wgGeoDataBackend;
+		global $wgGeoDataBackend, $wgGeoDataSolrCommitPolicy;
 		if ( $wgGeoDataBackend != 'solr' ) {
 			$this->error( "This script is only for wikis with Solr GeoData backend", true );
 		}
@@ -134,8 +134,8 @@ class SolrUpdate extends Maintenance {
 					$docs[] = $doc;
 				}
 				if ( $docs ) {
-					$update->addDocuments( $docs );
-					$update->addCommit();
+					$update->addDocuments( $docs, null, $this->commitWithin() );
+					$this->addCommit( $update );
 					$solr->update( $update );
 
 					$count += count( $docs );
@@ -169,7 +169,9 @@ class SolrUpdate extends Maintenance {
 				}
 				if ( $killedIds ) {
 					$update->addDeleteByIds( $killedIds );
-					$update->addCommit();
+					if ( $wgGeoDataSolrCommitPolicy === 'immediate' ) {
+						$update->addCommit();
+					}
 					$solr->update( $update );
 
 					$count += count( $killedIds );
@@ -177,6 +179,13 @@ class SolrUpdate extends Maintenance {
 					usleep( self::READ_DELAY );
 				}
 			} while ( $res->numRows() > 0 );
+			// delete queries don't support commitWithin, so if we're in commitWithin mode,
+			// just commit after we're done deleting
+			if ( $count && is_int( $wgGeoDataSolrCommitPolicy ) ) {
+				$update = $solr->createUpdate();
+				$update->addCommit();
+				$solr->update( $update );
+			}
 		}
 
 		$dbw->replace( 'geo_updates',
@@ -184,6 +193,32 @@ class SolrUpdate extends Maintenance {
 			array( 'gu_wiki' => $wikiId, 'gu_last_tag' => $lastTag, 'gu_last_kill' => $lastKill ),
 			__METHOD__
 		);
+	}
+
+	/**
+	 * @param Solarium_Query_Update $update
+	 */
+	private function addCommit( $update ) {
+		global $wgGeoDataSolrCommitPolicy;
+
+		if ( $wgGeoDataSolrCommitPolicy === 'immediate' ) {
+			$update->addCommit();
+		} elseif ( !( is_int( $wgGeoDataSolrCommitPolicy ) && $wgGeoDataSolrCommitPolicy > 0 )
+			&& $wgGeoDataSolrCommitPolicy !== 'never' ) {
+			throw new MWException( "'$wgGeoDataSolrCommitPolicy' is not a valid \$wgGeoDataSolrCommitPolicy value" );
+		}
+	}
+
+	/**
+	 * @return int|null: Number of milliseconds to commit within or null if not applicable
+	 */
+	private function commitWithin() {
+		global $wgGeoDataSolrCommitPolicy;
+
+		if ( is_int( $wgGeoDataSolrCommitPolicy ) ) {
+			return $wgGeoDataSolrCommitPolicy;
+		}
+		return null;
 	}
 
 	/**

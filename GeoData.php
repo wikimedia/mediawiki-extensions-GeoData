@@ -209,6 +209,15 @@ $wgGeoDataSolrHosts = 'localhost';
 $wgGeoDataSolrMaster = 'localhost';
 
 /**
+ * @var int|string: Commit policy
+ * Possible values:
+ * - 'never': Never commit explicitly, let Solr decide on its own.
+ * - 'immediate': Commit after every change.
+ * - (some number): Commit within this number of milliseconds.
+ */
+$wgGeoDataSolrCommitPolicy = 'immediate';
+
+/**
  * Whether search index should be updated via jobs. Supported only for Solr.
  */
 $wgGeoDataUpdatesViaJob = false;
