@@ -244,6 +244,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (suomi)
+ * @author Stryn
  * @author VezonThunder
  */
 $messages['fi'] = array(
@@ -254,6 +255,9 @@ $messages['fi'] = array(
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tuntematon tyyppi "$1"',
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: tuntematon karttapallo "$1"',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: virheellinen aluekoodin muoto',
+	'geodata-broken-tags-category' => 'Sivut, joissa väärin merkityt koordinaatit',
+	'geodata-unknown-type-category' => 'Sivut, joissa koordinaatin tyyppi on tuntematon',
+	'geodata-unknown-region-category' => 'Sivut, joissa virheellinen alueen arvo',
 );
 
 /** French (français)
