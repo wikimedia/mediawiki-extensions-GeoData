@@ -197,6 +197,25 @@ $messages['diq'] = array(
 	'geodata-primary-coordinate' => 'Sıfteyên',
 );
 
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'geodata-desc' => 'Προσθέτει λειτουργία αποθήκευσης και ανάκτησης γεωγραφικών συντεταγμένων',
+	'geodata-bad-input' => 'Εσφαλμένες παράμετροι έχουν περάσει στην συνάρτηση  <nowiki>{{#coordinates:}}</nowiki>',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: λάθος πλάτος',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: λάθος μήκος',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: μη αναγνωρισμένος τύπος "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: μη αναγνωρισμένη σφαίρα "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: ανέγκυρη μορφή κώδικα περιοχής',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: δεν είναι δυνατή η ύπαρξη περισσότερων από ενός κύριου tag ανά σελίδα',
+	'geodata-limit-exceeded' => 'Το όριο $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tags}} ανά σελίδα έχει ξεπεραστεί',
+	'geodata-broken-tags-category' => 'Σελίδες με εσφαλμένες ετικέτες συντεταγμένων',
+	'geodata-unknown-type-category' => 'Σελίδες με άγνωστο τύπο συντεταγμένων',
+	'geodata-unknown-globe-category' => 'Σελίδες με άγνωστη τιμή σφαίρας',
+	'geodata-unknown-region-category' => 'Σελίδες με ανέγκυρη τιμή περιοχής',
+);
+
 /** British English (British English)
  * @author Amire80
  */
@@ -246,6 +265,7 @@ $messages['fa'] = array(
 /** Finnish (suomi)
  * @author Stryn
  * @author VezonThunder
+ * @author Zache
  */
 $messages['fi'] = array(
 	'geodata-desc' => 'Lisää maantieteellisten koordinaattien säilöntä- ja hakutoiminnot',
@@ -255,8 +275,11 @@ $messages['fi'] = array(
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tuntematon tyyppi "$1"',
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: tuntematon karttapallo "$1"',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: virheellinen aluekoodin muoto',
-	'geodata-broken-tags-category' => 'Sivut, joissa väärin merkityt koordinaatit',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>:  sivulla ei voi olla kuin yksi ensisijainen koordinaattimerkintä',
+	'geodata-limit-exceeded' => 'Raja  $1  <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1| tag|tags}} sivulla on ylitetty',
+	'geodata-broken-tags-category' => 'Väärin merkittyjä koordinaatteja sisältävät sivut',
 	'geodata-unknown-type-category' => 'Sivut, joissa koordinaatin tyyppi on tuntematon',
+	'geodata-unknown-globe-category' => 'Sivut joissa on tuntematon globe-arvo',
 	'geodata-unknown-region-category' => 'Sivut, joissa virheellinen alueen arvo',
 );
 
