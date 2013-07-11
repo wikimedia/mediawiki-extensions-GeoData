@@ -172,8 +172,8 @@ class SolrUpdate extends Maintenance {
 					if ( $wgGeoDataSolrCommitPolicy === 'immediate' ) {
 						$update->addCommit();
 					}
-					$res = $solr->update( $update );
-					wfDebugLog( 'geodata', "Deleting " . count( $killedIds ) . " docs, response: {$res->getResponse()->getBody()}" );
+					$solrResult = $solr->update( $update );
+					wfDebugLog( 'geodata', "Deleting " . count( $killedIds ) . " docs, response: {$solrResult->getResponse()->getBody()}" );
 
 					$count += count( $killedIds );
 					$this->output( "   $count\n" );
