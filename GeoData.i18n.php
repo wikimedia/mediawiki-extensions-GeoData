@@ -151,6 +151,13 @@ $messages['ca'] = array(
 	'geodata-unknown-region-category' => 'Pàgines amb valor de regió no vàlid',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'geodata-bad-input' => 'Функци <nowiki>{{#coordinates:}}</nowiki> чу нийса йоцу билгалонаш йихкина',
+);
+
 /** Czech (česky)
  * @author Jkjk
  * @author Mormegil
@@ -589,7 +596,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'geodata-desc' => 'ഭൂസ്ഥിരാങ്കാങ്ങൾ ശേഖരിക്കാനും എടുക്കാനുമുള്ള സൗകര്യം കൂട്ടിച്ചേർക്കുന്നു',
+	'geodata-desc' => 'ഭൂസ്ഥിരാങ്കങ്ങൾ ശേഖരിക്കാനും എടുക്കാനുമുള്ള സൗകര്യം കൂട്ടിച്ചേർക്കുന്നു',
 	'geodata-bad-input' => '<nowiki>{{#coordinates:}}</nowiki> സൗകര്യത്തിലേയ്ക്ക് അസാധുവായ വിലയാണ് കടത്തിവിട്ടത്',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: അസാധുവായ അക്ഷാംശം',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: അസാധുവായ രേഖാംശം',
