@@ -256,6 +256,12 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: vigane laius',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: vigane pikkus',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: tundmatu tüüp "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: vigases vormingus piirkonnakood',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: leheküljel ei saa olla üle ühe põhisildi',
+	'geodata-broken-tags-category' => 'Vigaste koordinaadisiltidega leheküljed',
+	'geodata-unknown-type-category' => 'Tundmatut tüüpi koordinaatidega leheküljed',
+	'geodata-unknown-region-category' => 'Vigase piirkonnaväärtusega leheküljed',
 );
 
 /** Persian (فارسی)
