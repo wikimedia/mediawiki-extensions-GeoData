@@ -536,7 +536,7 @@ $messages['ka'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'geodata-desc' => '지리적 좌표 저장 및 검색 기능 추가',
+	'geodata-desc' => '지리적 좌표 저장 및 검색 기능을 추가합니다',
 	'geodata-bad-input' => '<nowiki>{{#coordinates:}}</nowiki> 함수에 잘못된 인수를 전달했습니다',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: 잘못된 위도',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: 잘못된 경도',
