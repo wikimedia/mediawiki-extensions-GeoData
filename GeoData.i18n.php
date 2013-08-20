@@ -734,18 +734,24 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (português)
+ * @author Cainamarques
  * @author Helder.wiki
  * @author Opraco
  */
 $messages['pt'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitude inválida',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitude inválida',
 	'geodata-broken-tags-category' => 'Páginas com coordenadas formatadas incorretamente',
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Helder.wiki
  * @author Opraco
  */
 $messages['pt-br'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: latitude inválida',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: longitude inválida',
 	'geodata-broken-tags-category' => 'Páginas com coordenadas formatadas incorretamente',
 );
 
