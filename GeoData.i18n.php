@@ -61,13 +61,13 @@ Parameters:
 
 Terrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...',
 	'geodata-bad-region' => '{{doc-important|Do not translate <code>#coordinates</code>.}}
-Used as error message.
+Used as fatal error message.
 
 "region" is the argument name.
 This message means that the value of the argument "region" is unrecognized.
 
 Parameters:
-* $1 - region code',
+* $1 - (Unused) region code',
 	'geodata-multiple-primary' => '{{doc-important|Do not translate <code>#coordinates</code>.}}
 Used as error message.',
 	'geodata-limit-exceeded' => '$1 is a number',
@@ -163,16 +163,16 @@ $messages['ce'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
-	'geodata-desc' => 'Přidá funkci samostatného uchovávání a vyhledávání zeměpisných souřadnic',
+	'geodata-desc' => 'Přidává funkcionality pro ukládání a načítání zeměpisných souřadnic',
 	'geodata-bad-input' => 'Funkci <nowiki>{{#coordinates:}}</nowiki> byly předány neplatné parametry',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: nesprávná zeměpisná šířka',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: nesprávná zeměpisná délka',
-	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: nerozpoznán typ "$1"',
-	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: nerozpoznána planeta "$1"',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: nerozpoznán typ „$1“',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: nerozpoznáno těleso „$1“',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: nesprávný kód regionu',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: na stránce není možné mít více než jeden hlavní štítek',
-	'geodata-limit-exceeded' => 'Limit $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|štítku|štítků}} na stránku byl překročen',
-	'geodata-broken-tags-category' => 'Stránky s nesprávnými štítky zeměpisných souřadnic',
+	'geodata-limit-exceeded' => 'Limit $1 {{PLURAL:$1|štítku|štítků}} <nowiki>{{#coordinates:}}</nowiki> na stránku byl překročen',
+	'geodata-broken-tags-category' => 'Stránky s nesprávnými značkami zeměpisných souřadnic',
 	'geodata-unknown-type-category' => 'Stránky s neznámým typem zeměpisných souřadnic',
 	'geodata-unknown-globe-category' => 'Stránky s neznámým označením planety',
 	'geodata-unknown-region-category' => 'Stránky s nesprávným regionem',
