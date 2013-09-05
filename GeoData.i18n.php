@@ -70,7 +70,8 @@ Parameters:
 * $1 - (Unused) region code',
 	'geodata-multiple-primary' => '{{doc-important|Do not translate <code>#coordinates</code>.}}
 Used as error message.',
-	'geodata-limit-exceeded' => '$1 is a number',
+	'geodata-limit-exceeded' => 'Used as fatal error message. Parameters:
+* $1 - number of tags; value of the global variable <code>$wgMaxCoordinatesPerPage</code>',
 	'geodata-broken-tags-category' => 'Name of the tracking category',
 	'geodata-unknown-type-category' => 'Name of the tracking category',
 	'geodata-unknown-globe-category' => 'Name of the tracking category',
