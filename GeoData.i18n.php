@@ -179,6 +179,14 @@ $messages['cs'] = array(
 	'geodata-unknown-region-category' => 'Stránky s nesprávným regionem',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: lledred annilys',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: hydred annilys',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -695,6 +703,25 @@ $messages['nl'] = array(
 	'geodata-unknown-type-category' => "Pagina's met onbekend type coördinaten",
 	'geodata-unknown-globe-category' => "Pagina's met onbekende waarde voor wereldbol",
 	'geodata-unknown-region-category' => "Pagina's met ongeldige waarde voor regio",
+);
+
+/** Occitan (occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'geodata-desc' => "Apond la foncionalitat d'emmagazinatge e d'extraccion de las coordonenadas geograficas.",
+	'geodata-bad-input' => "D'arguments invalids son estats transmeses a la foncion <nowiki>{{#coordinates:}}</nowiki>",
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki> : latitud invalida',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki> : longitud invalida',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki> : tipe « $1 » pas reconegut',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki> : glòb « $1 » pas reconegut',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki> : format del còde de region invalid',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki> : impossible d’aver mai d’una balisa primària per pagina',
+	'geodata-limit-exceeded' => 'Lo limit de $1 {{PLURAL:$1|balisa|balisas}} <nowiki>{{#coordinates:}}</nowiki> per pagina es estat depassat',
+	'geodata-broken-tags-category' => 'Paginas amb de balisas de coordenadas mal formadas',
+	'geodata-unknown-type-category' => 'Paginas amb un tipe de coordenadas desconegut',
+	'geodata-unknown-globe-category' => 'Paginas amb una valor de glòb desconeguda',
+	'geodata-unknown-region-category' => 'Paginas amb una valor de region invalida',
 );
 
 /** Polish (polski)
