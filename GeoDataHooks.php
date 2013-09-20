@@ -77,6 +77,8 @@ class GeoDataHooks {
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id ) {
 		global $wgGeoDataBackend;
+
+		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
 		if ( $wgGeoDataBackend != 'db' ) {
 			$res = $dbw->select( 'geo_tags', 'gt_id', array( 'gt_page_id' => $id ), __METHOD__ );
@@ -90,6 +92,8 @@ class GeoDataHooks {
 		}
 		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $id ), __METHOD__ );
 		GeoData::maybeUpdate();
+		wfProfileOut( __METHOD__ );
+
 		return true;
 	}
 
@@ -102,10 +106,13 @@ class GeoDataHooks {
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
 		global $wgUseDumbLinkUpdate, $wgGeoDataBackend;
+
+		wfProfileIn( __METHOD__ );
 		$out = $linksUpdate->getParserOutput();
 		$data = array();
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
 		if ( isset( $out->geoData ) ) {
+			/** @var CoordinatesOutput $geoData */
 			$geoData = $out->geoData;
 			// Use coordinates from file metadata unless overridden on description page
 			if ( $coordFromMetadata && !$geoData->getPrimary() ) {
@@ -121,6 +128,8 @@ class GeoDataHooks {
 			self::doSmartUpdate( $data, $linksUpdate->mId );
 		}
 		GeoData::maybeUpdate();
+		wfProfileOut( __METHOD__ );
+
 		return true;
 	}
 
@@ -165,6 +174,7 @@ class GeoDataHooks {
 	}
 
 	private static function doDumbUpdate( $coords, $pageId ) {
+		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $pageId ), __METHOD__ );
 		$rows = array();
@@ -172,11 +182,13 @@ class GeoDataHooks {
 			$rows[] = $coord->getRow( $pageId );
 		}
 		$dbw->insert( 'geo_tags', $rows, __METHOD__ );
+		wfProfileOut( __METHOD__ );
 	}
 
 	private static function doSmartUpdate( $coords, $pageId ) {
 		global $wgGeoDataBackend;
 
+		wfProfileIn( __METHOD__ );
 		$prevCoords = GeoData::getAllCoordinates( $pageId, array(), DB_MASTER );
 		$add = array();
 		$delete = array();
@@ -210,6 +222,7 @@ class GeoDataHooks {
 		if ( count( $add ) ) {
 			$dbw->insert( 'geo_tags', $add, __METHOD__ );
 		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -220,11 +233,13 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onFileUpload( LocalFile $file ) {
+		wfProfileIn( __METHOD__ );
 		$wp = WikiPage::factory( $file->getTitle() );
 		$po = new ParserOptions();
 		$pout = $wp->getParserOutput( $po );
 		$lu = new LinksUpdate( $file->getTitle(), $pout );
 		self::onLinksUpdate( $lu );
+		wfProfileOut( __METHOD__ );
 		return true;
 	}
 }
