@@ -237,7 +237,7 @@ class GeoDataHooks {
 		$wp = WikiPage::factory( $file->getTitle() );
 		$po = new ParserOptions();
 		$pout = $wp->getParserOutput( $po );
-		if ( $pout ) {
+		if ( !$pout ) {
 			wfDebugLog( 'mobile', __METHOD__ . "(): no parser output returned for file {$file->getName()}" );
 			$lu = new LinksUpdate( $file->getTitle(), $pout );
 			self::onLinksUpdate( $lu );
