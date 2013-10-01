@@ -185,6 +185,10 @@ $messages['cs'] = array(
 $messages['cy'] = array(
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: lledred annilys',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: hydred annilys',
+	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: ni adnabuwyd y math "$1"',
+	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: ni adnabuwyd y glôb "$1"',
+	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: fformat annilys i god y parth',
+	'geodata-unknown-region-category' => 'Tudalennau â gwerth parth annilys ynddynt',
 );
 
 /** German (Deutsch)
@@ -581,10 +585,11 @@ $messages['ksh'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Soued031
  */
 $messages['lb'] = array(
-	'geodata-desc' => 'Setzt Fonctionalitéite vum Späicheren an Ofruffe vu geografesche Koordinaten derbäi',
-	'geodata-bad-input' => "Et goufen net valabel Argumenter un d'Fonctioun <nowiki>{{#coordinates:}}</nowiki> virugereecht",
+	'geodata-desc' => 'Setzt Funktionalitéite vum Späicheren an Ofruffe vu geographesche Koordinaten derbäi',
+	'geodata-bad-input' => "Et goufen net valabel Argumenter un d'Funktioun <nowiki>{{#coordinates:}}</nowiki> virugereecht",
 	'geodata-bad-type' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: onbekannte Koordinatentyp "$1"',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: de Format vum code vun der Regioun ass net valabel',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: Et kann nëmmen e primären Tag pro Säit ginn',
