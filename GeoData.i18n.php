@@ -188,6 +188,7 @@ $messages['cy'] = array(
 	'geodata-bad-type' => '<nowiki>{{#coordinates:}}</nowiki>: ni adnabuwyd y math "$1"',
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: ni adnabuwyd y glôb "$1"',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: fformat annilys i god y parth',
+	'geodata-unknown-type-category' => 'Tudalennau gyda math anhysbys o gyfesurynnau',
 	'geodata-unknown-region-category' => 'Tudalennau â gwerth parth annilys ynddynt',
 );
 
