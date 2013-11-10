@@ -46,18 +46,8 @@ class CoordinatesParserFunction {
 
 		$this->unnamed = array();
 		$this->named = array();
-		$first = trim( $frame->expand( array_shift( $args ) ) );
-		$this->addArg( $first );
-		foreach ( $args as $arg ) {
-			$bits = $arg->splitArg();
-			$value = trim( $frame->expand( $bits['value'] ) );
-			if ( $bits['index'] === '' ) {
-				$this->named[trim( $frame->expand( $bits['name'] ) )] = $value;
-			} else {
-				$this->addArg( $value );
-			}
-		}
-		$this->parseTagArgs();
+		$this->parseArgs( $frame, $args );
+		$this->processArgs();
 		$status = GeoData::parseCoordinates( $this->unnamed, $this->named['globe'] );
 		if ( $status->isGood() ) {
 			$coord = $status->value;
@@ -80,6 +70,27 @@ class CoordinatesParserFunction {
 		}
 		wfProfileOut( __METHOD__ );
 		return array( "<span class=\"error\">{$errorText}</span>", 'noparse' => false );
+	}
+
+	/**
+	 * Parses parser function input
+	 * @param PPFrame $frame
+	 * @param Array $args
+	 */
+	private function parseArgs( $frame, $args ) {
+		wfProfileIn( __METHOD__ );
+		$first = trim( $frame->expand( array_shift( $args ) ) );
+		$this->addArg( $first );
+		foreach ( $args as $arg ) {
+			$bits = $arg->splitArg();
+			$value = trim( $frame->expand( $bits['value'] ) );
+			if ( $bits['index'] === '' ) {
+				$this->named[trim( $frame->expand( $bits['name'] ) )] = $value;
+			} else {
+				$this->addArg( $value );
+			}
+		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -130,7 +141,7 @@ class CoordinatesParserFunction {
 	/**
 	 * Merges parameters with decoded GeoHack data, sets default globe
 	 */
-	private function parseTagArgs() {
+	private function processArgs() {
 		global $wgDefaultGlobe, $wgContLang;
 		// fear not of overwriting the stuff we've just received from the geohack param, it has minimum precedence
 		if ( isset( $this->named['geohack'] ) ) {
