@@ -38,11 +38,12 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onUnitTestsList( &$files ) {
-		$dir = dirname( __FILE__ ) . "/tests";
-		$files[] = "$dir/ParseCoordTest.php";
+		$dir = __DIR__ . '/tests';
+		$files[] = "$dir/CoordTest.php";
 		$files[] = "$dir/GeoDataMathTest.php";
-		$files[] = "$dir/TagTest.php";
 		$files[] = "$dir/MiscGeoDataTest.php";
+		$files[] = "$dir/ParseCoordTest.php";
+		$files[] = "$dir/TagTest.php";
 		return true;
 	}
 
@@ -192,10 +193,15 @@ class GeoDataHooks {
 		$prevCoords = GeoData::getAllCoordinates( $pageId, array(), DB_MASTER );
 		$add = array();
 		$delete = array();
+		$primary = ( isset( $coords[0] ) && $coords[0]->primary ) ? $coords[0] : null;
 		foreach ( $prevCoords as $old ) {
 			$delete[$old->id] = $old;
 		}
+		/** @var Coord $new */
 		foreach ( $coords as $new ) {
+			if ( !$new->primary && $new->equalsTo( $primary ) ) {
+				continue; // Don't save secondary coordinates pointing to the same place as the primary one
+			}
 			$match = false;
 			foreach ( $delete as $id => $old ) {
 				if ( $new->fullyEqualsTo( $old ) ) {

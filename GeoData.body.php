@@ -208,11 +208,12 @@ class Coord {
 		$country,
 		$region;
 
-	public function __construct( $lat, $lon ) {
+	public function __construct( $lat, $lon, $globe = null ) {
 		global $wgDefaultGlobe;
+
 		$this->lat = $lat;
 		$this->lon = $lon;
-		$this->globe = $wgDefaultGlobe;
+		$this->globe = isset( $globe ) ? $globe : $wgDefaultGlobe;
 	}
 
 	public static function newFromRow( $row ) {
@@ -232,9 +233,11 @@ class Coord {
 	 * @param int $precision: Comparison precision
 	 * @return Boolean
 	 */
-	public function equalsTo( Coord $coord, $precision = 6 ) {
-		return round( $this->lat, $precision ) == round( $coord->lat, $precision )
-			&& round( $this->lon, $precision ) == round( $coord->lon, $precision );
+	public function equalsTo( $coord, $precision = 6 ) {
+		return isset( $coord )
+			&& round( $this->lat, $precision ) == round( $coord->lat, $precision )
+			&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
+			&& $this->globe == $coord->globe;
 	}
 
 	/**
@@ -244,8 +247,9 @@ class Coord {
 	 * @param int $precision: Comparison precision
 	 * @return Boolean
 	 */
-	public function fullyEqualsTo( Coord $coord, $precision = 6 ) {
-		return round( $this->lat, $precision ) == round( $coord->lat, $precision )
+	public function fullyEqualsTo( $coord, $precision = 6 ) {
+		return isset( $coord )
+			&& round( $this->lat, $precision ) == round( $coord->lat, $precision )
 			&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
 			&& $this->globe == $coord->globe
 			&& $this->primary == $coord->primary
