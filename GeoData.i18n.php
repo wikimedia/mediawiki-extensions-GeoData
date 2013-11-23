@@ -974,6 +974,7 @@ $messages['vi'] = array(
 /** Simplified Chinese (中文（简体）‎)
  * @author Liangent
  * @author Shizhao
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'geodata-desc' => '添加地理坐标存储和检索功能',
@@ -985,7 +986,7 @@ $messages['zh-hans'] = array(
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>：无效的地区代码格式',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>：每页不能有多个主标签',
 	'geodata-limit-exceeded' => '每页的<nowiki>{{#coordinates:}}</nowiki>标签数量已超出$1个的最大限制',
-	'geodata-broken-tags-category' => '包含格式不正确的坐标标签的页面',
+	'geodata-broken-tags-category' => '有格式错误坐标标签的页面',
 	'geodata-unknown-type-category' => '包含未知坐标类型的页面',
 	'geodata-unknown-globe-category' => '包含未知星球值的页面',
 	'geodata-unknown-region-category' => '包含无效地区值的页面',
