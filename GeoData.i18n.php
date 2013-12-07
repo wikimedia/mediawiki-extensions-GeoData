@@ -159,7 +159,7 @@ $messages['ce'] = array(
 	'geodata-bad-input' => 'Функци <nowiki>{{#coordinates:}}</nowiki> чу нийса йоцу билгалонаш йихкина',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Jkjk
  * @author Mormegil
  */
