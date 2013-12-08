@@ -473,6 +473,7 @@ $messages['is'] = array(
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: ógild breiddargráða',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: ógild lengdargráða',
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: óþekktur hnöttur "$1"',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: getur ekki haft fleiri en eitt aðalhnit á síðu',
 	'geodata-broken-tags-category' => 'Síður með vitlaus hnita tög',
 	'geodata-unknown-type-category' => 'Síður með vitlausa gerð hnita',
 );
