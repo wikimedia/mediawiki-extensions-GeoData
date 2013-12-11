@@ -157,6 +157,10 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'geodata-bad-input' => 'Функци <nowiki>{{#coordinates:}}</nowiki> чу нийса йоцу билгалонаш йихкина',
+	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: хилийта йиш йоцу шоралла',
+	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: хилийта йиш йоцу дохалла',
+	'geodata-broken-tags-category' => 'Координтин тегаш нийса йоцу агӀонаш',
+	'geodata-unknown-type-category' => 'Координатин тайп хууш доцу агӀонаш',
 );
 
 /** Czech (čeština)
