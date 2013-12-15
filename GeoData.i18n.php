@@ -614,7 +614,7 @@ $messages['ksh'] = array(
  * @author Soued031
  */
 $messages['lb'] = array(
-	'geodata-desc' => 'Setzt Funktionalitéite vum Späicheren an Ofruffe vu geographesche Koordinaten dobäi',
+	'geodata-desc' => 'Setzt Funktionalitéite vum Späicheren an Ofruffe vu geographesche Koordinaten derbäi',
 	'geodata-bad-input' => "Et goufen net valabel Argumenter un d'Funktioun <nowiki>{{#coordinates:}}</nowiki> virugereecht",
 	'geodata-bad-type' => '<code><nowiki>{{#coordinates:}}</nowiki></code>: onbekannte Koordinatentyp "$1"',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: de Format vum code vun der Regioun ass net valabel',
