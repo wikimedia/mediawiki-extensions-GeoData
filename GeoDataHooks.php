@@ -251,4 +251,35 @@ class GeoDataHooks {
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
+
+	/**
+	 * OutputPageParserOutput hook handler
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
+	 *
+	 * @param OutputPage $out
+	 * @param ParserOutput $po
+	 *
+	 * @return bool
+	 */
+	public static function onOutputPageParserOutput( OutputPage &$out, ParserOutput $po ) {
+		global $wgGeoDataInJS;
+
+		if ( $wgGeoDataInJS && isset( $po->geoData ) ) {
+			$coord = $po->geoData->getPrimary();
+			if ( !$coord ) {
+				return true;
+			}
+			$result = array();
+			foreach ( $wgGeoDataInJS as $param ) {
+				if ( isset( $coord->$param ) ) {
+					$result[$param] = $coord->$param;
+				}
+			}
+			if ( $result ) {
+				$out->addJsConfigVars( 'wgCoordinates', $result );
+			}
+		}
+
+		return true;
+	}
 }

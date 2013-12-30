@@ -47,6 +47,7 @@ $wgHooks['UnitTestsList'][] = 'GeoDataHooks::onUnitTestsList';
 $wgHooks['ArticleDeleteComplete'][] = 'GeoDataHooks::onArticleDeleteComplete';
 $wgHooks['LinksUpdate'][] = 'GeoDataHooks::onLinksUpdate';
 $wgHooks['FileUpload'][] = 'GeoDataHooks::onFileUpload';
+$wgHooks['OutputPageParserOutput'][] = 'GeoDataHooks::onOutputPageParserOutput';
 
 // Use the proper search backend
 $wgExtensionFunctions[] = 'efInitGeoData';
@@ -221,3 +222,9 @@ $wgGeoDataSolrCommitPolicy = 'immediate';
  * Whether search index should be updated via jobs. Supported only for Solr.
  */
 $wgGeoDataUpdatesViaJob = false;
+
+/**
+ * Specifies which information about page's primary coordinate is added to global JS variable wgCoordinates.
+ * Setting it to false or empty array will disable wgCoordinates.
+ */
+$wgGeoDataInJS = array( 'lat', 'lon' );
