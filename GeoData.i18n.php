@@ -856,6 +856,7 @@ $messages['roa-tara'] = array(
 /** Russian (русский)
  * @author David1010
  * @author Eleferen
+ * @author Ignatus
  * @author Kalan
  * @author Max Semenik
  */
@@ -868,7 +869,7 @@ $messages['ru'] = array(
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: неизвестный глобус «$1»',
 	'geodata-bad-region' => '<nowiki>{{#coordinates:}}</nowiki>: некорректный формат кода региона',
 	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: нельзя иметь более одной первичной метки на странице',
-	'geodata-limit-exceeded' => 'Ограничение в $1 {{PLURAL:$1|тег|тегов|тега}} <nowiki>{{#coordinates:}}</nowiki> на страницу было исчерпано', # Fuzzy
+	'geodata-limit-exceeded' => 'Ограничение в $1 {{PLURAL:$1|тег|тегов|тега}} <nowiki>{{#coordinates:}}</nowiki> на страницу было превышено',
 	'geodata-broken-tags-category' => 'Страницы с некорректными тегами координат',
 	'geodata-unknown-type-category' => 'Страницы с неизвестным типом координат',
 	'geodata-unknown-globe-category' => 'Страницы с неизвестным глобусом',
