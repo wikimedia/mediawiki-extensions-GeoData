@@ -269,6 +269,13 @@ $messages['en-gb'] = array(
 	'geodata-bad-globe' => '<nowiki>{{#coordinates:}}</nowiki>: unrecognised globe "$1"',
 );
 
+/** Esperanto (Esperanto)
+ * @author KuboF
+ */
+$messages['eo'] = array(
+	'geodata-broken-tags-category' => 'Paĝoj kun misformitaj etikedoj por koordinatoj',
+);
+
 /** Spanish (español)
  * @author Armando-Martin
  */
