@@ -156,6 +156,7 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'geodata-desc' => 'Географин координаташ лата да а билгала да а таро тӀетуху',
 	'geodata-bad-input' => 'Функци <nowiki>{{#coordinates:}}</nowiki> чу нийса йоцу билгалонаш йихкина',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: хилийта йиш йоцу шоралла',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: хилийта йиш йоцу дохалла',
