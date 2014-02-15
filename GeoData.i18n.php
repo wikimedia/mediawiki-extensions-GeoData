@@ -160,6 +160,7 @@ $messages['ce'] = array(
 	'geodata-bad-input' => 'Функци <nowiki>{{#coordinates:}}</nowiki> чу нийса йоцу билгалонаш йихкина',
 	'geodata-bad-latitude' => '<nowiki>{{#coordinates:}}</nowiki>: хилийта йиш йоцу шоралла',
 	'geodata-bad-longitude' => '<nowiki>{{#coordinates:}}</nowiki>: хилийта йиш йоцу дохалла',
+	'geodata-multiple-primary' => '<nowiki>{{#coordinates:}}</nowiki>: агӀонгахь цхьаъ бен дуьххьарлера билгало хила магийна дац',
 	'geodata-broken-tags-category' => 'Координтин тегаш нийса йоцу агӀонаш',
 	'geodata-unknown-type-category' => 'Координатин тайп хууш доцу агӀонаш',
 );
