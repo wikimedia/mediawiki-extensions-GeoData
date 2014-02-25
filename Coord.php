@@ -13,7 +13,10 @@ class Coord {
 		$type,
 		$name,
 		$country,
-		$region;
+		$region,
+
+		$pageId,
+		$distance;
 
 	public function __construct( $lat, $lon, $globe = null ) {
 		global $wgDefaultGlobe;
@@ -85,7 +88,19 @@ class Coord {
 		return $row;
 	}
 
-	public static $fieldMapping = array(
+	/**
+	 * Returns these coordinates as an associative array
+	 * @return array
+	 */
+	public function getAsArray() {
+		$result = array();
+		foreach ( self::getFields() as $field ) {
+			$result[$field] = $this->$field;
+		}
+		return $result;
+	}
+
+	private static $fieldMapping = array(
 		'id' => 'gt_id',
 		'lat' => 'gt_lat',
 		'lon' => 'gt_lon',
@@ -97,4 +112,24 @@ class Coord {
 		'country' => 'gt_country',
 		'region' => 'gt_region',
 	);
+
+	public static function getFieldMapping() {
+		return self::$fieldMapping;
+	}
+
+	public static function getFields() {
+		static $fields = null;
+		if ( !$fields ) {
+			$fields = array_keys( self::$fieldMapping );
+		}
+		return $fields;
+	}
+
+	public static function getColumns() {
+		static $columns = null;
+		if ( !$columns ) {
+			$columns = array_values( self::$fieldMapping );
+		}
+		return $columns;
+	}
 }

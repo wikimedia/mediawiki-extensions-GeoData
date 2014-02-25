@@ -16,6 +16,7 @@ $dir = __DIR__;
 $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
 $wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
+$wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/api/ApiQueryGeoSearchElastic.php";
 $wgAutoloadClasses['ApiQueryGeoSearchSolr'] = "$dir/api/ApiQueryGeoSearchSolr.php";
 $wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoData.php";
 $wgAutoloadClasses['ApiQueryCategoryMembers_GeoData'] = "$dir/api/ApiQueryCategoryMembers_GeoData.php";
@@ -48,6 +49,8 @@ $wgHooks['ArticleDeleteComplete'][] = 'GeoDataHooks::onArticleDeleteComplete';
 $wgHooks['LinksUpdate'][] = 'GeoDataHooks::onLinksUpdate';
 $wgHooks['FileUpload'][] = 'GeoDataHooks::onFileUpload';
 $wgHooks['OutputPageParserOutput'][] = 'GeoDataHooks::onOutputPageParserOutput';
+$wgHooks['CirrusSearchMappingConfig'][] = 'GeoDataHooks::onCirrusSearchMappingConfig';
+$wgHooks['CirrusSearchBuildDocumentParse'][] = 'GeoDataHooks::onCirrusSearchBuildDocumentParse';
 
 // Use the proper search backend
 $wgExtensionFunctions[] = 'efInitGeoData';
@@ -180,7 +183,7 @@ $wgGeoDataDisableParserFunction = false;
 $wgGeoDataIndexGranularity = 10;
 
 /**
- * Which backend should be used by spatial searhces: 'db' or 'solr'
+ * Which backend should be used by spatial searhces: 'db', 'solr' or 'elastic'
  */
 $wgGeoDataBackend = 'db';
 
@@ -228,3 +231,10 @@ $wgGeoDataUpdatesViaJob = false;
  * Setting it to false or empty array will disable wgCoordinates.
  */
 $wgGeoDataInJS = array( 'lat', 'lon' );
+
+/**
+ * Enables the use of GeoData as a CirrusSearch plugin for indexing.
+ * This is separate from $wgGeoDataBackend: you could be filling Elasticsearch index and using old search
+ * meanwhile. However, if backend is already set to 'elastic', GeoData always behaves as if it's true
+ */
+$wgGeoDataUseCirrusSearch = false;

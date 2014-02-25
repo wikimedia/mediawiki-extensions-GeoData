@@ -44,7 +44,7 @@ class GeoData {
 	public static function getAllCoordinates( $pageId, $conds = array(), $dbType = DB_SLAVE ) {
 		$db = wfGetDB( $dbType );
 		$conds['gt_page_id'] = $pageId;
-		$res = $db->select( 'geo_tags', array_values( Coord::$fieldMapping ), $conds, __METHOD__ );
+		$res = $db->select( 'geo_tags', Coord::getColumns(), $conds, __METHOD__ );
 		$coords = array();
 		foreach ( $res as $row ) {
 			$coords[] = Coord::newFromRow( $row );

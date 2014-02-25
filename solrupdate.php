@@ -98,7 +98,7 @@ class SolrUpdate extends Maintenance {
 
 		$solr = SolrGeoData::newClient( 'master' );
 
-		$fields = Coord::$fieldMapping;
+		$fields = Coord::getFieldMapping();
 		$fields['page_id'] = 'gt_page_id';
 
 		if ( $cutoffTags ) {
