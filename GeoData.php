@@ -21,8 +21,8 @@ $wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoD
 $wgAutoloadClasses['ApiQueryCategoryMembers_GeoData'] = "$dir/api/ApiQueryCategoryMembers_GeoData.php";
 $wgAutoloadClasses['GeoDataQueryExtender'] = "$dir/api/GeoDataQueryExtender.php";
 
-$wgAutoloadClasses['Coord'] = "$dir/GeoData.body.php";
-$wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesParserFunction.php";
+$wgAutoloadClasses['Coord'] = "$dir/Coord.php";
+$wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesOutput.php";
 $wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/CoordinatesParserFunction.php";
 $wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
 $wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
