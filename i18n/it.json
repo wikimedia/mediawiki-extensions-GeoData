@@ -1,0 +1,20 @@
+{
+    "@metadata": {
+        "authors": [
+            "Darth Kule"
+        ]
+    },
+    "geodata-desc": "Aggiunge funzionalità di archiviazione e recupero di coordinate geografiche",
+    "geodata-bad-input": "Sono stati passati degli argomenti non validi alla funzione <nowiki>{{#coordinates:}}</nowiki>",
+    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: latitudine non valida",
+    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: longitudine non valida",
+    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tipo \"$1\" non riconosciuto",
+    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globo \"$1\" non riconosciuto",
+    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: formato codice regionale non valido",
+    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: non è possibile avere più di un tag principale per pagina",
+    "geodata-limit-exceeded": "Il limite di $1 {{PLURAL:$1|tag}} <nowiki>{{#coordinates:}}</nowiki> per pagina è stato superato",
+    "geodata-broken-tags-category": "Pagine con tag coordinate non validi",
+    "geodata-unknown-type-category": "Pagine con un tipo di coordinate sconosciuto",
+    "geodata-unknown-globe-category": "Pagine con un valore globo sconosciuto",
+    "geodata-unknown-region-category": "Pagine con un valore regione non valido"
+}

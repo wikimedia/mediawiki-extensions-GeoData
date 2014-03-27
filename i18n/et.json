@@ -1,0 +1,20 @@
+{
+    "@metadata": {
+        "authors": [
+            "Pikne"
+        ]
+    },
+    "geodata-desc": "Lisab võimaluse leida ja hoiustada geograafilisi koordinaate.",
+    "geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki>-funktsioonile on ette antud vigased argumendid.",
+    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: vigane laius",
+    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: vigane pikkus",
+    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tundmatu tüüp \"$1\"",
+    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: tundmatu taevakeha \"$1\"",
+    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: vigases vormingus piirkonnakood",
+    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: leheküljel ei saa olla üle ühe põhisildi",
+    "geodata-limit-exceeded": "Ülemmäär $1 <nowiki>{{#coordinates:}}</nowiki>-{{PLURAL:$1|silt|silti}} lehekülje kohta on ületatud.",
+    "geodata-broken-tags-category": "Vigaste koordinaadisiltidega leheküljed",
+    "geodata-unknown-type-category": "Tundmatut tüüpi koordinaatidega leheküljed",
+    "geodata-unknown-globe-category": "Tundmatu taevakeha väärtusega leheküljed",
+    "geodata-unknown-region-category": "Vigase piirkonnaväärtusega leheküljed"
+}

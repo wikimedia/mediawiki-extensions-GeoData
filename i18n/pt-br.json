@@ -1,0 +1,12 @@
+{
+    "@metadata": {
+        "authors": [
+            "Cainamarques",
+            "Helder.wiki",
+            "Opraco"
+        ]
+    },
+    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: latitude inválida",
+    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: longitude inválida",
+    "geodata-broken-tags-category": "Páginas com coordenadas formatadas incorretamente"
+}

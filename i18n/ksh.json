@@ -1,0 +1,20 @@
+{
+    "@metadata": {
+        "authors": [
+            "Purodha"
+        ]
+    },
+    "geodata-desc": "Brängk Funksjuhne zom Faßhallde un Widerfenge fun Ko'ordenaate om Jloobos en et Wiki.",
+    "geodata-bad-input": "Onjöltijje Daate sin aan di Funxjuhn <nowiki>{{#coordinates:}}</nowiki> övverjävve woode.",
+    "geodata-bad-latitude": "<code><nowiki>{{#coordinates:}}</nowiki></code>: Dat es en onjöltijje Breedte om Jloobos.",
+    "geodata-bad-longitude": "<code><nowiki>{{#coordinates:}}</nowiki></code>: Dat es en onjöltije Längde om Jloobos.",
+    "geodata-bad-type": "<code><nowiki>{{#coordinates:}}</nowiki></code>: „$1“ es en onbekannte Zoot Ko'ordenaate.",
+    "geodata-bad-globe": "<code><nowiki>{{#coordinates:}}</nowiki></code>: Dä Jlobus „$1“ känne mer nit.",
+    "geodata-bad-region": "<code><nowiki>{{#coordinates:}}</nowiki></code>: Dat es en onjölteje Afköözong för de Rejoon.",
+    "geodata-multiple-primary": "<code><nowiki>{{#coordinates:}}</nowiki></code>: Mer künne blooß ein vörjetroke Aanjab pro Sigg han.",
+    "geodata-limit-exceeded": "De Bovverjränz vun {{PLURAL:$1|einem|$1|keinem}} <code><nowiki>{{#coordinates:}}</nowiki></code>-{{PLURAL:$1|Befähl|Befähle|Befähl}} pro Sigg es övverschredde.",
+    "geodata-broken-tags-category": "Sigge met kapodde Befähle för Ko'ordenaate",
+    "geodata-unknown-type-category": "Sigge med ene onbekannte Zoote Ko'ordenaate",
+    "geodata-unknown-globe-category": "Sigge med enem unbikannte Jlobus",
+    "geodata-unknown-region-category": "Sigge med ene onjöltijje Rejon"
+}

@@ -1,0 +1,21 @@
+{
+    "@metadata": {
+        "authors": [
+            "Gomoko",
+            "Urhixidur"
+        ]
+    },
+    "geodata-desc": "Ajoute la fonctionnalité de stockage et d'extraction des coordonnées géographiques.",
+    "geodata-bad-input": "Des arguments non valides ont été transmis à la fonction <nowiki>{{#coordinates:}}</nowiki>",
+    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki> : latitude invalide",
+    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki> : longitude invalide",
+    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki> : type « $1 » non reconnu",
+    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki> : globe « $1 » non reconnu",
+    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki> : format du code de région invalide",
+    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki> : impossible d’avoir plus d’une balise primaire par page",
+    "geodata-limit-exceeded": "La limite de $1 {{PLURAL:$1|balise|balises}} <nowiki>{{#coordinates:}}</nowiki> par page a été dépassée",
+    "geodata-broken-tags-category": "Pages avec des balises de coordonnées mal formées",
+    "geodata-unknown-type-category": "Pages avec un type de coordonnées inconnu",
+    "geodata-unknown-globe-category": "Pages avec une valeur de globe inconnue",
+    "geodata-unknown-region-category": "Pages avec une valeur de région invalide"
+}

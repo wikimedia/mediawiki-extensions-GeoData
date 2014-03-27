@@ -1,0 +1,20 @@
+{
+    "@metadata": {
+        "authors": [
+            "Joetaras"
+        ]
+    },
+    "geodata-desc": "Aggiunge 'a memorizzazzione de le coordinate sciugrafeche  e le funzioanlità de recupere",
+    "geodata-bad-input": "Argomende invalide onne state passate a 'a <nowiki>{{#coordinates:}}</nowiki> funzione",
+    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: latitudine invalide",
+    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: longitudine invalide",
+    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tipe non acchiate \"$1\"",
+    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globbe non acchiate \"$1\"",
+    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: formate d'u codece d'a reggione invalide",
+    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: non ge pozze avè cchiù de 'nu tag prengepàle pe pàgene",
+    "geodata-limit-exceeded": "'U limite de $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tags}} pe pàgene ha state sbunnate",
+    "geodata-broken-tags-category": "Pàggene cu tag de coordinate fatte male",
+    "geodata-unknown-type-category": "Pàggene cu 'nu tipe de coordinate scanusciute",
+    "geodata-unknown-globe-category": "Pàggene cu 'nu valore de globbe scanusciute",
+    "geodata-unknown-region-category": "Pàggene cu 'nu valore de reggione scanusciute"
+}

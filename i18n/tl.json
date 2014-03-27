@@ -1,0 +1,20 @@
+{
+    "@metadata": {
+        "authors": [
+            "AnakngAraw"
+        ]
+    },
+    "geodata-desc": "Nagdaragdag ng tungkuling pag-iimbak at pagbawi ng mga tugmaang pangheograpiya",
+    "geodata-bad-input": "Naipasa na ang hindi katanggap-tanggap na mga pangangatwiran papunta sa tungkuling <nowiki>{{#coordinates:}}</nowiki>",
+    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: hindi katanggap-tanggap na latitud",
+    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: hindi katanggap-tanggap na longhitud",
+    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: hindi nakikilalang uri na \"$1\"",
+    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: hindi nakikilalang globo na \"$1\"",
+    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: hindi katanggap-tanggap na anyo ng kodigo ng rehiyon",
+    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: hindi maaaring magkaroon ng isang pangunahing tatak sa bawa't pahina",
+    "geodata-limit-exceeded": "Nalampasan na ang hangganang $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tatak|mga tatak}} ng bawa't pahina",
+    "geodata-broken-tags-category": "Mga pahinang mayroong kapangitan ang mga tatak na pangtugmaan",
+    "geodata-unknown-type-category": "Mga pahinang mayroong hindi nakikilalang mga uri ng mga tugmaan",
+    "geodata-unknown-globe-category": "Mga pahinang mayroong hindi nakikilalang halaga ng globo",
+    "geodata-unknown-region-category": "Mga pahinang may hindi katanggap-tanggap na halaga ng rehiyon"
+}

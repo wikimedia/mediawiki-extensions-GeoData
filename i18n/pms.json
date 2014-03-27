@@ -1,0 +1,21 @@
+{
+    "@metadata": {
+        "authors": [
+            "Borichèt",
+            "Dragonòt"
+        ]
+    },
+    "geodata-desc": "A gionta la funsion ëd memorisassion e d'estrassion ëd le coordinà geogràfiche",
+    "geodata-bad-input": "Dj'argoment pa bon a son ëstàit mandà a la funsion <nowiki>{{#coordinates:}}</nowiki>",
+    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: latitùdin pa bon-a",
+    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: longitùdin pa bon-a",
+    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tipo «$1» nen arconossù",
+    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: glòb «$1» nen arconossù",
+    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: formà dël còdes ëd region pa bon",
+    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: as peul pa avèisse pi che na tichëtta primaria për pàgina",
+    "geodata-limit-exceeded": "El lìmit ëd $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tichëtta|tichëtte}} për pàgina a l'é stàit passà",
+    "geodata-broken-tags-category": "Pàgine con dle tichëtte ëd coordinà mal formà",
+    "geodata-unknown-type-category": "Pàgine con na sòrt ëd coordinà nen conossùa",
+    "geodata-unknown-globe-category": "Pàgine con un valor ëd glòb nen conossù",
+    "geodata-unknown-region-category": "Pàgine con un valor ëd region pa bon"
+}

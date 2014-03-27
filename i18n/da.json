@@ -1,0 +1,20 @@
+{
+    "@metadata": {
+        "authors": [
+            "Christian List"
+        ]
+    },
+    "geodata-desc": "Tilføjer funktionalitet til lagring og indlæsning af geografiske koordinater",
+    "geodata-bad-input": "Ugyldige argumenter er givet til <nowiki>{{#coordinates:}}</nowiki> funktionen",
+    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: ugyldig breddegrad",
+    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ugyldig længdegrad",
+    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: ukendt type \"$1\"",
+    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: ukendt globe \"$1\"",
+    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: ugyldigt region kodeformat",
+    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: kan ikke have mere end én primær tag per side",
+    "geodata-limit-exceeded": "Grænsen på $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tags}} er overskredet",
+    "geodata-broken-tags-category": "Sider med fejlagtige koordinattags",
+    "geodata-unknown-type-category": "Sider med ukendt type af koordinater",
+    "geodata-unknown-globe-category": "Sider med ukendt globe værdi",
+    "geodata-unknown-region-category": "Sider med ugyldig region værdi"
+}

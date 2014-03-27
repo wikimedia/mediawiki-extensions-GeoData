@@ -33,6 +33,7 @@ $wgAutoloadClasses['SolrUpdateWork'] = "$dir/solr/SolrUpdateWork.php";
 
 $wgAutoloadClasses['SolrGeoData'] = "$dir/solr/SolrGeoData.php";
 
+$wgMessagesDirs['GeoData'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
 $wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
 
