@@ -81,7 +81,7 @@ class GeoDataHooks {
 
 		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
-		if ( $wgGeoDataBackend != 'db' ) {
+		if ( $wgGeoDataBackend == 'solr' ) {
 			$res = $dbw->select( 'geo_tags', 'gt_id', array( 'gt_page_id' => $id ), __METHOD__ );
 			$killlist = array();
 			foreach ( $res as $row ) {
@@ -280,6 +280,72 @@ class GeoDataHooks {
 			}
 		}
 
+		return true;
+	}
+
+	/**
+	 * CirrusSearchMappingConfig hook handler
+	 * Adds our stuff to CirrusSearch/Elasticsearch schema
+	 *
+	 * @param array $config
+	 *
+	 * @return bool
+	 */
+	public static function onCirrusSearchMappingConfig( array &$config ) {
+		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
+		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend != 'elastic' ) {
+			return true;
+		}
+		$config['properties']['coordinates'] = array(
+			'type' => 'nested',
+			'properties' => array(
+				'coord' => array( 'type' => 'geo_point' ),
+				'globe' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
+				'primary' => array( 'type' => 'boolean' ),
+				'dim' => array( 'type' => 'float' ),
+				'type' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
+				'name' => array( 'type' => 'string', 'index' => 'no' ),
+				'country' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
+				'region' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
+			),
+		);
+		return true;
+	}
+
+	/**
+	 * CirrusSearchBuildDocumentParse hook handler
+	 *
+	 * @param Elastica\Document $doc
+	 * @param Title $title
+	 * @param Content $content
+	 * @param ParserOutput $parserOutput
+	 * @return bool
+	 */
+	public static function onCirrusSearchBuildDocumentParse( Elastica\Document $doc,
+		Title $title,
+		Content $content,
+		ParserOutput $parserOutput )
+	{
+		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
+		if ( !( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' )
+			|| !isset( $parserOutput->geoData ) )
+		{
+			return true;
+		}
+
+		wfProfileIn( __METHOD__ );
+		$coords = array();
+		/** @var Coord $coord */
+		foreach ( $parserOutput->geoData->getAll() as $coord ) {
+			$arr = $coord->getAsArray();
+			$arr['coord'] = array( 'lat' => $coord->lat, 'lon' => $coord->lon );
+			unset( $arr['id'] );
+			unset( $arr['lat'] );
+			unset( $arr['lon'] );
+			$coords[] = $arr;
+		}
+		$doc->set( 'coordinates', $coords );
+		wfProfileOut( __METHOD__ );
 		return true;
 	}
 }

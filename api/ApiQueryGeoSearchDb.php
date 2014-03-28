@@ -18,9 +18,10 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 
 		$this->addTables( 'geo_tags' );
 		$this->addFields( array( 'gt_lat', 'gt_lon', 'gt_primary' ) );
+		$mapping = Coord::getFieldMapping();
 		foreach( $params['prop'] as $prop ) {
-			if ( isset( Coord::$fieldMapping[$prop] ) ) {
-				$this->addFields( Coord::$fieldMapping[$prop] );
+			if ( isset( $mapping[$prop] ) ) {
+				$this->addFields( $mapping[$prop] );
 			}
 		}
 		$this->addWhereFld( 'gt_globe', $params['globe'] );
@@ -71,8 +72,8 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 					$vals['primary'] = '';
 				}
 				foreach( $params['prop'] as $prop ) {
-					if ( isset( Coord::$fieldMapping[$prop] ) && isset( $row->{Coord::$fieldMapping[$prop]} ) ) {
-						$field = Coord::$fieldMapping[$prop];
+					if ( isset( $mapping[$prop] ) && isset( $row->{$mapping[$prop]} ) ) {
+						$field = $mapping[$prop];
 						// Don't output default globe
 						if ( !( $prop === 'globe' && $row->$field === $wgDefaultGlobe ) ) {
 							$vals[$prop] = $row->$field;
