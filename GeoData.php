@@ -65,6 +65,12 @@ function efInitGeoData() {
 
 $wgJobClasses['solrUpdate'] = 'SolrUpdateJob';
 
+// Tracking categories for Special:TrackingCategories
+$wgTrackingCategories[] = 'geodata-broken-tags-category';
+$wgTrackingCategories[] = 'geodata-unknown-globe-category';
+$wgTrackingCategories[] = 'geodata-unknown-region-category';
+$wgTrackingCategories[] = 'geodata-unknown-type-category';
+
 // =================== start configuration settings ===================
 
 /**
