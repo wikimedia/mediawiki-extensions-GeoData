@@ -16,7 +16,11 @@
     "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: אי־אפשר שיהיה יותר מתג ראשי אחד בכל דף",
     "geodata-limit-exceeded": "נחצתה המגבלה של {{PLURAL:|תג <nowiki>{{#coordinates:}}</nowiki> אחד|$1 תגי <nowiki>{{#coordinates:}}</nowiki>}} לדף",
     "geodata-broken-tags-category": "דפים עם תגי נקודות ציון בלתי־תקינים",
+    "geodata-broken-tags-category-desc": "בדף הזה יש תג <code dir=\"ltr\"><nowiki>{{#coordinates:}}</nowiki></code> בלתי־תקין.",
     "geodata-unknown-type-category": "דפים עם סוג בלתי־ידוע של נקודות ציון",
+    "geodata-unknown-type-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>type</code> לנקודות ציון.",
     "geodata-unknown-globe-category": "דפים עם ערך גלובוס בלתי־ידוע",
-    "geodata-unknown-region-category": "דפים עם ערך אזור בלתי־ידוע"
+    "geodata-unknown-globe-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>globe</code> לנקודות ציון.",
+    "geodata-unknown-region-category": "דפים עם ערך אזור בלתי־ידוע",
+    "geodata-unknown-region-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>region</code> לנקודות ציון."
 }

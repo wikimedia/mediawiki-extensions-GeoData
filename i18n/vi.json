@@ -14,7 +14,11 @@
     "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: một trang không có thể chứa hơn một thẻ chính",
     "geodata-limit-exceeded": "Đã vượt quá giới hạn mỗi trang có $1 <nowiki>{{#coordinates:}}</nowiki> thẻ",
     "geodata-broken-tags-category": "Trang có thẻ tọa độ hỏng",
+    "geodata-broken-tags-category-desc": "Trang này có thẻ <code><nowiki>{{#coordinates:}}</nowiki></code> hỏng.",
     "geodata-unknown-type-category": "Trang có kiểu tọa độ không rõ",
+    "geodata-unknown-type-category-desc": "Trang này có một giá trị bất ngờ cho tham số <code>type</code> của tọa độ.",
     "geodata-unknown-globe-category": "Trang có giá trị địa cầu không rõ",
-    "geodata-unknown-region-category": "Trang có giá trị khu vực không hợp lệ"
+    "geodata-unknown-globe-category-desc": "Trang này có một giá trị bất ngờ cho tham số <code>globe</code> của tọa độ.",
+    "geodata-unknown-region-category": "Trang có giá trị khu vực không hợp lệ",
+    "geodata-unknown-region-category-desc": "Trang này có một giá trị không hợp lệ cho tham số <code>region</code> của tọa độ."
 }

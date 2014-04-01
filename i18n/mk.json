@@ -14,7 +14,11 @@
     "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: не може да има повеќе од една главна ознака по страница",
     "geodata-limit-exceeded": "Ја надминавте границата од $1 {{PLURAL:$1|ознака|ознаки}} <nowiki>{{#coordinates:}}</nowiki> по страница",
     "geodata-broken-tags-category": "Страници со неправилно напишани координатни ознаки",
+    "geodata-broken-tags-category-desc": "Страницата има неисправно срочена ознака <code><nowiki>{{#coordinates:}}</nowiki></code>.",
     "geodata-unknown-type-category": "Страници со непознат тип на координати",
+    "geodata-unknown-type-category-desc": "Страницата користи непозната вредност во параметарот <code>type</code> за координати.",
     "geodata-unknown-globe-category": "Страници со непозната вредност за глобус",
-    "geodata-unknown-region-category": "Страници со непозната вредност за регион"
+    "geodata-unknown-globe-category-desc": "Страницата користи непозната вредност во параметарот <code>globe</code> за координати.",
+    "geodata-unknown-region-category": "Страници со непозната вредност за регион",
+    "geodata-unknown-region-category-desc": "Страницата користи непозната вредност во параметарот <code>region</code> за координати."
 }
