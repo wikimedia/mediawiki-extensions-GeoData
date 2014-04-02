@@ -1,7 +1,8 @@
 {
     "@metadata": {
         "authors": [
-            "Darth Kule"
+            "Darth Kule",
+            "Beta16"
         ]
     },
     "geodata-desc": "Aggiunge funzionalità di archiviazione e recupero di coordinate geografiche",
@@ -14,7 +15,11 @@
     "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: non è possibile avere più di un tag principale per pagina",
     "geodata-limit-exceeded": "Il limite di $1 {{PLURAL:$1|tag}} <nowiki>{{#coordinates:}}</nowiki> per pagina è stato superato",
     "geodata-broken-tags-category": "Pagine con tag coordinate non validi",
+    "geodata-broken-tags-category-desc": "La pagina ha un tag <code><nowiki>{{#coordinates:}}</nowiki> con un formato non valido",
     "geodata-unknown-type-category": "Pagine con un tipo di coordinate sconosciuto",
+    "geodata-unknown-type-category-desc": "La pagina utilizza un valore sconosciuto del parametro <code>type</code> per le coordinate.",
     "geodata-unknown-globe-category": "Pagine con un valore globo sconosciuto",
-    "geodata-unknown-region-category": "Pagine con un valore regione non valido"
+    "geodata-unknown-globe-category-desc": "La pagina utilizza un valore sconosciuto del parametro <code>globe</code> per le coordinate.",
+    "geodata-unknown-region-category": "Pagine con un valore regione non valido",
+    "geodata-unknown-region-category-desc": "La pagina utilizza un valore sconosciuto del parametro <code>region</code> per le coordinate."
 }

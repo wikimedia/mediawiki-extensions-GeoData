@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": [
+            "John Reid"
+        ]
+    },
+    "geodata-broken-tags-category-desc": "The page haes ae malformed <code><nowiki>{{#coordinates:}}</nowiki></code> tag.",
+    "geodata-unknown-type-category-desc": "The page uises aen onkent value o the <code>type</code> boondin fer coordinates.",
+    "geodata-unknown-globe-category-desc": "This page uises aen onkent value o the <code>globe</code> boondin fer coordinates.",
+    "geodata-unknown-region-category-desc": "This page uises aen onvalid value o the <code>region</code> boondin fer coordinates."
+}
