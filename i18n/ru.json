@@ -21,6 +21,9 @@
     "geodata-broken-tags-category": "Страницы с некорректными тегами координат",
     "geodata-broken-tags-category-desc": "На странице есть некорректны тег <code><nowiki>{{#coordinates:}}</nowiki></code>.",
     "geodata-unknown-type-category": "Страницы с неизвестным типом координат",
+    "geodata-unknown-type-category-desc": "Страница использует неизвестное значение параметра  <code>type</code> для координат.",
     "geodata-unknown-globe-category": "Страницы с неизвестным глобусом",
-    "geodata-unknown-region-category": "Страницы с некорректным регионом"
+    "geodata-unknown-globe-category-desc": "Страница использует неизвестное значение параметра  <code>globe</code> для координат.",
+    "geodata-unknown-region-category": "Страницы с некорректным регионом",
+    "geodata-unknown-region-category-desc": "Страница использует некорректное значение параметра  <code>region</code> для координат."
 }
