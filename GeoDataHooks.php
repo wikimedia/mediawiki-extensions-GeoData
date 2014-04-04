@@ -292,7 +292,7 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onCirrusSearchMappingConfig( array &$config ) {
-		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
+		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend, $wgGeoDataCoordinatesCompression;
 		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend != 'elastic' ) {
 			return true;
 		}
@@ -312,6 +312,12 @@ class GeoDataHooks {
 				'region' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
 			),
 		);
+		if ( $wgGeoDataCoordinatesCompression ) {
+			$config['properties']['coordinates']['properties']['coord']['fielddata'] = array(
+				'format' => 'compressed',
+				'precision' => $wgGeoDataCoordinatesCompression,
+			);
+		}
 		return true;
 	}
 
