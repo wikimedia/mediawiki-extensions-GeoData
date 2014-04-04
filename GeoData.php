@@ -245,3 +245,8 @@ $wgGeoDataInJS = array( 'lat', 'lon' );
  * meanwhile. However, if backend is already set to 'elastic', GeoData always behaves as if it's true
  */
 $wgGeoDataUseCirrusSearch = false;
+
+/**
+ * Controls whether Elasticsearch searches should use indexed bounding box optimization.
+ */
+$wgGeoDataIndexLatLon = true;

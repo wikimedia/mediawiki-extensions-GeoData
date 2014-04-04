@@ -11,7 +11,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	 * @param ApiPageSet $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ) {
-		global $wgDefaultGlobe;
+		global $wgDefaultGlobe, $wgGeoDataIndexLatLon;
 
 		wfProfileIn( __METHOD__ );
 		parent::run( $resultPageSet );
@@ -41,6 +41,13 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 					array( 'coordinates.primary' => intval( $primary === 'primary' ) )
 				) );
 			}
+			$distanceFilter = new Elastica\Filter\GeoDistance( 'coordinates.coord',
+				array( 'lat' => $this->lat, 'lon' => $this->lon ),
+				$this->radius . 'm'
+			);
+			if ( $wgGeoDataIndexLatLon ) {
+				$distanceFilter->setOptimizeBbox( 'indexed' );
+			}
 
 			$query = new Elastica\Query();
 			$fields = array_map(
@@ -50,10 +57,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			$query->setParam( '_source', $fields );
 			$filter = new Elastica\Filter\BoolAnd();
 			$filter->addFilter( $bools );
-			$filter->addFilter( new Elastica\Filter\GeoDistance( 'coordinates.coord',
-				array( 'lat' => $this->lat, 'lon' => $this->lon ),
-				$this->radius . 'm'
-			) );
+			$filter->addFilter( $distanceFilter );
 			$nested = new Elastica\Filter\Nested();
 			$nested->setPath( 'coordinates' )
 				->setFilter( $filter );

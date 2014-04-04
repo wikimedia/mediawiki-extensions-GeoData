@@ -299,7 +299,10 @@ class GeoDataHooks {
 		$config['properties']['coordinates'] = array(
 			'type' => 'nested',
 			'properties' => array(
-				'coord' => array( 'type' => 'geo_point' ),
+				'coord' => array(
+					'type' => 'geo_point',
+					'lat_lon' => true,
+				),
 				'globe' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
 				'primary' => array( 'type' => 'boolean' ),
 				'dim' => array( 'type' => 'float' ),
