@@ -100,7 +100,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	}
 
 	public function getAllowedParams() {
-		global $wgMaxGeoSearchRadius, $wgDefaultGlobe;
+		global $wgMaxGeoSearchRadius, $wgDefaultGlobe, $wgGeoDataDebug;
 		$params = array (
 			'coord' => array(
 				ApiBase::PARAM_TYPE => 'string',
@@ -145,11 +145,16 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_DFLT => 'primary',
 			),
 		);
+		if ( $wgGeoDataDebug ) {
+			$params['debug'] = array(
+				ApiBase::PARAM_TYPE => 'boolean',
+			);
+		}
 		return $params;
 	}
 
 	public function getParamDescription() {
-		global $wgDefaultGlobe;
+		global $wgDefaultGlobe, $wgGeoDataDebug;
 		$params = array(
 			'coord' => 'Coordinate around which to search: two floating-point values separated by pipe (|)',
 			'page' => 'Title of page around which to search',
@@ -161,6 +166,9 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			'prop' => 'What additional coordinate properties to return',
 			'primary' => "Whether to return only primary coordinates (``primary''), secondary (``secondary'') or both (``all'')"
 		);
+		if ( $wgGeoDataDebug ) {
+			$params['debug'] = 'Whether debug information should be returned';
+		}
 		return $params;
 	}
 
