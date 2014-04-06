@@ -3,7 +3,8 @@
         "authors": [
             "Ainali",
             "Boivie",
-            "WikiPhoenix"
+            "WikiPhoenix",
+            "Lokal Profil"
         ]
     },
     "geodata-desc": "Lägger till funktionalitet för att lagra och hämta geografiska koordinater",
@@ -16,7 +17,11 @@
     "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: kan inte ha mer än en primär tagg per sida",
     "geodata-limit-exceeded": "Gränsen på $1 <nowiki>{{#coordinates:}}</nowiki>{{PLURAL:$1|tagg|taggar}} per sida har överskridits",
     "geodata-broken-tags-category": "Sidor med felaktiga koordinattaggar",
+    "geodata-broken-tags-category-desc": "Sidan har en felformaterad <code><nowiki>{{#coordinates:}}</nowiki></code>-tagg.",
     "geodata-unknown-type-category": "Sidor med okänd typ av koordinater",
+    "geodata-unknown-type-category-desc": "Sidan använder ett okänt värde för <code>type</code>-parametern för koordinater.",
     "geodata-unknown-globe-category": "Sidor med okänt globvärde",
-    "geodata-unknown-region-category": "Sidor med ogiltigt regionvärde"
+    "geodata-unknown-globe-category-desc": "Sidan använder ett okänt värde för <code>globe</code>-parametern för koordinater.",
+    "geodata-unknown-region-category": "Sidor med ogiltigt regionvärde",
+    "geodata-unknown-region-category-desc": "Sidan använder ett okänt värde för <code>region</code>-parametern för koordinater."
 }
