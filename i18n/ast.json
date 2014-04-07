@@ -14,7 +14,11 @@
     "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: nun pue haber más d'una etiqueta primaria por páxina",
     "geodata-limit-exceeded": "Se pasó del llímite de $1 {{PLURAL:$1|etiqueta|etiquetes}} <nowiki>{{#coordinates:}}</nowiki> por páxina",
     "geodata-broken-tags-category": "Páxines con etiquetes de coordenadas con formatu incorreutu",
+    "geodata-broken-tags-category-desc": "La páxina tien una etiqueta <code><nowiki>{{#coordinates:}}</nowiki></code> mal formada.",
     "geodata-unknown-type-category": "Páxines con coordenaes de tipu desconocíu",
+    "geodata-unknown-type-category-desc": "La páxina usa un valor desconocíu del parámetru <code>type</code> pa les coordenaes.",
     "geodata-unknown-globe-category": "Páxines con valores de globu desconocíos",
-    "geodata-unknown-region-category": "Páxines con valores de rexón inválidos"
+    "geodata-unknown-globe-category-desc": "La páxina usa un valor desconocíu del parámetru <code>globe</code> pa les coordenaes.",
+    "geodata-unknown-region-category": "Páxines con valores de rexón inválidos",
+    "geodata-unknown-region-category-desc": "La páxina usa un valor desconocíu del parámetru <code>region</code> pa les coordenaes."
 }
