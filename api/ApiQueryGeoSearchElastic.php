@@ -90,6 +90,10 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			$resultSet = $search->search();
 			wfProfileOut( __METHOD__ . '-request' );
 
+			if ( $params['debug'] ) {
+				$this->addDebugInfo( $resultSet );
+			}
+
 			$data = $resultSet->getResponse()->getData();
 
 			if ( !isset( $data['hits']['hits'] ) ) {
@@ -230,5 +234,31 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Adds debug information to API result
+	 * @param \Elastica\ResultSet $resultSet
+	 */
+	private function addDebugInfo( \Elastica\ResultSet $resultSet ) {
+		$ti = $resultSet->getResponse()->getTransferInfo();
+		$neededData = array(
+			'url',
+			'total_time',
+			'namelookup_time',
+			'connect_time',
+			'pretransfer_time',
+			'size_upload',
+			'size_download',
+			'starttransfer_time',
+			'redirect_time',
+		);
+		$debug = array();
+		foreach ( $neededData as $name ) {
+			if ( isset( $ti[$name] ) ) {
+				$debug[$name] = $ti[$name];
+			}
+		}
+		$this->getResult()->addValue( null, 'geodata-debug', $debug );
 	}
 }

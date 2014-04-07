@@ -257,3 +257,8 @@ $wgGeoDataIndexLatLon = true;
  * @see http://www.elasticsearch.org/guide/en/elasticsearch/reference/master/mapping-geo-point-type.html#_field_data
  */
 $wgGeoDataCoordinatesCompression = false;
+
+/**
+ * If set to true, will add debug information to API output
+ */
+$wgGeoDataDebug = false;
