@@ -19,6 +19,9 @@
     "geodata-broken-tags-category": "有格式错误坐标标签的页面",
     "geodata-broken-tags-category-desc": "页面有难以阅读的<code><nowiki>{{#coordinates:}}</nowiki></code>标签。",
     "geodata-unknown-type-category": "包含未知坐标类型的页面",
+    "geodata-unknown-type-category-desc": "页面使用<code>type</code>坐标参数的未知值。",
     "geodata-unknown-globe-category": "包含未知星球值的页面",
-    "geodata-unknown-region-category": "包含无效地区值的页面"
+    "geodata-unknown-globe-category-desc": "页面使用<code>globe</code>坐标参数的未知值。",
+    "geodata-unknown-region-category": "包含无效地区值的页面",
+    "geodata-unknown-region-category-desc": "页面使用<code>region</code>坐标参数的未知值。"
 }
