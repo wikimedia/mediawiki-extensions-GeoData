@@ -3,7 +3,8 @@
         "authors": [
             "Stryn",
             "VezonThunder",
-            "Zache"
+            "Zache",
+            "Pxos"
         ]
     },
     "geodata-desc": "Lisää maantieteellisten koordinaattien säilöntä- ja hakutoiminnot",
@@ -15,8 +16,8 @@
     "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: virheellinen aluekoodin muoto",
     "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>:  sivulla ei voi olla kuin yksi ensisijainen koordinaattimerkintä",
     "geodata-limit-exceeded": "Raja  $1  <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1| tag|tags}} sivulla on ylitetty",
-    "geodata-broken-tags-category": "Väärin merkittyjä koordinaatteja sisältävät sivut",
+    "geodata-broken-tags-category": "Sivut, joissa on virheellisessä muodossa olevia koordinaatteja",
     "geodata-unknown-type-category": "Sivut, joissa koordinaatin tyyppi on tuntematon",
-    "geodata-unknown-globe-category": "Sivut joissa on tuntematon globe-arvo",
-    "geodata-unknown-region-category": "Sivut, joissa virheellinen alueen arvo"
+    "geodata-unknown-globe-category": "Sivut, joissa on tuntematon globe-arvo",
+    "geodata-unknown-region-category": "Sivut, joissa on virheellinen alueen arvo"
 }
