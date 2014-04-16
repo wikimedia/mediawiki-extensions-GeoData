@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Y-M D",
-            "Fohanno"
-        ]
-    },
-    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki> : ledred direizh",
-    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki> : hedred direizh",
-    "geodata-unknown-type-category": "Pajennoù gant ur seurt daveennoù dianav"
+	"@metadata": {
+		"authors": [
+			"Y-M D",
+			"Fohanno"
+		]
+	},
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki> : ledred direizh",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki> : hedred direizh",
+	"geodata-unknown-type-category": "Pajennoù gant ur seurt daveennoù dianav"
 }

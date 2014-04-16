@@ -1,19 +1,19 @@
 {
-    "@metadata": {
-        "authors": [
-            "NoiX180"
-        ]
-    },
-    "geodata-desc": "Tambah fungsi panyimpenan lan pambenahan koordinat geografi",
-    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: garis lintang ora sah",
-    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: garis bujur ora sah",
-    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: jinis \"$1\" ora dikenal",
-    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globe \"$1\" ora dikenal",
-    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: format kodhé dhaèrah ora sah",
-    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: ora bisa luwih saka siji tag utama per kaca",
-    "geodata-limit-exceeded": "Wates $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tag}} per kaca wis karanggèh",
-    "geodata-broken-tags-category": "Kaca mawa tag koordinat cacat",
-    "geodata-unknown-type-category": "Kaca mawa jinis koordinat ora dingertèni",
-    "geodata-unknown-globe-category": "Kaca mawa nilé globe ora dingertèni",
-    "geodata-unknown-region-category": "Kaca mawa nilé dhaèrah ora sah"
+	"@metadata": {
+		"authors": [
+			"NoiX180"
+		]
+	},
+	"geodata-desc": "Tambah fungsi panyimpenan lan pambenahan koordinat geografi",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: garis lintang ora sah",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: garis bujur ora sah",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: jinis \"$1\" ora dikenal",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globe \"$1\" ora dikenal",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: format kodhé dhaèrah ora sah",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: ora bisa luwih saka siji tag utama per kaca",
+	"geodata-limit-exceeded": "Wates $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tag}} per kaca wis karanggèh",
+	"geodata-broken-tags-category": "Kaca mawa tag koordinat cacat",
+	"geodata-unknown-type-category": "Kaca mawa jinis koordinat ora dingertèni",
+	"geodata-unknown-globe-category": "Kaca mawa nilé globe ora dingertèni",
+	"geodata-unknown-region-category": "Kaca mawa nilé dhaèrah ora sah"
 }

@@ -1,21 +1,21 @@
 {
-    "@metadata": {
-        "authors": [
-            "Fryed-peach",
-            "Shirayuki"
-        ]
-    },
-    "geodata-desc": "緯度経度を保存/取得する機能を追加する",
-    "geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki> 関数に無効な引数が渡されました",
-    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: 緯度 (lat) の値が無効です",
-    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: 経度 (lon) の値が無効です",
-    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: 引数 type の値「$1」を認識できません",
-    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: 引数 globe の値「$1」を認識できません",
-    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: 地域 (region) コードの書式が無効です",
-    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: 各ページで primary のタグは複数指定できません",
-    "geodata-limit-exceeded": "<nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|タグ}}の各ページ$1個までという上限を超えています",
-    "geodata-broken-tags-category": "座標タグに誤りがあるページ",
-    "geodata-unknown-type-category": "種別不明の座標があるページ",
-    "geodata-unknown-globe-category": "天体不明の座標があるページ",
-    "geodata-unknown-region-category": "地域不明の座標があるページ"
+	"@metadata": {
+		"authors": [
+			"Fryed-peach",
+			"Shirayuki"
+		]
+	},
+	"geodata-desc": "緯度経度を保存/取得する機能を追加する",
+	"geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki> 関数に無効な引数が渡されました",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: 緯度 (lat) の値が無効です",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: 経度 (lon) の値が無効です",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: 引数 type の値「$1」を認識できません",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: 引数 globe の値「$1」を認識できません",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: 地域 (region) コードの書式が無効です",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: 各ページで primary のタグは複数指定できません",
+	"geodata-limit-exceeded": "<nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|タグ}}の各ページ$1個までという上限を超えています",
+	"geodata-broken-tags-category": "座標タグに誤りがあるページ",
+	"geodata-unknown-type-category": "種別不明の座標があるページ",
+	"geodata-unknown-globe-category": "天体不明の座標があるページ",
+	"geodata-unknown-region-category": "地域不明の座標があるページ"
 }

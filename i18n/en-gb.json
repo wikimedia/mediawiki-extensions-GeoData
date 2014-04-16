@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "Amire80"
-        ]
-    },
-    "geodata-bad-type": "\u003Cnowiki\u003E{{#coordinates:}}\u003C/nowiki\u003E: unrecognised type \"$1\"",
-    "geodata-bad-globe": "\u003Cnowiki\u003E{{#coordinates:}}\u003C/nowiki\u003E: unrecognised globe \"$1\""
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: unrecognised type \"$1\"",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: unrecognised globe \"$1\""
 }

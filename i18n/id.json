@@ -1,17 +1,17 @@
 {
-    "@metadata": {
-        "authors": [
-            "Farras"
-        ]
-    },
-    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: lintang salah",
-    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: bujur salah",
-    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: jenis tidak dikenal \"$1\"",
-    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globe tidak dikenal \"$1\"",
-    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: format kode wilayah tidak sah",
-    "geodata-limit-exceeded": "Batas $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tag}} per halaman telah dilewati",
-    "geodata-broken-tags-category": "Halaman dengan tag koordinat rusak",
-    "geodata-unknown-type-category": "Halaman dengan jenis koordinat tidak dikenal",
-    "geodata-unknown-globe-category": "Halaman dengan nilai globe tidak dikenal",
-    "geodata-unknown-region-category": "Halaman dengan nilai wilayah tidak dikenal"
+	"@metadata": {
+		"authors": [
+			"Farras"
+		]
+	},
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: lintang salah",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: bujur salah",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: jenis tidak dikenal \"$1\"",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globe tidak dikenal \"$1\"",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: format kode wilayah tidak sah",
+	"geodata-limit-exceeded": "Batas $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tag}} per halaman telah dilewati",
+	"geodata-broken-tags-category": "Halaman dengan tag koordinat rusak",
+	"geodata-unknown-type-category": "Halaman dengan jenis koordinat tidak dikenal",
+	"geodata-unknown-globe-category": "Halaman dengan nilai globe tidak dikenal",
+	"geodata-unknown-region-category": "Halaman dengan nilai wilayah tidak dikenal"
 }

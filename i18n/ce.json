@@ -1,14 +1,14 @@
 {
-    "@metadata": {
-        "authors": [
-            "Умар"
-        ]
-    },
-    "geodata-desc": "Географин координаташ лата да а билгала да а таро тӀетуху",
-    "geodata-bad-input": "Функци \u003Cnowiki\u003E{{#coordinates:}}\u003C/nowiki\u003E чу нийса йоцу билгалонаш йихкина",
-    "geodata-bad-latitude": "\u003Cnowiki\u003E{{#coordinates:}}\u003C/nowiki\u003E: хилийта йиш йоцу шоралла",
-    "geodata-bad-longitude": "\u003Cnowiki\u003E{{#coordinates:}}\u003C/nowiki\u003E: хилийта йиш йоцу дохалла",
-    "geodata-multiple-primary": "\u003Cnowiki\u003E{{#coordinates:}}\u003C/nowiki\u003E: агӀонгахь цхьаъ бен дуьххьарлера билгало хила магийна дац",
-    "geodata-broken-tags-category": "Координтин тегаш нийса йоцу агӀонаш",
-    "geodata-unknown-type-category": "Координатин тайп хууш доцу агӀонаш"
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"geodata-desc": "Географин координаташ лата да а билгала да а таро тӀетуху",
+	"geodata-bad-input": "Функци <nowiki>{{#coordinates:}}</nowiki> чу нийса йоцу билгалонаш йихкина",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: хилийта йиш йоцу шоралла",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: хилийта йиш йоцу дохалла",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: агӀонгахь цхьаъ бен дуьххьарлера билгало хила магийна дац",
+	"geodata-broken-tags-category": "Координтин тегаш нийса йоцу агӀонаш",
+	"geodata-unknown-type-category": "Координатин тайп хууш доцу агӀонаш"
 }

@@ -1,25 +1,25 @@
 {
-    "@metadata": {
-        "authors": [
-            "Kghbln",
-            "Metalhead64"
-        ]
-    },
-    "geodata-desc": "Ergänzt Funktionen zum Speichern und Abrufen geografischer Koordinaten",
-    "geodata-bad-input": "Es wurden ungültige Argumente an die Funktion <code><nowiki>{{#coordinates:}}</nowiki></code> übergeben.",
-    "geodata-bad-latitude": "<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültige Längenangabe",
-    "geodata-bad-longitude": "<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültige Breitenangabe",
-    "geodata-bad-type": "<code><nowiki>{{#coordinates:}}</nowiki></code>: unbekannter Koordinatentyp „$1“",
-    "geodata-bad-globe": "<code><nowiki>{{#coordinates:}}</nowiki></code>: unbekannter Globus „$1“",
-    "geodata-bad-region": "<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültiges Regionscodeformat",
-    "geodata-multiple-primary": "<code><nowiki>{{#coordinates:}}</nowiki></code>: Es kann nicht mehr als eine primäre Auszeichnung angegeben werden.",
-    "geodata-limit-exceeded": "Die Begrenzung zur Funktion <code><nowiki>{{#coordinates:}}</nowiki></code> von {{PLURAL:$1|einer Auszeichnung|$1 Auszeichnungen}} je Seite, wurde überschritten.",
-    "geodata-broken-tags-category": "Seiten mit fehlerhaften Auszeichnungen zu Koordinaten",
-    "geodata-broken-tags-category-desc": "Die Seite hat ein fehlerhaftes <code><nowiki>{{#coordinates:}}</nowiki></code>-Tag.",
-    "geodata-unknown-type-category": "Seiten mit unbekanntem Koordinatentyp",
-    "geodata-unknown-type-category-desc": "Die Seite verwendet einen unbekannten Wert des <code>type</code>-Parameters für Koordinaten.",
-    "geodata-unknown-globe-category": "Seiten mit unbekanntem Codewert für den Globus",
-    "geodata-unknown-globe-category-desc": "Die Seite verwendet einen unbekannten Wert des <code>globe</code>-Parameters für Koordinaten.",
-    "geodata-unknown-region-category": "Seiten mit unbekanntem Codewert für die Region",
-    "geodata-unknown-region-category-desc": "Die Seite verwendet einen ungültigen Wert des <code>region</code>-Parameters für Koordinaten."
+	"@metadata": {
+		"authors": [
+			"Kghbln",
+			"Metalhead64"
+		]
+	},
+	"geodata-desc": "Ergänzt Funktionen zum Speichern und Abrufen geografischer Koordinaten",
+	"geodata-bad-input": "Es wurden ungültige Argumente an die Funktion <code><nowiki>{{#coordinates:}}</nowiki></code> übergeben.",
+	"geodata-bad-latitude": "<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültige Längenangabe",
+	"geodata-bad-longitude": "<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültige Breitenangabe",
+	"geodata-bad-type": "<code><nowiki>{{#coordinates:}}</nowiki></code>: unbekannter Koordinatentyp „$1“",
+	"geodata-bad-globe": "<code><nowiki>{{#coordinates:}}</nowiki></code>: unbekannter Globus „$1“",
+	"geodata-bad-region": "<code><nowiki>{{#coordinates:}}</nowiki></code>: ungültiges Regionscodeformat",
+	"geodata-multiple-primary": "<code><nowiki>{{#coordinates:}}</nowiki></code>: Es kann nicht mehr als eine primäre Auszeichnung angegeben werden.",
+	"geodata-limit-exceeded": "Die Begrenzung zur Funktion <code><nowiki>{{#coordinates:}}</nowiki></code> von {{PLURAL:$1|einer Auszeichnung|$1 Auszeichnungen}} je Seite, wurde überschritten.",
+	"geodata-broken-tags-category": "Seiten mit fehlerhaften Auszeichnungen zu Koordinaten",
+	"geodata-broken-tags-category-desc": "Die Seite hat ein fehlerhaftes <code><nowiki>{{#coordinates:}}</nowiki></code>-Tag.",
+	"geodata-unknown-type-category": "Seiten mit unbekanntem Koordinatentyp",
+	"geodata-unknown-type-category-desc": "Die Seite verwendet einen unbekannten Wert des <code>type</code>-Parameters für Koordinaten.",
+	"geodata-unknown-globe-category": "Seiten mit unbekanntem Codewert für den Globus",
+	"geodata-unknown-globe-category-desc": "Die Seite verwendet einen unbekannten Wert des <code>globe</code>-Parameters für Koordinaten.",
+	"geodata-unknown-region-category": "Seiten mit unbekanntem Codewert für die Region",
+	"geodata-unknown-region-category-desc": "Die Seite verwendet einen ungültigen Wert des <code>region</code>-Parameters für Koordinaten."
 }

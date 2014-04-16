@@ -1,8 +1,6 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "geodata-unknown-type-category": "Stranice sa nepoznatom vrstom koordinata",
-    "geodata-unknown-globe-category": "Stranice sa nepoznatom vrednosti za globus",
-    "geodata-unknown-region-category": "Stranice sa neispravnom vrednosti za region"
+	"@metadata": [],
+	"geodata-unknown-type-category": "Stranice sa nepoznatom vrstom koordinata",
+	"geodata-unknown-globe-category": "Stranice sa nepoznatom vrednosti za globus",
+	"geodata-unknown-region-category": "Stranice sa neispravnom vrednosti za region"
 }

@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "පසිඳු කාවින්ද"
-        ]
-    },
-    "geodata-unknown-type-category": "نقاط مقام کی نامعلوم قسم کے ساتھ صفحات",
-    "geodata-unknown-globe-category": "نامعلوم دنیا کی قدر کے ساتھ صفحات",
-    "geodata-unknown-region-category": "باطل کے علاقے کی قدر کے ساتھ صفحات"
+	"@metadata": {
+		"authors": [
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"geodata-unknown-type-category": "نقاط مقام کی نامعلوم قسم کے ساتھ صفحات",
+	"geodata-unknown-globe-category": "نامعلوم دنیا کی قدر کے ساتھ صفحات",
+	"geodata-unknown-region-category": "باطل کے علاقے کی قدر کے ساتھ صفحات"
 }

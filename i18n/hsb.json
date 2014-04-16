@@ -1,20 +1,20 @@
 {
-    "@metadata": {
-        "authors": [
-            "Michawiki"
-        ]
-    },
-    "geodata-desc": "Přidawa funkcije za składowanje a wotwołowanje geografiskich koordinatow.",
-    "geodata-bad-input": "Njepłaćiwe argumenty su so funkciji <nowiki>{{#coordinates:}}</nowiki> přepodali",
-    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwa šěrina",
-    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwa dołhosć",
-    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: Njespóznaty typ \"$1\"",
-    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: Njespóznaty globus \"$1\"",
-    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwy format regionalneho koda",
-    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: njemóže wjace hač jednu primarnu marku na stronu měć",
-    "geodata-limit-exceeded": "Limit $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|marki|markow|markow|markow}} na stronu je so překročił",
-    "geodata-broken-tags-category": "Strony z deformowanymi koordinatowymi markami",
-    "geodata-unknown-type-category": "Strony z njeznatym typom koordinatow",
-    "geodata-unknown-globe-category": "Strony z njeznatej globusowej hódnotu",
-    "geodata-unknown-region-category": "Strony z njepłaćiwej regionowej hódnotu"
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"geodata-desc": "Přidawa funkcije za składowanje a wotwołowanje geografiskich koordinatow.",
+	"geodata-bad-input": "Njepłaćiwe argumenty su so funkciji <nowiki>{{#coordinates:}}</nowiki> přepodali",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwa šěrina",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwa dołhosć",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: Njespóznaty typ \"$1\"",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: Njespóznaty globus \"$1\"",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: njepłaćiwy format regionalneho koda",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: njemóže wjace hač jednu primarnu marku na stronu měć",
+	"geodata-limit-exceeded": "Limit $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|marki|markow|markow|markow}} na stronu je so překročił",
+	"geodata-broken-tags-category": "Strony z deformowanymi koordinatowymi markami",
+	"geodata-unknown-type-category": "Strony z njeznatym typom koordinatow",
+	"geodata-unknown-globe-category": "Strony z njeznatej globusowej hódnotu",
+	"geodata-unknown-region-category": "Strony z njepłaćiwej regionowej hódnotu"
 }

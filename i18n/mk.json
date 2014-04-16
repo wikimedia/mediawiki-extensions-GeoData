@@ -1,24 +1,24 @@
 {
-    "@metadata": {
-        "authors": [
-            "Bjankuloski06"
-        ]
-    },
-    "geodata-desc": "Додава можност за складирање и повикување на географски координати",
-    "geodata-bad-input": "На функцијата <nowiki>{{#coordinates:}}</nowiki> ѝ се дадени неважечки аргументи",
-    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: неважечка геог. ширина",
-    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: неважечка геог. должина",
-    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: непрепознаен тип „$1“",
-    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: непрепознаен глобус „$1“",
-    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: неважечки коден формат за регион",
-    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: не може да има повеќе од една главна ознака по страница",
-    "geodata-limit-exceeded": "Ја надминавте границата од $1 {{PLURAL:$1|ознака|ознаки}} <nowiki>{{#coordinates:}}</nowiki> по страница",
-    "geodata-broken-tags-category": "Страници со неправилно напишани координатни ознаки",
-    "geodata-broken-tags-category-desc": "Страницата има неисправно срочена ознака <code><nowiki>{{#coordinates:}}</nowiki></code>.",
-    "geodata-unknown-type-category": "Страници со непознат тип на координати",
-    "geodata-unknown-type-category-desc": "Страницата користи непозната вредност во параметарот <code>type</code> за координати.",
-    "geodata-unknown-globe-category": "Страници со непозната вредност за глобус",
-    "geodata-unknown-globe-category-desc": "Страницата користи непозната вредност во параметарот <code>globe</code> за координати.",
-    "geodata-unknown-region-category": "Страници со непозната вредност за регион",
-    "geodata-unknown-region-category-desc": "Страницата користи непозната вредност во параметарот <code>region</code> за координати."
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"geodata-desc": "Додава можност за складирање и повикување на географски координати",
+	"geodata-bad-input": "На функцијата <nowiki>{{#coordinates:}}</nowiki> ѝ се дадени неважечки аргументи",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: неважечка геог. ширина",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: неважечка геог. должина",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: непрепознаен тип „$1“",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: непрепознаен глобус „$1“",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: неважечки коден формат за регион",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: не може да има повеќе од една главна ознака по страница",
+	"geodata-limit-exceeded": "Ја надминавте границата од $1 {{PLURAL:$1|ознака|ознаки}} <nowiki>{{#coordinates:}}</nowiki> по страница",
+	"geodata-broken-tags-category": "Страници со неправилно напишани координатни ознаки",
+	"geodata-broken-tags-category-desc": "Страницата има неисправно срочена ознака <code><nowiki>{{#coordinates:}}</nowiki></code>.",
+	"geodata-unknown-type-category": "Страници со непознат тип на координати",
+	"geodata-unknown-type-category-desc": "Страницата користи непозната вредност во параметарот <code>type</code> за координати.",
+	"geodata-unknown-globe-category": "Страници со непозната вредност за глобус",
+	"geodata-unknown-globe-category-desc": "Страницата користи непозната вредност во параметарот <code>globe</code> за координати.",
+	"geodata-unknown-region-category": "Страници со непозната вредност за регион",
+	"geodata-unknown-region-category-desc": "Страницата користи непозната вредност во параметарот <code>region</code> за координати."
 }

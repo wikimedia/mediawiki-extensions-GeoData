@@ -1,26 +1,26 @@
 {
-    "@metadata": {
-        "authors": [
-            "Max Semenik",
-            "SPQRobin",
-            "Shirayuki"
-        ]
-    },
-    "geodata-desc": "{{desc|name=Geo Data|url=http://www.mediawiki.org/wiki/Extension:GeoData}}",
-    "geodata-bad-input": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means that number of the arguments is invalid.",
-    "geodata-bad-latitude": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means the value of the \"lat\" argument is invalid.",
-    "geodata-bad-longitude": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means the value of the \"lon\" argument is invalid.",
-    "geodata-bad-type": "{{doc-important|Do not translate <code>coordinates</code>.}}\n\"type\" is the argument name.\nThis message means that the value of the argument \"type\" is unrecognized.\n\nParameters:\n* $1 - coordinate type. valid types are: country, airport, landmark, etc.",
-    "geodata-bad-globe": "{{doc-important|Do not translate <code>coordinates</code>.}}\n\"globe\" is the argument name.\nThis message means that the value of the argument \"globe\" is unrecognized.\n\nParameters:\n* $1 - value of the argument \"globe\"\n\nTerrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...",
-    "geodata-bad-region": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as fatal error message.\n\n\"region\" is the argument name.\nThis message means that the value of the argument \"region\" is unrecognized.\n\nParameters:\n* $1 - (Unused) region code",
-    "geodata-multiple-primary": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.",
-    "geodata-limit-exceeded": "Used as fatal error message. Parameters:\n* $1 - number of tags; value of the global variable <code>$wgMaxCoordinatesPerPage</code>",
-    "geodata-broken-tags-category": "Name of the tracking category",
-    "geodata-broken-tags-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-broken-tags-category}} tracking category.",
-    "geodata-unknown-type-category": "Name of the tracking category",
-    "geodata-unknown-type-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-type-category}} tracking category.",
-    "geodata-unknown-globe-category": "Name of the tracking category",
-    "geodata-unknown-globe-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-globe-category}} tracking category.",
-    "geodata-unknown-region-category": "Name of the tracking category",
-    "geodata-unknown-region-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-region-category}} tracking category."
+	"@metadata": {
+		"authors": [
+			"Max Semenik",
+			"SPQRobin",
+			"Shirayuki"
+		]
+	},
+	"geodata-desc": "{{desc|name=Geo Data|url=http://www.mediawiki.org/wiki/Extension:GeoData}}",
+	"geodata-bad-input": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means that number of the arguments is invalid.",
+	"geodata-bad-latitude": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means the value of the \"lat\" argument is invalid.",
+	"geodata-bad-longitude": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means the value of the \"lon\" argument is invalid.",
+	"geodata-bad-type": "{{doc-important|Do not translate <code>coordinates</code>.}}\n\"type\" is the argument name.\nThis message means that the value of the argument \"type\" is unrecognized.\n\nParameters:\n* $1 - coordinate type. valid types are: country, airport, landmark, etc.",
+	"geodata-bad-globe": "{{doc-important|Do not translate <code>coordinates</code>.}}\n\"globe\" is the argument name.\nThis message means that the value of the argument \"globe\" is unrecognized.\n\nParameters:\n* $1 - value of the argument \"globe\"\n\nTerrestrial body on which the coordinate resides. By default, Earth is assumed. Other globes include earth, mercury, venus, moon, mars, ...",
+	"geodata-bad-region": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as fatal error message.\n\n\"region\" is the argument name.\nThis message means that the value of the argument \"region\" is unrecognized.\n\nParameters:\n* $1 - (Unused) region code",
+	"geodata-multiple-primary": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.",
+	"geodata-limit-exceeded": "Used as fatal error message. Parameters:\n* $1 - number of tags; value of the global variable <code>$wgMaxCoordinatesPerPage</code>",
+	"geodata-broken-tags-category": "Name of the tracking category",
+	"geodata-broken-tags-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-broken-tags-category}} tracking category.",
+	"geodata-unknown-type-category": "Name of the tracking category",
+	"geodata-unknown-type-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-type-category}} tracking category.",
+	"geodata-unknown-globe-category": "Name of the tracking category",
+	"geodata-unknown-globe-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-globe-category}} tracking category.",
+	"geodata-unknown-region-category": "Name of the tracking category",
+	"geodata-unknown-region-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-region-category}} tracking category."
 }

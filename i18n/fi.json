@@ -1,23 +1,23 @@
 {
-    "@metadata": {
-        "authors": [
-            "Stryn",
-            "VezonThunder",
-            "Zache",
-            "Pxos"
-        ]
-    },
-    "geodata-desc": "Lisää maantieteellisten koordinaattien säilöntä- ja hakutoiminnot",
-    "geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki>-funktioon on annettu virheellisiä argumentteja",
-    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: virheellinen leveysaste",
-    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: virheellinen pituusaste",
-    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tuntematon tyyppi \"$1\"",
-    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: tuntematon karttapallo \"$1\"",
-    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: virheellinen aluekoodin muoto",
-    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>:  sivulla ei voi olla kuin yksi ensisijainen koordinaattimerkintä",
-    "geodata-limit-exceeded": "Raja  $1  <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1| tag|tags}} sivulla on ylitetty",
-    "geodata-broken-tags-category": "Sivut, joissa on virheellisessä muodossa olevia koordinaatteja",
-    "geodata-unknown-type-category": "Sivut, joissa koordinaatin tyyppi on tuntematon",
-    "geodata-unknown-globe-category": "Sivut, joissa on tuntematon globe-arvo",
-    "geodata-unknown-region-category": "Sivut, joissa on virheellinen alueen arvo"
+	"@metadata": {
+		"authors": [
+			"Stryn",
+			"VezonThunder",
+			"Zache",
+			"Pxos"
+		]
+	},
+	"geodata-desc": "Lisää maantieteellisten koordinaattien säilöntä- ja hakutoiminnot",
+	"geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki>-funktioon on annettu virheellisiä argumentteja",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: virheellinen leveysaste",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: virheellinen pituusaste",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tuntematon tyyppi \"$1\"",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: tuntematon karttapallo \"$1\"",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: virheellinen aluekoodin muoto",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>:  sivulla ei voi olla kuin yksi ensisijainen koordinaattimerkintä",
+	"geodata-limit-exceeded": "Raja  $1  <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1| tag|tags}} sivulla on ylitetty",
+	"geodata-broken-tags-category": "Sivut, joissa on virheellisessä muodossa olevia koordinaatteja",
+	"geodata-unknown-type-category": "Sivut, joissa koordinaatin tyyppi on tuntematon",
+	"geodata-unknown-globe-category": "Sivut, joissa on tuntematon globe-arvo",
+	"geodata-unknown-region-category": "Sivut, joissa on virheellinen alueen arvo"
 }

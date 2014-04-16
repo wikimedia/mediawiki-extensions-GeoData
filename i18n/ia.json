@@ -1,20 +1,20 @@
 {
-    "@metadata": {
-        "authors": [
-            "McDutchie"
-        ]
-    },
-    "geodata-desc": "Adde functionalitate pro immagazinage e recuperation de coordinatas geographic.",
-    "geodata-bad-input": "Parametros invalide ha essite passate al function <nowiki>{{#coordinates:}}</nowiki>",
-    "geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: latitude invalide",
-    "geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: longitude invalide",
-    "geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: typo \"$1\" non recognoscite",
-    "geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globo \"$1\" non recognoscite",
-    "geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: formato de codice de region invalide",
-    "geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: non pote haber plus de un etiquetta primari per pagina",
-    "geodata-limit-exceeded": "Le limite de $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|etiquetta|etiquettas}} per pagina ha essite excedite",
-    "geodata-broken-tags-category": "Paginas con etiquettas mal formate de coordinatas",
-    "geodata-unknown-type-category": "Paginas con typo incognite de coordinatas",
-    "geodata-unknown-globe-category": "Paginas con valor de globo incognite",
-    "geodata-unknown-region-category": "Paginas con valor de region incognite"
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"geodata-desc": "Adde functionalitate pro immagazinage e recuperation de coordinatas geographic.",
+	"geodata-bad-input": "Parametros invalide ha essite passate al function <nowiki>{{#coordinates:}}</nowiki>",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: latitude invalide",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: longitude invalide",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: typo \"$1\" non recognoscite",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globo \"$1\" non recognoscite",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: formato de codice de region invalide",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: non pote haber plus de un etiquetta primari per pagina",
+	"geodata-limit-exceeded": "Le limite de $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|etiquetta|etiquettas}} per pagina ha essite excedite",
+	"geodata-broken-tags-category": "Paginas con etiquettas mal formate de coordinatas",
+	"geodata-unknown-type-category": "Paginas con typo incognite de coordinatas",
+	"geodata-unknown-globe-category": "Paginas con valor de globo incognite",
+	"geodata-unknown-region-category": "Paginas con valor de region incognite"
 }

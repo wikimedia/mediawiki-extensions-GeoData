@@ -1,10 +1,10 @@
 {
-    "@metadata": {
-        "authors": [
-            "Rancher"
-        ]
-    },
-    "geodata-unknown-type-category": "Странице са непознатом врстом координата",
-    "geodata-unknown-globe-category": "Странице са непознатом вредности за глобус",
-    "geodata-unknown-region-category": "Странице са неисправном вредности за регион"
+	"@metadata": {
+		"authors": [
+			"Rancher"
+		]
+	},
+	"geodata-unknown-type-category": "Странице са непознатом врстом координата",
+	"geodata-unknown-globe-category": "Странице са непознатом вредности за глобус",
+	"geodata-unknown-region-category": "Странице са неисправном вредности за регион"
 }
