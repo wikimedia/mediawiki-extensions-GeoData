@@ -36,7 +36,9 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			}
 			$parts[0] = intval( $parts[0] );
 			$parts[1] = intval( $parts[1] );
-			$this->addWhere( "gt_page_id > {$parts[0]} OR ( gt_page_id = {$parts[0]} AND gt_id > {$parts[1]} )" );
+			$this->addWhere(
+				"gt_page_id > {$parts[0]} OR ( gt_page_id = {$parts[0]} AND gt_id >= {$parts[1]} )"
+			);
 		} else {
 			$this->addOption( 'USE INDEX', 'gt_page_id' );
 		}
