@@ -9,7 +9,6 @@ class ApiQueryCoordinates extends ApiQueryBase {
 	}
 
 	public function execute() {
-		global $wgDefaultGlobe;
 		$titles = $this->getPageSet()->getGoodTitles();
 		if ( count( $titles ) == 0 ) {
 			return;
@@ -129,9 +128,5 @@ class ApiQueryCoordinates extends ApiQueryBase {
 
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Extension:GeoData#prop.3Dcoordinates';
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
 	}
 }
