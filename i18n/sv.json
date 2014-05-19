@@ -8,7 +8,7 @@
 		]
 	},
 	"geodata-desc": "Lägger till funktionalitet för att lagra och hämta geografiska koordinater",
-	"geodata-bad-input": "Ogiltiga argument har skickats till <nowiki>{{#coordinates:}}</nowiki>funktionen",
+	"geodata-bad-input": "Ogiltiga argument har skickats till <nowiki>{{#coordinates:}}</nowiki>-funktionen",
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: ogiltig latitud",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ogiltig longitud",
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: oigenkänd typ \"$1\"",
