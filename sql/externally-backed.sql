@@ -1,4 +1,4 @@
--- SQL schema for GeoData extension, Solr-aware
+-- SQL schema for GeoData extension, Elasticsearch backend
 
 -- Stores information about geographical coordinates in articles
 CREATE TABLE /*_*/geo_tags (
@@ -29,22 +29,3 @@ CREATE TABLE /*_*/geo_tags (
 
 CREATE INDEX /*i*/gt_page_primary ON /*_*/geo_tags ( gt_page_id, gt_primary );
 CREATE INDEX /*i*/gt_page_id_id ON /*_*/geo_tags ( gt_page_id, gt_id );
-
--- Stores kill-list (ids of records deleted from geo_tags that need to be deleted from the Solr index)
-CREATE TABLE /*_*/geo_killlist (
-	-- Row ID
-	gk_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	-- gt_id of a row deleted from geo_tags
-	gk_killed_id int unsigned NOT NULL,
-	-- Last change timestamp
-	gk_touched timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)/*$wgDBTableOptions*/;
-
-CREATE INDEX /*i*/gk_touched ON /*_*/geo_killlist ( gk_touched );
-
--- Stores information about the last index update time
-CREATE TABLE /*_*/geo_updates (
-	gu_wiki varchar(64) NOT NULL PRIMARY KEY,
-	gu_last_tag int NOT NULL,
-	gu_last_kill int NOT NULL
-)/*$wgDBTableOptions*/;
