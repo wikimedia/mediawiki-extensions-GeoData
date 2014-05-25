@@ -14,7 +14,11 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: ഒരു താളിൽ ഒന്നിലധികം പ്രാഥമിക ടാഗ് എടുക്കാനാവില്ല",
 	"geodata-limit-exceeded": "താളിൽ {{PLURAL:$1|ഒരു|$1}} <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|ടാഗ്|ടാഗുകൾ}} എന്ന പരിധി അധികരിച്ചു",
 	"geodata-broken-tags-category": "തെറ്റായ വിധത്തിലുള്ള സ്ഥിരാങ്ക ടാഗുകൾ ഉള്ള താളുകൾ",
+	"geodata-broken-tags-category-desc": "താളിൽ തെറ്റായ വിധത്തിലുള്ള <code><nowiki>{{#coordinates:}}</nowiki></code> ടാഗ് ഉണ്ട്.",
 	"geodata-unknown-type-category": "അപരിചിതമായ തരത്തിലുള്ള സ്ഥിരാങ്കങ്ങൾ ഉള്ള താളുകൾ",
+	"geodata-unknown-type-category-desc": "നിർദ്ദേശാങ്കങ്ങൾക്കുള്ള ചരമായ <code>type</code> എന്നതിനു താളിൽ ഉപയോഗിച്ചിരിക്കുന്നത് അപരിചിതമായ വിലയാണ്.",
 	"geodata-unknown-globe-category": "ഭൂഗോളമാതൃകയുടെ വില അപരിചിതമായ താളുകൾ",
-	"geodata-unknown-region-category": "പ്രദേശത്തിന്റെ വില അസാധുവായ താളുകൾ"
+	"geodata-unknown-globe-category-desc": "നിർദ്ദേശാങ്കങ്ങൾക്കുള്ള ചരമായ <code>globe</code> എന്നതിനു താളിൽ ഉപയോഗിച്ചിരിക്കുന്നത് അപരിചിതമായ വിലയാണ്.",
+	"geodata-unknown-region-category": "പ്രദേശത്തിന്റെ വില അസാധുവായ താളുകൾ",
+	"geodata-unknown-region-category-desc": "നിർദ്ദേശാങ്കങ്ങൾക്കുള്ള ചരമായ <code>region</code> എന്നതിനു താളിൽ ഉപയോഗിച്ചിരിക്കുന്നത് അപരിചിതമായ വിലയാണ്."
 }
