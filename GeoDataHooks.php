@@ -81,16 +81,6 @@ class GeoDataHooks {
 
 		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
-		if ( $wgGeoDataBackend == 'solr' ) {
-			$res = $dbw->select( 'geo_tags', 'gt_id', array( 'gt_page_id' => $id ), __METHOD__ );
-			$killlist = array();
-			foreach ( $res as $row ) {
-				$killlist[] = array( 'gk_killed_id' => $row->gt_id );
-			}
-			if ( $killlist ) {
-				$dbw->insert( 'geo_killlist', $killlist, __METHOD__ );
-			}
-		}
 		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $id ), __METHOD__ );
 		GeoData::maybeUpdate();
 		wfProfileOut( __METHOD__ );
@@ -218,12 +208,6 @@ class GeoDataHooks {
 		if ( count( $delete ) ) {
 			$deleteIds = array_keys( $delete );
 			$dbw->delete( 'geo_tags', array( 'gt_id' => $deleteIds ), __METHOD__ );
-			if ( $wgGeoDataBackend != 'db' ) {
-				$rows = array_map( function( $id ) {
-					return array( 'gk_killed_id' => $id );
-				}, $deleteIds );
-				$dbw->insert( 'geo_killlist', $rows, __METHOD__ );
-			}
 		}
 		if ( count( $add ) ) {
 			$dbw->insert( 'geo_tags', $add, __METHOD__ );
