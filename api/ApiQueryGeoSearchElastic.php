@@ -90,7 +90,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			$resultSet = $search->search();
 			wfProfileOut( __METHOD__ . '-request' );
 
-			if ( $params['debug'] ) {
+			if ( isset( $params['debug'] ) && $params['debug'] ) {
 				$this->addDebugInfo( $resultSet );
 			}
 
