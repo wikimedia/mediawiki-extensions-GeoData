@@ -14,7 +14,11 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: saan a mabalin ti ad-adu ngem maysa a nangruna nga etiketa ti tungngal maysa a panid",
 	"geodata-limit-exceeded": "Ti patingga ti $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|nga etiketa|nga et-etiketa}} ti tunggal maysa a panid ket nasurokanen",
 	"geodata-broken-tags-category": "Dagiti panid nga adda dagiti nadadael nga etiketa ti nagsasabtan",
+	"geodata-broken-tags-category-desc": "Ti panid ket addaan iti nadadael nga etiketa ti <code><nowiki>{{#coordinates:}}</nowiki></code> .",
 	"geodata-unknown-type-category": "Dagiti panid nga adda dagiti di ammo a kita dagiti nagsasabtan",
+	"geodata-unknown-type-category-desc": "Ti panid ket agus-usar ti di ammo a pateg ti parametro ti <code>type</code> para kadagiti nagsasabtan.",
 	"geodata-unknown-globe-category": "Dagiti panid nga adda ti di ammo a pateg ti globo",
-	"geodata-unknown-region-category": "Dagiti panid nga adda ti saan a husto a pateg ti rehion"
+	"geodata-unknown-globe-category-desc": "Ti panid ket agus-usar ti di ammo a pateg ti parametro ti <code>globe</code> para kadagiti nagsasabtan.",
+	"geodata-unknown-region-category": "Dagiti panid nga adda ti saan a husto a pateg ti rehion",
+	"geodata-unknown-region-category-desc": "Ti panid ket agus-usar ti maysa nga imbalido a pateg ti parametro ti <code>region</code> para kadagiti nagsasabtan."
 }
