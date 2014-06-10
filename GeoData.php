@@ -52,6 +52,7 @@ $wgHooks['FileUpload'][] = 'GeoDataHooks::onFileUpload';
 $wgHooks['OutputPageParserOutput'][] = 'GeoDataHooks::onOutputPageParserOutput';
 $wgHooks['CirrusSearchMappingConfig'][] = 'GeoDataHooks::onCirrusSearchMappingConfig';
 $wgHooks['CirrusSearchBuildDocumentParse'][] = 'GeoDataHooks::onCirrusSearchBuildDocumentParse';
+$wgHooks['ParserTestTables'][] = 'GeoDataHooks::onParserTestTables';
 
 // Use the proper search backend
 $wgExtensionFunctions[] = 'efInitGeoData';

@@ -341,4 +341,16 @@ class GeoDataHooks {
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
+
+	/**
+	 * Add to the tables cloned for parser testing
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserTestTables
+	 *
+	 * @param array $tables The tables to duplicate structure of
+	 * @return bool
+	 */
+	public static function onParserTestTables( &$tables ) {
+		$tables[] = 'geo_tags';
+		return true;
+	}
 }
