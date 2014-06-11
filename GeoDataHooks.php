@@ -11,15 +11,16 @@ class GeoDataHooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		global $wgGeoDataBackend;
+
+		if ( $wgGeoDataBackend != 'db' && $wgGeoDataBackend != 'elastic' ) {
+			throw new MWException( "Unrecognized backend '$wgGeoDataBackend'" );
+		}
 		switch ( $updater->getDB()->getType() ) {
 			case 'sqlite':
-				if ( $wgGeoDataBackend != 'db' ) {
-					throw new MWException( 'External search doesn\'t support SQLite' );
-				}
-				// no break
 			case 'mysql':
 				if ( $wgGeoDataBackend != 'db' ) {
 					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sql/externally-backed.sql' );
+					$updater->dropExtensionTable( 'geo_killlist', dirname( __FILE__ ) . '/sql/drop-updates-killlist.sql' );
 				} else {
 					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sql/db-backed.sql' );
 				}
@@ -77,12 +78,10 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id ) {
-		global $wgGeoDataBackend;
 
 		wfProfileIn( __METHOD__ );
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $id ), __METHOD__ );
-		GeoData::maybeUpdate();
 		wfProfileOut( __METHOD__ );
 
 		return true;
@@ -118,7 +117,6 @@ class GeoDataHooks {
 		} else {
 			self::doSmartUpdate( $data, $linksUpdate->mId );
 		}
-		GeoData::maybeUpdate();
 		wfProfileOut( __METHOD__ );
 
 		return true;
@@ -177,8 +175,6 @@ class GeoDataHooks {
 	}
 
 	private static function doSmartUpdate( $coords, $pageId ) {
-		global $wgGeoDataBackend;
-
 		wfProfileIn( __METHOD__ );
 		$prevCoords = GeoData::getAllCoordinates( $pageId, array(), DB_MASTER );
 		$add = array();

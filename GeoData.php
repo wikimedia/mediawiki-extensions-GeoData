@@ -17,7 +17,6 @@ $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
 $wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
 $wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/api/ApiQueryGeoSearchElastic.php";
-$wgAutoloadClasses['ApiQueryGeoSearchSolr'] = "$dir/api/ApiQueryGeoSearchSolr.php";
 $wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoData.php";
 $wgAutoloadClasses['ApiQueryCategoryMembers_GeoData'] = "$dir/api/ApiQueryCategoryMembers_GeoData.php";
 $wgAutoloadClasses['GeoDataQueryExtender'] = "$dir/api/GeoDataQueryExtender.php";
@@ -28,11 +27,6 @@ $wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/CoordinatesParserFunctio
 $wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
 $wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
 $wgAutoloadClasses['GeoDataMath'] = "$dir/GeoDataMath.php";
-$wgAutoloadClasses['SolrUpdate'] = "$dir/solrupdate.php";
-$wgAutoloadClasses['SolrUpdateJob'] = "$dir/solr/SolrUpdateJob.php";
-$wgAutoloadClasses['SolrUpdateWork'] = "$dir/solr/SolrUpdateWork.php";
-
-$wgAutoloadClasses['SolrGeoData'] = "$dir/solr/SolrGeoData.php";
 
 $wgMessagesDirs['GeoData'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
@@ -63,8 +57,6 @@ function efInitGeoData() {
 		$wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend );
 	}
 }
-
-$wgJobClasses['solrUpdate'] = 'SolrUpdateJob';
 
 // Tracking categories for Special:TrackingCategories
 $wgTrackingCategories[] = 'geodata-broken-tags-category';
@@ -191,48 +183,9 @@ $wgGeoDataDisableParserFunction = false;
 $wgGeoDataIndexGranularity = 10;
 
 /**
- * Which backend should be used by spatial searhces: 'db', 'solr' or 'elastic'
+ * Which backend should be used by spatial searhces: 'db' or 'elastic'
  */
 $wgGeoDataBackend = 'db';
-
-
-// Solr-specific settings
-
-/**
- * Generic Solr connection options, see Solarium docs.
- * Note: host must be set in $wgGeoDataSolrHosts for load-balancicng.
- */
-$wgGeoDataSolrOptions = array(
-	'adapteroptions' => array(
-		//'host' => '127.0.0.1',
-		'port' => 8983,
-		'path' => '/solr/',
-	),
-);
-
-/**
- * @var string|array: Solr host, string "hostname" or array( 'host1' => weight1, 'host2' => weight2 ... )
- */
-$wgGeoDataSolrHosts = 'localhost';
-
-/**
- * @var string: Solr master used for updates
- */
-$wgGeoDataSolrMaster = 'localhost';
-
-/**
- * @var int|string: Commit policy
- * Possible values:
- * - 'never': Never commit explicitly, let Solr decide on its own.
- * - 'immediate': Commit after every change.
- * - (some number): Commit within this number of milliseconds.
- */
-$wgGeoDataSolrCommitPolicy = 'immediate';
-
-/**
- * Whether search index should be updated via jobs. Supported only for Solr.
- */
-$wgGeoDataUpdatesViaJob = false;
 
 /**
  * Specifies which information about page's primary coordinate is added to global JS variable wgCoordinates.

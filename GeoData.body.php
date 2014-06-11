@@ -180,15 +180,4 @@ class GeoData {
 	public static function pickRandom( $weights ) {
 		return ArrayUtils::pickRandom( $weights );
 	}
-
-	/**
-	 * Adds an update job if needed
-	 */
-	public static function maybeUpdate() {
-		global $wgGeoDataBackend, $wgGeoDataUpdatesViaJob;
-
-		if ( $wgGeoDataBackend == 'solr' && $wgGeoDataUpdatesViaJob ) {
-			JobQueueGroup::singleton()->push( new SolrUpdateJob( null ) );
-		}
-	}
 }
