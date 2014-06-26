@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Armando-Martin",
-			"Fitoschido"
+			"Fitoschido",
+			"Macofe"
 		]
 	},
 	"geodata-desc": "Agrega la funcionalidad de almacenamiento y recuperación de coordenadas geográficas",
@@ -15,6 +16,7 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: no puede tener más de una etiqueta principal por página",
 	"geodata-limit-exceeded": "El límite de $1 {{PLURAL:$1|etiqueta|etiquetas}} <nowiki>{{#coordinates:}}</nowiki> por página ha sido superado",
 	"geodata-broken-tags-category": "Páginas con etiquetas de coordenadas con formato incorrecto",
+	"geodata-broken-tags-category-desc": "Esta página tiene una etiqueta <code><nowiki>{{#coordinates:}}</nowiki></code> malformada.",
 	"geodata-unknown-type-category": "Páginas con tipo de coordenadas desconocido",
 	"geodata-unknown-type-category-desc": "Esta página utiliza un valor desconocido en el parámetro <code>type</code> de las coordenadas.",
 	"geodata-unknown-globe-category": "Páginas con valor de mundo desconocido",
