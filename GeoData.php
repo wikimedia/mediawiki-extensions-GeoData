@@ -17,8 +17,6 @@ $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
 $wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
 $wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/api/ApiQueryGeoSearchElastic.php";
-$wgAutoloadClasses['ApiQueryAllPages_GeoData'] = "$dir/api/ApiQueryAllPages_GeoData.php";
-$wgAutoloadClasses['ApiQueryCategoryMembers_GeoData'] = "$dir/api/ApiQueryCategoryMembers_GeoData.php";
 $wgAutoloadClasses['GeoDataQueryExtender'] = "$dir/api/GeoDataQueryExtender.php";
 
 $wgAutoloadClasses['Coord'] = "$dir/Coord.php";
@@ -33,8 +31,6 @@ $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
 $wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
 
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
-$wgAPIListModules['geopages'] = 'ApiQueryAllPages_GeoData';
-$wgAPIListModules['geopagesincategory'] = 'ApiQueryCategoryMembers_GeoData';
 $wgAPIGeneratorModules['geosearch'] = 'ApiQueryGeoSearch';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoDataHooks::onLoadExtensionSchemaUpdates';
