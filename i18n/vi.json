@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Minh Nguyen"
+			"Minh Nguyen",
+			"Trần Nguyễn Minh Huy"
 		]
 	},
 	"geodata-desc": "Cho phép lưu trữ và truy cập dữ liệu tọa độ",
@@ -11,7 +12,7 @@
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: kiểu bất ngờ “$1”",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: địa cầu bất ngờ “$1”",
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: định dạng mã khu vực không hợp lệ",
-	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: một trang không có thể chứa hơn một thẻ chính",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: một trang không thể chứa nhiều hơn một thẻ chính",
 	"geodata-limit-exceeded": "Đã vượt quá giới hạn mỗi trang có $1 <nowiki>{{#coordinates:}}</nowiki> thẻ",
 	"geodata-broken-tags-category": "Trang có thẻ tọa độ hỏng",
 	"geodata-broken-tags-category-desc": "Trang này có thẻ <code><nowiki>{{#coordinates:}}</nowiki></code> hỏng.",
