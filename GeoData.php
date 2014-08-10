@@ -17,7 +17,6 @@ $wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
 $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
 $wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
 $wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/api/ApiQueryGeoSearchElastic.php";
-$wgAutoloadClasses['GeoDataQueryExtender'] = "$dir/api/GeoDataQueryExtender.php";
 
 $wgAutoloadClasses['Coord'] = "$dir/Coord.php";
 $wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesOutput.php";
