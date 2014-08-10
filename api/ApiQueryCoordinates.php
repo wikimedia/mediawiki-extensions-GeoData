@@ -114,19 +114,12 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		return 'Returns coordinates of the given page(s)';
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => '_badcontinue', 'info' => 'Invalid continue param. You should pass the original value returned by the previous query' ),
-		) );
-	}
-
 	public function getExamples() {
 		return array(
 			'Get a list of coordinates of the [[Main Page]]:',
 			'  api.php?action=query&prop=coordinates&titles=Main%20Page',
 		);
 	}
-
 
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Extension:GeoData#prop.3Dcoordinates';

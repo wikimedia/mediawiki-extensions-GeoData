@@ -176,14 +176,6 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		return 'Returns pages around the given point';
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => '_invalid-page', 'info' => "Invalid page title provided" ),
-			array( 'code' => '_nonexistent-page', 'info' => "Page does not exist" ),
-			array( 'code' => '_no-coordinates', 'info' => 'Page coordinates unknown' ),
-		) );
-	}
-
 	public function getExamples() {
 		return array(
 			"api.php?action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677" => 
@@ -193,9 +185,5 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Extension:GeoData#list.3Dgeosearch';
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
 	}
 }

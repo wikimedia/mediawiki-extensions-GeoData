@@ -104,8 +104,4 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 		}
 		$this->addOption( 'USE INDEX', array( 'geo_tags' => 'gt_spatial' ) );
 	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
-	}
 }
