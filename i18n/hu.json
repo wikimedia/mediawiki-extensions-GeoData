@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dj"
+			"Dj",
+			"Adam78"
 		]
 	},
 	"geodata-desc": "Földrajzi koordináták tárolásának és visszakeresésének lehetősége",
@@ -12,7 +13,7 @@
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: érvénytelen régiókód formátum",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: nem lehet egynél több elsődleges címke oldalanként",
 	"geodata-limit-exceeded": "Meghaladta a laponként megengedett $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|címkét}}.",
-	"geodata-broken-tags-category": "Hibás koordináta címkékkel rendelkező oldalak",
+	"geodata-broken-tags-category": "Hibás koordináta-címkékkel rendelkező oldalak",
 	"geodata-unknown-type-category": "Ismeretlen típusú koordinátákat tartalmazó oldalak",
-	"geodata-unknown-region-category": "Érvénytelen régió értéket tartalmazó oldalak"
+	"geodata-unknown-region-category": "Érvénytelen régióértéket tartalmazó oldalak"
 }
