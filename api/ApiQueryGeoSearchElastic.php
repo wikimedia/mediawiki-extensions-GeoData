@@ -150,33 +150,33 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 					if ( !isset( $titles[$id] ) ) {
 						continue;
 					}
-						$title = $titles[$id];
-						$vals = array(
-							'pageid' => intval( $coord->pageId ),
-							'ns' => intval( $title->getNamespace() ),
-							'title' => $title->getPrefixedText(),
-							'lat' => floatval( $coord->lat ),
-							'lon' => floatval( $coord->lon ),
-							'dist' => round( $coord->distance, 1 ),
-						);
+					$title = $titles[$id];
+					$vals = array(
+						'pageid' => intval( $coord->pageId ),
+						'ns' => intval( $title->getNamespace() ),
+						'title' => $title->getPrefixedText(),
+						'lat' => floatval( $coord->lat ),
+						'lon' => floatval( $coord->lon ),
+						'dist' => round( $coord->distance, 1 ),
+					);
 
-						if ( $coord->primary ) {
-							$vals['primary'] = '';
+					if ( $coord->primary ) {
+						$vals['primary'] = '';
+					}
+					foreach( $params['prop'] as $prop ) {
+						// Don't output default globe
+						if ( !( $prop === 'globe' && $coord->$prop === $wgDefaultGlobe ) ) {
+							$vals[$prop] = $coord->$prop;
 						}
-						foreach( $params['prop'] as $prop ) {
-							// Don't output default globe
-							if ( !( $prop === 'globe' && $coord->$prop === $wgDefaultGlobe ) ) {
-								$vals[$prop] = $coord->$prop;
-							}
-						}
-						$fit = $result->addValue(
-							array( 'query', $this->getModuleName() ),
-							null,
-							$vals
-						);
-						if ( !$fit ) {
-							break;
-						}
+					}
+					$fit = $result->addValue(
+						array( 'query', $this->getModuleName() ),
+						null,
+						$vals
+					);
+					if ( !$fit ) {
+						break;
+					}
 				}
 			} else {
 				$resultPageSet->populateFromQueryResult( $this->getDB(), $res );
