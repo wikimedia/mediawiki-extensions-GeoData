@@ -15,8 +15,9 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		}
 
 		$params = $this->extractRequestParams();
+		$from = $this->getFromCoord( $params );
 		$this->addTables( 'geo_tags' );
-		$this->addFields( array( 'gt_id', 'gt_page_id', 'gt_lat', 'gt_lon', 'gt_primary' ) );
+		$this->addFields( array( 'gt_id', 'gt_page_id', 'gt_lat', 'gt_lon', 'gt_primary', 'gt_globe' ) );
 		$mapping = Coord::getFieldMapping();
 		foreach( $params['prop'] as $prop ) {
 			if ( isset( $mapping[$prop] ) ) {
@@ -66,11 +67,48 @@ class ApiQueryCoordinates extends ApiQueryBase {
 					$vals[$prop] = $row->$field;
 				}
 			}
+			if ( $from && $row->gt_globe == $from->globe ) {
+				$vals['dist'] = round(
+					GeoDataMath::distance( $from->lat, $from->lon, $row->gt_lat, $row->gt_lon ),
+					1
+				);
+			}
 			$fit = $this->addPageSubItem( $row->gt_page_id, $vals );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'continue', $row->gt_page_id . '|' . $row->gt_id );
 			}
 		}
+	}
+
+	/**
+	 * @param array $params
+	 * @return Coord|null
+	 * @throws MWException
+	 */
+	private function getFromCoord( array $params ) {
+		$this->requireMaxOneParameter( $params, 'distancefrompoint', 'distancefrompage' );
+		if ( $params['distancefrompoint'] !== null ) {
+			$arr = explode( '|', $params['distancefrompoint'] );
+			if ( count( $arr ) != 2 || !GeoData::validateCoord( $arr[0], $arr[1], 'earth' ) ) {
+				$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
+			}
+			return new Coord( $arr[0], $arr[1], 'earth' );
+		}
+		if ( $params['distancefrompage'] !== null ) {
+			$title = Title::newFromText( $params['distancefrompage'] );
+			if ( !$title ) {
+				$this->dieUsage( "Page ``{$params['distancefrompage']}'' does not exist", '_invalid-page' );
+			}
+			$coord = GeoData::getPageCoordinates( $title );
+			if ( !$coord ) {
+				$this->dieUsage( "Page ``{$params['distancefrompage']}'' has no primary coordinates", '_no-coordinates' );
+			}
+			if ( $coord->globe != 'earth' ) {
+				$this->dieUsage( "This page's coordinates are not on Earth", '_notonearth' );
+			}
+			return $coord;
+		}
+		return null;
 	}
 
 	public function getCacheMode( $params ) {
@@ -98,6 +136,12 @@ class ApiQueryCoordinates extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => array( 'primary', 'secondary', 'all' ),
 				ApiBase::PARAM_DFLT => 'primary',
 			),
+			'distancefrompoint' => array(
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'distancefrompage' => array(
+				ApiBase::PARAM_TYPE => 'string',
+			),
 		);
 	}
 
@@ -107,6 +151,8 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			'continue' => 'When more results are available, use this to continue',
 			'prop' => 'What additional coordinate properties to return',
 			'primary' => "Whether to return only primary coordinates (``primary''), secondary (``secondary'') or both (``all'')",
+			'distancefrompoint' => 'Return distance in meters of every result on Earth from these coordinates: latitude and longitude separated by pipe (|)',
+			'distancefrompage' => 'Return distance in meters of every result on Earth from the coordinates of this page',
 		);
 	}
 
