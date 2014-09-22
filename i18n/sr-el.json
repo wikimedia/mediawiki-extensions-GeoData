@@ -1,5 +1,10 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"geodata-broken-tags-category": "Stranice sa neispravnim koordinatama",
 	"geodata-unknown-type-category": "Stranice sa nepoznatom vrstom koordinata",
 	"geodata-unknown-globe-category": "Stranice sa nepoznatom vrednosti za globus",
 	"geodata-unknown-region-category": "Stranice sa neispravnom vrednosti za region"
