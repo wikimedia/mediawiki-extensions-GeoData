@@ -3,10 +3,12 @@
 		"authors": [
 			"Cainamarques",
 			"Helder.wiki",
-			"Opraco"
+			"Opraco",
+			"He7d3r"
 		]
 	},
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: latitude inválida",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: longitude inválida",
-	"geodata-broken-tags-category": "Páginas com coordenadas formatadas incorretamente"
+	"geodata-broken-tags-category": "Páginas com coordenadas formatadas incorretamente",
+	"geodata-unknown-type-category": "Páginas com um tipo desconhecido de coordenadas"
 }

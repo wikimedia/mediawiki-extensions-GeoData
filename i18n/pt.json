@@ -4,7 +4,8 @@
 			"Cainamarques",
 			"Helder.wiki",
 			"Opraco",
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"He7d3r"
 		]
 	},
 	"geodata-desc": "Adiciona a funcionalidade de armazenamento e recuperação de coordenadas geográficas",
@@ -12,5 +13,6 @@
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: latitude inválida",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: longitude inválida",
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tipo não reconhecido \"$1\"",
-	"geodata-broken-tags-category": "Páginas com coordenadas formatadas incorretamente"
+	"geodata-broken-tags-category": "Páginas com coordenadas formatadas incorretamente",
+	"geodata-unknown-type-category": "Páginas com um tipo desconhecido de coordenadas"
 }
