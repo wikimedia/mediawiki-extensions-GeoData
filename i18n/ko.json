@@ -17,6 +17,9 @@
 	"geodata-broken-tags-category": "잘못된 형식의 좌표 태그가 있는 문서",
 	"geodata-broken-tags-category-desc": "문서에 잘못된 형식의 <code><nowiki>{{#coordinates:}}</nowiki></code> 태그가 있습니다.",
 	"geodata-unknown-type-category": "알 수 없는 좌표 유형으로 된 문서",
+	"geodata-unknown-type-category-desc": "여기 있는 문서는 좌표에 알 수 없는 <code>type</code> 변수를 사용하고 있습니다.",
 	"geodata-unknown-globe-category": "알 수 없는 세계 값으로 된 문서",
-	"geodata-unknown-region-category": "잘못된 지역 값으로 된 문서"
+	"geodata-unknown-globe-category-desc": "여기 있는 문서는 좌표에 알 수 없는 <code>globe</code> 변수를 사용하고 있습니다.",
+	"geodata-unknown-region-category": "잘못된 지역 값으로 된 문서",
+	"geodata-unknown-region-category-desc": "여기 있는 문서는 좌표 틀의 <code>region</code> 변수에 잘못된 값을 사용하고 있습니다."
 }
