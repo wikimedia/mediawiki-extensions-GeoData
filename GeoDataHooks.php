@@ -276,7 +276,14 @@ class GeoDataHooks {
 		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend != 'elastic' ) {
 			return true;
 		}
-		$config['properties']['coordinates'] = array(
+		if ( isset( $config[ 'page' ] ) ) {
+			// Post CirrusSearch I2d92dc973a66180dc39c646254ce9b11ec269edc
+			$pageConfig = $config[ 'page' ];
+		} else {
+			// Pre CirrusSearch I2d92dc973a66180dc39c646254ce9b11ec269edc
+			$pageConfig = $config;
+		}
+		$pageConfig['properties']['coordinates'] = array(
 			'type' => 'nested',
 			'properties' => array(
 				'coord' => array(
@@ -293,10 +300,17 @@ class GeoDataHooks {
 			),
 		);
 		if ( $wgGeoDataCoordinatesCompression ) {
-			$config['properties']['coordinates']['properties']['coord']['fielddata'] = array(
+			$pageConfig['properties']['coordinates']['properties']['coord']['fielddata'] = array(
 				'format' => 'compressed',
 				'precision' => $wgGeoDataCoordinatesCompression,
 			);
+		}
+		if ( isset( $config[ 'page' ] ) ) {
+			// Post CirrusSearch I2d92dc973a66180dc39c646254ce9b11ec269edc
+			$config[ 'page' ] = $pageConfig;
+		} else {
+			// Pre CirrusSearch I2d92dc973a66180dc39c646254ce9b11ec269edc
+			$config = $pageConfig;
 		}
 		return true;
 	}
