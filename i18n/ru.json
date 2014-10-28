@@ -17,7 +17,7 @@
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: неизвестный глобус «$1»",
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: некорректный формат кода региона",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: нельзя иметь более одной первичной метки на странице",
-	"geodata-limit-exceeded": "Ограничение в $1 {{PLURAL:$1|тег|тегов|тега}} <nowiki>{{#coordinates:}}</nowiki> на страницу было превышено",
+	"geodata-limit-exceeded": "Ограничение в $1 {{PLURAL:$1|тег|тега|тегов}} <nowiki>{{#coordinates:}}</nowiki> на страницу было превышено",
 	"geodata-broken-tags-category": "Страницы с некорректными тегами координат",
 	"geodata-broken-tags-category-desc": "На странице есть некорректны тег <code><nowiki>{{#coordinates:}}</nowiki></code>.",
 	"geodata-unknown-type-category": "Страницы с неизвестным типом координат",
