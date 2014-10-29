@@ -126,6 +126,8 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			),
 			'continue' => array(
 				ApiBase::PARAM_TYPE => 'string',
+				/** @todo Once support for MediaWiki < 1.25 is dropped, just use ApiBase::PARAM_HELP_MSG directly */
+				constant( 'ApiBase::PARAM_HELP_MSG' ) ?: '' => 'api-help-param-continue',
 			),
 			'prop' => array(
 				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region', 'globe' ),
@@ -138,6 +140,10 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			),
 			'distancefrompoint' => array(
 				ApiBase::PARAM_TYPE => 'string',
+				/** @todo Once support for MediaWiki < 1.25 is dropped, just use ApiBase::PARAM_HELP_MSG_APPEND directly */
+				constant( 'ApiBase::PARAM_HELP_MSG_APPEND' ) ?: '' => array(
+					'geodata-api-help-coordinates-format',
+				),
 			),
 			'distancefrompage' => array(
 				ApiBase::PARAM_TYPE => 'string',
@@ -145,6 +151,9 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array(
 			'limit' => 'How many coordinates to return',
@@ -156,14 +165,30 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Returns coordinates of the given page(s)';
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getExamples() {
 		return array(
 			'Get a list of coordinates of the [[Main Page]]:',
 			'  api.php?action=query&prop=coordinates&titles=Main%20Page',
+		);
+	}
+
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=query&prop=coordinates&titles=Main%20Page'
+				=> 'apihelp-query+coordinates-example-1',
 		);
 	}
 
