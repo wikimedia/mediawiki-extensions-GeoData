@@ -126,7 +126,11 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			}
 			$this->addWhere( array( 'page_id' => array_keys( $ids ) ) );
 			$this->addTables( 'page' );
-			$this->addFields( array( 'page_id', 'page_title', 'page_namespace' ) );
+			if ( is_null( $resultPageSet ) ) {
+				$this->addFields( array( 'page_id', 'page_title', 'page_namespace' ) );
+			} else {
+				$this->addFields( $resultPageSet->getPageTableFields() );
+			}
 
 			wfProfileIn( __METHOD__ . '-sql' );
 			$res = $this->select( __METHOD__ );
