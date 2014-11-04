@@ -104,6 +104,10 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$params = array (
 			'coord' => array(
 				ApiBase::PARAM_TYPE => 'string',
+				/** @todo Once support for MediaWiki < 1.25 is dropped, just use ApiBase::PARAM_HELP_MSG_APPEND directly */
+				constant( 'ApiBase::PARAM_HELP_MSG_APPEND' ) ?: '' => array(
+					'geodata-api-help-coordinates-format',
+				),
 			),
 			'page' => array(
 				ApiBase::PARAM_TYPE => 'string',
@@ -153,6 +157,9 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		return $params;
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		global $wgDefaultGlobe, $wgGeoDataDebug;
 		$params = array(
@@ -172,14 +179,30 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		return $params;
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Returns pages around the given point';
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getExamples() {
 		return array(
 			"api.php?action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677" => 
 				"Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+		);
+	}
+
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677'
+				=> 'apihelp-query+geosearch-example-1',
 		);
 	}
 
