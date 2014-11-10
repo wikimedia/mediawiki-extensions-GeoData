@@ -23,5 +23,6 @@
 	"geodata-unknown-globe-category": "有未知星球值的页面",
 	"geodata-unknown-globe-category-desc": "页面使用<code>globe</code>坐标参数的未知值。",
 	"geodata-unknown-region-category": "有无效地区值的页面",
-	"geodata-unknown-region-category-desc": "页面使用<code>region</code>坐标参数的未知值。"
+	"geodata-unknown-region-category-desc": "页面使用<code>region</code>坐标参数的未知值。",
+	"apihelp-query+geosearch-param-namespace": "搜索的名字空间。"
 }
