@@ -18,6 +18,6 @@
 	"geodata-limit-exceeded": "محدوده‌ای از $1 <nowiki>{{#مختصات:}}</nowiki> {{PLURAL:$1|tag|tags}} در هر صفحه فراتر رفته‌است",
 	"geodata-broken-tags-category": "صفحه‌های دارای برچسب مختصات ناقص",
 	"geodata-unknown-type-category": "صفحه‌های با نوع ناشناخته‌ای از مختصات",
-	"geodata-unknown-globe-category": "صفحه‌های با ازرش جهانی ناشناخته",
+	"geodata-unknown-globe-category": "صفحه‌های با ارزش جهانی ناشناخته",
 	"geodata-unknown-region-category": "صفحه‌های با ارزش ناحیه‌ای نامعتبر"
 }
