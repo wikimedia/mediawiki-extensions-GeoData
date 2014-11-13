@@ -22,5 +22,6 @@
 	"geodata-unknown-globe-category": "דפים עם ערך גלובוס בלתי־ידוע",
 	"geodata-unknown-globe-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>globe</code> לנקודות ציון.",
 	"geodata-unknown-region-category": "דפים עם ערך אזור בלתי־ידוע",
-	"geodata-unknown-region-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>region</code> לנקודות ציון."
+	"geodata-unknown-region-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>region</code> לנקודות ציון.",
+	"geodata-api-help-coordinates-format": "תסדיק: קו־רוחב וקו־אורך מופרדים במקל (\"|\")."
 }
