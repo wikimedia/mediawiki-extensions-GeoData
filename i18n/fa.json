@@ -17,7 +17,7 @@
 	"geodata-multiple-primary": "<nowiki>{{#مختصات:}}</nowiki>: بیش از یک برچسب اولیه در هر صفحه نمی‌تواند داشته باشد",
 	"geodata-limit-exceeded": "محدوده‌ای از $1 <nowiki>{{#مختصات:}}</nowiki> {{PLURAL:$1|tag|tags}} در هر صفحه فراتر رفته‌است",
 	"geodata-broken-tags-category": "صفحه‌های دارای برچسب مختصات ناقص",
-	"geodata-unknown-type-category": "صفحه‌های با نوع ناشناخته‌ای از مختصات",
-	"geodata-unknown-globe-category": "صفحه‌های با ارزش جهانی ناشناخته",
-	"geodata-unknown-region-category": "صفحه‌های با ارزش ناحیه‌ای نامعتبر"
+	"geodata-unknown-type-category": "صفحه‌ها با نوع ناشناخته‌ای از مختصات",
+	"geodata-unknown-globe-category": "صفحه‌ها با ارزش جهانی ناشناخته",
+	"geodata-unknown-region-category": "صفحه‌ها با ارزش ناحیه‌ای نامعتبر"
 }
