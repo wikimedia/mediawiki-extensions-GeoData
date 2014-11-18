@@ -61,7 +61,7 @@ class GeoDataHooks {
 		if ( !$wgGeoDataDisableParserFunction ) {
 			$parser->setFunctionHook( 'coordinates',
 				array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
-				SFH_OBJECT_ARGS
+				Parser::SFH_OBJECT_ARGS
 			);
 		}
 		return true;
