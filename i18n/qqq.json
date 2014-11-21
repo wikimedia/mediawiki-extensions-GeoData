@@ -3,10 +3,11 @@
 		"authors": [
 			"Max Semenik",
 			"SPQRobin",
-			"Shirayuki"
+			"Shirayuki",
+			"MaxSem"
 		]
 	},
-	"geodata-desc": "{{desc|name=Geo Data|url=http://www.mediawiki.org/wiki/Extension:GeoData}}",
+	"geodata-desc": "{{desc|name=Geo Data|url=https://www.mediawiki.org/wiki/Extension:GeoData}}",
 	"geodata-bad-input": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means that number of the arguments is invalid.",
 	"geodata-bad-latitude": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means the value of the \"lat\" argument is invalid.",
 	"geodata-bad-longitude": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.\n\nThis message means the value of the \"lon\" argument is invalid.",

@@ -23,5 +23,7 @@
 	"geodata-unknown-globe-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>globe</code> לנקודות ציון.",
 	"geodata-unknown-region-category": "דפים עם ערך אזור בלתי־ידוע",
 	"geodata-unknown-region-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>region</code> לנקודות ציון.",
-	"geodata-api-help-coordinates-format": "תסדיק: קו־רוחב וקו־אורך מופרדים במקל (\"|\")."
+	"geodata-api-help-coordinates-format": "תסדיק: קו־רוחב וקו־אורך מופרדים במקל (\"|\").",
+	"apihelp-query+geosearch-param-coord": "נקודות ציון שסביבן ייעשה החיפוש.",
+	"apihelp-query+geosearch-param-radius": "רדיוס חיפוש במטרים."
 }

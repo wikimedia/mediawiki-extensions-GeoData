@@ -21,7 +21,7 @@
 	"geodata-unknown-globe-category-desc": "Страницата користи непозната вредност во параметарот <code>globe</code> за координати.",
 	"geodata-unknown-region-category": "Страници со непозната вредност за регион",
 	"geodata-unknown-region-category-desc": "Страницата користи непозната вредност во параметарот <code>region</code> за координати.",
-	"geodata-api-help-coordinates-format": "Формат: Географска ширина и должина, одделени со права црта („|“).",
+	"geodata-api-help-coordinates-format": "Формат: Географска ширина и должина, одделени со исправена црта („|“).",
 	"apihelp-query+coordinates-description": "Дава координати на дадени страници.",
 	"apihelp-query+coordinates-param-limit": "Колку координати да се дадат.",
 	"apihelp-query+coordinates-param-prop": "Кои дополнителни координатни својства да се дадат.",
