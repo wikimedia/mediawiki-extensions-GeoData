@@ -22,5 +22,6 @@
 	"geodata-unknown-globe-category-desc": "Die Seite verwendet einen unbekannten Wert des <code>globe</code>-Parameters für Koordinaten.",
 	"geodata-unknown-region-category": "Seiten mit unbekanntem Codewert für die Region",
 	"geodata-unknown-region-category-desc": "Die Seite verwendet einen ungültigen Wert des <code>region</code>-Parameters für Koordinaten.",
-	"geodata-api-help-coordinates-format": "Format: Breitengrad und Längengrad, getrennt durch senkrechten Strich („|“)."
+	"geodata-api-help-coordinates-format": "Format: Breitengrad und Längengrad, getrennt durch senkrechten Strich („|“).",
+	"apihelp-query+geosearch-description": "Gibt Seiten in der Nähe des angegebenen Punktes zurück."
 }
