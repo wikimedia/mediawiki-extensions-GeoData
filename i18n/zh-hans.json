@@ -24,5 +24,9 @@
 	"geodata-unknown-globe-category-desc": "页面使用<code>globe</code>坐标参数的未知值。",
 	"geodata-unknown-region-category": "有无效地区值的页面",
 	"geodata-unknown-region-category-desc": "页面使用<code>region</code>坐标参数的未知值。",
-	"apihelp-query+geosearch-param-namespace": "搜索的名字空间。"
+	"geodata-api-help-coordinates-format": "格式：纬度和精度，用竖线（“|”）隔开。",
+	"apihelp-query+coordinates-example-1": "获取[[Main Page]]的坐标列表",
+	"apihelp-query+geosearch-param-globe": "要搜索的星球（默认“地球”）。",
+	"apihelp-query+geosearch-param-namespace": "搜索的名字空间。",
+	"apihelp-query+geosearch-example-1": "搜索坐标点37° 47′ 13.1″ N, 122° 23′ 58.84″ W附近的东西"
 }
