@@ -31,5 +31,6 @@
 	"apihelp-query+coordinates-param-limit": "Сколько координат возвращать.",
 	"apihelp-query+geosearch-param-limit": "Максимальное количество возвращаемых страниц.",
 	"apihelp-query+geosearch-param-namespace": "Пространства имён для поиска.",
+	"apihelp-query+geosearch-param-debug": "Должна ли быть возвращена отладочная информация.",
 	"apihelp-query+geosearch-example-1": "Искать рядом с точкой с координатами 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
 }
