@@ -12,9 +12,9 @@ CREATE TABLE /*_*/geo_tags (
 	-- or secondary (just mentioned in text)
 	gt_primary bool NOT NULL,
 	-- Latitude of the point in degrees
-	gt_lat float NOT NULL,
+	gt_lat decimal(11,8) NOT NULL,
 	-- Longitude of the point in degrees
-	gt_lon float NOT NULL,
+	gt_lon decimal(11,8) NOT NULL,
 	-- Approximate viewing radius in meters, gives an idea how large the object is
 	gt_dim int NULL,
 	-- Type of the point

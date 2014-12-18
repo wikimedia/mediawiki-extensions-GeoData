@@ -24,11 +24,28 @@ class GeoDataHooks {
 				} else {
 					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sql/db-backed.sql' );
 				}
+				$updater->addExtensionUpdate( array( 'GeoDataHooks::upgradeToDecimal' ) );
 				break;
 			default:
 				throw new MWException( 'GeoData extension currently supports only MySQL and SQLite' );
 		}
 		return true;
+	}
+
+	public static function upgradeToDecimal( DatabaseUpdater $updater ) {
+		$db = $updater->getDB();
+		if ( $db->getType() != 'mysql' ) {
+			// FLOAT is the same thing as DOUBLE in SQLite
+			return;
+		}
+		$field = $db->fieldInfo( 'geo_tags', 'gt_lat' );
+		// Doesn't support the old API, oh well
+		if ( $field->type() === MYSQLI_TYPE_FLOAT ) {
+			$updater->output( "...upgrading geo_tags coordinates from FLOAT to DECIMAL.\n" );
+			$db->sourceFile( __DIR__ . '/sql/float-to-decimal.sql' );
+		} else {
+			$updater->output( "...coordinates are already DECIMAL in geo_tags.\n" );
+		}
 	}
 
 	/**
