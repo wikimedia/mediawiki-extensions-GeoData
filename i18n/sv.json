@@ -24,7 +24,7 @@
 	"geodata-unknown-globe-category-desc": "Sidan använder ett okänt värde för <code>globe</code>-parametern för koordinater.",
 	"geodata-unknown-region-category": "Sidor med ogiltigt regionvärde",
 	"geodata-unknown-region-category-desc": "Sidan använder ett okänt värde för <code>region</code>-parametern för koordinater.",
-	"geodata-api-help-coordinates-format": "Format: Latitud och longitud separerade av lodsträck (\"|\").",
+	"geodata-api-help-coordinates-format": "Format: Latitud och longitud separerade av lodstreck (\"|\").",
 	"apihelp-query+coordinates-description": "Returnerar koordinaterna för den angivna sidan.",
 	"apihelp-query+coordinates-param-limit": "Hur många koordinater som ska returneras.",
 	"apihelp-query+coordinates-param-prop": "Vilka ytterligare koordinategenskaper som ska returneras.",
