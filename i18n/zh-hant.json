@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Justincheng12345"
+			"Justincheng12345",
+			"Cwlin0416"
 		]
 	},
-	"geodata-desc": "添加地理座標存儲及取回功能"
+	"geodata-desc": "新增地理座標存儲及取回功能"
 }
