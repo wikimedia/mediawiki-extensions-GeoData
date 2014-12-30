@@ -66,8 +66,13 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->radius = intval( $params['radius'] );
 
 		if ( is_null( $resultPageSet ) ) {
-			$this->getResult()->setIndexedTagName_internal(
-				 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
+			if ( defined( 'ApiResult::META_CONTENT' ) ) {
+				$this->getResult()->defineIndexedTagName(
+					 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
+			} else {
+				$this->getResult()->setIndexedTagName_internal(
+					 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
+			}
 		}
 	}
 
