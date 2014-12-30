@@ -25,5 +25,6 @@
 	"geodata-api-help-coordinates-format": "Format: Breitengrad und Längengrad, getrennt durch senkrechten Strich („|“).",
 	"apihelp-query+coordinates-param-limit": "Wie viele Koordinaten zurückgegeben werden sollen.",
 	"apihelp-query+geosearch-description": "Gibt Seiten in der Nähe des angegebenen Punktes zurück.",
-	"apihelp-query+geosearch-param-radius": "Radius in Metern suchen."
+	"apihelp-query+geosearch-param-radius": "Radius in Metern suchen.",
+	"apihelp-query+geosearch-param-namespace": "Zu durchsuchende Namensräume."
 }
