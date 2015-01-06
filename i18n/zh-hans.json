@@ -4,7 +4,8 @@
 			"Liangent",
 			"Shizhao",
 			"Xiaomingyan",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Yfdyh000"
 		]
 	},
 	"geodata-desc": "添加地理坐标存储和检索功能",
@@ -25,6 +26,10 @@
 	"geodata-unknown-region-category": "有无效地区值的页面",
 	"geodata-unknown-region-category-desc": "页面使用<code>region</code>坐标参数的未知值。",
 	"geodata-api-help-coordinates-format": "格式：纬度和精度，用竖线（“|”）隔开。",
+	"apihelp-query+coordinates-description": "返回指定页面的地理坐标。",
+	"apihelp-query+coordinates-param-limit": "要返回多少个地理坐标。",
+	"apihelp-query+coordinates-param-prop": "要返回哪个额外的地理坐标属性。",
+	"apihelp-query+coordinates-param-primary": "是否只返回首要的（\"primary\")、次要的（\"secondary\"）地理坐标，或者都返回（\"all\"）。",
 	"apihelp-query+coordinates-example-1": "获取[[Main Page]]的坐标列表",
 	"apihelp-query+geosearch-param-globe": "要搜索的星球（默认“地球”）。",
 	"apihelp-query+geosearch-param-namespace": "搜索的名字空间。",
