@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Urhixidur"
+			"Urhixidur",
+			"0x010C"
 		]
 	},
 	"geodata-desc": "Ajoute la fonctionnalité de stockage et d'extraction des coordonnées géographiques.",
@@ -21,5 +22,8 @@
 	"geodata-unknown-globe-category": "Pages avec une valeur de globe inconnue",
 	"geodata-unknown-globe-category-desc": "La page utilise une valeur inconnue du paramètre <code>globe</code> pour les coordonnées.",
 	"geodata-unknown-region-category": "Pages avec une valeur de région invalide",
-	"geodata-unknown-region-category-desc": "La page utilise une valeur non valide du paramètre <code>region</code> pour les coordonnées."
+	"geodata-unknown-region-category-desc": "La page utilise une valeur non valide du paramètre <code>region</code> pour les coordonnées.",
+	"geodata-api-help-coordinates-format": "Format: Latitude et longitude séparés par une barre verticale (\"|\").",
+	"apihelp-query+coordinates-param-limit": "Combien de coordonnées à renvoyer.",
+	"apihelp-query+geosearch-param-namespace": "Espaces de nom à rechercher."
 }
