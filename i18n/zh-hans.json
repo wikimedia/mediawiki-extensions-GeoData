@@ -29,7 +29,7 @@
 	"apihelp-query+coordinates-description": "返回指定页面的地理坐标。",
 	"apihelp-query+coordinates-param-limit": "要返回多少个地理坐标。",
 	"apihelp-query+coordinates-param-prop": "要返回哪个额外的地理坐标属性。",
-	"apihelp-query+coordinates-param-primary": "是否只返回首要的（\"primary\")、次要的（\"secondary\"）地理坐标，或者都返回（\"all\"）。",
+	"apihelp-query+coordinates-param-primary": "是否只返回首要的（\"primary\"）、次要的（\"secondary\"）地理坐标，或者都返回（\"all\"）。",
 	"apihelp-query+coordinates-example-1": "获取[[Main Page]]的坐标列表",
 	"apihelp-query+geosearch-param-globe": "要搜索的星球（默认“地球”）。",
 	"apihelp-query+geosearch-param-namespace": "搜索的名字空间。",
