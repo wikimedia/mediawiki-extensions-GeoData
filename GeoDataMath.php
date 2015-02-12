@@ -7,7 +7,7 @@
  *
  * All the functions that accept coordinates assume that they're in degrees, not radians.
  */
-/* static */class GeoDataMath {
+class GeoDataMath {
 	const EARTH_RADIUS = 6371010;
 
 	/**
