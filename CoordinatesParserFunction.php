@@ -36,8 +36,6 @@ class CoordinatesParserFunction {
 	 * @return Mixed
 	 */
 	public function coordinates( $parser, $frame, $args ) {
-		wfProfileIn( __METHOD__ );
-
 		$this->parser = $parser;
 		$this->output = $parser->getOutput();
 		if ( !isset( $this->output->geoData ) ) {
@@ -55,7 +53,6 @@ class CoordinatesParserFunction {
 			if ( $status->isGood() ) {
 				$status = $this->applyCoord( $coord );
 				if ( $status->isGood() ) {
-					wfProfileOut( __METHOD__ );
 					return '';
 				}
 			}
@@ -65,10 +62,9 @@ class CoordinatesParserFunction {
 		$errorText = $this->errorText( $status );
 		if ( $errorText === '' ) {
 			// Error that doesn't require a message,
-			wfProfileOut( __METHOD__ );
 			return '';
 		}
-		wfProfileOut( __METHOD__ );
+
 		return array( "<span class=\"error\">{$errorText}</span>", 'noparse' => false );
 	}
 
@@ -78,7 +74,6 @@ class CoordinatesParserFunction {
 	 * @param Array $args
 	 */
 	private function parseArgs( $frame, $args ) {
-		wfProfileIn( __METHOD__ );
 		$first = trim( $frame->expand( array_shift( $args ) ) );
 		$this->addArg( $first );
 		foreach ( $args as $arg ) {
@@ -90,7 +85,6 @@ class CoordinatesParserFunction {
 				$this->addArg( $value );
 			}
 		}
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

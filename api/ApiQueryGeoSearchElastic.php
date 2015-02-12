@@ -13,7 +13,6 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	protected function run( $resultPageSet = null ) {
 		global $wgDefaultGlobe, $wgGeoDataIndexLatLon;
 
-		wfProfileIn( __METHOD__ );
 		parent::run( $resultPageSet );
 		$this->resetQueryParams();
 
@@ -86,9 +85,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			$pageType = CirrusSearch\Connection::getPageType( wfWikiID() );
 			$search = $pageType->createSearch( $query );
 
-			wfProfileIn( __METHOD__ . '-request' );
 			$resultSet = $search->search();
-			wfProfileOut( __METHOD__ . '-request' );
 
 			if ( isset( $params['debug'] ) && $params['debug'] ) {
 				$this->addDebugInfo( $resultSet );
@@ -121,7 +118,6 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			} );
 
 			if ( !count( $coordinates ) ) {
-				wfProfileOut( __METHOD__ );
 				return; // No results, no point in doing anything else
 			}
 			$this->addWhere( array( 'page_id' => array_keys( $ids ) ) );
@@ -132,10 +128,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				$this->addFields( $resultPageSet->getPageTableFields() );
 			}
 
-			wfProfileIn( __METHOD__ . '-sql' );
 			$res = $this->select( __METHOD__ );
-			wfProfileOut( __METHOD__ . '-sql' );
-
 
 			if ( is_null( $resultPageSet ) ) {
 				$titles = array();
@@ -190,7 +183,6 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				. " at {$e->getFile()}, line {$e->getLine()}: {$e->getMessage()}", 0, $e
 			);
 		}
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

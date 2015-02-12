@@ -12,7 +12,6 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 	protected function run( $resultPageSet = null ) {
 		global $wgDefaultGlobe;
 
-		wfProfileIn( __METHOD__ );
 		parent::run( $resultPageSet );
 		$params = $this->extractRequestParams();
 
@@ -88,7 +87,6 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 				$resultPageSet->processDbRow( $row );
 			}
 		}
-		wfProfileOut( __METHOD__ );
 	}
 
 	protected  function addCoordFilter() {
