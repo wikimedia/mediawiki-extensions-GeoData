@@ -3,7 +3,8 @@
 		"authors": [
 			"Gomoko",
 			"Urhixidur",
-			"0x010C"
+			"0x010C",
+			"Nicolapps"
 		]
 	},
 	"geodata-desc": "Ajoute la fonctionnalité de stockage et d'extraction des coordonnées géographiques.",
@@ -25,5 +26,6 @@
 	"geodata-unknown-region-category-desc": "La page utilise une valeur non valide du paramètre <code>region</code> pour les coordonnées.",
 	"geodata-api-help-coordinates-format": "Format: Latitude et longitude séparés par une barre verticale (\"|\").",
 	"apihelp-query+coordinates-param-limit": "Combien de coordonnées à renvoyer.",
+	"apihelp-query+geosearch-param-globe": "Globe sur lequel chercher (par défaut \"Terre\")",
 	"apihelp-query+geosearch-param-namespace": "Espaces de nom à rechercher."
 }
