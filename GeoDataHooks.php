@@ -232,6 +232,7 @@ class GeoDataHooks {
 		$pout = $wp->getParserOutput( $po );
 		if ( !$pout ) {
 			wfDebugLog( 'mobile', __METHOD__ . "(): no parser output returned for file {$file->getName()}" );
+		} else {
 			$lu = new LinksUpdate( $file->getTitle(), $pout );
 			self::onLinksUpdate( $lu );
 		}
