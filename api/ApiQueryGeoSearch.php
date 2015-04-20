@@ -67,7 +67,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 		if ( is_null( $resultPageSet ) ) {
 			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$this->getResult()->defineIndexedTagName(
+				$this->getResult()->addIndexedTagName(
 					 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
 			} else {
 				$this->getResult()->setIndexedTagName_internal(
