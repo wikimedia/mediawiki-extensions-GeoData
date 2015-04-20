@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño"
+			"Toliño",
+			"Banjo",
+			"Elisardojm"
 		]
 	},
 	"geodata-desc": "Engade unha funcionalidade de almacenamento e de extracción de coordenadas xeográficas.",
@@ -20,5 +22,22 @@
 	"geodata-unknown-globe-category": "Páxinas con valores descoñecidos",
 	"geodata-unknown-globe-category-desc": "A páxina usa un valor descoñecido do parámetro <code>globe</code> para as coordenadas.",
 	"geodata-unknown-region-category": "Páxinas con valores de rexión incorrectos",
-	"geodata-unknown-region-category-desc": "A páxina usa un valor incorrecto do parámetro <code>region</code> para as coordenadas."
+	"geodata-unknown-region-category-desc": "A páxina usa un valor incorrecto do parámetro <code>region</code> para as coordenadas.",
+	"geodata-api-help-coordinates-format": "Formato: Latitude e lonxitude separadas por unha barra vertical (\"|\").",
+	"apihelp-query+coordinates-description": "Devolve as coordenadas das páxinas indicadas.",
+	"apihelp-query+coordinates-param-limit": "Número de coordenadas a devolver.",
+	"apihelp-query+coordinates-param-prop": "Que propiedades adicionais devolver das coordenadas.",
+	"apihelp-query+coordinates-param-distancefrompoint": "Devolver a distancia en mestros de todos os resultados na Terra desde estas coordenadas.",
+	"apihelp-query+coordinates-param-distancefrompage": "Devolver a distancia en mestros de todos os resultados na Terra desde as coordenadas desta páxina.",
+	"apihelp-query+coordinates-example-1": "Obter unha lista de coordenadas da [[Main Page]]",
+	"apihelp-query+geosearch-description": "Devolve páxinas ó redor do punto dado.",
+	"apihelp-query+geosearch-param-coord": "Coodenada ó redor da que buscar.",
+	"apihelp-query+geosearch-param-page": "Título da páxina ó redor da cal buscar.",
+	"apihelp-query+geosearch-param-radius": "Radio de busca en metros.",
+	"apihelp-query+geosearch-param-maxdim": "Restrinxir a busca a obxectos non maiores que este, en metros.",
+	"apihelp-query+geosearch-param-limit": "Máximo número de páxinas a retornar.",
+	"apihelp-query+geosearch-param-globe": "Globo no que buscar (por defecto \"Terra\").",
+	"apihelp-query+geosearch-param-namespace": "Espazo de nomes no que buscar.",
+	"apihelp-query+geosearch-param-prop": "Que propiedades adicionais devolver das coordenadas.",
+	"apihelp-query+geosearch-example-1": "Buscar ó redor do punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
 }
