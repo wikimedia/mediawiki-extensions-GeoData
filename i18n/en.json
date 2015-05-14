@@ -29,7 +29,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Return distance in meters of every result on Earth from these coordinates.",
 	"apihelp-query+coordinates-param-distancefrompage": "Return distance in meters of every result on Earth from the coordinates of this page.",
 	"apihelp-query+coordinates-example-1": "Get a list of coordinates of the [[Main Page]]",
-	"apihelp-query+geosearch-description": "Returns pages around the given point.",
+	"apihelp-query+geosearch-description": "Returns pages having coordinates around the given point.",
 	"apihelp-query+geosearch-param-coord": "Coordinate around which to search.",
 	"apihelp-query+geosearch-param-page": "Title of page around which to search.",
 	"apihelp-query+geosearch-param-radius": "Search radius in meters.",
