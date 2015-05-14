@@ -4,7 +4,8 @@
 			"Max Semenik",
 			"SPQRobin",
 			"Shirayuki",
-			"MaxSem"
+			"MaxSem",
+			"Nemo bis"
 		]
 	},
 	"geodata-desc": "{{desc|name=Geo Data|url=https://www.mediawiki.org/wiki/Extension:GeoData}}",
@@ -28,7 +29,7 @@
 	"apihelp-query+coordinates-description": "{{doc-apihelp-description|query+coordinates}}",
 	"apihelp-query+coordinates-param-limit": "{{doc-apihelp-param|query+coordinates|limit}}",
 	"apihelp-query+coordinates-param-prop": "{{doc-apihelp-param|query+coordinates|prop}}",
-	"apihelp-query+coordinates-param-primary": "{{doc-apihelp-param|query+coordinates|primary}}",
+	"apihelp-query+coordinates-param-primary": "[[mw:Extension:GeoData#Glossary|Primary coordinates define the page subject's location, while secondary coordinates are other coordinates mentioned in the page]].\n----\n{{doc-apihelp-param|query+coordinates|primary}}",
 	"apihelp-query+coordinates-param-distancefrompoint": "{{doc-apihelp-param|query+coordinates|distancefrompoint}}",
 	"apihelp-query+coordinates-param-distancefrompage": "{{doc-apihelp-param|query+coordinates|distancefrompage}}",
 	"apihelp-query+coordinates-example-1": "{{doc-apihelp-example|query+coordinates}}",
@@ -43,5 +44,5 @@
 	"apihelp-query+geosearch-param-prop": "{{doc-apihelp-param|query+geosearch|prop}}",
 	"apihelp-query+geosearch-param-primary": "{{doc-apihelp-param|query+geosearch|primary}}",
 	"apihelp-query+geosearch-param-debug": "{{doc-apihelp-param|query+geosearch|debug}}",
-	"apihelp-query+geosearch-example-1": "{{doc-apihelp-example|query+geosearch}}"
+	"apihelp-query+geosearch-example-1": "Do not alter \"37° 47′ 13.1″ N, 122° 23′ 58.84″ W\".\n{{doc-apihelp-example|query+geosearch}}"
 }
