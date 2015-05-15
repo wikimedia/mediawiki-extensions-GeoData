@@ -27,6 +27,7 @@
 	"apihelp-query+coordinates-description": "Devolve as coordenadas das páxinas indicadas.",
 	"apihelp-query+coordinates-param-limit": "Número de coordenadas a devolver.",
 	"apihelp-query+coordinates-param-prop": "Que propiedades adicionais devolver das coordenadas.",
+	"apihelp-query+coordinates-param-primary": "Se só devolver coordenadas primarias (\"primary\"), secundarias (\"secondary\") ou as dúas (\"all\").",
 	"apihelp-query+coordinates-param-distancefrompoint": "Devolver a distancia en mestros de todos os resultados na Terra desde estas coordenadas.",
 	"apihelp-query+coordinates-param-distancefrompage": "Devolver a distancia en mestros de todos os resultados na Terra desde as coordenadas desta páxina.",
 	"apihelp-query+coordinates-example-1": "Obter unha lista de coordenadas da [[Main Page]]",
@@ -39,5 +40,7 @@
 	"apihelp-query+geosearch-param-globe": "Globo no que buscar (por defecto \"Terra\").",
 	"apihelp-query+geosearch-param-namespace": "Espazo de nomes no que buscar.",
 	"apihelp-query+geosearch-param-prop": "Que propiedades adicionais devolver das coordenadas.",
+	"apihelp-query+geosearch-param-primary": "Se só devolver coordenadas primarias (\"primary\"), secundarias (\"secondary\") ou as dúas (\"all\").",
+	"apihelp-query+geosearch-param-debug": "Se debe devolverse a información de depuración de software",
 	"apihelp-query+geosearch-example-1": "Buscar ó redor do punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
 }
