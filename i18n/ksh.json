@@ -25,7 +25,7 @@
 	"apihelp-query+coordinates-description": "Jit de Ko'odėnahte vun dä aanjejovve Sigge uß.",
 	"apihelp-query+coordinates-param-limit": "Wi vill Ko'odėnahte ze livvere?",
 	"apihelp-query+coordinates-param-prop": "Wat för en zohsäzlejje Aanjahbe bei de Ko'odėnahte ußjejovve wähde sulle.",
-	"apihelp-query+coordinates-param-primary": "Whether to return blohß primary Ko'odėnahte (\"primary\"), secondary Ko'odėnahte (\"secondary\") udder alle beeds (\"all\"). <!--\nhttps://translatewiki.net/wiki/Thread:Support/About_MediaWiki:Apihelp-query%2Bcoordinates-param-primary/ksh\n-->",
+	"apihelp-query+coordinates-param-primary": "Ov mer blohß de Ko'odėnahte vum Tehma vun dä Sigg sällver „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">primary</code>“, udder de Ko'odėnahte vun söns jädd op dä Sigg „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">secondary</code>“, udder alle beeds „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">all</code>“ ußjävve welle.",
 	"apihelp-query+coordinates-param-distancefrompoint": "Jiv der Afschtand en Mehtere zoh heh dä Ko'odėnahte uß för alles, wadd op de Ähd es.",
 	"apihelp-query+coordinates-param-distancefrompage": "Jiv der Afschtand en Mehtere zoh de Ko'odėnahte vun heh dä Sigg uß för alles, wadd op de Ähd es.",
 	"apihelp-query+coordinates-example-1": "Holl en Leß met de [[Main Page|{{int:mainpage}}]] ier Ko'odėnahte.",
