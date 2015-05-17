@@ -5,7 +5,9 @@
 			"Urhixidur",
 			"0x010C",
 			"Nicolapps",
-			"Jonathan1"
+			"Jonathan1",
+			"Lucky",
+			"Wladek92"
 		]
 	},
 	"geodata-desc": "Ajoute la fonctionnalité de stockage et d'extraction des coordonnées géographiques.",
@@ -26,8 +28,10 @@
 	"geodata-unknown-region-category": "Pages avec une valeur de région invalide",
 	"geodata-unknown-region-category-desc": "La page utilise une valeur non valide du paramètre <code>region</code> pour les coordonnées.",
 	"geodata-api-help-coordinates-format": "Format: Latitude et longitude séparés par une barre verticale (\"|\").",
+	"apihelp-query+coordinates-description": "Retourne les coordonnées de la page référencée.",
 	"apihelp-query+coordinates-param-limit": "Combien de coordonnées à renvoyer.",
 	"apihelp-query+geosearch-param-page": "Titre de page similaire à la recherche",
+	"apihelp-query+geosearch-param-radius": "Rayon de recherche, en mètres.",
 	"apihelp-query+geosearch-param-maxdim": "Restreindre la recherche à des objets qui ne sont pas plus que cela, en mètres.",
 	"apihelp-query+geosearch-param-globe": "Globe sur lequel chercher (par défaut \"Terre\")",
 	"apihelp-query+geosearch-param-namespace": "Espaces de nom à rechercher.",

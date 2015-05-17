@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Darth Kule",
-			"Beta16"
+			"Beta16",
+			"Fringio"
 		]
 	},
 	"geodata-desc": "Aggiunge funzionalità di archiviazione e recupero di coordinate geografiche",
@@ -21,5 +22,6 @@
 	"geodata-unknown-globe-category": "Pagine con un valore globo sconosciuto",
 	"geodata-unknown-globe-category-desc": "La pagina utilizza un valore sconosciuto del parametro <code>globe</code> per le coordinate.",
 	"geodata-unknown-region-category": "Pagine con un valore regione non valido",
-	"geodata-unknown-region-category-desc": "La pagina utilizza un valore sconosciuto del parametro <code>region</code> per le coordinate."
+	"geodata-unknown-region-category-desc": "La pagina utilizza un valore sconosciuto del parametro <code>region</code> per le coordinate.",
+	"apihelp-query+geosearch-description": "Restituisce pagine con le coordinate del punto."
 }

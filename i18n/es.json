@@ -3,7 +3,8 @@
 		"authors": [
 			"Armando-Martin",
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"Csbotero"
 		]
 	},
 	"geodata-desc": "Agrega la funcionalidad de almacenamiento y recuperación de coordenadas geográficas",
@@ -22,5 +23,6 @@
 	"geodata-unknown-globe-category": "Páginas con valor de mundo desconocido",
 	"geodata-unknown-globe-category-desc": "Esta página utiliza un valor desconocido en el parámetro <code>globe</code> de las coordenadas.",
 	"geodata-unknown-region-category": "Páginas con valor de región no válido",
-	"geodata-unknown-region-category-desc": "Esta página utiliza un valor no válido en el parámetro <code>region</code> de las coordenadas."
+	"geodata-unknown-region-category-desc": "Esta página utiliza un valor no válido en el parámetro <code>region</code> de las coordenadas.",
+	"apihelp-query+geosearch-description": "Las páginas de retorno tienen coordinadores disponibles para el punto determinado."
 }
