@@ -33,6 +33,7 @@
 	"apihelp-query+geosearch-param-page": "Titre de page similaire à la recherche",
 	"apihelp-query+geosearch-param-radius": "Rayon de recherche, en mètres.",
 	"apihelp-query+geosearch-param-maxdim": "Restreindre la recherche à des objets qui ne sont pas plus que cela, en mètres.",
+	"apihelp-query+geosearch-param-limit": "Nombre maximal de pages à retourner",
 	"apihelp-query+geosearch-param-globe": "Globe sur lequel chercher (par défaut \"Terre\")",
 	"apihelp-query+geosearch-param-namespace": "Espaces de nom à rechercher.",
 	"apihelp-query+geosearch-example-1": "Rechercher autour du point ayant les coordonnées 37° 47' 13.1\" N, 122° 23' 58.84\" W"
