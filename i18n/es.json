@@ -4,7 +4,8 @@
 			"Armando-Martin",
 			"Fitoschido",
 			"Macofe",
-			"Csbotero"
+			"Csbotero",
+			"Ryo567"
 		]
 	},
 	"geodata-desc": "Agrega la funcionalidad de almacenamiento y recuperación de coordenadas geográficas",
@@ -24,5 +25,12 @@
 	"geodata-unknown-globe-category-desc": "Esta página utiliza un valor desconocido en el parámetro <code>globe</code> de las coordenadas.",
 	"geodata-unknown-region-category": "Páginas con valor de región no válido",
 	"geodata-unknown-region-category-desc": "Esta página utiliza un valor no válido en el parámetro <code>region</code> de las coordenadas.",
-	"apihelp-query+geosearch-description": "Las páginas de retorno tienen coordinadores disponibles para el punto determinado."
+	"geodata-api-help-coordinates-format": "Formato: latitud y longitud separados por una barra vertical (\"|\").",
+	"apihelp-query+coordinates-description": "Devuelve las coordenadas de una de las páginas.",
+	"apihelp-query+coordinates-param-limit": "Cuántas coordenadas se devolverán.",
+	"apihelp-query+coordinates-param-prop": "Qué propiedades adicionales de las coordenadas se devolverán.",
+	"apihelp-query+coordinates-example-1": "Obtener una lista de las coordenadas de la [[Main Page]]",
+	"apihelp-query+geosearch-description": "Las páginas de retorno tienen coordinadores disponibles para el punto determinado.",
+	"apihelp-query+geosearch-param-namespace": "Espacio de nombres que buscar.",
+	"apihelp-query+geosearch-example-1": "Buscar alrededor del punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ O"
 }

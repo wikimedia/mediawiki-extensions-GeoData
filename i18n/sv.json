@@ -32,7 +32,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Returnera distans i meter för alla resultat på jorden från dessa koordinater.",
 	"apihelp-query+coordinates-param-distancefrompage": "Returnera distans i meter för alla resultat på jorden från koordinaterna för denna sida.",
 	"apihelp-query+coordinates-example-1": "Få en lista med koordinater för [[Main Page]]",
-	"apihelp-query+geosearch-description": "Returnerar sidor kring den angivna punkten.",
+	"apihelp-query+geosearch-description": "Returnerar sidor med koordinaterna kring den angivna punkten.",
 	"apihelp-query+geosearch-param-coord": "Koordinat kring vilken sökningen ska ske.",
 	"apihelp-query+geosearch-param-page": "Titel på sidan kring vilken sökningen ska ske.",
 	"apihelp-query+geosearch-param-radius": "Sökradie i meter.",
