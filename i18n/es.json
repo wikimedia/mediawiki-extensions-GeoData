@@ -30,7 +30,7 @@
 	"apihelp-query+coordinates-param-limit": "Cuántas coordenadas se devolverán.",
 	"apihelp-query+coordinates-param-prop": "Qué propiedades adicionales de las coordenadas se devolverán.",
 	"apihelp-query+coordinates-example-1": "Obtener una lista de las coordenadas de la [[Main Page]]",
-	"apihelp-query+geosearch-description": "Las páginas de retorno tienen coordinadores disponibles para el punto determinado.",
+	"apihelp-query+geosearch-description": "Devuelve páginas que contienen coordenadas alrededor del punto determinado.",
 	"apihelp-query+geosearch-param-namespace": "Espacio de nombres que buscar.",
 	"apihelp-query+geosearch-example-1": "Buscar alrededor del punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ O"
 }
