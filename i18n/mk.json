@@ -29,7 +29,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Дај го растојанието во метри на секој резултат на Земјата од овие координати",
 	"apihelp-query+coordinates-param-distancefrompage": "Дај го растојанието во метри на секој резултат на Земјата од координатите на страницава.",
 	"apihelp-query+coordinates-example-1": "Дај список на координати на [[Main Page|Главната страница]]",
-	"apihelp-query+geosearch-description": "Дава страници околу дадена точка.",
+	"apihelp-query+geosearch-description": "Дава страници со координати околу дадена точка.",
 	"apihelp-query+geosearch-param-coord": "Околу која координата да се пребарува.",
 	"apihelp-query+geosearch-param-page": "Околу кој наслов на страница да се пребарува.",
 	"apihelp-query+geosearch-param-radius": "Радиус на пребарување во метри.",
