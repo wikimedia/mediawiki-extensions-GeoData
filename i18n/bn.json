@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aftabuzzaman"
+		]
+	},
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: অক্ষাংশ সঠিক নয়",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: দ্রাঘিমাংশ সঠিক নয়",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: প্রতি পাতায় একাধিক প্রাথমিক ট্যাগ থাকতে পারবে না",
+	"geodata-broken-tags-category": "ত্রুটিপূর্ণ স্থানাঙ্ক ট্যাগ সম্বলিত পাতা",
+	"geodata-broken-tags-category-desc": "পাতাটিতে একটি ত্রুটিপূর্ণ <code><nowiki>{{#coordinates:}}</nowiki></code> ট্যাগ আছে।"
+}
