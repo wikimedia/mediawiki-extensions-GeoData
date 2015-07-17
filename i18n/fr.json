@@ -30,6 +30,7 @@
 	"geodata-api-help-coordinates-format": "Format: Latitude et longitude séparés par une barre verticale (\"|\").",
 	"apihelp-query+coordinates-description": "Retourne les coordonnées de la page référencée.",
 	"apihelp-query+coordinates-param-limit": "Combien de coordonnées à renvoyer.",
+	"apihelp-query+coordinates-param-prop": "Quelles propriétés de coordonnées supplémentaires retourner.",
 	"apihelp-query+geosearch-param-page": "Titre de page similaire à la recherche",
 	"apihelp-query+geosearch-param-radius": "Rayon de recherche, en mètres.",
 	"apihelp-query+geosearch-param-maxdim": "Restreindre la recherche à des objets qui ne sont pas plus que cela, en mètres.",
