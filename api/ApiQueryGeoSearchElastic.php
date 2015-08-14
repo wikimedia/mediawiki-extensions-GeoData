@@ -66,9 +66,9 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				$outerFilter->addMust(
 					new Elastica\Filter\Terms( 'namespace', $params['namespace'] )
 				);
-				$query->setFilter( $outerFilter );
+				$query->setPostFilter( $outerFilter );
 			} else {
-				$query->setFilter( $nested );
+				$query->setPostFilter( $nested );
 			}
 
 			$query->addSort(
