@@ -4,11 +4,12 @@
 			"Armin1392",
 			"Ebraminio",
 			"Mjbmr",
-			"جواد"
+			"جواد",
+			"Reza1615"
 		]
 	},
 	"geodata-desc": "افزودن ذخیره‌سازی مختصات جغرافیایی و کارآمدی بازیابی",
-	"geodata-bad-input": "دلایل نانعتبر برای عملیات <nowiki>{{#cمختصات:}}</nowiki> عبور کرده‌است",
+	"geodata-bad-input": "متغییرهای نامعتبر در <nowiki>{{#cمختصات:}}</nowiki> واردشده‌است.",
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: عرض جغرافیایی نامعتبر",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: طول جغرافیایی نامعتبر",
 	"geodata-bad-type": "<nowiki>{{#مختصات:}}</nowiki>: گونهٔ تشخیص داده نشده \"$1\"",
