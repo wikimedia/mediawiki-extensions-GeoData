@@ -35,7 +35,11 @@
 	"apihelp-query+coordinates-example-1": "获取[[Main Page]]的坐标列表",
 	"apihelp-query+geosearch-description": "返回指定点周围坐标的页面。",
 	"apihelp-query+geosearch-param-page": "围绕要搜索页面的页面标题。",
+	"apihelp-query+geosearch-param-radius": "搜索半径（米）。",
+	"apihelp-query+geosearch-param-limit": "返回页面的最大数量。",
 	"apihelp-query+geosearch-param-globe": "要搜索的星球（默认“地球”）。",
 	"apihelp-query+geosearch-param-namespace": "搜索的名字空间。",
+	"apihelp-query+geosearch-param-prop": "要返回的额外坐标属性。",
+	"apihelp-query+geosearch-param-debug": "是否应该返回调试信息。",
 	"apihelp-query+geosearch-example-1": "搜索坐标点37° 47′ 13.1″ N, 122° 23′ 58.84″ W附近的东西"
 }
