@@ -26,9 +26,10 @@
 	"geodata-unknown-region-category": "Páginas con valor de región no válido",
 	"geodata-unknown-region-category-desc": "Esta página utiliza un valor no válido en el parámetro <code>region</code> de las coordenadas.",
 	"geodata-api-help-coordinates-format": "Formato: latitud y longitud separados por una barra vertical (\"|\").",
-	"apihelp-query+coordinates-description": "Devuelve las coordenadas de una de las páginas.",
+	"apihelp-query+coordinates-description": "Devuelve las coordenadas de las páginas espedificadas.",
 	"apihelp-query+coordinates-param-limit": "Cuántas coordenadas se devolverán.",
 	"apihelp-query+coordinates-param-prop": "Qué propiedades adicionales de las coordenadas se devolverán.",
+	"apihelp-query+coordinates-param-primary": "Si devolver solo las coordenadas primarias (\"primary\"), secundarias (\"secondary\") o ambas (\"all\").",
 	"apihelp-query+coordinates-example-1": "Obtener una lista de las coordenadas de la [[Main Page]]",
 	"apihelp-query+geosearch-description": "Devuelve páginas que contienen coordenadas alrededor del punto determinado.",
 	"apihelp-query+geosearch-param-coord": "Coordenada alrededor de la cual buscar.",
@@ -37,5 +38,8 @@
 	"apihelp-query+geosearch-param-maxdim": "Restringir la búsqueda a los objetos no mayores que esto, en metros.",
 	"apihelp-query+geosearch-param-limit": "Número máximo de páginas que devolver.",
 	"apihelp-query+geosearch-param-namespace": "Espacio de nombres que buscar.",
+	"apihelp-query+geosearch-param-prop": "Qué propiedades adicionales de las coordenadas se devolverán.",
+	"apihelp-query+geosearch-param-primary": "Si devolver solo las coordenadas primarias (\"primary\"), secundarias (\"secondary\") o ambas (\"all\").",
+	"apihelp-query+geosearch-param-debug": "Si la información de depuración debe devolverse.",
 	"apihelp-query+geosearch-example-1": "Buscar alrededor del punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ O"
 }
