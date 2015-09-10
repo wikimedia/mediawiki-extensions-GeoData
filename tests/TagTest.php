@@ -149,13 +149,13 @@ class TagTest extends MediaWikiTestCase {
 				'{{#coordinates: 10|20|scale:50000}}', 
 				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 5000 ),
 			),
-			// https://bugzilla.wikimedia.org/show_bug.cgi?id=46181
+			// https://phabricator.wikimedia.org/T48181
 			array(
 				'{{#coordinates: 2.5|3,5}}',
 				array( 'lat' => 2.5, 'lon' => 3.5 ),
 				'de',
 			),
-			// https://bugzilla.wikimedia.org/show_bug.cgi?id=47090
+			// https://phabricator.wikimedia.org/T49090
 			array(
 				'{{#coordinates: -3.29237|-60.624889|globe=}}',
 				array( 'lat' => -3.29237, 'lon' => -60.624889, 'globe' => 'earth' ),

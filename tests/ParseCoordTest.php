@@ -67,7 +67,7 @@ class ParseCoordTest extends MediaWikiTestCase {
 			// only the last component of the coordinate should be non-integer
 			array( array( 10.5, 1, 20, 0 ), false ),
 			array( array( 10, 30.5, 1, 20, 0, 0 ), false ),
-			// Exception per https://bugzilla.wikimedia.org/show_bug.cgi?id=48488
+			// Exception per https://phabricator.wikimedia.org/T50488
 			array( array( 1.5, 0, 2.5, 0 ), new Coord( 1.5, 2.5 ) ),
 			array( array( 1, 2.5, 0, 3, 4.5, 0 ), new Coord( 1.0416666666667, 3.075 ) ),
 			// coordinate validation (Earth)
