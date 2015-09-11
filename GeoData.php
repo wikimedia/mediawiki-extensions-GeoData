@@ -30,7 +30,6 @@ $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
 $wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
 
 $wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
-$wgAPIGeneratorModules['geosearch'] = 'ApiQueryGeoSearch';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoDataHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'GeoDataHooks::onParserFirstCallInit';
