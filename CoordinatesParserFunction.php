@@ -160,7 +160,7 @@ class CoordinatesParserFunction {
 		}
 		$coord->dim = $wgDefaultDim;
 		if ( isset( $args['type'] ) ) {
-			$coord->type = preg_replace( '/\(.*?\).*$/', '', $args['type'] );
+			$coord->type = mb_strtolower( preg_replace( '/\(.*?\).*$/', '', $args['type'] ) );
 			if ( isset( $wgTypeToDim[$coord->type] ) ) {
 				$coord->dim = $wgTypeToDim[$coord->type];
 			} else {

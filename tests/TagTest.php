@@ -160,6 +160,11 @@ class TagTest extends MediaWikiTestCase {
 				'{{#coordinates: -3.29237|-60.624889|globe=}}',
 				array( 'lat' => -3.29237, 'lon' => -60.624889, 'globe' => 'earth' ),
 			),
+			// Lowercase type
+			array(
+				'{{#coordinates: 10|20|type:sOmEtHiNg}}',
+				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'something' ),
+			),
 		);
 	}
 
