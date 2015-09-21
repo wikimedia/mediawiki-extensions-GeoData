@@ -109,8 +109,6 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
-		global $wgUseDumbLinkUpdate, $wgGeoDataBackend;
-
 		$out = $linksUpdate->getParserOutput();
 		$data = array();
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
@@ -125,11 +123,8 @@ class GeoDataHooks {
 		} elseif ( $coordFromMetadata ) {
 			$data[] = $coordFromMetadata;
 		}
-		if ( $wgGeoDataBackend == 'db' && ( $wgUseDumbLinkUpdate || !count( $data ) ) ) {
-			self::doDumbUpdate( $data, $linksUpdate->mId );
-		} else {
-			self::doSmartUpdate( $data, $linksUpdate->mId );
-		}
+
+		self::doLinksUpdate( $data, $linksUpdate->mId );
 
 		return true;
 	}
@@ -174,17 +169,16 @@ class GeoDataHooks {
 		return array( 1, 1 );
 	}
 
-	private static function doDumbUpdate( $coords, $pageId ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $pageId ), __METHOD__ );
-		$rows = array();
-		foreach ( $coords as $coord ) {
-			$rows[] = $coord->getRow( $pageId );
-		}
-		$dbw->insert( 'geo_tags', $rows, __METHOD__ );
-	}
+	private static function doLinksUpdate( $coords, $pageId ) {
+		global $wgGeoDataBackend;
 
-	private static function doSmartUpdate( $coords, $pageId ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		if ( $wgGeoDataBackend == 'db' && !count( $coords ) ) {
+			$dbw->delete( 'geo_tags', array( 'gt_page_id' => $pageId ), __METHOD__ );
+			return;
+		}
+
 		$prevCoords = GeoData::getAllCoordinates( $pageId, array(), DB_MASTER );
 		$add = array();
 		$delete = array();
@@ -209,7 +203,7 @@ class GeoDataHooks {
 				$add[] = $new->getRow( $pageId );
 			}
 		}
-		$dbw = wfGetDB( DB_MASTER );
+
 		if ( count( $delete ) ) {
 			$deleteIds = array_keys( $delete );
 			$dbw->delete( 'geo_tags', array( 'gt_id' => $deleteIds ), __METHOD__ );
