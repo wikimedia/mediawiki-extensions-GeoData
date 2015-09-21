@@ -18,11 +18,13 @@ class GeoDataHooks {
 		switch ( $updater->getDB()->getType() ) {
 			case 'sqlite':
 			case 'mysql':
+				$dir = __DIR__;
+
 				if ( $wgGeoDataBackend != 'db' ) {
-					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sql/externally-backed.sql' );
-					$updater->dropExtensionTable( 'geo_killlist', dirname( __FILE__ ) . '/sql/drop-updates-killlist.sql' );
+					$updater->addExtensionTable( 'geo_tags', "$dir/../sql/externally-backed.sql" );
+					$updater->dropExtensionTable( 'geo_killlist', "$dir/../sql/drop-updates-killlist.sql" );
 				} else {
-					$updater->addExtensionTable( 'geo_tags', dirname( __FILE__ ) . '/sql/db-backed.sql' );
+					$updater->addExtensionTable( 'geo_tags', "$dir/../sql/db-backed.sql" );
 				}
 				$updater->addExtensionUpdate( array( 'GeoDataHooks::upgradeToDecimal' ) );
 				break;
@@ -42,7 +44,7 @@ class GeoDataHooks {
 		// Doesn't support the old API, oh well
 		if ( $field->type() === MYSQLI_TYPE_FLOAT ) {
 			$updater->output( "...upgrading geo_tags coordinates from FLOAT to DECIMAL.\n" );
-			$db->sourceFile( __DIR__ . '/sql/float-to-decimal.sql' );
+			$db->sourceFile( __DIR__ . '/../sql/float-to-decimal.sql' );
 		} else {
 			$updater->output( "...coordinates are already DECIMAL in geo_tags.\n" );
 		}
@@ -56,7 +58,7 @@ class GeoDataHooks {
 	 * @return bool
 	 */
 	public static function onUnitTestsList( &$files ) {
-		$dir = __DIR__ . '/tests';
+		$dir = __DIR__ . '/../tests';
 		$files[] = "$dir/CoordTest.php";
 		$files[] = "$dir/GeoDataMathTest.php";
 		$files[] = "$dir/MiscGeoDataTest.php";

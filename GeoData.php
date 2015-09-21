@@ -18,12 +18,12 @@ $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
 $wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
 $wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/api/ApiQueryGeoSearchElastic.php";
 
-$wgAutoloadClasses['Coord'] = "$dir/Coord.php";
-$wgAutoloadClasses['CoordinatesOutput'] = "$dir/CoordinatesOutput.php";
-$wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/CoordinatesParserFunction.php";
-$wgAutoloadClasses['GeoData'] = "$dir/GeoData.body.php";
-$wgAutoloadClasses['GeoDataHooks'] = "$dir/GeoDataHooks.php";
-$wgAutoloadClasses['GeoDataMath'] = "$dir/GeoDataMath.php";
+$wgAutoloadClasses['Coord'] = "$dir/includes/Coord.php";
+$wgAutoloadClasses['CoordinatesOutput'] = "$dir/includes/CoordinatesOutput.php";
+$wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/includes/CoordinatesParserFunction.php";
+$wgAutoloadClasses['GeoData'] = "$dir/includes/GeoData.body.php";
+$wgAutoloadClasses['GeoDataHooks'] = "$dir/includes/GeoDataHooks.php";
+$wgAutoloadClasses['GeoDataMath'] = "$dir/includes/GeoDataMath.php";
 
 $wgMessagesDirs['GeoData'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
