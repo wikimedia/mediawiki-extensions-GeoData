@@ -82,7 +82,9 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			);
 			$query->setSize( $params['limit'] );
 
-			$pageType = CirrusSearch\Connection::getPageType( wfWikiID() );
+			$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'CirrusSearch' );
+			$connection = new CirrusSearch\Connection( $config );
+			$pageType = $connection->getPageType( wfWikiID() );
 			$search = $pageType->createSearch( $query );
 
 			$resultSet = $search->search();
