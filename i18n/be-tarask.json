@@ -3,7 +3,8 @@
 		"authors": [
 			"EugeneZelenko",
 			"Jim-by",
-			"Wizardist"
+			"Wizardist",
+			"Red Winged Duck"
 		]
 	},
 	"geodata-desc": "Дадае функцыянальнасьць захаваньня і атрыманьня геаграфічных каардынатаў.",
@@ -16,7 +17,9 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: нельга мець больш за адну першасную метку на старонцы",
 	"geodata-limit-exceeded": "Было перавышана абмежаваньне ў $1 {{PLURAL:$1|выклік|выклікі|выклікаў}} <nowiki>{{#coordinates:}}</nowiki> на старонку",
 	"geodata-broken-tags-category": "Старонкі зь няслушнымі каардынатнымі меткамі",
+	"geodata-broken-tags-category-desc": "Старонка ўтрымлівае няслушны тэг <code><nowiki>{{#coordinates:}}</nowiki></code>.",
 	"geodata-unknown-type-category": "Старонкі зь невядомымі тыпамі каардынатаў",
 	"geodata-unknown-globe-category": "Старонкі зь невядомым глябальным значэньнем",
+	"geodata-unknown-globe-category-desc": "На старонцы выкарыстанае невядомае значэньне парамэтру <code>globe</code> для каардынатаў.",
 	"geodata-unknown-region-category": "Старонкі зь няслушным рэгіёнам"
 }
