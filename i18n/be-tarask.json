@@ -19,6 +19,7 @@
 	"geodata-broken-tags-category": "Старонкі зь няслушнымі каардынатнымі меткамі",
 	"geodata-broken-tags-category-desc": "Старонка ўтрымлівае няслушны тэг <code><nowiki>{{#coordinates:}}</nowiki></code>.",
 	"geodata-unknown-type-category": "Старонкі зь невядомымі тыпамі каардынатаў",
+	"geodata-unknown-type-category-desc": "На старонцы выкарыстанае невядомае значэньне парамэтру <code>type</code> для каардынатаў.",
 	"geodata-unknown-globe-category": "Старонкі зь невядомым глябальным значэньнем",
 	"geodata-unknown-globe-category-desc": "На старонцы выкарыстанае невядомае значэньне парамэтру <code>globe</code> для каардынатаў.",
 	"geodata-unknown-region-category": "Старонкі зь няслушным рэгіёнам",
