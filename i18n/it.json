@@ -23,5 +23,13 @@
 	"geodata-unknown-globe-category-desc": "La pagina utilizza un valore sconosciuto del parametro <code>globe</code> per le coordinate.",
 	"geodata-unknown-region-category": "Pagine con un valore regione non valido",
 	"geodata-unknown-region-category-desc": "La pagina utilizza un valore sconosciuto del parametro <code>region</code> per le coordinate.",
-	"apihelp-query+geosearch-description": "Restituisce pagine con le coordinate del punto."
+	"geodata-api-help-coordinates-format": "Formato: latitudine e longitudine separati da una barra verticale (\"|\").",
+	"apihelp-query+coordinates-description": "Restituisce le coordinate delle pagine indicate.",
+	"apihelp-query+coordinates-param-limit": "Quante coordinate restituire.",
+	"apihelp-query+coordinates-param-prop": "Quali proprietà addizionali delle coordinate restituire.",
+	"apihelp-query+geosearch-description": "Restituisce pagine con le coordinate del punto.",
+	"apihelp-query+geosearch-param-limit": "Numero massimo di pagine da restituire.",
+	"apihelp-query+geosearch-param-prop": "Quali proprietà addizionali delle coordinate restituire.",
+	"apihelp-query+geosearch-param-debug": "Quali informazioni di debug restituire.",
+	"apihelp-query+geosearch-example-1": "Ricerca attorno al punto con coordinate 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
 }
