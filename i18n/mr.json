@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"V.narsikar"
+			"V.narsikar",
+			"अभय नातू"
 		]
 	},
 	"geodata-desc": "भौगोलिक समन्वयक भांडारण व हुडकण्याची कार्यात्मकता",
@@ -32,7 +33,7 @@
 	"apihelp-query+geosearch-description": "त्या पानांचा परतावा देते,ज्यांचे समन्वयक दिलेल्या बिंदूच्या सभोवताल आहेत.",
 	"apihelp-query+geosearch-param-coord": "कोणत्या समन्वयकाभोवताल शोधावयाचे.",
 	"apihelp-query+geosearch-param-page": "ज्या सभोवताल शोधावयाचे त्या पानाचे शीर्षक.",
-	"apihelp-query+geosearch-param-radius": "शोधत्रिज्या मिटरमध्ये.",
+	"apihelp-query+geosearch-param-radius": "शोधत्रिज्या मीटरमध्ये.",
 	"apihelp-query+geosearch-param-maxdim": "या पेक्षा मोठ्या नसलेल्या वस्तुंपर्यंतच शोध मर्यादित ठेवा,मिटरमध्ये.",
 	"apihelp-query+geosearch-param-limit": "परतावा द्यायच्या पानांची संख्या.",
 	"apihelp-query+geosearch-param-globe": "कोणत्या गोलकावर शोध घ्यायचा(अविचलरित्या \"पृथ्वी\")",
