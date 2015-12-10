@@ -109,8 +109,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$params = array (
 			'coord' => array(
 				ApiBase::PARAM_TYPE => 'string',
-				/** @todo Once support for MediaWiki < 1.25 is dropped, just use ApiBase::PARAM_HELP_MSG_APPEND directly */
-				constant( 'ApiBase::PARAM_HELP_MSG_APPEND' ) ?: '' => array(
+				ApiBase::PARAM_HELP_MSG_APPEND => array(
 					'geodata-api-help-coordinates-format',
 				),
 			),
@@ -160,45 +159,6 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			);
 		}
 		return $params;
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		global $wgDefaultGlobe, $wgGeoDataDebug;
-		$params = array(
-			'coord' => 'Coordinate around which to search: two floating-point values separated by pipe (|)',
-			'page' => 'Title of page around which to search',
-			'radius' => 'Search radius in meters',
-			'maxdim' => 'Restrict search to objects no larger than this, in meters',
-			'limit' => 'Maximum number of pages to return',
-			'globe' => "Globe to search on (by default ``{$wgDefaultGlobe}'')",
-			'namespace' => 'Namespace(s) to search',
-			'prop' => 'What additional coordinate properties to return',
-			'primary' => "Whether to return only primary coordinates (``primary''), secondary (``secondary'') or both (``all'')"
-		);
-		if ( $wgGeoDataDebug ) {
-			$params['debug'] = 'Whether debug information should be returned';
-		}
-		return $params;
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return 'Returns pages around the given point';
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getExamples() {
-		return array(
-			"api.php?action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677" => 
-				"Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
-		);
 	}
 
 	/**
