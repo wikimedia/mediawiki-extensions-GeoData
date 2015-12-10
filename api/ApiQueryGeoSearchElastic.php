@@ -40,12 +40,22 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 					array( 'coordinates.primary' => intval( $primary === 'primary' ) )
 				) );
 			}
-			$distanceFilter = new Elastica\Filter\GeoDistance( 'coordinates.coord',
-				array( 'lat' => $this->lat, 'lon' => $this->lon ),
-				$this->radius . 'm'
-			);
-			if ( $wgGeoDataIndexLatLon ) {
-				$distanceFilter->setOptimizeBbox( 'indexed' );
+			if ( $this->bbox ) {
+				$distanceFilter = new Elastica\Filter\GeoBoundingBox( 'coordinates.coord',
+					array(
+						array( 'lat' => $this->bbox->lat1, 'lon' => $this->bbox->lon1 ),
+						array( 'lat' => $this->bbox->lat2, 'lon' => $this->bbox->lon2 ),
+					)
+				);
+			} else {
+				$distanceFilter =
+					new Elastica\Filter\GeoDistance( 'coordinates.coord',
+						array( 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ),
+						$this->radius . 'm'
+					);
+				if ( $wgGeoDataIndexLatLon ) {
+					$distanceFilter->setOptimizeBbox( 'indexed' );
+				}
 			}
 
 			$query = new Elastica\Query();
@@ -74,7 +84,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			$query->addSort(
 				array(
 					'_geo_distance' => array(
-						'coordinates.coord' => array( 'lat' => $this->lat, 'lon' => $this->lon ),
+						'coordinates.coord' => array( 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ),
 						'order' => 'asc',
 						'unit' => 'm'
 					)
@@ -149,6 +159,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 					if ( !isset( $titles[$id] ) ) {
 						continue;
 					}
+					/** @var Title $title */
 					$title = $titles[$id];
 					$vals = array(
 						'pageid' => intval( $coord->pageId ),
@@ -203,8 +214,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				$coord->$field = $hit[$field];
 			}
 		}
-		$coord->distance =
-			GeoDataMath::distance( $this->lat, $this->lon, $coord->lat, $coord->lon );
+		$coord->distance = $this->coord->distanceTo( $coord );
 		return $coord;
 	}
 
@@ -215,11 +225,11 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	 * @return bool: If false, these coordinates should be discarded
 	 */
 	private function filterCoord( Coord $coord ) {
-		if ( $coord->distance > $this->radius ) {
+		if ( !$this->bbox && $coord->distance > $this->radius ) {
 			return false;
 		}
 		// Only one globe is supported for search, this is future-proof
-		if ( $coord->globe != $this->params['globe'] ) {
+		if ( $coord->globe != $this->coord->globe ) {
 			return false;
 		}
 		if ( isset( $this->params['maxdim'] ) && $coord->dim > $this->params['maxdim'] ) {

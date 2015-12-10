@@ -30,4 +30,13 @@ class CoordTest extends MediaWikiTestCase {
 			array( new Coord( 10, 20 ), null, false, 'Comparison with null' ),
 		);
 	}
+
+	public function testBboxAround() {
+		for ( $i = 0; $i < 90; $i += 5 ) {
+			$coord = new Coord( $i, $i );
+			$bbox = $coord->bboxAround( 5000 );
+			$this->assertEquals( 10000, GeoDataMath::distance( $bbox->lat1, $i, $bbox->lat2, $i ), 'Testing latitude', 1 );
+			$this->assertEquals( 10000, GeoDataMath::distance( $i, $bbox->lon1, $i, $bbox->lon2 ), 'Testing longitude', 1 );
+		}
+	}
 }

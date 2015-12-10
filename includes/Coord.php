@@ -71,9 +71,47 @@ class Coord {
 	}
 
 	/**
+	 * Returns a bounding rectangle around this coordinate
+	 *
+	 * @param float $radius
+	 * @return BoundingBox
+	 */
+	public function bboxAround( $radius ) {
+		if ( $radius <= 0 ) {
+			return new BoundingBox( $this->lat, $this->lon, $this->lat, $this->lon, $this->globe );
+		}
+		$r2lat = rad2deg( $radius / GeoDataMath::EARTH_RADIUS );
+		// @todo: doesn't work around poles, should we care?
+		if ( abs( $this->lat ) < 89.9 ) {
+			$r2lon = rad2deg( $radius / cos( deg2rad( $this->lat ) ) / GeoDataMath::EARTH_RADIUS );
+		} else {
+			$r2lon = 0.1;
+		}
+		$res = new BoundingBox( $this->lat - $r2lat,
+			$this->lon - $r2lon,
+			$this->lat + $r2lat,
+			$this->lon + $r2lon,
+			$this->globe
+		);
+		GeoDataMath::wrapAround( $res->lat1, $res->lat2, -90, 90 );
+		GeoDataMath::wrapAround( $res->lon1, $res->lon2, -180, 180 );
+		return $res;
+	}
+
+	/**
+	 * Returns a distance from these coordinates to another ones
+	 *
+	 * @param Coord $coord
+	 * @return float Distance in metres
+	 */
+	public function distanceTo( Coord $coord ) {
+		return GeoDataMath::distance( $this->lat, $this->lon, $coord->lat, $coord->lon );
+	}
+
+	/**
 	 * Returns this object's representation suitable for insertion into the DB via Databse::insert()
 	 * @param int $pageId: ID of page associated with this coordinate
-	 * @return Array: Associative array in format 'field' => 'value'
+	 * @return array: Associative array in format 'field' => 'value'
 	 */
 	public function getRow( $pageId ) {
 		global $wgGeoDataIndexGranularity, $wgGeoDataBackend;

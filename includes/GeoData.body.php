@@ -6,9 +6,9 @@ class GeoData {
 	 * @param float $lat
 	 * @param float $lon
 	 * @param string $globe
-	 * @return bool: Whether the coordinate is valid
+	 * @return bool Whether the coordinate is valid
 	 */
-	public static function validateCoord( $lat, $lon, $globe ) {
+	public static function validateCoord( $lat, $lon, $globe = 'earth' ) {
 		global $wgGlobes;
 		if ( !is_numeric( $lat ) || !is_numeric( $lon ) || abs( $lat ) > 90 ) {
 			return false;

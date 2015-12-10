@@ -23,7 +23,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 				$this->addFields( $mapping[$prop] );
 			}
 		}
-		$this->addWhereFld( 'gt_globe', $params['globe'] );
+		$this->addWhereFld( 'gt_globe', $this->coord->globe );
 		$this->addWhere( 'gt_page_id = page_id' );
 		if ( $this->idToExclude ) {
 			$this->addWhere( "gt_page_id <> {$this->idToExclude}" );
@@ -42,7 +42,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 
 		$rows = array();
 		foreach ( $res as $row ) {
-			$row->dist = GeoDataMath::distance( $this->lat, $this->lon, $row->gt_lat, $row->gt_lon );
+			$row->dist = GeoDataMath::distance( $this->coord->lat, $this->coord->lon, $row->gt_lat, $row->gt_lon );
 			$rows[] = $row;
 		}
 		// sort in PHP because sorting via SQL would involve a filesort
@@ -90,15 +90,15 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 	}
 
 	protected  function addCoordFilter() {
-		$rect = GeoDataMath::rectAround( $this->lat, $this->lon, $this->radius );
-		$this->addWhereFld( 'gt_lat_int', self::intRange( $rect["minLat"], $rect["maxLat"] ) );
-		$this->addWhereFld( 'gt_lon_int', self::intRange( $rect["minLon"], $rect["maxLon"] ) );
+		$bbox = $this->bbox ?: $this->coord->bboxAround( $this->radius );
+		$this->addWhereFld( 'gt_lat_int', self::intRange( $bbox->lat1, $bbox->lat2 ) );
+		$this->addWhereFld( 'gt_lon_int', self::intRange( $bbox->lon1, $bbox->lon2 ) );
 
-		$this->addWhereRange( 'gt_lat', 'newer', $rect["minLat"], $rect["maxLat"], false );
-		if ( $rect["minLon"] > $rect["maxLon"] ) {
-			$this->addWhere( "gt_lon < {$rect['maxLon']} OR gt_lon > {$rect['minLon']}" );
+		$this->addWhereRange( 'gt_lat', 'newer', $bbox->lat1, $bbox->lat2, false );
+		if ( $bbox->lon1 > $bbox->lon2 ) {
+			$this->addWhere( "gt_lon < {$bbox->lon2} OR gt_lon > {$bbox->lon1}" );
 		} else {
-			$this->addWhereRange( 'gt_lon', 'newer', $rect["minLon"], $rect["maxLon"], false );
+			$this->addWhereRange( 'gt_lon', 'newer', $bbox->lon1, $bbox->lon2, false );
 		}
 		$this->addOption( 'USE INDEX', array( 'geo_tags' => 'gt_spatial' ) );
 	}

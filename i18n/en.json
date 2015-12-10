@@ -29,7 +29,8 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Return distance in meters of every result on Earth from these coordinates.",
 	"apihelp-query+coordinates-param-distancefrompage": "Return distance in meters of every result on Earth from the coordinates of this page.",
 	"apihelp-query+coordinates-example-1": "Get a list of coordinates of the [[Main Page]]",
-	"apihelp-query+geosearch-description": "Returns pages having coordinates around the given point.",
+	"apihelp-query+geosearch-description": "Returns pages having coordinates that lie in a certain area.",
+	"apihelp-query+geosearch-param-bbox": "Bounding box to search in: pipe (|) separated coordinates of top left and bottom right corners.",
 	"apihelp-query+geosearch-param-coord": "Coordinate around which to search.",
 	"apihelp-query+geosearch-param-page": "Title of page around which to search.",
 	"apihelp-query+geosearch-param-radius": "Search radius in meters.",
@@ -40,5 +41,6 @@
 	"apihelp-query+geosearch-param-prop": "Which additional coordinate properties to return.",
 	"apihelp-query+geosearch-param-primary": "Whether to return only primary coordinates (\"primary\"), secondary (\"secondary\") or both (\"all\").",
 	"apihelp-query+geosearch-param-debug": "Whether debug information should be returned.",
-	"apihelp-query+geosearch-example-1": "Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
+	"apihelp-query+geosearch-example-1": "Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Search in a bounding box"
 }

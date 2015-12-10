@@ -18,6 +18,7 @@ $wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
 $wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
 $wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/api/ApiQueryGeoSearchElastic.php";
 
+$wgAutoloadClasses['BoundingBox'] = "$dir/includes/BoundingBox.php";
 $wgAutoloadClasses['Coord'] = "$dir/includes/Coord.php";
 $wgAutoloadClasses['CoordinatesOutput'] = "$dir/includes/CoordinatesOutput.php";
 $wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/includes/CoordinatesParserFunction.php";
@@ -61,7 +62,9 @@ $wgTrackingCategories[] = 'geodata-unknown-type-category';
 // =================== start configuration settings ===================
 
 /**
- * Maximum radius for geospatial searches.
+ * Maximum radius in metres for geospatial searches around a point.
+ * For bounding box based searches, the area must not exceed R^2*4.
+ *
  * The greater this variable is, the louder your server ouches.
  */
 $wgMaxGeoSearchRadius = 10000; // 10km

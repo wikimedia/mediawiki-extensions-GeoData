@@ -3,7 +3,25 @@
 abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	const MIN_RADIUS = 10;
 
-	protected $lat, $lon, $radius, $idToExclude;
+	/**
+	 * @var Coord The center of search area
+	 */
+	protected $coord;
+
+	/**
+	 * @var BoundingBox Bounding box to search in
+	 */
+	protected $bbox;
+
+	/**
+	 * @var int Search radius
+	 */
+	protected $radius;
+
+	/**
+	 * @var int Id of the page to search around, exclude from results
+	 */
+	protected $idToExclude;
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'gs' );
@@ -21,20 +39,43 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->run( $resultPageSet );
 	}
 
+	private function parseBbox( $bbox ) {
+		global $wgMaxGeoSearchRadius;
+
+		$parts = explode( '|', $bbox );
+		$vals = array_map( 'floatval', $parts );
+		if ( count( $parts ) != 4
+			// Pass $parts here for extra validation
+			|| !GeoData::validateCoord( $parts[0], $parts[1] )
+			|| !GeoData::validateCoord( $parts[2], $parts[3] )
+			|| $vals[0] <= $vals[2]
+		) {
+			$this->dieUsage( 'Invalid bounding box', '_invalid-bbox' );
+		}
+		$bbox = new BoundingBox( $vals[0], $vals[1], $vals[2], $vals[3] );
+		$area = $bbox->area();
+		if ( $area > $wgMaxGeoSearchRadius * $wgMaxGeoSearchRadius * 4
+			|| $area < 100
+		) {
+			$this->dieUsage( 'Bounding box is too big', '_toobig' );
+		}
+
+		return $bbox;
+	}
+
 	/**
 	 * @param ApiPageSet $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
 
-		$this->requireOnlyOneParameter( $params, 'coord', 'page' );
+		$this->requireOnlyOneParameter( $params, 'coord', 'page', 'bbox' );
 		if ( isset( $params['coord'] ) ) {
 			$arr = explode( '|', $params['coord'] );
 			if ( count( $arr ) != 2 || !GeoData::validateCoord( $arr[0], $arr[1], $params['globe'] ) ) {
 				$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
 			}
-			$lat = $arr[0];
-			$lon = $arr[1];
+			$this->coord = new Coord( floatval( $arr[0] ), floatval( $arr[1] ), $params['globe'] );
 		} elseif ( isset( $params['page'] ) ) {
 			$t = Title::newFromText( $params['page'] );
 			if ( !$t || !$t->canExist() ) {
@@ -43,13 +84,17 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			if ( !$t->exists() ) {
 				$this->dieUsage( "Page ``{$params['page']}'' does not exist", '_nonexistent-page' );
 			}
-			$coord = GeoData::getPageCoordinates( $t );
-			if ( !$coord ) {
+			$this->coord = GeoData::getPageCoordinates( $t );
+			if ( !$this->coord ) {
 				$this->dieUsage( 'Page coordinates unknown', '_no-coordinates' );
 			}
-			$lat = $coord->lat;
-			$lon = $coord->lon;
 			$this->idToExclude = $t->getArticleID();
+		} elseif ( isset( $params['bbox'] ) ) {
+			$this->bbox = $this->parseBbox( $params['bbox'] );
+			// Even when using bbox, we need a center to sort by distance
+			$this->coord = $this->bbox->center();
+		} else {
+			$this->dieDebug( __METHOD__, 'Logic error' );
 		}
 
 		$this->addTables( 'page' );
@@ -61,18 +106,12 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		}
 		$this->addWhereFld( 'page_namespace', $params['namespace'] );
 
-		$this->lat = floatval( $lat );
-		$this->lon = floatval( $lon );
 		$this->radius = intval( $params['radius'] );
 
 		if ( is_null( $resultPageSet ) ) {
-			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$this->getResult()->addIndexedTagName(
-					 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
-			} else {
-				$this->getResult()->setIndexedTagName_internal(
-					 array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
-			}
+			$this->getResult()->addIndexedTagName( array( 'query', $this->getModuleName() ),
+				$this->getModulePrefix()
+			);
 		}
 	}
 
@@ -83,7 +122,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	 * @param float $end
 	 * @param int|null $granularity
 	 *
-	 * @return Array
+	 * @return array
 	 */
 	public static function intRange( $start, $end, $granularity = null ) {
 		global $wgGeoDataIndexGranularity;
@@ -116,9 +155,11 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			'page' => array(
 				ApiBase::PARAM_TYPE => 'string',
 			),
+			'bbox' => array(
+				ApiBase::PARAM_TYPE => 'string',
+			),
 			'radius' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_MIN => self::MIN_RADIUS,
 				ApiBase::PARAM_MAX => $wgMaxGeoSearchRadius,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
@@ -168,6 +209,8 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		return array(
 			'action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677'
 				=> 'apihelp-query+geosearch-example-1',
+			'action=query&list=geosearch&gsbbox=37.8|-122.3|37.7|-122.4'
+				=> 'apihelp-query+geosearch-example-2',
 		);
 	}
 

@@ -31,39 +31,14 @@ class GeoDataMath {
 	}
 
 	/**
-	 * Returns a bounding rectangle around a given point
+	 * Wraps coordinate values around globe boundaries
 	 *
-	 * @param float $lat
-	 * @param float $lon
-	 * @param float $radius
-	 * @return Array
+	 * @param float $from
+	 * @param float $to
+	 * @param float $min
+	 * @param float $max
 	 */
-	public static function rectAround( $lat, $lon, $radius ) {
-		if ( !$radius ) {
-			return array(
-				'minLat' => $lat, 'maxLat' => $lat,
-				'minLon' => $lon, 'maxLon' => $lon
-			);
-		}
-		$r2lat = rad2deg( $radius / self::EARTH_RADIUS );
-		// @todo: doesn't work around poles, should we care?
-		if ( abs( $lat ) < 89.9 ) {
-			$r2lon = rad2deg( $radius / cos( deg2rad( $lat ) ) / self::EARTH_RADIUS );
-		} else {
-			$r2lon = 0.1;
-		}
-		$res = array(
-			'minLat' => $lat - $r2lat,
-			'maxLat' => $lat + $r2lat,
-			'minLon' => $lon - $r2lon,
-			'maxLon' => $lon + $r2lon
-		);
-		self::wrapAround( $res['minLat'], $res['maxLat'], -90, 90 );
-		self::wrapAround( $res['minLon'], $res['maxLon'], -180, 180 );
-		return $res;
-	}
-
-	private static function wrapAround( &$from, &$to, $min, $max ) {
+	public static function wrapAround( &$from, &$to, $min, $max ) {
 		if ( $from < $min ) {
 			$from = $max - ( $min - $from );
 		}
@@ -75,7 +50,7 @@ class GeoDataMath {
 	/**
 	 * Sign function
 	 *
-	 * @param Float $x: Value to get sinng of
+	 * @param Float $x: Value to get sign of
 	 * @return int
 	 */
 	public static function sign( $x ) {

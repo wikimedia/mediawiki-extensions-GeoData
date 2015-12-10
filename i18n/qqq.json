@@ -34,6 +34,7 @@
 	"apihelp-query+coordinates-param-distancefrompage": "{{doc-apihelp-param|query+coordinates|distancefrompage}}",
 	"apihelp-query+coordinates-example-1": "{{doc-apihelp-example|query+coordinates}}",
 	"apihelp-query+geosearch-description": "{{doc-apihelp-description|query+geosearch}}",
+	"apihelp-query+geosearch-param-bbox": "{{doc-apihelp-param|query+geosearch|bbox}}",
 	"apihelp-query+geosearch-param-coord": "{{doc-apihelp-param|query+geosearch|coord}}",
 	"apihelp-query+geosearch-param-page": "{{doc-apihelp-param|query+geosearch|page}}",
 	"apihelp-query+geosearch-param-radius": "{{doc-apihelp-param|query+geosearch|radius}}",
@@ -44,5 +45,6 @@
 	"apihelp-query+geosearch-param-prop": "{{doc-apihelp-param|query+geosearch|prop}}",
 	"apihelp-query+geosearch-param-primary": "{{doc-apihelp-param|query+geosearch|primary}}",
 	"apihelp-query+geosearch-param-debug": "{{doc-apihelp-param|query+geosearch|debug}}",
-	"apihelp-query+geosearch-example-1": "Do not alter \"37° 47′ 13.1″ N, 122° 23′ 58.84″ W\".\n{{doc-apihelp-example|query+geosearch}}"
+	"apihelp-query+geosearch-example-1": "Do not alter \"37° 47′ 13.1″ N, 122° 23′ 58.84″ W\".\n{{doc-apihelp-example|query+geosearch}}",
+	"apihelp-query+geosearch-example-2": "{{doc-apihelp-example|query+geosearch}}"
 }
