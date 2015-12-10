@@ -164,13 +164,6 @@ $wgGeoDataWarningLevel = array(
 );
 
 /**
- * Set this to true during rollouts of this extension on wikis with manual
- * localisation cache updates to prevent fatals. It can be flipped back to false
- * after running rebuildLocalisationCache.php.
- */
-$wgGeoDataDisableParserFunction = false;
-
-/**
  * How many gt_(lat|lon)_int units per degree
  * Run updateIndexGranularity.php after changing this
  */
