@@ -27,7 +27,7 @@
 	"apihelp-query+coordinates-description": "Restituisce le coordinate delle pagine indicate.",
 	"apihelp-query+coordinates-param-limit": "Quante coordinate restituire.",
 	"apihelp-query+coordinates-param-prop": "Quali proprietà addizionali delle coordinate restituire.",
-	"apihelp-query+geosearch-description": "Restituisce pagine con le coordinate del punto.",
+	"apihelp-query+geosearch-description": "Restituisce pagine che hanno coordinate che si trovano in una determinata area.",
 	"apihelp-query+geosearch-param-limit": "Numero massimo di pagine da restituire.",
 	"apihelp-query+geosearch-param-prop": "Quali proprietà addizionali delle coordinate restituire.",
 	"apihelp-query+geosearch-param-debug": "Quali informazioni di debug restituire.",

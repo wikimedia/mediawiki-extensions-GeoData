@@ -29,7 +29,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Jiv der Afschtand en Mehtere zoh heh dä Ko'odėnahte uß för alles, wadd op de Ähd es.",
 	"apihelp-query+coordinates-param-distancefrompage": "Jiv der Afschtand en Mehtere zoh de Ko'odėnahte vun heh dä Sigg uß för alles, wadd op de Ähd es.",
 	"apihelp-query+coordinates-example-1": "Holl en Leß met de [[Main Page|{{int:mainpage}}]] ier Ko'odėnahte.",
-	"apihelp-query+geosearch-description": "Holl de Sigge met Ko'odėnahte en de Nöhde vun enem beschtemmpte Pungk.",
+	"apihelp-query+geosearch-description": "Holl de Sigge met Ko'odėnahte en enem beschtemmpte Berätt.",
 	"apihelp-query+geosearch-param-coord": "De Ko'odėnahte woh eröm jesöhk wääde sull.",
 	"apihelp-query+geosearch-param-page": "De Övverschreff vun dä Sigg met dä Ko'odėnahte woh eröm jesöhk wääde sull.",
 	"apihelp-query+geosearch-param-radius": "De Wiggde zom Söhke en Mehtere.",

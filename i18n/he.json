@@ -31,7 +31,8 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "החזרת המרחק במטרים של כל תוצאה בכדור הארץ מנקודות הציון האלו.",
 	"apihelp-query+coordinates-param-distancefrompage": "החזרת המרחק במטרים של כל תוצאה בכדור הארץ מנקודות הציון של הדף הזה.",
 	"apihelp-query+coordinates-example-1": "קבלת נקודות ציון מ־[[Main Page]]",
-	"apihelp-query+geosearch-description": "החזרת דפים שיש להם נקודות ציון סביב נקודה מסוימת.",
+	"apihelp-query+geosearch-description": "החזרת דפים שיש להם נקודות ציון באזור מסוים.",
+	"apihelp-query+geosearch-param-bbox": "תיבת הגבלה שבה ייעשה החיפוש: נקודות ציון מופרדת במקל (|) של הפינות משמאל למעלה ומימין למטה.",
 	"apihelp-query+geosearch-param-coord": "נקודות ציון שסביבן ייעשה החיפוש.",
 	"apihelp-query+geosearch-param-page": "שם הדף שסביבו צריך לחפש.",
 	"apihelp-query+geosearch-param-radius": "רדיוס חיפוש במטרים.",
@@ -42,5 +43,6 @@
 	"apihelp-query+geosearch-param-prop": "אילו מאפייני נקודות ציון להחזיר.",
 	"apihelp-query+geosearch-param-primary": "האם להחזיר רק את נקודות הציון העיקריות (\"primary\"), המשניות (\"secondary\") או שתיהן (\"all\").",
 	"apihelp-query+geosearch-param-debug": "האם להחזיר מידע לניפוי שגיאות.",
-	"apihelp-query+geosearch-example-1": "לחפש סביב הנקודה שנקודות הציון שלה הן 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
+	"apihelp-query+geosearch-example-1": "לחפש סביב הנקודה שנקודות הציון שלה הן 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "חיפוש בתיבת הגבלה"
 }
