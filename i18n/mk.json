@@ -29,7 +29,8 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Дај го растојанието во метри на секој резултат на Земјата од овие координати",
 	"apihelp-query+coordinates-param-distancefrompage": "Дај го растојанието во метри на секој резултат на Земјата од координатите на страницава.",
 	"apihelp-query+coordinates-example-1": "Дај список на координати на [[Main Page|Главната страница]]",
-	"apihelp-query+geosearch-description": "Дава страници со координати околу дадена точка.",
+	"apihelp-query+geosearch-description": "Дава страници со координати сместени на извесно подрачје.",
+	"apihelp-query+geosearch-param-bbox": "Во кое ограничувачко поле да се преварува: координати на горниот лев и долниот десен агол, одделени со исправена црта (|).",
 	"apihelp-query+geosearch-param-coord": "Околу која координата да се пребарува.",
 	"apihelp-query+geosearch-param-page": "Околу кој наслов на страница да се пребарува.",
 	"apihelp-query+geosearch-param-radius": "Радиус на пребарување во метри.",
@@ -40,5 +41,6 @@
 	"apihelp-query+geosearch-param-prop": "Кои дополнителни координатни својства да се дадат.",
 	"apihelp-query+geosearch-param-primary": "Дали да се дадат само главни координати („primary“), споредни („secondary“) или обете („all“).",
 	"apihelp-query+geosearch-param-debug": "Дали да се дадат информации за грешки.",
-	"apihelp-query+geosearch-example-1": "Пребарај околу точката со координати 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
+	"apihelp-query+geosearch-example-1": "Пребарај околу точката со координати 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Пребарување во ограничувачко поле"
 }
