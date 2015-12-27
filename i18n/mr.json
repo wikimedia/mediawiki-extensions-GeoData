@@ -30,7 +30,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "या समन्वयकांच्या पासून, पृथ्वीवरच्या प्रत्येक निकालांचे मिटरमधील अंतराचा परतावा देते.",
 	"apihelp-query+coordinates-param-distancefrompage": "या पानाच्या समन्वयकांच्या पासून, पृथ्वीवरच्या प्रत्येक निकालांचे मिटरमधील अंतराचा परतावा देते.",
 	"apihelp-query+coordinates-example-1": "[[Main Page|मुखपृष्ठ]] या लेखाच्या समन्वयकांची यादी मिळवा",
-	"apihelp-query+geosearch-description": "त्या पानांचा परतावा देते,ज्यांचे समन्वयक दिलेल्या बिंदूच्या सभोवताल आहेत.",
+	"apihelp-query+geosearch-description": "त्या पानांचा परतावा देते,ज्यांचे समन्वयक विशिष्ट क्षेत्रात आहेत.",
 	"apihelp-query+geosearch-param-coord": "कोणत्या समन्वयकाभोवताल शोधावयाचे.",
 	"apihelp-query+geosearch-param-page": "ज्या सभोवताल शोधावयाचे त्या पानाचे शीर्षक.",
 	"apihelp-query+geosearch-param-radius": "शोधत्रिज्या मीटरमध्ये.",
