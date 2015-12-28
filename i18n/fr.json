@@ -35,7 +35,8 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Renvoyer la distance en mètres de chaque résultat sur terre depuis ces coordonnées.",
 	"apihelp-query+coordinates-param-distancefrompage": "Renvoyer la distance en mètres de chaque résultat sur terre depuis les coordonnées de cette page.",
 	"apihelp-query+coordinates-example-1": "Obtenir une liste des coordonnées de [[Main Page]]",
-	"apihelp-query+geosearch-description": "Renvoie les pages ayant des coordonnées autour du point donné.",
+	"apihelp-query+geosearch-description": "Renvoie les pages ayant des coordonnées dans uen zone donnée.",
+	"apihelp-query+geosearch-param-bbox": "Boîte englobant la zone à rechercher: coordonnées séparées par une barre verticale (|) des coins haut gauche et bas droit.",
 	"apihelp-query+geosearch-param-coord": "Coordonnées autour desquelles chercher.",
 	"apihelp-query+geosearch-param-page": "Titre de page similaire à la recherche",
 	"apihelp-query+geosearch-param-radius": "Rayon de recherche, en mètres.",
@@ -46,5 +47,6 @@
 	"apihelp-query+geosearch-param-prop": "Quelles propriétés de coordonnée supplémentaires renvoyer.",
 	"apihelp-query+geosearch-param-primary": "S’il faut renvoyer uniquement les coordonnées primaires (« primary »), secondaires (« secondary ») ou les deux (« all »).",
 	"apihelp-query+geosearch-param-debug": "Si les informations de débogage doivent être renvoyées.",
-	"apihelp-query+geosearch-example-1": "Rechercher autour du point ayant les coordonnées 37° 47' 13.1\" N, 122° 23' 58.84\" W"
+	"apihelp-query+geosearch-example-1": "Rechercher autour du point ayant les coordonnées 37° 47' 13.1\" N, 122° 23' 58.84\" W",
+	"apihelp-query+geosearch-example-2": "Rechercher dans une boîte délimitante"
 }
