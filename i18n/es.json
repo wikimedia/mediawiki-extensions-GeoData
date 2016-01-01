@@ -31,7 +31,7 @@
 	"apihelp-query+coordinates-param-prop": "Qué propiedades adicionales de las coordenadas se devolverán.",
 	"apihelp-query+coordinates-param-primary": "Si devolver solo las coordenadas primarias (\"primary\"), secundarias (\"secondary\") o ambas (\"all\").",
 	"apihelp-query+coordinates-example-1": "Obtener una lista de las coordenadas de la [[Main Page]]",
-	"apihelp-query+geosearch-description": "Devuelve páginas que contienen coordenadas alrededor del punto determinado.",
+	"apihelp-query+geosearch-description": "Devuelve páginas que contienen coordenadas que se encuentran en un área determinada.",
 	"apihelp-query+geosearch-param-coord": "Coordenada alrededor de la cual buscar.",
 	"apihelp-query+geosearch-param-page": "Título de página alrededor del cual buscar.",
 	"apihelp-query+geosearch-param-radius": "Radio de búsqueda en metros.",

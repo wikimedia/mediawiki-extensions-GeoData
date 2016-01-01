@@ -35,7 +35,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Renvoyer la distance en mètres de chaque résultat sur terre depuis ces coordonnées.",
 	"apihelp-query+coordinates-param-distancefrompage": "Renvoyer la distance en mètres de chaque résultat sur terre depuis les coordonnées de cette page.",
 	"apihelp-query+coordinates-example-1": "Obtenir une liste des coordonnées de [[Main Page]]",
-	"apihelp-query+geosearch-description": "Renvoie les pages ayant des coordonnées dans uen zone donnée.",
+	"apihelp-query+geosearch-description": "Renvoie les pages ayant des coordonnées dans une zone donnée.",
 	"apihelp-query+geosearch-param-bbox": "Boîte englobant la zone à rechercher: coordonnées séparées par une barre verticale (|) des coins haut gauche et bas droit.",
 	"apihelp-query+geosearch-param-coord": "Coordonnées autour desquelles chercher.",
 	"apihelp-query+geosearch-param-page": "Titre de page similaire à la recherche",
