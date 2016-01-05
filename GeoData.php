@@ -13,10 +13,10 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = __DIR__;
 
-$wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/api/ApiQueryCoordinates.php";
-$wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/api/ApiQueryGeoSearch.php";
-$wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/api/ApiQueryGeoSearchDb.php";
-$wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/api/ApiQueryGeoSearchElastic.php";
+$wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/includes/api/ApiQueryCoordinates.php";
+$wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/includes/api/ApiQueryGeoSearch.php";
+$wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/includes/api/ApiQueryGeoSearchDb.php";
+$wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/includes/api/ApiQueryGeoSearchElastic.php";
 
 $wgAutoloadClasses['BoundingBox'] = "$dir/includes/BoundingBox.php";
 $wgAutoloadClasses['Coord'] = "$dir/includes/Coord.php";
