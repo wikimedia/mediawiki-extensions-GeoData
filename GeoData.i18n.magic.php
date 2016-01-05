@@ -1,15 +1,15 @@
 <?php
 
-$magicWords = array();
+$magicWords = [];
 
 /**
  * English
  */
 
-$magicWords = array();
+$magicWords = [];
 
 /** English (English) */
-$magicWords['en'] = array(
-	'coordinates' => array( 0, 'coordinates' ),
-	'primary' => array( 0, 'primary' ),
-);
+$magicWords['en'] = [
+	'coordinates' => [ 0, 'coordinates' ],
+	'primary' => [ 0, 'primary' ],
+];

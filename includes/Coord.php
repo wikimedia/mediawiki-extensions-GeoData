@@ -124,7 +124,7 @@ class Coord {
 	 */
 	public function getRow( $pageId ) {
 		global $wgGeoDataIndexGranularity, $wgGeoDataBackend;
-		$row =  array( 'gt_page_id' => $pageId );
+		$row =  [ 'gt_page_id' => $pageId ];
 		foreach ( self::$fieldMapping as $field => $column ) {
 			$row[$column] = $this->$field;
 		}
@@ -140,14 +140,14 @@ class Coord {
 	 * @return array
 	 */
 	public function getAsArray() {
-		$result = array();
+		$result = [];
 		foreach ( self::getFields() as $field ) {
 			$result[$field] = $this->$field;
 		}
 		return $result;
 	}
 
-	private static $fieldMapping = array(
+	private static $fieldMapping = [
 		'id' => 'gt_id',
 		'lat' => 'gt_lat',
 		'lon' => 'gt_lon',
@@ -158,7 +158,7 @@ class Coord {
 		'name' => 'gt_name',
 		'country' => 'gt_country',
 		'region' => 'gt_region',
-	);
+	];
 
 	public static function getFieldMapping() {
 		return self::$fieldMapping;

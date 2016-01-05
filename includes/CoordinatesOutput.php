@@ -10,7 +10,7 @@ use MWException;
 class CoordinatesOutput {
 	public $limitExceeded = false;
 	private $primary = false,
-		$secondary = array();
+		$secondary = [];
 
 	public function getCount() {
 		return count( $this->secondary ) + ( $this->primary ? 1 : 0 );

@@ -26,30 +26,30 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 
 		$bools = new \Elastica\Filter\BoolFilter();
 		if ( $this->idToExclude ) {
-			$bools->addMustNot( new \Elastica\Filter\Term( array( '_id' => $this->idToExclude ) ) );
+			$bools->addMustNot( new \Elastica\Filter\Term( [ '_id' => $this->idToExclude ] ) );
 		}
 		// Only Earth is supported
-		$bools->addMust( new \Elastica\Filter\Term( array( 'coordinates.globe' => 'earth' ) ) );
+		$bools->addMust( new \Elastica\Filter\Term( [ 'coordinates.globe' => 'earth' ] ) );
 		if ( isset( $params['maxdim'] ) ) {
 			$bools->addMust( new \Elastica\Filter\Range( 'coordinates.dim',
-					array( 'to' => $params['maxdim'] ) ) );
+					[ 'to' => $params['maxdim'] ] ) );
 		}
 
 		$primary = $params['primary'];
 		if ( $primary !== 'all' ) {
-			$bools->addMust( new \Elastica\Filter\Term( array(
+			$bools->addMust( new \Elastica\Filter\Term( [
 					'coordinates.primary' => intval( $primary === 'primary' )
-				) ) );
+				] ) );
 		}
 		if ( $this->bbox ) {
-			$distanceFilter = new \Elastica\Filter\GeoBoundingBox( 'coordinates.coord', array(
-					array( 'lat' => $this->bbox->lat1, 'lon' => $this->bbox->lon1 ),
-					array( 'lat' => $this->bbox->lat2, 'lon' => $this->bbox->lon2 ),
-				) );
+			$distanceFilter = new \Elastica\Filter\GeoBoundingBox( 'coordinates.coord', [
+					[ 'lat' => $this->bbox->lat1, 'lon' => $this->bbox->lon1 ],
+					[ 'lat' => $this->bbox->lat2, 'lon' => $this->bbox->lon2 ],
+				] );
 		} else {
 			$distanceFilter =
 				new \Elastica\Filter\GeoDistance( 'coordinates.coord',
-					array( 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ),
+					[ 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ],
 					$this->radius . 'm' );
 			if ( $wgGeoDataIndexLatLon ) {
 				$distanceFilter->setOptimizeBbox( 'indexed' );
@@ -59,7 +59,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$query = new \Elastica\Query();
 		$fields =
 			array_map( function ( $prop ) { return "coordinates.$prop"; },
-				array_merge( array( 'coord', 'primary' ), $params['prop'] ) );
+				array_merge( [ 'coord', 'primary' ], $params['prop'] ) );
 		$query->setParam( '_source', $fields );
 		$filter = new \Elastica\Filter\BoolAnd();
 		$filter->addFilter( $bools );
@@ -76,16 +76,16 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			$query->setPostFilter( $nested );
 		}
 
-		$query->addSort( array(
-				'_geo_distance' => array(
-					'coordinates.coord' => array(
+		$query->addSort( [
+				'_geo_distance' => [
+					'coordinates.coord' => [
 						'lat' => $this->coord->lat,
 						'lon' => $this->coord->lon
-					),
+					],
 					'order' => 'asc',
 					'unit' => 'm'
-				)
-			) );
+				]
+			] );
 		$query->setSize( $params['limit'] );
 
 		$searcher = new Searcher( $this->getUser() );
@@ -101,8 +101,8 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		if ( !isset( $data['hits']['hits'] ) ) {
 			$this->dieDebug( __METHOD__, 'Unexpected result set returned by Elasticsearch' );
 		}
-		$ids = array();
-		$coordinates = array();
+		$ids = [];
+		$coordinates = [];
 		foreach ( $data['hits']['hits'] as $page ) {
 			$id = $page['_id'];
 			foreach ( $page['_source']['coordinates'] as $coordArray ) {
@@ -125,10 +125,10 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		if ( !count( $coordinates ) ) {
 			return; // No results, no point in doing anything else
 		}
-		$this->addWhere( array( 'page_id' => array_keys( $ids ) ) );
+		$this->addWhere( [ 'page_id' => array_keys( $ids ) ] );
 		$this->addTables( 'page' );
 		if ( is_null( $resultPageSet ) ) {
-			$this->addFields( array( 'page_id', 'page_title', 'page_namespace' ) );
+			$this->addFields( [ 'page_id', 'page_title', 'page_namespace' ] );
 		} else {
 			$this->addFields( $resultPageSet->getPageTableFields() );
 		}
@@ -136,7 +136,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$res = $this->select( __METHOD__ );
 
 		if ( is_null( $resultPageSet ) ) {
-			$titles = array();
+			$titles = [];
 			foreach ( $res as $row ) {
 				$titles[$row->page_id] = Title::newFromRow( $row );
 			}
@@ -154,14 +154,14 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				}
 				/** @var Title $title */
 				$title = $titles[$id];
-				$vals = array(
+				$vals = [
 					'pageid' => intval( $coord->pageId ),
 					'ns' => intval( $title->getNamespace() ),
 					'title' => $title->getPrefixedText(),
 					'lat' => floatval( $coord->lat ),
 					'lon' => floatval( $coord->lon ),
 					'dist' => round( $coord->distance, 1 ),
-				);
+				];
 
 				if ( $coord->primary ) {
 					$vals['primary'] = '';
@@ -172,7 +172,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 						$vals[$prop] = $coord->$prop;
 					}
 				}
-				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
+				$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $vals );
 				if ( !$fit ) {
 					break;
 				}
@@ -234,7 +234,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	 */
 	private function addDebugInfo( \Elastica\ResultSet $resultSet ) {
 		$ti = $resultSet->getResponse()->getTransferInfo();
-		$neededData = array(
+		$neededData = [
 			'url',
 			'total_time',
 			'namelookup_time',
@@ -244,8 +244,8 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			'size_download',
 			'starttransfer_time',
 			'redirect_time',
-		);
-		$debug = array();
+		];
+		$debug = [];
 		foreach ( $neededData as $name ) {
 			if ( isset( $ti[$name] ) ) {
 				$debug[$name] = $ti[$name];

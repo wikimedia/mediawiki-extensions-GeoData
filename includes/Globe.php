@@ -49,18 +49,18 @@ class Globe {
 	private static function getData() {
 		global $wgGlobes;
 
-		static $data = array();
+		static $data = [];
 		if ( $data ) {
 			return $data;
 		}
 
-		$earth = array( 'lon' => array( -180, 180 ), 'east' => +1 );
-		$east360 = array( 'lon' => array( 0, 360 ), 'east' => +1 );
-		$west360 = array( 'lon' => array( 0, 360 ), 'east' => -1 );
+		$earth = [ 'lon' => [ -180, 180 ], 'east' => +1 ];
+		$east360 = [ 'lon' => [ 0, 360 ], 'east' => +1 ];
+		$west360 = [ 'lon' => [ 0, 360 ], 'east' => -1 ];
 
 		// Coordinate systems mostly taken from http://planetarynames.wr.usgs.gov/TargetCoordinates
-		$data = array(
-			'earth' => $earth + array( 'radius' => Math::EARTH_RADIUS ),
+		$data = [
+			'earth' => $earth + [ 'radius' => Math::EARTH_RADIUS ],
 			'mercury' => $west360,
 			'venus' => $east360,
 			'moon' => $earth,
@@ -89,7 +89,7 @@ class Globe {
 			'oberon' => $east360,
 			'triton' => $east360,
 			'pluto' => $east360, // ???
-		);
+		];
 
 		$data = $wgGlobes + $data;
 

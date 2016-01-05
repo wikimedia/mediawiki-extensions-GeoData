@@ -64,128 +64,128 @@ class TagTest extends MediaWikiTestCase {
 	}
 
 	public function getLooseData() {
-		return array(
+		return [
 			// Basics
-			array(
+			[
 				'{{#coordinates: 10|20|primary}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ],
+			],
+			[
 				'{{#coordinates: 100|20|primary}}', 
 				false,
-			),
-			array(
+			],
+			[
 				'{{#coordinates: 10|2000|primary}}', 
 				false,
-			),
-			array(
+			],
+			[
 				'{{#coordinates: 10| primary		|	20}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ),
-			),
-			array( // empty parameter instead of primary
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ],
+			],
+			[ // empty parameter instead of primary
 				'{{#coordinates: 10 | |	20 }}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => false ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => false ],
+			],
+			[
 				'{{#coordinates: primary|10|20}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ),
-			),
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ],
+			],
 			// type
-			array(
+			[
 				'{{#coordinates: 10|20|type:city}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city' ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city' ],
+			],
+			[
 				'{{#coordinates: 10|20|type:city(666)}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city' ),
-			),
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city' ],
+			],
 			// Other geohack params
-			array(
+			[
 				'{{#coordinates: 10|20}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ),
-			),
-			array( 
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ],
+			],
+			[ 
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-mos}}',
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU', 'region' => 'MOS', 'dim' => 10 ),
-			),
-			array( 
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU', 'region' => 'MOS', 'dim' => 10 ],
+			],
+			[ 
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU}}',
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU', 'dim' => 10 ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU', 'dim' => 10 ],
+			],
+			[
 				'{{#coordinates: 10|20|_dim:3Km_}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 3000 ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 3000 ],
+			],
+			[
 				'{{#coordinates: 10|20|foo:bar dim:100m}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 100 ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 100 ],
+			],
+			[
 				'{{#coordinates: 10|20|dim:-300}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ],
+			],
+			[
 				'{{#coordinates: 10|20|dim:-10km}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ],
+			],
+			[
 				'{{#coordinates: 10|20|dim:1L}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ),
-			),
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ],
+			],
 			// dim fallbacks
-			array(
+			[
 				'{{#coordinates: 10|20|type:city}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city', 'dim' => 10000 ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city', 'dim' => 10000 ],
+			],
+			[
 				'{{#coordinates: 10|20|type:city(2000)}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city', 'dim' => 10000 ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city', 'dim' => 10000 ],
+			],
+			[
 				'{{#coordinates: 10|20|type:lulz}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'lulz', 'dim' => 1000 ),
-			),
-			array(
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'lulz', 'dim' => 1000 ],
+			],
+			[
 				'{{#coordinates: 10|20|scale:50000}}', 
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 5000 ),
-			),
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 5000 ],
+			],
 			// https://phabricator.wikimedia.org/T48181
-			array(
+			[
 				'{{#coordinates: 2.5|3,5}}',
-				array( 'lat' => 2.5, 'lon' => 3.5 ),
+				[ 'lat' => 2.5, 'lon' => 3.5 ],
 				'de',
-			),
+			],
 			// https://phabricator.wikimedia.org/T49090
-			array(
+			[
 				'{{#coordinates: -3.29237|-60.624889|globe=}}',
-				array( 'lat' => -3.29237, 'lon' => -60.624889, 'globe' => 'earth' ),
-			),
+				[ 'lat' => -3.29237, 'lon' => -60.624889, 'globe' => 'earth' ],
+			],
 			// Lowercase type
-			array(
+			[
 				'{{#coordinates: 10|20|type:sOmEtHiNg}}',
-				array( 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'something' ),
-			),
-		);
+				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'something' ],
+			],
+		];
 	}
 
 	public function getStrictData() {
-		return array(
-			array(
+		return [
+			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RUS-MOS}}',
 				false,
-			),
-			array(
+			],
+			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-}}',
 				false,
-			),
-			array(
+			],
+			[
 				'{{#coordinates:10|20|globe:Moon dim:10|region=RU-longvalue}}',
 				false,
-			),
-			array(
+			],
+			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:РУ-МОС}}',
 				false,
-			),
-		);
+			],
+		];
 	}
 }

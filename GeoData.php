@@ -3,14 +3,14 @@
  * GeoData extension. Initial author Max Semenik
  * License: WTFPL 2.0
  */
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['other'][] = [
 	'path' => __FILE__,
 	'name' => 'GeoData',
-	'author' => array( 'Max Semenik' ),
+	'author' => [ 'Max Semenik' ],
 	'url' => 'https://www.mediawiki.org/wiki/Extension:GeoData',
 	'descriptionmsg' => 'geodata-desc',
 	'license-name' => 'WTFPL',
-);
+];
 
 $dir = __DIR__;
 
@@ -87,7 +87,7 @@ $wgMaxCoordinatesPerPage = 500;
 /**
  * Conversion table type --> dim
  */
-$wgTypeToDim = array(
+$wgTypeToDim = [
 	'country'        => 1000000,
 	'satellite'      => 1000000,
 	'state'          => 300000,
@@ -108,7 +108,7 @@ $wgTypeToDim = array(
 	'pass'           => 1000,
 	'camera'         => 1000,
 	'landmark'       => 1000,
-);
+];
 
 /**
  * Default value of dim if it is unknown
@@ -118,19 +118,19 @@ $wgDefaultDim = 1000;
 /**
  * Description of globes. Allows to extend or override the defaults from Globe.php
  */
-$wgGlobes = array(
+$wgGlobes = [
 	/*
 	Example definition:
-	'saraksh' => array(
+	'saraksh' => [
 		// Range of latitudes
-		'lon' => array( -180, 180 ),
+		'lon' => [ -180, 180 ],
 		// What sign should N degrees east have?
 		'east' => -1,
 		// Radius in metres. If omitted, no distance calculation will be possible on this globe
 		'radius' => 12345678.9,
-	),
+	],
 	*/
-);
+];
 
 /**
  * Controls what GeoData should do when it encounters some problem.
@@ -139,11 +139,11 @@ $wgGlobes = array(
  *  - fail - Consider the tag invalid, display message and add tracking category
  *  - none - Do nothing
  */
-$wgGeoDataWarningLevel = array(
+$wgGeoDataWarningLevel = [
 	'unknown type' => 'track',
 	'unknown globe' => 'none',
 	'invalid region' => 'track',
-);
+];
 
 /**
  * How many gt_(lat|lon)_int units per degree
@@ -160,7 +160,7 @@ $wgGeoDataBackend = 'db';
  * Specifies which information about page's primary coordinate is added to global JS variable wgCoordinates.
  * Setting it to false or empty array will disable wgCoordinates.
  */
-$wgGeoDataInJS = array( 'lat', 'lon' );
+$wgGeoDataInJS = [ 'lat', 'lon' ];
 
 /**
  * Enables the use of GeoData as a CirrusSearch plugin for indexing.

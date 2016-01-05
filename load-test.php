@@ -5,7 +5,7 @@ if ( PHP_SAPI !== 'cli' ) {
 }
 
 $site = 'http://localhost/w/api.php';
-$times = array();
+$times = [];
 
 echo "Load-testing $site with GeoData requests, press Ctrl+Break to stop...\n";
 

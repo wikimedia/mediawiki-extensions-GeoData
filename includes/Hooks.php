@@ -41,7 +41,7 @@ class Hooks {
 				} else {
 					$updater->addExtensionTable( 'geo_tags', "$dir/../sql/db-backed.sql" );
 				}
-				$updater->addExtensionUpdate( array( 'GeoData\Hooks::upgradeToDecimal' ) );
+				$updater->addExtensionUpdate( [ 'GeoData\Hooks::upgradeToDecimal' ] );
 				break;
 			default:
 				throw new MWException( 'GeoData extension currently supports only MySQL and SQLite' );
@@ -82,7 +82,7 @@ class Hooks {
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
 		$parser->setFunctionHook( 'coordinates',
-			array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
+			[ new CoordinatesParserFunction( $parser ), 'coordinates' ],
 			Parser::SFH_OBJECT_ARGS
 		);
 	}
@@ -98,7 +98,7 @@ class Hooks {
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id ) {
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $id ), __METHOD__ );
+		$dbw->delete( 'geo_tags', [ 'gt_page_id' => $id ], __METHOD__ );
 	}
 
 	/**
@@ -109,7 +109,7 @@ class Hooks {
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
 		$out = $linksUpdate->getParserOutput();
-		$data = array();
+		$data = [];
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
 		if ( isset( $out->geoData ) ) {
 			/** @var CoordinatesOutput $geoData */
@@ -158,13 +158,13 @@ class Hooks {
 		$dbw = wfGetDB( DB_MASTER );
 
 		if ( $wgGeoDataBackend == 'db' && !count( $coords ) ) {
-			$dbw->delete( 'geo_tags', array( 'gt_page_id' => $pageId ), __METHOD__ );
+			$dbw->delete( 'geo_tags', [ 'gt_page_id' => $pageId ], __METHOD__ );
 			return;
 		}
 
-		$prevCoords = GeoData::getAllCoordinates( $pageId, array(), DB_MASTER );
-		$add = array();
-		$delete = array();
+		$prevCoords = GeoData::getAllCoordinates( $pageId, [], DB_MASTER );
+		$add = [];
+		$delete = [];
 		$primary = ( isset( $coords[0] ) && $coords[0]->primary ) ? $coords[0] : null;
 		foreach ( $prevCoords as $old ) {
 			$delete[$old->id] = $old;
@@ -189,7 +189,7 @@ class Hooks {
 
 		if ( count( $delete ) ) {
 			$deleteIds = array_keys( $delete );
-			$dbw->delete( 'geo_tags', array( 'gt_id' => $deleteIds ), __METHOD__ );
+			$dbw->delete( 'geo_tags', [ 'gt_id' => $deleteIds ], __METHOD__ );
 		}
 		if ( count( $add ) ) {
 			$dbw->insert( 'geo_tags', $add, __METHOD__ );
@@ -229,7 +229,7 @@ class Hooks {
 			if ( !$coord ) {
 				return;
 			}
-			$result = array();
+			$result = [];
 			foreach ( $wgGeoDataInJS as $param ) {
 				if ( isset( $coord->$param ) ) {
 					$result[$param] = $coord->$param;
@@ -254,27 +254,27 @@ class Hooks {
 		}
 		$pageConfig = $config['page'];
 
-		$pageConfig['properties']['coordinates'] = array(
+		$pageConfig['properties']['coordinates'] = [
 			'type' => 'nested',
-			'properties' => array(
-				'coord' => array(
+			'properties' => [
+				'coord' => [
 					'type' => 'geo_point',
 					'lat_lon' => true,
-				),
-				'globe' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
-				'primary' => array( 'type' => 'boolean' ),
-				'dim' => array( 'type' => 'float' ),
-				'type' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
-				'name' => array( 'type' => 'string', 'index' => 'no' ),
-				'country' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
-				'region' => array( 'type' => 'string', 'index' => 'not_analyzed' ),
-			),
-		);
+				],
+				'globe' => [ 'type' => 'string', 'index' => 'not_analyzed' ],
+				'primary' => [ 'type' => 'boolean' ],
+				'dim' => [ 'type' => 'float' ],
+				'type' => [ 'type' => 'string', 'index' => 'not_analyzed' ],
+				'name' => [ 'type' => 'string', 'index' => 'no' ],
+				'country' => [ 'type' => 'string', 'index' => 'not_analyzed' ],
+				'region' => [ 'type' => 'string', 'index' => 'not_analyzed' ],
+			],
+		];
 		if ( $wgGeoDataCoordinatesCompression ) {
-			$pageConfig['properties']['coordinates']['properties']['coord']['fielddata'] = array(
+			$pageConfig['properties']['coordinates']['properties']['coord']['fielddata'] = [
 				'format' => 'compressed',
 				'precision' => $wgGeoDataCoordinatesCompression,
-			);
+			];
 		}
 		$config['page'] = $pageConfig;
 	}
@@ -299,11 +299,11 @@ class Hooks {
 			return;
 		}
 
-		$coords = array();
+		$coords = [];
 		/** @var Coord $coord */
 		foreach ( $parserOutput->geoData->getAll() as $coord ) {
 			$arr = $coord->getAsArray();
-			$arr['coord'] = array( 'lat' => $coord->lat, 'lon' => $coord->lon );
+			$arr['coord'] = [ 'lat' => $coord->lat, 'lon' => $coord->lon ];
 			unset( $arr['id'] );
 			unset( $arr['lat'] );
 			unset( $arr['lon'] );

@@ -34,7 +34,7 @@ class Searcher extends ElasticsearchIntermediary {
 		$search = $pageType->createSearch( $query );
 
 		try {
-			$this->start( "performing $queryType", array( 'queryType' => $queryType ) );
+			$this->start( "performing $queryType", [ 'queryType' => $queryType ] );
 			$result = $search->search();
 			$this->success();
 		} catch ( ExceptionInterface $ex ) {

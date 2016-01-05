@@ -20,7 +20,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 		$params = $this->extractRequestParams();
 
 		$this->addTables( 'geo_tags' );
-		$this->addFields( array( 'gt_lat', 'gt_lon', 'gt_primary' ) );
+		$this->addFields( [ 'gt_lat', 'gt_lon', 'gt_primary' ] );
 		$mapping = Coord::getFieldMapping();
 		foreach( $params['prop'] as $prop ) {
 			if ( isset( $mapping[$prop] ) ) {
@@ -36,7 +36,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 			$this->addWhere( 'gt_dim < ' . intval( $params['maxdim'] ) );
 		}
 		$primary = $params['primary'];
-		$this->addWhereIf( array( 'gt_primary' => intval( $primary === 'primary' ) ), $primary !== 'all' );
+		$this->addWhereIf( [ 'gt_primary' => intval( $primary === 'primary' ) ], $primary !== 'all' );
 
 		$this->addCoordFilter();
 
@@ -44,7 +44,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 
 		$res = $this->select( __METHOD__ );
 
-		$rows = array();
+		$rows = [];
 		foreach ( $res as $row ) {
 			$row->dist = Math::distance( $this->coord->lat, $this->coord->lon, $row->gt_lat, $row->gt_lon );
 			$rows[] = $row;
@@ -63,14 +63,14 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 			}
 			if ( is_null( $resultPageSet ) ) {
 				$title = Title::newFromRow( $row );
-				$vals = array(
+				$vals = [
 					'pageid' => intval( $row->page_id ),
 					'ns' => intval( $title->getNamespace() ),
 					'title' => $title->getPrefixedText(),
 					'lat' => floatval( $row->gt_lat ),
 					'lon' => floatval( $row->gt_lon ),
 					'dist' => round( $row->dist, 1 ),
-				);
+				];
 				if ( $row->gt_primary ) {
 					$vals['primary'] = '';
 				}
@@ -83,7 +83,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 						}
 					}
 				}
-				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
+				$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $vals );
 				if ( !$fit ) {
 					break;
 				}
@@ -104,7 +104,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 		} else {
 			$this->addWhereRange( 'gt_lon', 'newer', $bbox->lon1, $bbox->lon2, false );
 		}
-		$this->addOption( 'USE INDEX', array( 'geo_tags' => 'gt_spatial' ) );
+		$this->addOption( 'USE INDEX', [ 'geo_tags' => 'gt_spatial' ] );
 	}
 
 	/**

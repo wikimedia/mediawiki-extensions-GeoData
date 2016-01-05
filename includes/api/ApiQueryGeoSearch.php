@@ -108,7 +108,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->addTables( 'page' );
 		// retrieve some fields only if page set needs them
 		if ( is_null( $resultPageSet ) ) {
-			$this->addFields( array( 'page_id', 'page_namespace', 'page_title' ) );
+			$this->addFields( [ 'page_id', 'page_namespace', 'page_title' ] );
 		} else {
 			$this->addFields( WikiPage::selectFields() );
 		}
@@ -117,7 +117,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->radius = intval( $params['radius'] );
 
 		if ( is_null( $resultPageSet ) ) {
-			$this->getResult()->addIndexedTagName( array( 'query', $this->getModuleName() ),
+			$this->getResult()->addIndexedTagName( [ 'query', $this->getModuleName() ],
 				$this->getModulePrefix()
 			);
 		}
@@ -125,59 +125,59 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 	public function getAllowedParams() {
 		global $wgMaxGeoSearchRadius, $wgDefaultGlobe, $wgGeoDataDebug;
-		$params = array (
-			'coord' => array(
+		$params = [
+			'coord' => [
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_HELP_MSG_APPEND => array(
+				ApiBase::PARAM_HELP_MSG_APPEND => [
 					'geodata-api-help-coordinates-format',
-				),
-			),
-			'page' => array(
+				],
+			],
+			'page' => [
 				ApiBase::PARAM_TYPE => 'string',
-			),
-			'bbox' => array(
+			],
+			'bbox' => [
 				ApiBase::PARAM_TYPE => 'string',
-			),
-			'radius' => array(
+			],
+			'radius' => [
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_MIN => self::MIN_RADIUS,
 				ApiBase::PARAM_MAX => $wgMaxGeoSearchRadius,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
-			),
-			'maxdim' => array(
+			],
+			'maxdim' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'limit' => array(
+			],
+			'limit' => [
 				ApiBase::PARAM_DFLT => 10,
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
-			),
+			],
 			// @todo: globe selection disabled until we have a real use case
-			'globe' => array(
+			'globe' => [
 				ApiBase::PARAM_TYPE => (array)$wgDefaultGlobe,
 				ApiBase::PARAM_DFLT => $wgDefaultGlobe,
-			),
-			'namespace' => array(
+			],
+			'namespace' => [
 				ApiBase::PARAM_TYPE => 'namespace',
 				ApiBase::PARAM_DFLT => NS_MAIN,
 				ApiBase::PARAM_ISMULTI => true,
-			),
-			'prop' => array(
-				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region', 'globe' ),
+			],
+			'prop' => [
+				ApiBase::PARAM_TYPE => [ 'type', 'name', 'dim', 'country', 'region', 'globe' ],
 				ApiBase::PARAM_DFLT => 'globe',
 				ApiBase::PARAM_ISMULTI => true,
-			),
-			'primary' => array(
-				ApiBase::PARAM_TYPE => array( 'primary', 'secondary', 'all' ),
+			],
+			'primary' => [
+				ApiBase::PARAM_TYPE => [ 'primary', 'secondary', 'all' ],
 				ApiBase::PARAM_DFLT => 'primary',
-			),
-		);
+			],
+		];
 		if ( $wgGeoDataDebug ) {
-			$params['debug'] = array(
+			$params['debug'] = [
 				ApiBase::PARAM_TYPE => 'boolean',
-			);
+			];
 		}
 		return $params;
 	}
@@ -186,12 +186,12 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677'
 				=> 'apihelp-query+geosearch-example-1',
 			'action=query&list=geosearch&gsbbox=37.8|-122.3|37.7|-122.4'
 				=> 'apihelp-query+geosearch-example-2',
-		);
+		];
 	}
 
 	public function getHelpUrls() {

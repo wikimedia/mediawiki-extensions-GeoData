@@ -17,11 +17,11 @@ class BoundingBoxTest extends MediaWikiTestCase {
 	}
 
 	public function provideCenter() {
-		return array(
-			array( 15, 15, 10, 10, 20, 20 ),
-			array( 15, -180, 10, 175, 20, -175 ),
-			array( 15, -170, 10, 175, 20, -155 ),
-			array( 15, 170, 10, 155, 20, -175 ),
-		);
+		return [
+			[ 15, 15, 10, 10, 20, 20 ],
+			[ 15, -180, 10, 175, 20, -175 ],
+			[ 15, -170, 10, 175, 20, -155 ],
+			[ 15, 170, 10, 155, 20, -175 ],
+		];
 	}
 }

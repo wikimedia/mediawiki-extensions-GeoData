@@ -25,7 +25,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		$params = $this->extractRequestParams();
 		$from = $this->getFromCoord( $params );
 		$this->addTables( 'geo_tags' );
-		$this->addFields( array( 'gt_id', 'gt_page_id', 'gt_lat', 'gt_lon', 'gt_primary', 'gt_globe' ) );
+		$this->addFields( [ 'gt_id', 'gt_page_id', 'gt_lat', 'gt_lon', 'gt_primary', 'gt_globe' ] );
 		$mapping = Coord::getFieldMapping();
 		foreach( $params['prop'] as $prop ) {
 			if ( isset( $mapping[$prop] ) ) {
@@ -34,7 +34,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		}
 		$this->addWhereFld( 'gt_page_id', array_keys( $titles ) );
 		$primary = $params['primary'];
-		$this->addWhereIf( array( 'gt_primary' => intval( $primary === 'primary' ) ), $primary !== 'all' );
+		$this->addWhereIf( [ 'gt_primary' => intval( $primary === 'primary' ) ], $primary !== 'all' );
 
 		if ( isset( $params['continue'] ) ) {
 			$parts = explode( '|', $params['continue'] );
@@ -51,7 +51,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			$this->addOption( 'USE INDEX', 'gt_page_id' );
 		}
 		
-		$this->addOption( 'ORDER BY', array( 'gt_page_id', 'gt_id' ) );
+		$this->addOption( 'ORDER BY', [ 'gt_page_id', 'gt_id' ] );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
 		$res = $this->select( __METHOD__ );
@@ -62,10 +62,10 @@ class ApiQueryCoordinates extends ApiQueryBase {
 				$this->setContinueEnumParameter( 'continue', $row->gt_page_id . '|' . $row->gt_id );
 				break;
 			}
-			$vals = array(
+			$vals = [
 				'lat' => floatval( $row->gt_lat ),
 				'lon' => floatval( $row->gt_lon ),
-			);
+			];
 			if ( $row->gt_primary )	{
 				$vals['primary'] = '';
 			}
@@ -124,47 +124,47 @@ class ApiQueryCoordinates extends ApiQueryBase {
 	}
 
 	public function getAllowedParams() {
-		return array(
-			'limit' => array(
+		return [
+			'limit' => [
 				ApiBase::PARAM_DFLT => 10,
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
-			),
-			'continue' => array(
+			],
+			'continue' => [
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
-			),
-			'prop' => array(
-				ApiBase::PARAM_TYPE => array( 'type', 'name', 'dim', 'country', 'region', 'globe' ),
+			],
+			'prop' => [
+				ApiBase::PARAM_TYPE => [ 'type', 'name', 'dim', 'country', 'region', 'globe' ],
 				ApiBase::PARAM_DFLT => 'globe',
 				ApiBase::PARAM_ISMULTI => true,
-			),
-			'primary' => array(
-				ApiBase::PARAM_TYPE => array( 'primary', 'secondary', 'all' ),
+			],
+			'primary' => [
+				ApiBase::PARAM_TYPE => [ 'primary', 'secondary', 'all' ],
 				ApiBase::PARAM_DFLT => 'primary',
-			),
-			'distancefrompoint' => array(
+			],
+			'distancefrompoint' => [
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_HELP_MSG_APPEND => array(
+				ApiBase::PARAM_HELP_MSG_APPEND => [
 					'geodata-api-help-coordinates-format',
-				),
-			),
-			'distancefrompage' => array(
+				],
+			],
+			'distancefrompage' => [
 				ApiBase::PARAM_TYPE => 'string',
-			),
-		);
+			],
+		];
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=query&prop=coordinates&titles=Main%20Page'
 				=> 'apihelp-query+coordinates-example-1',
-		);
+		];
 	}
 
 	public function getHelpUrls() {

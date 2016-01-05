@@ -24,16 +24,16 @@ class CoordTest extends MediaWikiTestCase {
 	}
 
 	public function getEqualsCases() {
-		return array(
-			array( new Coord( 10, 20 ), new Coord( 10, 20 ), true, 'Basic equality' ),
-			array( new Coord( 10, 20 ), new Coord( 0, 0 ), false, 'Basic inequality' ),
-			array( new Coord( 10, 20, 'endor' ), new Coord( 10, 20, 'endor' ), true, 'Equality with globe set' ),
-			array( new Coord( 10, 20, 'earth' ), new Coord( 10, 20, 'moon' ), false, 'Inequality due to globe' ),
-			array( new Coord( 10, 20, 'yavin' ), new Coord( 0, 0, 'yavin' ), false, 'Inequality with globes equal' ),
-			array( new Coord( 10, 20 ), new Coord( 10, 20.1 ), false, 'Precision 1' ),
-			array( new Coord( 10, 20 ), new Coord( 10, 20.0000001 ), true, 'Precision 2' ),
-			array( new Coord( 10, 20 ), null, false, 'Comparison with null' ),
-		);
+		return [
+			[ new Coord( 10, 20 ), new Coord( 10, 20 ), true, 'Basic equality' ],
+			[ new Coord( 10, 20 ), new Coord( 0, 0 ), false, 'Basic inequality' ],
+			[ new Coord( 10, 20, 'endor' ), new Coord( 10, 20, 'endor' ), true, 'Equality with globe set' ],
+			[ new Coord( 10, 20, 'earth' ), new Coord( 10, 20, 'moon' ), false, 'Inequality due to globe' ],
+			[ new Coord( 10, 20, 'yavin' ), new Coord( 0, 0, 'yavin' ), false, 'Inequality with globes equal' ],
+			[ new Coord( 10, 20 ), new Coord( 10, 20.1 ), false, 'Precision 1' ],
+			[ new Coord( 10, 20 ), new Coord( 10, 20.0000001 ), true, 'Precision 2' ],
+			[ new Coord( 10, 20 ), null, false, 'Comparison with null' ],
+		];
 	}
 
 	public function testBboxAround() {
@@ -54,11 +54,11 @@ class CoordTest extends MediaWikiTestCase {
 	}
 
 	public function provideGlobeObj() {
-		return array(
-			array( null, new Globe( 'earth' ) ),
-			array( 'earth', new Globe( 'earth' ) ),
-			array( 'moon', new Globe( 'moon' ) ),
-			array( 'something nonexistent', new Globe( 'something nonexistent' ) ),
-		);
+		return [
+			[ null, new Globe( 'earth' ) ],
+			[ 'earth', new Globe( 'earth' ) ],
+			[ 'moon', new Globe( 'moon' ) ],
+			[ 'something nonexistent', new Globe( 'something nonexistent' ) ],
+		];
 	}
 }

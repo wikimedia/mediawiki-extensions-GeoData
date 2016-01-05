@@ -31,7 +31,7 @@ class GeoData {
 	 * @return Coord|bool Coordinates or false
 	 */
 	public static function getPageCoordinates( Title $title ) {
-		$coords = self::getAllCoordinates( $title->getArticleID(), array( 'gt_primary' => 1 ) );
+		$coords = self::getAllCoordinates( $title->getArticleID(), [ 'gt_primary' => 1 ] );
 		if ( $coords ) {
 			return $coords[0];
 		}
@@ -46,11 +46,11 @@ class GeoData {
 	 * @param int $dbType Database to select from DM_MASTER or DB_SLAVE
 	 * @return Coord[]
 	 */
-	public static function getAllCoordinates( $pageId, $conds = array(), $dbType = DB_SLAVE ) {
+	public static function getAllCoordinates( $pageId, $conds = [], $dbType = DB_SLAVE ) {
 		$db = wfGetDB( $dbType );
 		$conds['gt_page_id'] = $pageId;
 		$res = $db->select( 'geo_tags', Coord::getColumns(), $conds, __METHOD__ );
-		$coords = array();
+		$coords = [];
 		foreach ( $res as $row ) {
 			$coords[] = Coord::newFromRow( $row );
 		}

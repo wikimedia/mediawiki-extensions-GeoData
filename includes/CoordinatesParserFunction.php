@@ -24,8 +24,8 @@ class CoordinatesParserFunction {
 	 */
 	private $output;
 
-	private $named = array(),
-		$unnamed = array();
+	private $named = [],
+		$unnamed = [];
 
 	/** @var Globe */
 	private $globe;
@@ -46,8 +46,8 @@ class CoordinatesParserFunction {
 			$this->output->geoData = new CoordinatesOutput();
 		}
 
-		$this->unnamed = array();
-		$this->named = array();
+		$this->unnamed = [];
+		$this->named = [];
 		$this->parseArgs( $frame, $args );
 		$this->processArgs();
 		$status = self::parseCoordinates( $this->unnamed, $this->globe );
@@ -69,7 +69,7 @@ class CoordinatesParserFunction {
 			return '';
 		}
 
-		return array( "<span class=\"error\">{$errorText}</span>", 'noparse' => false );
+		return [ "<span class=\"error\">{$errorText}</span>", 'noparse' => false ];
 	}
 
 	/**
@@ -210,7 +210,7 @@ class CoordinatesParserFunction {
 	}
 
 	private function parseGeoHackArgs( $str ) {
-		$result = array();
+		$result = [];
 		$str = str_replace( '_', ' ', $str ); // per GeoHack docs, spaces and underscores are equivalent
 		$parts = explode( ' ', $str );
 		foreach ( $parts as $arg ) {
@@ -264,8 +264,8 @@ class CoordinatesParserFunction {
 	 * @return Status Operation status, in case of success its value is a Coord object
 	 */
 	public static function parseCoordinates( $parts, Globe $globe ) {
-		$latSuffixes = array( 'N' => 1, 'S' => -1 );
-		$lonSuffixes = array( 'E' => $globe->getEastSign(), 'W' => -$globe->getEastSign() );
+		$latSuffixes = [ 'N' => 1, 'S' => -1 ];
+		$lonSuffixes = [ 'E' => $globe->getEastSign(), 'W' => -$globe->getEastSign() ];
 
 		$count = count( $parts );
 		if ( !is_array( $parts ) || $count < 2 || $count > 8 || ( $count % 2 ) ) {

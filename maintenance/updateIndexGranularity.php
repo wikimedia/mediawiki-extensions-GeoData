@@ -23,24 +23,24 @@ class UpdateIndexGranularity extends Maintenance {
 		$id = 0;
 		$dbw = wfGetDB( DB_MASTER );
 		do {
-			$ids = array();
+			$ids = [];
 
 			$this->beginTransaction( $dbw, __METHOD__ );
 			$res = $dbw->select( 'geo_tags', 'gt_id',
-				array( "gt_id > $id" ),
+				[ "gt_id > $id" ],
 				__METHOD__,
-				array( 'LIMIT' => self::BATCH_SIZE )
+				[ 'LIMIT' => self::BATCH_SIZE ]
 			);
 			foreach ( $res as $row ) {
 				$id = $row->gt_id;
 				$ids[] = $id;
 			}
 			$dbw->update( 'geo_tags',
-				array(
+				[
 					"gt_lat_int = ROUND(gt_lat * $wgGeoDataIndexGranularity)",
 					"gt_lon_int = ROUND(gt_lon * $wgGeoDataIndexGranularity)"
-				),
-				array( 'gt_id' => $ids ),
+				],
+				[ 'gt_id' => $ids ],
 				__METHOD__
 			);
 			$this->commitTransaction( $dbw, __METHOD__ );
