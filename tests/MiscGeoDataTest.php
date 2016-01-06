@@ -8,7 +8,7 @@ class MiscGeoDataTest extends MediaWikiTestCase {
 	 * @dataProvider getIntRangeData
 	 */
 	public function testIntRange( $min, $max, $expected ) {
-		$this->assertEquals( $expected, ApiQueryGeoSearch::intRange( $min, $max ) );
+		$this->assertEquals( $expected, ApiQueryGeoSearchDb::intRange( $min, $max ) );
 	}
 
 	public function getIntRangeData() {
