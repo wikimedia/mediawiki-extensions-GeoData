@@ -1,4 +1,12 @@
 <?php
+
+namespace GeoData;
+
+use ApiBase;
+use ApiQueryBase;
+use MWException;
+use Title;
+
 /**
  * This query adds an <coordinates> subelement to all pages with the list of coordinated present on those pages.
  */
@@ -69,7 +77,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			}
 			if ( $from && $row->gt_globe == $from->globe ) {
 				$vals['dist'] = round(
-					GeoDataMath::distance( $from->lat, $from->lon, $row->gt_lat, $row->gt_lon ),
+					Math::distance( $from->lat, $from->lon, $row->gt_lat, $row->gt_lon ),
 					1
 				);
 			}

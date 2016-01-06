@@ -1,5 +1,7 @@
 <?php
 
+use GeoData\BoundingBox;
+
 /**
  * @group GeoData
  */

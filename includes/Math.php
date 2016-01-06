@@ -1,5 +1,7 @@
 <?php
 
+namespace GeoData;
+
 /**
  * Class that performs basic coordinate calculations
  * Note that the formulas are useful only for our specific purposes, some of them may be
@@ -7,7 +9,7 @@
  *
  * All the functions that accept coordinates assume that they're in degrees, not radians.
  */
-class GeoDataMath {
+class Math {
 	const EARTH_RADIUS = 6371010;
 
 	/**
