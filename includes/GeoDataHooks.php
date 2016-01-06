@@ -54,7 +54,7 @@ class GeoDataHooks {
 	 * UnitTestsList hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
 	 *
-	 * @param Array $files
+	 * @param array $files
 	 * @return bool
 	 */
 	public static function onUnitTestsList( &$files ) {
@@ -84,7 +84,7 @@ class GeoDataHooks {
 	 *
 	 * @param Article $article
 	 * @param User $user
-	 * @param String $reason
+	 * @param string $reason
 	 * @param int $id
 	 * @return bool
 	 */
@@ -132,9 +132,11 @@ class GeoDataHooks {
 			return null;
 		}
 		$metadata = $file->getMetadata();
-		wfSuppressWarnings();
+
+		MediaWiki\suppressWarnings();
 		$metadata = unserialize( $metadata );
-		wfRestoreWarnings();
+		MediaWiki\restoreWarnings();
+
 		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];

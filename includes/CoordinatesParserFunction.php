@@ -31,7 +31,7 @@ class CoordinatesParserFunction {
 	 *
 	 * @param Parser $parser
 	 * @param PPFrame $frame
-	 * @param Array $args
+	 * @param PPNode[] $args
 	 * @throws MWException
 	 * @return Mixed
 	 */
@@ -71,7 +71,7 @@ class CoordinatesParserFunction {
 	/**
 	 * Parses parser function input
 	 * @param PPFrame $frame
-	 * @param Array $args
+	 * @param PPNode[] $args
 	 */
 	private function parseArgs( $frame, $args ) {
 		$first = trim( $frame->expand( array_shift( $args ) ) );
@@ -89,7 +89,7 @@ class CoordinatesParserFunction {
 
 	/**
 	 * Add an unnamed parameter to the list, turining it into a named one if needed
-	 * @param String $value: Parameter
+	 * @param string $value Parameter
 	 */
 	private function addArg( $value ) {
 		$primary = MagicWord::get( 'primary' );
@@ -106,7 +106,7 @@ class CoordinatesParserFunction {
 	 * Applies a coordinate to parser output
 	 *
 	 * @param Coord $coord
-	 * @return Status: whether save went OK
+	 * @return Status whether save went OK
 	 */
 	private function applyCoord( Coord $coord ) {
 		global $wgMaxCoordinatesPerPage, $wgContLang;
@@ -228,7 +228,7 @@ class CoordinatesParserFunction {
 	 * Returns wikitext of status error message in content language
 	 *
 	 * @param Status $s
-	 * @return String
+	 * @return string
 	 */
 	private function errorText( Status $s ) {
 		$errors = array_merge( $s->getErrorsArray(), $s->getWarningsArray() );
