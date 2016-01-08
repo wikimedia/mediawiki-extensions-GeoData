@@ -14,7 +14,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		global $wgDefaultGlobe, $wgGeoDataIndexLatLon;
 
 		parent::run( $resultPageSet );
-		$this->resetQueryParams();
+		$this->resetQueryParams(); //@fixme: refactor to make this unnecessary
 
 		try {
 			$params = $this->params = $this->extractRequestParams();

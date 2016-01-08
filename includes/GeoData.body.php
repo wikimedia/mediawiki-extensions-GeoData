@@ -23,7 +23,7 @@ class GeoData {
 	/**
 	 * Returns primary coordinates of the given page, if any
 	 * @param Title $title
-	 * @return Coord|bool: Coordinates or false
+	 * @return Coord|bool Coordinates or false
 	 */
 	public static function getPageCoordinates( Title $title ) {
 		$coords = self::getAllCoordinates( $title->getArticleID(), array( 'gt_primary' => 1 ) );
@@ -36,10 +36,10 @@ class GeoData {
 	/**
 	 * Retrieves all coordinates for the given page id
 	 *
-	 * @param int $pageId: ID of the page
-	 * @param Array $conds: Conditions for Database::select()
-	 * @param int $dbType: Database to select from DM_MASTER or DB_SLAVE
-	 * @return Array: Array of Coord objects
+	 * @param int $pageId ID of the page
+	 * @param array $conds Conditions for Database::select()
+	 * @param int $dbType Database to select from DM_MASTER or DB_SLAVE
+	 * @return Coord[]
 	 */
 	public static function getAllCoordinates( $pageId, $conds = array(), $dbType = DB_SLAVE ) {
 		$db = wfGetDB( $dbType );
@@ -56,9 +56,9 @@ class GeoData {
 	 * Parses coordinates
 	 * See https://en.wikipedia.org/wiki/Template:Coord for sample inputs
 	 *
-	 * @param Array $parts: Array of coordinate components
-	 * @param String $globe: Globe name
-	 * @return Status: Status object, in case of success its value is a Coord object.
+	 * @param array $parts Array of coordinate components
+	 * @param string $globe Globe name
+	 * @return Status Status object, in case of success its value is a Coord object.
 	 */
 	public static function parseCoordinates( $parts, $globe ) {
 		global $wgGlobes;
@@ -142,9 +142,9 @@ class GeoData {
 	/**
 	 * Parses coordinate suffix such as N, S, E or W
 	 *
-	 * @param String $str: String to test
-	 * @param Array $coordInfo
-	 * @return int: Sign modifier or 0 if not a suffix
+	 * @param string $str String to test
+	 * @param array $coordInfo
+	 * @return int Sign modifier or 0 if not a suffix
 	 */
 	public static function parseSuffix( $str, $coordInfo ) {
 		global $wgContLang;
@@ -167,17 +167,5 @@ class GeoData {
 			);
 		}
 		return $result;
-	}
-
-	/**
-	 * Given an array of non-normalised probabilities, this function will select
-	 * an element and return the appropriate key.
-	 *
-	 * @param $weights array
-	 *
-	 * @return int
-	 */
-	public static function pickRandom( $weights ) {
-		return ArrayUtils::pickRandom( $weights );
 	}
 }
