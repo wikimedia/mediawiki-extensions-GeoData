@@ -115,34 +115,6 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		}
 	}
 
-	/**
-	 * Returns a range of tenths of degree
-	 *
-	 * @param float $start
-	 * @param float $end
-	 * @param int|null $granularity
-	 *
-	 * @return array
-	 */
-	public static function intRange( $start, $end, $granularity = null ) {
-		global $wgGeoDataIndexGranularity;
-
-		if ( !$granularity ) {
-			$granularity = $wgGeoDataIndexGranularity;
-		}
-		$start = round( $start * $granularity );
-		$end = round( $end * $granularity );
-		// @todo: works only on Earth
-		if ( $start > $end ) {
-			return array_merge(
-				range( -180 * $granularity, $end ),
-				range( $start, 180 * $granularity )
-			);
-		} else {
-			return range( $start, $end );
-		}
-	}
-
 	public function getAllowedParams() {
 		global $wgMaxGeoSearchRadius, $wgDefaultGlobe, $wgGeoDataDebug;
 		$params = array (
