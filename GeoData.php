@@ -13,35 +13,37 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = __DIR__;
 
-$wgAutoloadClasses['ApiQueryCoordinates'] = "$dir/includes/api/ApiQueryCoordinates.php";
-$wgAutoloadClasses['ApiQueryGeoSearch'] = "$dir/includes/api/ApiQueryGeoSearch.php";
-$wgAutoloadClasses['ApiQueryGeoSearchDb'] = "$dir/includes/api/ApiQueryGeoSearchDb.php";
-$wgAutoloadClasses['ApiQueryGeoSearchElastic'] = "$dir/includes/api/ApiQueryGeoSearchElastic.php";
+$wgAutoloadClasses['GeoData\ApiQueryCoordinates'] = "$dir/includes/api/ApiQueryCoordinates.php";
+$wgAutoloadClasses['GeoData\ApiQueryGeoSearch'] = "$dir/includes/api/ApiQueryGeoSearch.php";
+$wgAutoloadClasses['GeoData\ApiQueryGeoSearchDb'] = "$dir/includes/api/ApiQueryGeoSearchDb.php";
+$wgAutoloadClasses['GeoData\ApiQueryGeoSearchElastic'] = "$dir/includes/api/ApiQueryGeoSearchElastic.php";
 
-$wgAutoloadClasses['BoundingBox'] = "$dir/includes/BoundingBox.php";
-$wgAutoloadClasses['Coord'] = "$dir/includes/Coord.php";
-$wgAutoloadClasses['CoordinatesOutput'] = "$dir/includes/CoordinatesOutput.php";
-$wgAutoloadClasses['CoordinatesParserFunction'] = "$dir/includes/CoordinatesParserFunction.php";
-$wgAutoloadClasses['GeoData'] = "$dir/includes/GeoData.body.php";
-$wgAutoloadClasses['GeoDataHooks'] = "$dir/includes/GeoDataHooks.php";
-$wgAutoloadClasses['GeoDataMath'] = "$dir/includes/GeoDataMath.php";
+$wgAutoloadClasses['Coord'] = "$dir/includes/BC.php";
+$wgAutoloadClasses['CoordinatesOutput'] = "$dir/includes/BC.php";
+$wgAutoloadClasses['GeoData\BoundingBox'] = "$dir/includes/BoundingBox.php";
+$wgAutoloadClasses['GeoData\Coord'] = "$dir/includes/Coord.php";
+$wgAutoloadClasses['GeoData\CoordinatesOutput'] = "$dir/includes/CoordinatesOutput.php";
+$wgAutoloadClasses['GeoData\CoordinatesParserFunction'] = "$dir/includes/CoordinatesParserFunction.php";
+$wgAutoloadClasses['GeoData\GeoData'] = "$dir/includes/GeoData.body.php";
+$wgAutoloadClasses['GeoData\Hooks'] = "$dir/includes/Hooks.php";
+$wgAutoloadClasses['GeoData\Math'] = "$dir/includes/Math.php";
 
 $wgMessagesDirs['GeoData'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
 $wgExtensionMessagesFiles['GeoDataMagic'] = "$dir/GeoData.i18n.magic.php";
 
-$wgAPIPropModules['coordinates'] = 'ApiQueryCoordinates';
+$wgAPIPropModules['coordinates'] = 'GeoData\ApiQueryCoordinates';
 
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoDataHooks::onLoadExtensionSchemaUpdates';
-$wgHooks['ParserFirstCallInit'][] = 'GeoDataHooks::onParserFirstCallInit';
-$wgHooks['UnitTestsList'][] = 'GeoDataHooks::onUnitTestsList';
-$wgHooks['ArticleDeleteComplete'][] = 'GeoDataHooks::onArticleDeleteComplete';
-$wgHooks['LinksUpdate'][] = 'GeoDataHooks::onLinksUpdate';
-$wgHooks['FileUpload'][] = 'GeoDataHooks::onFileUpload';
-$wgHooks['OutputPageParserOutput'][] = 'GeoDataHooks::onOutputPageParserOutput';
-$wgHooks['CirrusSearchMappingConfig'][] = 'GeoDataHooks::onCirrusSearchMappingConfig';
-$wgHooks['CirrusSearchBuildDocumentParse'][] = 'GeoDataHooks::onCirrusSearchBuildDocumentParse';
-$wgHooks['ParserTestTables'][] = 'GeoDataHooks::onParserTestTables';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'GeoData\Hooks::onLoadExtensionSchemaUpdates';
+$wgHooks['ParserFirstCallInit'][] = 'GeoData\Hooks::onParserFirstCallInit';
+$wgHooks['UnitTestsList'][] = 'GeoData\Hooks::onUnitTestsList';
+$wgHooks['ArticleDeleteComplete'][] = 'GeoData\Hooks::onArticleDeleteComplete';
+$wgHooks['LinksUpdate'][] = 'GeoData\Hooks::onLinksUpdate';
+$wgHooks['FileUpload'][] = 'GeoData\Hooks::onFileUpload';
+$wgHooks['OutputPageParserOutput'][] = 'GeoData\Hooks::onOutputPageParserOutput';
+$wgHooks['CirrusSearchMappingConfig'][] = 'GeoData\Hooks::onCirrusSearchMappingConfig';
+$wgHooks['CirrusSearchBuildDocumentParse'][] = 'GeoData\Hooks::onCirrusSearchBuildDocumentParse';
+$wgHooks['ParserTestTables'][] = 'GeoData\Hooks::onParserTestTables';
 
 // Use the proper search backend
 $wgExtensionFunctions[] = 'efInitGeoData';
@@ -49,7 +51,7 @@ $wgExtensionFunctions[] = 'efInitGeoData';
 function efInitGeoData() {
 	global $wgGeoDataBackend, $wgAPIListModules;
 	if ( !isset( $wgAPIListModules['geosearch'] ) ) {
-		$wgAPIListModules['geosearch'] = 'ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend );
+		$wgAPIListModules['geosearch'] = 'GeoData\ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend );
 	}
 }
 

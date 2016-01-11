@@ -1,5 +1,7 @@
 <?php
 
+namespace GeoData;
+
 /**
  * Class representing coordinates
  */
@@ -80,10 +82,10 @@ class Coord {
 		if ( $radius <= 0 ) {
 			return new BoundingBox( $this->lat, $this->lon, $this->lat, $this->lon, $this->globe );
 		}
-		$r2lat = rad2deg( $radius / GeoDataMath::EARTH_RADIUS );
+		$r2lat = rad2deg( $radius / Math::EARTH_RADIUS );
 		// @todo: doesn't work around poles, should we care?
 		if ( abs( $this->lat ) < 89.9 ) {
-			$r2lon = rad2deg( $radius / cos( deg2rad( $this->lat ) ) / GeoDataMath::EARTH_RADIUS );
+			$r2lon = rad2deg( $radius / cos( deg2rad( $this->lat ) ) / Math::EARTH_RADIUS );
 		} else {
 			$r2lon = 0.1;
 		}
@@ -93,8 +95,8 @@ class Coord {
 			$this->lon + $r2lon,
 			$this->globe
 		);
-		GeoDataMath::wrapAround( $res->lat1, $res->lat2, -90, 90 );
-		GeoDataMath::wrapAround( $res->lon1, $res->lon2, -180, 180 );
+		Math::wrapAround( $res->lat1, $res->lat2, -90, 90 );
+		Math::wrapAround( $res->lon1, $res->lon2, -180, 180 );
 		return $res;
 	}
 
@@ -105,7 +107,7 @@ class Coord {
 	 * @return float Distance in metres
 	 */
 	public function distanceTo( Coord $coord ) {
-		return GeoDataMath::distance( $this->lat, $this->lon, $coord->lat, $coord->lon );
+		return Math::distance( $this->lat, $this->lon, $coord->lat, $coord->lon );
 	}
 
 	/**

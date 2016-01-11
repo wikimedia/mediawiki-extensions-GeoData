@@ -1,5 +1,9 @@
 <?php
 
+namespace GeoData;
+
+use ApiPageSet;
+use Title;
 
 class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 	public function __construct( $query, $moduleName ) {
@@ -42,7 +46,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 
 		$rows = array();
 		foreach ( $res as $row ) {
-			$row->dist = GeoDataMath::distance( $this->coord->lat, $this->coord->lon, $row->gt_lat, $row->gt_lon );
+			$row->dist = Math::distance( $this->coord->lat, $this->coord->lon, $row->gt_lat, $row->gt_lon );
 			$rows[] = $row;
 		}
 		// sort in PHP because sorting via SQL would involve a filesort

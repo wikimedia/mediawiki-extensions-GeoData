@@ -1,6 +1,22 @@
 <?php
 
-class GeoDataHooks {
+namespace GeoData;
+
+use Article;
+use Content;
+use DatabaseUpdater;
+use LinksUpdate;
+use LocalFile;
+use MWException;
+use OutputPage;
+use Parser;
+use ParserOptions;
+use ParserOutput;
+use Title;
+use User;
+use WikiPage;
+
+class Hooks {
 	/**
 	 * LoadExtensionSchemaUpdates hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
@@ -133,9 +149,9 @@ class GeoDataHooks {
 		}
 		$metadata = $file->getMetadata();
 
-		MediaWiki\suppressWarnings();
+		\MediaWiki\suppressWarnings();
 		$metadata = unserialize( $metadata );
-		MediaWiki\restoreWarnings();
+		\MediaWiki\restoreWarnings();
 
 		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
 			$lat = $metadata['GPSLatitude'];
@@ -304,13 +320,13 @@ class GeoDataHooks {
 	/**
 	 * CirrusSearchBuildDocumentParse hook handler
 	 *
-	 * @param Elastica\Document $doc
+	 * @param \Elastica\Document $doc
 	 * @param Title $title
 	 * @param Content $content
 	 * @param ParserOutput $parserOutput
 	 * @return bool
 	 */
-	public static function onCirrusSearchBuildDocumentParse( Elastica\Document $doc,
+	public static function onCirrusSearchBuildDocumentParse( \Elastica\Document $doc,
 		Title $title,
 		Content $content,
 		ParserOutput $parserOutput )

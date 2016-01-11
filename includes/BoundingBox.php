@@ -1,5 +1,7 @@
 <?php
 
+namespace GeoData;
+
 /**
  * Class that represents a bounding box
  * Currently, only Earth is supported
@@ -42,8 +44,8 @@ class BoundingBox {
 	 */
 	public function area() {
 		$midLat = ( $this->lat2 + $this->lat1 ) / 2;
-		$vert = GeoDataMath::distance( $this->lat1, 0, $this->lat2, 0 );
-		$horz = GeoDataMath::distance( $midLat, $this->lon1, $midLat, $this->lon2 );
+		$vert = Math::distance( $this->lat1, 0, $this->lat2, 0 );
+		$horz = Math::distance( $midLat, $this->lon1, $midLat, $this->lon2 );
 
 		return $horz * $vert;
 	}

@@ -1,5 +1,13 @@
 <?php
 
+namespace GeoData;
+
+use ApiBase;
+use ApiPageSet;
+use ApiQueryGeneratorBase;
+use Title;
+use WikiPage;
+
 abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	const MIN_RADIUS = 10;
 

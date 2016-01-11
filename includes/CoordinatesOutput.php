@@ -1,5 +1,9 @@
 <?php
 
+namespace GeoData;
+
+use MWException;
+
 /**
  * Class that holds output of a parse opertion
  */

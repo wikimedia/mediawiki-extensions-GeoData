@@ -1,5 +1,8 @@
 <?php
 
+use GeoData\Coord;
+use GeoData\GeoData;
+
 /**
  * @group GeoData
  */

@@ -1,5 +1,13 @@
 <?php
 
+namespace GeoData;
+
+use ApiPageSet;
+use ConfigFactory;
+use MWException;
+use MWNamespace;
+use Title;
+
 class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	private $params;
 
@@ -19,16 +27,16 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		try {
 			$params = $this->params = $this->extractRequestParams();
 
-			$bools = new Elastica\Filter\Bool();
+			$bools = new \Elastica\Filter\Bool();
 			if ( $this->idToExclude ) {
 				$bools->addMustNot(
-					new Elastica\Filter\Term( array( '_id' => $this->idToExclude ) )
+					new \Elastica\Filter\Term( array( '_id' => $this->idToExclude ) )
 				);
 			}
 			// Only Earth is supported
-			$bools->addMust( new Elastica\Filter\Term( array( 'coordinates.globe' => 'earth' ) ) );
+			$bools->addMust( new \Elastica\Filter\Term( array( 'coordinates.globe' => 'earth' ) ) );
 			if ( isset( $params['maxdim'] ) ) {
-				$bools->addMust( new Elastica\Filter\Range(
+				$bools->addMust( new \Elastica\Filter\Range(
 					'coordinates.dim',
 					array( 'to' => $params['maxdim'] ) )
 				);
@@ -36,12 +44,12 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 
 			$primary = $params['primary'];
 			if ( $primary !== 'all' ) {
-				$bools->addMust( new Elastica\Filter\Term(
+				$bools->addMust( new \Elastica\Filter\Term(
 					array( 'coordinates.primary' => intval( $primary === 'primary' ) )
 				) );
 			}
 			if ( $this->bbox ) {
-				$distanceFilter = new Elastica\Filter\GeoBoundingBox( 'coordinates.coord',
+				$distanceFilter = new \Elastica\Filter\GeoBoundingBox( 'coordinates.coord',
 					array(
 						array( 'lat' => $this->bbox->lat1, 'lon' => $this->bbox->lon1 ),
 						array( 'lat' => $this->bbox->lat2, 'lon' => $this->bbox->lon2 ),
@@ -49,7 +57,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				);
 			} else {
 				$distanceFilter =
-					new Elastica\Filter\GeoDistance( 'coordinates.coord',
+					new \Elastica\Filter\GeoDistance( 'coordinates.coord',
 						array( 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ),
 						$this->radius . 'm'
 					);
@@ -58,23 +66,23 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				}
 			}
 
-			$query = new Elastica\Query();
+			$query = new \Elastica\Query();
 			$fields = array_map(
 				function( $prop ) { return "coordinates.$prop"; },
 				array_merge( array( 'coord', 'primary' ), $params['prop'] )
 			);
 			$query->setParam( '_source', $fields );
-			$filter = new Elastica\Filter\BoolAnd();
+			$filter = new \Elastica\Filter\BoolAnd();
 			$filter->addFilter( $bools );
 			$filter->addFilter( $distanceFilter );
-			$nested = new Elastica\Filter\Nested();
+			$nested = new \Elastica\Filter\Nested();
 			$nested->setPath( 'coordinates' )
 				->setFilter( $filter );
 			if ( count( $params['namespace'] ) < count( MWNamespace::getValidNamespaces() ) ) {
-				$outerFilter = new Elastica\Filter\Bool();
+				$outerFilter = new \Elastica\Filter\Bool();
 				$outerFilter->addMust( $nested );
 				$outerFilter->addMust(
-					new Elastica\Filter\Terms( 'namespace', $params['namespace'] )
+					new \Elastica\Filter\Terms( 'namespace', $params['namespace'] )
 				);
 				$query->setPostFilter( $outerFilter );
 			} else {
@@ -92,8 +100,8 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			);
 			$query->setSize( $params['limit'] );
 
-			$config = \ConfigFactory::getDefaultInstance()->makeConfig( 'CirrusSearch' );
-			$connection = new CirrusSearch\Connection( $config );
+			$config = ConfigFactory::getDefaultInstance()->makeConfig( 'CirrusSearch' );
+			$connection = new \CirrusSearch\Connection( $config );
 			$pageType = $connection->getPageType( wfWikiID() );
 			$search = $pageType->createSearch( $query );
 
@@ -191,7 +199,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			} else {
 				$resultPageSet->populateFromQueryResult( $this->getDB(), $res );
 			}
-		} catch ( Elastica\Exception\ExceptionInterface $e ) {
+		} catch ( \Elastica\Exception\ExceptionInterface $e ) {
 			throw new MWException( get_class( $e )
 				. " at {$e->getFile()}, line {$e->getLine()}: {$e->getMessage()}", 0, $e
 			);

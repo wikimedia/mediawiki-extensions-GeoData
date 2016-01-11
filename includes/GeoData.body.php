@@ -1,5 +1,10 @@
 <?php
 
+namespace GeoData;
+
+use Status;
+use Title;
+
 class GeoData {
 	/**
 	 *
@@ -127,7 +132,7 @@ class GeoData {
 				return false;
 			}
 			$alreadyFractional = $part != intval( $part );
-			$value += $part * $multiplier * GeoDataMath::sign( $value );
+			$value += $part * $multiplier * Math::sign( $value );
 			$multiplier /= 60;
 		}
 		if ( $coordInfo['wrap']  && $value < 0 ) {

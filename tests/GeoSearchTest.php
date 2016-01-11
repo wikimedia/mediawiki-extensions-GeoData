@@ -1,5 +1,7 @@
 <?php
 
+use GeoData\ApiQueryGeoSearch;
+
 /**
  * @group GeoData
  */

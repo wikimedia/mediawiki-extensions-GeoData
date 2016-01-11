@@ -1,5 +1,14 @@
 <?php
 
+namespace GeoData;
+
+use MagicWord;
+use MWException;
+use Parser;
+use ParserOutput;
+use PPFrame;
+use PPNode;
+use Status;
 
 /**
  * Handler for the #coordinates parser function
@@ -110,6 +119,8 @@ class CoordinatesParserFunction {
 	 */
 	private function applyCoord( Coord $coord ) {
 		global $wgMaxCoordinatesPerPage, $wgContLang;
+
+		/** @var CoordinatesOutput $geoData */
 		$geoData = $this->output->geoData;
 		if ( $wgMaxCoordinatesPerPage >= 0 && $geoData->getCount() >= $wgMaxCoordinatesPerPage ) {
 			if ( $geoData->limitExceeded ) {
