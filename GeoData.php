@@ -9,6 +9,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array( 'Max Semenik' ),
 	'url' => 'https://www.mediawiki.org/wiki/Extension:GeoData',
 	'descriptionmsg' => 'geodata-desc',
+	'license-name' => 'WTFPL',
 );
 
 $dir = __DIR__;
