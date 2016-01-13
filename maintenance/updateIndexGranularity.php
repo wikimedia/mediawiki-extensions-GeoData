@@ -24,7 +24,8 @@ class UpdateIndexGranularity extends Maintenance {
 		$dbw = wfGetDB( DB_MASTER );
 		do {
 			$ids = array();
-			$dbw->begin( __METHOD__ );
+
+			$this->beginTransaction( $dbw, __METHOD__ );
 			$res = $dbw->select( 'geo_tags', 'gt_id',
 				array( "gt_id > $id" ),
 				__METHOD__,
@@ -42,7 +43,8 @@ class UpdateIndexGranularity extends Maintenance {
 				array( 'gt_id' => $ids ),
 				__METHOD__
 			);
-			$dbw->commit( __METHOD__ );
+			$this->commitTransaction( $dbw, __METHOD__ );
+
 			$this->output( "$id\n" );
 			wfWaitForSlaves();
 		} while ( count( $ids ) === self::BATCH_SIZE );
