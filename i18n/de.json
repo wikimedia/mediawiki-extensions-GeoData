@@ -3,7 +3,8 @@
 		"authors": [
 			"Kghbln",
 			"Metalhead64",
-			"Tiin"
+			"Tiin",
+			"Predatorix"
 		]
 	},
 	"geodata-desc": "Ergänzt Funktionen zum Speichern und Abrufen geografischer Koordinaten",
@@ -42,5 +43,6 @@
 	"apihelp-query+geosearch-param-prop": "Welche ergänzenden Koordinateneigenschaften zurückgegeben werden sollen.",
 	"apihelp-query+geosearch-param-primary": "Ob nur primäre Koordinaten („primär“), sekundäre („sekundär“) oder beide („alle“) zurückgegeben werden sollen.",
 	"apihelp-query+geosearch-param-debug": "Ob Informationen zur Fehlerbeseitigung zurückgegeben werden sollen.",
-	"apihelp-query+geosearch-example-1": "Sucht in der Nähe des Punktes mit den Koordinaten 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
+	"apihelp-query+geosearch-example-1": "Sucht in der Nähe des Punktes mit den Koordinaten 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Suche in einem begrenzenden Rahmen"
 }
