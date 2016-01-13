@@ -42,7 +42,7 @@ class Hooks {
 				} else {
 					$updater->addExtensionTable( 'geo_tags', "$dir/../sql/db-backed.sql" );
 				}
-				$updater->addExtensionUpdate( array( 'GeoDataHooks::upgradeToDecimal' ) );
+				$updater->addExtensionUpdate( array( 'GeoData\Hooks::upgradeToDecimal' ) );
 				break;
 			default:
 				throw new MWException( 'GeoData extension currently supports only MySQL and SQLite' );
