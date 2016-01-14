@@ -27,7 +27,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		try {
 			$params = $this->params = $this->extractRequestParams();
 
-			$bools = new \Elastica\Filter\Bool();
+			$bools = new \Elastica\Filter\BoolFilter();
 			if ( $this->idToExclude ) {
 				$bools->addMustNot(
 					new \Elastica\Filter\Term( array( '_id' => $this->idToExclude ) )
@@ -79,7 +79,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			$nested->setPath( 'coordinates' )
 				->setFilter( $filter );
 			if ( count( $params['namespace'] ) < count( MWNamespace::getValidNamespaces() ) ) {
-				$outerFilter = new \Elastica\Filter\Bool();
+				$outerFilter = new \Elastica\Filter\BoolFilter();
 				$outerFilter->addMust( $nested );
 				$outerFilter->addMust(
 					new \Elastica\Filter\Terms( 'namespace', $params['namespace'] )
