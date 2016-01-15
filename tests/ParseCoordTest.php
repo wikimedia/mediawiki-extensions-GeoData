@@ -1,7 +1,7 @@
 <?php
 
 use GeoData\Coord;
-use GeoData\GeoData;
+use GeoData\CoordinatesParserFunction;
 
 /**
  * @group GeoData
@@ -12,7 +12,7 @@ class ParseCoordTest extends MediaWikiTestCase {
 	 */
 	public function testParseCoordinates( $parts, $result, $globe = 'earth' ) {
 		$formatted = '"' . implode( $parts, '|' ) . '"';
-		$s = GeoData::parseCoordinates( $parts, $globe );
+		$s = CoordinatesParserFunction::parseCoordinates( $parts, $globe );
 		$val = $s->value;
 		if ( $result === false ) {
 			$this->assertFalse( $s->isGood(), "Parsing of $formatted was expected to fail" );
