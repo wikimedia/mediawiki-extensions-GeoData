@@ -34,7 +34,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "返回地球上每个来自这些坐标的结果的距离（米）。",
 	"apihelp-query+coordinates-param-distancefrompage": "返回地球上每个来自此页面的坐标的结果的距离（米）。",
 	"apihelp-query+coordinates-example-1": "获取[[Main Page]]的坐标列表",
-	"apihelp-query+geosearch-description": "返回包含某一地区内坐标的页面。",
+	"apihelp-query+geosearch-description": "返回包含位于某一地区坐标的页面。",
 	"apihelp-query+geosearch-param-bbox": "要搜索的边界框：以竖线（|）分隔的左上角和右下角的坐标。",
 	"apihelp-query+geosearch-param-coord": "协调要搜索位置的周围。",
 	"apihelp-query+geosearch-param-page": "围绕要搜索页面的页面标题。",
