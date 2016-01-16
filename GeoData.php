@@ -26,6 +26,7 @@ $wgAutoloadClasses['GeoData\Coord'] = "$dir/includes/Coord.php";
 $wgAutoloadClasses['GeoData\CoordinatesOutput'] = "$dir/includes/CoordinatesOutput.php";
 $wgAutoloadClasses['GeoData\CoordinatesParserFunction'] = "$dir/includes/CoordinatesParserFunction.php";
 $wgAutoloadClasses['GeoData\GeoData'] = "$dir/includes/GeoData.body.php";
+$wgAutoloadClasses['GeoData\Globe'] = "$dir/includes/Globe.php";
 $wgAutoloadClasses['GeoData\Hooks'] = "$dir/includes/Hooks.php";
 $wgAutoloadClasses['GeoData\Math'] = "$dir/includes/Math.php";
 
@@ -113,48 +114,22 @@ $wgTypeToDim = array(
  */
 $wgDefaultDim = 1000;
 
-$earth = array( 'min' => -180, 'mid' => 0, 'max' => 180, 'abbr' => array( 'E' => +1, 'W' => -1 ), 'wrap' => false );
-$east360 = array( 'min' => 0, 'mid' => 180, 'max' => 360, 'abbr' => array( 'E' => +1, 'W' => -1 ), 'wrap' => true );
-$west360 = array( 'min' => 0, 'mid' => 180, 'max' => 360, 'abbr' => array( 'E' => -1, 'W' => +1 ), 'wrap' => true );
-
 /**
- * Description of coordinate systems, mostly taken from http://planetarynames.wr.usgs.gov/TargetCoordinates
+ * Description of globes. Allows to extend or override the defaults from Globe.php
  */
 $wgGlobes = array(
-	'earth' => $earth,
-	'mercury' => $west360,
-	'venus' => $east360,
-	'moon' => $earth,
-	'mars' => $east360,
-	'phobos' => $west360,
-	'deimos' => $west360,
-	// 'ceres' => ???,
-	// 'vesta' => ???,
-	'ganymede' => $west360,
-	'callisto' => $west360,
-	'io' => $west360,
-	'europa' => $west360,
-	'mimas' => $west360,
-	'enceladus' => $west360,
-	'tethys' => $west360,
-	'dione' => $west360,
-	'rhea' => $west360,
-	'titan' => $west360,
-	'hyperion' => $west360,
-	'iapetus' => $west360,
-	'phoebe' => $west360,
-	'miranda' => $east360,
-	'ariel' => $east360,
-	'umbriel' => $east360,
-	'titania' => $east360,
-	'oberon' => $east360,
-	'triton' => $east360,
-	'pluto' => $east360, // ???
+	/*
+	Example definition:
+	'saraksh' => array(
+		// Range of latitudes
+		'lon' => array( -180, 180 ),
+		// What sign should N degrees east have?
+		'east' => -1,
+		// Radius in metres. If omitted, no distance calculation will be possible on this globe
+		'radius' => 12345678.9,
+	),
+	*/
 );
-
-unset( $earth );
-unset( $east360 );
-unset( $west360 );
 
 /**
  * Controls what GeoData should do when it encounters some problem.

@@ -2,6 +2,7 @@
 
 use GeoData\Coord;
 use GeoData\CoordinatesParserFunction;
+use GeoData\Globe;
 
 /**
  * @group GeoData
@@ -12,7 +13,7 @@ class ParseCoordTest extends MediaWikiTestCase {
 	 */
 	public function testParseCoordinates( $parts, $result, $globe = 'earth' ) {
 		$formatted = '"' . implode( $parts, '|' ) . '"';
-		$s = CoordinatesParserFunction::parseCoordinates( $parts, $globe );
+		$s = CoordinatesParserFunction::parseCoordinates( $parts, new Globe( $globe ) );
 		$val = $s->value;
 		if ( $result === false ) {
 			$this->assertFalse( $s->isGood(), "Parsing of $formatted was expected to fail" );
@@ -81,10 +82,10 @@ class ParseCoordTest extends MediaWikiTestCase {
 			array( array( 25, 60, 10, 0 ), false ),
 			array( array( 25, 0, 0, 10, 0, 60 ), false ),
 			// coordinate validation and normalisation (non-Earth)
-			array( array( 10, 20 ), new Coord( 10, 20 ), 'mars' ),
+			array( array( 10, 20 ), new Coord( 10, 20, 'mars' ), 'mars' ),
 			array( array( 110, 20 ), false, 'mars' ),
-			array( array( 47, 0, 'S', 355, 3, 'W' ), new Coord( -47, 4.95 ), 'mars' ), // Asimov Crater
-			array( array( 68, 'S', 357, 'E' ), new Coord( -68, 357 ), 'venus' ), // Quetzalpetlatl Corona
+			array( array( 47, 0, 'S', 355, 3, 'W' ), new Coord( -47, 4.95, 'mars' ), 'mars' ), // Asimov Crater
+			array( array( 68, 'S', 357, 'E' ), new Coord( -68, 357, 'venus' ), 'venus' ), // Quetzalpetlatl Corona
 		);
 	}
 }
