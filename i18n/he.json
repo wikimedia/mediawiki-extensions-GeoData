@@ -31,7 +31,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "החזרת המרחק במטרים של כל תוצאה בכדור הארץ מנקודות הציון האלו.",
 	"apihelp-query+coordinates-param-distancefrompage": "החזרת המרחק במטרים של כל תוצאה בכדור הארץ מנקודות הציון של הדף הזה.",
 	"apihelp-query+coordinates-example-1": "קבלת נקודות ציון מ־[[Main Page]]",
-	"apihelp-query+geosearch-description": "החזרת דפים שיש להם נקודות ציון באזור מסוים.",
+	"apihelp-query+geosearch-description": "החזרת דפים שיש להם נקודות ציון שנמצאות באזור מסוים.",
 	"apihelp-query+geosearch-param-bbox": "תיבת הגבלה שבה ייעשה החיפוש: נקודות ציון מופרדת במקל (|) של הפינות משמאל למעלה ומימין למטה.",
 	"apihelp-query+geosearch-param-coord": "נקודות ציון שסביבן ייעשה החיפוש.",
 	"apihelp-query+geosearch-param-page": "שם הדף שסביבו צריך לחפש.",
