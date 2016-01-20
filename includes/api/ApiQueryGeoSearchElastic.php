@@ -3,8 +3,6 @@
 namespace GeoData;
 
 use ApiPageSet;
-use ConfigFactory;
-use MWException;
 use MWNamespace;
 use Title;
 
@@ -24,185 +22,163 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		parent::run( $resultPageSet );
 		$this->resetQueryParams(); //@fixme: refactor to make this unnecessary
 
-		try {
-			$params = $this->params = $this->extractRequestParams();
+		$params = $this->params = $this->extractRequestParams();
 
-			$bools = new \Elastica\Filter\BoolFilter();
-			if ( $this->idToExclude ) {
-				$bools->addMustNot(
-					new \Elastica\Filter\Term( array( '_id' => $this->idToExclude ) )
-				);
-			}
-			// Only Earth is supported
-			$bools->addMust( new \Elastica\Filter\Term( array( 'coordinates.globe' => 'earth' ) ) );
-			if ( isset( $params['maxdim'] ) ) {
-				$bools->addMust( new \Elastica\Filter\Range(
-					'coordinates.dim',
-					array( 'to' => $params['maxdim'] ) )
-				);
-			}
+		$bools = new \Elastica\Filter\BoolFilter();
+		if ( $this->idToExclude ) {
+			$bools->addMustNot( new \Elastica\Filter\Term( array( '_id' => $this->idToExclude ) ) );
+		}
+		// Only Earth is supported
+		$bools->addMust( new \Elastica\Filter\Term( array( 'coordinates.globe' => 'earth' ) ) );
+		if ( isset( $params['maxdim'] ) ) {
+			$bools->addMust( new \Elastica\Filter\Range( 'coordinates.dim',
+					array( 'to' => $params['maxdim'] ) ) );
+		}
 
-			$primary = $params['primary'];
-			if ( $primary !== 'all' ) {
-				$bools->addMust( new \Elastica\Filter\Term(
-					array( 'coordinates.primary' => intval( $primary === 'primary' ) )
+		$primary = $params['primary'];
+		if ( $primary !== 'all' ) {
+			$bools->addMust( new \Elastica\Filter\Term( array(
+					'coordinates.primary' => intval( $primary === 'primary' )
+				) ) );
+		}
+		if ( $this->bbox ) {
+			$distanceFilter = new \Elastica\Filter\GeoBoundingBox( 'coordinates.coord', array(
+					array( 'lat' => $this->bbox->lat1, 'lon' => $this->bbox->lon1 ),
+					array( 'lat' => $this->bbox->lat2, 'lon' => $this->bbox->lon2 ),
 				) );
+		} else {
+			$distanceFilter =
+				new \Elastica\Filter\GeoDistance( 'coordinates.coord',
+					array( 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ),
+					$this->radius . 'm' );
+			if ( $wgGeoDataIndexLatLon ) {
+				$distanceFilter->setOptimizeBbox( 'indexed' );
 			}
-			if ( $this->bbox ) {
-				$distanceFilter = new \Elastica\Filter\GeoBoundingBox( 'coordinates.coord',
-					array(
-						array( 'lat' => $this->bbox->lat1, 'lon' => $this->bbox->lon1 ),
-						array( 'lat' => $this->bbox->lat2, 'lon' => $this->bbox->lon2 ),
-					)
-				);
-			} else {
-				$distanceFilter =
-					new \Elastica\Filter\GeoDistance( 'coordinates.coord',
-						array( 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ),
-						$this->radius . 'm'
-					);
-				if ( $wgGeoDataIndexLatLon ) {
-					$distanceFilter->setOptimizeBbox( 'indexed' );
-				}
-			}
+		}
 
-			$query = new \Elastica\Query();
-			$fields = array_map(
-				function( $prop ) { return "coordinates.$prop"; },
-				array_merge( array( 'coord', 'primary' ), $params['prop'] )
-			);
-			$query->setParam( '_source', $fields );
-			$filter = new \Elastica\Filter\BoolAnd();
-			$filter->addFilter( $bools );
-			$filter->addFilter( $distanceFilter );
-			$nested = new \Elastica\Filter\Nested();
-			$nested->setPath( 'coordinates' )
-				->setFilter( $filter );
-			if ( count( $params['namespace'] ) < count( MWNamespace::getValidNamespaces() ) ) {
-				$outerFilter = new \Elastica\Filter\BoolFilter();
-				$outerFilter->addMust( $nested );
-				$outerFilter->addMust(
-					new \Elastica\Filter\Terms( 'namespace', $params['namespace'] )
-				);
-				$query->setPostFilter( $outerFilter );
-			} else {
-				$query->setPostFilter( $nested );
-			}
+		$query = new \Elastica\Query();
+		$fields =
+			array_map( function ( $prop ) { return "coordinates.$prop"; },
+				array_merge( array( 'coord', 'primary' ), $params['prop'] ) );
+		$query->setParam( '_source', $fields );
+		$filter = new \Elastica\Filter\BoolAnd();
+		$filter->addFilter( $bools );
+		$filter->addFilter( $distanceFilter );
+		$nested = new \Elastica\Filter\Nested();
+		$nested->setPath( 'coordinates' )->setFilter( $filter );
+		if ( count( $params['namespace'] ) < count( MWNamespace::getValidNamespaces() ) ) {
+			$outerFilter = new \Elastica\Filter\BoolFilter();
+			$outerFilter->addMust( $nested );
+			$outerFilter->addMust( new \Elastica\Filter\Terms( 'namespace',
+					$params['namespace'] ) );
+			$query->setPostFilter( $outerFilter );
+		} else {
+			$query->setPostFilter( $nested );
+		}
 
-			$query->addSort(
-				array(
-					'_geo_distance' => array(
-						'coordinates.coord' => array( 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ),
-						'order' => 'asc',
-						'unit' => 'm'
-					)
+		$query->addSort( array(
+				'_geo_distance' => array(
+					'coordinates.coord' => array(
+						'lat' => $this->coord->lat,
+						'lon' => $this->coord->lon
+					),
+					'order' => 'asc',
+					'unit' => 'm'
 				)
-			);
-			$query->setSize( $params['limit'] );
+			) );
+		$query->setSize( $params['limit'] );
 
-			$config = ConfigFactory::getDefaultInstance()->makeConfig( 'CirrusSearch' );
-			$connection = new \CirrusSearch\Connection( $config );
-			$pageType = $connection->getPageType( wfWikiID() );
-			$search = $pageType->createSearch( $query );
+		$searcher = new Searcher( $this->getUser() );
 
-			$resultSet = $search->search();
+		$resultSet = $searcher->performSearch( $query, 'GeoData spatial search' );
 
-			if ( isset( $params['debug'] ) && $params['debug'] ) {
-				$this->addDebugInfo( $resultSet );
-			}
+		if ( isset( $params['debug'] ) && $params['debug'] ) {
+			$this->addDebugInfo( $resultSet );
+		}
 
-			$data = $resultSet->getResponse()->getData();
+		$data = $resultSet->getResponse()->getData();
 
-			if ( !isset( $data['hits']['hits'] ) ) {
-				$this->dieDebug( __METHOD__, 'Unexpected result set returned by Elasticsearch' );
-			}
-			$ids = array();
-			$coordinates = array();
-			foreach ( $data['hits']['hits'] as $page ) {
-				$id = $page['_id'];
-				foreach ( $page['_source']['coordinates'] as $coordArray ) {
-					$coord = $this->makeCoord( $coordArray );
-					if ( !$this->filterCoord( $coord ) ) {
-						continue;
-					}
-					$coord->pageId = $id;
-					$coordinates[] = $coord;
-					$ids[$id] = true;
+		if ( !isset( $data['hits']['hits'] ) ) {
+			$this->dieDebug( __METHOD__, 'Unexpected result set returned by Elasticsearch' );
+		}
+		$ids = array();
+		$coordinates = array();
+		foreach ( $data['hits']['hits'] as $page ) {
+			$id = $page['_id'];
+			foreach ( $page['_source']['coordinates'] as $coordArray ) {
+				$coord = $this->makeCoord( $coordArray );
+				if ( !$this->filterCoord( $coord ) ) {
+					continue;
 				}
+				$coord->pageId = $id;
+				$coordinates[] = $coord;
+				$ids[$id] = true;
 			}
-			usort( $coordinates, function( $coord1, $coord2 ) {
-				if ( $coord1->distance == $coord2->distance ) {
-					return 0;
+		}
+		usort( $coordinates, function ( $coord1, $coord2 ) {
+			if ( $coord1->distance == $coord2->distance ) {
+				return 0;
+			}
+			return ( $coord1->distance < $coord2->distance ) ? - 1 : 1;
+		} );
+
+		if ( !count( $coordinates ) ) {
+			return; // No results, no point in doing anything else
+		}
+		$this->addWhere( array( 'page_id' => array_keys( $ids ) ) );
+		$this->addTables( 'page' );
+		if ( is_null( $resultPageSet ) ) {
+			$this->addFields( array( 'page_id', 'page_title', 'page_namespace' ) );
+		} else {
+			$this->addFields( $resultPageSet->getPageTableFields() );
+		}
+
+		$res = $this->select( __METHOD__ );
+
+		if ( is_null( $resultPageSet ) ) {
+			$titles = array();
+			foreach ( $res as $row ) {
+				$titles[$row->page_id] = Title::newFromRow( $row );
+			}
+
+			$limit = $params['limit'];
+			$result = $this->getResult();
+
+			foreach ( $coordinates as $coord ) {
+				if ( !$limit -- ) {
+					break;
 				}
-				return ( $coord1->distance < $coord2->distance ) ? -1 : 1;
-			} );
-
-			if ( !count( $coordinates ) ) {
-				return; // No results, no point in doing anything else
-			}
-			$this->addWhere( array( 'page_id' => array_keys( $ids ) ) );
-			$this->addTables( 'page' );
-			if ( is_null( $resultPageSet ) ) {
-				$this->addFields( array( 'page_id', 'page_title', 'page_namespace' ) );
-			} else {
-				$this->addFields( $resultPageSet->getPageTableFields() );
-			}
-
-			$res = $this->select( __METHOD__ );
-
-			if ( is_null( $resultPageSet ) ) {
-				$titles = array();
-				foreach ( $res as $row ) {
-					$titles[$row->page_id] = Title::newFromRow( $row );
+				$id = $coord->pageId;
+				if ( !isset( $titles[$id] ) ) {
+					continue;
 				}
+				/** @var Title $title */
+				$title = $titles[$id];
+				$vals = array(
+					'pageid' => intval( $coord->pageId ),
+					'ns' => intval( $title->getNamespace() ),
+					'title' => $title->getPrefixedText(),
+					'lat' => floatval( $coord->lat ),
+					'lon' => floatval( $coord->lon ),
+					'dist' => round( $coord->distance, 1 ),
+				);
 
-				$limit = $params['limit'];
-				$result = $this->getResult();
-
-				foreach ( $coordinates as $coord ) {
-					if ( !$limit-- ) {
-						break;
-					}
-					$id = $coord->pageId;
-					if ( !isset( $titles[$id] ) ) {
-						continue;
-					}
-					/** @var Title $title */
-					$title = $titles[$id];
-					$vals = array(
-						'pageid' => intval( $coord->pageId ),
-						'ns' => intval( $title->getNamespace() ),
-						'title' => $title->getPrefixedText(),
-						'lat' => floatval( $coord->lat ),
-						'lon' => floatval( $coord->lon ),
-						'dist' => round( $coord->distance, 1 ),
-					);
-
-					if ( $coord->primary ) {
-						$vals['primary'] = '';
-					}
-					foreach( $params['prop'] as $prop ) {
-						// Don't output default globe
-						if ( !( $prop === 'globe' && $coord->$prop === $wgDefaultGlobe ) ) {
-							$vals[$prop] = $coord->$prop;
-						}
-					}
-					$fit = $result->addValue(
-						array( 'query', $this->getModuleName() ),
-						null,
-						$vals
-					);
-					if ( !$fit ) {
-						break;
+				if ( $coord->primary ) {
+					$vals['primary'] = '';
+				}
+				foreach ( $params['prop'] as $prop ) {
+					// Don't output default globe
+					if ( !( $prop === 'globe' && $coord->$prop === $wgDefaultGlobe ) ) {
+						$vals[$prop] = $coord->$prop;
 					}
 				}
-			} else {
-				$resultPageSet->populateFromQueryResult( $this->getDB(), $res );
+				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
+				if ( !$fit ) {
+					break;
+				}
 			}
-		} catch ( \Elastica\Exception\ExceptionInterface $e ) {
-			throw new MWException( get_class( $e )
-				. " at {$e->getFile()}, line {$e->getLine()}: {$e->getMessage()}", 0, $e
-			);
+		} else {
+			$resultPageSet->populateFromQueryResult( $this->getDB(), $res );
 		}
 	}
 

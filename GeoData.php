@@ -28,6 +28,7 @@ $wgAutoloadClasses['GeoData\CoordinatesParserFunction'] = "$dir/includes/Coordin
 $wgAutoloadClasses['GeoData\GeoData'] = "$dir/includes/GeoData.body.php";
 $wgAutoloadClasses['GeoData\Hooks'] = "$dir/includes/Hooks.php";
 $wgAutoloadClasses['GeoData\Math'] = "$dir/includes/Math.php";
+$wgAutoloadClasses['GeoData\Searcher'] = "$dir/includes/Searcher.php";
 
 $wgMessagesDirs['GeoData'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['GeoData'] = "$dir/GeoData.i18n.php";
