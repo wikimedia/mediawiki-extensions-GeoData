@@ -27,6 +27,9 @@ class CoordinatesParserFunction {
 	private $named = array(),
 		$unnamed = array();
 
+	/** @var Globe */
+	private $globe;
+
 	/**
 	 * #coordinates parser function callback
 	 *
@@ -47,7 +50,7 @@ class CoordinatesParserFunction {
 		$this->named = array();
 		$this->parseArgs( $frame, $args );
 		$this->processArgs();
-		$status = self::parseCoordinates( $this->unnamed, $this->named['globe'] );
+		$status = self::parseCoordinates( $this->unnamed, $this->globe );
 		if ( $status->isGood() ) {
 			$coord = $status->value;
 			$status = $this->applyTagArgs( $coord );
@@ -144,21 +147,25 @@ class CoordinatesParserFunction {
 		if ( isset( $this->named['geohack'] ) ) {
 			$this->named = array_merge( $this->parseGeoHackArgs( $this->named['geohack'] ), $this->named );
 		}
-		$this->named['globe'] = ( isset( $this->named['globe'] ) && $this->named['globe'] )
+		$globe = ( isset( $this->named['globe'] ) && $this->named['globe'] )
 			? $wgContLang->lc( $this->named['globe'] )
 			: $wgDefaultGlobe;
+
+		$this->globe = new Globe( $globe );
+
 	}
 
 	private function applyTagArgs( Coord $coord ) {
-		global $wgContLang, $wgTypeToDim, $wgDefaultDim, $wgGeoDataWarningLevel, $wgGlobes, $wgDefaultGlobe;
+		global $wgTypeToDim, $wgDefaultDim, $wgGeoDataWarningLevel;
 		$args = $this->named;
 		$coord->primary = isset( $args['primary'] );
-		$coord->globe = isset( $args['globe'] ) ? $wgContLang->lc( $args['globe'] ) : $wgDefaultGlobe;
-		if ( !isset( $wgGlobes[$coord->globe] ) ) {
-			if ( $wgGeoDataWarningLevel['unknown globe'] == 'fail' ) {
-				return Status::newFatal( 'geodata-bad-globe', $coord->globe );
-			} elseif ( $wgGeoDataWarningLevel['unknown globe'] == 'warn' ) {
-				$this->parser->addTrackingCategory( 'geodata-unknown-globe-category' );
+		if ( !$this->globe->isKnown() ) {
+			switch ( $wgGeoDataWarningLevel['unknown globe'] ) {
+				case 'fail':
+					return Status::newFatal( 'geodata-bad-globe', $coord->globe );
+				case 'warn':
+					$this->parser->addTrackingCategory( 'geodata-unknown-globe-category' );
+					break;
 			}
 		}
 		$coord->dim = $wgDefaultDim;
@@ -167,10 +174,12 @@ class CoordinatesParserFunction {
 			if ( isset( $wgTypeToDim[$coord->type] ) ) {
 				$coord->dim = $wgTypeToDim[$coord->type];
 			} else {
-				if ( $wgGeoDataWarningLevel['unknown type'] == 'fail' ) {
-					return Status::newFatal( 'geodata-bad-type', $coord->type );
-				} elseif ( $wgGeoDataWarningLevel['unknown type'] == 'warn' ) {
-					$this->parser->addTrackingCategory( 'geodata-unknown-type-category' );
+				switch ( $wgGeoDataWarningLevel['unknown type'] ) {
+					case 'fail':
+						return Status::newFatal( 'geodata-bad-type', $coord->type );
+					case 'warn':
+						$this->parser->addTrackingCategory( 'geodata-unknown-type-category' );
+						break;
 				}
 			}
 		}
@@ -251,40 +260,36 @@ class CoordinatesParserFunction {
 	 * See https://en.wikipedia.org/wiki/Template:Coord for sample inputs
 	 *
 	 * @param array $parts Array of coordinate components
-	 * @param string $globe Globe name
-	 * @return Status Status object, in case of success its value is a Coord object.
+	 * @param Globe $globe Globe these coordinates belong to
+	 * @return Status Operation status, in case of success its value is a Coord object
 	 */
-	public static function parseCoordinates( $parts, $globe ) {
-		global $wgGlobes;
+	public static function parseCoordinates( $parts, Globe $globe ) {
+		$latSuffixes = array( 'N' => 1, 'S' => -1 );
+		$lonSuffixes = array( 'E' => $globe->getEastSign(), 'W' => -$globe->getEastSign() );
 
 		$count = count( $parts );
 		if ( !is_array( $parts ) || $count < 2 || $count > 8 || ( $count % 2 ) ) {
 			return Status::newFatal( 'geodata-bad-input' );
 		}
 		list( $latArr, $lonArr ) = array_chunk( $parts, $count / 2 );
-		$coordInfo = self::getCoordInfo();
 
-		$lat = self::parseOneCoord( $latArr, $coordInfo['lat'] );
+		$lat = self::parseOneCoord( $latArr, -90, 90, $latSuffixes );
 		if ( $lat === false ) {
 			return Status::newFatal( 'geodata-bad-latitude' );
 		}
-		$lonInfo = isset( $wgGlobes[$globe] )
-			? $wgGlobes[$globe]
-			: array(
-				'min' => -360,
-				'mid' => 0,
-				'max' => 360,
-				'abbr' => array( 'E' => 1, 'W' => -1 ),
-				'wrap' => true,
-			);
-		$lon = self::parseOneCoord( $lonArr, $lonInfo );
+
+		$lon = self::parseOneCoord( $lonArr,
+			$globe->getMinLongitude(),
+			$globe->getMaxLongitude(),
+			$lonSuffixes
+		);
 		if ( $lon === false ) {
 			return Status::newFatal( 'geodata-bad-longitude' );
 		}
-		return Status::newGood( new Coord( $lat, $lon ) );
+		return Status::newGood( new Coord( $lat, $lon, $globe->getName() ) );
 	}
 
-	private static function parseOneCoord( $parts, $coordInfo ) {
+	private static function parseOneCoord( $parts, $min, $max, $suffixes ) {
 		global $wgContLang;
 
 		$count = count( $parts );
@@ -292,10 +297,13 @@ class CoordinatesParserFunction {
 		$value = 0;
 		$alreadyFractional = false;
 
+		$currentMin = $min;
+		$currentMax = $max;
+
 		for ( $i = 0; $i < $count; $i++ ) {
 			$part = $parts[$i];
 			if ( $i > 0 && $i == $count - 1 ) {
-				$suffix = self::parseSuffix( $part, $coordInfo );
+				$suffix = self::parseSuffix( $part, $suffixes );
 				if ( $suffix ) {
 					if ( $value < 0 ) {
 						return false; // "-60°S sounds weird, isn't it?
@@ -313,21 +321,24 @@ class CoordinatesParserFunction {
 			if ( !is_numeric( $part ) ) {
 				$part = $wgContLang->parseFormattedNumber( $part );
 			}
-			$min = $i == 0 ? $coordInfo['min'] : 0;
-			$max = $i == 0 ? $coordInfo['max'] : 59.999999;
+
 			if ( !is_numeric( $part )
-				 || $part < $min
-				 || $part > $max ) {
+				 || $part < $currentMin
+				 || $part > $currentMax ) {
 				return false;
 			}
+			// Use these limits in the next iteration
+			$currentMin = 0;
+			$currentMax = 59.99999999;
+
 			$alreadyFractional = $part != intval( $part );
 			$value += $part * $multiplier * Math::sign( $value );
 			$multiplier /= 60;
 		}
-		if ( $coordInfo['wrap']  && $value < 0 ) {
-			$value = $coordInfo['max'] + $value;
+		if ( $min == 0 && $value < 0 ) {
+			$value = $max + $value;
 		}
-		if ( $value < $coordInfo['min'] || $value > $coordInfo['max'] ) {
+		if ( $value < $min || $value > $max ) {
 			return false;
 		}
 		return $value;
@@ -337,29 +348,12 @@ class CoordinatesParserFunction {
 	 * Parses coordinate suffix such as N, S, E or W
 	 *
 	 * @param string $str String to test
-	 * @param array $coordInfo
+	 * @param array $suffixes
 	 * @return int Sign modifier or 0 if not a suffix
 	 */
-	private static function parseSuffix( $str, $coordInfo ) {
+	private static function parseSuffix( $str, array $suffixes ) {
 		global $wgContLang;
 		$str = $wgContLang->uc( trim( $str ) );
-		return isset( $coordInfo['abbr'][$str] ) ? $coordInfo['abbr'][$str] : 0;
-	}
-
-	private static function getCoordInfo() {
-		static $result = null;
-		if ( !$result ) {
-			$result = array(
-				'lat' => array(
-					'min' => -90,
-					'mid' => 0,
-					'max' => 90,
-					'abbr' => array( 'N' => 1, 'S' => -1 ),
-					'wrap' => false,
-				),
-				'primary' => array( 'primary' ),
-			);
-		}
-		return $result;
+		return isset( $suffixes[$str] ) ? $suffixes[$str] : 0;
 	}
 }

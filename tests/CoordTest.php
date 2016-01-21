@@ -1,6 +1,7 @@
 <?php
 
 use GeoData\Coord;
+use GeoData\Globe;
 use GeoData\Math;
 
 /**
@@ -42,5 +43,22 @@ class CoordTest extends MediaWikiTestCase {
 			$this->assertEquals( 10000, Math::distance( $bbox->lat1, $i, $bbox->lat2, $i ), 'Testing latitude', 1 );
 			$this->assertEquals( 10000, Math::distance( $i, $bbox->lon1, $i, $bbox->lon2 ), 'Testing longitude', 1 );
 		}
+	}
+
+	/**
+	 * @dataProvider provideGlobeObj
+	 */
+	public function testGlobeObj( $name, Globe $expected ) {
+		$c = new Coord( 10, 20, $name );
+		$this->assertTrue( $expected->equalsTo( $c->getGlobeObj() ) );
+	}
+
+	public function provideGlobeObj() {
+		return array(
+			array( null, new Globe( 'earth' ) ),
+			array( 'earth', new Globe( 'earth' ) ),
+			array( 'moon', new Globe( 'moon' ) ),
+			array( 'something nonexistent', new Globe( 'something nonexistent' ) ),
+		);
 	}
 }

@@ -39,6 +39,13 @@ class Coord {
 	}
 
 	/**
+	 * @return Globe
+	 */
+	public function getGlobeObj() {
+		return new Globe( $this->globe );
+	}
+
+	/**
 	 * Compares this coordinates with the given coordinates
 	 *
 	 * @param Coord $coord: Coordinate to compare with
