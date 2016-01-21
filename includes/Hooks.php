@@ -156,9 +156,6 @@ class Hooks {
 		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];
-			$refs = self::decodeRefs( $metadata );
-			$lat *= $refs[0];
-			$lon *= $refs[1];
 			if ( GeoData::validateCoord( $lat, $lon, 'earth' ) ) {
 				$coord = new Coord( $lat, $lon );
 				$coord->primary = true;
@@ -166,19 +163,6 @@ class Hooks {
 			}
 		}
 		return null;
-	}
-
-	private static function decodeRefs( $metadata ) {
-		global $wgGlobes;
-		if ( isset( $metadata['GPSLatitudeRef'] ) && isset( $metadata['GPSLongitudeRef'] ) ) {
-			$coordInfo = GeoData::getCoordInfo();
-			$latRef = GeoData::parseSuffix( $metadata['GPSLatitudeRef'], $coordInfo['lat'] );
-			$lonRef = GeoData::parseSuffix( $metadata['GPSLongitudeRef'], $wgGlobes['earth'] );
-			if ( $latRef != 0 && $lonRef != 0 ) {
-				return array( $latRef, $lonRef );
-			}
-		}
-		return array( 1, 1 );
 	}
 
 	private static function doLinksUpdate( $coords, $pageId ) {
