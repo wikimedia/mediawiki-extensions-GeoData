@@ -90,7 +90,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 
 		$searcher = new Searcher( $this->getUser() );
 
-		$resultSet = $searcher->performSearch( $query, 'GeoData spatial search' );
+		$resultSet = $searcher->performSearch( $query, 'GeoData_spatial_search' );
 
 		if ( isset( $params['debug'] ) && $params['debug'] ) {
 			$this->addDebugInfo( $resultSet );
