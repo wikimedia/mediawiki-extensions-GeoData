@@ -23,7 +23,6 @@ class Hooks {
 	 *
 	 * @param DatabaseUpdater $updater
 	 * @throws MWException
-	 * @return bool
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		global $wgGeoDataBackend;
@@ -47,7 +46,6 @@ class Hooks {
 			default:
 				throw new MWException( 'GeoData extension currently supports only MySQL and SQLite' );
 		}
-		return true;
 	}
 
 	public static function upgradeToDecimal( DatabaseUpdater $updater ) {
@@ -71,11 +69,9 @@ class Hooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
 	 *
 	 * @param array $files
-	 * @return bool
 	 */
 	public static function onUnitTestsList( &$files ) {
 		$files[] = dirname( __DIR__ ) . '/tests';
-		return true;
 	}
 
 	/**
@@ -83,15 +79,12 @@ class Hooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
 	 *
 	 * @param Parser $parser
-	 * @return bool
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
 		$parser->setFunctionHook( 'coordinates',
 			array( new CoordinatesParserFunction( $parser ), 'coordinates' ),
 			Parser::SFH_OBJECT_ARGS
 		);
-
-		return true;
 	}
 
 	/**
@@ -102,13 +95,10 @@ class Hooks {
 	 * @param User $user
 	 * @param string $reason
 	 * @param int $id
-	 * @return bool
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'geo_tags', array( 'gt_page_id' => $id ), __METHOD__ );
-
-		return true;
 	}
 
 	/**
@@ -116,7 +106,6 @@ class Hooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LinksUpdate
 	 *
 	 * @param LinksUpdate $linksUpdate
-	 * @return bool
 	 */
 	public static function onLinksUpdate( &$linksUpdate ) {
 		$out = $linksUpdate->getParserOutput();
@@ -135,8 +124,6 @@ class Hooks {
 		}
 
 		self::doLinksUpdate( $data, $linksUpdate->mId );
-
-		return true;
 	}
 
 	private static function getCoordinatesIfFile( Title $title ) {
@@ -214,7 +201,6 @@ class Hooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileUpload
 	 *
 	 * @param LocalFile $file
-	 * @return bool
 	 */
 	public static function onFileUpload( LocalFile $file ) {
 		$wp = WikiPage::factory( $file->getTitle() );
@@ -226,7 +212,6 @@ class Hooks {
 			$lu = new LinksUpdate( $file->getTitle(), $pout );
 			self::onLinksUpdate( $lu );
 		}
-		return true;
 	}
 
 	/**
@@ -235,8 +220,6 @@ class Hooks {
 	 *
 	 * @param OutputPage $out
 	 * @param ParserOutput $po
-	 *
-	 * @return bool
 	 */
 	public static function onOutputPageParserOutput( OutputPage &$out, ParserOutput $po ) {
 		global $wgGeoDataInJS;
@@ -244,7 +227,7 @@ class Hooks {
 		if ( $wgGeoDataInJS && isset( $po->geoData ) ) {
 			$coord = $po->geoData->getPrimary();
 			if ( !$coord ) {
-				return true;
+				return;
 			}
 			$result = array();
 			foreach ( $wgGeoDataInJS as $param ) {
@@ -256,8 +239,6 @@ class Hooks {
 				$out->addJsConfigVars( 'wgCoordinates', $result );
 			}
 		}
-
-		return true;
 	}
 
 	/**
@@ -265,13 +246,11 @@ class Hooks {
 	 * Adds our stuff to CirrusSearch/Elasticsearch schema
 	 *
 	 * @param array $config
-	 *
-	 * @return bool
 	 */
 	public static function onCirrusSearchMappingConfig( array &$config ) {
 		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend, $wgGeoDataCoordinatesCompression;
 		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend != 'elastic' ) {
-			return true;
+			return;
 		}
 		$pageConfig = $config['page'];
 
@@ -298,7 +277,6 @@ class Hooks {
 			);
 		}
 		$config['page'] = $pageConfig;
-		return true;
 	}
 
 	/**
@@ -308,7 +286,6 @@ class Hooks {
 	 * @param Title $title
 	 * @param Content $content
 	 * @param ParserOutput $parserOutput
-	 * @return bool
 	 */
 	public static function onCirrusSearchBuildDocumentParse( \Elastica\Document $doc,
 		Title $title,
@@ -319,7 +296,7 @@ class Hooks {
 		if ( !( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' )
 			|| !isset( $parserOutput->geoData ) )
 		{
-			return true;
+			return;
 		}
 
 		$coords = array();
@@ -333,7 +310,6 @@ class Hooks {
 			$coords[] = $arr;
 		}
 		$doc->set( 'coordinates', $coords );
-		return true;
 	}
 
 	/**
@@ -341,10 +317,8 @@ class Hooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserTestTables
 	 *
 	 * @param array $tables The tables to duplicate structure of
-	 * @return bool
 	 */
 	public static function onParserTestTables( &$tables ) {
 		$tables[] = 'geo_tags';
-		return true;
 	}
 }
