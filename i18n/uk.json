@@ -4,7 +4,8 @@
 			"Ahonc",
 			"Base",
 			"DixonD",
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"geodata-desc": "Додає можливість зберігати і отримувати географічні координати",
@@ -29,10 +30,10 @@
 	"apihelp-query+coordinates-param-limit": "Скільки координат повернути.",
 	"apihelp-query+coordinates-param-prop": "Які додаткові властивості координат повернути.",
 	"apihelp-query+coordinates-param-primary": "Коли повернути лише основні координати («primary»), коли вторинні («secondary») а коли всі («all»).",
-	"apihelp-query+coordinates-param-distancefrompoint": "Повертає відстань у метрах кожного результату на Землі від цих координат.",
-	"apihelp-query+coordinates-param-distancefrompage": "Повертає відстань у метрах кожного результату на Землі від координат цієї сторінки.",
+	"apihelp-query+coordinates-param-distancefrompoint": "Повертає відстань у метрах із географічних координат кожного дійсного результату із заданих координат.",
+	"apihelp-query+coordinates-param-distancefrompage": "Повертає відстань у метрах із географічних координат кожного дійсного результату з координат цієї сторінки.",
 	"apihelp-query+coordinates-example-1": "Отримати список координат [[Main Page|Головної сторінки]]",
-	"apihelp-query+geosearch-description": "Повертає сторінки, що мають координати навколо даної точки.",
+	"apihelp-query+geosearch-description": "Повертає сторінки, що мають координати, розташовані навколо певної місцевості.",
 	"apihelp-query+geosearch-param-coord": "Координати навколо яких шукати.",
 	"apihelp-query+geosearch-param-page": "Назва сторінки навколо якої шукати.",
 	"apihelp-query+geosearch-param-radius": "Радіус пошуку в метрах.",
