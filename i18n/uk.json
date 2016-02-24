@@ -34,14 +34,17 @@
 	"apihelp-query+coordinates-param-distancefrompage": "Повертає відстань у метрах із географічних координат кожного дійсного результату з координат цієї сторінки.",
 	"apihelp-query+coordinates-example-1": "Отримати список координат [[Main Page|Головної сторінки]]",
 	"apihelp-query+geosearch-description": "Повертає сторінки, що мають координати, розташовані навколо певної місцевості.",
+	"apihelp-query+geosearch-param-bbox": "Обмежувальний паралелепіпед, в якому проводити пошук: координати верхнього лівого та нижнього правого кутків, розділені вертикальною рискою (|)",
 	"apihelp-query+geosearch-param-coord": "Координати навколо яких шукати.",
 	"apihelp-query+geosearch-param-page": "Назва сторінки навколо якої шукати.",
 	"apihelp-query+geosearch-param-radius": "Радіус пошуку в метрах.",
+	"apihelp-query+geosearch-param-maxdim": "Обмежити пошук до об'єктів, не більших за цей, у метрах.",
 	"apihelp-query+geosearch-param-limit": "Максимальне число сторінок, що буде повернено.",
 	"apihelp-query+geosearch-param-globe": "Глобус на якому шукати (за замовчуванням «earth»).",
 	"apihelp-query+geosearch-param-namespace": "Простори назв, у яких шукати.",
 	"apihelp-query+geosearch-param-prop": "Які додаткові властивості координат повернути.",
 	"apihelp-query+geosearch-param-primary": "Чи повертати лише первинні координати («primary»), чи вторинні («secondary») чи всі («all»).",
 	"apihelp-query+geosearch-param-debug": "Чи показувати інформацію, що використовується для відлагодження.",
-	"apihelp-query+geosearch-example-1": "Шукати навколо точки з координатами 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
+	"apihelp-query+geosearch-example-1": "Шукати навколо точки з координатами 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Пошук в обмежувальному паралелепіпеді"
 }
