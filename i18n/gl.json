@@ -32,6 +32,7 @@
 	"apihelp-query+coordinates-param-distancefrompage": "Devolver a distancia en metros de das coordenadas xeográficas de cada resultado válido desde as coordenadas desta páxina.",
 	"apihelp-query+coordinates-example-1": "Obter unha lista de coordenadas da [[Main Page]]",
 	"apihelp-query+geosearch-description": "Devolve páxinas que teñen coordenadas e que se atopan nunha área determinada.",
+	"apihelp-query+geosearch-param-bbox": "Caixa contedor na que procurar: coordenadas separadas por barras verticais (|) das esquinas superior esquerda e inferior dereita.",
 	"apihelp-query+geosearch-param-coord": "Coodenada ó redor da que buscar.",
 	"apihelp-query+geosearch-param-page": "Título da páxina ó redor da cal buscar.",
 	"apihelp-query+geosearch-param-radius": "Radio de busca en metros.",
@@ -42,5 +43,6 @@
 	"apihelp-query+geosearch-param-prop": "Que propiedades adicionais devolver das coordenadas.",
 	"apihelp-query+geosearch-param-primary": "Se só devolver coordenadas primarias (\"primary\"), secundarias (\"secondary\") ou as dúas (\"all\").",
 	"apihelp-query+geosearch-param-debug": "Se debe devolverse a información de depuración de software",
-	"apihelp-query+geosearch-example-1": "Buscar ó redor do punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
+	"apihelp-query+geosearch-example-1": "Buscar ó redor do punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Procurar nunha caixa contedor"
 }
