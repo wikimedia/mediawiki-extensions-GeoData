@@ -2,7 +2,6 @@
 
 namespace GeoData;
 
-use Status;
 use Title;
 
 class GeoData {

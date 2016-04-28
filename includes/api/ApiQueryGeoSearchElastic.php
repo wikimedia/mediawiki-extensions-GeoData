@@ -24,52 +24,53 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 
 		$params = $this->params = $this->extractRequestParams();
 
-		$bools = new \Elastica\Filter\BoolFilter();
+		$filter = new \Elastica\Query\BoolQuery();
+
 		if ( $this->idToExclude ) {
-			$bools->addMustNot( new \Elastica\Filter\Term( [ '_id' => $this->idToExclude ] ) );
+			$filter->addMustNot( new \Elastica\Query\Term( [ '_id' => $this->idToExclude ] ) );
 		}
 		// Only Earth is supported
-		$bools->addMust( new \Elastica\Filter\Term( [ 'coordinates.globe' => 'earth' ] ) );
+		$filter->addFilter( new \Elastica\Query\Term( [ 'coordinates.globe' => 'earth' ] ) );
 		if ( isset( $params['maxdim'] ) ) {
-			$bools->addMust( new \Elastica\Filter\Range( 'coordinates.dim',
+			$filter->addFilter( new \Elastica\Query\Range( 'coordinates.dim',
 					[ 'to' => $params['maxdim'] ] ) );
 		}
 
 		$primary = $params['primary'];
 		if ( $primary !== 'all' ) {
-			$bools->addMust( new \Elastica\Filter\Term( [
+			$filter->addFilter( new \Elastica\Query\Term( [
 					'coordinates.primary' => intval( $primary === 'primary' )
 				] ) );
 		}
+
 		if ( $this->bbox ) {
-			$distanceFilter = new \Elastica\Filter\GeoBoundingBox( 'coordinates.coord', [
+			$distanceFilter = new \Elastica\Query\GeoBoundingBox( 'coordinates.coord', [
 					[ 'lat' => $this->bbox->lat1, 'lon' => $this->bbox->lon1 ],
 					[ 'lat' => $this->bbox->lat2, 'lon' => $this->bbox->lon2 ],
 				] );
 		} else {
 			$distanceFilter =
-				new \Elastica\Filter\GeoDistance( 'coordinates.coord',
+				new \Elastica\Query\GeoDistance( 'coordinates.coord',
 					[ 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ],
 					$this->radius . 'm' );
 			if ( $wgGeoDataIndexLatLon ) {
 				$distanceFilter->setOptimizeBbox( 'indexed' );
 			}
 		}
+		$filter->addFilter( $distanceFilter );
 
 		$query = new \Elastica\Query();
 		$fields =
 			array_map( function ( $prop ) { return "coordinates.$prop"; },
 				array_merge( [ 'coord', 'primary' ], $params['prop'] ) );
 		$query->setParam( '_source', $fields );
-		$filter = new \Elastica\Filter\BoolAnd();
-		$filter->addFilter( $bools );
-		$filter->addFilter( $distanceFilter );
-		$nested = new \Elastica\Filter\Nested();
-		$nested->setPath( 'coordinates' )->setFilter( $filter );
+
+		$nested = new \Elastica\Query\Nested();
+		$nested->setPath( 'coordinates' )->setQuery( $filter );
 		if ( count( $params['namespace'] ) < count( MWNamespace::getValidNamespaces() ) ) {
-			$outerFilter = new \Elastica\Filter\BoolFilter();
-			$outerFilter->addMust( $nested );
-			$outerFilter->addMust( new \Elastica\Filter\Terms( 'namespace',
+			$outerFilter = new \Elastica\Query\BoolQuery();
+			$outerFilter->addFilter( $nested );
+			$outerFilter->addFilter( new \Elastica\Query\Terms( 'namespace',
 					$params['namespace'] ) );
 			$query->setPostFilter( $outerFilter );
 		} else {
