@@ -16,6 +16,10 @@ use Title;
 use User;
 use WikiPage;
 
+/**
+ * Hook handlers
+ * @todo: tests
+ */
 class Hooks {
 	/**
 	 * LoadExtensionSchemaUpdates hook handler
@@ -302,14 +306,28 @@ class Hooks {
 		$coords = [];
 		/** @var Coord $coord */
 		foreach ( $parserOutput->geoData->getAll() as $coord ) {
-			$arr = $coord->getAsArray();
-			$arr['coord'] = [ 'lat' => $coord->lat, 'lon' => $coord->lon ];
-			unset( $arr['id'] );
-			unset( $arr['lat'] );
-			unset( $arr['lon'] );
-			$coords[] = $arr;
+			if ( $coord->globe !== 'earth' ) {
+				continue;
+			}
+			$coords[] = self::coordToElastic( $coord );
 		}
 		$doc->set( 'coordinates', $coords );
+	}
+
+	/**
+	 * Transforms coordinates into an array for insertion onto Elasticsearch
+	 *
+	 * @param Coord $coord
+	 * @return array
+	 */
+	public static function coordToElastic( Coord $coord ) {
+		$result = $coord->getAsArray();
+		$result['coord'] = [ 'lat' => $coord->lat, 'lon' => $coord->lon ];
+		unset( $result['id'] );
+		unset( $result['lat'] );
+		unset( $result['lon'] );
+
+		return $result;
 	}
 
 	/**
