@@ -10,7 +10,7 @@
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki> : longitud invalida",
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki> : tipe « $1 » pas reconegut",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki> : glòb « $1 » pas reconegut",
-	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki> : format del còde de region invalid",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki> : format del còdi de region invalid",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki> : impossible d’aver mai d’una balisa primària per pagina",
 	"geodata-limit-exceeded": "Lo limit de $1 {{PLURAL:$1|balisa|balisas}} <nowiki>{{#coordinates:}}</nowiki> per pagina es estat depassat",
 	"geodata-broken-tags-category": "Paginas amb de balisas de coordenadas mal formadas",
