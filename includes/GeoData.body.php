@@ -42,7 +42,7 @@ class GeoData {
 	 *
 	 * @param int $pageId ID of the page
 	 * @param array $conds Conditions for Database::select()
-	 * @param int $dbType Database to select from DM_MASTER or DB_SLAVE
+	 * @param int $dbType Database to select from DB_MASTER or DB_SLAVE
 	 * @return Coord[]
 	 */
 	public static function getAllCoordinates( $pageId, $conds = [], $dbType = DB_SLAVE ) {
