@@ -3,6 +3,7 @@
 namespace GeoData;
 
 use ApiPageSet;
+use FormatJson;
 use MWNamespace;
 use Title;
 
@@ -95,7 +96,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$resultSet = $searcher->performSearch( $query, 'GeoData_spatial_search' );
 
 		if ( isset( $params['debug'] ) && $params['debug'] ) {
-			$this->addDebugInfo( $resultSet );
+			$this->addDebugInfo( $resultSet, $query );
 		}
 
 		$data = $resultSet->getResponse()->getData();
@@ -234,8 +235,9 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	/**
 	 * Adds debug information to API result
 	 * @param \Elastica\ResultSet $resultSet
+	 * @param \Elastica\Query $query
 	 */
-	private function addDebugInfo( \Elastica\ResultSet $resultSet ) {
+	private function addDebugInfo( \Elastica\ResultSet $resultSet, \Elastica\Query $query ) {
 		$ti = $resultSet->getResponse()->getTransferInfo();
 		$neededData = [
 			'url',
@@ -248,7 +250,9 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			'starttransfer_time',
 			'redirect_time',
 		];
-		$debug = [];
+		$debug = [
+			'query' => FormatJson::encode( $query->toArray(), true, FormatJson::UTF8_OK ),
+		];
 		foreach ( $neededData as $name ) {
 			if ( isset( $ti[$name] ) ) {
 				$debug[$name] = $ti[$name];
