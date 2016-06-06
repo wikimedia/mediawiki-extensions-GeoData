@@ -79,6 +79,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 
 		$query->addSort( [
 				'_geo_distance' => [
+					'nested_path' => 'coordinates',
 					'coordinates.coord' => [
 						'lat' => $this->coord->lat,
 						'lon' => $this->coord->lon
@@ -116,6 +117,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				$ids[$id] = true;
 			}
 		}
+
 		usort( $coordinates, function ( $coord1, $coord2 ) {
 			if ( $coord1->distance == $coord2->distance ) {
 				return 0;
