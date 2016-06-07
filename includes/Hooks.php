@@ -297,19 +297,19 @@ class Hooks {
 		ParserOutput $parserOutput )
 	{
 		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
-		if ( !( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' )
-			|| !isset( $parserOutput->geoData ) )
-		{
-			return;
-		}
+
 
 		$coords = [];
-		/** @var Coord $coord */
-		foreach ( $parserOutput->geoData->getAll() as $coord ) {
-			if ( $coord->globe !== 'earth' ) {
-				continue;
+		if ( ( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' )
+			&& isset( $parserOutput->geoData )
+		) {
+			/** @var Coord $coord */
+			foreach ( $parserOutput->geoData->getAll() as $coord ) {
+				if ( $coord->globe !== 'earth' ) {
+					continue;
+				}
+				$coords[] = self::coordToElastic( $coord );
 			}
-			$coords[] = self::coordToElastic( $coord );
 		}
 		$doc->set( 'coordinates', $coords );
 	}
