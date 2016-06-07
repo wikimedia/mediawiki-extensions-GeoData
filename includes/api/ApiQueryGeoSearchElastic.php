@@ -24,6 +24,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$this->resetQueryParams(); //@fixme: refactor to make this unnecessary
 
 		$params = $this->params = $this->extractRequestParams();
+		$namespaces = array_map( 'intval', $params['namespace'] );
 
 		$filter = new \Elastica\Query\BoolQuery();
 
@@ -68,11 +69,10 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 
 		$nested = new \Elastica\Query\Nested();
 		$nested->setPath( 'coordinates' )->setQuery( $filter );
-		if ( count( $params['namespace'] ) < count( MWNamespace::getValidNamespaces() ) ) {
+		if ( count( $namespaces ) < count( MWNamespace::getValidNamespaces() ) ) {
 			$outerFilter = new \Elastica\Query\BoolQuery();
 			$outerFilter->addFilter( $nested );
-			$outerFilter->addFilter( new \Elastica\Query\Terms( 'namespace',
-					$params['namespace'] ) );
+			$outerFilter->addFilter( new \Elastica\Query\Terms( 'namespace', $namespaces ) );
 			$query->setPostFilter( $outerFilter );
 		} else {
 			$query->setPostFilter( $nested );
@@ -93,7 +93,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 
 		$searcher = new Searcher( $this->getUser() );
 
-		$resultSet = $searcher->performSearch( $query, 'GeoData_spatial_search' );
+		$resultSet = $searcher->performSearch( $query, $namespaces, 'GeoData_spatial_search' );
 
 		if ( isset( $params['debug'] ) && $params['debug'] ) {
 			$this->addDebugInfo( $resultSet, $query );
