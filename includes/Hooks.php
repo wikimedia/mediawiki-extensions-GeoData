@@ -298,20 +298,21 @@ class Hooks {
 	{
 		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
 
+		if ( ( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' ) ) {
+			$allCoords = isset( $parserOutput->geoData )
+				? $parserOutput->geoData->getAll()
+				: [];
+			$coords = [];
 
-		$coords = [];
-		if ( ( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' )
-			&& isset( $parserOutput->geoData )
-		) {
 			/** @var Coord $coord */
-			foreach ( $parserOutput->geoData->getAll() as $coord ) {
+			foreach ( $allCoords as $coord ) {
 				if ( $coord->globe !== 'earth' ) {
 					continue;
 				}
 				$coords[] = self::coordToElastic( $coord );
 			}
+			$doc->set( 'coordinates', $coords );
 		}
-		$doc->set( 'coordinates', $coords );
 	}
 
 	/**
