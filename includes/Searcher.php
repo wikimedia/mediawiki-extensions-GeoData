@@ -25,12 +25,14 @@ class Searcher extends ElasticsearchIntermediary {
 	 * Perform search
 	 *
 	 * @param \Elastica\Query $query
+	 * @param int[] $namespaces Namespaces used
 	 * @param string $queryType Query description for logging
 	 * @return \Elastica\ResultSet
 	 * @throws ExceptionInterface
 	 */
-	public function performSearch( \Elastica\Query $query, $queryType ) {
-		$pageType = $this->connection->getPageType( wfWikiID() );
+	public function performSearch( \Elastica\Query $query, array $namespaces, $queryType ) {
+		$indexType = $this->connection->pickIndexTypeForNamespaces( $namespaces );
+		$pageType = $this->connection->getPageType( wfWikiID(), $indexType );
 		$search = $pageType->createSearch( $query );
 
 		try {
