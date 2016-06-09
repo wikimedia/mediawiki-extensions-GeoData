@@ -183,6 +183,11 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			}
 		} else {
 			$resultPageSet->populateFromQueryResult( $this->getDB(), $res );
+			$res->rewind();
+			foreach ( $res as $row ) {
+				$title = Title::newFromRow( $row );
+				$resultPageSet->setGeneratorData( $title, [ 'index' => $res->key() - 1 ] );
+			}
 		}
 	}
 
