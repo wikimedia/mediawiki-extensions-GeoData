@@ -16,6 +16,8 @@ use ParserOutput;
 use Title;
 use User;
 use WikiPage;
+use SearchEngine;
+use ContentHandler;
 
 /**
  * Hook handlers
@@ -238,50 +240,42 @@ class Hooks {
 	}
 
 	/**
-	 * CirrusSearchMappingConfig hook handler
+	 * Search index fields hook handler
 	 * Adds our stuff to CirrusSearch/Elasticsearch schema
 	 *
-	 * @param array $config
+	 * @param array $fields
+	 * @param SearchEngine $engine
 	 */
-	public static function onCirrusSearchMappingConfig( array &$config ) {
+	public static function onSearchIndexFields( array &$fields, SearchEngine $engine ) {
 		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
-		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend != 'elastic' ) {
-			return;
+		if ( $engine instanceof \CirrusSearch
+			&& ( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend  == 'elastic' )
+		) {
+			/**
+			 * @var \CirrusSearch $engine
+			 */
+			$fields['coordinates'] = CoordinatesIndexField::build( 'coordinates', $engine->getConfig(), $engine );
+		} else {
+			// Unsupported SearchEngine or explicitly disabled by config
 		}
-		$pageConfig = $config['page'];
-
-		$pageConfig['properties']['coordinates'] = [
-			'type' => 'nested',
-			'properties' => [
-				'coord' => [
-					'type' => 'geo_point',
-					'lat_lon' => true,
-				],
-				'globe' => [ 'type' => 'string', 'index' => 'not_analyzed' ],
-				'primary' => [ 'type' => 'boolean' ],
-				'dim' => [ 'type' => 'float' ],
-				'type' => [ 'type' => 'string', 'index' => 'not_analyzed' ],
-				'name' => [ 'type' => 'string', 'index' => 'no' ],
-				'country' => [ 'type' => 'string', 'index' => 'not_analyzed' ],
-				'region' => [ 'type' => 'string', 'index' => 'not_analyzed' ],
-			],
-		];
-		$config['page'] = $pageConfig;
 	}
 
 	/**
-	 * CirrusSearchBuildDocumentParse hook handler
+	 * SearchDataForIndex hook handler
 	 *
-	 * @param \Elastica\Document $doc
-	 * @param Title $title
-	 * @param Content $content
+	 * @param array[] $fields
+	 * @param ContentHandler $contentHandler
+	 * @param WikiPage $page
 	 * @param ParserOutput $parserOutput
+	 * @param SearchEngine $searchEngine
 	 */
-	public static function onCirrusSearchBuildDocumentParse( \Elastica\Document $doc,
-		Title $title,
-		Content $content,
-		ParserOutput $parserOutput )
-	{
+	public static function onSearchDataForIndex(
+		array &$fields,
+		ContentHandler $contentHandler,
+		WikiPage $page,
+		ParserOutput $parserOutput,
+		SearchEngine $searchEngine
+	) {
 		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
 
 		if ( ( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' ) ) {
@@ -297,7 +291,7 @@ class Hooks {
 				}
 				$coords[] = self::coordToElastic( $coord );
 			}
-			$doc->set( 'coordinates', $coords );
+			$fields['coordinates'] = $coords;
 		}
 	}
 
