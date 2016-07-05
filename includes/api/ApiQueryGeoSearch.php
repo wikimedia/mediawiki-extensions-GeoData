@@ -47,15 +47,15 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->run( $resultPageSet );
 	}
 
-	private function parseBbox( $bbox ) {
+	private function parseBbox( $bbox, Globe $globe ) {
 		global $wgMaxGeoSearchRadius;
 
 		$parts = explode( '|', $bbox );
 		$vals = array_map( 'floatval', $parts );
 		if ( count( $parts ) != 4
 			// Pass $parts here for extra validation
-			|| !GeoData::validateCoord( $parts[0], $parts[1] )
-			|| !GeoData::validateCoord( $parts[2], $parts[3] )
+			|| !$globe->coordinatesAreValid( $parts[0], $parts[1] )
+			|| !$globe->coordinatesAreValid( $parts[2], $parts[3] )
 			|| $vals[0] <= $vals[2]
 		) {
 			$this->dieUsage( 'Invalid bounding box', '_invalid-bbox' );
@@ -77,10 +77,11 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	protected function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
 
+		$globe = new Globe( $params['globe'] );
 		$this->requireOnlyOneParameter( $params, 'coord', 'page', 'bbox' );
 		if ( isset( $params['coord'] ) ) {
 			$arr = explode( '|', $params['coord'] );
-			if ( count( $arr ) != 2 || !GeoData::validateCoord( $arr[0], $arr[1], $params['globe'] ) ) {
+			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
 				$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
 			}
 			$this->coord = new Coord( floatval( $arr[0] ), floatval( $arr[1] ), $params['globe'] );
@@ -98,7 +99,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			}
 			$this->idToExclude = $t->getArticleID();
 		} elseif ( isset( $params['bbox'] ) ) {
-			$this->bbox = $this->parseBbox( $params['bbox'] );
+			$this->bbox = $this->parseBbox( $params['bbox'], $globe );
 			// Even when using bbox, we need a center to sort by distance
 			$this->coord = $this->bbox->center();
 		} else {

@@ -152,4 +152,18 @@ class Globe {
 	public function equalsTo( Globe $other ) {
 		return $this->name === $other->name;
 	}
+
+	/**
+	 * Checks whether given coordinates are valid
+	 * @param int $lat
+	 * @param int $lon
+	 * @return bool
+	 */
+	public function coordinatesAreValid( $lat, $lon ) {
+		if ( !is_numeric( $lat ) || !is_numeric( $lon ) || abs( $lat ) > 90 ) {
+			return false;
+		}
+
+		return $lon >= $this->minLon && $lon <= $this->maxLon;
+	}
 }

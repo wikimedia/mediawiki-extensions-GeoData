@@ -25,4 +25,34 @@ class GlobeTest extends MediaWikiTestCase {
 		$this->assertEquals( 1, $g->getEastSign() );
 		$this->assertNull( $g->getRadius() );
 	}
+
+	/**
+	 * @dataProvider provideCoordinatesValidation
+	 * @param string $globeName
+	 * @param float $lat
+	 * @param float $lon
+	 * @param bool $expected
+	 */
+	public function testCoordinatesValidation( $globeName, $lat, $lon, $expected ) {
+		$globe = new Globe( $globeName );
+
+		$this->assertEquals( $expected, $globe->coordinatesAreValid( $lat, $lon ) );
+	}
+
+	public function provideCoordinatesValidation() {
+		return [
+			[ 'earth', 0, 0, true ],
+			[ 'earth', 90, 180, true ],
+			[ 'earth', 90.001, 0, false ],
+			[ 'earth', 0, -181, false ],
+			[ 'moon', 0, 0, true ],
+			[ 'moon', 89, -179, true ],
+			[ 'moon', 0, 181, false ],
+			[ '(unknown globe)', 0, 0, true ],
+			[ '(unknown globe)', -89, -359, true ],
+			[ '(unknown globe)', 89, 359, true ],
+			[ '(unknown globe)', -91, 0, false ],
+			[ '(unknown globe)', 0, 361, false ],
+		];
+	}
 }

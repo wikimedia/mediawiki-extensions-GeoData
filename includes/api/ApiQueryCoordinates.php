@@ -95,9 +95,10 @@ class ApiQueryCoordinates extends ApiQueryBase {
 	 */
 	private function getFromCoord( array $params ) {
 		$this->requireMaxOneParameter( $params, 'distancefrompoint', 'distancefrompage' );
+		$globe = new Globe( 'earth' );
 		if ( $params['distancefrompoint'] !== null ) {
 			$arr = explode( '|', $params['distancefrompoint'] );
-			if ( count( $arr ) != 2 || !GeoData::validateCoord( $arr[0], $arr[1], 'earth' ) ) {
+			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
 				$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
 			}
 			return new Coord( $arr[0], $arr[1], 'earth' );

@@ -147,7 +147,8 @@ class Hooks {
 		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];
-			if ( GeoData::validateCoord( $lat, $lon, 'earth' ) ) {
+			$globe = new Globe( 'earth' );
+			if ( $globe->coordinatesAreValid( $lat, $lon ) ) {
 				$coord = new Coord( $lat, $lon );
 				$coord->primary = true;
 				return $coord;
