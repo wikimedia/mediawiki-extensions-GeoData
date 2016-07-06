@@ -175,13 +175,6 @@ $wgGeoDataUseCirrusSearch = false;
 $wgGeoDataIndexLatLon = true;
 
 /**
- * Lossy coordinate compression for Elasticsearch backend
- * Possible values: false (no compression), '1mm', '1cm', '3m', '1km'
- * @see http://www.elasticsearch.org/guide/en/elasticsearch/reference/master/mapping-geo-point-type.html#_field_data
- */
-$wgGeoDataCoordinatesCompression = false;
-
-/**
  * If set to true, will add debug information to API output
  */
 $wgGeoDataDebug = false;
