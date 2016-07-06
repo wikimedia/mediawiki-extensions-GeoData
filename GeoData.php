@@ -170,11 +170,6 @@ $wgGeoDataInJS = [ 'lat', 'lon' ];
 $wgGeoDataUseCirrusSearch = false;
 
 /**
- * Controls whether Elasticsearch searches should use indexed bounding box optimization.
- */
-$wgGeoDataIndexLatLon = true;
-
-/**
  * If set to true, will add debug information to API output
  */
 $wgGeoDataDebug = false;

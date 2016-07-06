@@ -18,7 +18,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	 * @param ApiPageSet $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ) {
-		global $wgDefaultGlobe, $wgGeoDataIndexLatLon;
+		global $wgDefaultGlobe;
 
 		parent::run( $resultPageSet );
 		$this->resetQueryParams(); //@fixme: refactor to make this unnecessary
@@ -55,9 +55,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				new \Elastica\Query\GeoDistance( 'coordinates.coord',
 					[ 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ],
 					$this->radius . 'm' );
-			if ( $wgGeoDataIndexLatLon ) {
-				$distanceFilter->setOptimizeBbox( 'indexed' );
-			}
+			$distanceFilter->setOptimizeBbox( 'indexed' );
 		}
 		$filter->addFilter( $distanceFilter );
 
