@@ -27,20 +27,21 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$namespaces = array_map( 'intval', $params['namespace'] );
 
 		$filter = new \Elastica\Query\BoolQuery();
+		$nestedPropsFilter = new \Elastica\Query\BoolQuery();
 
 		if ( $this->idToExclude ) {
 			$filter->addMustNot( new \Elastica\Query\Term( [ '_id' => $this->idToExclude ] ) );
 		}
 		// Only Earth is supported
-		$filter->addFilter( new \Elastica\Query\Term( [ 'coordinates.globe' => 'earth' ] ) );
+		$nestedPropsFilter->addFilter( new \Elastica\Query\Term( [ 'coordinates.globe' => 'earth' ] ) );
 		if ( isset( $params['maxdim'] ) ) {
-			$filter->addFilter( new \Elastica\Query\Range( 'coordinates.dim',
+			$nestedPropsFilter->addFilter( new \Elastica\Query\Range( 'coordinates.dim',
 					[ 'to' => $params['maxdim'] ] ) );
 		}
 
 		$primary = $params['primary'];
 		if ( $primary !== 'all' ) {
-			$filter->addFilter( new \Elastica\Query\Term( [
+			$nestedPropsFilter->addFilter( new \Elastica\Query\Term( [
 					'coordinates.primary' => intval( $primary === 'primary' )
 				] ) );
 		}
@@ -57,6 +58,8 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 					$this->radius . 'm' );
 			$distanceFilter->setOptimizeBbox( 'indexed' );
 		}
+
+		$filter->addFilter( $nestedPropsFilter );
 		$filter->addFilter( $distanceFilter );
 
 		$query = new \Elastica\Query();
@@ -79,6 +82,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$query->addSort( [
 				'_geo_distance' => [
 					'nested_path' => 'coordinates',
+					'nested_filter' => $nestedPropsFilter->toArray(),
 					'coordinates.coord' => [
 						'lat' => $this->coord->lat,
 						'lon' => $this->coord->lon
