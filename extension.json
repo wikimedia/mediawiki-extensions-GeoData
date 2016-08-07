@@ -1,0 +1,124 @@
+{
+	"name": "GeoData",
+	"author": [
+		"Max Semenik"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:GeoData",
+	"descriptionmsg": "geodata-desc",
+	"license-name": "WTFPL",
+	"type": "other",
+	"APIPropModules": {
+		"coordinates": "GeoData\\ApiQueryCoordinates"
+	},
+	"MessagesDirs": {
+		"GeoData": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"GeoDataMagic": "GeoData.i18n.magic.php"
+	},
+	"AutoloadClasses": {
+		"GeoData\\ApiQueryCoordinates": "includes/api/ApiQueryCoordinates.php",
+		"GeoData\\ApiQueryGeoSearch": "includes/api/ApiQueryGeoSearch.php",
+		"GeoData\\ApiQueryGeoSearchDb": "includes/api/ApiQueryGeoSearchDb.php",
+		"GeoData\\ApiQueryGeoSearchElastic": "includes/api/ApiQueryGeoSearchElastic.php",
+		"Coord": "includes/BC.php",
+		"CoordinatesOutput": "includes/BC.php",
+		"GeoData\\BoundingBox": "includes/BoundingBox.php",
+		"GeoData\\Coord": "includes/Coord.php",
+		"GeoData\\CoordinatesOutput": "includes/CoordinatesOutput.php",
+		"GeoData\\CoordinatesParserFunction": "includes/CoordinatesParserFunction.php",
+		"GeoData\\GeoData": "includes/GeoData.body.php",
+		"GeoData\\Globe": "includes/Globe.php",
+		"GeoData\\Hooks": "includes/Hooks.php",
+		"GeoData\\Math": "includes/Math.php",
+		"GeoData\\Searcher": "includes/Searcher.php"
+	},
+	"Hooks": {
+		"LoadExtensionSchemaUpdates": "GeoData\\Hooks::onLoadExtensionSchemaUpdates",
+		"ParserFirstCallInit": "GeoData\\Hooks::onParserFirstCallInit",
+		"UnitTestsList": "GeoData\\Hooks::onUnitTestsList",
+		"ArticleDeleteComplete": "GeoData\\Hooks::onArticleDeleteComplete",
+		"LinksUpdate": "GeoData\\Hooks::onLinksUpdate",
+		"FileUpload": "GeoData\\Hooks::onFileUpload",
+		"OutputPageParserOutput": "GeoData\\Hooks::onOutputPageParserOutput",
+		"CirrusSearchMappingConfig": "GeoData\\Hooks::onCirrusSearchMappingConfig",
+		"CirrusSearchBuildDocumentParse": "GeoData\\Hooks::onCirrusSearchBuildDocumentParse",
+		"ParserTestTables": "GeoData\\Hooks::onParserTestTables",
+		"ApiQuery::moduleManager": "GeoData\\Hooks::onApiQueryModuleManager"
+	},
+	"TrackingCategories": [
+		"geodata-broken-tags-category",
+		"geodata-unknown-globe-category",
+		"geodata-unknown-region-category",
+		"geodata-unknown-type-category"
+	],
+	"config": {
+		"MaxGeoSearchRadius": {
+			"value": 10000
+		},
+		"DefaultGlobe": {
+			"value": "earth"
+		},
+		"MaxCoordinatesPerPage": {
+			"value": 500
+		},
+		"TypeToDim": {
+			"value": {
+				"country": 1000000,
+				"satellite": 1000000,
+				"state": 300000,
+				"adm1st": 100000,
+				"adm2nd": 30000,
+				"adm3rd": 10000,
+				"city": 10000,
+				"isle": 10000,
+				"mountain": 10000,
+				"river": 10000,
+				"waterbody": 10000,
+				"event": 5000,
+				"forest": 5000,
+				"glacier": 5000,
+				"airport": 3000,
+				"railwaystation": 1000,
+				"edu": 1000,
+				"pass": 1000,
+				"camera": 1000,
+				"landmark": 1000
+			}
+		},
+		"DefaultDim": {
+			"value": 1000
+		},
+		"Globes": {
+			"value": []
+		},
+		"GeoDataWarningLevel": {
+			"value": {
+				"unknown type": "track",
+				"unknown globe": "none",
+				"invalid region": "track"
+			}
+		},
+		"GeoDataIndexGranularity": {
+			"value": 10
+		},
+		"GeoDataBackend": {
+			"value": "db"
+		},
+		"GeoDataInJS": {
+			"value": [
+				"lat",
+				"lon"
+			]
+		},
+		"GeoDataUseCirrusSearch": {
+			"value": false
+		},
+		"GeoDataDebug": {
+			"value": false
+		}
+	},
+	"manifest_version": 2
+}
