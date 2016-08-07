@@ -47,16 +47,7 @@ $wgHooks['OutputPageParserOutput'][] = 'GeoData\Hooks::onOutputPageParserOutput'
 $wgHooks['CirrusSearchMappingConfig'][] = 'GeoData\Hooks::onCirrusSearchMappingConfig';
 $wgHooks['CirrusSearchBuildDocumentParse'][] = 'GeoData\Hooks::onCirrusSearchBuildDocumentParse';
 $wgHooks['ParserTestTables'][] = 'GeoData\Hooks::onParserTestTables';
-
-// Use the proper search backend
-$wgExtensionFunctions[] = 'efInitGeoData';
-
-function efInitGeoData() {
-	global $wgGeoDataBackend, $wgAPIListModules;
-	if ( !isset( $wgAPIListModules['geosearch'] ) ) {
-		$wgAPIListModules['geosearch'] = 'GeoData\ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend );
-	}
-}
+$wgHooks['ApiQuery::moduleManager'][] = 'GeoData\Hooks::onApiQueryModuleManager';
 
 // Tracking categories for Special:TrackingCategories
 $wgTrackingCategories[] = 'geodata-broken-tags-category';

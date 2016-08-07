@@ -2,6 +2,7 @@
 
 namespace GeoData;
 
+use ApiModuleManager;
 use Article;
 use Content;
 use DatabaseUpdater;
@@ -334,5 +335,22 @@ class Hooks {
 	 */
 	public static function onParserTestTables( &$tables ) {
 		$tables[] = 'geo_tags';
+	}
+
+	/**
+	 * ApiQuery::moduleManager hook to conditionally register
+	 * geosearch API module
+	 *
+	 * @param ApiModuleManager $moduleManager
+	 */
+	public static function onApiQueryModuleManager( ApiModuleManager $moduleManager ) {
+		global $wgGeoDataBackend;
+		if ( !$moduleManager->isDefined( 'geosearch', 'list' ) ) {
+			$moduleManager->addModule(
+				'geosearch',
+				'list',
+				'GeoData\ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend )
+			);
+		}
 	}
 }
