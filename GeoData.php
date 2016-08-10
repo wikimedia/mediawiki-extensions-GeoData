@@ -4,7 +4,7 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 	wfLoadExtension( 'GeoData' );
 	// Keep i18n globals so mergeMessageFileList.php doesn't break
 	$wgMessagesDirs['GeoData'] = __DIR__ . '/i18n';
-	$wgExtensionMessagesFiles['GeoDataMagic'] = __DIR__ . '/i18n/GeoData.i18n.magic.php';
+	$wgExtensionMessagesFiles['GeoDataMagic'] = __DIR__ . '/GeoData.i18n.magic.php';
 	/* wfWarn(
 		'Deprecated PHP entry point used for GeoData extension. ' .
 		'Please use wfLoadExtension instead, ' .
