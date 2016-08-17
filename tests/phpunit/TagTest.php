@@ -4,24 +4,18 @@
  * @group GeoData
  */
 class TagTest extends MediaWikiTestCase {
-	private $contLang;
 
 	public function setUp() {
-		$GLOBALS['wgDefaultDim'] = 1000; // reset to default
-		$this->contLang = $GLOBALS['wgContLang'];
 		parent::setUp();
-	}
-
-	public function tearDown() {
-		$GLOBALS['wgContLang'] = $this->contLang;
-		parent::tearDown();
+		$this->setMwGlobals( 'wgDefaultDim', 1000 ); // reset to default
 	}
 
 	private function setWarnings( $level ) {
 		global $wgGeoDataWarningLevel;
-		foreach ( array_keys( $wgGeoDataWarningLevel ) as $key ) {
-			$wgGeoDataWarningLevel[$key] = $level;
-		}
+
+		$this->setMwGlobals( 'wgGeoDataWarningLevel',
+			array_fill_keys( array_keys( $wgGeoDataWarningLevel ), $level )
+		);
 	}
 
 	private function assertParse( $input, $expected ) {
@@ -48,8 +42,7 @@ class TagTest extends MediaWikiTestCase {
 	 */
 	public function testLooseTagParsing( $input, $expected, $langCode = false ) {
 		if ( $langCode ) {
-			global $wgContLang;
-			$wgContLang = Language::factory( $langCode );
+			$this->setContentLang( $langCode );
 		}
 		$this->setWarnings( 'none' );
 		$this->assertParse( $input, $expected );
