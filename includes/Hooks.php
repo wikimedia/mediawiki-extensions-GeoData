@@ -70,16 +70,6 @@ class Hooks {
 	}
 
 	/**
-	 * UnitTestsList hook handler
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
-	 *
-	 * @param array $files
-	 */
-	public static function onUnitTestsList( &$files ) {
-		$files[] = dirname( __DIR__ ) . '/tests';
-	}
-
-	/**
 	 * ParserFirstCallInit hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
 	 *
