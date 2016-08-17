@@ -31,10 +31,11 @@ class TagTest extends MediaWikiTestCase {
 		}
 		$all = $out->geoData->getAll();
 		$this->assertEquals( 1, count( $all ), 'A result was expected, but there was error: ' . strip_tags( $out->getText() ) );
+		/** @var Coord $coord */
 		$coord = $all[0];
-		foreach ( $expected as $field => $value ) {
-			$this->assertEquals( $value, $coord->$field, "Checking field $field" );
-		}
+		$this->assertTrue( $coord->fullyEqualsTo( $expected ),
+			'Comparing ' . print_r( $coord, true ) . ' against expected ' . print_r( $expected, true )
+		);
 	}
 
 	/**
@@ -61,7 +62,7 @@ class TagTest extends MediaWikiTestCase {
 			// Basics
 			[
 				'{{#coordinates: 10|20|primary}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ],
+				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 100|20|primary}}', 
@@ -73,90 +74,90 @@ class TagTest extends MediaWikiTestCase {
 			],
 			[
 				'{{#coordinates: 10| primary		|	20}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ],
+				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			[ // empty parameter instead of primary
 				'{{#coordinates: 10 | |	20 }}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => false ],
+				new Coord( 10, 20, 'earth', [ 'primary' => false, 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: primary|10|20}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'primary' => true ],
+				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			// type
 			[
-				'{{#coordinates: 10|20|type:city}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city' ],
+				'{{#coordinates: 10|20|type:landmark}}',
+				new Coord( 10, 20, 'earth', [ 'type' => 'landmark', 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|type:city(666)}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city' ],
+				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			// Other geohack params
 			[
 				'{{#coordinates: 10|20}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ],
+				new Coord( 10, 20, 'earth',  [ 'dim' => 1000 ] ),
 			],
 			[ 
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-mos}}',
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU', 'region' => 'MOS', 'dim' => 10 ],
+				new Coord( 10, 20, 'moon', [ 'country' => 'RU', 'region' => 'MOS', 'dim' => 10 ] ),
 			],
 			[ 
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU}}',
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'moon', 'country' => 'RU', 'dim' => 10 ],
+				new Coord( 10, 20, 'moon', [ 'country' => 'RU', 'dim' => 10 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|_dim:3Km_}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 3000 ],
+				new Coord( 10, 20, 'earth', [ 'dim' => 3000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|foo:bar dim:100m}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 100 ],
+				new Coord( 10, 20, 'earth', [ 'dim' => 100 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|dim:-300}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ],
+				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|dim:-10km}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ],
+				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|dim:1L}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 1000 ],
+				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
 			],
 			// dim fallbacks
 			[
 				'{{#coordinates: 10|20|type:city}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city', 'dim' => 10000 ],
+				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|type:city(2000)}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'city', 'dim' => 10000 ],
+				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|type:lulz}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'lulz', 'dim' => 1000 ],
+				new Coord( 10, 20, 'earth', [ 'type' => 'lulz', 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|scale:50000}}', 
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'dim' => 5000 ],
+				new Coord( 10, 20, 'earth', [ 'dim' => 5000 ] ),
 			],
 			// https://phabricator.wikimedia.org/T48181
 			[
 				'{{#coordinates: 2.5|3,5}}',
-				[ 'lat' => 2.5, 'lon' => 3.5 ],
+				new Coord( 2.5, 3.5, 'earth', [ 'dim' => 1000 ] ),
 				'de',
 			],
 			// https://phabricator.wikimedia.org/T49090
 			[
 				'{{#coordinates: -3.29237|-60.624889|globe=}}',
-				[ 'lat' => -3.29237, 'lon' => -60.624889, 'globe' => 'earth' ],
+				new Coord( -3.29237, -60.624889, 'earth', [ 'dim' => 1000 ] ),
 			],
 			// Lowercase type
 			[
 				'{{#coordinates: 10|20|type:sOmEtHiNg}}',
-				[ 'lat' => 10, 'lon' => 20, 'globe' => 'earth', 'type' => 'something' ],
+				new Coord( 10, 20, 'earth', [ 'type' => 'something', 'dim' => 1000 ] ),
 			],
 		];
 	}

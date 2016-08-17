@@ -184,12 +184,12 @@ class CoordinatesParserFunction {
 			}
 		}
 		if ( isset( $args['scale'] ) ) {
-			$coord->dim = $args['scale'] / 10;
+			$coord->dim = intval( $args['scale'] / 10 );
 		}
 		if ( isset( $args['dim'] ) ) {
 			$dim = $this->parseDim( $args['dim'] );
 			if ( $dim !== false ) {
-				$coord->dim = $dim;
+				$coord->dim = intval( $dim );
 			}
 		}
 		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
@@ -286,7 +286,7 @@ class CoordinatesParserFunction {
 		if ( $lon === false ) {
 			return Status::newFatal( 'geodata-bad-longitude' );
 		}
-		return Status::newGood( new Coord( $lat, $lon, $globe->getName() ) );
+		return Status::newGood( new Coord( (float)$lat, (float)$lon, $globe->getName() ) );
 	}
 
 	private static function parseOneCoord( $parts, $min, $max, $suffixes ) {

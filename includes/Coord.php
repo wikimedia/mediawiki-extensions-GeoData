@@ -20,12 +20,24 @@ class Coord {
 		$pageId,
 		$distance;
 
-	public function __construct( $lat, $lon, $globe = null ) {
+	/**
+	 * @param float $lat
+	 * @param float $lon
+	 * @param string|null $globe
+	 * @param array $extraFields
+	 */
+	public function __construct( $lat, $lon, $globe = null, $extraFields = [] ) {
 		global $wgDefaultGlobe;
 
 		$this->lat = $lat;
 		$this->lon = $lon;
 		$this->globe = isset( $globe ) ? $globe : $wgDefaultGlobe;
+
+		foreach ( $extraFields as $key => $value ) {
+			if ( isset( self::$fieldMapping[$key] ) ) {
+				$this->$key = $value;
+			}
+		}
 	}
 
 	public static function newFromRow( $row ) {
@@ -54,9 +66,9 @@ class Coord {
 	 */
 	public function equalsTo( $coord, $precision = 6 ) {
 		return isset( $coord )
-		&& round( $this->lat, $precision ) == round( $coord->lat, $precision )
-		&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
-		&& $this->globe == $coord->globe;
+			&& round( $this->lat, $precision ) == round( $coord->lat, $precision )
+			&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
+			&& $this->globe === $coord->globe;
 	}
 
 	/**
@@ -67,16 +79,13 @@ class Coord {
 	 * @return Boolean
 	 */
 	public function fullyEqualsTo( $coord, $precision = 6 ) {
-		return isset( $coord )
-		&& round( $this->lat, $precision ) == round( $coord->lat, $precision )
-		&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
-		&& $this->globe == $coord->globe
-		&& $this->primary == $coord->primary
-		&& $this->dim == $coord->dim
-		&& $this->type == $coord->type
-		&& $this->name == $coord->name
-		&& $this->country == $coord->country
-		&& $this->region == $coord->region;
+		return $this->equalsTo( $coord, $precision )
+			&& $this->primary == $coord->primary
+			&& $this->dim === $coord->dim
+			&& $this->type === $coord->type
+			&& $this->name === $coord->name
+			&& $this->country === $coord->country
+			&& $this->region === $coord->region;
 	}
 
 	/**
