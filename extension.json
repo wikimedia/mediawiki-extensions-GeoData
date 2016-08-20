@@ -23,8 +23,6 @@
 		"GeoData\\ApiQueryGeoSearch": "includes/api/ApiQueryGeoSearch.php",
 		"GeoData\\ApiQueryGeoSearchDb": "includes/api/ApiQueryGeoSearchDb.php",
 		"GeoData\\ApiQueryGeoSearchElastic": "includes/api/ApiQueryGeoSearchElastic.php",
-		"Coord": "includes/BC.php",
-		"CoordinatesOutput": "includes/BC.php",
 		"GeoData\\BoundingBox": "includes/BoundingBox.php",
 		"GeoData\\Coord": "includes/Coord.php",
 		"GeoData\\CoordinatesIndexField" : "includes/CoordinatesIndexField.php",
