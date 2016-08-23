@@ -1,6 +1,9 @@
 <?php
 
+namespace GeoData\Test;
+
 use GeoData\ApiQueryGeoSearchDb;
+use MediaWikiTestCase;
 
 /**
  * @group GeoData

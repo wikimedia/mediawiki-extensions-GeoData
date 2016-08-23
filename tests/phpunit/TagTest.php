@@ -1,5 +1,13 @@
 <?php
 
+namespace GeoData\Test;
+
+use GeoData\Coord;
+use MediaWikiTestCase;
+use Parser;
+use ParserOptions;
+use Title;
+
 /**
  * @group GeoData
  */

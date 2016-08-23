@@ -1,6 +1,10 @@
 <?php
+
+namespace GeoData\Test;
+
 use GeoData\Globe;
 use GeoData\Math;
+use MediaWikiTestCase;
 
 /**
  * @group GeoData

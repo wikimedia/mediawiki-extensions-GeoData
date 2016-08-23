@@ -1,13 +1,19 @@
 <?php
 
+namespace GeoData\Test;
+
+use ApiMain;
+use FauxRequest;
 use GeoData\ApiQueryGeoSearch;
+use MediaWikiTestCase;
+use UsageException;
 
 /**
  * @group GeoData
  */
 class GeoSearchTest extends MediaWikiTestCase {
 	public function setUp() {
-		$this->setMwGlobals( 'wgAPIListModules', [ 'geosearch' => 'MockApiQueryGeoSearch' ] );
+		$this->setMwGlobals( 'wgAPIListModules', [ 'geosearch' => 'GeoData\Test\MockApiQueryGeoSearch' ] );
 		parent::setUp();
 	}
 
@@ -16,7 +22,7 @@ class GeoSearchTest extends MediaWikiTestCase {
 		$request = new FauxRequest( $params );
 
 		$api = new ApiMain( $request );
-		return $api->execute();
+		$api->execute();
 	}
 
 	/**

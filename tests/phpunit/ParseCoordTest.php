@@ -1,8 +1,11 @@
 <?php
 
+namespace GeoData\Test;
+
 use GeoData\Coord;
 use GeoData\CoordinatesParserFunction;
 use GeoData\Globe;
+use MediaWikiTestCase;
 
 /**
  * @group GeoData

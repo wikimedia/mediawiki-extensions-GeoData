@@ -1,6 +1,9 @@
 <?php
 
+namespace GeoData\Test;
+
 use GeoData\BoundingBox;
+use MediaWikiTestCase;
 
 /**
  * @group GeoData

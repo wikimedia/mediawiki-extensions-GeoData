@@ -1,8 +1,11 @@
 <?php
 
+namespace GeoData\Test;
+
 use GeoData\Coord;
 use GeoData\Globe;
 use GeoData\Math;
+use MediaWikiTestCase;
 
 /**
  * @todo: More tests
