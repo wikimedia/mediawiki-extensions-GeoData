@@ -8,6 +8,7 @@ use Content;
 use DatabaseUpdater;
 use LinksUpdate;
 use LocalFile;
+use MediaWiki\MediaWikiServices;
 use MWException;
 use OutputPage;
 use Parser;
@@ -99,12 +100,12 @@ class Hooks {
 	}
 
 	/**
-	 * LinksUpdate hook handler
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LinksUpdate
+	 * LinksUpdateComplete hook handler
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LinksUpdateComplete
 	 *
 	 * @param LinksUpdate $linksUpdate
 	 */
-	public static function onLinksUpdate( &$linksUpdate ) {
+	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate ) {
 		$out = $linksUpdate->getParserOutput();
 		$data = [];
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
@@ -150,27 +151,24 @@ class Hooks {
 		return null;
 	}
 
-	private static function doLinksUpdate( $coords, $pageId ) {
-		global $wgGeoDataBackend;
+	/**
+	 * @param Coord[] $coords
+	 * @param int $pageId
+	 * @throws \DBUnexpectedError
+	 */
+	private static function doLinksUpdate( array $coords, $pageId ) {
+		$services = MediaWikiServices::getInstance();
 
-		$dbw = wfGetDB( DB_MASTER );
-
-		if ( $wgGeoDataBackend == 'db' && !count( $coords ) ) {
-			$dbw->delete( 'geo_tags', [ 'gt_page_id' => $pageId ], __METHOD__ );
-			return;
-		}
-
-		$prevCoords = GeoData::getAllCoordinates( $pageId, [], DB_MASTER );
 		$add = [];
 		$delete = [];
 		$primary = ( isset( $coords[0] ) && $coords[0]->primary ) ? $coords[0] : null;
-		foreach ( $prevCoords as $old ) {
+		foreach ( GeoData::getAllCoordinates( $pageId, [], DB_MASTER ) as $old ) {
 			$delete[$old->id] = $old;
 		}
-		/** @var Coord $new */
 		foreach ( $coords as $new ) {
 			if ( !$new->primary && $new->equalsTo( $primary ) ) {
-				continue; // Don't save secondary coordinates pointing to the same place as the primary one
+				// Don't save secondary coordinates pointing to the same place as the primary one
+				continue;
 			}
 			$match = false;
 			foreach ( $delete as $id => $old ) {
@@ -185,12 +183,20 @@ class Hooks {
 			}
 		}
 
-		if ( count( $delete ) ) {
-			$deleteIds = array_keys( $delete );
-			$dbw->delete( 'geo_tags', [ 'gt_id' => $deleteIds ], __METHOD__ );
+		$dbw = wfGetDB( DB_MASTER );
+		$lbFactory = $services->getDBLoadBalancerFactory();
+		$ticket = $lbFactory->getEmptyTransactionTicket( __METHOD__ );
+		$batchSize = $services->getMainConfig()->get( 'UpdateRowsPerQuery' );
+
+		$deleteIds = array_keys( $delete );
+		foreach ( array_chunk( $deleteIds, $batchSize ) as $deleteIdBatch ) {
+			$dbw->delete( 'geo_tags', [ 'gt_id' => $deleteIdBatch ], __METHOD__ );
+			$lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
 		}
-		if ( count( $add ) ) {
-			$dbw->insert( 'geo_tags', $add, __METHOD__ );
+
+		foreach ( array_chunk( $add, $batchSize ) as $addBatch ) {
+			$dbw->insert( 'geo_tags', $addBatch, __METHOD__ );
+			$lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
 		}
 	}
 
@@ -207,8 +213,12 @@ class Hooks {
 		if ( !$pout ) {
 			wfDebugLog( 'mobile', __METHOD__ . "(): no parser output returned for file {$file->getName()}" );
 		} else {
+			// Make sure this has outer transaction scope (though the hook fires
+			// in a deferred AutoCommitUdpate update, so it should be safe anyway).
 			$lu = new LinksUpdate( $file->getTitle(), $pout );
-			self::onLinksUpdate( $lu );
+			\DeferredUpdates::addCallableUpdate( function () use ( $lu ) {
+				self::onLinksUpdateComplete( $lu );
+			} );
 		}
 	}
 

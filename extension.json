@@ -39,7 +39,7 @@
 		"LoadExtensionSchemaUpdates": "GeoData\\Hooks::onLoadExtensionSchemaUpdates",
 		"ParserFirstCallInit": "GeoData\\Hooks::onParserFirstCallInit",
 		"ArticleDeleteComplete": "GeoData\\Hooks::onArticleDeleteComplete",
-		"LinksUpdate": "GeoData\\Hooks::onLinksUpdate",
+		"LinksUpdateComplete": "GeoData\\Hooks::onLinksUpdateComplete",
 		"FileUpload": "GeoData\\Hooks::onFileUpload",
 		"OutputPageParserOutput": "GeoData\\Hooks::onOutputPageParserOutput",
 		"SearchIndexFields": "GeoData\\Hooks::onSearchIndexFields",
