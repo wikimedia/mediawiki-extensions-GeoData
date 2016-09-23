@@ -104,8 +104,9 @@ class Hooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LinksUpdateComplete
 	 *
 	 * @param LinksUpdate $linksUpdate
+	 * @param int|null $ticket
 	 */
-	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate ) {
+	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate, $ticket = null ) {
 		$out = $linksUpdate->getParserOutput();
 		$data = [];
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
@@ -121,7 +122,7 @@ class Hooks {
 			$data[] = $coordFromMetadata;
 		}
 
-		self::doLinksUpdate( $data, $linksUpdate->mId );
+		self::doLinksUpdate( $data, $linksUpdate->mId, $ticket );
 	}
 
 	private static function getCoordinatesIfFile( Title $title ) {
@@ -154,9 +155,10 @@ class Hooks {
 	/**
 	 * @param Coord[] $coords
 	 * @param int $pageId
+	 * @param int|null $ticket
 	 * @throws \DBUnexpectedError
 	 */
-	private static function doLinksUpdate( array $coords, $pageId ) {
+	private static function doLinksUpdate( array $coords, $pageId, $ticket ) {
 		$services = MediaWikiServices::getInstance();
 
 		$add = [];
@@ -185,7 +187,7 @@ class Hooks {
 
 		$dbw = wfGetDB( DB_MASTER );
 		$lbFactory = $services->getDBLoadBalancerFactory();
-		$ticket = $lbFactory->getEmptyTransactionTicket( __METHOD__ );
+		$ticket = $ticket ?: $lbFactory->getEmptyTransactionTicket( __METHOD__ );
 		$batchSize = $services->getMainConfig()->get( 'UpdateRowsPerQuery' );
 
 		$deleteIds = array_keys( $delete );
