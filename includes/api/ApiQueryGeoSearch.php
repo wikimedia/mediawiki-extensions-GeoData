@@ -10,6 +10,7 @@ use WikiPage;
 
 abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	const MIN_RADIUS = 10;
+	const DEFAULT_RADIUS = 500;
 
 	/**
 	 * @var Coord The center of search area
@@ -141,6 +142,7 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			],
 			'radius' => [
 				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_DFLT => min( self::DEFAULT_RADIUS, $wgMaxGeoSearchRadius ),
 				ApiBase::PARAM_MIN => self::MIN_RADIUS,
 				ApiBase::PARAM_MAX => $wgMaxGeoSearchRadius,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
