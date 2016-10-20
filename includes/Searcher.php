@@ -5,6 +5,7 @@ namespace GeoData;
 
 use CirrusSearch\ElasticsearchIntermediary;
 use CirrusSearch\SearchConfig;
+use CirrusSearch\SearchRequestLog;
 use ConfigFactory;
 use Elastica\Exception\ExceptionInterface;
 use User;
@@ -35,8 +36,14 @@ class Searcher extends ElasticsearchIntermediary {
 		$pageType = $this->connection->getPageType( wfWikiID(), $indexType );
 		$search = $pageType->createSearch( $query );
 
+		$log = new SearchRequestLog(
+			$this->connection->getClient(),
+			$this->user,
+			'performing {queryType}',
+			$queryType
+		);
 		try {
-			$this->start( "performing $queryType", [ 'queryType' => $queryType ] );
+			$this->start( $log );
 			$result = $search->search();
 			$this->success();
 		} catch ( ExceptionInterface $ex ) {
