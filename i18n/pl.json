@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BeginaFelicysym"
+			"BeginaFelicysym",
+			"Chrumps"
 		]
 	},
 	"geodata-desc": "Dodaje funkcje przechowywania i pobierania współrzędnych geograficznych",
@@ -16,5 +17,6 @@
 	"geodata-broken-tags-category": "Strony niepoprawnymi znacznikami współrzędnych",
 	"geodata-unknown-type-category": "Strony ze współrzędnymi nieznanego typu",
 	"geodata-unknown-globe-category": "Strony z nieznaną wartością globu",
-	"geodata-unknown-region-category": "Strony z nieprawidłową wartością regionu"
+	"geodata-unknown-region-category": "Strony z nieprawidłową wartością regionu",
+	"apihelp-query+coordinates-description": "Zwraca współrzędne danej strony."
 }
