@@ -36,13 +36,8 @@ class Searcher extends ElasticsearchIntermediary {
 		$pageType = $this->connection->getPageType( wfWikiID(), $indexType );
 		$search = $pageType->createSearch( $query );
 
-		$log = new SearchRequestLog(
-			$this->connection->getClient(),
-			$this->user,
-			'performing {queryType}',
-			$queryType
-		);
 		try {
+			$log = $this->newLog( 'performing {queryType}', $queryType );
 			$this->start( $log );
 			$result = $search->search();
 			$this->success();
@@ -52,5 +47,20 @@ class Searcher extends ElasticsearchIntermediary {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @param string $description
+	 * @param string $queryType
+	 * @param string[] $extra
+	 * @return SearchRequestLog
+	 */
+	protected function newLog( $description, $queryType, array $extra = [] ) {
+		return new SearchRequestLog(
+			$this->connection->getClient(),
+			$description,
+			$queryType,
+			$extra
+		);
 	}
 }
