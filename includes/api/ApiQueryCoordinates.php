@@ -38,10 +38,9 @@ class ApiQueryCoordinates extends ApiQueryBase {
 
 		if ( isset( $params['continue'] ) ) {
 			$parts = explode( '|', $params['continue'] );
-			if ( count( $parts ) != 2 || !is_numeric( $parts[0] ) || !is_numeric( $parts[0] ) ) {
-				$this->dieUsage( "Invalid continue parameter. You should pass the " .
-					"original value returned by the previous query", "_badcontinue" );
-			}
+			$this->dieContinueUsageIf( count( $parts ) != 2 );
+			$this->dieContinueUsageIf( !is_numeric( $parts[0] ) );
+			$this->dieContinueUsageIf( !is_numeric( $parts[1] ) );
 			$parts[0] = intval( $parts[0] );
 			$parts[1] = intval( $parts[1] );
 			$this->addWhere(
@@ -99,21 +98,42 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		if ( $params['distancefrompoint'] !== null ) {
 			$arr = explode( '|', $params['distancefrompoint'] );
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
-				$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
+				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+					$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
+				} else {
+					$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
+				}
 			}
 			return new Coord( $arr[0], $arr[1], 'earth' );
 		}
 		if ( $params['distancefrompage'] !== null ) {
 			$title = Title::newFromText( $params['distancefrompage'] );
 			if ( !$title ) {
-				$this->dieUsage( "Page ``{$params['distancefrompage']}'' does not exist", '_invalid-page' );
+				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+					$this->dieWithError(
+						[ 'apierror-invalidtitle', wfEscapeWikiText( $params['distancefrompage'] ) ]
+					);
+				} else {
+					$this->dieUsage( "Page ``{$params['distancefrompage']}'' does not exist", '_invalid-page' );
+				}
 			}
 			$coord = GeoData::getPageCoordinates( $title );
 			if ( !$coord ) {
-				$this->dieUsage( "Page ``{$params['distancefrompage']}'' has no primary coordinates", '_no-coordinates' );
+				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+					$this->dieWithError(
+						[ 'apierror-geodata-noprimarycoord', wfEscapeWikiText( $title->getPrefixedText() ) ],
+						'no-coordinates'
+					);
+				} else {
+					$this->dieUsage( "Page ``{$params['distancefrompage']}'' has no primary coordinates", '_no-coordinates' );
+				}
 			}
 			if ( $coord->globe != 'earth' ) {
-				$this->dieUsage( "This page's coordinates are not on Earth", '_notonearth' );
+				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+					$this->dieWithError( 'apierror-geodata-notonearth', 'notonearth' );
+				} else {
+					$this->dieUsage( "This page's coordinates are not on Earth", '_notonearth' );
+				}
 			}
 			return $coord;
 		}

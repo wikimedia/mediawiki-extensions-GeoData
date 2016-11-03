@@ -6,6 +6,7 @@ use ApiMain;
 use FauxRequest;
 use GeoData\ApiQueryGeoSearch;
 use MediaWikiTestCase;
+use ApiUsageException;
 use UsageException;
 
 /**
@@ -26,10 +27,12 @@ class GeoSearchTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @expectedException UsageException
 	 * @dataProvider provideRequiredParams
 	 */
 	public function testRequiredParams( array $params ) {
+		$this->setExpectedException(
+			class_exists( ApiUsageException::class ) ? ApiUsageException::class : UsageException::class
+		);
 		$this->request( $params );
 	}
 

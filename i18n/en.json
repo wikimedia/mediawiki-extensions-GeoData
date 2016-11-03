@@ -42,5 +42,11 @@
 	"apihelp-query+geosearch-param-primary": "Whether to return only primary coordinates (\"primary\"), secondary (\"secondary\") or both (\"all\").",
 	"apihelp-query+geosearch-param-debug": "Whether debug information should be returned.",
 	"apihelp-query+geosearch-example-1": "Search around the point with coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
-	"apihelp-query+geosearch-example-2": "Search in a bounding box"
+	"apihelp-query+geosearch-example-2": "Search in a bounding box",
+	"apierror-geodata-nocoord": "Page coordinates unknown.",
+	"apierror-geodata-noprimarycoord": "Page $1 has no primary coordinates.",
+	"apierror-geodata-notonearth": "This page's coordinates are not on Earth.",
+	"apierror-geodata-invalidbox": "Invalid bounding box.",
+	"apierror-geodata-boxtoobig": "Bounding box is too big",
+	"apierror-geodata-badcoord": "Invalid coordinate provided"
 }
