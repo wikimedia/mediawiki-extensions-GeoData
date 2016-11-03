@@ -54,70 +54,46 @@
 		"geodata-unknown-type-category"
 	],
 	"config": {
-		"MaxGeoSearchRadius": {
-			"value": 10000
-		},
-		"DefaultGlobe": {
-			"value": "earth"
-		},
-		"MaxCoordinatesPerPage": {
-			"value": 500
-		},
+		"MaxGeoSearchRadius": 10000,
+		"DefaultGlobe": "earth",
+		"MaxCoordinatesPerPage": 500,
 		"TypeToDim": {
-			"value": {
-				"country": 1000000,
-				"satellite": 1000000,
-				"state": 300000,
-				"adm1st": 100000,
-				"adm2nd": 30000,
-				"adm3rd": 10000,
-				"city": 10000,
-				"isle": 10000,
-				"mountain": 10000,
-				"river": 10000,
-				"waterbody": 10000,
-				"event": 5000,
-				"forest": 5000,
-				"glacier": 5000,
-				"airport": 3000,
-				"railwaystation": 1000,
-				"edu": 1000,
-				"pass": 1000,
-				"camera": 1000,
-				"landmark": 1000
-			}
+			"country": 1000000,
+			"satellite": 1000000,
+			"state": 300000,
+			"adm1st": 100000,
+			"adm2nd": 30000,
+			"adm3rd": 10000,
+			"city": 10000,
+			"isle": 10000,
+			"mountain": 10000,
+			"river": 10000,
+			"waterbody": 10000,
+			"event": 5000,
+			"forest": 5000,
+			"glacier": 5000,
+			"airport": 3000,
+			"railwaystation": 1000,
+			"edu": 1000,
+			"pass": 1000,
+			"camera": 1000,
+			"landmark": 1000
 		},
-		"DefaultDim": {
-			"value": 1000
-		},
-		"Globes": {
-			"value": []
-		},
+		"DefaultDim": 1000,
+		"Globes": [],
 		"GeoDataWarningLevel": {
-			"value": {
-				"unknown type": "track",
-				"unknown globe": "none",
-				"invalid region": "track"
-			}
+			"unknown type": "track",
+			"unknown globe": "none",
+			"invalid region": "track"
 		},
-		"GeoDataIndexGranularity": {
-			"value": 10
-		},
-		"GeoDataBackend": {
-			"value": "db"
-		},
-		"GeoDataInJS": {
-			"value": [
-				"lat",
-				"lon"
-			]
-		},
-		"GeoDataUseCirrusSearch": {
-			"value": false
-		},
-		"GeoDataDebug": {
-			"value": false
-		}
+		"GeoDataIndexGranularity": 10,
+		"GeoDataBackend": "db",
+		"GeoDataInJS": [
+			"lat",
+			"lon"
+		],
+		"GeoDataUseCirrusSearch": false,
+		"GeoDataDebug": false
 	},
-	"manifest_version": 2
+	"manifest_version": 1
 }
