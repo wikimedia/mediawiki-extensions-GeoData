@@ -13,6 +13,7 @@ class UpdateIndexGranularity extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = 'Updates GeoData database after $wgGeoDataIndexGranularity has been changed';
+		$this->requireExtension( 'GeoData' );
 	}
 
 	public function execute() {
