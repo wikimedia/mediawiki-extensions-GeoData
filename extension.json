@@ -24,12 +24,14 @@
 		"GeoData\\ApiQueryGeoSearchDb": "includes/api/ApiQueryGeoSearchDb.php",
 		"GeoData\\ApiQueryGeoSearchElastic": "includes/api/ApiQueryGeoSearchElastic.php",
 		"GeoData\\BoundingBox": "includes/BoundingBox.php",
+		"GeoData\\CirrusGeoFeature": "includes/Search/CirrusGeoFeature.php",
 		"GeoData\\Coord": "includes/Coord.php",
-		"GeoData\\CoordinatesIndexField" : "includes/CoordinatesIndexField.php",
+		"GeoData\\CoordinatesIndexField" : "includes/Search/CoordinatesIndexField.php",
 		"GeoData\\CoordinatesOutput": "includes/CoordinatesOutput.php",
 		"GeoData\\CoordinatesParserFunction": "includes/CoordinatesParserFunction.php",
 		"GeoData\\GeoData": "includes/GeoData.body.php",
-		"GeoData\\GeoPointIndexField" : "includes/GeoPointIndexField.php",
+		"GeoData\\GeoPointIndexField" : "includes/Search/GeoPointIndexField.php",
+		"GeoData\\GeoRadiusFunctionScoreBuilder": "includes/Search/GeoRadiusFunctionScoreBuilder.php",
 		"GeoData\\Globe": "includes/Globe.php",
 		"GeoData\\Hooks": "includes/Hooks.php",
 		"GeoData\\Math": "includes/Math.php",
@@ -45,6 +47,7 @@
 		"SearchIndexFields": "GeoData\\Hooks::onSearchIndexFields",
 		"SearchDataForIndex": "GeoData\\Hooks::onSearchDataForIndex",
 		"ParserTestTables": "GeoData\\Hooks::onParserTestTables",
+		"CirrusSearchAddQueryFeatures": "GeoData\\Hooks::onCirrusSearchAddQueryFeatures",
 		"ApiQuery::moduleManager": "GeoData\\Hooks::onApiQueryModuleManager"
 	},
 	"TrackingCategories": [
@@ -114,6 +117,12 @@
 		},
 		"GeoDataUseCirrusSearch": {
 			"value": false
+		},
+		"GeoDataRadiusScoreOverrides": {
+			"value": {
+				"config_override": "GeoDataPreferGeoRadiusWeight",
+				"uri_param_override": "geodataPreferGeoRadiusWeight"
+			}
 		},
 		"GeoDataDebug": {
 			"value": false

@@ -4,6 +4,7 @@ namespace GeoData;
 
 use ApiModuleManager;
 use Article;
+use CirrusSearch\SearchConfig;
 use Content;
 use DatabaseUpdater;
 use LinksUpdate;
@@ -348,5 +349,14 @@ class Hooks {
 				'GeoData\ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend )
 			);
 		}
+	}
+
+	/**
+	 * Add geo-search feature to search syntax
+	 * @param SearchConfig $config
+	 * @param array $features
+	 */
+	public static function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$features ) {
+		$features[] = new CirrusGeoFeature();
 	}
 }
