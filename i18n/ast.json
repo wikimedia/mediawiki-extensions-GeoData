@@ -26,10 +26,10 @@
 	"apihelp-query+coordinates-param-limit": "Númberu de coordenaes a devolver.",
 	"apihelp-query+coordinates-param-prop": "Qué otres propiedaes de les coordenaes se devolverán.",
 	"apihelp-query+coordinates-param-primary": "Si sólo hai que devolver coordenaes primaries (\"primary\"), secundaries (\"secondary\") o les dos (\"all\").",
-	"apihelp-query+coordinates-param-distancefrompoint": "Devolver a distancia en metros de cada resultáu na Tierra dende estes coordenaes.",
-	"apihelp-query+coordinates-param-distancefrompage": "Devolver la distancia en metros de cada resultáu na Tierra dende les coordenaes d'esta páxina.",
+	"apihelp-query+coordinates-param-distancefrompoint": "Devolver a distancia en metros fasta les coordenaes xeográfiques de cada resultáu válidu dende les coordenaes daes.",
+	"apihelp-query+coordinates-param-distancefrompage": "Devolver a distancia en metros fasta les coordenaes xeográfiques de cada resultáu válidu dende les coordenaes d'esta páxina.",
 	"apihelp-query+coordinates-example-1": "Amosar la llista de les coordenaes de la [[Main Page]]",
-	"apihelp-query+geosearch-description": "Devuelve páxines que contienen coordenaes que s'atopen n'una área determinada.",
+	"apihelp-query+geosearch-description": "Devuelve les páxines que contienen coordenaes que tan dientro d'una área determinada.",
 	"apihelp-query+geosearch-param-bbox": "Cuadru de llende nel que guetar: coordenaes separaes con tuberíes (|) de les esquines d'arriba izquierda y abaxo drecha.",
 	"apihelp-query+geosearch-param-coord": "Coordenada alredor de la que buscar.",
 	"apihelp-query+geosearch-param-page": "Títulu de la páxina alredor de la que buscar.",
@@ -42,5 +42,11 @@
 	"apihelp-query+geosearch-param-primary": "Si sólo hai que devolver coordenaes primaries (\"primary\"), secundaries (\"secondary\") o les dos (\"all\").",
 	"apihelp-query+geosearch-param-debug": "Si hai que devolver información de depuración.",
 	"apihelp-query+geosearch-example-1": "Guetar alredor del puntu con coordenaes 37° 47′ 13.1″ N, 122° 23′ 58.84″ O",
-	"apihelp-query+geosearch-example-2": "guetar nun cuadru de llende"
+	"apihelp-query+geosearch-example-2": "guetar nun cuadru de llende",
+	"apierror-geodata-nocoord": "Coordenaes de páxina desconocíes.",
+	"apierror-geodata-noprimarycoord": "La páxina $1 nun tien coordenaes primaries.",
+	"apierror-geodata-notonearth": "Les coordenaes d'esta páxina nun tán na Tierra.",
+	"apierror-geodata-invalidbox": "Cuadru de llende inválidu.",
+	"apierror-geodata-boxtoobig": "El cuadru de llende ye demasiao grande",
+	"apierror-geodata-badcoord": "La coordenada proporcionada nun ye válida"
 }

@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Meno25"
+			"Meno25",
+			"محمد أحمد عبد الفتاح"
 		]
-	}
+	},
+	"apierror-geodata-badcoord": "أدخلت إحداثيات غير صالحة"
 }

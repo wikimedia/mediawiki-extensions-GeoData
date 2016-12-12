@@ -18,5 +18,7 @@
 	"geodata-unknown-type-category": "Strony ze współrzędnymi nieznanego typu",
 	"geodata-unknown-globe-category": "Strony z nieznaną wartością globu",
 	"geodata-unknown-region-category": "Strony z nieprawidłową wartością regionu",
-	"apihelp-query+coordinates-description": "Zwraca współrzędne danej strony."
+	"apihelp-query+coordinates-description": "Zwraca współrzędne danej strony.",
+	"apierror-geodata-invalidbox": "Nieprawidłowa obwiednia.",
+	"apierror-geodata-boxtoobig": "Obwiednia jest zbyt duża"
 }

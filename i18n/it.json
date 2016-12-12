@@ -33,5 +33,6 @@
 	"apihelp-query+geosearch-param-limit": "Numero massimo di pagine da restituire.",
 	"apihelp-query+geosearch-param-prop": "Quali proprietà addizionali delle coordinate restituire.",
 	"apihelp-query+geosearch-param-debug": "Quali informazioni di debug restituire.",
-	"apihelp-query+geosearch-example-1": "Ricerca attorno al punto con coordinate 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
+	"apihelp-query+geosearch-example-1": "Ricerca attorno al punto con coordinate 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apierror-geodata-noprimarycoord": "La pagina $1 non ha coordinate primarie."
 }

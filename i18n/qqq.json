@@ -47,10 +47,10 @@
 	"apihelp-query+geosearch-param-debug": "{{doc-apihelp-param|query+geosearch|debug}}",
 	"apihelp-query+geosearch-example-1": "Do not alter \"37° 47′ 13.1″ N, 122° 23′ 58.84″ W\".\n{{doc-apihelp-example|query+geosearch}}",
 	"apihelp-query+geosearch-example-2": "{{doc-apihelp-example|query+geosearch}}",
-	"apierror-geodata-badcoord": "{{doc-apierror}}",
-	"apierror-geodata-boxtoobig": "{{doc-apierror}}",
-	"apierror-geodata-invalidbox": "{{doc-apierror}}",
 	"apierror-geodata-nocoord": "{{doc-apierror}}",
 	"apierror-geodata-noprimarycoord": "{{doc-apierror}}\n\nParameters:\n* $1 - Page name",
-	"apierror-geodata-notonearth": "{{doc-apierror}}"
+	"apierror-geodata-notonearth": "{{doc-apierror}}",
+	"apierror-geodata-invalidbox": "{{doc-apierror}}",
+	"apierror-geodata-boxtoobig": "{{doc-apierror}}",
+	"apierror-geodata-badcoord": "{{doc-apierror}}"
 }

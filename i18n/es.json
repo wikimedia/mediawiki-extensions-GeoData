@@ -42,5 +42,7 @@
 	"apihelp-query+geosearch-param-prop": "Qué propiedades adicionales de las coordenadas se devolverán.",
 	"apihelp-query+geosearch-param-primary": "Si devolver solo las coordenadas primarias (\"primary\"), secundarias (\"secondary\") o ambas (\"all\").",
 	"apihelp-query+geosearch-param-debug": "Si la información de depuración debe devolverse.",
-	"apihelp-query+geosearch-example-1": "Buscar alrededor del punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ O"
+	"apihelp-query+geosearch-example-1": "Buscar alrededor del punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ O",
+	"apierror-geodata-nocoord": "Coordenadas de página desconocidas.",
+	"apierror-geodata-badcoord": "La coordenada proporcionada no es válida"
 }

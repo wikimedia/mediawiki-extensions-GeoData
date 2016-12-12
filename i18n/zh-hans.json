@@ -47,5 +47,11 @@
 	"apihelp-query+geosearch-param-primary": "是否只返回主坐标（“primary”）、第二坐标（“secondary”）或两者（“all”）。",
 	"apihelp-query+geosearch-param-debug": "是否应该返回调试信息。",
 	"apihelp-query+geosearch-example-1": "搜索坐标点37° 47′ 13.1″ N, 122° 23′ 58.84″ W附近的东西",
-	"apihelp-query+geosearch-example-2": "在边界框内搜索"
+	"apihelp-query+geosearch-example-2": "在边界框内搜索",
+	"apierror-geodata-nocoord": "页面坐标位置。",
+	"apierror-geodata-noprimarycoord": "页面$1没有主要坐标。",
+	"apierror-geodata-notonearth": "此页面的坐标不在地球上。",
+	"apierror-geodata-invalidbox": "无效的边框。",
+	"apierror-geodata-boxtoobig": "边框太大",
+	"apierror-geodata-badcoord": "提供了无效的坐标"
 }

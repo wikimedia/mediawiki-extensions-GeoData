@@ -7,7 +7,8 @@
 			"Nicolapps",
 			"Jonathan1",
 			"Lucky",
-			"Wladek92"
+			"Wladek92",
+			"Derugon"
 		]
 	},
 	"geodata-desc": "Ajoute la fonctionnalité de stockage et d'extraction des coordonnées géographiques.",
@@ -48,5 +49,8 @@
 	"apihelp-query+geosearch-param-primary": "S’il faut renvoyer uniquement les coordonnées primaires (« primary »), secondaires (« secondary ») ou les deux (« all »).",
 	"apihelp-query+geosearch-param-debug": "Si les informations de débogage doivent être renvoyées.",
 	"apihelp-query+geosearch-example-1": "Rechercher autour du point ayant les coordonnées 37° 47' 13.1\" N, 122° 23' 58.84\" W",
-	"apihelp-query+geosearch-example-2": "Rechercher dans une boîte délimitante"
+	"apihelp-query+geosearch-example-2": "Rechercher dans une boîte délimitante",
+	"apierror-geodata-nocoord": "Coordonnées de la page inconnues.",
+	"apierror-geodata-noprimarycoord": "La page $1 n'a pas de coordonnées primaires.",
+	"apierror-geodata-badcoord": "Coordonnées soumises invalides"
 }

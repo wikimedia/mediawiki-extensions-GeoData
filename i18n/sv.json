@@ -43,5 +43,6 @@
 	"apihelp-query+geosearch-param-prop": "Vilka ytterligare koordinategenskaper som ska returneras.",
 	"apihelp-query+geosearch-param-primary": "Om bara primära (\"primary\"), sekundära (\"secondary\") eller båda (\"all\") koordinater ska returneras.",
 	"apihelp-query+geosearch-param-debug": "Om felsökningsinformation ska returneras.",
-	"apihelp-query+geosearch-example-1": "Sök kring punkten med koordinaterna 37° 47′ 13.1″ N, 122° 23′ 58.84″ W"
+	"apihelp-query+geosearch-example-1": "Sök kring punkten med koordinaterna 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apierror-geodata-badcoord": "Ogiltig koordinat angavs"
 }
