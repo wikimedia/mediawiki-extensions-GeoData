@@ -24,5 +24,5 @@
 	"geodata-unknown-region-category": "Stránky s nesprávným regionem",
 	"geodata-unknown-region-category-desc": "Stránka u souřadnic používá neznámou hodnotu parametru <code>region</code>.",
 	"geodata-api-help-coordinates-format": "Formát: Zeměpisná šířka a délka oddělené svislítkem („|“).",
-	"apierror-geodata-nocoord": "Neznámý zdroj souřadnic stránky."
+	"apierror-geodata-nocoord": "Souřadnice pro stránku nejsou známy."
 }
