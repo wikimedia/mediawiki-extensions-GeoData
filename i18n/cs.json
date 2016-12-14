@@ -3,7 +3,8 @@
 		"authors": [
 			"Jkjk",
 			"Mormegil",
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Marek Kriz"
 		]
 	},
 	"geodata-desc": "Přidává funkcionality pro ukládání a načítání zeměpisných souřadnic",
@@ -24,5 +25,5 @@
 	"geodata-unknown-region-category": "Stránky s nesprávným regionem",
 	"geodata-unknown-region-category-desc": "Stránka u souřadnic používá neznámou hodnotu parametru <code>region</code>.",
 	"geodata-api-help-coordinates-format": "Formát: Zeměpisná šířka a délka oddělené svislítkem („|“).",
-	"apierror-geodata-nocoord": "Souřadnice pro stránku nejsou známy."
+	"apierror-geodata-nocoord": "Souřadnice stránky nejsou známy."
 }

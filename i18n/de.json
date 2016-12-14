@@ -46,5 +46,9 @@
 	"apihelp-query+geosearch-example-1": "Sucht in der Nähe des Punktes mit den Koordinaten 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
 	"apihelp-query+geosearch-example-2": "Suche in einem begrenzenden Rahmen",
 	"apierror-geodata-nocoord": "Die Seitenkoordinaten sind unbekannt.",
+	"apierror-geodata-noprimarycoord": "Die Seite $1 hat keine primären Koordinaten.",
+	"apierror-geodata-notonearth": "Die Koordinaten der Seite befinden sich nicht auf der Erde.",
+	"apierror-geodata-invalidbox": "Ungültige Bounding Box.",
+	"apierror-geodata-boxtoobig": "Die Bounding Box ist zu groß",
 	"apierror-geodata-badcoord": "Ungültige Koordinaten angegeben"
 }

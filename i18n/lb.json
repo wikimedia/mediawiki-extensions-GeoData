@@ -18,5 +18,6 @@
 	"apihelp-query+geosearch-description": "Gëtt Säiten zréck déi Koordinaten hunn déi an enger bestëmmter Géigend leien.",
 	"apierror-geodata-nocoord": "Koordinate vun der Säit onbekannt.",
 	"apierror-geodata-noprimarycoord": "Säit $1 huet keng primär Koordinaten.",
-	"apierror-geodata-notonearth": "D'Koordinate vun dëser Säit sinn net op der Äerd."
+	"apierror-geodata-notonearth": "D'Koordinate vun dëser Säit sinn net op der Äerd.",
+	"apierror-geodata-badcoord": "Net valabel Koordinaten uginn"
 }

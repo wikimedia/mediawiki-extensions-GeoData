@@ -52,5 +52,6 @@
 	"apihelp-query+geosearch-example-2": "Rechercher dans une boîte délimitante",
 	"apierror-geodata-nocoord": "Coordonnées de la page inconnues.",
 	"apierror-geodata-noprimarycoord": "La page $1 n'a pas de coordonnées primaires.",
+	"apierror-geodata-notonearth": "Les coordonnées de cette page ne sont pas sur la terre.",
 	"apierror-geodata-badcoord": "Coordonnées soumises invalides"
 }
