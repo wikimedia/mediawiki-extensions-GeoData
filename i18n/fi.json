@@ -4,7 +4,8 @@
 			"Stryn",
 			"VezonThunder",
 			"Zache",
-			"Pxos"
+			"Pxos",
+			"Nike"
 		]
 	},
 	"geodata-desc": "Lisää maantieteellisten koordinaattien säilöntä- ja hakutoiminnot",
@@ -19,5 +20,6 @@
 	"geodata-broken-tags-category": "Sivut, joissa on virheellisessä muodossa olevia koordinaatteja",
 	"geodata-unknown-type-category": "Sivut, joissa koordinaatin tyyppi on tuntematon",
 	"geodata-unknown-globe-category": "Sivut, joissa on tuntematon globe-arvo",
-	"geodata-unknown-region-category": "Sivut, joissa on virheellinen alueen arvo"
+	"geodata-unknown-region-category": "Sivut, joissa on virheellinen alueen arvo",
+	"apierror-geodata-badcoord": "Kelpaamaton koordinaatti"
 }
