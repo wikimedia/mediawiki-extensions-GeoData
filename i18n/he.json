@@ -44,5 +44,11 @@
 	"apihelp-query+geosearch-param-primary": "האם להחזיר רק את נקודות הציון העיקריות (\"primary\"), המשניות (\"secondary\") או שתיהן (\"all\").",
 	"apihelp-query+geosearch-param-debug": "האם להחזיר מידע לניפוי שגיאות.",
 	"apihelp-query+geosearch-example-1": "לחפש סביב הנקודה שנקודות הציון שלה הן 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
-	"apihelp-query+geosearch-example-2": "חיפוש בתיבת הגבלה"
+	"apihelp-query+geosearch-example-2": "חיפוש בתיבת הגבלה",
+	"apierror-geodata-nocoord": "נקודות הציון של הדף אינן ידועות.",
+	"apierror-geodata-noprimarycoord": "בדף $1 אין נקודות ציון ראשיות.",
+	"apierror-geodata-notonearth": "נקודות הציון של הדף אינן בכדור הארץ.",
+	"apierror-geodata-invalidbox": "תיבה תוחמת בלתי־תקינה.",
+	"apierror-geodata-boxtoobig": "תיבה תוחמת גדולה מדי.",
+	"apierror-geodata-badcoord": "ניתנו נקודות ציון בלתי־תקינות"
 }
