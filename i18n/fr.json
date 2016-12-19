@@ -53,5 +53,7 @@
 	"apierror-geodata-nocoord": "Coordonnées de la page inconnues.",
 	"apierror-geodata-noprimarycoord": "La page $1 n'a pas de coordonnées primaires.",
 	"apierror-geodata-notonearth": "Les coordonnées de cette page ne sont pas sur la terre.",
+	"apierror-geodata-invalidbox": "Boîte englobante non valide.",
+	"apierror-geodata-boxtoobig": "La boîte englobante est trop grande",
 	"apierror-geodata-badcoord": "Coordonnées soumises invalides"
 }
