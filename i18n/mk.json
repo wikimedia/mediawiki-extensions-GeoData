@@ -35,7 +35,7 @@
 	"apihelp-query+geosearch-param-page": "Околу кој наслов на страница да се пребарува.",
 	"apihelp-query+geosearch-param-radius": "Радиус на пребарување во метри.",
 	"apihelp-query+geosearch-param-maxdim": "Ограничи го пребварувањето на објекти не поголеми од ова (во метри).",
-	"apihelp-query+geosearch-param-limit": "Максимален број на страници за прикажување.",
+	"apihelp-query+geosearch-param-limit": "Највеќе страници за прикажување.",
 	"apihelp-query+geosearch-param-globe": "На кој глобус да се пребарува (по основно: „земја“)",
 	"apihelp-query+geosearch-param-namespace": "Именски простори за пребарување.",
 	"apihelp-query+geosearch-param-prop": "Кои дополнителни координатни својства да се дадат.",

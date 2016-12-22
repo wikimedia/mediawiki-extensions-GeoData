@@ -46,5 +46,11 @@
 	"apihelp-query+geosearch-param-primary": "Чи повертати лише первинні координати («primary»), чи вторинні («secondary») чи всі («all»).",
 	"apihelp-query+geosearch-param-debug": "Чи показувати інформацію, що використовується для відлагодження.",
 	"apihelp-query+geosearch-example-1": "Шукати навколо точки з координатами 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
-	"apihelp-query+geosearch-example-2": "Пошук в обмежувальному паралелепіпеді"
+	"apihelp-query+geosearch-example-2": "Пошук в обмежувальному паралелепіпеді",
+	"apierror-geodata-nocoord": "Координати сторінки невідомі.",
+	"apierror-geodata-noprimarycoord": "Сторінка $1 не має основних координат.",
+	"apierror-geodata-notonearth": "Координати цієї сторінки не на Землі.",
+	"apierror-geodata-invalidbox": "Недійсне обмежувальне вікно.",
+	"apierror-geodata-boxtoobig": "Обмежувальне вікно надто велике",
+	"apierror-geodata-badcoord": "Вказано неправильні координати"
 }
