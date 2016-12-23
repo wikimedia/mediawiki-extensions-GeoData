@@ -21,7 +21,7 @@ class CoordinatesIndexField extends NestedIndexField {
 	/**
 	 * Builds a new CoordinatesIndexField nested field
 	 * @param string $name field name
-	 * @param SearchConfig
+	 * @param SearchConfig $config
 	 * @param SearchEngine $engine
 	 * @return CoordinatesIndexField
 	 */
