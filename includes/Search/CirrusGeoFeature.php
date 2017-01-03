@@ -53,11 +53,12 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
 		if ( substr( $key, -5 ) === 'title' ) {
 			list( $coord, $radius, $excludeDocId ) = $this->parseGeoNearbyTitle(
-				$context->getConfig(),
+				$context,
+				$key,
 				$value
 			);
 		} else {
-			list( $coord, $radius ) = $this->parseGeoNearby( $context->getConfig(), $value );
+			list( $coord, $radius ) = $this->parseGeoNearby( $context, $key, $value );
 			$excludeDocId = '';
 		}
 
@@ -75,9 +76,10 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 
 	/**
 	 * Create rescore builder for geo search functions
+	 *
 	 * @param SearchContext $context
 	 * @param Coord $coord
-	 * @param int $radius
+	 * @param int $radius in kilometers
 	 * @param float $weight
 	 */
 	protected function getRescoreBuilder( SearchContext $context, $weight, Coord $coord, $radius ) {
@@ -90,13 +92,14 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 	 *   <title>
 	 *   <radius>,<title>
 	 *
-	 * @param SearchConfig $config the Cirrus config object
+	 * @param SearchContext $context
+	 * @param string $key Key used to trigger feature
 	 * @param string $text user input to parse
 	 * @return array Three member array with Coordinate object, integer radius
 	 *  in meters, and page id to exclude from results.. When invalid the
 	 *  Coordinate returned will be null.
 	 */
-	public function parseGeoNearbyTitle( SearchConfig $config, $text ) {
+	public function parseGeoNearbyTitle( SearchContext $context, $key, $text ) {
 		$title = Title::newFromText( $text );
 		if ( $title && $title->exists() ) {
 			// Default radius if not provided: 5km
@@ -107,24 +110,40 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 			// remaining text is a valid title to use.
 			$pieces = explode( ',', $text, 2 );
 			if ( count( $pieces ) !== 2 ) {
+				$context->addWarning(
+					"geodata-search-feature-invalid-coordinates",
+					$key, $text
+				);
 				return [ null, 0, '' ];
 			}
 			$radius = $this->parseDistance( $pieces[0] );
 			if ( $radius === null ) {
+				$context->addWarning(
+					"geodata-search-feature-invalid-distance",
+					$key, $pieces[0]
+				);
 				return [ null, 0, '' ];
 			}
 			$title = Title::newFromText( $pieces[1] );
 			if ( !$title || !$title->exists() ) {
+				$context->addWarning(
+					"geodata-search-feature-unknown-title",
+					$key, $pieces[1]
+				);
 				return [ null, 0, '' ];
 			}
 		}
 
 		$coord = GeoData::getPageCoordinates( $title );
 		if ( !$coord ) {
+			$context->addWarning(
+				'geodata-search-feature-title-no-coordinates',
+				(string)$title
+			);
 			return [ null, 0, '' ];
 		}
 
-		return [ $coord, $radius, $config->makeId( $title->getArticleID() ) ];
+		return [ $coord, $radius, $context->getConfig()->makeId( $title->getArticleID() ) ];
 	}
 
 	/**
@@ -134,18 +153,23 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 	 *   <lat>,<lon>
 	 *   <radius>,<lat>,<lon>
 	 *
-	 * @param SearchConfig $config
+	 * @param SearchContext $context
+	 * @param string $key
 	 * @param string $text
 	 * @return array Two member array with Coordinate object, and integer radius
 	 *  in meters. When invalid the Coordinate returned will be null.
 	 */
-	public function parseGeoNearby( SearchConfig $config, $text ) {
+	public function parseGeoNearby( SearchContext $context, $key, $text ) {
 		$pieces = explode( ',', $text, 3 );
 		// Default radius if not provided: 5km
 		$radius = self::DEFAULT_RADIUS;
 		if ( count( $pieces ) === 3 ) {
 			$radius = $this->parseDistance( $pieces[0] );
 			if ( $radius === null ) {
+				$context->addWarning(
+					'geodata-search-feature-invalid-distance',
+					$key, $pieces[0]
+				);
 				return [ null, 0 ];
 			}
 			$lat = $pieces[1];
@@ -154,11 +178,19 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 			$lat = $pieces[0];
 			$lon = $pieces[1];
 		} else {
+			$context->addWarning(
+				'geodata-search-feature-invalid-coordinates',
+				$key, $text
+			);
 			return [ null, 0 ];
 		}
 
-		$globe = new Globe( $config->get( 'DefaultGlobe' ) );
+		$globe = new Globe( $context->getConfig()->get( 'DefaultGlobe' ) );
 		if ( !$globe->coordinatesAreValid( $lat, $lon ) ) {
+			$context->addWarning(
+				'geodata-search-feature-invalid-coordinates',
+				$key, $text
+			);
 			return [ null, 0 ];
 		}
 
