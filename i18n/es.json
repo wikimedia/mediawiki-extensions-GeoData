@@ -5,7 +5,8 @@
 			"Fitoschido",
 			"Macofe",
 			"Csbotero",
-			"Ryo567"
+			"Ryo567",
+			"Dgstranz"
 		]
 	},
 	"geodata-desc": "Agrega la funcionalidad de almacenamiento y recuperación de coordenadas geográficas",
@@ -44,5 +45,6 @@
 	"apihelp-query+geosearch-param-debug": "Si la información de depuración debe devolverse.",
 	"apihelp-query+geosearch-example-1": "Buscar alrededor del punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ O",
 	"apierror-geodata-nocoord": "Coordenadas de página desconocidas.",
+	"apierror-geodata-notonearth": "Las coordenadas de esta página no están en la Tierra.",
 	"apierror-geodata-badcoord": "La coordenada proporcionada no es válida"
 }
