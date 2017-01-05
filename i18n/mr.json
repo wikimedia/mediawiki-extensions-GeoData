@@ -15,7 +15,7 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>:एकाधिक प्राथमिक खूणपताका प्रति पान घेऊ शकत नाही.",
 	"geodata-limit-exceeded": "प्रति पान असलेली $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|खूणपताका}} मर्यादा उल्लंघल्या गेली",
 	"geodata-broken-tags-category": "चूकीच्या पद्धतीने रचलेल्या समन्वयक खूणपताकांसह असलेली पाने",
-	"geodata-broken-tags-category-desc": "या पानात चुकीच्या पद्धतीने रचलेला <code><nowiki>{{#coordinates:}}</nowiki></code>खूणपताका आहे.",
+	"geodata-broken-tags-category-desc": "या पानात चुकीच्या पद्धतीने रचलेली <code><nowiki>{{#coordinates:}}</nowiki></code> खूणपताका आहे.",
 	"geodata-unknown-type-category": "अनोळखी प्रकारातील समन्वयक असलेली पाने",
 	"geodata-unknown-type-category-desc": "हे पान समन्वयकासाठी असलेल्या प्राचलात<code>type</code>ची अनोळखी किंमत वापरते.",
 	"geodata-unknown-globe-category": "अनोळखी गोलक किंमत असणारी पाने",
