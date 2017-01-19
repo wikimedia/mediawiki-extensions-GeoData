@@ -22,18 +22,5 @@ class GeoPointIndexField extends CirrusIndexField {
 	public function __construct( $name, SearchConfig $config ) {
 		parent::__construct( $name, $this->typeName, $config );
 	}
-
-	/**
-	 * @param SearchConfig $engine
-	 * @return array elasticsearch mapping
-	 */
-	public function getMapping( SearchEngine $engine ) {
-		$fields = parent::getMapping( $engine );
-		// Used by the geo distance query to run bounding box
-		// optimization query
-		// @fixme: lat_lon will be removed in elastic 5x
-		$fields['lat_lon'] = true;
-		return $fields;
-	}
 }
 
