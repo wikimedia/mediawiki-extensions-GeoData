@@ -2,12 +2,6 @@
 
 $magicWords = [];
 
-/**
- * English
- */
-
-$magicWords = [];
-
 /** English (English) */
 $magicWords['en'] = [
 	'coordinates' => [ 0, 'coordinates' ],
