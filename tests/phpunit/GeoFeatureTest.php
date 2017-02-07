@@ -2,6 +2,7 @@
 
 namespace GeoData;
 
+use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use LoadBalancer;
 use IDatabase;
@@ -169,8 +170,12 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		$config = $this->getMock( SearchConfig::class );
 		$config->expects( $this->any() )
 			->method( 'get' )->willReturn( 'earth' );
+		$context = $this->getMockBuilder( SearchContext::class )
+			->disableOriginalConstructor()->getMock();
+		$context->expects( $this->any() )
+			->method( 'getConfig' )->willReturn( $config );
 
-		$result = $feature->parseGeoNearby( $config, $value );
+		$result = $feature->parseGeoNearby( $context, 'nearcoord', $value );
 		if ( $result[0] instanceof Coord ) {
 			$result[0] = [ 'lat' => $result[0]->lat, 'lon' => $result[0]->lon ];
 		}
@@ -277,14 +282,67 @@ class GeoFeatureTest extends MediaWikiTestCase {
 			->will( $this->returnCallback( function ( $id ) {
 				return $id;
 			} ) );
+		$context = $this->getMockBuilder( SearchContext::class )
+			->disableOriginalConstructor()->getMock();
+		$context->expects( $this->any() )
+			->method( 'getConfig' )->will( $this->returnValue( $config ) );
 
 		// Finally run the test
-		$feature = new CirrusGeoFeature();
-		$result = $feature->parseGeoNearbyTitle( $config, $value );
+		$feature = new CirrusGeoFeature;
+		$result = $feature->parseGeoNearbyTitle( $context, 'neartitle', $value );
 		if ( $result[0] instanceof Coord ) {
 			$result[0] = [ 'lat' => $result[0]->lat, 'lon' => $result[0]->lon ];
 		}
 
 		$this->assertEquals( $expected, $result );
+	}
+
+	public function geoWarningsProvider() {
+		return [
+			'coordinates must be two or three pieces' => [
+				[ [ 'geodata-search-feature-invalid-coordinates', 'nearcoord', 'hi' ] ],
+				'nearcoord:hi',
+			],
+			'three piece coordinates must use valid radius with qualifier' => [
+				[ [ 'geodata-search-feature-invalid-distance', 'nearcoord', '40s' ] ],
+				'nearcoord:40s,12,21'
+			],
+			'coordinates must be valid earth coordinates' => [
+				[ [ 'geodata-search-feature-invalid-coordinates', 'boost-nearcoord', '12345,123' ] ],
+				'boost-nearcoord:12345,123',
+			],
+			'titles must be known' => [
+				[ [ 'geodata-search-feature-unknown-title', 'neartitle', 'Some unknown page' ] ],
+				'neartitle:"10km,Some unknown page"',
+			],
+			'titles must have coordinates' => [
+				[ [ 'geodata-search-feature-title-no-coordinates', 'Foobar' ] ],
+				'neartitle:Foobar',
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider geoWarningsProvider
+	 */
+	public function testGeoWarnings( $expected, $term ) {
+		// Inject fake San Francisco page into LinkCache so it "exists"
+		MediaWikiServices::getInstance()->getLinkCache()
+			->addGoodLinkObj( 98765, Title::newFromText( 'Foobar' ) );
+
+		$warnings = [];
+		$config = $this->getMock( SearchConfig::class );
+		$context = $this->getMockBuilder( SearchContext::class )
+			->disableOriginalConstructor()->getMock();
+		$context->expects( $this->any() )
+			->method( 'getConfig' )->will( $this->returnValue( $config ) );
+		$context->expects( $this->any() )
+			->method( 'addWarning' )
+			->will( $this->returnCallback( function () use ( &$warnings ) {
+				$warnings[] = func_get_args();
+			} ) );
+		$feature = new CirrusGeoFeature();
+		$feature->apply( $context, $term );
+		$this->assertEquals( $expected, $warnings );
 	}
 }

@@ -48,5 +48,9 @@
 	"apierror-geodata-notonearth": "This page's coordinates are not on Earth.",
 	"apierror-geodata-invalidbox": "Invalid bounding box.",
 	"apierror-geodata-boxtoobig": "Bounding box is too big",
-	"apierror-geodata-badcoord": "Invalid coordinate provided"
+	"apierror-geodata-badcoord": "Invalid coordinate provided",
+	"geodata-search-feature-invalid-coordinates": "The geo coordinates '$2' provided to '$1' could not be parsed.",
+	"geodata-search-feature-invalid-distance": "The geo distance '$2' provided to '$1' could not be parsed.",
+	"geodata-search-feature-unknown-title": "The title '$2' provided to '$1' does not exist.",
+	"geodata-search-feature-title-no-coordinates": "The title '$2' provided to '$1' does not have any coordinates."
 }
