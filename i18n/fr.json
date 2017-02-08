@@ -55,5 +55,9 @@
 	"apierror-geodata-notonearth": "Les coordonnées de cette page ne sont pas sur la terre.",
 	"apierror-geodata-invalidbox": "Boîte englobante non valide.",
 	"apierror-geodata-boxtoobig": "La boîte englobante est trop grande",
-	"apierror-geodata-badcoord": "Coordonnées soumises invalides"
+	"apierror-geodata-badcoord": "Coordonnées soumises invalides",
+	"geodata-search-feature-invalid-coordinates": "Les coordonnées géographiques '$2' fournies à '$1' ne peuvent pas être analysées.",
+	"geodata-search-feature-invalid-distance": "La distance géographique '$2' fournie à '$1' n’a pas pu être analysée.",
+	"geodata-search-feature-unknown-title": "Le titre '$2' fourni à '$1' n’existe pas.",
+	"geodata-search-feature-title-no-coordinates": "Le titre '$2' fourni à '$1' n’a pas de coordonnées."
 }

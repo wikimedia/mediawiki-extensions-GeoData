@@ -53,5 +53,9 @@
 	"apierror-geodata-notonearth": "此页面的坐标不在地球上。",
 	"apierror-geodata-invalidbox": "无效的边框。",
 	"apierror-geodata-boxtoobig": "边框太大",
-	"apierror-geodata-badcoord": "提供了无效的坐标"
+	"apierror-geodata-badcoord": "提供了无效的坐标",
+	"geodata-search-feature-invalid-coordinates": "提供给“$1”的地理坐标“$2”不能解析。",
+	"geodata-search-feature-invalid-distance": "提供给“$1”的地理距离“$2”不能解析。",
+	"geodata-search-feature-unknown-title": "提供给“$1”的地标题“$2”不存在。",
+	"geodata-search-feature-title-no-coordinates": "提供给“$1”的地标题“$2”不包含任何坐标。"
 }
