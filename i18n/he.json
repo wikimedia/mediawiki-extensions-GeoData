@@ -50,5 +50,9 @@
 	"apierror-geodata-notonearth": "נקודות הציון של הדף אינן בכדור הארץ.",
 	"apierror-geodata-invalidbox": "תיבה תוחמת בלתי־תקינה.",
 	"apierror-geodata-boxtoobig": "תיבה תוחמת גדולה מדי.",
-	"apierror-geodata-badcoord": "ניתנו נקודות ציון בלתי־תקינות"
+	"apierror-geodata-badcoord": "ניתנו נקודות ציון בלתי־תקינות",
+	"geodata-search-feature-invalid-coordinates": "נקודות הציון הגאוגרפיות \"$2\" שסופקו ל־\"$1\" לא יכלו להתפענח.",
+	"geodata-search-feature-invalid-distance": "המרחק הגאוגרפי \"$2\" שסופק ל־\"$1\" לא יכול להתפענח.",
+	"geodata-search-feature-unknown-title": "הכותרת \"$2\" שסופקה ל־\"$1\" אינה קיימת.",
+	"geodata-search-feature-title-no-coordinates": "בכותרת \"$2\" שסופקה ל־\"$1\" אין שום נקודות ציון."
 }

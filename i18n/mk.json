@@ -48,5 +48,9 @@
 	"apierror-geodata-notonearth": "Координатите на страницава не се наоѓаат на Земјата.",
 	"apierror-geodata-invalidbox": "Неважечка ограничувачко поле.",
 	"apierror-geodata-boxtoobig": "Ограничувачкото поле е преголемо",
-	"apierror-geodata-badcoord": "Укажана е неважечка координата"
+	"apierror-geodata-badcoord": "Укажана е неважечка координата",
+	"geodata-search-feature-invalid-coordinates": "Не можев да ги расчленам геокоординатите „$2“ укажани на „$1“.",
+	"geodata-search-feature-invalid-distance": "Не можев да го расчленам георастојанието „$2“ укажано на „$1“.",
+	"geodata-search-feature-unknown-title": "Насловот „$2“ укажан на „$1“ не постои.",
+	"geodata-search-feature-title-no-coordinates": "Насловот „$2“ укажан на „$1“ нема никакви координати."
 }
