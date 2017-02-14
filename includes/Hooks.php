@@ -81,7 +81,7 @@ class Hooks {
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
 		$parser->setFunctionHook( 'coordinates',
-			[ new CoordinatesParserFunction( $parser ), 'coordinates' ],
+			[ new CoordinatesParserFunction(), 'coordinates' ],
 			Parser::SFH_OBJECT_ARGS
 		);
 	}
@@ -261,9 +261,10 @@ class Hooks {
 	 */
 	public static function onSearchIndexFields( array &$fields, SearchEngine $engine ) {
 		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
-		if ( $engine instanceof \CirrusSearch
-			&& ( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend  == 'elastic' )
-		) {
+		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend  !== 'elastic' ) {
+			return;
+		}
+		if ( $engine instanceof \CirrusSearch ) {
 			/**
 			 * @var \CirrusSearch $engine
 			 */

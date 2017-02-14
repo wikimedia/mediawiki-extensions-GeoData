@@ -2,6 +2,8 @@
 
 namespace GeoData;
 
+use IDatabase;
+use MediaWiki\MediaWikiServices;
 use Title;
 
 class GeoData {
@@ -27,7 +29,7 @@ class GeoData {
 	 * @return Coord[]
 	 */
 	public static function getAllCoordinates( $pageId, $conds = [], $dbType = DB_SLAVE ) {
-		$db = wfGetDB( $dbType );
+		$db = self::getDB( $dbType );
 		$conds['gt_page_id'] = $pageId;
 		$res = $db->select( 'geo_tags', Coord::getColumns(), $conds, __METHOD__ );
 		$coords = [];
@@ -35,5 +37,15 @@ class GeoData {
 			$coords[] = Coord::newFromRow( $row );
 		}
 		return $coords;
+	}
+
+	/**
+	 * @param int $dbType DB_MASTER or DB_SLAVE
+	 * @return IDatabase
+	 */
+	private static function getDB( $dbType ) {
+		return MediaWikiServices::getInstance()
+			->getDBLoadBalancer()
+			->getConnection( $dbType );
 	}
 }

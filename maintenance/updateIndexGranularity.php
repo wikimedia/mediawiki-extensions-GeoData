@@ -22,7 +22,7 @@ class UpdateIndexGranularity extends Maintenance {
 			$this->error( 'Please install GeoData properly', true );
 		}
 		$id = 0;
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = $this->getDB( DB_MASTER );
 		do {
 			$ids = [];
 
