@@ -233,14 +233,13 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 	public static function createQuery( Coord $coord, $radius, $docIdToExclude = '' ) {
 		$query = new \Elastica\Query\BoolQuery();
 		$query->addFilter( new \Elastica\Query\Term( [ 'coordinates.globe' => $coord->globe ] ) );
-		$query->addFilter( new \Elastica\Query\Term( [ 'coordinates.primary' => 1 ] ) );
+		$query->addFilter( new \Elastica\Query\Term( [ 'coordinates.primary' => true ] ) );
 
 		$distanceFilter = new \Elastica\Query\GeoDistance(
 			'coordinates.coord',
 			[ 'lat' => $coord->lat, 'lon' => $coord->lon ],
 			$radius . 'm'
 		);
-		$distanceFilter->setOptimizeBbox( 'indexed' );
 		$query->addFilter( $distanceFilter );
 
 		if ( $docIdToExclude !== '' ) {
