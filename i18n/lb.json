@@ -19,5 +19,7 @@
 	"apierror-geodata-nocoord": "Koordinate vun der Säit onbekannt.",
 	"apierror-geodata-noprimarycoord": "Säit $1 huet keng primär Koordinaten.",
 	"apierror-geodata-notonearth": "D'Koordinate vun dëser Säit sinn net op der Äerd.",
-	"apierror-geodata-badcoord": "Net valabel Koordinaten uginn"
+	"apierror-geodata-badcoord": "Net valabel Koordinaten uginn",
+	"geodata-search-feature-invalid-coordinates": "D'Geo-Koordinaten '$2' déi op '$1' ugi goufe konnten net duergestallt ginn.",
+	"geodata-search-feature-unknown-title": "Den Titel '$2' deen op '$1' ugi gouf gëtt et net."
 }
