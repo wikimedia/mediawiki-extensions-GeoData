@@ -46,5 +46,9 @@
 	"apihelp-query+geosearch-example-1": "Buscar alrededor del punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ O",
 	"apierror-geodata-nocoord": "Coordenadas de página desconocidas.",
 	"apierror-geodata-notonearth": "Las coordenadas de esta página no están en la Tierra.",
-	"apierror-geodata-badcoord": "La coordenada proporcionada no es válida"
+	"apierror-geodata-badcoord": "La coordenada proporcionada no es válida",
+	"geodata-search-feature-invalid-coordinates": "No se han podido analizar las geocoordenadas «$2» proporcionadas a «$1».",
+	"geodata-search-feature-invalid-distance": "No se ha podido analizar la geodistancia «$2» proporcionada a «$1».",
+	"geodata-search-feature-unknown-title": "El título «$2» proporcionado a «$1» no existe.",
+	"geodata-search-feature-title-no-coordinates": "El título «$2» proporcionado a «$1» no tiene coordenadas."
 }
