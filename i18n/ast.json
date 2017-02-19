@@ -48,5 +48,9 @@
 	"apierror-geodata-notonearth": "Les coordenaes d'esta páxina nun tán na Tierra.",
 	"apierror-geodata-invalidbox": "Cuadru de llende inválidu.",
 	"apierror-geodata-boxtoobig": "El cuadru de llende ye demasiao grande",
-	"apierror-geodata-badcoord": "La coordenada proporcionada nun ye válida"
+	"apierror-geodata-badcoord": "La coordenada proporcionada nun ye válida",
+	"geodata-search-feature-invalid-coordinates": "Nun pudieron analizase les coordenaes xeo «$2» apurríes a «$1».",
+	"geodata-search-feature-invalid-distance": "Nun pudo analizase la distancia xeo «$2» apurrida a «$1».",
+	"geodata-search-feature-unknown-title": "El títulu «$2» que se dio a «$1» nun esiste.",
+	"geodata-search-feature-title-no-coordinates": "El títulu «$2» que se dio a «$1» nun tien coordenaes."
 }
