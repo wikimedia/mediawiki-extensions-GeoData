@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BeginaFelicysym",
-			"Chrumps"
+			"Chrumps",
+			"Matma Rex"
 		]
 	},
 	"geodata-desc": "Dodaje funkcje przechowywania i pobierania współrzędnych geograficznych",
@@ -14,7 +15,7 @@
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: nieprawidłowy format kodu regionu",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: nie można podać więcej niż jednego tagu podstawowego na stronie",
 	"geodata-limit-exceeded": "Ograniczenie $1 {{PLURAL:$1|znacznika|znaczników|znaczników}} <nowiki>{{#coordinates:}}</nowiki>  na stronie zostało przekroczone",
-	"geodata-broken-tags-category": "Strony niepoprawnymi znacznikami współrzędnych",
+	"geodata-broken-tags-category": "Strony z niepoprawnymi znacznikami współrzędnych geograficznych",
 	"geodata-unknown-type-category": "Strony ze współrzędnymi nieznanego typu",
 	"geodata-unknown-globe-category": "Strony z nieznaną wartością globu",
 	"geodata-unknown-region-category": "Strony z nieprawidłową wartością regionu",
