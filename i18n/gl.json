@@ -44,5 +44,13 @@
 	"apihelp-query+geosearch-param-primary": "Se só devolver coordenadas primarias (\"primary\"), secundarias (\"secondary\") ou as dúas (\"all\").",
 	"apihelp-query+geosearch-param-debug": "Se debe devolverse a información de depuración de software",
 	"apihelp-query+geosearch-example-1": "Buscar ó redor do punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
-	"apihelp-query+geosearch-example-2": "Procurar nunha caixa contedor"
+	"apihelp-query+geosearch-example-2": "Procurar nunha caixa contedor",
+	"apierror-geodata-nocoord": "Coordenadas de páxina descoñecidas.",
+	"apierror-geodata-noprimarycoord": "A páxina $1 non ten coordenadas primarias.",
+	"apierror-geodata-notonearth": "As coordenadas desta páxina non están na Terra.",
+	"apierror-geodata-badcoord": "A coordenada proporcionada non é válida",
+	"geodata-search-feature-invalid-coordinates": "Non se puideron analizar as xeocoordenadas '$2' proporcionadas a '$1'.",
+	"geodata-search-feature-invalid-distance": "A distancia xeográfica '$2' proporcionada en '$1' non puido ser analizada.",
+	"geodata-search-feature-unknown-title": "O título '$2' proporcionado a '$1' non existe.",
+	"geodata-search-feature-title-no-coordinates": "O título '$2' proporcionado a '$1' non ten coordenadas."
 }
