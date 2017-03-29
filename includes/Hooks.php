@@ -302,6 +302,13 @@ class Hooks {
 				if ( $coord->globe !== 'earth' ) {
 					continue;
 				}
+				if ( !$coord->isValid() ) {
+					wfDebugLog( 'CirrusSearchChangeFailed',
+						"Invalid coordinates [{$coord->lat}, {$coord->lon}] on page "
+							. $page->getTitle()->getPrefixedText()
+					);
+					continue;
+				}
 				$coords[] = self::coordToElastic( $coord );
 			}
 			$fields['coordinates'] = $coords;

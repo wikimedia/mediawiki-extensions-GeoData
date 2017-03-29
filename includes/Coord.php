@@ -89,6 +89,15 @@ class Coord {
 	}
 
 	/**
+	 * Checks whether current coordinates are within current globe's allowed range
+	 *
+	 * @return bool
+	 */
+	public function isValid() {
+		return $this->getGlobeObj()->coordinatesAreValid( $this->lat, $this->lon );
+	}
+
+	/**
 	 * Returns a bounding rectangle around this coordinate
 	 *
 	 * @param float $radius
