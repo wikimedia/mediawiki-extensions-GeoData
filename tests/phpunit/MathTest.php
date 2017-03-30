@@ -11,7 +11,7 @@ use MediaWikiTestCase;
  *
  * @group GeoData
  */
-class GeoDataMathTest extends MediaWikiTestCase {
+class MathTest extends MediaWikiTestCase {
 	/**
 	 * @covers \GeoData\Math::distance
 	 * @dataProvider getDistanceData
