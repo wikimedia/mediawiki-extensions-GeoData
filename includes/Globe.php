@@ -54,41 +54,46 @@ class Globe {
 			return $data;
 		}
 
-		$earth = [ 'lon' => [ -180, 180 ], 'east' => +1 ];
-		$east360 = [ 'lon' => [ 0, 360 ], 'east' => +1 ];
-		$west360 = [ 'lon' => [ 0, 360 ], 'east' => -1 ];
+		$earth   = [ 'lon' => [ -180, 180 ], 'east' => +1 ];
+		$east360 = [ 'lon' => [ 0, 360 ],    'east' => +1 ];
+		$west360 = [ 'lon' => [ 0, 360 ],    'east' => -1 ];
 
+		// Format:
+		//   'lon' => array of [minimum value, maximum value]
+		//   'east' => sign 1 degree East would have
+		//   'radius' => mean radius in meters (optional)
 		// Coordinate systems mostly taken from http://planetarynames.wr.usgs.gov/TargetCoordinates
+		// Radii taken from Wikipedia. Globes that are too irregular in shape don't have radius set.
 		$data = [
-			'earth' => $earth + [ 'radius' => Math::EARTH_RADIUS ],
-			'mercury' => $west360,
-			'venus' => $east360,
-			'moon' => $earth,
-			'mars' => $east360, // Assuming MDIM 2.1
-			'phobos' => $west360,
-			'deimos' => $west360,
+			'earth'     => $earth   + [ 'radius' => Math::EARTH_RADIUS ],
+			'mercury'   => $west360 + [ 'radius' => 2439700.0 ],
+			'venus'     => $east360 + [ 'radius' => 6051800.0 ],
+			'moon'      => $earth   + [ 'radius' => 1737100.0 ],
+			'mars'      => $east360 + [ 'radius' => 3389500.0 ], // Assuming MDIM 2.1
+			'phobos'    => $west360,
+			'deimos'    => $west360,
 			// 'ceres' => ???,
 			// 'vesta' => ???,
-			'ganymede' => $west360,
-			'callisto' => $west360,
-			'io' => $west360,
-			'europa' => $west360,
-			'mimas' => $west360,
-			'enceladus' => $west360,
-			'tethys' => $west360,
-			'dione' => $west360,
-			'rhea' => $west360,
-			'titan' => $west360,
-			'hyperion' => $west360,
-			'iapetus' => $west360,
-			'phoebe' => $west360,
-			'miranda' => $east360,
-			'ariel' => $east360,
-			'umbriel' => $east360,
-			'titania' => $east360,
-			'oberon' => $east360,
-			'triton' => $east360,
-			'pluto' => $east360, // ???
+			'ganymede'  => $west360 + [ 'radius' => 2634100.0 ],
+			'callisto'  => $west360 + [ 'radius' => 2410300.0 ],
+			'io'        => $west360 + [ 'radius' => 1821600.0 ],
+			'europa'    => $west360 + [ 'radius' => 1560800.0 ],
+			'mimas'     => $west360 + [ 'radius' =>  198200.0 ],
+			'enceladus' => $west360 + [ 'radius' =>  252100.0 ],
+			'tethys'    => $west360 + [ 'radius' =>  531100.0 ],
+			'dione'     => $west360 + [ 'radius' =>  561400.0 ],
+			'rhea'      => $west360 + [ 'radius' =>  763800.0 ],
+			'titan'     => $west360 + [ 'radius' => 2575500.0 ],
+			'hyperion'  => $west360,
+			'iapetus'   => $west360 + [ 'radius' =>  734500.0 ],
+			'phoebe'    => $west360,
+			'miranda'   => $east360 + [ 'radius' =>  235800.0 ],
+			'ariel'     => $east360 + [ 'radius' =>  578900.0 ],
+			'umbriel'   => $east360 + [ 'radius' =>  584700.0 ],
+			'titania'   => $east360 + [ 'radius' =>  788400.0 ],
+			'oberon'    => $east360 + [ 'radius' =>  761400.0 ],
+			'triton'    => $east360 + [ 'radius' => 1353400.0 ],
+			'pluto'     => $east360 + [ 'radius' => 1187000.0 ], // ???
 		];
 
 		$data = $wgGlobes + $data;

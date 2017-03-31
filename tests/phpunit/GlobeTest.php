@@ -17,7 +17,17 @@ class GlobeTest extends MediaWikiTestCase {
 		$this->assertEquals( -180, $g->getMinLongitude() );
 		$this->assertEquals( 180, $g->getMaxLongitude() );
 		$this->assertEquals( 1, $g->getEastSign() );
-		$this->assertEquals( Math::EARTH_RADIUS, $g->getRadius() );
+		$this->assertEquals( Math::EARTH_RADIUS, $g->getRadius(), 1 );
+	}
+
+	public function testMars() {
+		$g = new Globe( 'mars' );
+		$this->assertEquals( 'mars', $g->getName() );
+		$this->assertTrue( $g->isKnown() );
+		$this->assertEquals( 0, $g->getMinLongitude() );
+		$this->assertEquals( 360, $g->getMaxLongitude() );
+		$this->assertEquals( 1, $g->getEastSign() );
+		$this->assertEquals( 3389500, $g->getRadius(), 1 );
 	}
 
 	public function testUnknown() {
