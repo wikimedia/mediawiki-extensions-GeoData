@@ -98,42 +98,27 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		if ( $params['distancefrompoint'] !== null ) {
 			$arr = explode( '|', $params['distancefrompoint'] );
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
-				} else {
-					$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
-				}
+				$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
 			}
 			return new Coord( $arr[0], $arr[1], 'earth' );
 		}
 		if ( $params['distancefrompage'] !== null ) {
 			$title = Title::newFromText( $params['distancefrompage'] );
 			if ( !$title ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError(
-						[ 'apierror-invalidtitle', wfEscapeWikiText( $params['distancefrompage'] ) ]
-					);
-				} else {
-					$this->dieUsage( "Page ``{$params['distancefrompage']}'' does not exist", '_invalid-page' );
-				}
+				$this->dieWithError( [
+					'apierror-invalidtitle',
+					wfEscapeWikiText( $params['distancefrompage'] )
+				] );
 			}
 			$coord = GeoData::getPageCoordinates( $title );
 			if ( !$coord ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError(
-						[ 'apierror-geodata-noprimarycoord', wfEscapeWikiText( $title->getPrefixedText() ) ],
-						'no-coordinates'
-					);
-				} else {
-					$this->dieUsage( "Page ``{$params['distancefrompage']}'' has no primary coordinates", '_no-coordinates' );
-				}
+				$this->dieWithError(
+					[ 'apierror-geodata-noprimarycoord', wfEscapeWikiText( $title->getPrefixedText() ) ],
+					'no-coordinates'
+				);
 			}
 			if ( $coord->globe != 'earth' ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( 'apierror-geodata-notonearth', 'notonearth' );
-				} else {
-					$this->dieUsage( "This page's coordinates are not on Earth", '_notonearth' );
-				}
+				$this->dieWithError( 'apierror-geodata-notonearth', 'notonearth' );
 			}
 			return $coord;
 		}

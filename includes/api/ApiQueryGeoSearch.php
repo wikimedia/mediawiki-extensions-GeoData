@@ -59,22 +59,14 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			|| !$globe->coordinatesAreValid( $parts[2], $parts[3] )
 			|| $vals[0] <= $vals[2]
 		) {
-			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-				$this->dieWithError( 'apierror-geodata-invalidbox', 'invalid-bbox' );
-			} else {
-				$this->dieUsage( 'Invalid bounding box', '_invalid-bbox' );
-			}
+			$this->dieWithError( 'apierror-geodata-invalidbox', 'invalid-bbox' );
 		}
 		$bbox = new BoundingBox( $vals[0], $vals[1], $vals[2], $vals[3] );
 		$area = $bbox->area();
 		if ( $area > $wgMaxGeoSearchRadius * $wgMaxGeoSearchRadius * 4
 			|| $area < 100
 		) {
-			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-				$this->dieWithError( 'apierror-geodata-boxtoobig', 'toobig' );
-			} else {
-				$this->dieUsage( 'Bounding box is too big', '_toobig' );
-			}
+			$this->dieWithError( 'apierror-geodata-boxtoobig', 'toobig' );
 		}
 
 		return $bbox;
@@ -91,38 +83,22 @@ abstract class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		if ( isset( $params['coord'] ) ) {
 			$arr = explode( '|', $params['coord'] );
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
-				} else {
-					$this->dieUsage( 'Invalid coordinate provided', '_invalid-coord' );
-				}
+				$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
 			}
 			$this->coord = new Coord( floatval( $arr[0] ), floatval( $arr[1] ), $params['globe'] );
 		} elseif ( isset( $params['page'] ) ) {
 			$t = Title::newFromText( $params['page'] );
 			if ( !$t || !$t->canExist() ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
-				} else {
-					$this->dieUsage( "Invalid page title ``{$params['page']}'' provided", '_invalid-page' );
-				}
+				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
 			}
 			if ( !$t->exists() ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError(
-						[ 'apierror-missingtitle-byname', wfEscapeWikiText( $t->getPrefixedText() ) ], 'missingtitle'
-					);
-				} else {
-					$this->dieUsage( "Page ``{$params['page']}'' does not exist", '_nonexistent-page' );
-				}
+				$this->dieWithError(
+					[ 'apierror-missingtitle-byname', wfEscapeWikiText( $t->getPrefixedText() ) ], 'missingtitle'
+				);
 			}
 			$this->coord = GeoData::getPageCoordinates( $t );
 			if ( !$this->coord ) {
-				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
-					$this->dieWithError( 'apierror-geodata-nocoord', 'no-coordinates' );
-				} else {
-					$this->dieUsage( 'Page coordinates unknown', '_no-coordinates' );
-				}
+				$this->dieWithError( 'apierror-geodata-nocoord', 'no-coordinates' );
 			}
 			$this->idToExclude = $t->getArticleID();
 		} elseif ( isset( $params['bbox'] ) ) {
