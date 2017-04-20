@@ -42,7 +42,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$primary = $params['primary'];
 		if ( $primary !== 'all' ) {
 			$nestedPropsFilter->addFilter( new \Elastica\Query\Term( [
-					'coordinates.primary' => intval( $primary === 'primary' )
+					'coordinates.primary' => $primary === 'primary'
 				] ) );
 		}
 
@@ -56,7 +56,6 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 				new \Elastica\Query\GeoDistance( 'coordinates.coord',
 					[ 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ],
 					$this->radius . 'm' );
-			$distanceFilter->setOptimizeBbox( 'indexed' );
 		}
 
 		$filter->addFilter( $nestedPropsFilter );
