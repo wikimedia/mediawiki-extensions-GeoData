@@ -144,7 +144,10 @@ class Hooks {
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];
 			$globe = new Globe( 'earth' );
-			if ( $globe->coordinatesAreValid( $lat, $lon ) ) {
+			if ( $globe->coordinatesAreValid( $lat, $lon )
+				// https://phabricator.wikimedia.org/T165800
+				&& ( $lat != 0 || $lon != 0 )
+			) {
 				$coord = new Coord( $lat, $lon );
 				$coord->primary = true;
 				return $coord;
