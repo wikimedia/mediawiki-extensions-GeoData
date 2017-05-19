@@ -210,8 +210,10 @@ class Hooks {
 	 * @param LocalFile $file
 	 */
 	public static function onFileUpload( LocalFile $file ) {
+		global $wgUser;
+
 		$wp = WikiPage::factory( $file->getTitle() );
-		$po = new ParserOptions();
+		$po = $wp->makeParserOptions( $wgUser );
 		$pout = $wp->getParserOutput( $po );
 		if ( !$pout ) {
 			wfDebugLog( 'mobile', __METHOD__ . "(): no parser output returned for file {$file->getName()}" );
