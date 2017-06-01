@@ -8,7 +8,8 @@ use MWException;
 use Title;
 
 /**
- * This query adds an <coordinates> subelement to all pages with the list of coordinated present on those pages.
+ * This query adds an <coordinates> subelement to all pages with the list of coordinated
+ * present on those pages.
  */
 class ApiQueryCoordinates extends ApiQueryBase {
 
@@ -34,7 +35,9 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		}
 		$this->addWhereFld( 'gt_page_id', array_keys( $titles ) );
 		$primary = $params['primary'];
-		$this->addWhereIf( [ 'gt_primary' => intval( $primary === 'primary' ) ], $primary !== 'all' );
+		$this->addWhereIf(
+			[ 'gt_primary' => intval( $primary === 'primary' ) ], $primary !== 'all'
+		);
 
 		if ( isset( $params['continue'] ) ) {
 			$parts = explode( '|', $params['continue'] );
@@ -113,7 +116,10 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			$coord = GeoData::getPageCoordinates( $title );
 			if ( !$coord ) {
 				$this->dieWithError(
-					[ 'apierror-geodata-noprimarycoord', wfEscapeWikiText( $title->getPrefixedText() ) ],
+					[
+						'apierror-geodata-noprimarycoord',
+						wfEscapeWikiText( $title->getPrefixedText() )
+					],
 					'no-coordinates'
 				);
 			}

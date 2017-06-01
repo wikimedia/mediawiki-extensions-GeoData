@@ -14,7 +14,8 @@ class GeoDataMathTest extends MediaWikiTestCase {
 	 * @dataProvider getDistanceData
 	 */
 	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist, $name ) {
-		$this->assertEquals( $dist, Math::distance( $lat1, $lon1, $lat2, $lon2 ), "testDistance():  $name", $dist / 1000 );
+		$this->assertEquals( $dist, Math::distance( $lat1, $lon1, $lat2, $lon2 ),
+			"testDistance():  $name", $dist / 1000 );
 	}
 
 	public function getDistanceData() {

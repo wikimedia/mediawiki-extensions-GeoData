@@ -26,7 +26,8 @@ class BoundingBox {
 	 * @return BoundingBox
 	 */
 	public static function newFromPoints( Coord $topLeft, Coord $bottomRight ) {
-		return new self( $topLeft->lat, $topLeft->lon, $bottomRight->lat, $bottomRight->lon, $topLeft->globe );
+		return new self( $topLeft->lat, $topLeft->lon, $bottomRight->lat, $bottomRight->lon,
+			$topLeft->globe );
 	}
 
 	public function topLeft() {

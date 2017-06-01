@@ -14,7 +14,8 @@ use UsageException;
  */
 class GeoSearchTest extends MediaWikiTestCase {
 	public function setUp() {
-		$this->setMwGlobals( 'wgAPIListModules', [ 'geosearch' => 'GeoData\Test\MockApiQueryGeoSearch' ] );
+		$this->setMwGlobals( 'wgAPIListModules',
+			[ 'geosearch' => 'GeoData\Test\MockApiQueryGeoSearch' ] );
 		parent::setUp();
 	}
 
@@ -31,17 +32,30 @@ class GeoSearchTest extends MediaWikiTestCase {
 	 */
 	public function testRequiredParams( array $params ) {
 		$this->setExpectedException(
-			class_exists( ApiUsageException::class ) ? ApiUsageException::class : UsageException::class
+			class_exists( ApiUsageException::class )
+				? ApiUsageException::class : UsageException::class
 		);
 		$this->request( $params );
 	}
 
 	public function provideRequiredParams() {
 		return [
-			[ [], 'coord, page or bbox are required' ],
-			[ [ 'gscoord' => '1|2', 'gspage' => 'foo' ], 'Must have only one of coord, page or bbox' ],
-			// @fixme: [ [ 'gsbbox' => '10|170|-10|-170' ], 'Fail if bounding box is too big' ],
-			[ [ 'gsbbox' => '10|170|10|170' ], 'Fail if bounding box is too small' ],
+			[
+				[],
+				'coord, page or bbox are required'
+			],
+			[
+				[ 'gscoord' => '1|2', 'gspage' => 'foo' ],
+				'Must have only one of coord, page or bbox'
+			],
+			// @fixme: [
+			// [ 'gsbbox' => '10|170|-10|-170' ],
+			// 'Fail if bounding box is too big'
+			// ],
+			[
+				[ 'gsbbox' => '10|170|10|170' ],
+				'Fail if bounding box is too small'
+			],
 		];
 	}
 }

@@ -143,9 +143,12 @@ class CoordinatesParserFunction {
 	 */
 	private function processArgs() {
 		global $wgDefaultGlobe, $wgContLang;
-		// fear not of overwriting the stuff we've just received from the geohack param, it has minimum precedence
+		// fear not of overwriting the stuff we've just received from the geohack param,
+		// it has minimum precedence
 		if ( isset( $this->named['geohack'] ) ) {
-			$this->named = array_merge( $this->parseGeoHackArgs( $this->named['geohack'] ), $this->named );
+			$this->named = array_merge(
+				$this->parseGeoHackArgs( $this->named['geohack'] ), $this->named
+			);
 		}
 		$globe = ( isset( $this->named['globe'] ) && $this->named['globe'] )
 			? $wgContLang->lc( $this->named['globe'] )
@@ -211,7 +214,8 @@ class CoordinatesParserFunction {
 
 	private function parseGeoHackArgs( $str ) {
 		$result = [];
-		$str = str_replace( '_', ' ', $str ); // per GeoHack docs, spaces and underscores are equivalent
+		// per GeoHack docs, spaces and underscores are equivalent
+		$str = str_replace( '_', ' ', $str );
 		$parts = explode( ' ', $str );
 		foreach ( $parts as $arg ) {
 			$keyVal = explode( ':', $arg, 2 );

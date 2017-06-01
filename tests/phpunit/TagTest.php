@@ -33,16 +33,19 @@ class TagTest extends MediaWikiTestCase {
 		$this->assertTrue( isset( $out->geoData ) );
 		if ( !$expected ) {
 			$this->assertEmpty( $out->geoData->getAll(),
-				'Expected a failure but a result was found: ' . print_r( $out->geoData->getAll(), true )
+				'Expected a failure but a result was found: ' .
+					print_r( $out->geoData->getAll(), true )
 			);
 			return;
 		}
 		$all = $out->geoData->getAll();
-		$this->assertEquals( 1, count( $all ), 'A result was expected, but there was error: ' . strip_tags( $out->getText() ) );
+		$this->assertEquals( 1, count( $all ),
+			'A result was expected, but there was error: ' . strip_tags( $out->getText() ) );
 		/** @var Coord $coord */
 		$coord = $all[0];
 		$this->assertTrue( $coord->fullyEqualsTo( $expected ),
-			'Comparing ' . print_r( $coord, true ) . ' against expected ' . print_r( $expected, true )
+			'Comparing ' . print_r( $coord, true ) .
+				' against expected ' . print_r( $expected, true )
 		);
 	}
 

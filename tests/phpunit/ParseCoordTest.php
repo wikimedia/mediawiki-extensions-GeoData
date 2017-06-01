@@ -22,7 +22,9 @@ class ParseCoordTest extends MediaWikiTestCase {
 			$this->assertFalse( $s->isGood(), "Parsing of $formatted was expected to fail" );
 		} else {
 			$msg = $s->isGood() ? '' : $s->getWikiText();
-			$this->assertTrue( $s->isGood(), "Parsing of $formatted was expected to succeed, but it failed: $msg" );
+			$this->assertTrue( $s->isGood(),
+				"Parsing of $formatted was expected to succeed, but it failed: $msg"
+			);
 			$this->assertTrue( $val->equalsTo( $result ),
 				"Parsing of $formatted was expected to yield something close to"
 				. " ({$result->lat}, {$result->lon}), but yielded ({$val->lat}, {$val->lon})"
@@ -43,8 +45,10 @@ class ParseCoordTest extends MediaWikiTestCase {
 			[ [ 20, 'N', 30.5, 'W' ], new Coord( 20, -30.5 ) ],
 			[ [ 20, 'S', 30, 'E' ], new Coord( -20, 30 ) ],
 			[ [ 20, 'S', 30, 'W' ], new Coord( -20, -30 ) ],
-			[ [ 20, 30, 40, 'S', 40, 45, 55, 'E' ], new Coord( -20.511111111111, 40.765277777778 ) ],
-			[ [ 20, 30, 40, 'N', 40, 45, 55, 'W' ], new Coord( 20.511111111111, -40.765277777778 ) ],
+			[ [ 20, 30, 40, 'S', 40, 45, 55, 'E' ],
+				new Coord( -20.511111111111, 40.765277777778 ) ],
+			[ [ 20, 30, 40, 'N', 40, 45, 55, 'W' ],
+				new Coord( 20.511111111111, -40.765277777778 ) ],
 			[ [ 20, 'E', 30, 'W' ], false ],
 			[ [ 20, 'S', 30, 'N' ], false ],
 			[ [ -20, 'S', 30, 'E' ], false ],
@@ -87,8 +91,10 @@ class ParseCoordTest extends MediaWikiTestCase {
 			// coordinate validation and normalisation (non-Earth)
 			[ [ 10, 20 ], new Coord( 10, 20, 'mars' ), 'mars' ],
 			[ [ 110, 20 ], false, 'mars' ],
-			[ [ 47, 0, 'S', 355, 3, 'W' ], new Coord( -47, 4.95, 'mars' ), 'mars' ], // Asimov Crater
-			[ [ 68, 'S', 357, 'E' ], new Coord( -68, 357, 'venus' ), 'venus' ], // Quetzalpetlatl Corona
+			// Asimov Crater
+			[ [ 47, 0, 'S', 355, 3, 'W' ], new Coord( -47, 4.95, 'mars' ), 'mars' ],
+			// Quetzalpetlatl Corona
+			[ [ 68, 'S', 357, 'E' ], new Coord( -68, 357, 'venus' ), 'venus' ],
 		];
 	}
 }

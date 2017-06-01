@@ -46,14 +46,17 @@ class Hooks {
 
 				if ( $wgGeoDataBackend != 'db' ) {
 					$updater->addExtensionTable( 'geo_tags', "$dir/../sql/externally-backed.sql" );
-					$updater->dropExtensionTable( 'geo_killlist', "$dir/../sql/drop-updates-killlist.sql" );
+					$updater->dropExtensionTable( 'geo_killlist',
+						"$dir/../sql/drop-updates-killlist.sql" );
 				} else {
 					$updater->addExtensionTable( 'geo_tags', "$dir/../sql/db-backed.sql" );
 				}
 				$updater->addExtensionUpdate( [ 'GeoData\Hooks::upgradeToDecimal' ] );
 				break;
 			default:
-				throw new MWException( 'GeoData extension currently supports only MySQL and SQLite' );
+				throw new MWException(
+					'GeoData extension currently supports only MySQL and SQLite'
+				);
 		}
 	}
 
@@ -140,7 +143,9 @@ class Hooks {
 		$metadata = unserialize( $metadata );
 		\MediaWiki\restoreWarnings();
 
-		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
+		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] )
+			&& isset( $metadata['GPSLongitude'] )
+		) {
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];
 			$globe = new Globe( 'earth' );
@@ -216,7 +221,9 @@ class Hooks {
 		$po = $wp->makeParserOptions( $wgUser );
 		$pout = $wp->getParserOutput( $po );
 		if ( !$pout ) {
-			wfDebugLog( 'mobile', __METHOD__ . "(): no parser output returned for file {$file->getName()}" );
+			wfDebugLog( 'mobile',
+				__METHOD__ . "(): no parser output returned for file {$file->getName()}"
+			);
 		} else {
 			// Make sure this has outer transaction scope (though the hook fires
 			// in a deferred AutoCommitUdpate update, so it should be safe anyway).
@@ -270,7 +277,8 @@ class Hooks {
 			/**
 			 * @var \CirrusSearch $engine
 			 */
-			$fields['coordinates'] = CoordinatesIndexField::build( 'coordinates', $engine->getConfig(), $engine );
+			$fields['coordinates'] = CoordinatesIndexField::build(
+				'coordinates', $engine->getConfig(), $engine );
 		} else {
 			// Unsupported SearchEngine or explicitly disabled by config
 		}
