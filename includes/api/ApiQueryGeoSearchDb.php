@@ -22,7 +22,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 		$this->addTables( 'geo_tags' );
 		$this->addFields( [ 'gt_lat', 'gt_lon', 'gt_primary' ] );
 		$mapping = Coord::getFieldMapping();
-		foreach( $params['prop'] as $prop ) {
+		foreach ( $params['prop'] as $prop ) {
 			if ( isset( $mapping[$prop] ) ) {
 				$this->addFields( $mapping[$prop] );
 			}
@@ -74,7 +74,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 				if ( $row->gt_primary ) {
 					$vals['primary'] = '';
 				}
-				foreach( $params['prop'] as $prop ) {
+				foreach ( $params['prop'] as $prop ) {
 					if ( isset( $mapping[$prop] ) && isset( $row->{$mapping[$prop]} ) ) {
 						$field = $mapping[$prop];
 						// Don't output default globe
@@ -93,7 +93,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 		}
 	}
 
-	protected  function addCoordFilter() {
+	protected function addCoordFilter() {
 		$bbox = $this->bbox ?: $this->coord->bboxAround( $this->radius );
 		$this->addWhereFld( 'gt_lat_int', self::intRange( $bbox->lat1, $bbox->lat2 ) );
 		$this->addWhereFld( 'gt_lon_int', self::intRange( $bbox->lon1, $bbox->lon2 ) );

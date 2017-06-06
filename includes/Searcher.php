@@ -2,7 +2,6 @@
 
 namespace GeoData;
 
-
 use CirrusSearch\ElasticsearchIntermediary;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\SearchRequestLog;

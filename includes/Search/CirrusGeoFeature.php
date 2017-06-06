@@ -36,7 +36,7 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 	 * @return string[]
 	 */
 	protected function getKeywords() {
-		return ['boost-nearcoord', 'boost-neartitle', 'nearcoord', 'neartitle'];
+		return [ 'boost-nearcoord', 'boost-neartitle', 'nearcoord', 'neartitle' ];
 	}
 
 	/**

@@ -29,8 +29,8 @@ class CoordinatesIndexField extends NestedIndexField {
 		$nested = new self( $name, $config );
 		$nested->addSubfield( 'coord', new GeoPointIndexField( 'coord', $config ) );
 		// Setting analyzer to keyword is similar to index => not_analyzed
-		$keywords = ['globe', 'type', 'country', 'region'];
-		foreach( $keywords as $keyword ) {
+		$keywords = [ 'globe', 'type', 'country', 'region' ];
+		foreach ( $keywords as $keyword ) {
 			$nested->addSubfield( $keyword, $engine->makeSearchFieldMapping( $keyword,
 					SearchIndexField::INDEX_TYPE_KEYWORD ) );
 		}

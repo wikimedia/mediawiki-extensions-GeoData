@@ -28,7 +28,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		$this->addTables( 'geo_tags' );
 		$this->addFields( [ 'gt_id', 'gt_page_id', 'gt_lat', 'gt_lon', 'gt_primary', 'gt_globe' ] );
 		$mapping = Coord::getFieldMapping();
-		foreach( $params['prop'] as $prop ) {
+		foreach ( $params['prop'] as $prop ) {
 			if ( isset( $mapping[$prop] ) ) {
 				$this->addFields( $mapping[$prop] );
 			}
@@ -52,7 +52,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		} else {
 			$this->addOption( 'USE INDEX', 'gt_page_id' );
 		}
-		
+
 		$this->addOption( 'ORDER BY', [ 'gt_page_id', 'gt_id' ] );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
@@ -71,7 +71,7 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			if ( $row->gt_primary )	{
 				$vals['primary'] = '';
 			}
-			foreach( $params['prop'] as $prop ) {
+			foreach ( $params['prop'] as $prop ) {
 				if ( isset( $mapping[$prop] ) && isset( $row->{$mapping[$prop]} ) ) {
 					$field = $mapping[$prop];
 					$vals[$prop] = $row->$field;

@@ -21,7 +21,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		global $wgDefaultGlobe;
 
 		parent::run( $resultPageSet );
-		$this->resetQueryParams(); //@fixme: refactor to make this unnecessary
+		$this->resetQueryParams(); // @fixme: refactor to make this unnecessary
 
 		$params = $this->params = $this->extractRequestParams();
 		$namespaces = array_map( 'intval', $params['namespace'] );
@@ -62,9 +62,15 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$filter->addFilter( $distanceFilter );
 
 		$query = new \Elastica\Query();
-		$fields =
-			array_map( function ( $prop ) { return "coordinates.$prop"; },
-				array_merge( [ 'coord', 'primary' ], $params['prop'] ) );
+		$fields = array_map(
+			function ( $prop ) {
+				return "coordinates.$prop";
+			},
+			array_merge(
+				[ 'coord', 'primary' ],
+				$params['prop']
+			)
+		);
 		$query->setParam( '_source', $fields );
 
 		$nested = new \Elastica\Query\Nested();

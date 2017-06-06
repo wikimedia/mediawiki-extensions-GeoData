@@ -3,9 +3,9 @@
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
-	$IP = dirname( __FILE__ ) . '/../../..';
+	$IP = __DIR__ . '/../../..';
 }
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once "$IP/maintenance/Maintenance.php";
 
 class UpdateIndexGranularity extends Maintenance {
 	const BATCH_SIZE = 500;
@@ -54,5 +54,5 @@ class UpdateIndexGranularity extends Maintenance {
 }
 
 $maintClass = 'UpdateIndexGranularity';
-require_once( DO_MAINTENANCE );
+require_once DO_MAINTENANCE;
 

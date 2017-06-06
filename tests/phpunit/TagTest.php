@@ -72,27 +72,27 @@ class TagTest extends MediaWikiTestCase {
 		return [
 			// Basics
 			[
-				'{{#coordinates: 10|20|primary}}', 
+				'{{#coordinates: 10|20|primary}}',
 				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			[
-				'{{#coordinates: 100|20|primary}}', 
+				'{{#coordinates: 100|20|primary}}',
 				false,
 			],
 			[
-				'{{#coordinates: 10|2000|primary}}', 
+				'{{#coordinates: 10|2000|primary}}',
 				false,
 			],
 			[
-				'{{#coordinates: 10| primary		|	20}}', 
+				'{{#coordinates: 10| primary		|	20}}',
 				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			[ // empty parameter instead of primary
-				'{{#coordinates: 10 | |	20 }}', 
+				'{{#coordinates: 10 | |	20 }}',
 				new Coord( 10, 20, 'earth', [ 'primary' => false, 'dim' => 1000 ] ),
 			],
 			[
-				'{{#coordinates: primary|10|20}}', 
+				'{{#coordinates: primary|10|20}}',
 				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			// type
@@ -101,57 +101,57 @@ class TagTest extends MediaWikiTestCase {
 				new Coord( 10, 20, 'earth', [ 'type' => 'landmark', 'dim' => 1000 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|type:city(666)}}', 
+				'{{#coordinates: 10|20|type:city(666)}}',
 				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			// Other geohack params
 			[
-				'{{#coordinates: 10|20}}', 
+				'{{#coordinates: 10|20}}',
 				new Coord( 10, 20, 'earth',  [ 'dim' => 1000 ] ),
 			],
-			[ 
+			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-mos}}',
 				new Coord( 10, 20, 'moon', [ 'country' => 'RU', 'region' => 'MOS', 'dim' => 10 ] ),
 			],
-			[ 
+			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU}}',
 				new Coord( 10, 20, 'moon', [ 'country' => 'RU', 'dim' => 10 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|_dim:3Km_}}', 
+				'{{#coordinates: 10|20|_dim:3Km_}}',
 				new Coord( 10, 20, 'earth', [ 'dim' => 3000 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|foo:bar dim:100m}}', 
+				'{{#coordinates: 10|20|foo:bar dim:100m}}',
 				new Coord( 10, 20, 'earth', [ 'dim' => 100 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|dim:-300}}', 
+				'{{#coordinates: 10|20|dim:-300}}',
 				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|dim:-10km}}', 
+				'{{#coordinates: 10|20|dim:-10km}}',
 				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|dim:1L}}', 
+				'{{#coordinates: 10|20|dim:1L}}',
 				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
 			],
 			// dim fallbacks
 			[
-				'{{#coordinates: 10|20|type:city}}', 
+				'{{#coordinates: 10|20|type:city}}',
 				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|type:city(2000)}}', 
+				'{{#coordinates: 10|20|type:city(2000)}}',
 				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|type:lulz}}', 
+				'{{#coordinates: 10|20|type:lulz}}',
 				new Coord( 10, 20, 'earth', [ 'type' => 'lulz', 'dim' => 1000 ] ),
 			],
 			[
-				'{{#coordinates: 10|20|scale:50000}}', 
+				'{{#coordinates: 10|20|scale:50000}}',
 				new Coord( 10, 20, 'earth', [ 'dim' => 5000 ] ),
 			],
 			// https://phabricator.wikimedia.org/T48181
