@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aftabuzzaman"
+			"Aftabuzzaman",
+			"Mohammed Galib Hasan"
 		]
 	},
 	"geodata-desc": "ভৌগলিক স্থানাঙ্ক সংগ্রহস্থল এবং আহরণ ফাংশন যোগ করে",
@@ -28,7 +29,7 @@
 	"apihelp-query+coordinates-param-primary": "যাই হোক শুধুমাত্র প্রাথমিক স্থানাঙ্ক (\"primary\"), মাধ্যমিক (\"secondary\") বা সব (\"all\") ফেরত আসবে।",
 	"apihelp-query+coordinates-param-distancefrompoint": "এইসব স্থানাঙ্ক থেকে পৃথিবীর প্রত্যেক ফলাফলের দূরত্ব মিটারে প্রদান করে।",
 	"apihelp-query+coordinates-param-distancefrompage": "এই পাতার স্থানাঙ্ক থেকে পৃথিবীর প্রত্যেক ফলাফলের দূরত্ব মিটারে প্রদান করে।",
-	"apihelp-query+coordinates-example-1": "[[প্রধান পাতা]]র স্থানাঙ্কের একটি তালিকা পান",
+	"apihelp-query+coordinates-example-1": "[[Main Page]]র স্থানাঙ্কের একটি তালিকা পান",
 	"apihelp-query+geosearch-description": "প্রদত্ত বিন্দুর কাছাকাছি স্থানাঙ্ক থাকা পাতা প্রদান করে।",
 	"apihelp-query+geosearch-param-coord": "কাছাকাছি স্থানাঙ্ক যা অনুসন্ধান করতে হবে।",
 	"apihelp-query+geosearch-param-page": "কাছাকাছি পাতার শিরোনাম যা অনুসন্ধান করতে হবে।",
