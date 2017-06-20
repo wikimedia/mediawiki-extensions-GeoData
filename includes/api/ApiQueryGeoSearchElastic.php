@@ -237,8 +237,8 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		}
 		$primary = $this->params['primary'];
 		if ( ( $primary == 'primary' && !$coord->primary )
-			|| ( $primary == 'secondary' && $coord->primary ) )
-		{
+			|| ( $primary == 'secondary' && $coord->primary )
+		) {
 			return false;
 		}
 		return true;

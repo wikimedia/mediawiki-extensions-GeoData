@@ -58,12 +58,14 @@ class Globe {
 		$east360 = [ 'lon' => [ 0, 360 ],    'east' => +1 ];
 		$west360 = [ 'lon' => [ 0, 360 ],    'east' => -1 ];
 
-		// Format:
-		//   'lon' => array of [minimum value, maximum value]
-		//   'east' => sign 1 degree East would have
-		//   'radius' => mean radius in meters (optional)
-		// Coordinate systems mostly taken from http://planetarynames.wr.usgs.gov/TargetCoordinates
-		// Radii taken from Wikipedia. Globes that are too irregular in shape don't have radius set.
+		/**
+		 * Format:
+		 * 'lon' => array of [minimum value, maximum value]
+		 * 'east' => sign 1 degree East would have
+		 * 'radius' => mean radius in meters (optional)
+		 * Coordinate systems mostly taken from http://planetarynames.wr.usgs.gov/TargetCoordinates
+		 * Radii taken from Wikipedia. Globes that are too irregular in shape don't have radius set.
+		 */
 		$data = [
 			'earth'     => $earth   + [ 'radius' => Math::EARTH_RADIUS ],
 			'mercury'   => $west360 + [ 'radius' => 2439700.0 ],

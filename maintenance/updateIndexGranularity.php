@@ -55,4 +55,3 @@ class UpdateIndexGranularity extends Maintenance {
 
 $maintClass = 'UpdateIndexGranularity';
 require_once DO_MAINTENANCE;
-

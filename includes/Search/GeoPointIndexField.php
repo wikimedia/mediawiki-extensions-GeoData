@@ -22,4 +22,3 @@ class GeoPointIndexField extends CirrusIndexField {
 		parent::__construct( $name, $this->typeName, $config );
 	}
 }
-

@@ -50,7 +50,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 			$rows[] = $row;
 		}
 		// sort in PHP because sorting via SQL would involve a filesort
-		usort( $rows, function( $row1, $row2 ) {
+		usort( $rows, function ( $row1, $row2 ) {
 			if ( $row1->dist == $row2->dist ) {
 				return 0;
 			}

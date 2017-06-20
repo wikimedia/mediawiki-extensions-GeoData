@@ -253,7 +253,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 			->method( 'select' )
 			->with( 'geo_tags', $this->anything(), $this->anything(), $this->anything() )
 			->will( $this->returnValue( [
-				(object) [ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321 ],
+				(object)[ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321 ],
 			] ) );
 		// Tell LinkCache all titles not explicitly added don't exist
 		$db->expects( $this->any() )

@@ -155,7 +155,6 @@ class CoordinatesParserFunction {
 			: $wgDefaultGlobe;
 
 		$this->globe = new Globe( $globe );
-
 	}
 
 	private function applyTagArgs( Coord $coord ) {
