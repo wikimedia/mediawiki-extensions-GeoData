@@ -5,7 +5,8 @@
 			"Helder.wiki",
 			"Opraco",
 			"He7d3r",
-			"Araceletorres"
+			"Araceletorres",
+			"Felipe L. Ewald"
 		]
 	},
 	"geodata-desc": "Adiciona a funcionalidade de armazenamento e recuperação de coordenadas geográficas",
@@ -27,6 +28,7 @@
 	"geodata-unknown-region-category-desc": "A página usa um valor desconhecido de parâmetro <code>region</code> para coordenadas.",
 	"geodata-api-help-coordinates-format": "Formato: Latitude e longitude separadas por uma barra vertical (\"|\").",
 	"apihelp-query+coordinates-description": "Retorna coordenadas de determinadas páginas.",
+	"apihelp-query+coordinates-summary": "Retorna coordenadas de determinadas páginas.",
 	"apihelp-query+coordinates-param-limit": "Número de coordenadas para retornar.",
 	"apihelp-query+coordinates-param-prop": "Que propriedades adicionais de coordenadas retornar.",
 	"apihelp-query+coordinates-param-primary": "Se retornar somente coordenadas principais (\"primary\"), secundárias (\"secondary\") ou ambas (\"all\").",
@@ -34,6 +36,7 @@
 	"apihelp-query+coordinates-param-distancefrompage": "Retorna a distância em metros de cada resultado na Terra a partir das coordenadas desta página.",
 	"apihelp-query+coordinates-example-1": "Obter uma lista de coordenadas da [[Main Page]]",
 	"apihelp-query+geosearch-description": "Retorna páginas com coordenadas em torno de um dado ponto.",
+	"apihelp-query+geosearch-summary": "Retorna páginas com coordenadas em torno de um dado ponto.",
 	"apihelp-query+geosearch-param-coord": "Coordenada em torno da qual buscar.",
 	"apihelp-query+geosearch-param-page": "Título da página em torno da qual buscar.",
 	"apihelp-query+geosearch-param-radius": "Raio de busca em metros.",
