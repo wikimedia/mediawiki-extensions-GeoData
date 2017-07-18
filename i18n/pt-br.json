@@ -35,7 +35,7 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Retorna a distância em metros das coordenadas geográficas de cada resultado válido das coordenadas dadas.",
 	"apihelp-query+coordinates-param-distancefrompage": "Retorna a distância em metros das coordenadas geográficas de cada resultado válido das coordenadas desta página.",
 	"apihelp-query+coordinates-example-1": "Obter uma lista de coordenadas da [[Main Page]]",
-	"apihelp-query+geosearch-description": "Retorna páginas com coordenadas que estão localizadas em uma determinada área.",
+	"apihelp-query+geosearch-description": "Retorna páginas com coordenadas em torno de um dado ponto.",
 	"apihelp-query+geosearch-summary": "Retorna páginas com coordenadas em torno de um dado ponto.",
 	"apihelp-query+geosearch-param-coord": "Coordenada em torno da qual buscar.",
 	"apihelp-query+geosearch-param-page": "Título da página em torno da qual buscar.",
