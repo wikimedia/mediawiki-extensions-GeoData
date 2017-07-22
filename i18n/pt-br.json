@@ -48,6 +48,8 @@
 	"apihelp-query+geosearch-param-primary": "Se retornar somente coordenadas principais (\"primary\"), secundárias (\"secondary\") ou ambas (\"all\").",
 	"apihelp-query+geosearch-param-debug": "Se as informações de depuração devem ser retornadas.",
 	"apihelp-query+geosearch-example-1": "Buscar ao redor do ponto com coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Pesquisar em uma caixa delimitadora",
+	"apierror-geodata-nocoord": "Coordenadas da página desconhecidas.",
 	"apierror-geodata-invalidbox": "Caixa delimitadora inválida.",
 	"apierror-geodata-boxtoobig": "A caixa de encadernação é muito grande"
 }
