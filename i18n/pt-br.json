@@ -51,5 +51,6 @@
 	"apihelp-query+geosearch-example-2": "Pesquisar em uma caixa delimitadora",
 	"apierror-geodata-nocoord": "Coordenadas da página desconhecidas.",
 	"apierror-geodata-invalidbox": "Caixa delimitadora inválida.",
-	"apierror-geodata-boxtoobig": "A caixa de encadernação é muito grande"
+	"apierror-geodata-boxtoobig": "A caixa de encadernação é muito grande",
+	"apierror-geodata-badcoord": "Coordenadas inválidas fornecidas"
 }
