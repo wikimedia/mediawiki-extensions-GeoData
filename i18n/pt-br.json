@@ -37,6 +37,7 @@
 	"apihelp-query+coordinates-example-1": "Obter uma lista de coordenadas da [[Main Page]]",
 	"apihelp-query+geosearch-description": "Retorna páginas com coordenadas em torno de um dado ponto.",
 	"apihelp-query+geosearch-summary": "Retorna páginas com coordenadas em torno de um dado ponto.",
+	"apihelp-query+geosearch-param-bbox": "Caixa de encadernação para pesquisar: pipe (|) coordenadas separadas dos cantos superior esquerdo e inferior direito.",
 	"apihelp-query+geosearch-param-coord": "Coordenada em torno da qual buscar.",
 	"apihelp-query+geosearch-param-page": "Título da página em torno da qual buscar.",
 	"apihelp-query+geosearch-param-radius": "Raio de busca em metros.",
@@ -50,7 +51,13 @@
 	"apihelp-query+geosearch-example-1": "Buscar ao redor do ponto com coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
 	"apihelp-query+geosearch-example-2": "Pesquisar em uma caixa delimitadora",
 	"apierror-geodata-nocoord": "Coordenadas da página desconhecidas.",
+	"apierror-geodata-noprimarycoord": "Página $1 não tem coordenadas primárias.",
+	"apierror-geodata-notonearth": "As coordenadas desta página não estão na Terra.",
 	"apierror-geodata-invalidbox": "Caixa delimitadora inválida.",
 	"apierror-geodata-boxtoobig": "A caixa de encadernação é muito grande",
-	"apierror-geodata-badcoord": "Coordenadas inválidas fornecidas"
+	"apierror-geodata-badcoord": "Coordenadas inválidas fornecidas",
+	"geodata-search-feature-invalid-coordinates": "As coordenadas geográficas '$2' fornecidas para '$1' não puderam ser analisadas.",
+	"geodata-search-feature-invalid-distance": "A distância geográfica '$2' fornecida para '$1' não pode ser analisada.",
+	"geodata-search-feature-unknown-title": "O título '$2' fornecido para '$1' não existe.",
+	"geodata-search-feature-title-no-coordinates": "O título '$2' fornecido para '$1' não possui coordenadas."
 }
