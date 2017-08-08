@@ -5,8 +5,8 @@ namespace GeoData;
 use CirrusSearch\ElasticsearchIntermediary;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\SearchRequestLog;
-use ConfigFactory;
 use Elastica\Exception\ExceptionInterface;
+use MediaWiki\MediaWikiServices;
 use User;
 
 /**
@@ -15,7 +15,7 @@ use User;
 class Searcher extends ElasticsearchIntermediary {
 	public function __construct( User $user = null ) {
 		/** @var SearchConfig $config */
-		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'CirrusSearch' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'CirrusSearch' );
 		/** @suppress PhanTypeMismatchArgument */
 		$connection = new \CirrusSearch\Connection( $config );
 
