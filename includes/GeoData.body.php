@@ -2,9 +2,9 @@
 
 namespace GeoData;
 
-use IDatabase;
 use MediaWiki\MediaWikiServices;
 use Title;
+use Wikimedia\Rdbms\Database;
 
 class GeoData {
 	/**
@@ -41,7 +41,7 @@ class GeoData {
 
 	/**
 	 * @param int $dbType DB_MASTER or DB_SLAVE
-	 * @return IDatabase
+	 * @return Database
 	 */
 	private static function getDB( $dbType ) {
 		return MediaWikiServices::getInstance()

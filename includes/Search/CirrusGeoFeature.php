@@ -4,7 +4,6 @@ namespace GeoData;
 
 use CirrusSearch\Query\SimpleKeywordFeature;
 use CirrusSearch\Search\SearchContext;
-use CirrusSearch\SearchConfig;
 use Elastica\Query\AbstractQuery;
 use Title;
 

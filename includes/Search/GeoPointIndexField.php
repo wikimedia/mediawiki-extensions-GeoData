@@ -3,7 +3,6 @@ namespace GeoData;
 
 use CirrusSearch\Search\CirrusIndexField;
 use CirrusSearch\SearchConfig;
-use SearchEngine;
 
 /**
  * GeoPoint type for CirrusSearch mapping
