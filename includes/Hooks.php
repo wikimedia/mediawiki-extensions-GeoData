@@ -271,7 +271,7 @@ class Hooks {
 	 */
 	public static function onSearchIndexFields( array &$fields, SearchEngine $engine ) {
 		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
-		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend  !== 'elastic' ) {
+		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend !== 'elastic' ) {
 			return;
 		}
 		if ( $engine instanceof \CirrusSearch ) {

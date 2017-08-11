@@ -142,7 +142,7 @@ class Coord {
 	 */
 	public function getRow( $pageId ) {
 		global $wgGeoDataIndexGranularity, $wgGeoDataBackend;
-		$row =  [ 'gt_page_id' => $pageId ];
+		$row = [ 'gt_page_id' => $pageId ];
 		foreach ( self::$fieldMapping as $field => $column ) {
 			$row[$column] = $this->$field;
 		}
