@@ -77,9 +77,9 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 	 * Create rescore builder for geo search functions
 	 *
 	 * @param SearchContext $context
+	 * @param float $weight
 	 * @param Coord $coord
 	 * @param int $radius in kilometers
-	 * @param float $weight
 	 */
 	protected function getRescoreBuilder( SearchContext $context, $weight, Coord $coord, $radius ) {
 		$builder = new GeoRadiusFunctionScoreBuilder( $context, $weight, $coord, $radius );

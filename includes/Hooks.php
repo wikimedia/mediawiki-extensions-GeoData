@@ -78,7 +78,7 @@ class Hooks {
 	 * ParserFirstCallInit hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
 	 *
-	 * @param Parser $parser
+	 * @param Parser &$parser
 	 */
 	public static function onParserFirstCallInit( &$parser ) {
 		$parser->setFunctionHook( 'coordinates',
@@ -91,8 +91,8 @@ class Hooks {
 	 * ArticleDeleteComplete hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete
 	 *
-	 * @param Article $article
-	 * @param User $user
+	 * @param Article &$article
+	 * @param User &$user
 	 * @param string $reason
 	 * @param int $id
 	 */
@@ -239,7 +239,7 @@ class Hooks {
 	 * OutputPageParserOutput hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
 	 *
-	 * @param OutputPage $out
+	 * @param OutputPage &$out
 	 * @param ParserOutput $po
 	 */
 	public static function onOutputPageParserOutput( OutputPage &$out, ParserOutput $po ) {
@@ -266,7 +266,7 @@ class Hooks {
 	 * Search index fields hook handler
 	 * Adds our stuff to CirrusSearch/Elasticsearch schema
 	 *
-	 * @param array $fields
+	 * @param array &$fields
 	 * @param SearchEngine $engine
 	 */
 	public static function onSearchIndexFields( array &$fields, SearchEngine $engine ) {
@@ -288,7 +288,7 @@ class Hooks {
 	/**
 	 * SearchDataForIndex hook handler
 	 *
-	 * @param array[] $fields
+	 * @param array[] &$fields
 	 * @param ContentHandler $contentHandler
 	 * @param WikiPage $page
 	 * @param ParserOutput $parserOutput
@@ -347,7 +347,7 @@ class Hooks {
 	 * Add to the tables cloned for parser testing
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserTestTables
 	 *
-	 * @param array $tables The tables to duplicate structure of
+	 * @param array &$tables The tables to duplicate structure of
 	 */
 	public static function onParserTestTables( &$tables ) {
 		$tables[] = 'geo_tags';
@@ -373,7 +373,7 @@ class Hooks {
 	/**
 	 * Add geo-search feature to search syntax
 	 * @param SearchConfig $config
-	 * @param array $features
+	 * @param array &$features
 	 */
 	public static function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$features ) {
 		$features[] = new CirrusGeoFeature();

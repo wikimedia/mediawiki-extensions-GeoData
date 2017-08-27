@@ -60,9 +60,9 @@ class Coord {
 	/**
 	 * Compares this coordinates with the given coordinates
 	 *
-	 * @param Coord $coord: Coordinate to compare with
-	 * @param int $precision: Comparison precision
-	 * @return Boolean
+	 * @param Coord $coord Coordinate to compare with
+	 * @param int $precision Comparison precision
+	 * @return bool
 	 */
 	public function equalsTo( $coord, $precision = 6 ) {
 		return isset( $coord )
@@ -74,9 +74,9 @@ class Coord {
 	/**
 	 * Compares all the fields of this object with the given coordinates object
 	 *
-	 * @param Coord $coord: Coordinate to compare with
-	 * @param int $precision: Comparison precision
-	 * @return Boolean
+	 * @param Coord $coord Coordinate to compare with
+	 * @param int $precision Comparison precision
+	 * @return bool
 	 */
 	public function fullyEqualsTo( $coord, $precision = 6 ) {
 		return $this->equalsTo( $coord, $precision )
@@ -137,8 +137,8 @@ class Coord {
 
 	/**
 	 * Returns this object's representation suitable for insertion into the DB via Databse::insert()
-	 * @param int $pageId: ID of page associated with this coordinate
-	 * @return array: Associative array in format 'field' => 'value'
+	 * @param int $pageId ID of page associated with this coordinate
+	 * @return array Associative array in format 'field' => 'value'
 	 */
 	public function getRow( $pageId ) {
 		global $wgGeoDataIndexGranularity, $wgGeoDataBackend;

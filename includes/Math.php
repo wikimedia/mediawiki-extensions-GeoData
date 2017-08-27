@@ -36,8 +36,8 @@ class Math {
 	/**
 	 * Wraps coordinate values around globe boundaries
 	 *
-	 * @param float $from
-	 * @param float $to
+	 * @param float &$from
+	 * @param float &$to
 	 * @param float $min
 	 * @param float $max
 	 */
@@ -53,7 +53,7 @@ class Math {
 	/**
 	 * Sign function
 	 *
-	 * @param Float $x: Value to get sign of
+	 * @param Float $x Value to get sign of
 	 * @return int
 	 */
 	public static function sign( $x ) {
