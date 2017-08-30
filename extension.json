@@ -29,7 +29,7 @@
 		"GeoData\\CoordinatesIndexField" : "includes/Search/CoordinatesIndexField.php",
 		"GeoData\\CoordinatesOutput": "includes/CoordinatesOutput.php",
 		"GeoData\\CoordinatesParserFunction": "includes/CoordinatesParserFunction.php",
-		"GeoData\\GeoData": "includes/GeoData.body.php",
+		"GeoData\\GeoData": "includes/GeoData.php",
 		"GeoData\\GeoPointIndexField" : "includes/Search/GeoPointIndexField.php",
 		"GeoData\\GeoRadiusFunctionScoreBuilder": "includes/Search/GeoRadiusFunctionScoreBuilder.php",
 		"GeoData\\Globe": "includes/Globe.php",

@@ -7,7 +7,6 @@ use FauxRequest;
 use GeoData\ApiQueryGeoSearch;
 use MediaWikiTestCase;
 use ApiUsageException;
-use UsageException;
 
 /**
  * @group GeoData
@@ -15,7 +14,12 @@ use UsageException;
 class GeoSearchTest extends MediaWikiTestCase {
 	public function setUp() {
 		$this->setMwGlobals( 'wgAPIListModules',
-			[ 'geosearch' => 'GeoData\Test\MockApiQueryGeoSearch' ] );
+			[
+				'geosearch' => [
+					'class' => ApiQueryGeoSearch::class
+				]
+			]
+		);
 		parent::setUp();
 	}
 
@@ -31,10 +35,7 @@ class GeoSearchTest extends MediaWikiTestCase {
 	 * @dataProvider provideRequiredParams
 	 */
 	public function testRequiredParams( array $params ) {
-		$this->setExpectedException(
-			class_exists( ApiUsageException::class )
-				? ApiUsageException::class : UsageException::class
-		);
+		$this->setExpectedException( ApiUsageException::class );
 		$this->request( $params );
 	}
 
@@ -58,7 +59,4 @@ class GeoSearchTest extends MediaWikiTestCase {
 			],
 		];
 	}
-}
-
-class MockApiQueryGeoSearch extends ApiQueryGeoSearch {
 }
