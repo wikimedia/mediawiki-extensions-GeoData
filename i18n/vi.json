@@ -23,5 +23,10 @@
 	"geodata-unknown-region-category": "Trang có giá trị khu vực không hợp lệ",
 	"geodata-unknown-region-category-desc": "Trang này có một giá trị không hợp lệ cho tham số <code>region</code> của tọa độ.",
 	"geodata-api-help-coordinates-format": "Định dạng: Vĩ độ và kinh độ được phân chia bằng dấu sổ thẳng (“|”).",
-	"apihelp-query+geosearch-param-namespace": "Không gian tên để tìm kiếm."
+	"apihelp-query+geosearch-param-namespace": "Không gian tên để tìm kiếm.",
+	"apierror-geodata-badcoord": "Đã cung cấp tọa độ không hợp lệ",
+	"geodata-search-feature-invalid-coordinates": "Không thể phân tích tọa độ “$2” được cung cấp cho “$1”.",
+	"geodata-search-feature-invalid-distance": "Không thể phân tích chiều dài địa lý “$2” được cung cấp cho “$1”.",
+	"geodata-search-feature-unknown-title": "Tên trang “$2” được cung cấp cho “$1” không tồn tại.",
+	"geodata-search-feature-title-no-coordinates": "Tên trang “$2” được cung cấp cho “$1” không có tọa độ."
 }
