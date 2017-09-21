@@ -50,6 +50,8 @@
 	"apierror-geodata-nocoord": "Coordenadas de páxina descoñecidas.",
 	"apierror-geodata-noprimarycoord": "A páxina $1 non ten coordenadas primarias.",
 	"apierror-geodata-notonearth": "As coordenadas desta páxina non están na Terra.",
+	"apierror-geodata-invalidbox": "Caixa de límites non válida.",
+	"apierror-geodata-boxtoobig": "Caixa de límites demasiado grande.",
 	"apierror-geodata-badcoord": "A coordenada proporcionada non é válida",
 	"geodata-search-feature-invalid-coordinates": "Non se puideron analizar as xeocoordenadas '$2' proporcionadas a '$1'.",
 	"geodata-search-feature-invalid-distance": "A distancia xeográfica '$2' proporcionada en '$1' non puido ser analizada.",
