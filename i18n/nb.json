@@ -23,6 +23,7 @@
 	"geodata-unknown-region-category-desc": "Siden bruker en ugyldig verdi for <code>region</code>-parameteren for koordinater.",
 	"geodata-api-help-coordinates-format": "Format: Breddegrad og lengdegrad atskilt med vertikal strek («|»).",
 	"apihelp-query+coordinates-description": "Returnerer koordinater for de gitte sidene.",
+	"apihelp-query+coordinates-summary": "Returnerer koordinater for de gitte sidene.",
 	"apihelp-query+coordinates-param-limit": "Hvor mange koordinater som skal returneres.",
 	"apihelp-query+coordinates-param-prop": "Hvilke ekstra koordinategenskaper som skal returneres.",
 	"apihelp-query+coordinates-param-primary": "Hvorvidt det skal returneres kun primærkoordinater («primary»), sekundærkoordinater («secondary») eller begge («all»).",
@@ -30,6 +31,7 @@
 	"apihelp-query+coordinates-param-distancefrompage": "Returnerer avstanden i meter for de geografiske koordinatene for hvert gyldige resultat fra koordinatene i denne siden.",
 	"apihelp-query+coordinates-example-1": "Få en liste over koordinater fra [[Main Page]]",
 	"apihelp-query+geosearch-description": "Returnerer sider som har koordinater som ligger i et bestemt område.",
+	"apihelp-query+geosearch-summary": "Returnerer sider med koordinater som ligger i et visst område.",
 	"apihelp-query+geosearch-param-bbox": "Grenseboks å søke i: koordinater atskilt med vertikal strek («|») for hjørnene øverst til venstre og nederst til høyre.",
 	"apihelp-query+geosearch-param-coord": "Koordinater det skal søkes rundt.",
 	"apihelp-query+geosearch-param-page": "Tittelen på siden det skal søkes rundt.",
@@ -48,5 +50,9 @@
 	"apierror-geodata-notonearth": "Denne sidens koordinater er ikke på jorda.",
 	"apierror-geodata-invalidbox": "Ugyldig grenseboks.",
 	"apierror-geodata-boxtoobig": "Grenseboksen er for stor.",
-	"apierror-geodata-badcoord": "Ugyldig koordinat oppgitt"
+	"apierror-geodata-badcoord": "Ugyldig koordinat oppgitt",
+	"geodata-search-feature-invalid-coordinates": "Geokoordinatene «$2» gitt til «$1» kunne ikke tolkes.",
+	"geodata-search-feature-invalid-distance": "Geodistansen «$2» gitt til «$1» kunne ikke tolkes.",
+	"geodata-search-feature-unknown-title": "Tittelen «$2» gitt til «$1» finnes ikke.",
+	"geodata-search-feature-title-no-coordinates": "Tittelen «$2» gitt til «$1» har ingen koordinater."
 }
