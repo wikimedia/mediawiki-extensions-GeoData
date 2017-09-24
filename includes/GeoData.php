@@ -28,7 +28,7 @@ class GeoData {
 	 * @param int $dbType Database to select from DB_MASTER or DB_SLAVE
 	 * @return Coord[]
 	 */
-	public static function getAllCoordinates( $pageId, $conds = [], $dbType = DB_SLAVE ) {
+	public static function getAllCoordinates( $pageId, $conds = [], $dbType = DB_REPLICA ) {
 		$db = self::getDB( $dbType );
 		$conds['gt_page_id'] = $pageId;
 		$res = $db->select( 'geo_tags', Coord::getColumns(), $conds, __METHOD__ );
