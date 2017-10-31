@@ -109,12 +109,15 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 			$this->dieDebug( __METHOD__, 'Logic error' );
 		}
 
-		$this->addTables( 'page' );
 		// retrieve some fields only if page set needs them
 		if ( is_null( $resultPageSet ) ) {
+			$this->addTables( 'page' );
 			$this->addFields( [ 'page_id', 'page_namespace', 'page_title' ] );
 		} else {
-			$this->addFields( WikiPage::selectFields() );
+			$pageQuery = WikiPage::getQueryInfo();
+			$this->addTables( $pageQuery['tables'] );
+			$this->addFields( $pageQuery['fields'] );
+			$this->addJoinConds( $pageQuery['joins'] );
 		}
 		$this->addWhereFld( 'page_namespace', $params['namespace'] );
 
