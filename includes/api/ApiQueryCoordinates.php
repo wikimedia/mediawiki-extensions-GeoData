@@ -152,10 +152,12 @@ class ApiQueryCoordinates extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => [ 'type', 'name', 'dim', 'country', 'region', 'globe' ],
 				ApiBase::PARAM_DFLT => 'globe',
 				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
 			'primary' => [
 				ApiBase::PARAM_TYPE => [ 'primary', 'secondary', 'all' ],
 				ApiBase::PARAM_DFLT => 'primary',
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
 			'distancefrompoint' => [
 				ApiBase::PARAM_TYPE => 'string',

@@ -132,6 +132,9 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 
 	public function getAllowedParams() {
 		global $wgMaxGeoSearchRadius, $wgDefaultGlobe, $wgGeoDataDebug;
+		$propTypes = [ 'type', 'name', 'dim', 'country', 'region', 'globe' ];
+		$primaryTypes = [ 'primary', 'secondary', 'all' ];
+
 		$params = [
 			'coord' => [
 				ApiBase::PARAM_TYPE => 'string',
@@ -173,13 +176,19 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_ISMULTI => true,
 			],
 			'prop' => [
-				ApiBase::PARAM_TYPE => [ 'type', 'name', 'dim', 'country', 'region', 'globe' ],
+				ApiBase::PARAM_TYPE => $propTypes,
 				ApiBase::PARAM_DFLT => 'globe',
 				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( $i ) use ( $propTypes ) {
+					return 'apihelp-query+coordinates-paramvalue-prop-' . $propTypes[$i];
+				}, array_flip( $propTypes ) ),
 			],
 			'primary' => [
-				ApiBase::PARAM_TYPE => [ 'primary', 'secondary', 'all' ],
+				ApiBase::PARAM_TYPE => $primaryTypes,
 				ApiBase::PARAM_DFLT => 'primary',
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( $i ) use ( $primaryTypes ) {
+					return 'apihelp-query+coordinates-paramvalue-primary-' . $primaryTypes[$i];
+				}, array_flip( $primaryTypes ) ),
 			],
 		];
 		if ( $wgGeoDataDebug ) {
