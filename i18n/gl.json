@@ -28,6 +28,8 @@
 	"apihelp-query+coordinates-summary": "Devolve as coordenadas das páxinas indicadas.",
 	"apihelp-query+coordinates-param-limit": "Número de coordenadas a devolver.",
 	"apihelp-query+coordinates-param-prop": "Que propiedades adicionais devolver das coordenadas.",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Nome do obxecto.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Tamaño aproximado do obxecto en metros.",
 	"apihelp-query+coordinates-param-primary": "Se só devolver coordenadas primarias (\"primary\"), secundarias (\"secondary\") ou as dúas (\"all\").",
 	"apihelp-query+coordinates-param-distancefrompoint": "Devolver a distancia en metros de das coordenadas xeográficas de cada resultado válido desde estas coordenadas.",
 	"apihelp-query+coordinates-param-distancefrompage": "Devolver a distancia en metros de das coordenadas xeográficas de cada resultado válido desde as coordenadas desta páxina.",
