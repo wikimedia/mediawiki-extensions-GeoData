@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geraki"
+			"Geraki",
+			"KATRINE1992"
 		]
 	},
 	"geodata-desc": "Προσθέτει λειτουργία αποθήκευσης και ανάκτησης γεωγραφικών συντεταγμένων",
@@ -16,5 +17,10 @@
 	"geodata-broken-tags-category": "Σελίδες με εσφαλμένες ετικέτες συντεταγμένων",
 	"geodata-unknown-type-category": "Σελίδες με άγνωστο τύπο συντεταγμένων",
 	"geodata-unknown-globe-category": "Σελίδες με άγνωστη τιμή σφαίρας",
-	"geodata-unknown-region-category": "Σελίδες με ανέγκυρη τιμή περιοχής"
+	"geodata-unknown-region-category": "Σελίδες με ανέγκυρη τιμή περιοχής",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Μέγεθος κατά προσέγγιση του αντικειμένου σε μέτρα.",
+	"apihelp-query+coordinates-paramvalue-primary-primary": "Τόπος θέματος του άρθρου.Υπάρχει ως επί το πλείστον μια κύρια ρύθμιση ανά τίτλο.",
+	"apihelp-query+coordinates-paramvalue-primary-secondary": "Η τοποθεσία κάποιου θέματος που αναφέρεται στο άρθρο. Οιεσδήποτε δευτερεύουσες ρυθμίσεις μπορεί να συνδέονται με ένα τίτλο.",
+	"apihelp-query+geosearch-param-globe": "Σφαίρα αναζήτησης. Δες το [[mw:Extension:GeoData#Glossary]]για περισσότερες λεπτομέρειες.",
+	"apihelp-query+geosearch-param-primary": "Σε ποιο είδος στοιχείων να επιστρέψουμε."
 }

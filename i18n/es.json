@@ -6,7 +6,8 @@
 			"Macofe",
 			"Csbotero",
 			"Ryo567",
-			"Dgstranz"
+			"Dgstranz",
+			"KATRINE1992"
 		]
 	},
 	"geodata-desc": "Agrega la funcionalidad de almacenamiento y recuperación de coordenadas geográficas",
@@ -30,7 +31,12 @@
 	"apihelp-query+coordinates-description": "Devuelve las coordenadas de las páginas espedificadas.",
 	"apihelp-query+coordinates-param-limit": "Cuántas coordenadas se devolverán.",
 	"apihelp-query+coordinates-param-prop": "Qué propiedades adicionales de las coordenadas se devolverán.",
+	"apihelp-query+coordinates-paramvalue-prop-type": " Tipo del objeto definido por las coordenadas. Ver a mas informacion a [[mw:Extension:GeoData#Usage]]",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Volumen del objeto en metros alrededor.",
 	"apihelp-query+coordinates-param-primary": "Si devolver solo las coordenadas primarias (\"primary\"), secundarias (\"secondary\") o ambas (\"all\").",
+	"apihelp-query+coordinates-paramvalue-primary-primary": "La ubicacion del sujeto del articulo. Hay sobretodo una coordenada por titulo.",
+	"apihelp-query+coordinates-paramvalue-primary-secondary": "La ubicacion de",
+	"apihelp-query+coordinates-paramvalue-primary-all": "Volver ambas, las coordenadas primarias y segundarias.",
 	"apihelp-query+coordinates-param-distancefrompoint": "Devolver la distancia en metros desde las coordenadas geográficas de cada resultado válido desde las coordenadas proporcionadas.",
 	"apihelp-query+coordinates-param-distancefrompage": "Devolver distancia en metros de las coordenadas geográficas de cada uno de los resultados válidos desde las coordenadas de esta página.",
 	"apihelp-query+coordinates-example-1": "Obtener una lista de las coordenadas de la [[Main Page]]",
@@ -40,6 +46,7 @@
 	"apihelp-query+geosearch-param-radius": "Radio de búsqueda en metros.",
 	"apihelp-query+geosearch-param-maxdim": "Restringir la búsqueda a los objetos no mayores que esto, en metros.",
 	"apihelp-query+geosearch-param-limit": "Número máximo de páginas que devolver.",
+	"apihelp-query+geosearch-param-globe": "Globo de busqueda. Ver a {{mw:Extension:GeoData#Glossary}}para mas detalles",
 	"apihelp-query+geosearch-param-namespace": "Espacio de nombres que buscar.",
 	"apihelp-query+geosearch-param-prop": "Qué propiedades adicionales de las coordenadas se devolverán.",
 	"apihelp-query+geosearch-param-primary": "Si devolver solo las coordenadas primarias (\"primary\"), secundarias (\"secondary\") o ambas (\"all\").",

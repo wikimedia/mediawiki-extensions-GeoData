@@ -15,6 +15,8 @@
 	"geodata-unknown-type-category": "Säite mat engem onbekannten Typ vu Koordinaten",
 	"geodata-unknown-globe-category": "Säite mat engem onbekannte Wäert fir de Globus",
 	"geodata-unknown-region-category": "Säite mat engem onbekannte Wäert fir d'Regioun",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Numm vum Objet.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Approximativ Gréisst vum Objet a Meter.",
 	"apihelp-query+geosearch-description": "Gëtt Säiten zréck déi Koordinaten hunn déi an enger bestëmmter Géigend leien.",
 	"apierror-geodata-nocoord": "Koordinate vun der Säit onbekannt.",
 	"apierror-geodata-noprimarycoord": "Säit $1 huet keng primär Koordinaten.",
