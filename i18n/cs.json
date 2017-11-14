@@ -4,7 +4,8 @@
 			"Jkjk",
 			"Mormegil",
 			"Martin Urbanec",
-			"Marek Kriz"
+			"Marek Kriz",
+			"Dvorapa"
 		]
 	},
 	"geodata-desc": "Přidává funkcionality pro ukládání a načítání zeměpisných souřadnic",
@@ -24,6 +25,6 @@
 	"geodata-unknown-globe-category-desc": "Stránka u souřadnic používá neznámou hodnotu parametru <code>globe</code>.",
 	"geodata-unknown-region-category": "Stránky s nesprávným regionem",
 	"geodata-unknown-region-category-desc": "Stránka u souřadnic používá neznámou hodnotu parametru <code>region</code>.",
-	"geodata-api-help-coordinates-format": "Formát: Zeměpisná šířka a délka oddělené svislítkem („|“).",
+	"geodata-api-help-coordinates-format": "Formát: Zeměpisná šířka a délka oddělené svislítkem (<kbd>|</kbd>).",
 	"apierror-geodata-nocoord": "Souřadnice stránky nejsou známy."
 }
