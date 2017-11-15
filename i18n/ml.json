@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Praveenp"
+			"Praveenp",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "ഭൂസ്ഥിരാങ്കങ്ങൾ ശേഖരിക്കാനും എടുക്കാനുമുള്ള സൗകര്യം കൂട്ടിച്ചേർക്കുന്നു",
@@ -21,7 +22,7 @@
 	"geodata-unknown-globe-category-desc": "നിർദ്ദേശാങ്കങ്ങൾക്കുള്ള ചരമായ <code>globe</code> എന്നതിനു താളിൽ ഉപയോഗിച്ചിരിക്കുന്നത് അപരിചിതമായ വിലയാണ്.",
 	"geodata-unknown-region-category": "പ്രദേശത്തിന്റെ വില അസാധുവായ താളുകൾ",
 	"geodata-unknown-region-category-desc": "നിർദ്ദേശാങ്കങ്ങൾക്കുള്ള ചരമായ <code>region</code> എന്നതിനു താളിൽ ഉപയോഗിച്ചിരിക്കുന്നത് അപരിചിതമായ വിലയാണ്.",
-	"geodata-api-help-coordinates-format": "എഴുത്തുരീതി: പൈപ്പിനാൽ (\"|\") വേർതിരിക്കപ്പെട്ട അക്ഷാംശവും രേഖാംശവും.",
+	"geodata-api-help-coordinates-format": "എഴുത്തുരീതി: പൈപ്പിനാൽ (<kbd>|</kbd>) വേർതിരിക്കപ്പെട്ട അക്ഷാംശവും രേഖാംശവും.",
 	"apihelp-query+coordinates-description": "നൽകിയ താളുകളുടെ നിർദ്ദേശങ്കങ്ങൾ തിരിച്ചുനൽകുന്നു.",
 	"apihelp-query+coordinates-param-limit": "എത്ര നിർദ്ദേശാങ്കങ്ങൾ തിരിച്ചുനൽകണം.",
 	"apihelp-query+coordinates-param-primary": "പ്രാഥമിക നിർദ്ദേശാങ്കൾ (\"primary\") അല്ലെങ്കിൽ ദ്വിതീയം (\"secondary\")  മാത്രമോ അല്ലെങ്കിൽ രണ്ടും കൂടെ (\"all\") ആണോ തിരിച്ചുനൽകേണ്ടത്.",

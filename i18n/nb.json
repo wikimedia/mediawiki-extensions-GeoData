@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Legger til lagring av geografiske koordinater og funksjonalitet for henting av disse",
@@ -21,7 +22,7 @@
 	"geodata-unknown-globe-category-desc": "Siden bruker en ukjent verdi for <code>globe</code>-parameteren for koordinater.",
 	"geodata-unknown-region-category": "Sider med ugyldig regionverdi",
 	"geodata-unknown-region-category-desc": "Siden bruker en ugyldig verdi for <code>region</code>-parameteren for koordinater.",
-	"geodata-api-help-coordinates-format": "Format: Breddegrad og lengdegrad atskilt med vertikal strek («|»).",
+	"geodata-api-help-coordinates-format": "Format: Breddegrad og lengdegrad atskilt med vertikal strek (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Returnerer koordinater for de gitte sidene.",
 	"apihelp-query+coordinates-summary": "Returnerer koordinater for de gitte sidene.",
 	"apihelp-query+coordinates-param-limit": "Hvor mange koordinater som skal returneres.",

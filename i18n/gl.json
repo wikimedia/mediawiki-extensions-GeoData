@@ -3,7 +3,8 @@
 		"authors": [
 			"Toliño",
 			"Banjo",
-			"Elisardojm"
+			"Elisardojm",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Engade unha funcionalidade de almacenamento e de extracción de coordenadas xeográficas.",
@@ -23,7 +24,7 @@
 	"geodata-unknown-globe-category-desc": "A páxina usa un valor descoñecido do parámetro <code>globe</code> para as coordenadas.",
 	"geodata-unknown-region-category": "Páxinas con valores de rexión incorrectos",
 	"geodata-unknown-region-category-desc": "A páxina usa un valor incorrecto do parámetro <code>region</code> para as coordenadas.",
-	"geodata-api-help-coordinates-format": "Formato: Latitude e lonxitude separadas por unha barra vertical (\"|\").",
+	"geodata-api-help-coordinates-format": "Formato: latitude e lonxitude separadas por unha barra vertical (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Devolve as coordenadas das páxinas indicadas.",
 	"apihelp-query+coordinates-summary": "Devolve as coordenadas das páxinas indicadas.",
 	"apihelp-query+coordinates-param-limit": "Número de coordenadas a devolver.",

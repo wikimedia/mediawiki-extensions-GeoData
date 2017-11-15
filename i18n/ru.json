@@ -6,7 +6,8 @@
 			"Ignatus",
 			"Kalan",
 			"Max Semenik",
-			"Okras"
+			"Okras",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Добавляет возможность хранить и получать географические координаты",
@@ -26,7 +27,7 @@
 	"geodata-unknown-globe-category-desc": "Страница использует неизвестное значение параметра  <code>globe</code> для координат.",
 	"geodata-unknown-region-category": "Страницы с некорректным регионом",
 	"geodata-unknown-region-category-desc": "Страница использует некорректное значение параметра  <code>region</code> для координат.",
-	"geodata-api-help-coordinates-format": "Формат: Широта и долгота, разделённые вертикальной чертой («|»).",
+	"geodata-api-help-coordinates-format": "Формат: Широта и долгота, разделённые вертикальной чертой (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Возвращает координаты заданной страницы.",
 	"apihelp-query+coordinates-param-limit": "Сколько координат возвращать.",
 	"apihelp-query+geosearch-param-radius": "Радиус поиска в метрах.",

@@ -4,7 +4,8 @@
 			"Kghbln",
 			"Metalhead64",
 			"Tiin",
-			"Predatorix"
+			"Predatorix",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Ergänzt Funktionen zum Speichern und Abrufen geografischer Koordinaten",
@@ -24,7 +25,7 @@
 	"geodata-unknown-globe-category-desc": "Die Seite verwendet einen unbekannten Wert des <code>globe</code>-Parameters für Koordinaten.",
 	"geodata-unknown-region-category": "Seiten mit unbekanntem Codewert für die Region",
 	"geodata-unknown-region-category-desc": "Die Seite verwendet einen ungültigen Wert des <code>region</code>-Parameters für Koordinaten.",
-	"geodata-api-help-coordinates-format": "Format: Breitengrad und Längengrad, getrennt durch senkrechten Strich („|“).",
+	"geodata-api-help-coordinates-format": "Format: Breitengrad und Längengrad, getrennt durch senkrechten Strich (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Ruft Koordinaten der angegebenen Seiten zurück.",
 	"apihelp-query+coordinates-param-limit": "Wie viele Koordinaten zurückgegeben werden sollen.",
 	"apihelp-query+coordinates-param-prop": "Welche ergänzenden Koordinateneigenschaften zurückgegeben werden sollen.",

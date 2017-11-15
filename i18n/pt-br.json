@@ -6,7 +6,8 @@
 			"Opraco",
 			"He7d3r",
 			"Araceletorres",
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Adiciona a funcionalidade de armazenamento e recuperação de coordenadas geográficas",
@@ -26,7 +27,7 @@
 	"geodata-unknown-globe-category-desc": "A página usa um valor desconhecido de parâmetro <code>type</code> para coordenadas.",
 	"geodata-unknown-region-category": "Páginas com um valor regional inválido",
 	"geodata-unknown-region-category-desc": "A página usa um valor desconhecido de parâmetro <code>region</code> para coordenadas.",
-	"geodata-api-help-coordinates-format": "Formato: Latitude e longitude separadas por uma barra vertical (\"|\").",
+	"geodata-api-help-coordinates-format": "Formato: latitude e longitude separadas por uma barra vertical (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Retorna coordenadas de determinadas páginas.",
 	"apihelp-query+coordinates-summary": "Retorna coordenadas de determinadas páginas.",
 	"apihelp-query+coordinates-param-limit": "Número de coordenadas para retornar.",

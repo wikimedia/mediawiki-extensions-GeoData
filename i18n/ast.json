@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Amiesta una función d'almacenamientu y recuperación de coordenaes xeográfiques.",
@@ -21,7 +22,7 @@
 	"geodata-unknown-globe-category-desc": "La páxina usa un valor desconocíu del parámetru <code>globe</code> pa les coordenaes.",
 	"geodata-unknown-region-category": "Páxines con valores de rexón inválidos",
 	"geodata-unknown-region-category-desc": "La páxina usa un valor desconocíu del parámetru <code>region</code> pa les coordenaes.",
-	"geodata-api-help-coordinates-format": "Formatu: Llatitú y llonxitú separaes por una barra vertical (\"|\").",
+	"geodata-api-help-coordinates-format": "Formatu: llatitú y llonxitú separaes por una barra vertical (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Devuelve les coordenaes de les páxines indicaes.",
 	"apihelp-query+coordinates-summary": "Devuelve les coordenaes de les páxines indicaes.",
 	"apihelp-query+coordinates-param-limit": "Númberu de coordenaes a devolver.",

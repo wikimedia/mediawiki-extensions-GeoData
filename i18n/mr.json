@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"V.narsikar",
-			"अभय नातू"
+			"अभय नातू",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "भौगोलिक समन्वयक भांडारण व हुडकण्याची कार्यात्मकता",
@@ -22,7 +23,7 @@
 	"geodata-unknown-globe-category-desc": "हे पान समन्वयकासाठी असलेल्या प्राचलात<code>globe</code>ची अनोळखी किंमत वापरते.",
 	"geodata-unknown-region-category": "अवैध क्षेत्र किंमत असणारी पाने",
 	"geodata-unknown-region-category-desc": "हे पान समन्वयकासाठी असलेल्या प्राचलात<code>region</code> ची अनोळखी किंमत वापरते.",
-	"geodata-api-help-coordinates-format": "प्रारुप:अक्षांश व रेखांश पाईप(\"|\") द्वारे वेगळे केलेले",
+	"geodata-api-help-coordinates-format": "प्रारुप:अक्षांश व रेखांश पाईप (<kbd>|</kbd>) द्वारे वेगळे केलेले",
 	"apihelp-query+coordinates-description": "दिलेल्या पानाच्या समन्वयकाचा परतावा देते.",
 	"apihelp-query+coordinates-param-limit": "किती समन्वयकांचा परतावा हवा.",
 	"apihelp-query+coordinates-param-prop": "समन्वयकाच्या कोणत्या अतिरिक्त गुणधर्मांचा परतावा हवा.",

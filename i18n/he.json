@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Inkbug",
-			"YaronSh"
+			"YaronSh",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "מוסיף אפשרות לאכסון ואחזור של נקודות ציון גאוגרפיות",
@@ -23,7 +24,7 @@
 	"geodata-unknown-globe-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>globe</code> לנקודות ציון.",
 	"geodata-unknown-region-category": "דפים עם ערך אזור בלתי־ידוע",
 	"geodata-unknown-region-category-desc": "הדף הזה משתמש בערך בלתי־ידוע של פרמטר <code>region</code> לנקודות ציון.",
-	"geodata-api-help-coordinates-format": "תסדיק: קו־רוחב וקו־אורך מופרדים במקל (\"|\").",
+	"geodata-api-help-coordinates-format": "תסדיק: קו־רוחב וקו־אורך מופרדים במקל (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "החזרת נקודות ציון של דפים נתונים.",
 	"apihelp-query+coordinates-param-limit": "כמה נקודות ציון להחזיר.",
 	"apihelp-query+coordinates-param-prop": "אילו פרטי נקודות ציון נוספים להחזיר.",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"John Reid",
-			"AmaryllisGardener"
+			"AmaryllisGardener",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Adds geografical coordinates storage an retrieval functionality",
@@ -22,7 +23,7 @@
 	"geodata-unknown-globe-category-desc": "This page uises aen onkent value o the <code>globe</code> boondin fer coordinates.",
 	"geodata-unknown-region-category": "Pages wi invalid region value",
 	"geodata-unknown-region-category-desc": "This page uises aen onvalid value o the <code>region</code> boondin fer coordinates.",
-	"geodata-api-help-coordinates-format": "Format: Latitude an langitude separatit bi pipe (\"|\").",
+	"geodata-api-help-coordinates-format": "Format: Latitude an langitude separatit bi pipe (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Returns coordinates o the gien pages.",
 	"apihelp-query+coordinates-param-limit": "Hou mony coordinates tae return.",
 	"apihelp-query+coordinates-param-prop": "Which addeetional coordinate properties tae return.",

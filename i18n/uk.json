@@ -5,7 +5,8 @@
 			"Base",
 			"DixonD",
 			"Ата",
-			"Piramidion"
+			"Piramidion",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Додає можливість зберігати і отримувати географічні координати",
@@ -25,7 +26,7 @@
 	"geodata-unknown-globe-category-desc": "Сторінка використовує невідоме значення параметра <code>globe</code> для координат.",
 	"geodata-unknown-region-category": "Сторінки з некоректним регіоном",
 	"geodata-unknown-region-category-desc": "Сторінка використовує недопустиме значення параметра <code>region</code> для координат.",
-	"geodata-api-help-coordinates-format": "Формат: Широта та довгота розділені вертикальною рискою («|»).",
+	"geodata-api-help-coordinates-format": "Формат: Широта та довгота розділені вертикальною рискою (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Повертає координати даної сторінки.",
 	"apihelp-query+coordinates-summary": "Повертає координати заданих сторінок.",
 	"apihelp-query+coordinates-param-limit": "Скільки координат повернути.",

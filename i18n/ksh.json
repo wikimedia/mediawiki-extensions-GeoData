@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Purodha"
+			"Purodha",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Brängk Funksjuhne zom Faßhallde un Widerfenge fun Ko'odėnahte obb em Jlohbos en et Wikki.",
@@ -21,7 +22,7 @@
 	"geodata-unknown-globe-category-desc": "En dä Sigg es ene onbikannte Wäät för der Parramehter <code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">globe</code> för Ko'odėnahte dren.",
 	"geodata-unknown-region-category": "Sigge med ene onjöltijje Rejon",
 	"geodata-unknown-region-category-desc": "En dä Sigg es ene onbikannte Wäät för der Parramehter <code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">region</code> för Ko'odėnahte dren.",
-	"geodata-api-help-coordinates-format": "Schriv ene Schtrech („|“) zwesche de Länge un de Beijde om Jlohbos.",
+	"geodata-api-help-coordinates-format": "Schriv ene Schtrech (<kbd>|</kbd>) zwesche de Länge un de Beijde om Jlohbos.",
 	"apihelp-query+coordinates-description": "Jit de Ko'odėnahte vun dä aanjejovve Sigge uß.",
 	"apihelp-query+coordinates-param-limit": "Wi vill Ko'odėnahte ze livvere?",
 	"apihelp-query+coordinates-param-prop": "Wat för en zohsäzlejje Aanjahbe bei de Ko'odėnahte ußjejovve wähde sulle.",

@@ -6,7 +6,8 @@
 			"Mjbmr",
 			"جواد",
 			"Reza1615",
-			"Alirezaaa"
+			"Alirezaaa",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "افزودن ذخیره‌سازی مختصات جغرافیایی و کارآمدی بازیابی",
@@ -26,7 +27,7 @@
 	"geodata-unknown-globe-category-desc": "صفحه از مقدار تعریف‌نشده برای پارامتر <code>globe</code> در مختصات استفاده می‌کند.",
 	"geodata-unknown-region-category": "صفحه‌ها با ارزش ناحیه‌ای نامعتبر",
 	"geodata-unknown-region-category-desc": "صفحه از مقدار تعریف‌نشده برای پارامتر <code>region</code> در مختصات استفاده می‌کند.",
-	"geodata-api-help-coordinates-format": "قالب: عرض جغرافیایی و طول جغرافیایی با خط عمودی («|») جدا شده‌اند.",
+	"geodata-api-help-coordinates-format": "قالب: عرض جغرافیایی و طول جغرافیایی با خط عمودی (<kbd>|</kbd>) جدا شده‌اند.",
 	"apihelp-query+coordinates-description": "مختصات صفحات داده‌شده را برمیگرداند.",
 	"apihelp-query+coordinates-summary": "مختصات صفحات داده‌شده را برمیگرداند.",
 	"apihelp-query+coordinates-param-limit": "تعداد مختصات برای بازگرداندن.",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Minh Nguyen",
-			"Trần Nguyễn Minh Huy"
+			"Trần Nguyễn Minh Huy",
+			"Fitoschido"
 		]
 	},
 	"geodata-desc": "Cho phép lưu trữ và truy cập dữ liệu tọa độ",
@@ -22,7 +23,7 @@
 	"geodata-unknown-globe-category-desc": "Trang này có một giá trị bất ngờ cho tham số <code>globe</code> của tọa độ.",
 	"geodata-unknown-region-category": "Trang có giá trị khu vực không hợp lệ",
 	"geodata-unknown-region-category-desc": "Trang này có một giá trị không hợp lệ cho tham số <code>region</code> của tọa độ.",
-	"geodata-api-help-coordinates-format": "Định dạng: Vĩ độ và kinh độ được phân chia bằng dấu sổ thẳng (“|”).",
+	"geodata-api-help-coordinates-format": "Định dạng: Vĩ độ và kinh độ được phân chia bằng dấu sổ thẳng (<kbd>|</kbd>).",
 	"apihelp-query+geosearch-param-namespace": "Không gian tên để tìm kiếm.",
 	"apierror-geodata-badcoord": "Đã cung cấp tọa độ không hợp lệ",
 	"geodata-search-feature-invalid-coordinates": "Không thể phân tích tọa độ “$2” được cung cấp cho “$1”.",
