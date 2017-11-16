@@ -18,6 +18,7 @@
 	"geodata-unknown-type-category": "Σελίδες με άγνωστο τύπο συντεταγμένων",
 	"geodata-unknown-globe-category": "Σελίδες με άγνωστη τιμή σφαίρας",
 	"geodata-unknown-region-category": "Σελίδες με ανέγκυρη τιμή περιοχής",
+	"geodata-api-help-coordinates-format": "Μορφή:Γεωγραφικό πλάτος και μήκος που που χωρίζονται με σειρά (kbd>|<kbd>).",
 	"apihelp-query+coordinates-param-prop": "Ποιες επιπλέον ιδιότητες παραμέτρων πρέπει να επαναφερθούν. (Ιδιότητες που πάντα επαναφέρονται: <var>lat</var>, <var>lon</var>, και είτε <var>primary</var> ή <var>secondary</var> ως σηματοδότηση.)",
 	"apihelp-query+coordinates-paramvalue-prop-type": "Τύπος αντικειμένου στο οποίο αντιστοιχούν οι παράμετροι. Δέστε το  [[mw:Extension:GeoData#Usage]] για περισσότερα στοιχεία.",
 	"apihelp-query+coordinates-paramvalue-prop-name": "Όνομα του αντικειμένου",
