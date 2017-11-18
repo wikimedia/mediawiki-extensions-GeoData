@@ -23,6 +23,8 @@
 	"apihelp-query+coordinates-paramvalue-prop-type": "Τύπος αντικειμένου στο οποίο αντιστοιχούν οι παράμετροι. Δέστε το  [[mw:Extension:GeoData#Usage]] για περισσότερα στοιχεία.",
 	"apihelp-query+coordinates-paramvalue-prop-name": "Όνομα του αντικειμένου",
 	"apihelp-query+coordinates-paramvalue-prop-dim": "Μέγεθος κατά προσέγγιση του αντικειμένου σε μέτρα.",
+	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alpha-2 code de pays (e.g. <samp>US</samp> or <samp>RU</samp>).",
+	"apihelp-query+coordinates-paramvalue-prop-region": "ISO 3166-2 code  régional(la part du code ISO 3166-2 après le tiret ; par ex.. <samp>FL</samp> ou <samp>MOS</samp>).",
 	"apihelp-query+coordinates-paramvalue-prop-globe": "Σε ποιο χειροπιαστό αντικείμενο αντιστοιχούν οι παράμετροι. (e.g. <samp>moon</samp> or <samp>pluto</samp>). Defaults Γής. Δέστε το [[mw:Extension:GeoData#Glossary]]για περισσότερες λεπτομέρεις.",
 	"apihelp-query+coordinates-param-primary": "Ποιο είδος παραμέτρων πρέπει να επαναφερθεί.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "Τόπος θέματος του άρθρου.Υπάρχει ως επί το πλείστον μια κύρια ρύθμιση ανά τίτλο.",
