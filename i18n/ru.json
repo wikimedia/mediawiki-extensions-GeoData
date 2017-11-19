@@ -7,7 +7,8 @@
 			"Kalan",
 			"Max Semenik",
 			"Okras",
-			"Fitoschido"
+			"Fitoschido",
+			"Smigles"
 		]
 	},
 	"geodata-desc": "Добавляет возможность хранить и получать географические координаты",
@@ -30,6 +31,7 @@
 	"geodata-api-help-coordinates-format": "Формат: Широта и долгота, разделённые вертикальной чертой (<kbd>|</kbd>).",
 	"apihelp-query+coordinates-description": "Возвращает координаты заданной страницы.",
 	"apihelp-query+coordinates-param-limit": "Сколько координат возвращать.",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Название объекта.",
 	"apihelp-query+geosearch-param-radius": "Радиус поиска в метрах.",
 	"apihelp-query+geosearch-param-limit": "Максимальное количество возвращаемых страниц.",
 	"apihelp-query+geosearch-param-namespace": "Пространства имён для поиска.",
