@@ -39,7 +39,7 @@
 	"apihelp-query+coordinates-paramvalue-prop-region": "Código de región ISO 3166-2 (la porción del código ISO 3166-2 ubicada después del guion; p. ej., <samp>FL</samp> o <samp>MOS</samp>).",
 	"apihelp-query+coordinates-param-primary": "Qué tipo de coordenadas devolver.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "La ubicacion del sujeto del articulo. Hay sobretodo una coordenada por titulo.",
-	"apihelp-query+coordinates-paramvalue-primary-secondary": "La ubicacion de",
+	"apihelp-query+coordinates-paramvalue-primary-secondary": "La ubicación de un objeto que se mencione en el artículo. Se puede asociar cualquier cantidad de coordenadas secundarias con los títulos.",
 	"apihelp-query+coordinates-paramvalue-primary-all": "Devolver tanto las coordenadas primarias como las secundarias.",
 	"apihelp-query+coordinates-param-distancefrompoint": "Devolver la distancia en metros desde las coordenadas geográficas de cada resultado válido desde las coordenadas proporcionadas.",
 	"apihelp-query+coordinates-param-distancefrompage": "Devolver distancia en metros de las coordenadas geográficas de cada uno de los resultados válidos desde las coordenadas de esta página.",

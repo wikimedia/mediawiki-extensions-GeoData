@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"පසිඳු කාවින්ද",
-			"Zainab Meher"
+			"Zainab Meher",
+			"BukhariSaeed"
 		]
 	},
 	"geodata-unknown-type-category": "نقاط مقام کی نامعلوم قسم کے ساتھ صفحات",
 	"geodata-unknown-globe-category": "نامعلوم دنیا کی قدر کے ساتھ صفحات",
 	"geodata-unknown-region-category": "باطل کے علاقے کی قدر کے ساتھ صفحات",
-	"apihelp-query+coordinates-paramvalue-prop-name": "اوبجیکٹ کا نام"
+	"apihelp-query+coordinates-paramvalue-prop-name": "چیز کا نام"
 }
