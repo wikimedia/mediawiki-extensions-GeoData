@@ -46,7 +46,7 @@
 	"apihelp-query+geosearch-param-globe": "Globo no que procurar. Consulte [[mw:Extension:GeoData#Glossary]] para obter máis detalles.",
 	"apihelp-query+geosearch-param-namespace": "Espazo de nomes no que buscar.",
 	"apihelp-query+geosearch-param-prop": "Que propiedades adicionais devolver das coordenadas.",
-	"apihelp-query+geosearch-param-primary": "Se só devolver coordenadas primarias (\"primary\"), secundarias (\"secondary\") ou as dúas (\"all\").",
+	"apihelp-query+geosearch-param-primary": "Que tipo de coordenadas devolver.",
 	"apihelp-query+geosearch-param-debug": "Se debe devolverse a información de depuración de software",
 	"apihelp-query+geosearch-example-1": "Buscar ó redor do punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
 	"apihelp-query+geosearch-example-2": "Procurar nunha caixa contedor",
