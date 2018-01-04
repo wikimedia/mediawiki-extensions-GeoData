@@ -4,11 +4,11 @@ namespace GeoData;
 
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
-use LoadBalancer;
-use IDatabase;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use Title;
+use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\LoadBalancer;
 
 /**
  * Test GeoFeature functions.

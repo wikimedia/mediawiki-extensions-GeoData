@@ -163,7 +163,7 @@ class Hooks {
 	 * @param Coord[] $coords
 	 * @param int $pageId
 	 * @param int|null $ticket
-	 * @throws \DBUnexpectedError
+	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
 	 */
 	private static function doLinksUpdate( array $coords, $pageId, $ticket ) {
 		$services = MediaWikiServices::getInstance();
