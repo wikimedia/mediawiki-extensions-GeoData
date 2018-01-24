@@ -8,12 +8,15 @@ use GeoData\Math;
 use MediaWikiTestCase;
 
 /**
+ * @covers \GeoData\Coord
+ *
  * @todo: More tests
  * @group GeoData
  */
 class CoordTest extends MediaWikiTestCase {
 
 	/**
+	 * @covers \GeoData\Coord::equalsTo
 	 * @dataProvider provideEquals
 	 * @param Coord $coord1
 	 * @param Coord $coord2
@@ -112,6 +115,7 @@ class CoordTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers \GeoData\Coord::fullyEqualsTo
 	 * @dataProvider provideFullyEquals
 	 *
 	 * @param Coord $coord1
@@ -237,6 +241,9 @@ class CoordTest extends MediaWikiTestCase {
 		return array_merge( $this->provideAlwaysEqualCoords(), $testCases );
 	}
 
+	/**
+	 * @covers \GeoData\Coord::bboxAround
+	 */
 	public function testBboxAround() {
 		for ( $i = 0; $i < 90; $i += 5 ) {
 			$coord = new Coord( $i, $i );
@@ -249,6 +256,7 @@ class CoordTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers \GeoData\Coord::getGlobeObj
 	 * @dataProvider provideGlobeObj
 	 */
 	public function testGlobeObj( $name, Globe $expected ) {

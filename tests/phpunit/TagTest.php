@@ -9,6 +9,8 @@ use ParserOptions;
 use Title;
 
 /**
+ * @covers \GeoData\CoordinatesParserFunction
+ *
  * @group GeoData
  */
 class TagTest extends MediaWikiTestCase {

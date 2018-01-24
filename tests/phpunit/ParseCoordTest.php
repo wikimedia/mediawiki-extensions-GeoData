@@ -8,10 +8,13 @@ use GeoData\Globe;
 use MediaWikiTestCase;
 
 /**
+ * @covers \GeoData\CoordinatesParserFunction
+ *
  * @group GeoData
  */
 class ParseCoordTest extends MediaWikiTestCase {
 	/**
+	 * @covers \GeoData\CoordinatesParserFunction::parseCoordinates
 	 * @dataProvider getCases
 	 */
 	public function testParseCoordinates( $parts, $result, $globe = 'earth' ) {

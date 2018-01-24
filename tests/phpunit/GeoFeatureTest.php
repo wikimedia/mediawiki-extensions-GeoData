@@ -11,7 +11,7 @@ use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LoadBalancer;
 
 /**
- * Test GeoFeature functions.
+ * @covers \GeoData\CirrusGeoFeature
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -93,6 +93,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers \GeoData\CirrusGeoFeature::parseDistance
 	 * @dataProvider parseDistanceProvider
 	 */
 	public function testParseDistance( $expected, $distance ) {
@@ -162,6 +163,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers \GeoData\CirrusGeoFeature::parseGeoNearby
 	 * @dataProvider parseGeoNearbyProvider
 	 */
 	public function testParseGeoNearby( $expected, $value ) {
@@ -244,6 +246,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers \GeoData\CirrusGeoFeature::parseGeoNearbyTitle
 	 * @dataProvider parseGeoNearbyTitleProvider
 	 */
 	public function testParseGeoNearbyTitle( $expected, $value ) {

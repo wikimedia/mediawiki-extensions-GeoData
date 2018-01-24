@@ -7,6 +7,8 @@ use GeoData\Math;
 use MediaWikiTestCase;
 
 /**
+ * @covers \GeoData\Globe
+ *
  * @group GeoData
  */
 class GlobeTest extends MediaWikiTestCase {

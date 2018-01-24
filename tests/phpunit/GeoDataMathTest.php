@@ -7,10 +7,13 @@ use GeoData\Math;
 use MediaWikiTestCase;
 
 /**
+ * @covers \GeoData\Math
+ *
  * @group GeoData
  */
 class GeoDataMathTest extends MediaWikiTestCase {
 	/**
+	 * @covers \GeoData\Math::distance
 	 * @dataProvider getDistanceData
 	 */
 	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist, $name ) {
@@ -29,6 +32,8 @@ class GeoDataMathTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers \GeoData\Coord::bboxAround
+	 * @covers \GeoData\Math::wrapAround
 	 * @dataProvider getRectData
 	 * @todo: test directly now that this function is public
 	 */

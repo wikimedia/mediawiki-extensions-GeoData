@@ -9,6 +9,8 @@ use MediaWikiTestCase;
 use ApiUsageException;
 
 /**
+ * @covers \GeoData\ApiQueryGeoSearch
+ *
  * @group GeoData
  */
 class GeoSearchTest extends MediaWikiTestCase {

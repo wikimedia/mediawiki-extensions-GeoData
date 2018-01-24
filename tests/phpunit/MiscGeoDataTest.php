@@ -10,6 +10,7 @@ use MediaWikiTestCase;
  */
 class MiscGeoDataTest extends MediaWikiTestCase {
 	/**
+	 * @covers \GeoData\ApiQueryGeoSearchDb::intRange
 	 * @dataProvider getIntRangeData
 	 */
 	public function testIntRange( $min, $max, $expected ) {

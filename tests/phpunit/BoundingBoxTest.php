@@ -6,10 +6,13 @@ use GeoData\BoundingBox;
 use MediaWikiTestCase;
 
 /**
+ * @covers \GeoData\BoundingBox
+ *
  * @group GeoData
  */
 class BoundingBoxTest extends MediaWikiTestCase {
 	/**
+	 * @covers \GeoData\BoundingBox::center
 	 * @dataProvider provideCenter
 	 */
 	public function testCenter( $latExpected, $lonExpected, $lat1, $lon1, $lat2, $lon2 ) {
