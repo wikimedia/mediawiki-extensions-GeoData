@@ -7,6 +7,9 @@
 	"descriptionmsg": "geodata-desc",
 	"license-name": "WTFPL",
 	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.29.0"
+	},
 	"APIPropModules": {
 		"coordinates": "GeoData\\ApiQueryCoordinates"
 	},
