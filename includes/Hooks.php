@@ -137,9 +137,9 @@ class Hooks {
 		}
 		$metadata = $file->getMetadata();
 
-		\MediaWiki\suppressWarnings();
+		\Wikimedia\suppressWarnings();
 		$metadata = unserialize( $metadata );
-		\MediaWiki\restoreWarnings();
+		\Wikimedia\restoreWarnings();
 
 		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] )
 			&& isset( $metadata['GPSLongitude'] )
