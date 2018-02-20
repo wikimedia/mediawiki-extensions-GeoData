@@ -67,10 +67,8 @@ class ApiQueryCoordinates extends ApiQueryBase {
 			$vals = [
 				'lat' => floatval( $row->gt_lat ),
 				'lon' => floatval( $row->gt_lon ),
+				'primary' => boolval( $row->gt_primary ),
 			];
-			if ( $row->gt_primary ) {
-				$vals['primary'] = '';
-			}
 			foreach ( $params['prop'] as $prop ) {
 				if ( isset( $mapping[$prop] ) && isset( $row->{$mapping[$prop]} ) ) {
 					$field = $mapping[$prop];

@@ -172,11 +172,9 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 					'lat' => floatval( $coord->lat ),
 					'lon' => floatval( $coord->lon ),
 					'dist' => round( $coord->distance, 1 ),
+					'primary' => boolval( $row->gt_primary ),
 				];
 
-				if ( $coord->primary ) {
-					$vals['primary'] = '';
-				}
 				foreach ( $params['prop'] as $prop ) {
 					// Don't output default globe
 					if ( !( $prop === 'globe' && $coord->$prop === $wgDefaultGlobe ) ) {
