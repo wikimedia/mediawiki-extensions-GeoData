@@ -40,10 +40,17 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	/**
+	 * @param array $params
+	 * @return string
+	 */
 	public function getCacheMode( $params ) {
 		return 'public';
 	}
 
+	/**
+	 * @param ApiPageSet $resultPageSet
+	 */
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}

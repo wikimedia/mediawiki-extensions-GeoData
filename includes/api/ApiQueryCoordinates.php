@@ -129,6 +129,10 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		return null;
 	}
 
+	/**
+	 * @param array $params
+	 * @return string
+	 */
 	public function getCacheMode( $params ) {
 		return 'public';
 	}
