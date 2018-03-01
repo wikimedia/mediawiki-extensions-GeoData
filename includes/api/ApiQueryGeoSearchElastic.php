@@ -172,7 +172,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 					'lat' => floatval( $coord->lat ),
 					'lon' => floatval( $coord->lon ),
 					'dist' => round( $coord->distance, 1 ),
-					'primary' => boolval( $row->gt_primary ),
+					'primary' => boolval( $coord->primary ),
 				];
 
 				foreach ( $params['prop'] as $prop ) {
