@@ -15,11 +15,9 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 
 	]
 );
-$cfg['suppress_issue_types'] = [
-	'PhanDeprecatedFunction',
-	// MYSQLI_TYPE_FLOAT
-	'PhanUndeclaredConstant',
-	// ParserOutput->geoData
-	'PhanUndeclaredProperty',
-];
+// MYSQLI_TYPE_FLOAT
+$cfg['suppress_issue_types'][] = 'PhanUndeclaredConstant';
+// ParserOutput->geoData
+$cfg['suppress_issue_types'][] = 'PhanUndeclaredProperty';
+
 return $cfg;
