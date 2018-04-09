@@ -1,8 +1,8 @@
 <?php
 namespace GeoData;
 
-use CirrusSearch\Search\FunctionScoreBuilder;
-use CirrusSearch\Search\SearchContext;
+use CirrusSearch\Search\Rescore\FunctionScoreBuilder;
+use CirrusSearch\SearchConfig;
 use Elastica\Query\FunctionScore;
 
 /**
@@ -27,16 +27,16 @@ class GeoRadiusFunctionScoreBuilder extends FunctionScoreBuilder {
 
 	/**
 	 * GeoRadiusFunctionScoreBuilder constructor.
-	 * @param SearchContext $context
+	 * @param SearchConfig $config
 	 * @param float $weight Used to amend profile weight, e.g. negative boosting
 	 * @param Coord $coord Center coordinate
 	 * @param int $radius
 	 */
-	public function __construct( SearchContext $context, $weight, Coord $coord, $radius ) {
-		$weightProfile = $context->getConfig()->get( 'GeoDataRadiusScoreOverrides' );
+	public function __construct( SearchConfig $config, $weight, Coord $coord, $radius ) {
+		$weightProfile = $config->get( 'GeoDataRadiusScoreOverrides' );
 		$weightProfile['value'] = self::DEFAULT_WEIGHT;
 		// Overrides will be applied to weight in parent ctor
-		parent::__construct( $context, $weightProfile );
+		parent::__construct( $config, $weightProfile );
 		$this->weight *= $weight;
 		$this->coord = $coord;
 		$this->radius = $radius;

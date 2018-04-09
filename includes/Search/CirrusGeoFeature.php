@@ -64,26 +64,15 @@ class CirrusGeoFeature extends SimpleKeywordFeature {
 		$filter = null;
 		if ( $coord ) {
 			if ( substr( $key, 0, 6 ) === 'boost-' ) {
-				$this->getRescoreBuilder( $context, $negated ? 0.1 : 1, $coord, $radius );
+				$context->addCustomRescoreComponent(
+					new GeoRadiusFunctionScoreBuilder( $context->getConfig(), $negated ? 0.1 : 1, $coord, $radius )
+				);
 			} else {
 				$filter = self::createQuery( $coord, $radius, $excludeDocId );
 			}
 		}
 
 		return [ $filter, false ];
-	}
-
-	/**
-	 * Create rescore builder for geo search functions
-	 *
-	 * @param SearchContext $context
-	 * @param float $weight
-	 * @param Coord $coord
-	 * @param int $radius in kilometers
-	 */
-	protected function getRescoreBuilder( SearchContext $context, $weight, Coord $coord, $radius ) {
-		$builder = new GeoRadiusFunctionScoreBuilder( $context, $weight, $coord, $radius );
-		$context->addCustomRescoreComponent( $builder );
 	}
 
 	/**

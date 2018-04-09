@@ -342,7 +342,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		$context->expects( $this->any() )
 			->method( 'addWarning' )
 			->will( $this->returnCallback( function () use ( &$warnings ) {
-				$warnings[] = func_get_args();
+				$warnings[] = array_filter( func_get_args() );
 			} ) );
 		$feature = new CirrusGeoFeature();
 		$feature->apply( $context, $term );
