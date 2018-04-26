@@ -38,7 +38,7 @@
 	"apihelp-query+coordinates-paramvalue-prop-globe": "הגוף היבשתי שנקודות הציון יחסיות אליו (למשל <samp>moon</samp> או <samp>pluto</samp>). ברירת המחדל היא כדור הארץ. אפשר לעיין בדף [[mw:Extension:GeoData#Glossary]] לפרטים נוספים.",
 	"apihelp-query+coordinates-param-primary": "איזה סוג של נקודות ציון להחזיר.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "מיקום הנושא של הערך. ישנה נקודת ציון ראשית אחת לכל היותר עבור כל כותרת.",
-	"apihelp-query+coordinates-paramvalue-primary-secondary": "המיקום של עצמים מסוימים שמוזכרים בערך. אין הגבלה למספר נקודות הציון המשניות שניתן לשייך לכל כותרת.",
+	"apihelp-query+coordinates-paramvalue-primary-secondary": "המיקום של עצמים מסוימים שמוזכרים בערך. אין הגבלה על מספר נקודות הציון המשניות שניתן לשייך לכל כותרת.",
 	"apihelp-query+coordinates-paramvalue-primary-all": "החזרת נקודות הציון הראשיות והמשניות.",
 	"apihelp-query+coordinates-param-distancefrompoint": "החזרת מרחק במטרים מנקודות הציון הגאוגרפיות בכל תוצאה תקינה בנקודות הציון הנתונות.",
 	"apihelp-query+coordinates-param-distancefrompage": "החזרת המרחק במטרים מנקודות הציון הגאוגרפיות של כל תוצאה תקינה מנקודות הציון של הדף הזה.",
