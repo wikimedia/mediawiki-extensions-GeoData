@@ -319,8 +319,8 @@ class GeoFeatureTest extends MediaWikiTestCase {
 				'neartitle:"10km,Some unknown page"',
 			],
 			'titles must have coordinates' => [
-				[ [ 'geodata-search-feature-title-no-coordinates', 'Foobar' ] ],
-				'neartitle:Foobar',
+				[ [ 'geodata-search-feature-title-no-coordinates', 'GeoFeatureTest-GeoWarnings-Page' ] ],
+				'neartitle:GeoFeatureTest-GeoWarnings-Page',
 			],
 		];
 	}
@@ -331,7 +331,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	public function testGeoWarnings( $expected, $term ) {
 		// Inject fake San Francisco page into LinkCache so it "exists"
 		MediaWikiServices::getInstance()->getLinkCache()
-			->addGoodLinkObj( 98765, Title::newFromText( 'Foobar' ) );
+			->addGoodLinkObj( 98765, Title::newFromText( 'GeoFeatureTest-GeoWarnings-Page' ) );
 
 		$warnings = [];
 		$config = $this->getMock( SearchConfig::class );
