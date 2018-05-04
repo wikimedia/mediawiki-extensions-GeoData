@@ -34,6 +34,10 @@ class Hooks {
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		global $wgGeoDataBackend;
 
+		// T193855 - the extension registry doesn't load extension configuration before
+		if ( !isset( $wgGeoDataBackend ) ) {
+			$wgGeoDataBackend = 'db';
+		}
 		if ( $wgGeoDataBackend != 'db' && $wgGeoDataBackend != 'elastic' ) {
 			throw new MWException( "Unrecognized backend '$wgGeoDataBackend'" );
 		}
