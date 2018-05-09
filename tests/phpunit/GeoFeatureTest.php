@@ -2,8 +2,9 @@
 
 namespace GeoData;
 
-use CirrusSearch\Search\SearchContext;
-use CirrusSearch\SearchConfig;
+use CirrusSearch\CrossSearchStrategy;
+use CirrusSearch\HashSearchConfig;
+use CirrusSearch\Query\KeywordFeatureAssertions;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use Title;
@@ -11,8 +12,6 @@ use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LoadBalancer;
 
 /**
- * @covers \GeoData\CirrusGeoFeature
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -28,15 +27,28 @@ use Wikimedia\Rdbms\LoadBalancer;
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @covers \GeoData\CirrusGeoFeature
+ * @covers \GeoData\CirrusNearCoordFilterFeature
+ * @covers \GeoData\CirrusNearTitleBoostFeature
+ * @covers \GeoData\CirrusNearCoordBoostFeature
+ * @covers \GeoData\CirrusNearTitleFilterFeature
  * @group GeoData
  */
 class GeoFeatureTest extends MediaWikiTestCase {
+
+	/** @var KeywordFeatureAssertions */
+	private $kwAssert;
+
+	public function __construct( $name = null, array $data = [], $dataName = '' ) {
+		MediaWikiTestCase::__construct( $name, $data, $dataName );
+	}
 
 	protected function setUp() {
 		parent::setUp();
 		if ( !class_exists( 'CirrusSearch' ) ) {
 			$this->markTestSkipped( 'CirrusSearch not installed, skipping' );
 		}
+		$this->kwAssert = new KeywordFeatureAssertions( $this );
 	}
 
 	public function parseDistanceProvider() {
@@ -93,12 +105,10 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GeoData\CirrusGeoFeature::parseDistance
 	 * @dataProvider parseDistanceProvider
 	 */
 	public function testParseDistance( $expected, $distance ) {
-		$feature = new CirrusGeoFeature();
-		$this->assertEquals( $expected, $feature->parseDistance( $distance ) );
+		$this->assertEquals( $expected, CirrusGeoFeature::parseDistance( $distance ) );
 	}
 
 	public function parseGeoNearbyProvider() {
@@ -117,21 +127,21 @@ class GeoFeatureTest extends MediaWikiTestCase {
 			],
 			'valid coordinate, default radius' => [
 				[
-					[ 'lat' => 1.2345, 'lon' => 2.3456 ],
+					[ 'lat' => 1.2345, 'lon' => 2.3456, 'globe' => 'earth' ],
 					5000,
 				],
 				'1.2345,2.3456',
 			],
 			'valid coordinate, specific radius in meters' => [
 				[
-					[ 'lat' => -5.4321, 'lon' => 42.345 ],
+					[ 'lat' => -5.4321, 'lon' => 42.345, 'globe' => 'earth' ],
 					4321,
 				],
 				'4321m,-5.4321,42.345',
 			],
 			'valid coordinate, specific radius in kilmeters' => [
 				[
-					[ 'lat' => 0, 'lon' => 42.345 ],
+					[ 'lat' => 0, 'lon' => 42.345, 'globe' => 'earth' ],
 					7000,
 				],
 				'7km,0,42.345',
@@ -154,7 +164,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 			],
 			'valid coordinate with spaces' => [
 				[
-					[ 'lat' => 1.2345, 'lon' => 9.8765 ],
+					[ 'lat' => 1.2345, 'lon' => 9.8765, 'globe' => 'earth' ],
 					5000
 				],
 				'1.2345, 9.8765'
@@ -163,25 +173,32 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GeoData\CirrusGeoFeature::parseGeoNearby
 	 * @dataProvider parseGeoNearbyProvider
 	 */
 	public function testParseGeoNearby( $expected, $value ) {
-		$feature = new CirrusGeoFeature();
-
-		$config = $this->getMock( SearchConfig::class );
-		$config->expects( $this->any() )
-			->method( 'get' )->willReturn( 'earth' );
-		$context = $this->getMockBuilder( SearchContext::class )
-			->disableOriginalConstructor()->getMock();
-		$context->expects( $this->any() )
-			->method( 'getConfig' )->willReturn( $config );
-
-		$result = $feature->parseGeoNearby( $context, 'nearcoord', $value );
-		if ( $result[0] instanceof Coord ) {
-			$result[0] = [ 'lat' => $result[0]->lat, 'lon' => $result[0]->lon ];
+		$config = new \HashConfig( [ 'DefaultGlobe' => 'earth' ] );
+		$features = [
+			new CirrusNearCoordFilterFeature( $config ),
+			new CirrusNearCoordBoostFeature( $config )
+		];
+		foreach ( $features as $feature ) {
+			$query = $feature->getKeywordPrefixes()[0] . ':"' . $value . '"';
+			$this->kwAssert->assertParsedValue( $feature, $query, $expected );
 		}
-		$this->assertEquals( $expected, $result );
+
+		$searchConfig = new HashSearchConfig( [
+			'DefaultGlobe' => 'earth',
+			'GeoDataRadiusScoreOverrides' => [],
+
+		] );
+		$boostFunction = null;
+		if ( $expected[0] !== null ) {
+			$boostFunction = new GeoRadiusFunctionScoreBuilder( $searchConfig, 1,
+				new Coord( $expected[0]['lat'], $expected[0]['lon'], $expected[0]['globe'] ), $expected[1] );
+		}
+		$boostFeature = new CirrusNearCoordBoostFeature( $config );
+		$query = $boostFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
+		$this->kwAssert->assertBoost( $boostFeature, $query, $boostFunction, null, $searchConfig );
 	}
 
 	public function parseGeoNearbyTitleProvider() {
@@ -246,7 +263,6 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GeoData\CirrusGeoFeature::parseGeoNearbyTitle
 	 * @dataProvider parseGeoNearbyTitleProvider
 	 */
 	public function testParseGeoNearbyTitle( $expected, $value ) {
@@ -279,48 +295,75 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		MediaWikiServices::getInstance()->getLinkCache()
 			->addGoodLinkObj( 1234567, Title::newFromText( 'Washington, D.C.' ) );
 
-		$config = $this->getMock( SearchConfig::class );
-		$config->expects( $this->any() )
-			->method( 'makeId' )
-			->will( $this->returnCallback( function ( $id ) {
-				return $id;
-			} ) );
-		$context = $this->getMockBuilder( SearchContext::class )
-			->disableOriginalConstructor()->getMock();
-		$context->expects( $this->any() )
-			->method( 'getConfig' )->will( $this->returnValue( $config ) );
+		$config = new \HashConfig( [ 'DefaultGlobe' => 'earth' ] );
 
-		// Finally run the test
-		$feature = new CirrusGeoFeature;
-		$result = $feature->parseGeoNearbyTitle( $context, 'neartitle', $value );
-		if ( $result[0] instanceof Coord ) {
-			$result[0] = [ 'lat' => $result[0]->lat, 'lon' => $result[0]->lon ];
+		/**
+		 * @var $features \CirrusSearch\Query\SimpleKeywordFeature[]
+		 */
+		$features = [];
+		$features[] = new CirrusNearTitleBoostFeature( $config );
+		$features[] = new CirrusNearTitleFilterFeature( $config );
+		if ( $expected[0] !== null ) {
+			$expected[0] = new Coord( $expected[0]['lat'], $expected[0]['lon'], 'earth' );
 		}
-
-		$this->assertEquals( $expected, $result );
+		foreach ( $features as $feature ) {
+			$query = $feature->getKeywordPrefixes()[0] . ':"' . $value . '"';
+			$this->kwAssert->assertParsedValue( $feature, $query, null, [] );
+			$this->kwAssert->assertExpandedData( $feature, $query, $expected );
+			$this->kwAssert->assertCrossSearchStrategy( $feature, $query,
+				CrossSearchStrategy::hostWikiOnlyStrategy() );
+		}
+		$searchConfig = new HashSearchConfig( [
+			'GeoDataRadiusScoreOverrides' => [],
+			'DefaultGlobe' => 'earth',
+		] );
+		$boostFeature = new CirrusNearTitleBoostFeature( $searchConfig );
+		$boostFunction = null;
+		if ( $expected[0] !== null ) {
+			$boostFunction = new GeoRadiusFunctionScoreBuilder( $searchConfig, 1,
+				$expected[0], $expected[1] );
+		}
+		$query = $boostFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
+		$this->kwAssert->assertBoost( $boostFeature, $query, $boostFunction, null, $searchConfig );
 	}
 
 	public function geoWarningsProvider() {
 		return [
 			'coordinates must be two or three pieces' => [
 				[ [ 'geodata-search-feature-invalid-coordinates', 'nearcoord', 'hi' ] ],
-				'nearcoord:hi',
+				[ 'nearcoord', 'hi' ],
+			],
+			'coordinates must be two or three pieces (boost version)' => [
+				[ [ 'geodata-search-feature-invalid-coordinates', 'boost-nearcoord', 'hi' ] ],
+				[ 'boost-nearcoord', 'hi' ],
 			],
 			'three piece coordinates must use valid radius with qualifier' => [
 				[ [ 'geodata-search-feature-invalid-distance', 'nearcoord', '40s' ] ],
-				'nearcoord:40s,12,21'
+				[ 'nearcoord', '40s,12,21' ]
+			],
+			'three piece coordinates must use valid radius with qualifier (boost version)' => [
+				[ [ 'geodata-search-feature-invalid-distance', 'boost-nearcoord', '40s' ] ],
+				[ 'boost-nearcoord', '40s,12,21' ]
 			],
 			'coordinates must be valid earth coordinates' => [
 				[ [ 'geodata-search-feature-invalid-coordinates', 'boost-nearcoord', '12345,123' ] ],
-				'boost-nearcoord:12345,123',
+				[ 'boost-nearcoord', '12345,123' ],
 			],
 			'titles must be known' => [
 				[ [ 'geodata-search-feature-unknown-title', 'neartitle', 'Some unknown page' ] ],
-				'neartitle:"10km,Some unknown page"',
+				[ 'neartitle', '10km,Some unknown page' ],
+			],
+			'titles must be known (boost verrsion)' => [
+				[ [ 'geodata-search-feature-unknown-title', 'boost-neartitle', 'Some unknown page' ] ],
+				[ 'boost-neartitle', '10km,Some unknown page' ],
 			],
 			'titles must have coordinates' => [
 				[ [ 'geodata-search-feature-title-no-coordinates', 'GeoFeatureTest-GeoWarnings-Page' ] ],
-				'neartitle:GeoFeatureTest-GeoWarnings-Page',
+				[ 'neartitle', 'GeoFeatureTest-GeoWarnings-Page' ],
+			],
+			'titles must have coordinates (boost version)' => [
+				[ [ 'geodata-search-feature-title-no-coordinates', 'GeoFeatureTest-GeoWarnings-Page' ] ],
+				[ 'boost-neartitle', 'GeoFeatureTest-GeoWarnings-Page' ],
 			],
 		];
 	}
@@ -328,24 +371,25 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	/**
 	 * @dataProvider geoWarningsProvider
 	 */
-	public function testGeoWarnings( $expected, $term ) {
-		// Inject fake San Francisco page into LinkCache so it "exists"
+	public function testGeoWarnings( $expected, array $keyAndValue ) {
+		$features = [];
+		$config = new \HashConfig( [ 'DefaultGlobe' => 'earth' ] );
+		$feature = new CirrusNearCoordBoostFeature( $config );
+		$features[$feature->getKeywordPrefixes()[0]] = $feature;
+		$feature = new CirrusNearCoordFilterFeature( $config );
+		$features[$feature->getKeywordPrefixes()[0]] = $feature;
+		$feature = new CirrusNearTitleFilterFeature( $config );
+		$features[$feature->getKeywordPrefixes()[0]] = $feature;
+		$feature = new CirrusNearTitleBoostFeature( $config );
+		$features[$feature->getKeywordPrefixes()[0]] = $feature;
+
+		$feature = $features[$keyAndValue[0]];
+		$query = $keyAndValue[0] . ':"' . $keyAndValue[1] . '"';
+
+		// Inject fake page into LinkCache so it "exists"
 		MediaWikiServices::getInstance()->getLinkCache()
 			->addGoodLinkObj( 98765, Title::newFromText( 'GeoFeatureTest-GeoWarnings-Page' ) );
 
-		$warnings = [];
-		$config = $this->getMock( SearchConfig::class );
-		$context = $this->getMockBuilder( SearchContext::class )
-			->disableOriginalConstructor()->getMock();
-		$context->expects( $this->any() )
-			->method( 'getConfig' )->will( $this->returnValue( $config ) );
-		$context->expects( $this->any() )
-			->method( 'addWarning' )
-			->will( $this->returnCallback( function () use ( &$warnings ) {
-				$warnings[] = array_filter( func_get_args() );
-			} ) );
-		$feature = new CirrusGeoFeature();
-		$feature->apply( $context, $term );
-		$this->assertEquals( $expected, $warnings );
+		$this->kwAssert->assertWarnings( $feature, $expected, $query );
 	}
 }

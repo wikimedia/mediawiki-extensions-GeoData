@@ -380,6 +380,9 @@ class Hooks {
 	 * @param array &$features
 	 */
 	public static function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$features ) {
-		$features[] = new CirrusGeoFeature();
+		$features[] = new CirrusNearTitleBoostFeature( $config );
+		$features[] = new CirrusNearTitleFilterFeature( $config );
+		$features[] = new CirrusNearCoordBoostFeature( $config );
+		$features[] = new CirrusNearCoordFilterFeature( $config );
 	}
 }

@@ -44,6 +44,6 @@ class GeoRadiusFunctionScoreBuilder extends FunctionScoreBuilder {
 
 	public function append( FunctionScore $functionScore ) {
 		$functionScore->addWeightFunction( $this->weight,
-			CirrusGeoFeature::createQuery( $this->coord, $this->radius ) );
+			CirrusNearTitleFilterFeature::createQuery( $this->coord, $this->radius ) );
 	}
 }
