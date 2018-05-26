@@ -11,7 +11,7 @@ class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
 	}
 
 	/**
-	 * @param ApiPageSet $resultPageSet
+	 * @param ApiPageSet|null $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ) {
 		global $wgDefaultGlobe;

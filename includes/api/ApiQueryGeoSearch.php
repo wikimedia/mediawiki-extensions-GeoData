@@ -80,7 +80,7 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	}
 
 	/**
-	 * @param ApiPageSet $resultPageSet
+	 * @param ApiPageSet|null $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
