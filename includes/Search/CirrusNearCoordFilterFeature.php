@@ -3,9 +3,13 @@
 
 namespace GeoData;
 
+use CirrusSearch\Parser\AST\KeywordFeatureNode;
+use CirrusSearch\Query\Builder\QueryBuildingContext;
+use CirrusSearch\Query\FilterQueryFeature;
 use CirrusSearch\Query\SimpleKeywordFeature;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\WarningCollector;
+use Elastica\Query\AbstractQuery;
 
 /**
  * Applies geo filtering to the query by providing coordinates.
@@ -18,7 +22,7 @@ use CirrusSearch\WarningCollector;
  *  nearcoord:1.2345,-5.4321
  *  nearcoord:17km,54.321,-12.345
  */
-class CirrusNearCoordFilterFeature extends SimpleKeywordFeature {
+class CirrusNearCoordFilterFeature extends SimpleKeywordFeature implements FilterQueryFeature {
 	use CirrusGeoFeature;
 
 	/**
@@ -55,12 +59,7 @@ class CirrusNearCoordFilterFeature extends SimpleKeywordFeature {
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
 		list( $coord, $radius ) = $this->parseValue( $key, $value, $quotedValue,
 			'', '', $context );
-		$filter = null;
-		if ( $coord !== null ) {
-			$coordObject = new Coord( $coord['lat'], $coord['lon'], $coord['globe'] );
-			$filter = CirrusNearTitleFilterFeature::createQuery( $coordObject, $radius );
-		}
-		return [ $filter, false ];
+		return [ $this->doGetFilterquery( $coord, $radius ), false ];
 	}
 
 	/**
@@ -81,5 +80,30 @@ class CirrusNearCoordFilterFeature extends SimpleKeywordFeature {
 		WarningCollector $warningCollector
 	) {
 		return $this->parseGeoNearby( $warningCollector, $this->config, $key, $value );
+	}
+
+	/**
+	 * @param array|null $coord
+	 * @param int $radius
+	 * @return \Elastica\Query\AbstractQuery|null
+	 */
+	protected function doGetFilterquery( $coord, $radius ) {
+		$filter = null;
+		if ( $coord !== null ) {
+			$coordObject = new Coord( $coord['lat'], $coord['lon'], $coord['globe'] );
+			$filter = CirrusNearTitleFilterFeature::createQuery( $coordObject, $radius );
+		}
+
+		return $filter;
+	}
+
+	/**
+	 * @param KeywordFeatureNode $node
+	 * @param QueryBuildingContext $context
+	 * @return AbstractQuery|null
+	 */
+	public function getFilterQuery( KeywordFeatureNode $node, QueryBuildingContext $context ) {
+		list( $coord, $radius ) = $node->getParsedValue();
+		return $this->doGetFilterquery( $coord, $radius );
 	}
 }

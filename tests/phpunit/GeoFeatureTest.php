@@ -199,6 +199,17 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		$boostFeature = new CirrusNearCoordBoostFeature( $config );
 		$query = $boostFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
 		$this->kwAssert->assertBoost( $boostFeature, $query, $boostFunction, null, $searchConfig );
+
+		$filterQuery = null;
+		if ( $expected[0] !== null ) {
+			$filterQuery = CirrusNearTitleFilterFeature::createQuery(
+				new Coord( $expected[0]['lat'], $expected[0]['lon'], $expected[0]['globe'] ),
+				$expected[1]
+			);
+		}
+		$filterFeature = new CirrusNearCoordFilterFeature( $config );
+		$query = $filterFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
+		$this->kwAssert->assertfilter( $filterFeature, $query, $filterQuery, null, $searchConfig );
 	}
 
 	public function parseGeoNearbyTitleProvider() {
@@ -317,6 +328,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 			'GeoDataRadiusScoreOverrides' => [],
 			'DefaultGlobe' => 'earth',
 		] );
+
 		$boostFeature = new CirrusNearTitleBoostFeature( $searchConfig );
 		$boostFunction = null;
 		if ( $expected[0] !== null ) {
@@ -325,6 +337,15 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		}
 		$query = $boostFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
 		$this->kwAssert->assertBoost( $boostFeature, $query, $boostFunction, null, $searchConfig );
+
+		$filterQuery = null;
+		if ( $expected[0] !== null ) {
+			$filterQuery = CirrusNearTitleFilterFeature::createQuery( $expected[0],
+				$expected[1], $expected[2] );
+		}
+		$filterFeature = new CirrusNearTitleFilterFeature( $searchConfig );
+		$query = $filterFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
+		$this->kwAssert->assertFilter( $filterFeature, $query, $filterQuery, null, $searchConfig );
 	}
 
 	public function geoWarningsProvider() {

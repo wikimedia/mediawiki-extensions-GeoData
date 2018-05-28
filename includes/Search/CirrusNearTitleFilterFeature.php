@@ -4,6 +4,8 @@
 namespace GeoData;
 
 use CirrusSearch\Parser\AST\KeywordFeatureNode;
+use CirrusSearch\Query\Builder\QueryBuildingContext;
+use CirrusSearch\Query\FilterQueryFeature;
 use CirrusSearch\Query\SimpleKeywordFeature;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
@@ -21,7 +23,7 @@ use Elastica\Query\AbstractQuery;
  *  neartitle:Shanghai
  *  neartitle:50km,Seoul
  */
-class CirrusNearTitleFilterFeature extends SimpleKeywordFeature {
+class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements FilterQueryFeature {
 	use CirrusGeoFeature;
 
 	/**
@@ -59,9 +61,7 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature {
 		list( $coord, $radius, $excludedPageId ) = $this->parseGeoNearbyTitle( $context, $key, $value );
 		$filter = null;
 		if ( $coord !== null ) {
-			$excludedDocId = $context->getConfig()->makeId( $excludedPageId );
-			$coordObject = new Coord( $coord['lat'], $coord['lon'], $coord['globe'] );
-			$filter = self::createQuery( $coordObject, $radius, $excludedDocId );
+			$filter = $this->doGetFilterQuery( $context->getConfig(), $coord, $radius, $excludedPageId );
 		}
 		return [ $filter, false ];
 	}
@@ -108,5 +108,35 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature {
 		$nested->setPath( 'coordinates' )->setQuery( $query );
 
 		return $nested;
+	}
+
+	/**
+	 * @param KeywordFeatureNode $node
+	 * @param QueryBuildingContext $context
+	 * @return AbstractQuery|null
+	 */
+	public function getFilterQuery( KeywordFeatureNode $node, QueryBuildingContext $context ) {
+		list( $coord, $radius, $excludedPageId ) = $context->getKeywordExpandedData( $node );
+		if ( $coord === null ) {
+			return null;
+		}
+		return $this->doGetFilterQuery( $context->getSearchConfig(), $coord, $radius, $excludedPageId );
+	}
+
+	/**
+	 * @param SearchConfig $config
+	 * @param array $coord
+	 * @param int $radius
+	 * @param int $excludedPageId
+	 * @return AbstractQuery
+	 */
+	protected function doGetFilterQuery(
+		SearchConfig $config,
+		Coord $coord,
+		$radius,
+		$excludedPageId
+	) {
+		$excludedDocId = $config->makeId( $excludedPageId );
+		return self::createQuery( $coord, $radius, $excludedDocId );
 	}
 }
