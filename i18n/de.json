@@ -38,6 +38,7 @@
 	"apihelp-query+coordinates-param-distancefrompage": "Gibt von den Koordinaten dieser Seite aus die Distanz in Metern für jedes gültige Ergebnis von den geografischen Koordinaten zurück.",
 	"apihelp-query+coordinates-example-1": "Ruft eine Liste mit Koordinaten der [[Main Page]] ab",
 	"apihelp-query+geosearch-description": "Gibt Seiten mit Koordinaten zurück, die in einem bestimmten Bereich liegen.",
+	"apihelp-query+geosearch-summary": "Gibt Seiten mit Koordinaten zurück, die in einem bestimmten Bereich liegen.",
 	"apihelp-query+geosearch-param-coord": "Koordinate, in deren Nähe gesucht werden soll.",
 	"apihelp-query+geosearch-param-page": "Titel der Seite, in deren Nähe gesucht werden soll.",
 	"apihelp-query+geosearch-param-radius": "Radius in Metern suchen.",
