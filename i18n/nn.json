@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ranveig"
+			"Ranveig",
+			"Njardarlogar"
 		]
 	},
-	"geodata-broken-tags-category": "Sider med feil i koordinattaggane"
+	"geodata-broken-tags-category": "Sider med feil i koordinattaggane",
+	"geodata-unknown-type-category": "Sider med ukjende koordinattypar",
+	"geodata-unknown-globe-category": "Sider med ukjend globe-verdi",
+	"geodata-unknown-region-category": "Sider med ugild regionverdi"
 }
