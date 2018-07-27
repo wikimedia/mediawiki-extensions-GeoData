@@ -35,7 +35,7 @@ class MathTest extends MediaWikiTestCase {
 	 * @covers \GeoData\Coord::bboxAround
 	 * @covers \GeoData\Math::wrapAround
 	 * @dataProvider getRectData
-	 * @todo: test directly now that this function is public
+	 * @todo test directly now that this function is public
 	 */
 	public function testRectWrapAround( $lon ) {
 		$coord = new Coord( 20, $lon );
