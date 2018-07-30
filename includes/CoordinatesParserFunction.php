@@ -2,7 +2,6 @@
 
 namespace GeoData;
 
-use MagicWord;
 use MWException;
 use Parser;
 use ParserOutput;
@@ -96,7 +95,7 @@ class CoordinatesParserFunction {
 	 * @param string $value Parameter
 	 */
 	private function addArg( $value ) {
-		$primary = MagicWord::get( 'primary' );
+		$primary = $this->parser->getMagicWordFactory()->get( 'primary' );
 		if ( $primary->match( $value ) ) {
 			$this->named['primary'] = true;
 		} elseif ( preg_match( '/\S+?:\S*?([ _]+\S+?:\S*?)*/', $value ) ) {
