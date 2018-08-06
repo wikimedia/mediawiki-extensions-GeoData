@@ -38,6 +38,7 @@
 	"apihelp-query+coordinates-paramvalue-primary-all": "1차 좌표와 2차 좌표를 둘 다 반환합니다.",
 	"apihelp-query+geosearch-description": "일정 지역에 있는 좌표가 있는 문서를 반환합니다.",
 	"apihelp-query+geosearch-summary": "특정 지역에 위치한 좌표가 있는 문서를 반환합니다.",
+	"apihelp-query+geosearch-param-namespace": "검색할 이름공간입니다.",
 	"apihelp-query+geosearch-param-primary": "반환할 좌표의 종류입니다.",
 	"apierror-geodata-nocoord": "페이지 좌표를 알 수 없습니다.",
 	"apierror-geodata-notonearth": "이 페이지의 좌표는 지구에 없습니다.",
