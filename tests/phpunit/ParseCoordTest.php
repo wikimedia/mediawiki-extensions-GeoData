@@ -18,7 +18,7 @@ class ParseCoordTest extends MediaWikiTestCase {
 	 * @dataProvider getCases
 	 */
 	public function testParseCoordinates( $parts, $result, $globe = 'earth' ) {
-		$formatted = '"' . implode( $parts, '|' ) . '"';
+		$formatted = '"' . implode( '|', $parts ) . '"';
 		$s = CoordinatesParserFunction::parseCoordinates( $parts, new Globe( $globe ) );
 		$val = $s->value;
 		if ( $result === false ) {
