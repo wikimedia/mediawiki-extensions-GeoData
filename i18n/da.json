@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Christian List"
+			"Christian List",
+			"Saederup92"
 		]
 	},
 	"geodata-desc": "Tilføjer funktionalitet til lagring og indlæsning af geografiske koordinater",
@@ -16,5 +17,6 @@
 	"geodata-broken-tags-category": "Sider med fejlagtige koordinattags",
 	"geodata-unknown-type-category": "Sider med ukendt type af koordinater",
 	"geodata-unknown-globe-category": "Sider med ukendt globe værdi",
-	"geodata-unknown-region-category": "Sider med ugyldig region værdi"
+	"geodata-unknown-region-category": "Sider med ugyldig region værdi",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Navnet på objektet."
 }
