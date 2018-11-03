@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Rancher",
-			"Milicevic01"
+			"Milicevic01",
+			"Zoranzoki21"
 		]
 	},
+	"geodata-desc": "Додаје функционалност складиштења и проналазења географских координата",
 	"geodata-broken-tags-category": "Странице са неисправним координатама",
 	"geodata-unknown-type-category": "Странице са непознатом врстом координата",
 	"geodata-unknown-globe-category": "Странице са непознатом вредности за глобус",
