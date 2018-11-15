@@ -5,7 +5,8 @@
 			"Metalhead64",
 			"Tiin",
 			"Predatorix",
-			"Fitoschido"
+			"Fitoschido",
+			"FF11"
 		]
 	},
 	"geodata-desc": "Ergänzt Funktionen zum Speichern und Abrufen geografischer Koordinaten",
@@ -32,6 +33,7 @@
 	"apihelp-query+coordinates-param-prop": "Welche ergänzenden Koordinateneigenschaften zurückgegeben werden sollen.",
 	"apihelp-query+coordinates-paramvalue-prop-name": "Name des Objekts.",
 	"apihelp-query+coordinates-paramvalue-prop-dim": "Geschätzte Größe des Objekts in Metern.",
+	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alpha-2 Ländercode (z.&nbsp;B. <samp>US</samp> oder <samp>RU</samp>)",
 	"apihelp-query+coordinates-param-primary": "Ob nur primäre Koordinaten („primär“), sekundäre („sekundär“) oder beide („alle“) zurückgegeben werden sollen.",
 	"apihelp-query+coordinates-paramvalue-primary-all": "Gibt sowohl die primären als auch die sekundären Koordinaten zurück.",
 	"apihelp-query+coordinates-param-distancefrompoint": "Gibt von diesen angegebenen Koordinaten aus die Distanz in Metern für jedes gültige Ergebnis von den geografischen Koordinaten zurück.",
