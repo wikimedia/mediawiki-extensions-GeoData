@@ -3,7 +3,8 @@
 		"authors": [
 			"BeginaFelicysym",
 			"Chrumps",
-			"Matma Rex"
+			"Matma Rex",
+			"Railfail536"
 		]
 	},
 	"geodata-desc": "Dodaje funkcje przechowywania i pobierania współrzędnych geograficznych",
@@ -16,9 +17,13 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: nie można podać więcej niż jednego tagu podstawowego na stronie",
 	"geodata-limit-exceeded": "Ograniczenie $1 {{PLURAL:$1|znacznika|znaczników|znaczników}} <nowiki>{{#coordinates:}}</nowiki>  na stronie zostało przekroczone",
 	"geodata-broken-tags-category": "Strony z niepoprawnymi znacznikami współrzędnych geograficznych",
+	"geodata-broken-tags-category-desc": "Strona posiada niepoprawny tag <code><nowiki>{{#coordinates:}}</nowiki></code>.",
 	"geodata-unknown-type-category": "Strony ze współrzędnymi nieznanego typu",
+	"geodata-unknown-type-category-desc": "Strona używa nieznanej wartości parametru <code>type</code>.",
 	"geodata-unknown-globe-category": "Strony z nieznaną wartością globu",
+	"geodata-unknown-globe-category-desc": "Strona używa nieznanej wartości parametru <code>globe</code>.",
 	"geodata-unknown-region-category": "Strony z nieprawidłową wartością regionu",
+	"geodata-unknown-region-category-desc": "Strona używa nieznanej wartości parametru <code>region</code>.",
 	"geodata-api-help-coordinates-format": "Format: szerokość i długość geograficzna oddzielone pionową kreską (<kbd>|</ kbd>).",
 	"apihelp-query+coordinates-description": "Zwraca współrzędne danej strony.",
 	"apihelp-query+coordinates-paramvalue-prop-name": "Nazwa obiektu.",
