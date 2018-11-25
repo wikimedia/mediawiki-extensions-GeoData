@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"geodata-desc": "Додава можност за складирање и повикување на географски координати",
@@ -36,7 +37,7 @@
 	"apihelp-query+coordinates-paramvalue-primary-primary": "Местоположбата на предметот на статијата. Има највеќе една главна координата по наслов.",
 	"apihelp-query+coordinates-paramvalue-primary-secondary": "Местоположбата на извесен објект кој се спомнува во статијата. Со еден наслов можат да се здружат било колку споредни координати.",
 	"apihelp-query+coordinates-paramvalue-primary-all": "Дај и главни и споредни координати.",
-	"apihelp-query+coordinates-param-distancefrompoint": "Дај го растојанието во метри од географските коирдинати за секој важечки исход од дадените координати",
+	"apihelp-query+coordinates-param-distancefrompoint": "Дај го растојанието во метри од географските координати за секој важечки исход од дадените координати.",
 	"apihelp-query+coordinates-param-distancefrompage": "Дај го растојанието во метри од географските координати за секој важечки исход од координатите на страницава.",
 	"apihelp-query+coordinates-example-1": "Дај список на координати на [[Main Page|Главната страница]]",
 	"apihelp-query+geosearch-description": "Дава страници со координати сместени на извесно подрачје.",
