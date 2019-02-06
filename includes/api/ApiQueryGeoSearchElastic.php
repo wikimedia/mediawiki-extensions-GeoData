@@ -156,7 +156,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 			$result = $this->getResult();
 
 			foreach ( $coordinates as $coord ) {
-				if ( !$limit -- ) {
+				if ( !$limit-- ) {
 					break;
 				}
 				$id = $coord->pageId;
