@@ -125,7 +125,7 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements Filte
 
 	/**
 	 * @param SearchConfig $config
-	 * @param array $coord
+	 * @param Coord $coord
 	 * @param int $radius
 	 * @param int $excludedPageId
 	 * @return AbstractQuery

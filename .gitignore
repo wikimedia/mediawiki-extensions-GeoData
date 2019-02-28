@@ -3,6 +3,5 @@
 *.kate-swp
 .*.swp
 node_modules/
-tests/phan/issues
 /vendor
 composer.lock

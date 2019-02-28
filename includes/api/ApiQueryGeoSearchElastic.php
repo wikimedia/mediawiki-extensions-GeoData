@@ -220,7 +220,7 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	 * Checks whether given coordinates fall within the requested limits
 	 * @param Coord $coord
 	 *
-	 * @return bool: If false, these coordinates should be discarded
+	 * @return bool If false these coordinates should be discarded
 	 */
 	private function filterCoord( Coord $coord ) {
 		if ( !$this->bbox && $coord->distance > $this->radius ) {
