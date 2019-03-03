@@ -45,7 +45,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 
 	protected function setUp() {
 		parent::setUp();
-		if ( !class_exists( 'CirrusSearch' ) ) {
+		if ( !class_exists( \CirrusSearch::class ) ) {
 			$this->markTestSkipped( 'CirrusSearch not installed, skipping' );
 		}
 		$this->kwAssert = new KeywordFeatureAssertions( $this );

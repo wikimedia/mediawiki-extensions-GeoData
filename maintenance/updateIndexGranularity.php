@@ -53,5 +53,5 @@ class UpdateIndexGranularity extends Maintenance {
 	}
 }
 
-$maintClass = 'UpdateIndexGranularity';
+$maintClass = UpdateIndexGranularity::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
