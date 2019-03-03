@@ -8,7 +8,8 @@
 			"Reza1615",
 			"Alirezaaa",
 			"Fitoschido",
-			"Ladsgroup"
+			"Ladsgroup",
+			"Dalba"
 		]
 	},
 	"geodata-desc": "افزودن ذخیره‌سازی مختصات جغرافیایی و کارآمدی بازیابی",
@@ -20,7 +21,7 @@
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: فرمت کد ناحیهٔ نامعتبر",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: نمی‌توان بیش از یک برچسب اصلی در صفحه داشت",
 	"geodata-limit-exceeded": "محدوده‌ای از $1 <nowiki>{{#مختصات:}}</nowiki> {{PLURAL:$1|tag|tags}} در هر صفحه فراتر رفته‌است",
-	"geodata-broken-tags-category": "صفحه‌هایی با برچسب مختصات ناقص",
+	"geodata-broken-tags-category": "صفحه‌های دارای برچسب مختصات ناقص",
 	"geodata-broken-tags-category-desc": "صفحه برچسب ناهنجار <code><nowiki>{{#coordinates:}}</nowiki></code> دارد.",
 	"geodata-unknown-type-category": "صفحه‌ها با نوع تعریف‌نشده از مختصات",
 	"geodata-unknown-type-category-desc": "صفحه از مقدار تعریف‌نشده برای پارامتر <code>type</code> در مختصات استفاده می‌کند.",
