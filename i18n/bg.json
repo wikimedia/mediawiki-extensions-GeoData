@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ted Masters"
+		]
+	},
+	"geodata-broken-tags-category": "Страници с неправилно зададени координатни тагове",
+	"geodata-broken-tags-category-desc": "Страницата съдържа неправилно зададен <code><nowiki>{{#coordinates:}}</nowiki></code> таг.",
+	"geodata-unknown-type-category": "Страници с неизвестен тип координати",
+	"geodata-unknown-type-category-desc": "Страницата използва неизвестна стойност на <code>type</code> параметъра за координати.",
+	"geodata-unknown-globe-category": "Страници с неизвестна сферична стойност",
+	"geodata-unknown-globe-category-desc": "Страницата използва неизвестна стойност на <code>globe</code> параметъра за координати.",
+	"geodata-unknown-region-category": "Страници с неизвестна стойност на региона",
+	"geodata-unknown-region-category-desc": "Страницата използва неизвестна стойност на <code>region</code> параметъра за координати."
+}
