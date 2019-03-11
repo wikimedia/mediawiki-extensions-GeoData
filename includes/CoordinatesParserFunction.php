@@ -193,12 +193,12 @@ class CoordinatesParserFunction {
 				$coord->dim = intval( $dim );
 			}
 		}
-		$coord->name = isset( $args['name'] ) ? $args['name'] : null;
+		$coord->name = $args['name'] ?? null;
 		if ( isset( $args['region'] ) ) {
 			$code = strtoupper( $args['region'] );
 			if ( preg_match( '/^([A-Z]{2})(?:-([A-Z0-9]{1,3}))?$/', $code, $m ) ) {
 				$coord->country = $m[1];
-				$coord->region = isset( $m[2] ) ? $m[2] : null;
+				$coord->region = $m[2] ?? null;
 			} else {
 				if ( $wgGeoDataWarningLevel['invalid region'] == 'fail' ) {
 					return Status::newFatal( 'geodata-bad-region', $args['region'] );
@@ -356,6 +356,6 @@ class CoordinatesParserFunction {
 	private static function parseSuffix( $str, array $suffixes ) {
 		global $wgContLang;
 		$str = $wgContLang->uc( trim( $str ) );
-		return isset( $suffixes[$str] ) ? $suffixes[$str] : 0;
+		return $suffixes[$str] ?? 0;
 	}
 }

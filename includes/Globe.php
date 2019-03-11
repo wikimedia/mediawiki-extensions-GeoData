@@ -33,7 +33,7 @@ class Globe {
 		$globes = self::getData();
 		if ( isset( $globes[$name] ) ) {
 			$data = $globes[$name];
-			$this->radius = isset( $data['radius'] ) ? $data['radius'] : null;
+			$this->radius = $data['radius'] ?? null;
 			$this->minLon = $data['lon'][0];
 			$this->maxLon = $data['lon'][1];
 			$this->east = $data['east'];
