@@ -90,7 +90,8 @@ class TagTest extends MediaWikiTestCase {
 				'{{#coordinates: 10| primary		|	20}}',
 				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
 			],
-			[ // empty parameter instead of primary
+			[
+				// empty parameter instead of primary
 				'{{#coordinates: 10 | |	20 }}',
 				new Coord( 10, 20, 'earth', [ 'primary' => false, 'dim' => 1000 ] ),
 			],
@@ -173,6 +174,16 @@ class TagTest extends MediaWikiTestCase {
 				'{{#coordinates: 10|20|type:sOmEtHiNg}}',
 				new Coord( 10, 20, 'earth', [ 'type' => 'something', 'dim' => 1000 ] ),
 			],
+			// https://phabricator.wikimedia.org/T218941 : bogus scale
+			[
+				'{{#coordinates:10|20|scale=boom!}}',
+				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
+			],
+			// Negative scale
+			[
+				'{{#coordinates:10|20|scale=-3}}',
+				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
+			]
 		];
 	}
 

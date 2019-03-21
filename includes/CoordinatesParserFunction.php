@@ -184,7 +184,7 @@ class CoordinatesParserFunction {
 				}
 			}
 		}
-		if ( isset( $args['scale'] ) ) {
+		if ( isset( $args['scale'] ) && is_numeric( $args['scale'] ) && $args['scale'] > 0 ) {
 			$coord->dim = intval( $args['scale'] / 10 );
 		}
 		if ( isset( $args['dim'] ) ) {
