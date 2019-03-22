@@ -3,6 +3,7 @@
 namespace GeoData;
 
 use ApiPageSet;
+use ApiQuery;
 use FormatJson;
 use MWNamespace;
 use Title;
@@ -10,7 +11,11 @@ use Title;
 class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 	private $params;
 
-	public function __construct( $query, $moduleName ) {
+	/**
+	 * @param ApiQuery $query
+	 * @param string $moduleName
+	 */
+	public function __construct( ApiQuery $query, $moduleName ) {
 		parent::__construct( $query, $moduleName );
 	}
 
@@ -21,7 +26,8 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		global $wgDefaultGlobe;
 
 		parent::run( $resultPageSet );
-		$this->resetQueryParams(); // @fixme: refactor to make this unnecessary
+		// @fixme: refactor to make this unnecessary
+		$this->resetQueryParams();
 
 		$params = $this->params = $this->extractRequestParams();
 		$namespaces = array_map( 'intval', $params['namespace'] );
@@ -134,7 +140,8 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		} );
 
 		if ( !count( $coordinates ) ) {
-			return; // No results, no point in doing anything else
+			// No results, no point in doing anything else
+			return;
 		}
 		$this->addWhere( [ 'page_id' => array_keys( $ids ) ] );
 		$this->addTables( 'page' );

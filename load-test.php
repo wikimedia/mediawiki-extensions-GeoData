@@ -9,13 +9,9 @@ $times = [];
 
 echo "Load-testing $site with GeoData requests, press Ctrl+Break to stop...\n";
 
-function myrand( $from, $to ) {
-	return rand( $from * 100000, $to * 100000 ) / 100000;
-}
-
 do {
-	$lat = myrand( -90, 90 );
-	$lon = myrand( -180, 180 );
+	$lat = mt_rand( -900000, 900000 ) / 10000;
+	$lon = mt_rand( -1800000, 1800000 ) / 10000;
 	$url = "{$site}?action=query&list=geosearch&format=json&gsradius=100&gscoord=$lat|$lon";
 	echo "[$lat, $lon]";
 	$time = microtime( true );

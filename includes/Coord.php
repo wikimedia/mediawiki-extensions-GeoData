@@ -40,6 +40,12 @@ class Coord {
 		}
 	}
 
+	/**
+	 * Constructs a Coord object from a database row
+	 *
+	 * @param object $row
+	 * @return Coord
+	 */
 	public static function newFromRow( $row ) {
 		$c = new Coord( $row->gt_lat, $row->gt_lon );
 		foreach ( self::$fieldMapping as $field => $column ) {
@@ -178,10 +184,20 @@ class Coord {
 		'region' => 'gt_region',
 	];
 
+	/**
+	 * Returns a mapping from properties of this class to database columns
+	 *
+	 * @return string[]
+	 */
 	public static function getFieldMapping() {
 		return self::$fieldMapping;
 	}
 
+	/**
+	 * Returns names of properties of this class that are saved to database
+	 *
+	 * @return string[]
+	 */
 	public static function getFields() {
 		static $fields = null;
 		if ( !$fields ) {
@@ -190,6 +206,11 @@ class Coord {
 		return $fields;
 	}
 
+	/**
+	 * Returns names of database columns used to store properties of this class
+	 *
+	 * @return string[]
+	 */
 	public static function getColumns() {
 		static $columns = null;
 		if ( !$columns ) {

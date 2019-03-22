@@ -3,6 +3,7 @@
 namespace GeoData;
 
 use ApiBase;
+use ApiQuery;
 use ApiQueryBase;
 use MWException;
 use Title;
@@ -13,7 +14,11 @@ use Title;
  */
 class ApiQueryCoordinates extends ApiQueryBase {
 
-	public function __construct( $query, $moduleName ) {
+	/**
+	 * @param ApiQuery $query
+	 * @param string $moduleName
+	 */
+	public function __construct( ApiQuery $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'co' );
 	}
 
@@ -137,6 +142,9 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		return 'public';
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getAllowedParams() {
 		return [
 			'limit' => [
@@ -184,6 +192,9 @@ class ApiQueryCoordinates extends ApiQueryBase {
 		];
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Extension:GeoData#prop.3Dcoordinates';
 	}

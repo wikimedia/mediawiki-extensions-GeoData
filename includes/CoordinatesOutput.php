@@ -2,7 +2,8 @@
 
 namespace GeoData;
 
-use MWException;
+use InvalidArgumentException;
+use LogicException;
 
 /**
  * Class that holds output of a parse opertion
@@ -22,16 +23,26 @@ class CoordinatesOutput {
 		return count( $this->secondary ) + ( $this->primary ? 1 : 0 );
 	}
 
+	/**
+	 * Sets primary coordinates, throwing an exception if already set
+	 *
+	 * @param Coord $c
+	 * @throws LogicException
+	 */
 	public function addPrimary( Coord $c ) {
 		if ( $this->primary ) {
-			throw new MWException( 'Attempted to insert a second primary coordinate into ' . __CLASS__ );
+			throw new LogicException( 'Primary coordinates already set' );
 		}
 		$this->primary = $c;
 	}
 
+	/**
+	 * @param Coord $c
+	 * @throws InvalidArgumentException
+	 */
 	public function addSecondary( Coord $c ) {
 		if ( $c->primary ) {
-			throw new MWException( 'Attempted to pass a primary coordinate into ' . __METHOD__ );
+			throw new InvalidArgumentException( 'Attempt to pass primary coordinates as secondary' );
 		}
 		$this->secondary[] = $c;
 	}

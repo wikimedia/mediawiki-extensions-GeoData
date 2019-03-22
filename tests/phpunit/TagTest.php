@@ -17,7 +17,8 @@ class TagTest extends MediaWikiTestCase {
 
 	public function setUp() {
 		parent::setUp();
-		$this->setMwGlobals( 'wgDefaultDim', 1000 ); // reset to default
+		// reset to default
+		$this->setMwGlobals( 'wgDefaultDim', 1000 );
 	}
 
 	private function setWarnings( $level ) {
