@@ -5,7 +5,10 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\CoordinatesParserFunction;
 use GeoData\Globe;
+use Language;
 use MediaWikiTestCase;
+use Parser;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \GeoData\CoordinatesParserFunction
@@ -19,7 +22,21 @@ class ParseCoordTest extends MediaWikiTestCase {
 	 */
 	public function testParseCoordinates( $parts, $result, $globe = 'earth' ) {
 		$formatted = '"' . implode( '|', $parts ) . '"';
-		$s = CoordinatesParserFunction::parseCoordinates( $parts, new Globe( $globe ) );
+
+		/** @var CoordinatesParserFunction $function */
+		$function = TestingAccessWrapper::newFromObject( new CoordinatesParserFunction );
+
+		$parser = $this->getMockBuilder( Parser::class )
+			->setMethods( [ 'getTargetLanguage' ] )
+			->getMock();
+
+		$parser->method( 'getTargetLanguage' )
+			->willReturn( Language::factory( 'en' ) );
+
+		$function->parser = $parser;
+
+		$s = $function->parseCoordinates( $parts, new Globe( $globe ) );
+
 		$val = $s->value;
 		if ( $result === false ) {
 			$this->assertFalse( $s->isGood(), "Parsing of $formatted was expected to fail" );

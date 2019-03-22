@@ -2,6 +2,7 @@
 
 namespace GeoData;
 
+use Language;
 use MWException;
 use Parser;
 use ParserOutput;
@@ -36,9 +37,9 @@ class CoordinatesParserFunction {
 	 * @param PPFrame $frame
 	 * @param PPNode[] $args
 	 * @throws MWException
-	 * @return Mixed
+	 * @return mixed
 	 */
-	public function coordinates( $parser, $frame, $args ) {
+	public function coordinates( Parser $parser, PPFrame $frame, array $args ) {
 		$this->parser = $parser;
 		$this->output = $parser->getOutput();
 		if ( !isset( $this->output->geoData ) ) {
@@ -49,7 +50,7 @@ class CoordinatesParserFunction {
 		$this->named = [];
 		$this->parseArgs( $frame, $args );
 		$this->processArgs();
-		$status = self::parseCoordinates( $this->unnamed, $this->globe );
+		$status = $this->parseCoordinates( $this->unnamed, $this->globe );
 		if ( $status->isGood() ) {
 			$coord = $status->value;
 			$status = $this->applyTagArgs( $coord );
@@ -69,6 +70,13 @@ class CoordinatesParserFunction {
 		}
 
 		return [ "<span class=\"error\">{$errorText}</span>", 'noparse' => false ];
+	}
+
+	/**
+	 * @return Language Current parsing language
+	 */
+	private function getLanguage() {
+		return $this->parser->getContentLanguage();
 	}
 
 	/**
@@ -112,7 +120,7 @@ class CoordinatesParserFunction {
 	 * @return Status whether save went OK
 	 */
 	private function applyCoord( Coord $coord ) {
-		global $wgMaxCoordinatesPerPage, $wgContLang;
+		global $wgMaxCoordinatesPerPage;
 
 		/** @var CoordinatesOutput $geoData */
 		$geoData = $this->output->geoData;
@@ -122,7 +130,7 @@ class CoordinatesParserFunction {
 			}
 			$geoData->limitExceeded = true;
 			return Status::newFatal( 'geodata-limit-exceeded',
-				$wgContLang->formatNum( $wgMaxCoordinatesPerPage )
+				$this->getLanguage()->formatNum( $wgMaxCoordinatesPerPage )
 			);
 		}
 		if ( $coord->primary ) {
@@ -141,7 +149,7 @@ class CoordinatesParserFunction {
 	 * Merges parameters with decoded GeoHack data, sets default globe
 	 */
 	private function processArgs() {
-		global $wgDefaultGlobe, $wgContLang;
+		global $wgDefaultGlobe;
 		// fear not of overwriting the stuff we've just received from the geohack param,
 		// it has minimum precedence
 		if ( isset( $this->named['geohack'] ) ) {
@@ -150,7 +158,7 @@ class CoordinatesParserFunction {
 			);
 		}
 		$globe = ( isset( $this->named['globe'] ) && $this->named['globe'] )
-			? $wgContLang->lc( $this->named['globe'] )
+			? $this->getLanguage()->lc( $this->named['globe'] )
 			: $wgDefaultGlobe;
 
 		$this->globe = new Globe( $globe );
@@ -265,7 +273,7 @@ class CoordinatesParserFunction {
 	 * @param Globe $globe Globe these coordinates belong to
 	 * @return Status Operation status, in case of success its value is a Coord object
 	 */
-	public static function parseCoordinates( $parts, Globe $globe ) {
+	private function parseCoordinates( $parts, Globe $globe ) {
 		$latSuffixes = [ 'N' => 1, 'S' => -1 ];
 		$lonSuffixes = [ 'E' => $globe->getEastSign(), 'W' => -$globe->getEastSign() ];
 
@@ -275,12 +283,12 @@ class CoordinatesParserFunction {
 		}
 		list( $latArr, $lonArr ) = array_chunk( $parts, $count / 2 );
 
-		$lat = self::parseOneCoord( $latArr, -90, 90, $latSuffixes );
+		$lat = $this->parseOneCoord( $latArr, -90, 90, $latSuffixes );
 		if ( $lat === false ) {
 			return Status::newFatal( 'geodata-bad-latitude' );
 		}
 
-		$lon = self::parseOneCoord( $lonArr,
+		$lon = $this->parseOneCoord( $lonArr,
 			$globe->getMinLongitude(),
 			$globe->getMaxLongitude(),
 			$lonSuffixes
@@ -291,9 +299,7 @@ class CoordinatesParserFunction {
 		return Status::newGood( new Coord( (float)$lat, (float)$lon, $globe->getName() ) );
 	}
 
-	private static function parseOneCoord( $parts, $min, $max, $suffixes ) {
-		global $wgContLang;
-
+	private function parseOneCoord( $parts, $min, $max, $suffixes ) {
 		$count = count( $parts );
 		$multiplier = 1;
 		$value = 0;
@@ -302,6 +308,7 @@ class CoordinatesParserFunction {
 		$currentMin = $min;
 		$currentMax = $max;
 
+		$language = $this->getLanguage();
 		for ( $i = 0; $i < $count; $i++ ) {
 			$part = $parts[$i];
 			if ( $i > 0 && $i == $count - 1 ) {
@@ -321,7 +328,7 @@ class CoordinatesParserFunction {
 				return false;
 			}
 			if ( !is_numeric( $part ) ) {
-				$part = $wgContLang->parseFormattedNumber( $part );
+				$part = $language->parseFormattedNumber( $part );
 			}
 
 			if ( !is_numeric( $part )
@@ -353,9 +360,8 @@ class CoordinatesParserFunction {
 	 * @param array $suffixes
 	 * @return int Sign modifier or 0 if not a suffix
 	 */
-	private static function parseSuffix( $str, array $suffixes ) {
-		global $wgContLang;
-		$str = $wgContLang->uc( trim( $str ) );
+	private function parseSuffix( $str, array $suffixes ) {
+		$str = $this->getLanguage()->uc( trim( $str ) );
 		return $suffixes[$str] ?? 0;
 	}
 }

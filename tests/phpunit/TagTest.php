@@ -3,6 +3,7 @@
 namespace GeoData\Test;
 
 use GeoData\Coord;
+use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use ParserOptions;
 use Title;
@@ -28,10 +29,8 @@ class TagTest extends MediaWikiTestCase {
 	}
 
 	private function assertParse( $input, $expected ) {
-		global $wgParser;
-
-		$p = $wgParser->getFreshParser();
-		$opt = new ParserOptions();
+		$p = MediaWikiServices::getInstance()->getParser()->getFreshParser();
+		$opt = ParserOptions::newFromAnon();
 		$out = $p->parse( $input, Title::newMainPage(), $opt );
 		$this->assertTrue( isset( $out->geoData ) );
 		if ( !$expected ) {
