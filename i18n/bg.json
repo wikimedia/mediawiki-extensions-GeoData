@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ted Masters"
+			"Ted Masters",
+			"StanProg"
 		]
 	},
-	"geodata-broken-tags-category": "Страници с неправилно зададени координатни маркери",
-	"geodata-broken-tags-category-desc": "Страницата съдържа неправилно зададен <code><nowiki>{{#coordinates:}}</nowiki></code> маркер.",
+	"geodata-broken-tags-category": "Страници с неправилно зададени координатни етикети",
+	"geodata-broken-tags-category-desc": "Страницата съдържа неправилно зададен <code><nowiki>{{#coordinates:}}</nowiki></code> етикет.",
 	"geodata-unknown-type-category": "Страници с неизвестен тип координати",
 	"geodata-unknown-type-category-desc": "Страницата използва неизвестна стойност на <code>type</code> параметъра за координати.",
 	"geodata-unknown-globe-category": "Страници с неизвестна сферична стойност",
