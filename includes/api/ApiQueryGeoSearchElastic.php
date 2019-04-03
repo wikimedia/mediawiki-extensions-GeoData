@@ -86,8 +86,10 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 
 		$query->addSort( [
 				'_geo_distance' => [
-					'nested_path' => 'coordinates',
-					'nested_filter' => $nestedPropsFilter->toArray(),
+					'nested' => [
+						'path' => 'coordinates',
+						'filter' => $nestedPropsFilter->toArray(),
+					],
 					'coordinates.coord' => [
 						'lat' => $this->coord->lat,
 						'lon' => $this->coord->lon
