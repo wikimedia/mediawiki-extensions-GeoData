@@ -71,7 +71,8 @@ class Globe {
 			'mercury'   => $west360 + [ 'radius' => 2439700.0 ],
 			'venus'     => $east360 + [ 'radius' => 6051800.0 ],
 			'moon'      => $earth + [ 'radius' => 1737100.0 ],
-			'mars'      => $east360 + [ 'radius' => 3389500.0 ], // Assuming MDIM 2.1
+			// Assuming MDIM 2.1
+			'mars'      => $east360 + [ 'radius' => 3389500.0 ],
 			'phobos'    => $west360,
 			'deimos'    => $west360,
 			// 'ceres' => ???,
@@ -95,7 +96,8 @@ class Globe {
 			'titania'   => $east360 + [ 'radius' => 788400.0 ],
 			'oberon'    => $east360 + [ 'radius' => 761400.0 ],
 			'triton'    => $east360 + [ 'radius' => 1353400.0 ],
-			'pluto'     => $east360 + [ 'radius' => 1187000.0 ], // ???
+			// ???
+			'pluto'     => $east360 + [ 'radius' => 1187000.0 ],
 		];
 
 		$data = $wgGlobes + $data;

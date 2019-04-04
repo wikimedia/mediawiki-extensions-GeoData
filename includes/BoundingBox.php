@@ -10,6 +10,13 @@ class BoundingBox {
 	public $lat1, $lon1, $lat2, $lon2;
 	public $globe;
 
+	/**
+	 * @param float $lat1
+	 * @param float $lon1
+	 * @param float $lat2
+	 * @param float $lon2
+	 * @param string $globe
+	 */
 	public function __construct( $lat1, $lon1, $lat2, $lon2, $globe = 'earth' ) {
 		$this->lat1 = $lat1;
 		$this->lon1 = $lon1;
@@ -30,10 +37,16 @@ class BoundingBox {
 			$topLeft->globe );
 	}
 
+	/**
+	 * @return Coord Top left corner of this bounding box
+	 */
 	public function topLeft() {
 		return new Coord( $this->lat1, $this->lon1, $this->globe );
 	}
 
+	/**
+	 * @return Coord Bottom right corner of this bounding box
+	 */
 	public function bottomRight() {
 		return new Coord( $this->lat2, $this->lon2, $this->globe );
 	}

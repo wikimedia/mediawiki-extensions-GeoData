@@ -62,9 +62,14 @@ class Hooks {
 		}
 	}
 
+	/**
+	 * Database schema update hook
+	 *
+	 * @param DatabaseUpdater $updater
+	 */
 	public static function upgradeToDecimal( DatabaseUpdater $updater ) {
 		$db = $updater->getDB();
-		if ( $db->getType() != 'mysql' ) {
+		if ( $db->getType() !== 'mysql' ) {
 			// FLOAT is the same thing as DOUBLE in SQLite
 			return;
 		}

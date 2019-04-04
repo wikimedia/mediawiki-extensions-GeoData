@@ -315,7 +315,8 @@ class CoordinatesParserFunction {
 				$suffix = self::parseSuffix( $part, $suffixes );
 				if ( $suffix ) {
 					if ( $value < 0 ) {
-						return false; // "-60°S sounds weird, isn't it?
+						// "-60°S sounds weird, doesn't it?
+						return false;
 					}
 					$value *= $suffix;
 					break;

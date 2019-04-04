@@ -4,6 +4,7 @@ namespace GeoData;
 
 use ApiBase;
 use ApiPageSet;
+use ApiQuery;
 use ApiQueryGeneratorBase;
 use Title;
 use WikiPage;
@@ -32,7 +33,11 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 	 */
 	protected $idToExclude;
 
-	public function __construct( $query, $moduleName ) {
+	/**
+	 * @param ApiQuery $query
+	 * @param string $moduleName
+	 */
+	public function __construct( ApiQuery $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'gs' );
 	}
 
@@ -137,6 +142,9 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		}
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getAllowedParams() {
 		global $wgMaxGeoSearchRadius, $wgDefaultGlobe, $wgGeoDataDebug;
 		$propTypes = [ 'type', 'name', 'dim', 'country', 'region', 'globe' ];
@@ -219,6 +227,9 @@ class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
 		];
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Extension:GeoData#list.3Dgeosearch';
 	}
