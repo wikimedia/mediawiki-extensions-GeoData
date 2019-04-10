@@ -297,6 +297,12 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		$lb->expects( $this->any() )
 			->method( 'getConnection' )
 			->will( $this->returnValue( $db ) );
+		$lb->expects( $this->any() )
+			->method( 'getConnectionRef' )
+			->will( $this->returnValue( $db ) );
+		$lb->expects( $this->any() )
+			->method( 'getMaintenanceConnectionRef' )
+			->will( $this->returnValue( $db ) );
 		$this->setService( 'DBLoadBalancer', $lb );
 
 		// Inject fake San Francisco page into LinkCache so it "exists"
