@@ -117,6 +117,10 @@ class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
 		$data = $resultSet->getResponse()->getData();
 
 		if ( !isset( $data['hits']['hits'] ) ) {
+			wfDebugLog( 'CirrusSearch', 'Unexpected result set returned by Elasticsearch', 'all', [
+				'elastic_query' => FormatJson::encode( $query->toArray() ),
+				'content' => FormatJson::encode( $data ),
+			] );
 			$this->dieDebug( __METHOD__, 'Unexpected result set returned by Elasticsearch' );
 		}
 		$ids = [];
