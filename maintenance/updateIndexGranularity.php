@@ -8,20 +8,19 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 class UpdateIndexGranularity extends Maintenance {
-	const BATCH_SIZE = 500;
 
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription =
-			'Updates GeoData database after $wgGeoDataIndexGranularity has been changed';
+		$this->addDescription(
+			'Updates GeoData database after $wgGeoDataIndexGranularity has been changed' );
+		$this->setBatchSize( 500 );
 		$this->requireExtension( 'GeoData' );
 	}
 
 	public function execute() {
 		global $wgGeoDataIndexGranularity;
-		if ( !isset( $wgGeoDataIndexGranularity ) ) {
-			$this->error( 'Please install GeoData properly', true );
-		}
+
+		$batchSize = $this->getBatchSize();
 		$id = 0;
 		$dbw = $this->getDB( DB_MASTER );
 		do {
@@ -31,7 +30,7 @@ class UpdateIndexGranularity extends Maintenance {
 			$res = $dbw->select( 'geo_tags', 'gt_id',
 				[ "gt_id > $id" ],
 				__METHOD__,
-				[ 'LIMIT' => self::BATCH_SIZE ]
+				[ 'LIMIT' => $batchSize ]
 			);
 			foreach ( $res as $row ) {
 				$id = $row->gt_id;
@@ -49,7 +48,7 @@ class UpdateIndexGranularity extends Maintenance {
 
 			$this->output( "$id\n" );
 			wfWaitForSlaves();
-		} while ( count( $ids ) === self::BATCH_SIZE );
+		} while ( count( $ids ) === $batchSize );
 	}
 }
 
