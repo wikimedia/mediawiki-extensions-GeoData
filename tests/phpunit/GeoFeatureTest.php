@@ -216,7 +216,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		}
 		$filterFeature = new CirrusNearCoordFilterFeature( $config );
 		$query = $filterFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
-		$this->kwAssert->assertfilter( $filterFeature, $query, $filterQuery, null, $searchConfig );
+		$this->kwAssert->assertFilter( $filterFeature, $query, $filterQuery, null, $searchConfig );
 	}
 
 	public function parseGeoNearbyTitleProvider() {
