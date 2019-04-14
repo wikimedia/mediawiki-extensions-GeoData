@@ -11,7 +11,7 @@
 		"MediaWiki": ">= 1.31.0"
 	},
 	"APIPropModules": {
-		"coordinates": "GeoData\\ApiQueryCoordinates"
+		"coordinates": "GeoData\\Api\\QueryCoordinates"
 	},
 	"MessagesDirs": {
 		"GeoData": [
@@ -21,28 +21,8 @@
 	"ExtensionMessagesFiles": {
 		"GeoDataMagic": "GeoData.i18n.magic.php"
 	},
-	"AutoloadClasses": {
-		"GeoData\\ApiQueryCoordinates": "includes/api/ApiQueryCoordinates.php",
-		"GeoData\\ApiQueryGeoSearch": "includes/api/ApiQueryGeoSearch.php",
-		"GeoData\\ApiQueryGeoSearchDb": "includes/api/ApiQueryGeoSearchDb.php",
-		"GeoData\\ApiQueryGeoSearchElastic": "includes/api/ApiQueryGeoSearchElastic.php",
-		"GeoData\\BoundingBox": "includes/BoundingBox.php",
-		"GeoData\\CirrusGeoFeature": "includes/Search/CirrusGeoFeature.php",
-		"GeoData\\CirrusNearCoordBoostFeature": "includes/Search/CirrusNearCoordBoostFeature.php",
-		"GeoData\\CirrusNearCoordFilterFeature": "includes/Search/CirrusNearCoordFilterFeature.php",
-		"GeoData\\CirrusNearTitleBoostFeature": "includes/Search/CirrusNearTitleBoostFeature.php",
-		"GeoData\\CirrusNearTitleFilterFeature": "includes/Search/CirrusNearTitleFilterFeature.php",
-		"GeoData\\Coord": "includes/Coord.php",
-		"GeoData\\CoordinatesIndexField" : "includes/Search/CoordinatesIndexField.php",
-		"GeoData\\CoordinatesOutput": "includes/CoordinatesOutput.php",
-		"GeoData\\CoordinatesParserFunction": "includes/CoordinatesParserFunction.php",
-		"GeoData\\GeoData": "includes/GeoData.php",
-		"GeoData\\GeoPointIndexField" : "includes/Search/GeoPointIndexField.php",
-		"GeoData\\GeoRadiusFunctionScoreBuilder": "includes/Search/GeoRadiusFunctionScoreBuilder.php",
-		"GeoData\\Globe": "includes/Globe.php",
-		"GeoData\\Hooks": "includes/Hooks.php",
-		"GeoData\\Math": "includes/Math.php",
-		"GeoData\\Searcher": "includes/Searcher.php"
+	"AutoloadNamespaces": {
+		"GeoData\\": "includes/"
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "GeoData\\Hooks::onLoadExtensionSchemaUpdates",

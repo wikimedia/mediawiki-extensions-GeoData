@@ -4,12 +4,12 @@ namespace GeoData\Test;
 
 use ApiMain;
 use FauxRequest;
-use GeoData\ApiQueryGeoSearch;
+use GeoData\Api\QueryGeoSearch;
 use MediaWikiTestCase;
 use ApiUsageException;
 
 /**
- * @covers \GeoData\ApiQueryGeoSearch
+ * @covers \GeoData\Api\QueryGeoSearch
  *
  * @group GeoData
  */
@@ -18,7 +18,7 @@ class GeoSearchTest extends MediaWikiTestCase {
 		$this->setMwGlobals( 'wgAPIListModules',
 			[
 				'geosearch' => [
-					'class' => ApiQueryGeoSearch::class
+					'class' => QueryGeoSearch::class
 				]
 			]
 		);

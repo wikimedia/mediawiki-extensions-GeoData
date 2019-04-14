@@ -5,6 +5,13 @@ namespace GeoData;
 use CirrusSearch\CrossSearchStrategy;
 use CirrusSearch\HashSearchConfig;
 use CirrusSearch\Query\KeywordFeatureAssertions;
+use GeoData\Search\CirrusGeoFeature;
+use GeoData\Search\CirrusNearCoordBoostFeature;
+use GeoData\Search\CirrusNearCoordFilterFeature;
+use GeoData\Search\CirrusNearTitleBoostFeature;
+use GeoData\Search\CirrusNearTitleFilterFeature;
+use GeoData\Search\GeoRadiusFunctionScoreBuilder;
+use HashConfig;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use Title;
@@ -27,11 +34,11 @@ use Wikimedia\Rdbms\LoadBalancer;
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @covers \GeoData\CirrusGeoFeature
- * @covers \GeoData\CirrusNearCoordFilterFeature
- * @covers \GeoData\CirrusNearTitleBoostFeature
- * @covers \GeoData\CirrusNearCoordBoostFeature
- * @covers \GeoData\CirrusNearTitleFilterFeature
+ * @covers \GeoData\Search\CirrusGeoFeature
+ * @covers \GeoData\Search\CirrusNearCoordFilterFeature
+ * @covers \GeoData\Search\CirrusNearTitleBoostFeature
+ * @covers \GeoData\Search\CirrusNearCoordBoostFeature
+ * @covers \GeoData\Search\CirrusNearTitleFilterFeature
  * @group GeoData
  */
 class GeoFeatureTest extends MediaWikiTestCase {
@@ -176,7 +183,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	 * @dataProvider parseGeoNearbyProvider
 	 */
 	public function testParseGeoNearby( $expected, $value ) {
-		$config = new \HashConfig( [ 'DefaultGlobe' => 'earth' ] );
+		$config = new HashConfig( [ 'DefaultGlobe' => 'earth' ] );
 		$features = [
 			new CirrusNearCoordFilterFeature( $config ),
 			new CirrusNearCoordBoostFeature( $config )
@@ -312,7 +319,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		MediaWikiServices::getInstance()->getLinkCache()
 			->addGoodLinkObj( 1234567, Title::newFromText( 'Washington, D.C.' ) );
 
-		$config = new \HashConfig( [ 'DefaultGlobe' => 'earth' ] );
+		$config = new HashConfig( [ 'DefaultGlobe' => 'earth' ] );
 
 		/**
 		 * @var $features \CirrusSearch\Query\SimpleKeywordFeature[]
@@ -400,7 +407,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	 */
 	public function testGeoWarnings( $expected, array $keyAndValue ) {
 		$features = [];
-		$config = new \HashConfig( [ 'DefaultGlobe' => 'earth' ] );
+		$config = new HashConfig( [ 'DefaultGlobe' => 'earth' ] );
 		$feature = new CirrusNearCoordBoostFeature( $config );
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;
 		$feature = new CirrusNearCoordFilterFeature( $config );

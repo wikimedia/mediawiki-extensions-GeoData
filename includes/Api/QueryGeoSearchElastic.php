@@ -1,14 +1,16 @@
 <?php
 
-namespace GeoData;
+namespace GeoData\Api;
 
 use ApiPageSet;
 use ApiQuery;
 use FormatJson;
+use GeoData\Coord;
+use GeoData\Searcher;
 use MWNamespace;
 use Title;
 
-class ApiQueryGeoSearchElastic extends ApiQueryGeoSearch {
+class QueryGeoSearchElastic extends QueryGeoSearch {
 	private $params;
 
 	/**

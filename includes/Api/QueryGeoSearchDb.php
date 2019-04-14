@@ -1,12 +1,14 @@
 <?php
 
-namespace GeoData;
+namespace GeoData\Api;
 
 use ApiPageSet;
 use ApiQuery;
+use GeoData\Coord;
+use GeoData\Math;
 use Title;
 
-class ApiQueryGeoSearchDb extends ApiQueryGeoSearch {
+class QueryGeoSearchDb extends QueryGeoSearch {
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName

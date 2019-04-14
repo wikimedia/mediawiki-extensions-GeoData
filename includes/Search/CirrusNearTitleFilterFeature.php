@@ -1,7 +1,7 @@
 <?php
 
 
-namespace GeoData;
+namespace GeoData\Search;
 
 use CirrusSearch\Parser\AST\KeywordFeatureNode;
 use CirrusSearch\Query\Builder\QueryBuildingContext;
@@ -10,7 +10,9 @@ use CirrusSearch\Query\SimpleKeywordFeature;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\WarningCollector;
+use Config;
 use Elastica\Query\AbstractQuery;
+use GeoData\Coord;
 
 /**
  * Applies geo filtering to the query by providing a Title.
@@ -27,15 +29,15 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements Filte
 	use CirrusGeoFeature;
 
 	/**
-	 * @var \Config
+	 * @var Config
 	 */
 	private $config;
 
 	/**
 	 * CirrusGeoBoostFeature constructor.
-	 * @param \Config $config
+	 * @param Config $config
 	 */
-	public function __construct( \Config $config ) {
+	public function __construct( Config $config ) {
 		$this->config = $config;
 	}
 

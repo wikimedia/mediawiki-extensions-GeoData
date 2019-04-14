@@ -1,8 +1,11 @@
 <?php
 
-namespace GeoData;
+namespace GeoData\Search;
 
 use CirrusSearch\WarningCollector;
+use Config;
+use GeoData\GeoData;
+use GeoData\Globe;
 use Title;
 
 /**
@@ -79,7 +82,7 @@ trait CirrusGeoFeature {
 	 *   <radius>,<lat>,<lon>
 	 *
 	 * @param WarningCollector $warningCollector
-	 * @param \Config $config
+	 * @param Config $config
 	 * @param string $key
 	 * @param string $text
 	 * @return array Two member array with Coordinate object, and integer radius
@@ -87,7 +90,7 @@ trait CirrusGeoFeature {
 	 */
 	public function parseGeoNearby(
 		WarningCollector $warningCollector,
-		\Config $config,
+		Config $config,
 		$key,
 		$text
 	) {

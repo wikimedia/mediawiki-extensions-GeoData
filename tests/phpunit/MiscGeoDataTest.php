@@ -2,7 +2,7 @@
 
 namespace GeoData\Test;
 
-use GeoData\ApiQueryGeoSearchDb;
+use GeoData\Api\QueryGeoSearchDb;
 use MediaWikiTestCase;
 
 /**
@@ -10,11 +10,11 @@ use MediaWikiTestCase;
  */
 class MiscGeoDataTest extends MediaWikiTestCase {
 	/**
-	 * @covers \GeoData\ApiQueryGeoSearchDb::intRange
+	 * @covers \GeoData\Api\QueryGeoSearchDb::intRange
 	 * @dataProvider getIntRangeData
 	 */
 	public function testIntRange( $min, $max, $expected ) {
-		$this->assertEquals( $expected, ApiQueryGeoSearchDb::intRange( $min, $max ) );
+		$this->assertEquals( $expected, QueryGeoSearchDb::intRange( $min, $max ) );
 	}
 
 	public function getIntRangeData() {

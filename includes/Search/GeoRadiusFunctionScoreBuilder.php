@@ -1,9 +1,10 @@
 <?php
-namespace GeoData;
+namespace GeoData\Search;
 
 use CirrusSearch\Search\Rescore\FunctionScoreBuilder;
 use CirrusSearch\SearchConfig;
 use Elastica\Query\FunctionScore;
+use GeoData\Coord;
 
 /**
  * Builds a boost for documents based on geocoordinates.

@@ -6,6 +6,12 @@ use ApiModuleManager;
 use Article;
 use CirrusSearch\SearchConfig;
 use DatabaseUpdater;
+use GeoData\Api\QueryGeoSearch;
+use GeoData\Search\CirrusNearCoordBoostFeature;
+use GeoData\Search\CirrusNearCoordFilterFeature;
+use GeoData\Search\CirrusNearTitleBoostFeature;
+use GeoData\Search\CirrusNearTitleFilterFeature;
+use GeoData\Search\CoordinatesIndexField;
 use LinksUpdate;
 use LocalFile;
 use MediaWiki\MediaWikiServices;
@@ -374,7 +380,7 @@ class Hooks {
 			$moduleManager->addModule(
 				'geosearch',
 				'list',
-				'GeoData\ApiQueryGeoSearch' . ucfirst( $wgGeoDataBackend )
+				QueryGeoSearch::class . ucfirst( $wgGeoDataBackend )
 			);
 		}
 	}

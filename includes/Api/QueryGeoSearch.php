@@ -1,15 +1,19 @@
 <?php
 
-namespace GeoData;
+namespace GeoData\Api;
 
 use ApiBase;
 use ApiPageSet;
 use ApiQuery;
 use ApiQueryGeneratorBase;
+use GeoData\BoundingBox;
+use GeoData\Coord;
+use GeoData\GeoData;
+use GeoData\Globe;
 use Title;
 use WikiPage;
 
-class ApiQueryGeoSearch extends ApiQueryGeneratorBase {
+class QueryGeoSearch extends ApiQueryGeneratorBase {
 	const MIN_RADIUS = 10;
 	const DEFAULT_RADIUS = 500;
 

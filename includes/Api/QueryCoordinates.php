@@ -1,10 +1,14 @@
 <?php
 
-namespace GeoData;
+namespace GeoData\Api;
 
 use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
+use GeoData\Coord;
+use GeoData\GeoData;
+use GeoData\Globe;
+use GeoData\Math;
 use MWException;
 use Title;
 
@@ -12,7 +16,7 @@ use Title;
  * This query adds an <coordinates> subelement to all pages with the list of coordinated
  * present on those pages.
  */
-class ApiQueryCoordinates extends ApiQueryBase {
+class QueryCoordinates extends ApiQueryBase {
 
 	/**
 	 * @param ApiQuery $query

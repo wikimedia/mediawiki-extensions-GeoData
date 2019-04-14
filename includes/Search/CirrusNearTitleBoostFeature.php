@@ -1,6 +1,6 @@
 <?php
 
-namespace GeoData;
+namespace GeoData\Search;
 
 use CirrusSearch\Parser\AST\KeywordFeatureNode;
 use CirrusSearch\Query\BoostFunctionFeature;
@@ -10,6 +10,7 @@ use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\WarningCollector;
+use Config;
 
 /**
  * Applies geo boosting to the query by providing a Title.
@@ -25,15 +26,15 @@ class CirrusNearTitleBoostFeature extends SimpleKeywordFeature implements BoostF
 	use CirrusGeoFeature;
 
 	/**
-	 * @var \Config
+	 * @var Config
 	 */
 	private $config;
 
 	/**
 	 * CirrusGeoBoostFeature constructor.
-	 * @param \Config $config
+	 * @param Config $config
 	 */
-	public function __construct( \Config $config ) {
+	public function __construct( Config $config ) {
 		$this->config = $config;
 	}
 
