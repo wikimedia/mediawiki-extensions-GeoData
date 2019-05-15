@@ -32,7 +32,6 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 	private $config;
 
 	/**
-	 * CirrusGeoBoostFeature constructor.
 	 * @param Config $config
 	 */
 	public function __construct( Config $config ) {

@@ -27,7 +27,6 @@ class GeoRadiusFunctionScoreBuilder extends FunctionScoreBuilder {
 	private $radius;
 
 	/**
-	 * GeoRadiusFunctionScoreBuilder constructor.
 	 * @param SearchConfig $config
 	 * @param float $weight Used to amend profile weight, e.g. negative boosting
 	 * @param Coord $coord Center coordinate
