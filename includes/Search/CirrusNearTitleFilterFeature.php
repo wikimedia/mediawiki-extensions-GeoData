@@ -34,7 +34,6 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements Filte
 	private $config;
 
 	/**
-	 * CirrusGeoBoostFeature constructor.
 	 * @param Config $config
 	 */
 	public function __construct( Config $config ) {
