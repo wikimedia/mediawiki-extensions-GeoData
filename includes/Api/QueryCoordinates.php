@@ -49,8 +49,8 @@ class QueryCoordinates extends ApiQueryBase {
 		);
 
 		if ( isset( $params['continue'] ) ) {
-			$parts = explode( '|', $params['continue'] );
-			$this->dieContinueUsageIf( count( $parts ) != 2 );
+			$parts = explode( '|', $params['continue'], 3 );
+			$this->dieContinueUsageIf( count( $parts ) !== 2 );
 			$this->dieContinueUsageIf( !is_numeric( $parts[0] ) );
 			$this->dieContinueUsageIf( !is_numeric( $parts[1] ) );
 			$parts[0] = intval( $parts[0] );

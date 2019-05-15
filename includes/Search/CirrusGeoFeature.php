@@ -106,11 +106,9 @@ trait CirrusGeoFeature {
 				);
 				return [ null, 0 ];
 			}
-			$lat = $pieces[1];
-			$lon = $pieces[2];
+			list( , $lat, $lon ) = $pieces;
 		} elseif ( count( $pieces ) === 2 ) {
-			$lat = $pieces[0];
-			$lon = $pieces[1];
+			list( $lat, $lon ) = $pieces;
 		} else {
 			$warningCollector->addWarning(
 				'geodata-search-feature-invalid-coordinates',
