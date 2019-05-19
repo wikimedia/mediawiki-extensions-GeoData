@@ -31,7 +31,7 @@ class Coord {
 
 		$this->lat = $lat;
 		$this->lon = $lon;
-		$this->globe = $globe !== null ? $globe : $wgDefaultGlobe;
+		$this->globe = $globe ?? $wgDefaultGlobe;
 
 		foreach ( $extraFields as $key => $value ) {
 			if ( isset( self::$fieldMapping[$key] ) ) {
