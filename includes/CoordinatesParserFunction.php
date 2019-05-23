@@ -42,9 +42,6 @@ class CoordinatesParserFunction {
 	public function coordinates( Parser $parser, PPFrame $frame, array $args ) {
 		$this->parser = $parser;
 		$this->output = $parser->getOutput();
-		if ( !isset( $this->output->geoData ) ) {
-			$this->output->geoData = new CoordinatesOutput();
-		}
 
 		$this->unnamed = [];
 		$this->named = [];
@@ -122,8 +119,7 @@ class CoordinatesParserFunction {
 	private function applyCoord( Coord $coord ) {
 		global $wgMaxCoordinatesPerPage;
 
-		/** @var CoordinatesOutput $geoData */
-		$geoData = $this->output->geoData;
+		$geoData = CoordinatesOutput::getOrBuildFromParserOutput( $this->output );
 		if ( $wgMaxCoordinatesPerPage >= 0 && $geoData->getCount() >= $wgMaxCoordinatesPerPage ) {
 			if ( $geoData->limitExceeded ) {
 				return Status::newFatal( '' );

@@ -127,14 +127,13 @@ class Hooks {
 		$out = $linksUpdate->getParserOutput();
 		$data = [];
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
-		if ( isset( $out->geoData ) ) {
-			/** @var CoordinatesOutput $geoData */
-			$geoData = $out->geoData;
+		$coordsOutput = CoordinatesOutput::getFromParserOutput( $out );
+		if ( $coordsOutput ) {
 			// Use coordinates from file metadata unless overridden on description page
-			if ( $coordFromMetadata && !$geoData->getPrimary() ) {
-				$geoData->addPrimary( $coordFromMetadata );
+			if ( $coordFromMetadata && !$coordsOutput->getPrimary() ) {
+				$coordsOutput->addPrimary( $coordFromMetadata );
 			}
-			$data = $geoData->getAll();
+			$data = $coordsOutput->getAll();
 		} elseif ( $coordFromMetadata ) {
 			$data[] = $coordFromMetadata;
 		}
@@ -260,8 +259,8 @@ class Hooks {
 	public static function onOutputPageParserOutput( OutputPage &$out, ParserOutput $po ) {
 		global $wgGeoDataInJS;
 
-		if ( $wgGeoDataInJS && isset( $po->geoData ) ) {
-			$coord = $po->geoData->getPrimary();
+		if ( $wgGeoDataInJS && CoordinatesOutput::getFromParserOutput( $po ) ) {
+			$coord = CoordinatesOutput::getFromParserOutput( $po )->getPrimary();
 			if ( !$coord ) {
 				return;
 			}
@@ -319,9 +318,8 @@ class Hooks {
 		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
 
 		if ( ( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' ) ) {
-			$allCoords = isset( $parserOutput->geoData )
-				? $parserOutput->geoData->getAll()
-				: [];
+			$coordsOutput = CoordinatesOutput::getFromParserOutput( $parserOutput );
+			$allCoords = $coordsOutput !== null ? $coordsOutput->getAll() : [];
 			$coords = [];
 
 			/** @var Coord $coord */

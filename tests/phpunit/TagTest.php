@@ -3,6 +3,7 @@
 namespace GeoData\Test;
 
 use GeoData\Coord;
+use GeoData\CoordinatesOutput;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use ParserOptions;
@@ -10,7 +11,8 @@ use Title;
 
 /**
  * @covers \GeoData\CoordinatesParserFunction
- *
+ * @covers \GeoData\CoordinatesOutput::getOrBuildFromParserOutput()
+ * @covers \GeoData\CoordinatesOutput::getFromParserOutput()
  * @group GeoData
  */
 class TagTest extends MediaWikiTestCase {
@@ -33,15 +35,15 @@ class TagTest extends MediaWikiTestCase {
 		$p = MediaWikiServices::getInstance()->getParser()->getFreshParser();
 		$opt = ParserOptions::newFromAnon();
 		$out = $p->parse( $input, Title::newMainPage(), $opt );
-		$this->assertTrue( isset( $out->geoData ) );
 		if ( !$expected ) {
-			$this->assertEmpty( $out->geoData->getAll(),
+			$this->assertNull( CoordinatesOutput::getFromParserOutput( $out ),
 				'Expected a failure but a result was found: ' .
-					print_r( $out->geoData->getAll(), true )
+					print_r( CoordinatesOutput::getFromParserOutput( $out ), true )
 			);
 			return;
 		}
-		$all = $out->geoData->getAll();
+		$this->assertNotNull( CoordinatesOutput::getFromParserOutput( $out ) );
+		$all = CoordinatesOutput::getFromParserOutput( $out )->getAll();
 		$this->assertEquals( 1, count( $all ),
 			'A result was expected, but there was error: ' . strip_tags( $out->getText() ) );
 		/** @var Coord $coord */
