@@ -11,6 +11,12 @@ use Wikimedia\Assert\Assert;
  * Class that holds output of a parse opertion
  */
 class CoordinatesOutput {
+	/**
+	 * Key used to store this object in the ParserOutput extension data.
+	 * Visible for testing only.
+	 */
+	const GEO_DATA_COORDS_OUTPUT = 'GeoDataCoordsOutput';
+
 	/** @var bool */
 	public $limitExceeded = false;
 	/** @var Coord|false */
@@ -30,7 +36,7 @@ class CoordinatesOutput {
 		$coord = self::getFromParserOutput( $parserOutput );
 		if ( $coord === null ) {
 			$coord = new CoordinatesOutput();
-			$parserOutput->geoData = $coord;
+			$parserOutput->setExtensionData( self::GEO_DATA_COORDS_OUTPUT, $coord );
 		}
 		return $coord;
 	}
@@ -44,9 +50,17 @@ class CoordinatesOutput {
 		if ( isset( $parserOutput->geoData ) ) {
 			Assert::invariant( $parserOutput->geoData instanceof CoordinatesOutput,
 				'ParserOutput::geoData must be an instance of CoordinatesOutput ' );
+			\MediaWiki\MediaWikiServices::getInstance()->getStatsdDataFactory()
+				->increment( "GeoData.ParserOutput.deprecated_geo_data_field" );
 			return $parserOutput->geoData;
 		}
-		return null;
+		$coordsOuput = $parserOutput->getExtensionData( self::GEO_DATA_COORDS_OUTPUT );
+		if ( $coordsOuput !== null ) {
+			Assert::invariant( $coordsOuput instanceof CoordinatesOutput,
+				'ParserOutput extension data ' . self::GEO_DATA_COORDS_OUTPUT .
+				' must be an instance of CoordinatesOutput' );
+		}
+		return $coordsOuput;
 	}
 
 	/**

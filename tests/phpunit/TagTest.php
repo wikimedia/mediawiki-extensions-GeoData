@@ -54,6 +54,24 @@ class TagTest extends MediaWikiTestCase {
 		);
 	}
 
+	public function testCoordinatesOutput() {
+		$output = new \ParserOutput();
+		$inExtData = new CoordinatesOutput();
+		$output->setExtensionData( CoordinatesOutput::GEO_DATA_COORDS_OUTPUT, $inExtData );
+		$this->assertSame( $inExtData, CoordinatesOutput::getFromParserOutput( $output ) );
+
+		$output = new \ParserOutput();
+		$asDynField = new CoordinatesOutput();
+		$output->geoData = $asDynField;
+		$this->assertSame( $asDynField, CoordinatesOutput::getFromParserOutput( $output ) );
+
+		$output = new \ParserOutput();
+		CoordinatesOutput::getOrBuildFromParserOutput( $output );
+		$this->assertFalse( isset( $output->geoData ) );
+		$this->assertNotNull(
+			$output->getExtensionData( CoordinatesOutput::GEO_DATA_COORDS_OUTPUT ) );
+	}
+
 	/**
 	 * @dataProvider getLooseData
 	 */
