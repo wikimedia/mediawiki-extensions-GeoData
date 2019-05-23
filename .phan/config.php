@@ -21,4 +21,6 @@ $cfg['suppress_issue_types'][] = 'PhanUndeclaredProperty';
 // Interfaces can be caught, we intentionally annotate with the interface
 $cfg['suppress_issue_types'][] = 'PhanTypeInvalidThrowsIsInterface';
 
+$cfg['enable_class_alias_support'] = true;
+
 return $cfg;
