@@ -7,6 +7,7 @@ use CirrusSearch\SearchConfig;
 use CirrusSearch\SearchRequestLog;
 use ConfigException;
 use Elastica\Exception\ExceptionInterface;
+use Elastica\Exception\ResponseException;
 use Elastica\Search;
 use MediaWiki\MediaWikiServices;
 use User;
@@ -49,6 +50,11 @@ class Searcher extends ElasticsearchIntermediary {
 			$log = $this->newLog( 'performing {queryType}', $queryType, [], $namespaces );
 			$this->start( $log );
 			$result = $search->search();
+			if ( !$result->getResponse()->isOk() ) {
+				$req = $this->connection->getClient()->getLastRequest();
+				// Not really the right exception, this is probably a status code problem.
+				throw new ResponseException( $req, $result->getResponse() );
+			}
 			$this->success();
 		} catch ( ExceptionInterface $ex ) {
 			$this->failure( $ex );
