@@ -42,7 +42,7 @@ class Searcher extends ElasticsearchIntermediary {
 		$search = $pageType->createSearch( $query );
 
 		try {
-			$log = $this->newLog( 'performing {queryType}', $queryType );
+			$log = $this->newLog( 'performing {queryType}', $queryType, [], $namespaces );
 			$this->start( $log );
 			$result = $search->search();
 			$this->success();
@@ -58,14 +58,21 @@ class Searcher extends ElasticsearchIntermediary {
 	 * @param string $description
 	 * @param string $queryType
 	 * @param string[] $extra
+	 * @param array|null $namespaces
 	 * @return SearchRequestLog
 	 */
-	protected function newLog( $description, $queryType, array $extra = [] ) {
+	protected function newLog(
+		$description,
+		$queryType,
+		array $extra = [],
+		array $namespaces = null
+	) {
 		return new SearchRequestLog(
 			$this->connection->getClient(),
 			$description,
 			$queryType,
-			$extra
+			$extra,
+			$namespaces
 		);
 	}
 }
