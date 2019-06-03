@@ -125,6 +125,12 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			] );
 			$this->dieDebug( __METHOD__, 'Unexpected result set returned by Elasticsearch' );
 		}
+
+		if ( $data['timed_out'] ) {
+			// only partial results returned
+			$this->addWarning( 'geodata-search-timeout' );
+		}
+
 		$ids = [];
 		$coordinates = [];
 		foreach ( $data['hits']['hits'] as $page ) {

@@ -67,5 +67,6 @@
 	"geodata-search-feature-invalid-coordinates": "Warning shown to users when providing invalid coordinates to a geo search keyword.",
 	"geodata-search-feature-invalid-distance": "Warning shown to users when providing invalid distance qualifier to a geo search keyword.",
 	"geodata-search-feature-unknown-title": "Warning shown to users when providing an unknown title to a geo search keyword.",
-	"geodata-search-feature-title-no-coordinates": "Warning shown to users when providing an article title that has no coordinates to a geo search keyword."
+	"geodata-search-feature-title-no-coordinates": "Warning shown to users when providing an article title that has no coordinates to a geo search keyword.",
+	"geodata-search-timeout": "Warning shown to users when a search takes too long"
 }
