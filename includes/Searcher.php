@@ -7,6 +7,7 @@ use CirrusSearch\SearchConfig;
 use CirrusSearch\SearchRequestLog;
 use ConfigException;
 use Elastica\Exception\ExceptionInterface;
+use Elastica\Search;
 use MediaWiki\MediaWikiServices;
 use User;
 
@@ -40,6 +41,9 @@ class Searcher extends ElasticsearchIntermediary {
 		$indexType = $this->connection->pickIndexTypeForNamespaces( $namespaces );
 		$pageType = $this->connection->getPageType( wfWikiID(), $indexType );
 		$search = $pageType->createSearch( $query );
+
+		$this->connection->setTimeout( $this->getClientTimeout( $queryType ) );
+		$search->setOption( Search::OPTION_TIMEOUT, $this->getTimeout( $queryType ) );
 
 		try {
 			$log = $this->newLog( 'performing {queryType}', $queryType, [], $namespaces );

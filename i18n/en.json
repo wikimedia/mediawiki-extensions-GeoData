@@ -63,5 +63,6 @@
 	"geodata-search-feature-invalid-coordinates": "The geo coordinates '$2' provided to '$1' could not be parsed.",
 	"geodata-search-feature-invalid-distance": "The geo distance '$2' provided to '$1' could not be parsed.",
 	"geodata-search-feature-unknown-title": "The title '$2' provided to '$1' does not exist.",
-	"geodata-search-feature-title-no-coordinates": "The title '$2' provided to '$1' does not have any coordinates."
+	"geodata-search-feature-title-no-coordinates": "The title '$2' provided to '$1' does not have any coordinates.",
+	"geodata-search-timeout": "GeoData search timed out. Only partial results are available."
 }
