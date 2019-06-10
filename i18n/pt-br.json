@@ -70,5 +70,6 @@
 	"geodata-search-feature-invalid-coordinates": "As coordenadas geográficas '$2' fornecidas para '$1' não puderam ser analisadas.",
 	"geodata-search-feature-invalid-distance": "A distância geográfica '$2' fornecida para '$1' não pode ser analisada.",
 	"geodata-search-feature-unknown-title": "O título '$2' fornecido para '$1' não existe.",
-	"geodata-search-feature-title-no-coordinates": "O título '$2' fornecido para '$1' não possui coordenadas."
+	"geodata-search-feature-title-no-coordinates": "O título '$2' fornecido para '$1' não possui coordenadas.",
+	"geodata-search-timeout": "A pesquisa GeoData expirou. Apenas resultados parciais estão disponíveis."
 }

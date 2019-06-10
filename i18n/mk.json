@@ -64,5 +64,6 @@
 	"geodata-search-feature-invalid-coordinates": "Не можев да ги расчленам геокоординатите „$2“ укажани на „$1“.",
 	"geodata-search-feature-invalid-distance": "Не можев да го расчленам георастојанието „$2“ укажано на „$1“.",
 	"geodata-search-feature-unknown-title": "Насловот „$2“ укажан на „$1“ не постои.",
-	"geodata-search-feature-title-no-coordinates": "Насловот „$2“ укажан на „$1“ нема никакви координати."
+	"geodata-search-feature-title-no-coordinates": "Насловот „$2“ укажан на „$1“ нема никакви координати.",
+	"geodata-search-timeout": "Пребарувањето на геоподатоци истече. Достапен е само делумен исход."
 }

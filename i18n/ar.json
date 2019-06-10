@@ -65,5 +65,6 @@
 	"geodata-search-feature-invalid-coordinates": "لا يمكن تحليل الإحداثيات الجغرافية \"$2\" المقدمة إلى \"$1\".",
 	"geodata-search-feature-invalid-distance": "لا يمكن تحليل المسافة الجغرافية \"$2\" المقدمة إلى \"$1\".",
 	"geodata-search-feature-unknown-title": "العنوان \"$2\" المقدم إلى \"$1\" غير موجود.",
-	"geodata-search-feature-title-no-coordinates": "لا يحتوي العنوان \"$2\" المقدم إلى \"$1\" على أية إحداثيات."
+	"geodata-search-feature-title-no-coordinates": "لا يحتوي العنوان \"$2\" المقدم إلى \"$1\" على أية إحداثيات.",
+	"geodata-search-timeout": "انتهت مهلة بحث GeoData؛ النتائج الجزئية فقط متاحة."
 }
