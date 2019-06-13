@@ -65,5 +65,6 @@
 	"geodata-search-feature-invalid-coordinates": "提供給「$1」的地理座標「$2」無法解析。",
 	"geodata-search-feature-invalid-distance": "提供給「$1」的地理距離「$2」無法解析。",
 	"geodata-search-feature-unknown-title": "提供給「$1」的標題「$2」不存在。",
-	"geodata-search-feature-title-no-coordinates": "提供給「$1」的標題「$2」未包含任何座標。"
+	"geodata-search-feature-title-no-coordinates": "提供給「$1」的標題「$2」未包含任何座標。",
+	"geodata-search-timeout": "GeoData 搜尋逾時，僅有部份結果可用。"
 }
