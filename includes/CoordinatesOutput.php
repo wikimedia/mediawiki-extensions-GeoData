@@ -47,13 +47,6 @@ class CoordinatesOutput {
 	 * @return CoordinatesOutput|null existing CoordinatesOutput or null
 	 */
 	public static function getFromParserOutput( ParserOutput $parserOutput ) {
-		if ( isset( $parserOutput->geoData ) ) {
-			Assert::invariant( $parserOutput->geoData instanceof CoordinatesOutput,
-				'ParserOutput::geoData must be an instance of CoordinatesOutput ' );
-			\MediaWiki\MediaWikiServices::getInstance()->getStatsdDataFactory()
-				->increment( "GeoData.ParserOutput.deprecated_geo_data_field" );
-			return $parserOutput->geoData;
-		}
 		$coordsOuput = $parserOutput->getExtensionData( self::GEO_DATA_COORDS_OUTPUT );
 		if ( $coordsOuput !== null ) {
 			Assert::invariant( $coordsOuput instanceof CoordinatesOutput,
