@@ -67,5 +67,6 @@
 	"geodata-search-feature-invalid-coordinates": "נקודות הציון הגאוגרפיות \"$2\" שסופקו ל־\"$1\" לא יכלו להתפענח.",
 	"geodata-search-feature-invalid-distance": "המרחק הגאוגרפי \"$2\" שסופק ל־\"$1\" לא יכול להתפענח.",
 	"geodata-search-feature-unknown-title": "הכותרת \"$2\" שסופקה ל־\"$1\" אינה קיימת.",
-	"geodata-search-feature-title-no-coordinates": "בכותרת \"$2\" שסופקה ל־\"$1\" אין שום נקודות ציון."
+	"geodata-search-feature-title-no-coordinates": "בכותרת \"$2\" שסופקה ל־\"$1\" אין שום נקודות ציון.",
+	"geodata-search-timeout": "חיפוש נתונים גאוגרפיים לא החזיר תוצאות בזמן הרצוי. זמינות רק תוצאות חלקיות."
 }
