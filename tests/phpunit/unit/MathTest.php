@@ -91,5 +91,4 @@ class MathTest extends MediaWikiUnitTestCase {
 			[ -300, -1 ],
 		];
 	}
-
 }

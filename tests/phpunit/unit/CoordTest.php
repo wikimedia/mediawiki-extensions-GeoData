@@ -5,7 +5,7 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\Globe;
 use GeoData\Math;
-use MediaWikiIntegrationTestCase;
+use MediaWikiUnitTestCase;
 
 /**
  * @covers \GeoData\Coord
@@ -13,7 +13,7 @@ use MediaWikiIntegrationTestCase;
  * @todo: More tests
  * @group GeoData
  */
-class CoordTest extends MediaWikiIntegrationTestCase {
+class CoordTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers \GeoData\Coord::equalsTo

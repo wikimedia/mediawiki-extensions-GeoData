@@ -3,18 +3,18 @@
 namespace GeoData\Test;
 
 use GeoData\Api\QueryGeoSearchDb;
-use MediaWikiIntegrationTestCase;
+use MediaWikiUnitTestCase;
 
 /**
  * @group GeoData
  */
-class MiscGeoDataTest extends MediaWikiIntegrationTestCase {
+class MiscGeoDataTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers \GeoData\Api\QueryGeoSearchDb::intRange
 	 * @dataProvider provideIntRangeData
 	 */
 	public function testIntRange( $min, $max, $expected ) {
-		$this->assertEquals( $expected, QueryGeoSearchDb::intRange( $min, $max ) );
+		$this->assertEquals( $expected, QueryGeoSearchDb::intRange( $min, $max, 10 ) );
 	}
 
 	public static function provideIntRangeData() {
