@@ -69,5 +69,6 @@
 	"geodata-search-feature-invalid-coordinates": "Географічні координати «$2», надані «$1» не вдалося обробити.",
 	"geodata-search-feature-invalid-distance": "Гегорафічну відстань «$2», надану «$1», не вдалося обробити.",
 	"geodata-search-feature-unknown-title": "Назва «$2», надана «$1», не існує.",
-	"geodata-search-feature-title-no-coordinates": "Назва «$2», надана «$1», не має жодних координатів."
+	"geodata-search-feature-title-no-coordinates": "Назва «$2», надана «$1», не має жодних координатів.",
+	"geodata-search-timeout": "Час пошуку GeoData вийшов. Доступні лише часткові результати."
 }
