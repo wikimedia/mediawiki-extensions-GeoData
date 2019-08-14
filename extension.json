@@ -15,7 +15,8 @@
 	},
 	"MessagesDirs": {
 		"GeoData": [
-			"i18n"
+			"i18n",
+			"i18n/api"
 		]
 	},
 	"ExtensionMessagesFiles": {
