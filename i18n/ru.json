@@ -9,7 +9,8 @@
 			"Okras",
 			"Fitoschido",
 			"Smigles",
-			"Vlad5250"
+			"Vlad5250",
+			"Movses"
 		]
 	},
 	"geodata-desc": "Добавляет возможность хранить и получать географические координаты",
@@ -71,5 +72,6 @@
 	"geodata-search-feature-invalid-coordinates": "Невозможно расчленить геокоординаты «$2», указанные на «$1».",
 	"geodata-search-feature-invalid-distance": "Невозможно расчленить георасстояние «$2», указанное на «$1».",
 	"geodata-search-feature-unknown-title": "Название «$2», указанное на «$1», не существует.",
-	"geodata-search-feature-title-no-coordinates": "Название «$2», указанное на «$1», не имеет никаких координат."
+	"geodata-search-feature-title-no-coordinates": "Название «$2», указанное на «$1», не имеет никаких координат.",
+	"geodata-search-timeout": "Время поиска GeoData вышло. Доступны лишь частичные результаты."
 }
