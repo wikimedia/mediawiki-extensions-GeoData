@@ -64,5 +64,6 @@
 	"geodata-search-feature-invalid-coordinates": "Geokoordinatene «$2» gitt til «$1» kunne ikke tolkes.",
 	"geodata-search-feature-invalid-distance": "Geodistansen «$2» gitt til «$1» kunne ikke tolkes.",
 	"geodata-search-feature-unknown-title": "Tittelen «$2» gitt til «$1» finnes ikke.",
-	"geodata-search-feature-title-no-coordinates": "Tittelen «$2» gitt til «$1» har ingen koordinater."
+	"geodata-search-feature-title-no-coordinates": "Tittelen «$2» gitt til «$1» har ingen koordinater.",
+	"geodata-search-timeout": "GeoData-søk nådde tidsbegrensningen. Kun delvise resultater er tilgjengelig."
 }
