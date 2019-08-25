@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alirezaaa",
+			"Ladsgroup"
+		]
+	},
+	"apihelp-query+coordinates-description": "مختصات صفحات داده‌شده را برمیگرداند.",
+	"apihelp-query+coordinates-summary": "مختصات صفحات داده‌شده را برمیگرداند.",
+	"apihelp-query+coordinates-param-limit": "تعداد مختصات برای بازگرداندن.",
+	"apihelp-query+coordinates-param-prop": "کدام ویژگی‌های اضافی مختصات برگردانده شود.",
+	"apihelp-query+coordinates-paramvalue-prop-name": "نام شی.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "اندازه حدودی شی به متر.",
+	"apihelp-query+coordinates-param-primary": "نوع مختصات برای بازگرداندن.",
+	"apihelp-query+coordinates-example-1": "دریافت فهرست مختصات [[Main Page]]",
+	"apihelp-query+geosearch-description": "بازگرداندن صفحاتی که مختصاتی در یک منطقهٔ خاص دارند.",
+	"apihelp-query+geosearch-summary": "بازگرداندن صفحاتی که مختصاتی در یک منطقهٔ خاص دارند.",
+	"apihelp-query+geosearch-param-coord": "مختصات برای جستجو",
+	"apihelp-query+geosearch-param-page": "عنوان صفحه برای جستجو",
+	"apihelp-query+geosearch-param-radius": "شعاع جستجو به متر.",
+	"apihelp-query+geosearch-param-limit": "حداکثر شمار صفحات برای بازگرداندن.",
+	"apihelp-query+geosearch-param-namespace": "فضاهای نامی برای جستجو",
+	"apihelp-query+geosearch-param-prop": "کدام ویژگی‌های اضافی مختصات برگردانده شود.",
+	"apihelp-query+geosearch-param-primary": "نوع مختصات برای بازگرداندن.",
+	"apierror-geodata-nocoord": "مختصات صفحه تعریف نشده‌است.",
+	"apierror-geodata-noprimarycoord": "صفحهٔ $1 هیچ مختصات اولیه‌ای ندارد.",
+	"apierror-geodata-notonearth": "مختصات این صفحه روی زمین نیست.",
+	"apierror-geodata-badcoord": "مختصات نامعتبر ارائه شده‌است"
+}

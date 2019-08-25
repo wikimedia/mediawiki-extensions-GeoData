@@ -9,6 +9,5 @@
 	"geodata-bad-type": "<code><nowiki>{{#coordinates:}}</nowiki></code>: ამოუცნობი ტიპი „$1“",
 	"geodata-bad-globe": "<code><nowiki>{{#coordinates:}}</nowiki></code>: ამოუცნობი მსოფლიო „$1“",
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: რეგიონის კოდის არასწორი ფორმატი",
-	"geodata-unknown-type-category": "გვერდები კოორდინატთა უცნობი ტიპით",
-	"apihelp-query+geosearch-param-radius": "რადიუსის ძიება მეტრებში."
+	"geodata-unknown-type-category": "გვერდები კოორდინატთა უცნობი ტიპით"
 }

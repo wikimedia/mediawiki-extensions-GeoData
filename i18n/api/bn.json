@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mohammed Galib Hasan",
+			"আফতাবুজ্জামান"
+		]
+	},
+	"apihelp-query+coordinates-description": "প্রদত্ত পাতায় স্থানাঙ্ক প্রদান করে।",
+	"apihelp-query+coordinates-param-limit": "কতগুলি স্থানাঙ্ক প্রদান করবে।",
+	"apihelp-query+coordinates-param-prop": "কোন অতিরিক্ত স্থানাঙ্কের বৈশিষ্ট্য প্রদান করতে হবে।",
+	"apihelp-query+coordinates-paramvalue-prop-name": "বস্তুর নাম।",
+	"apihelp-query+coordinates-param-primary": "কোন ধরনের স্থানাঙ্ক চাচ্ছেন।",
+	"apihelp-query+coordinates-param-distancefrompoint": "এইসব স্থানাঙ্ক থেকে পৃথিবীর প্রত্যেক ফলাফলের দূরত্ব মিটারে প্রদান করে।",
+	"apihelp-query+coordinates-param-distancefrompage": "এই পাতার স্থানাঙ্ক থেকে পৃথিবীর প্রত্যেক ফলাফলের দূরত্ব মিটারে প্রদান করে।",
+	"apihelp-query+coordinates-example-1": "[[Main Page]]র স্থানাঙ্কের একটি তালিকা পান",
+	"apihelp-query+geosearch-description": "প্রদত্ত বিন্দুর কাছাকাছি স্থানাঙ্ক থাকা পাতা প্রদান করে।",
+	"apihelp-query+geosearch-param-coord": "কাছাকাছি স্থানাঙ্ক যা অনুসন্ধান করতে হবে।",
+	"apihelp-query+geosearch-param-page": "কাছাকাছি পাতার শিরোনাম যা অনুসন্ধান করতে হবে।",
+	"apihelp-query+geosearch-param-radius": "মিটার ব্যাসার্ধে অনুসন্ধান করে।",
+	"apierror-geodata-noprimarycoord": "$1 পাতাটির কোন প্রাথমিক স্থানাঙ্ক নেই।"
+}

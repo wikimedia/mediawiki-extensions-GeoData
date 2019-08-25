@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar",
+			"अभय नातू"
+		]
+	},
+	"apihelp-query+coordinates-description": "दिलेल्या पानाच्या समन्वयकाचा परतावा देते.",
+	"apihelp-query+coordinates-param-limit": "किती समन्वयकांचा परतावा हवा.",
+	"apihelp-query+coordinates-param-prop": "समन्वयकाच्या कोणत्या अतिरिक्त गुणधर्मांचा परतावा हवा.",
+	"apihelp-query+coordinates-param-primary": "फक्त प्राथमिक(\"primary\"), माध्यमिक(\"secondary\") किंवा दोन्ही (\"all\") समन्वयकांचा परतावा द्यायचा काय.",
+	"apihelp-query+coordinates-param-distancefrompoint": "या समन्वयकांच्या पासून, पृथ्वीवरच्या प्रत्येक निकालांचे मिटरमधील अंतराचा परतावा देते.",
+	"apihelp-query+coordinates-param-distancefrompage": "या पानाच्या समन्वयकांच्या पासून, पृथ्वीवरच्या प्रत्येक निकालांचे मिटरमधील अंतराचा परतावा देते.",
+	"apihelp-query+coordinates-example-1": "[[Main Page|मुखपृष्ठ]] या लेखाच्या समन्वयकांची यादी मिळवा",
+	"apihelp-query+geosearch-description": "त्या पानांचा परतावा देते,ज्यांचे समन्वयक विशिष्ट क्षेत्रात आहेत.",
+	"apihelp-query+geosearch-param-coord": "कोणत्या समन्वयकाभोवताल शोधावयाचे.",
+	"apihelp-query+geosearch-param-page": "ज्या सभोवताल शोधावयाचे त्या पानाचे शीर्षक.",
+	"apihelp-query+geosearch-param-radius": "शोधत्रिज्या मीटरमध्ये.",
+	"apihelp-query+geosearch-param-maxdim": "या पेक्षा मोठ्या नसलेल्या वस्तुंपर्यंतच शोध मर्यादित ठेवा,मिटरमध्ये.",
+	"apihelp-query+geosearch-param-limit": "परतावा द्यायच्या पानांची संख्या.",
+	"apihelp-query+geosearch-param-globe": "कोणत्या गोलकावर शोध घ्यायचा(अविचलरित्या \"पृथ्वी\")",
+	"apihelp-query+geosearch-param-namespace": "शोधावयाची नामविश्वे.",
+	"apihelp-query+geosearch-param-prop": "समन्वयकाच्या कोणत्या अतिरिक्त गुणधर्मांचा परतावा द्यायचा.",
+	"apihelp-query+geosearch-param-primary": "फक्त प्राथमिक(\"primary\"), माध्यमिक(\"secondary\") किंवा दोन्ही (\"all\") समन्वयकांचा परतावा द्यायचा काय.",
+	"apihelp-query+geosearch-param-debug": "गणकदोषाविना माहितीचा परतावा द्यायचा काय.",
+	"apihelp-query+geosearch-example-1": "37° 47′ 13.1″ N, 122° 23′ 58.84″ W  हे समन्वयक असलेल्या बिंदूसभोवताल शोधा"
+}

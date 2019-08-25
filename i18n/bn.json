@@ -25,18 +25,5 @@
 	"geodata-unknown-globe-category-desc": "স্থানাঙ্কের জন্য পাতাটি <code>globe</code> প্যারামিটারের একটি অজানা মান ব্যবহার করেছে।",
 	"geodata-unknown-region-category": "ভুল অঞ্চল মানসহ পাতা",
 	"geodata-unknown-region-category-desc": "স্থানাঙ্কের জন্য পাতাটি <code>region</code> প্যারামিটারের একটি অজানা মান ব্যবহার করেছে।",
-	"geodata-api-help-coordinates-format": "বিন্যাস: অক্ষাংশ ও দ্রাঘিমাংশ নল (<kbd>|</kbd>) দ্বারা বিভক্ত।",
-	"apihelp-query+coordinates-description": "প্রদত্ত পাতায় স্থানাঙ্ক প্রদান করে।",
-	"apihelp-query+coordinates-param-limit": "কতগুলি স্থানাঙ্ক প্রদান করবে।",
-	"apihelp-query+coordinates-param-prop": "কোন অতিরিক্ত স্থানাঙ্কের বৈশিষ্ট্য প্রদান করতে হবে।",
-	"apihelp-query+coordinates-paramvalue-prop-name": "বস্তুর নাম।",
-	"apihelp-query+coordinates-param-primary": "কোন ধরনের স্থানাঙ্ক চাচ্ছেন।",
-	"apihelp-query+coordinates-param-distancefrompoint": "এইসব স্থানাঙ্ক থেকে পৃথিবীর প্রত্যেক ফলাফলের দূরত্ব মিটারে প্রদান করে।",
-	"apihelp-query+coordinates-param-distancefrompage": "এই পাতার স্থানাঙ্ক থেকে পৃথিবীর প্রত্যেক ফলাফলের দূরত্ব মিটারে প্রদান করে।",
-	"apihelp-query+coordinates-example-1": "[[Main Page]]র স্থানাঙ্কের একটি তালিকা পান",
-	"apihelp-query+geosearch-description": "প্রদত্ত বিন্দুর কাছাকাছি স্থানাঙ্ক থাকা পাতা প্রদান করে।",
-	"apihelp-query+geosearch-param-coord": "কাছাকাছি স্থানাঙ্ক যা অনুসন্ধান করতে হবে।",
-	"apihelp-query+geosearch-param-page": "কাছাকাছি পাতার শিরোনাম যা অনুসন্ধান করতে হবে।",
-	"apihelp-query+geosearch-param-radius": "মিটার ব্যাসার্ধে অনুসন্ধান করে।",
-	"apierror-geodata-noprimarycoord": "$1 পাতাটির কোন প্রাথমিক স্থানাঙ্ক নেই।"
+	"geodata-api-help-coordinates-format": "বিন্যাস: অক্ষাংশ ও দ্রাঘিমাংশ নল (<kbd>|</kbd>) দ্বারা বিভক্ত।"
 }

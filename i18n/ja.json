@@ -18,7 +18,5 @@
 	"geodata-broken-tags-category": "座標タグに誤りがあるページ",
 	"geodata-unknown-type-category": "種別不明の座標があるページ",
 	"geodata-unknown-globe-category": "天体不明の座標があるページ",
-	"geodata-unknown-region-category": "地域不明の座標があるページ",
-	"apihelp-query+coordinates-description": "与えられたページの座標情報を返します。",
-	"apihelp-query+coordinates-summary": "与えられたページの座標情報を返します。"
+	"geodata-unknown-region-category": "地域不明の座標があるページ"
 }

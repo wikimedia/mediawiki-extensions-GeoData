@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"KATRINE1992"
+		]
+	},
+	"apihelp-query+coordinates-param-prop": "Ποιες επιπλέον ιδιότητες παραμέτρων πρέπει να επαναφερθούν. (Ιδιότητες που πάντα επαναφέρονται: <var>lat</var>, <var>lon</var>, και είτε <var>primary</var> ή <var>secondary</var> ως σηματοδότηση.)",
+	"apihelp-query+coordinates-paramvalue-prop-type": "Τύπος αντικειμένου στο οποίο αντιστοιχούν οι παράμετροι. Δέστε το  [[mw:Extension:GeoData#Usage]] για περισσότερα στοιχεία.",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Όνομα του αντικειμένου",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Μέγεθος κατά προσέγγιση του αντικειμένου σε μέτρα.",
+	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alpha-2 code de pays (e.g. <samp>US</samp> or <samp>RU</samp>).",
+	"apihelp-query+coordinates-paramvalue-prop-region": "ISO 3166-2 code  régional(la part du code ISO 3166-2 après le tiret ; par ex.. <samp>FL</samp> ou <samp>MOS</samp>).",
+	"apihelp-query+coordinates-paramvalue-prop-globe": "Σε ποιο χειροπιαστό αντικείμενο αντιστοιχούν οι παράμετροι. (e.g. <samp>moon</samp> or <samp>pluto</samp>). Defaults Γής. Δέστε το [[mw:Extension:GeoData#Glossary]]για περισσότερες λεπτομέρεις.",
+	"apihelp-query+coordinates-param-primary": "Ποιο είδος παραμέτρων πρέπει να επαναφερθεί.",
+	"apihelp-query+coordinates-paramvalue-primary-primary": "Τόπος θέματος του άρθρου.Υπάρχει ως επί το πλείστον μια κύρια ρύθμιση ανά τίτλο.",
+	"apihelp-query+coordinates-paramvalue-primary-secondary": "Η τοποθεσία κάποιου θέματος που αναφέρεται στο άρθρο. Οιεσδήποτε δευτερεύουσες ρυθμίσεις μπορεί να συνδέονται με ένα τίτλο.",
+	"apihelp-query+coordinates-paramvalue-primary-all": "Επαναφορά και των δύο πρωτευόντων και δευτερευόντων παραμέτρων",
+	"apihelp-query+geosearch-param-globe": "Σφαίρα αναζήτησης. Δες το [[mw:Extension:GeoData#Glossary]]για περισσότερες λεπτομέρειες.",
+	"apihelp-query+geosearch-param-prop": "Ποιες επιπλέον ιδιότητες παραμέτρων να επαναφέρετε. (Ιδιότητες που πάντα επαναφέρονται: <var>lat</var>, <var>lon</var>,και είτε <var>primary</var> ή <var>secondary</var> as a boolean flag.)",
+	"apihelp-query+geosearch-param-primary": "Σε ποιο είδος στοιχείων να επιστρέψουμε."
+}

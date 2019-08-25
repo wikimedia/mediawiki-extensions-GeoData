@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"apihelp-query+coordinates-param-limit": "Kiek koordinačių gražinti.",
+	"apihelp-query+geosearch-param-radius": "Paieškos spindulys metrais.",
+	"apihelp-query+geosearch-param-limit": "Maksimalus grąžinamų puslapių skaičius.",
+	"apierror-geodata-nocoord": "Puslapio koordinatės nežinomos.",
+	"apierror-geodata-noprimarycoord": "Puslapis $1 neturi padinių koordinačių.",
+	"apierror-geodata-notonearth": "Šio puslapio koordinatorės nėra Žemėje.",
+	"apierror-geodata-badcoord": "Pateikta negaliojanti koordinatė"
+}

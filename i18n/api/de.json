@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"FF11",
+			"Metalhead64",
+			"Predatorix",
+			"Tiin"
+		]
+	},
+	"apihelp-query+coordinates-description": "Ruft Koordinaten der angegebenen Seiten zurück.",
+	"apihelp-query+coordinates-summary": "Gibt Koordinaten für die angegebenen Seiten zurück.",
+	"apihelp-query+coordinates-param-limit": "Wie viele Koordinaten zurückgegeben werden sollen.",
+	"apihelp-query+coordinates-param-prop": "Welche ergänzenden Koordinateneigenschaften zurückgegeben werden sollen.",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Name des Objekts.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Geschätzte Größe des Objekts in Metern.",
+	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alpha-2 Ländercode (z.&nbsp;B. <samp>US</samp> oder <samp>RU</samp>)",
+	"apihelp-query+coordinates-param-primary": "Ob nur primäre Koordinaten („primär“), sekundäre („sekundär“) oder beide („alle“) zurückgegeben werden sollen.",
+	"apihelp-query+coordinates-paramvalue-primary-all": "Gibt sowohl die primären als auch die sekundären Koordinaten zurück.",
+	"apihelp-query+coordinates-param-distancefrompoint": "Gibt von diesen angegebenen Koordinaten aus die Distanz in Metern für jedes gültige Ergebnis von den geografischen Koordinaten zurück.",
+	"apihelp-query+coordinates-param-distancefrompage": "Gibt von den Koordinaten dieser Seite aus die Distanz in Metern für jedes gültige Ergebnis von den geografischen Koordinaten zurück.",
+	"apihelp-query+coordinates-example-1": "Ruft eine Liste mit Koordinaten der [[Main Page]] ab",
+	"apihelp-query+geosearch-description": "Gibt Seiten mit Koordinaten zurück, die in einem bestimmten Bereich liegen.",
+	"apihelp-query+geosearch-summary": "Gibt Seiten mit Koordinaten zurück, die in einem bestimmten Bereich liegen.",
+	"apihelp-query+geosearch-param-coord": "Koordinate, in deren Nähe gesucht werden soll.",
+	"apihelp-query+geosearch-param-page": "Titel der Seite, in deren Nähe gesucht werden soll.",
+	"apihelp-query+geosearch-param-radius": "Radius in Metern suchen.",
+	"apihelp-query+geosearch-param-maxdim": "Beschränkt die Suche auf Objekte nicht größer als dies in Metern.",
+	"apihelp-query+geosearch-param-limit": "Maximale Anzahl der zurückzugebenden Seiten.",
+	"apihelp-query+geosearch-param-globe": "Zu durchsuchender Globus. Siehe [[mw:Extension:GeoData#Glossary]] für Einzelheiten.",
+	"apihelp-query+geosearch-param-namespace": "Zu durchsuchende Namensräume.",
+	"apihelp-query+geosearch-param-prop": "Welche ergänzenden Koordinateneigenschaften zurückgegeben werden sollen.",
+	"apihelp-query+geosearch-param-primary": "Ob nur primäre Koordinaten („primär“), sekundäre („sekundär“) oder beide („alle“) zurückgegeben werden sollen.",
+	"apihelp-query+geosearch-param-debug": "Ob Informationen zur Fehlerbeseitigung zurückgegeben werden sollen.",
+	"apihelp-query+geosearch-example-1": "Sucht in der Nähe des Punktes mit den Koordinaten 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Suche in einem begrenzenden Rahmen",
+	"apierror-geodata-nocoord": "Die Seitenkoordinaten sind unbekannt.",
+	"apierror-geodata-noprimarycoord": "Die Seite $1 hat keine primären Koordinaten.",
+	"apierror-geodata-notonearth": "Die Koordinaten der Seite befinden sich nicht auf der Erde.",
+	"apierror-geodata-invalidbox": "Ungültige Bounding Box.",
+	"apierror-geodata-boxtoobig": "Die Bounding Box ist zu groß",
+	"apierror-geodata-badcoord": "Ungültige Koordinaten angegeben"
+}

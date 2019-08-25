@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"apihelp-query+coordinates-description": "Restituisce le coordinate delle pagine indicate.",
+	"apihelp-query+coordinates-param-limit": "Quante coordinate restituire.",
+	"apihelp-query+coordinates-param-prop": "Quali proprietà addizionali delle coordinate restituire. (Proprietà sempre restituite: <var>lat</var>, <var>lon</var>, e <var>primary</var> o <var>secondary</var> come flag booleano.)",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Nome dell'oggetto.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Dimensioni approssimative dell'oggetto in metri.",
+	"apihelp-query+coordinates-param-primary": "Che tipo di coordinate restituire.",
+	"apihelp-query+coordinates-param-distancefrompoint": "Ritorna la distanza in metri dalle coordinate geografiche di ogni risultato valido dalle coordinate indicate.",
+	"apihelp-query+coordinates-param-distancefrompage": "Ritorna la distanza in metri dalle coordinate geografiche di ogni risultato valido dalle coordinate di questa pagina.",
+	"apihelp-query+geosearch-description": "Restituisce pagine che hanno coordinate che si trovano in una determinata area.",
+	"apihelp-query+geosearch-param-limit": "Numero massimo di pagine da restituire.",
+	"apihelp-query+geosearch-param-prop": "Quali proprietà addizionali delle coordinate restituire. (Proprietà sempre restituite: <var>lat</var>, <var>lon</var>, e <var>primary</var> o <var>secondary</var> come flag booleano.)",
+	"apihelp-query+geosearch-param-primary": "Che tipo di coordinate restituire.",
+	"apihelp-query+geosearch-param-debug": "Quali informazioni di debug restituire.",
+	"apihelp-query+geosearch-example-1": "Ricerca attorno al punto con coordinate 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apierror-geodata-noprimarycoord": "La pagina $1 non ha coordinate primarie."
+}

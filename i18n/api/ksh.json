@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"apihelp-query+coordinates-description": "Jit de Ko'odėnahte vun dä aanjejovve Sigge uß.",
+	"apihelp-query+coordinates-param-limit": "Wi vill Ko'odėnahte ze livvere?",
+	"apihelp-query+coordinates-param-prop": "Wat för en zohsäzlejje Aanjahbe bei de Ko'odėnahte ußjejovve wähde sulle.",
+	"apihelp-query+coordinates-param-primary": "Ov mer blohß de Ko'odėnahte vum Tehma vun dä Sigg sällver „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">primary</code>“, udder de Ko'odėnahte vun söns jädd op dä Sigg „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">secondary</code>“, udder alle beeds „<code lang=\"en\" xml:lang=\"en\" dir=\"ltr\">all</code>“ ußjävve welle.",
+	"apihelp-query+coordinates-param-distancefrompoint": "Jiv der Afschtand en Mehtere zoh heh dä Ko'odėnahte uß för alles, wadd op de Ähd es.",
+	"apihelp-query+coordinates-param-distancefrompage": "Jiv der Afschtand en Mehtere zoh de Ko'odėnahte vun heh dä Sigg uß för alles, wadd op de Ähd es.",
+	"apihelp-query+coordinates-example-1": "Holl en Leß met de [[Main Page|{{int:mainpage}}]] ier Ko'odėnahte.",
+	"apihelp-query+geosearch-description": "Holl de Sigge met Ko'odėnahte en enem beschtemmpte Berätt.",
+	"apihelp-query+geosearch-param-coord": "De Ko'odėnahte woh eröm jesöhk wääde sull.",
+	"apihelp-query+geosearch-param-page": "De Övverschreff vun dä Sigg met dä Ko'odėnahte woh eröm jesöhk wääde sull.",
+	"apihelp-query+geosearch-param-radius": "De Wiggde zom Söhke en Mehtere.",
+	"apihelp-query+geosearch-param-maxdim": "Blohß noh Saache söhke, di en Mehtere jemäße nit jrühßer sin.",
+	"apihelp-query+geosearch-param-limit": "Nit mih Sigge holle, wi heh aanjejovve.",
+	"apihelp-query+geosearch-param-globe": "Op wat för enem Jlohboß söhke? Der Schtandatt es uns Ähd.",
+	"apihelp-query+geosearch-param-namespace": "En wällschem Appachtemang söhke.",
+	"apihelp-query+geosearch-param-prop": "{{int:Apihelp-query+coordinates-param-prop}}",
+	"apihelp-query+geosearch-param-primary": "{{int:Apihelp-query+coordinates-param-primary}}",
+	"apihelp-query+geosearch-param-debug": "Ov Aanjahbe zom Fählersöhke ußjejovve wähde sulle.",
+	"apihelp-query+geosearch-example-1": "Söhk öm dä Pungk met de Ko'odėnahte: 37° 47′ 13.1″ Nood, un 122° 23′ 58.84″ Wäß"
+}

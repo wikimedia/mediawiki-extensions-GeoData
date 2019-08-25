@@ -24,9 +24,5 @@
 	"geodata-unknown-globe-category-desc": "Strona używa nieznanej wartości parametru <code>globe</code>.",
 	"geodata-unknown-region-category": "Strony z nieprawidłową wartością regionu",
 	"geodata-unknown-region-category-desc": "Strona używa nieznanej wartości parametru <code>region</code>.",
-	"geodata-api-help-coordinates-format": "Format: szerokość i długość geograficzna oddzielone pionową kreską (<kbd>|</ kbd>).",
-	"apihelp-query+coordinates-description": "Zwraca współrzędne danej strony.",
-	"apihelp-query+coordinates-paramvalue-prop-name": "Nazwa obiektu.",
-	"apierror-geodata-invalidbox": "Nieprawidłowa obwiednia.",
-	"apierror-geodata-boxtoobig": "Obwiednia jest zbyt duża"
+	"geodata-api-help-coordinates-format": "Format: szerokość i długość geograficzna oddzielone pionową kreską (<kbd>|</ kbd>)."
 }

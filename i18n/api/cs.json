@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marek Kriz"
+		]
+	},
+	"apierror-geodata-nocoord": "Souřadnice stránky nejsou známy."
+}

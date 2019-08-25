@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"AmaryllisGardener"
+		]
+	},
+	"apihelp-query+coordinates-description": "Returns coordinates o the gien pages.",
+	"apihelp-query+coordinates-param-limit": "Hou mony coordinates tae return.",
+	"apihelp-query+coordinates-param-prop": "Which addeetional coordinate properties tae return.",
+	"apihelp-query+coordinates-param-primary": "Whether tae return anly primar coordinates (\"primary\"), seicontar (\"secondary\") or baith (\"all\").",
+	"apihelp-query+coordinates-param-distancefrompoint": "Return distance in metres frae the geografical coordinates o every valid result frae the gien coordinates.",
+	"apihelp-query+coordinates-param-distancefrompage": "Return distance in meters frae the geografical coordinates o every valid result frae the coordinates o this page.",
+	"apihelp-query+coordinates-example-1": "Get a leet o coordinates o the [[Main Page]]",
+	"apihelp-query+geosearch-description": "Returns pages haein coordinates that are locatit in a certain aurie.",
+	"apihelp-query+geosearch-param-bbox": "Boondin box tae rake in: pipe (|) separatit coordinates o tap left an bottom richt corners.",
+	"apihelp-query+geosearch-param-coord": "Coordinate aroond which tae rake.",
+	"apihelp-query+geosearch-param-page": "Teetle o page aroond which tae rake.",
+	"apihelp-query+geosearch-param-radius": "Rake radius in metres.",
+	"apihelp-query+geosearch-param-maxdim": "Restrict rake tae objects no lairger nor this, in metres.",
+	"apihelp-query+geosearch-param-limit": "Maximum nummer o pages tae return.",
+	"apihelp-query+geosearch-param-globe": "Globe tae rake on (bi default \"yird\").",
+	"apihelp-query+geosearch-param-namespace": "Namespaces tae rake.",
+	"apihelp-query+geosearch-param-prop": "Which addeetional coordinate properties tae return.",
+	"apihelp-query+geosearch-param-primary": "Whether tae return anly primar coordinates (\"primary\"), seicontar (\"secondary\") or baith (\"all\").",
+	"apihelp-query+geosearch-param-debug": "Whether debug information should be returned.",
+	"apihelp-query+geosearch-example-1": "Rake aroond the pynt wi coordinates 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Rake in a boondin box"
+}

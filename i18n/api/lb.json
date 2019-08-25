@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"apihelp-query+coordinates-paramvalue-prop-name": "Numm vum Objet.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Approximativ Gréisst vum Objet a Meter.",
+	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alpha-2 Lännercode (z.Bsp. <samp>US</samp> oder <samp>RU</samp>).",
+	"apihelp-query+geosearch-description": "Gëtt Säiten zréck déi Koordinaten hunn déi an enger bestëmmter Géigend leien.",
+	"apierror-geodata-nocoord": "Koordinate vun der Säit onbekannt.",
+	"apierror-geodata-noprimarycoord": "Säit $1 huet keng primär Koordinaten.",
+	"apierror-geodata-notonearth": "D'Koordinate vun dëser Säit sinn net op der Äerd.",
+	"apierror-geodata-badcoord": "Net valabel Koordinaten uginn"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98",
+			"Siebrand"
+		]
+	},
+	"apihelp-query+coordinates-paramvalue-prop-name": "Naam van het object.",
+	"apihelp-query+geosearch-description": "Geef pagina's terug met coordinaten in de buurt van het opgegeven punt."
+}

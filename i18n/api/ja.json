@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kkairri"
+		]
+	},
+	"apihelp-query+coordinates-description": "与えられたページの座標情報を返します。",
+	"apihelp-query+coordinates-summary": "与えられたページの座標情報を返します。"
+}

@@ -15,14 +15,6 @@
 	"geodata-unknown-type-category": "Säite mat engem onbekannten Typ vu Koordinaten",
 	"geodata-unknown-globe-category": "Säite mat engem onbekannte Wäert fir de Globus",
 	"geodata-unknown-region-category": "Säite mat engem onbekannte Wäert fir d'Regioun",
-	"apihelp-query+coordinates-paramvalue-prop-name": "Numm vum Objet.",
-	"apihelp-query+coordinates-paramvalue-prop-dim": "Approximativ Gréisst vum Objet a Meter.",
-	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alpha-2 Lännercode (z.Bsp. <samp>US</samp> oder <samp>RU</samp>).",
-	"apihelp-query+geosearch-description": "Gëtt Säiten zréck déi Koordinaten hunn déi an enger bestëmmter Géigend leien.",
-	"apierror-geodata-nocoord": "Koordinate vun der Säit onbekannt.",
-	"apierror-geodata-noprimarycoord": "Säit $1 huet keng primär Koordinaten.",
-	"apierror-geodata-notonearth": "D'Koordinate vun dëser Säit sinn net op der Äerd.",
-	"apierror-geodata-badcoord": "Net valabel Koordinaten uginn",
 	"geodata-search-feature-invalid-coordinates": "D'Geo-Koordinaten '$2' déi op '$1' ugi goufe konnten net duergestallt ginn.",
 	"geodata-search-feature-unknown-title": "Den Titel '$2' deen op '$1' ugi gouf gëtt et net."
 }

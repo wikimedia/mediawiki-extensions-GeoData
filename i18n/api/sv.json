@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil",
+			"WikiPhoenix"
+		]
+	},
+	"apihelp-query+coordinates-description": "Returnerar koordinaterna för den angivna sidan.",
+	"apihelp-query+coordinates-param-limit": "Hur många koordinater som ska returneras.",
+	"apihelp-query+coordinates-param-prop": "Vilka ytterligare koordinategenskaper som ska returneras.",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Namnet på objektet.",
+	"apihelp-query+coordinates-param-primary": "Vilka slags koordinater att returnera.",
+	"apihelp-query+coordinates-param-distancefrompoint": "Returnera distans i meter för alla resultat på jorden från dessa koordinater.",
+	"apihelp-query+coordinates-param-distancefrompage": "Returnera distans i meter för alla resultat på jorden från koordinaterna för denna sida.",
+	"apihelp-query+coordinates-example-1": "Få en lista med koordinater för [[Main Page]]",
+	"apihelp-query+geosearch-description": "Returnerar sidor med koordinaterna kring den angivna punkten.",
+	"apihelp-query+geosearch-param-coord": "Koordinat kring vilken sökningen ska ske.",
+	"apihelp-query+geosearch-param-page": "Titel på sidan kring vilken sökningen ska ske.",
+	"apihelp-query+geosearch-param-radius": "Sökradie i meter.",
+	"apihelp-query+geosearch-param-maxdim": "Begränsa sökning till objekt som inte är större än detta, i meter.",
+	"apihelp-query+geosearch-param-limit": "Maximalt antal sidor att returnera.",
+	"apihelp-query+geosearch-param-globe": "Glob att söka på (standard \"earth\").",
+	"apihelp-query+geosearch-param-namespace": "Namnrymder att genomsöka.",
+	"apihelp-query+geosearch-param-prop": "Vilka ytterligare koordinategenskaper som ska returneras.",
+	"apihelp-query+geosearch-param-primary": "Om bara primära (\"primary\"), sekundära (\"secondary\") eller båda (\"all\") koordinater ska returneras.",
+	"apihelp-query+geosearch-param-debug": "Om felsökningsinformation ska returneras.",
+	"apihelp-query+geosearch-example-1": "Sök kring punkten med koordinaterna 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apierror-geodata-badcoord": "Ogiltig koordinat angavs"
+}

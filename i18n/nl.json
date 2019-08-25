@@ -23,7 +23,5 @@
 	"geodata-unknown-globe-category": "Pagina's met onbekende waarde voor wereldbol",
 	"geodata-unknown-globe-category-desc": "De pagina gebruikt een onbekende waarde voor de parameter <code>globe</code> voor coördinaten.",
 	"geodata-unknown-region-category": "Pagina's met ongeldige waarde voor regio",
-	"geodata-unknown-region-category-desc": "De pagina gebruikt een onbekende waarde voor de parameter <code>region</code> voor coördinaten.",
-	"apihelp-query+coordinates-paramvalue-prop-name": "Naam van het object.",
-	"apihelp-query+geosearch-description": "Geef pagina's terug met coordinaten in de buurt van het opgegeven punt."
+	"geodata-unknown-region-category-desc": "De pagina gebruikt een onbekende waarde voor de parameter <code>region</code> voor coördinaten."
 }

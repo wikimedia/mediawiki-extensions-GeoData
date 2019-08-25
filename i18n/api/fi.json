@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nike"
+		]
+	},
+	"apierror-geodata-badcoord": "Kelpaamaton koordinaatti"
+}
