@@ -200,6 +200,6 @@ class QueryCoordinates extends ApiQueryBase {
 	 * @inheritDoc
 	 */
 	public function getHelpUrls() {
-		return 'https://www.mediawiki.org/wiki/Extension:GeoData#prop.3Dcoordinates';
+		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:GeoData#prop.3Dcoordinates';
 	}
 }

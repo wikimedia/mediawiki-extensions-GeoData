@@ -235,6 +235,6 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	 * @inheritDoc
 	 */
 	public function getHelpUrls() {
-		return 'https://www.mediawiki.org/wiki/Extension:GeoData#list.3Dgeosearch';
+		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:GeoData#list.3Dgeosearch';
 	}
 }
