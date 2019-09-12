@@ -4,7 +4,8 @@
 			"BeginaFelicysym",
 			"Chrumps",
 			"Matma Rex",
-			"Railfail536"
+			"Railfail536",
+			"Rail"
 		]
 	},
 	"geodata-desc": "Dodaje funkcje przechowywania i pobierania współrzędnych geograficznych",
@@ -24,5 +25,10 @@
 	"geodata-unknown-globe-category-desc": "Strona używa nieznanej wartości parametru <code>globe</code>.",
 	"geodata-unknown-region-category": "Strony z nieprawidłową wartością regionu",
 	"geodata-unknown-region-category-desc": "Strona używa nieznanej wartości parametru <code>region</code>.",
-	"geodata-api-help-coordinates-format": "Format: szerokość i długość geograficzna oddzielone pionową kreską (<kbd>|</ kbd>)."
+	"geodata-api-help-coordinates-format": "Format: szerokość i długość geograficzna oddzielone pionową kreską (<kbd>|</ kbd>).",
+	"geodata-search-feature-invalid-coordinates": "Współrzędne geograficzne „$2” wprowadzone do „$1” nie mogły zostać przetworzone.",
+	"geodata-search-feature-invalid-distance": "Dystans geograficzny „$2” wprowadzony do „$1” nie mógł zostać przetworzony.",
+	"geodata-search-feature-unknown-title": "Tytuł „$2” wprowadzony do „$1” nie istnieje.",
+	"geodata-search-feature-title-no-coordinates": "Tytuł „$2” wprowadzony do „$1” nie zawiera żadnych współrzędnych.",
+	"geodata-search-timeout": "Upłynął limit czasu wyszukiwania danych. Dostępne są tylko częściowe wyniki."
 }
