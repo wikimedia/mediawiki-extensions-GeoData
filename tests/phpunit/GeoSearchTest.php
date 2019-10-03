@@ -37,7 +37,7 @@ class GeoSearchTest extends MediaWikiTestCase {
 	 * @dataProvider provideRequiredParams
 	 */
 	public function testRequiredParams( array $params ) {
-		$this->setExpectedException( ApiUsageException::class );
+		$this->expectException( ApiUsageException::class );
 		$this->request( $params );
 	}
 
