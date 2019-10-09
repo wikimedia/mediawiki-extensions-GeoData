@@ -50,7 +50,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		MediaWikiTestCase::__construct( $name, $data, $dataName );
 	}
 
-	protected function setUp() {
+	protected function setUp() : void {
 		parent::setUp();
 		if ( !class_exists( \CirrusSearch::class ) ) {
 			$this->markTestSkipped( 'CirrusSearch not installed, skipping' );

@@ -14,7 +14,7 @@ use ApiUsageException;
  * @group GeoData
  */
 class GeoSearchTest extends MediaWikiTestCase {
-	public function setUp() {
+	public function setUp() : void {
 		$this->setMwGlobals( 'wgAPIListModules',
 			[
 				'geosearch' => [
