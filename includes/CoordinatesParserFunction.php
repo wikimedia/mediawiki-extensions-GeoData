@@ -130,7 +130,7 @@ class CoordinatesParserFunction {
 			);
 		}
 		if ( $coord->primary ) {
-			if ( $geoData->getPrimary() ) {
+			if ( $geoData->hasPrimary() ) {
 				return Status::newFatal( 'geodata-multiple-primary' );
 			} else {
 				$geoData->addPrimary( $coord );

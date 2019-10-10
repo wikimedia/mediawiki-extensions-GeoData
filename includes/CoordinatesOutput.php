@@ -95,6 +95,13 @@ class CoordinatesOutput {
 	}
 
 	/**
+	 * @return bool Whether this output has primary coordinates
+	 */
+	public function hasPrimary() : bool {
+		return (bool)$this->primary;
+	}
+
+	/**
 	 * @return Coord[]
 	 */
 	public function getSecondary() {

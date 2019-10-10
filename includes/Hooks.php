@@ -130,7 +130,7 @@ class Hooks {
 		$coordsOutput = CoordinatesOutput::getFromParserOutput( $out );
 		if ( $coordsOutput ) {
 			// Use coordinates from file metadata unless overridden on description page
-			if ( $coordFromMetadata && !$coordsOutput->getPrimary() ) {
+			if ( $coordFromMetadata && !$coordsOutput->hasPrimary() ) {
 				$coordsOutput->addPrimary( $coordFromMetadata );
 			}
 			$data = $coordsOutput->getAll();
