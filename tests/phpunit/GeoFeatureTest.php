@@ -285,7 +285,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	 */
 	public function testParseGeoNearbyTitle( $expected, $value ) {
 		// Replace database with one that will return our fake coordinates if asked
-		$db = $this->getMock( IDatabase::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->expects( $this->any() )
 			->method( 'select' )
 			->with( 'geo_tags', $this->anything(), $this->anything(), $this->anything() )
@@ -298,9 +298,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 			->with( 'page', $this->anything(), $this->anything(), $this->anything() )
 			->will( $this->returnValue( false ) );
 		// Inject mock database into a mock LoadBalancer
-		$lb = $this->getMockBuilder( LoadBalancer::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$lb = $this->createMock( LoadBalancer::class );
 		$lb->expects( $this->any() )
 			->method( 'getConnection' )
 			->will( $this->returnValue( $db ) );
