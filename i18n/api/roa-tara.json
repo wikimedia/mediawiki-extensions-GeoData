@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"apihelp-query+coordinates-description": "Torne le coordinate de le pàggen indicate.",
+	"apihelp-query+coordinates-summary": "Torne le coordinate de le pàggen indicate.",
+	"apihelp-query+coordinates-param-limit": "Quanda coordinate adda turnà."
+}
