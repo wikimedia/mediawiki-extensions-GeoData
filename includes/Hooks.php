@@ -93,9 +93,9 @@ class Hooks {
 	 * ParserFirstCallInit hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
 	 *
-	 * @param Parser &$parser
+	 * @param Parser $parser
 	 */
-	public static function onParserFirstCallInit( &$parser ) {
+	public static function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 'coordinates',
 			[ new CoordinatesParserFunction(), 'coordinates' ],
 			Parser::SFH_OBJECT_ARGS
@@ -106,12 +106,12 @@ class Hooks {
 	 * ArticleDeleteComplete hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete
 	 *
-	 * @param Article &$article
-	 * @param User &$user
+	 * @param Article $article
+	 * @param User $user
 	 * @param string $reason
 	 * @param int $id
 	 */
-	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id ) {
+	public static function onArticleDeleteComplete( $article, User $user, $reason, $id ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'geo_tags', [ 'gt_page_id' => $id ], __METHOD__ );
 	}
@@ -253,10 +253,10 @@ class Hooks {
 	 * OutputPageParserOutput hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
 	 *
-	 * @param OutputPage &$out
+	 * @param OutputPage $out
 	 * @param ParserOutput $po
 	 */
-	public static function onOutputPageParserOutput( OutputPage &$out, ParserOutput $po ) {
+	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $po ) {
 		global $wgGeoDataInJS;
 
 		if ( $wgGeoDataInJS && CoordinatesOutput::getFromParserOutput( $po ) ) {
