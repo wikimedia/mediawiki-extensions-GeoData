@@ -26,5 +26,6 @@
 	"geodata-search-feature-invalid-coordinates": "Nun pudieron analizase les coordenaes xeo «$2» apurríes a «$1».",
 	"geodata-search-feature-invalid-distance": "Nun pudo analizase la distancia xeo «$2» apurrida a «$1».",
 	"geodata-search-feature-unknown-title": "El títulu «$2» que se dio a «$1» nun esiste.",
-	"geodata-search-feature-title-no-coordinates": "El títulu «$2» que se dio a «$1» nun tien coordenaes."
+	"geodata-search-feature-title-no-coordinates": "El títulu «$2» que se dio a «$1» nun tien coordenaes.",
+	"geodata-search-timeout": "Escosó'l tiempu de la gueta de GeoData. Namái se tienen resultaos parciales."
 }
