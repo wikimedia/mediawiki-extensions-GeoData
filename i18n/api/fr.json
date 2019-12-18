@@ -8,7 +8,8 @@
 			"Jonathan1",
 			"Lucky",
 			"Urhixidur",
-			"Wladek92"
+			"Wladek92",
+			"Thibaut120094"
 		]
 	},
 	"apihelp-query+coordinates-description": "Retourne les coordonnées de la page référencée.",
@@ -44,7 +45,7 @@
 	"apihelp-query+geosearch-example-1": "Rechercher autour du point ayant les coordonnées 37° 47' 13.1\" N, 122° 23' 58.84\" W",
 	"apihelp-query+geosearch-example-2": "Rechercher dans une boîte délimitante",
 	"apierror-geodata-nocoord": "Coordonnées de la page inconnues.",
-	"apierror-geodata-noprimarycoord": "La page $1 n'a pas de coordonnées primaires.",
+	"apierror-geodata-noprimarycoord": "La page $1 n’a pas de coordonnées primaires.",
 	"apierror-geodata-notonearth": "Les coordonnées de cette page ne sont pas sur la terre.",
 	"apierror-geodata-invalidbox": "Boîte englobante non valide.",
 	"apierror-geodata-boxtoobig": "La boîte englobante est trop grande",
