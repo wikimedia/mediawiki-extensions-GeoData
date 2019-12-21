@@ -110,7 +110,7 @@ class QueryCoordinates extends ApiQueryBase {
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
 				$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
 			}
-			return new Coord( $arr[0], $arr[1], 'earth' );
+			return new Coord( (float)$arr[0], (float)$arr[1], 'earth' );
 		}
 		if ( $params['distancefrompage'] !== null ) {
 			$title = Title::newFromText( $params['distancefrompage'] );
@@ -120,6 +120,7 @@ class QueryCoordinates extends ApiQueryBase {
 					wfEscapeWikiText( $params['distancefrompage'] )
 				] );
 			}
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$coord = GeoData::getPageCoordinates( $title );
 			if ( !$coord ) {
 				$this->dieWithError(

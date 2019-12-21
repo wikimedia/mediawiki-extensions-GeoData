@@ -237,7 +237,7 @@ class CoordinatesParserFunction {
 			return false;
 		}
 		if ( strtolower( $m[2] ) == 'km' ) {
-			return $m[1] * 1000;
+			return (int)$m[1] * 1000;
 		}
 		return $m[1];
 	}

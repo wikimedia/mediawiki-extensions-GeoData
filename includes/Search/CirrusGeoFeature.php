@@ -151,6 +151,6 @@ trait CirrusGeoFeature {
 			'yd' => 0.9144,
 		];
 
-		return max( 10, (int)round( $matches[1] * $scale[$matches[2]] ) );
+		return max( 10, (int)round( (int)$matches[1] * $scale[$matches[2]] ) );
 	}
 }
