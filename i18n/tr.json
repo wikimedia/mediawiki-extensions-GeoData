@@ -1,8 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sadrettin"
+			"Sadrettin",
+			"BaRaN6161 TURK"
 		]
 	},
-	"geodata-broken-tags-category": "Hatalı koordinat etiketi içeren sayfalar"
+	"geodata-desc": "Coğrafi koordinat depolama ve erişim işlevselliği ekler",
+	"geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki> işlevine geçersiz argümanlar iletildi",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: geçersiz enlem",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: geçersiz boylam",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tanınmayan tür \"$1\"",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: tanınmayan küre \"$1\"",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: geçersiz bölge kodu biçimi",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: sayfa başına birden fazla birincil etiket olamaz",
+	"geodata-limit-exceeded": "Sayfa başına $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|etiket|etiket}} sınırı aşıldı",
+	"geodata-broken-tags-category": "Hatalı koordinat etiketi içeren sayfalar",
+	"geodata-broken-tags-category-desc": "Sayfada hatalı biçimlendirilmiş bir <code><nowiki>{{#coordinates:}}</nowiki></code> etiketi var.",
+	"geodata-unknown-type-category": "Koordinatı bilinmeyen sayfalar",
+	"geodata-unknown-type-category-desc": "Sayfa, koordinatlar için bilinmeyen bir <code>type</code> parametresi değeri kullanıyor.",
+	"geodata-unknown-globe-category": "Küre değeri bilinmeyen sayfalar",
+	"geodata-unknown-globe-category-desc": "Sayfa, koordinatlar için bilinmeyen bir <code>globe</code> parametresi değeri kullanıyor.",
+	"geodata-unknown-region-category": "Bölge değeri geçersiz olan sayfalar",
+	"geodata-unknown-region-category-desc": "Sayfa, koordinatlar için <code>region</code> parametresinin geçersiz bir değerini kullanıyor.",
+	"geodata-api-help-coordinates-format": "Biçim: Boru ile ayrılmış enlem ve boylam (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "'$1' için sağlanan '$2' coğrafi koordinatları ayrıştırılamadı.",
+	"geodata-search-feature-invalid-distance": "'$1' için sağlanan '$2' coğrafi mesafesi ayrıştırılamadı.",
+	"geodata-search-feature-unknown-title": "'$1' için verilen '$2' başlığı mevcut değil.",
+	"geodata-search-feature-title-no-coordinates": "'$1' için verilen '$2' başlığının koordinatı yok.",
+	"geodata-search-timeout": "GeoData araması zaman aşımına uğradı. Yalnızca kısmi sonuçlar elde edilebilir."
 }
