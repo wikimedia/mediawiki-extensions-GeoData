@@ -164,15 +164,18 @@ class Globe {
 
 	/**
 	 * Checks whether given coordinates are valid
-	 * @param int $lat
-	 * @param int $lon
+	 * @param int|float|string $lat
+	 * @param int|float|string $lon
 	 * @return bool
 	 */
 	public function coordinatesAreValid( $lat, $lon ) {
-		if ( !is_numeric( $lat ) || !is_numeric( $lon ) || abs( $lat ) > 90 ) {
+		if ( !is_numeric( $lat ) || !is_numeric( $lon ) ) {
 			return false;
 		}
+		$lat = (float)$lat;
+		$lon = (float)$lon;
 
-		return $lon >= $this->minLon && $lon <= $this->maxLon;
+		return $lon >= $this->minLon && $lon <= $this->maxLon
+			&& abs( $lat ) <= 90;
 	}
 }
