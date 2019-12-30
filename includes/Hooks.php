@@ -230,10 +230,8 @@ class Hooks {
 	 * @param LocalFile $file
 	 */
 	public static function onFileUpload( LocalFile $file ) {
-		global $wgUser;
-
 		$wp = WikiPage::factory( $file->getTitle() );
-		$po = $wp->makeParserOptions( $wgUser );
+		$po = $wp->makeParserOptions( 'canonical' );
 		$pout = $wp->getParserOutput( $po );
 		if ( !$pout ) {
 			wfDebugLog( 'mobile',
