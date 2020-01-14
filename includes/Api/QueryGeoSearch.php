@@ -127,7 +127,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		}
 
 		// retrieve some fields only if page set needs them
-		if ( is_null( $resultPageSet ) ) {
+		if ( $resultPageSet === null ) {
 			$this->addTables( 'page' );
 			$this->addFields( [ 'page_id', 'page_namespace', 'page_title' ] );
 		} else {
@@ -140,7 +140,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 
 		$this->radius = intval( $params['radius'] );
 
-		if ( is_null( $resultPageSet ) ) {
+		if ( $resultPageSet === null ) {
 			$this->getResult()->addIndexedTagName( [ 'query', $this->getModuleName() ],
 				$this->getModulePrefix()
 			);

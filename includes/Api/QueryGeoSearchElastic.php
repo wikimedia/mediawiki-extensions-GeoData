@@ -159,7 +159,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		}
 		$this->addWhere( [ 'page_id' => array_keys( $ids ) ] );
 		$this->addTables( 'page' );
-		if ( is_null( $resultPageSet ) ) {
+		if ( $resultPageSet === null ) {
 			$this->addFields( [ 'page_id', 'page_title', 'page_namespace' ] );
 		} else {
 			$this->addFields( $resultPageSet->getPageTableFields() );
@@ -167,7 +167,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 
 		$res = $this->select( __METHOD__ );
 
-		if ( is_null( $resultPageSet ) ) {
+		if ( $resultPageSet === null ) {
 			$titles = [];
 			foreach ( $res as $row ) {
 				$titles[$row->page_id] = Title::newFromRow( $row );
@@ -220,7 +220,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	/**
 	 * Creates a Coord class instance from an array returned by search
 	 *
-	 * @param array $hit: Search hit
+	 * @param array $hit Search hit
 	 *
 	 * @return Coord
 	 */

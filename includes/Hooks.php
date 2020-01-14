@@ -5,6 +5,7 @@ namespace GeoData;
 use ApiModuleManager;
 use Article;
 use CirrusSearch\SearchConfig;
+use ContentHandler;
 use DatabaseUpdater;
 use GeoData\Api\QueryGeoSearch;
 use GeoData\Search\CirrusNearCoordBoostFeature;
@@ -19,11 +20,10 @@ use MWException;
 use OutputPage;
 use Parser;
 use ParserOutput;
+use SearchEngine;
 use Title;
 use User;
 use WikiPage;
-use SearchEngine;
-use ContentHandler;
 
 /**
  * Hook handlers

@@ -68,7 +68,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 			if ( !$limit-- ) {
 				break;
 			}
-			if ( is_null( $resultPageSet ) ) {
+			if ( $resultPageSet === null ) {
 				$title = Title::newFromRow( $row );
 				$vals = [
 					'pageid' => intval( $row->page_id ),

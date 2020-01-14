@@ -107,6 +107,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 	 * @param SearchConfig $config
 	 * @param array $coord
 	 * @param int $radius
+	 * @return GeoRadiusFunctionScoreBuilder
 	 */
 	private function buildBoostFunction( SearchConfig $config, array $coord, $radius ) {
 		$coordObject = new Coord( $coord['lat'], $coord['lon'], $coord['globe'] );

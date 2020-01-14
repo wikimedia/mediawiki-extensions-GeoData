@@ -26,7 +26,7 @@ class GlobeTest extends MediaWikiTestCase {
 		$g = new Globe( 'mars' );
 		$this->assertEquals( 'mars', $g->getName() );
 		$this->assertTrue( $g->isKnown() );
-		$this->assertEquals( 0, $g->getMinLongitude() );
+		$this->assertSame( 0, $g->getMinLongitude() );
 		$this->assertEquals( 360, $g->getMaxLongitude() );
 		$this->assertEquals( 1, $g->getEastSign() );
 		$this->assertEquals( 3389500, $g->getRadius(), 1 );
