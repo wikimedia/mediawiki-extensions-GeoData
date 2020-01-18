@@ -248,10 +248,10 @@ class CoordTest extends MediaWikiTestCase {
 		for ( $i = 0; $i < 90; $i += 5 ) {
 			$coord = new Coord( $i, $i );
 			$bbox = $coord->bboxAround( 5000 );
-			$this->assertEquals( 10000, Math::distance( $bbox->lat1, $i, $bbox->lat2, $i ),
-				'Testing latitude', 1 );
-			$this->assertEquals( 10000, Math::distance( $i, $bbox->lon1, $i, $bbox->lon2 ),
-				'Testing longitude', 1 );
+			$this->assertEqualsWithDelta( 10000, Math::distance( $bbox->lat1, $i, $bbox->lat2, $i ),
+				1, 'Testing latitude' );
+			$this->assertEqualsWithDelta( 10000, Math::distance( $i, $bbox->lon1, $i, $bbox->lon2 ),
+				1, 'Testing longitude' );
 		}
 	}
 
