@@ -17,8 +17,8 @@ class MathTest extends MediaWikiTestCase {
 	 * @dataProvider getDistanceData
 	 */
 	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist, $name ) {
-		$this->assertEquals( $dist, Math::distance( $lat1, $lon1, $lat2, $lon2 ),
-			"testDistance():  $name", $dist / 1000 );
+		$this->assertEqualsWithDelta( $dist, Math::distance( $lat1, $lon1, $lat2, $lon2 ),
+			$dist / 1000, "testDistance():  $name" );
 	}
 
 	public function getDistanceData() {
