@@ -12,7 +12,13 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 	[
 		'../../extensions/CirrusSearch',
 		'../../extensions/Elastica',
+	]
+);
 
+$cfg['globals_type_map'] = array_merge(
+	$cfg['globals_type_map'],
+	[
+		'wgDefaultGlobe' => 'string',
 	]
 );
 

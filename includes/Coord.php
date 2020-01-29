@@ -6,19 +6,43 @@ namespace GeoData;
  * Class representing coordinates
  */
 class Coord {
-	public $lat,
-		$lon,
-		$id,
-		$globe,
-		$primary = false,
-		$dim,
-		$type,
-		$name,
-		$country,
-		$region,
+	/** @var float Latitude of the point in degrees */
+	public $lat;
 
-		$pageId,
-		$distance;
+	/** @var float Longitude of the point in degrees */
+	public $lon;
+
+	/** @var int Tag id, needed for selective replacement and paging */
+	public $id;
+
+	/** @var string Name of planet or other astronomic body on which the coordinates reside */
+	public $globe;
+
+	/** @var bool Whether this coordinate is primary
+	 * (defines the principal location of article subject) or secondary (just mentioned in text)
+	 */
+	public $primary = false;
+
+	/** @var int|null Approximate viewing radius in meters, gives an idea how large the object is */
+	public $dim;
+
+	/** @var string|null Type of the point */
+	public $type;
+
+	/** @var string|null Point name on the map */
+	public $name;
+
+	/** @var string|null Two character ISO 3166-1 alpha-2 country code */
+	public $country;
+
+	/** @var string|null Second part of ISO 3166-2 region code, up to 3 alphanumeric chars */
+	public $region;
+
+	/** @var int */
+	public $pageId;
+
+	/** @var float Distance in metres */
+	public $distance;
 
 	/**
 	 * @param float $lat
