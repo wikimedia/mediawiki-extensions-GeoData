@@ -1,6 +1,5 @@
 <?php
 
-
 namespace GeoData\Search;
 
 use CirrusSearch\Parser\AST\KeywordFeatureNode;

@@ -1,4 +1,5 @@
 <?php
+
 namespace GeoData\Search;
 
 use CirrusSearch\Search\NestedIndexField;

@@ -95,7 +95,7 @@ class Hooks {
 	 *
 	 * @param Parser $parser
 	 */
-	public static function onParserFirstCallInit( $parser ) {
+	public static function onParserFirstCallInit( Parser $parser ) {
 		$parser->setFunctionHook( 'coordinates',
 			[ new CoordinatesParserFunction(), 'coordinates' ],
 			Parser::SFH_OBJECT_ARGS
