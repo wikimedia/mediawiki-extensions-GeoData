@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nullzero"
+			"Nullzero",
+			"Aefgh39622"
 		]
 	},
+	"geodata-desc": "เพิ่มฟังก์ชันการเก็บและดึงข้อมูลเกี่ยวกับพิกัดทางภูมิศาสตร์",
+	"geodata-bad-input": "อาร์กิวเมนต์ที่ไม่ถูกต้องได้ถูกส่งผ่านไปที่ฟังก์ชัน <nowiki>{{#coordinates:}}</nowiki> แล้ว",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: ละติจูดไม่ถูกต้อง",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ลองจิจูดไม่ถูกต้อง",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: ไม่รู้จักประเภท \"$1\"",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: รูปแบบรหัสภูมิภาคไม่ถูกต้อง",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: ไม่สามารถมีป้ายกำกับหลักมากกว่าหนึ่งป้ายต่อหน้าได้",
 	"geodata-broken-tags-category": "หน้าที่เรียกใช้แม่แบบพิกัดภูมิศาสตร์ไม่ถูกต้อง"
 }
