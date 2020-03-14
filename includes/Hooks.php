@@ -145,7 +145,7 @@ class Hooks {
 		if ( $title->getNamespace() != NS_FILE ) {
 			return null;
 		}
-		$file = wfFindFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		if ( !$file ) {
 			return null;
 		}
