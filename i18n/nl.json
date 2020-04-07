@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"SPQRobin",
-			"Siebrand",
 			"Hansmuller",
-			"Mainframe98"
+			"Mainframe98",
+			"SPQRobin",
+			"Siebrand"
 		]
 	},
 	"geodata-desc": "Voegt geografische coördinatenopslag en weergavefunctionaliteit toe",

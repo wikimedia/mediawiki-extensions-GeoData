@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cainamarques",
-			"Helder.wiki",
-			"Opraco",
-			"He7d3r",
 			"Araceletorres",
+			"Cainamarques",
+			"Eduardo Addad de Oliveira",
 			"Felipe L. Ewald",
 			"Fitoschido",
-			"Eduardo Addad de Oliveira"
+			"He7d3r",
+			"Helder.wiki",
+			"Opraco"
 		]
 	},
 	"geodata-desc": "Adiciona a funcionalidade de armazenamento e recuperação de coordenadas geográficas",

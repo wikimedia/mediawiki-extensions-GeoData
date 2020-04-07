@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dvorapa",
 			"Jkjk",
-			"Mormegil",
-			"Martin Urbanec",
 			"Marek Kriz",
-			"Dvorapa"
+			"Martin Urbanec",
+			"Mormegil"
 		]
 	},
 	"geodata-desc": "Přidává funkcionality pro ukládání a načítání zeměpisných souřadnic",

@@ -2,11 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Cainamarques",
+			"Hamilton Abreu",
+			"He7d3r",
 			"Helder.wiki",
 			"Opraco",
-			"Vitorvicentevalente",
-			"He7d3r",
-			"Hamilton Abreu"
+			"Vitorvicentevalente"
 		]
 	},
 	"geodata-desc": "Adiciona a funcionalidade de armazenamento e obtenção de coordenadas geográficas",

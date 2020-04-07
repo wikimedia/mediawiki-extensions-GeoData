@@ -1,12 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño",
+			"Athena in Wonderland",
 			"Banjo",
 			"Elisardojm",
 			"Fitoschido",
-			"Athena in Wonderland",
-			"Navhy"
+			"Toliño"
 		]
 	},
 	"geodata-desc": "Engade unha funcionalidade de almacenamento e de extracción de coordenadas xeográficas.",

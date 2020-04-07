@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Max Semenik",
-			"SPQRobin",
-			"Shirayuki",
 			"MaxSem",
-			"Nemo bis"
+			"Nemo bis",
+			"SPQRobin",
+			"Shirayuki"
 		]
 	},
 	"geodata-desc": "{{desc|name=Geo Data|url=https://www.mediawiki.org/wiki/Extension:GeoData}}",

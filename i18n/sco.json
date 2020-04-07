@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"John Reid",
 			"AmaryllisGardener",
-			"Fitoschido"
+			"Fitoschido",
+			"John Reid"
 		]
 	},
 	"geodata-desc": "Adds geografical coordinates storage an retrieval functionality",

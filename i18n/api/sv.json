@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Lokal Profil",
-			"WikiPhoenix",
-			"Technic2"
+			"Technic2",
+			"WikiPhoenix"
 		]
 	},
 	"apihelp-query+coordinates-description": "Returnerar koordinaterna för den angivna sidan.",

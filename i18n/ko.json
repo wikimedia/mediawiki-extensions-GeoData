@@ -2,11 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Kwj2772",
-			"아라",
 			"Namoroka",
-			"SeoJeongHo",
 			"Priviet",
-			"Ykhwong"
+			"SeoJeongHo",
+			"Ykhwong",
+			"아라"
 		]
 	},
 	"geodata-desc": "지리적 좌표 저장 및 검색 기능을 추가합니다",

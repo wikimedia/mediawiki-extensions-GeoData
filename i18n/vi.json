@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fitoschido",
 			"Minh Nguyen",
-			"Trần Nguyễn Minh Huy",
-			"Fitoschido"
+			"Trần Nguyễn Minh Huy"
 		]
 	},
 	"geodata-desc": "Cho phép lưu trữ và truy cập dữ liệu tọa độ",

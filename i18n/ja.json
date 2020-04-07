@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fryed-peach",
-			"Shirayuki",
-			"Kkairri"
+			"Kkairri",
+			"Shirayuki"
 		]
 	},
 	"geodata-desc": "緯度経度を保存/取得する機能を追加する",

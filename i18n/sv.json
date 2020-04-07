@@ -3,8 +3,8 @@
 		"authors": [
 			"Ainali",
 			"Boivie",
-			"WikiPhoenix",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"geodata-desc": "Lägger till funktionalitet för att lagra och hämta geografiska koordinater",

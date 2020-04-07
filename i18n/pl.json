@@ -4,8 +4,8 @@
 			"BeginaFelicysym",
 			"Chrumps",
 			"Matma Rex",
-			"Railfail536",
-			"Rail"
+			"Rail",
+			"Railfail536"
 		]
 	},
 	"geodata-desc": "Dodaje funkcje przechowywania i pobierania współrzędnych geograficznych",

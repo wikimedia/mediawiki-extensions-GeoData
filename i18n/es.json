@@ -2,12 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Armando-Martin",
-			"Fitoschido",
-			"Macofe",
 			"Csbotero",
-			"Ryo567",
 			"Dgstranz",
-			"KATRINE1992"
+			"Fitoschido",
+			"KATRINE1992",
+			"Macofe",
+			"Ryo567"
 		]
 	},
 	"geodata-desc": "Agrega la funcionalidad de almacenamiento y recuperación de coordenadas geográficas",

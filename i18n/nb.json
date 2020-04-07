@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jon Harald Søby",
-			"Fitoschido"
+			"Fitoschido",
+			"Jon Harald Søby"
 		]
 	},
 	"geodata-desc": "Legger til lagring av geografiske koordinater og funksjonalitet for henting av disse",

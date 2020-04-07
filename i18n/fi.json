@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stryn",
-			"VezonThunder",
-			"Zache",
-			"Pxos",
 			"Nike",
-			"Valtlait"
+			"Pxos",
+			"Stryn",
+			"Valtlait",
+			"VezonThunder",
+			"Zache"
 		]
 	},
 	"geodata-desc": "Lisää maantieteellisten koordinaattien säilöntä- ja hakutoiminnot",

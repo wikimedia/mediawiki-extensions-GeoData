@@ -1,15 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko",
-			"Urhixidur",
 			"0x010C",
-			"Nicolapps",
+			"DePlusJean",
+			"Derugon",
+			"Gomoko",
 			"Jonathan1",
 			"Lucky",
-			"Wladek92",
-			"Derugon",
-			"DePlusJean"
+			"Nicolapps",
+			"Urhixidur",
+			"Wladek92"
 		]
 	},
 	"geodata-desc": "Ajoute la fonctionnalité de stockage et d'extraction des coordonnées géographiques.",

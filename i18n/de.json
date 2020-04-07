@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"FF11",
+			"Fitoschido",
 			"Kghbln",
 			"Metalhead64",
-			"Tiin",
 			"Predatorix",
-			"Fitoschido",
-			"FF11"
+			"Tiin"
 		]
 	},
 	"geodata-desc": "Ergänzt Funktionen zum Speichern und Abrufen geografischer Koordinaten",

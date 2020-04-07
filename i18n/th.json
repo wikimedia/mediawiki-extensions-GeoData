@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nullzero",
-			"Aefgh39622"
+			"Aefgh39622",
+			"Nullzero"
 		]
 	},
 	"geodata-desc": "เพิ่มฟังก์ชันการเก็บและดึงข้อมูลเกี่ยวกับพิกัดทางภูมิศาสตร์",
