@@ -27,10 +27,11 @@ class ParseCoordTest extends MediaWikiTestCase {
 		$function = TestingAccessWrapper::newFromObject( new CoordinatesParserFunction );
 
 		$parser = $this->getMockBuilder( Parser::class )
-			->setMethods( [ 'getTargetLanguage' ] )
+			->disableOriginalConstructor()
+			->setMethods( [ 'getContentLanguage' ] )
 			->getMock();
 
-		$parser->method( 'getTargetLanguage' )
+		$parser->method( 'getContentLanguage' )
 			->willReturn( Language::factory( 'en' ) );
 
 		$function->parser = $parser;
