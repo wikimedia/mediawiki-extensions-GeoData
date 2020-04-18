@@ -18,7 +18,7 @@
 	"apihelp-query+coordinates-paramvalue-prop-country": "{{doc-apihelp-paramvalue|query+coordinates|prop|country}}",
 	"apihelp-query+coordinates-paramvalue-prop-region": "{{doc-apihelp-paramvalue|query+coordinates|prop|region}}",
 	"apihelp-query+coordinates-paramvalue-prop-globe": "{{doc-apihelp-paramvalue|query+coordinates|prop|globe}}",
-	"apihelp-query+coordinates-param-primary": "[[mw:Extension:GeoData#Glossary|Primary coordinates define the page subject's location, while secondary coordinates are other coordinates mentioned in the page]].\n----\n{{doc-apihelp-param|query+coordinates|primary}}",
+	"apihelp-query+coordinates-param-primary": "[[mw:Special:MyLanguage/Extension:GeoData#Glossary|Primary coordinates define the page subject's location, while secondary coordinates are other coordinates mentioned in the page]].\n----\n{{doc-apihelp-param|query+coordinates|primary}}",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "{{doc-apihelp-paramvalue|query+coordinates|primary|primary}}",
 	"apihelp-query+coordinates-paramvalue-primary-secondary": "{{doc-apihelp-paramvalue|query+coordinates|primary|secondary}}",
 	"apihelp-query+coordinates-paramvalue-primary-all": "{{doc-apihelp-paramvalue|query+coordinates|primary|all}}",
