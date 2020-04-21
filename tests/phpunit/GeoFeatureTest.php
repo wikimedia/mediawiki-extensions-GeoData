@@ -2,6 +2,7 @@
 
 namespace GeoData;
 
+use CirrusSearch\CirrusSearch;
 use CirrusSearch\CrossSearchStrategy;
 use CirrusSearch\HashSearchConfig;
 use CirrusSearch\Query\KeywordFeatureAssertions;
@@ -52,7 +53,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 
 	protected function setUp() : void {
 		parent::setUp();
-		if ( !class_exists( \CirrusSearch::class ) ) {
+		if ( !class_exists( CirrusSearch::class ) ) {
 			$this->markTestSkipped( 'CirrusSearch not installed, skipping' );
 		}
 		$this->kwAssert = new KeywordFeatureAssertions( $this );

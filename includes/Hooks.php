@@ -4,6 +4,7 @@ namespace GeoData;
 
 use ApiModuleManager;
 use Article;
+use CirrusSearch\CirrusSearch;
 use CirrusSearch\SearchConfig;
 use ContentHandler;
 use DatabaseUpdater;
@@ -286,9 +287,9 @@ class Hooks {
 		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend !== 'elastic' ) {
 			return;
 		}
-		if ( $engine instanceof \CirrusSearch ) {
+		if ( $engine instanceof CirrusSearch ) {
 			/**
-			 * @var \CirrusSearch $engine
+			 * @var CirrusSearch $engine
 			 */
 			$fields['coordinates'] = CoordinatesIndexField::build(
 				'coordinates', $engine->getConfig(), $engine );
