@@ -15,7 +15,7 @@ class CoordinatesOutput {
 	 * Key used to store this object in the ParserOutput extension data.
 	 * Visible for testing only.
 	 */
-	const GEO_DATA_COORDS_OUTPUT = 'GeoDataCoordsOutput';
+	public const GEO_DATA_COORDS_OUTPUT = 'GeoDataCoordsOutput';
 
 	/** @var bool */
 	public $limitExceeded = false;

@@ -14,8 +14,8 @@ use Title;
 use WikiPage;
 
 class QueryGeoSearch extends ApiQueryGeneratorBase {
-	const MIN_RADIUS = 10;
-	const DEFAULT_RADIUS = 500;
+	private const MIN_RADIUS = 10;
+	private const DEFAULT_RADIUS = 500;
 
 	/**
 	 * @var Coord The center of search area

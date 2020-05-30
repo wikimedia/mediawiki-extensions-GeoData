@@ -17,7 +17,7 @@ class GeoRadiusFunctionScoreBuilder extends FunctionScoreBuilder {
 	/**
 	 * Default feature weight
 	 */
-	const DEFAULT_WEIGHT = 2;
+	private const DEFAULT_WEIGHT = 2;
 	/**
 	 * @var Coord
 	 */
