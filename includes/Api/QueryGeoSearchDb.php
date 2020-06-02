@@ -103,11 +103,11 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 		$this->addWhereFld( 'gt_lat_int', self::intRange( $bbox->lat1, $bbox->lat2 ) );
 		$this->addWhereFld( 'gt_lon_int', self::intRange( $bbox->lon1, $bbox->lon2 ) );
 
-		$this->addWhereRange( 'gt_lat', 'newer', $bbox->lat1, $bbox->lat2, false );
+		$this->addWhereRange( 'gt_lat', 'newer', (string)$bbox->lat1, (string)$bbox->lat2, false );
 		if ( $bbox->lon1 > $bbox->lon2 ) {
 			$this->addWhere( "gt_lon < {$bbox->lon2} OR gt_lon > {$bbox->lon1}" );
 		} else {
-			$this->addWhereRange( 'gt_lon', 'newer', $bbox->lon1, $bbox->lon2, false );
+			$this->addWhereRange( 'gt_lon', 'newer', (string)$bbox->lon1, (string)$bbox->lon2, false );
 		}
 		$this->addOption( 'USE INDEX', [ 'geo_tags' => 'gt_spatial' ] );
 	}
