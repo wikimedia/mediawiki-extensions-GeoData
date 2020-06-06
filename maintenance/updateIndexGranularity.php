@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
@@ -22,6 +24,8 @@ class UpdateIndexGranularity extends Maintenance {
 		$batchSize = $this->getBatchSize();
 		$id = 0;
 		$dbw = $this->getDB( DB_MASTER );
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
 		do {
 			$ids = [];
 
@@ -46,7 +50,7 @@ class UpdateIndexGranularity extends Maintenance {
 			$this->commitTransaction( $dbw, __METHOD__ );
 
 			$this->output( "$id\n" );
-			wfWaitForSlaves();
+			$lbFactory->waitForReplication();
 		} while ( count( $ids ) === $batchSize );
 	}
 }
