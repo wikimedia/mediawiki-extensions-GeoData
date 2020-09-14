@@ -10,6 +10,7 @@ use Elastica\Exception\ExceptionInterface;
 use Elastica\Exception\ResponseException;
 use Elastica\Search;
 use MediaWiki\MediaWikiServices;
+use StatusValue;
 use User;
 
 /**
@@ -35,7 +36,7 @@ class Searcher extends ElasticsearchIntermediary {
 	 * @param \Elastica\Query $query
 	 * @param int[] $namespaces Namespaces used
 	 * @param string $queryType Query description for logging
-	 * @return \Elastica\ResultSet
+	 * @return \StatusValue Holds a \Elastica\ResultSet
 	 * @throws ExceptionInterface
 	 */
 	public function performSearch( \Elastica\Query $query, array $namespaces, $queryType ) {
@@ -57,11 +58,15 @@ class Searcher extends ElasticsearchIntermediary {
 			}
 			$this->success();
 		} catch ( ExceptionInterface $ex ) {
-			$this->failure( $ex );
-			throw $ex;
+			return $this->failure( $ex );
 		}
 
-		return $result;
+		$status = StatusValue::newGood( $result );
+		if ( $result->getResponse()->getData()['timed_out'] ?? false ) {
+			// only partial results returned
+			$status->warning( 'geodata-search-timeout' );
+		}
+		return $status;
 	}
 
 	/**

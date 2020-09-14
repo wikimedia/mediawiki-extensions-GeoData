@@ -109,8 +109,13 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		$query->setSize( $params['limit'] );
 
 		$searcher = new Searcher( $this->getUser() );
+		$status = $searcher->performSearch( $query, $namespaces, 'GeoData_spatial_search' );
+		if ( !$status->isOk() ) {
+			$this->dieStatus( $status );
+		}
 
-		$resultSet = $searcher->performSearch( $query, $namespaces, 'GeoData_spatial_search' );
+		$this->addMessagesFromStatus( $status );
+		$resultSet = $status->getValue();
 
 		if ( isset( $params['debug'] ) && $params['debug'] ) {
 			$this->addDebugInfo( $resultSet, $query );
@@ -124,11 +129,6 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 				'content' => FormatJson::encode( $data ),
 			] );
 			$this->dieDebug( __METHOD__, 'Unexpected result set returned by Elasticsearch' );
-		}
-
-		if ( $data['timed_out'] ) {
-			// only partial results returned
-			$this->addWarning( 'geodata-search-timeout' );
 		}
 
 		$ids = [];
