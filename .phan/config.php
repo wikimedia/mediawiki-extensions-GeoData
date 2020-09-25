@@ -22,8 +22,6 @@ $cfg['globals_type_map'] = array_merge(
 	]
 );
 
-// ParserOutput->geoData
-$cfg['suppress_issue_types'][] = 'PhanUndeclaredProperty';
 // Interfaces can be caught, we intentionally annotate with the interface
 $cfg['suppress_issue_types'][] = 'PhanTypeInvalidThrowsIsInterface';
 
