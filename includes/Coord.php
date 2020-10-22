@@ -2,10 +2,12 @@
 
 namespace GeoData;
 
+use JsonSerializable;
+
 /**
  * Class representing coordinates
  */
-class Coord {
+class Coord implements JsonSerializable {
 	/** @var float Latitude of the point in degrees */
 	public $lat;
 
@@ -241,5 +243,25 @@ class Coord {
 			$columns = array_values( self::$fieldMapping );
 		}
 		return $columns;
+	}
+
+	public function jsonSerialize() {
+		return $this->getAsArray();
+	}
+
+	/**
+	 * Instantiate a Coord from $json array created with self::jsonSerialize.
+	 *
+	 * @see self::jsonSerialize
+	 * @param array $json
+	 * @return static
+	 */
+	public static function newFromJson( array $json ) : self {
+		return new Coord(
+			$json['lat'],
+			$json['lon'],
+			$json['globe'],
+			$json
+		);
 	}
 }
