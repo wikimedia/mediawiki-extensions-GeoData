@@ -27,7 +27,12 @@ class CoordinatesOutput implements JsonSerializable {
 
 	/**
 	 * Fetch the current CoordinatesOutput attached to this ParserOutput
-	 * or create a new one and attach it.
+	 * or create a new one.
+	 *
+	 * @note The changes made to the CoordinatesOutput object are not stored
+	 * back into the ParserOutput until self::setToParserOutput is called.
+	 *
+	 * @see self::setToParserOutput
 	 * @param ParserOutput $parserOutput
 	 * @return CoordinatesOutput
 	 */
@@ -37,7 +42,6 @@ class CoordinatesOutput implements JsonSerializable {
 		$coord = self::getFromParserOutput( $parserOutput );
 		if ( $coord === null ) {
 			$coord = new CoordinatesOutput();
-			$parserOutput->setExtensionData( self::GEO_DATA_COORDS_OUTPUT, $coord );
 		}
 		return $coord;
 	}
@@ -47,7 +51,7 @@ class CoordinatesOutput implements JsonSerializable {
 	 * @param ParserOutput $parserOutput
 	 */
 	public function setToParserOutput( ParserOutput $parserOutput ) {
-		$parserOutput->setExtensionData( self::GEO_DATA_COORDS_OUTPUT, $this );
+		$parserOutput->setExtensionData( self::GEO_DATA_COORDS_OUTPUT, $this->jsonSerialize() );
 	}
 
 	/**
@@ -131,6 +135,9 @@ class CoordinatesOutput implements JsonSerializable {
 		return $res;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function jsonSerialize() {
 		return [
 			'limitExceeded' => $this->limitExceeded,
@@ -144,6 +151,7 @@ class CoordinatesOutput implements JsonSerializable {
 	/**
 	 * Instantiate a CoordinatesOutput from $json array created with self::jsonSerialize.
 	 *
+	 * @internal
 	 * @param array $jsonArray
 	 * @return static
 	 * @see self::jsonSerialize

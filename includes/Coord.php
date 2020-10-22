@@ -245,6 +245,9 @@ class Coord implements JsonSerializable {
 		return $columns;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function jsonSerialize() {
 		return $this->getAsArray();
 	}
@@ -252,6 +255,7 @@ class Coord implements JsonSerializable {
 	/**
 	 * Instantiate a Coord from $json array created with self::jsonSerialize.
 	 *
+	 * @internal
 	 * @see self::jsonSerialize
 	 * @param array $json
 	 * @return static

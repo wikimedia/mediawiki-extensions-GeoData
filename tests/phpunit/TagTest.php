@@ -61,9 +61,7 @@ class TagTest extends MediaWikiTestCase {
 		$this->assertSame( $inExtData, CoordinatesOutput::getFromParserOutput( $output ) );
 
 		$output = new \ParserOutput();
-		CoordinatesOutput::getOrBuildFromParserOutput( $output );
-		$this->assertNotNull(
-			$output->getExtensionData( CoordinatesOutput::GEO_DATA_COORDS_OUTPUT ) );
+		$this->assertNotNull( CoordinatesOutput::getOrBuildFromParserOutput( $output ) );
 	}
 
 	/**

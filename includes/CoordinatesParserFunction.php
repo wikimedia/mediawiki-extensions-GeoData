@@ -122,15 +122,18 @@ class CoordinatesParserFunction {
 		$geoData = CoordinatesOutput::getOrBuildFromParserOutput( $this->output );
 		if ( $wgMaxCoordinatesPerPage >= 0 && $geoData->getCount() >= $wgMaxCoordinatesPerPage ) {
 			if ( $geoData->limitExceeded ) {
+				$geoData->setToParserOutput( $this->output );
 				return Status::newFatal( '' );
 			}
 			$geoData->limitExceeded = true;
+			$geoData->setToParserOutput( $this->output );
 			return Status::newFatal( 'geodata-limit-exceeded',
 				$this->getLanguage()->formatNum( $wgMaxCoordinatesPerPage )
 			);
 		}
 		if ( $coord->primary ) {
 			if ( $geoData->hasPrimary() ) {
+				$geoData->setToParserOutput( $this->output );
 				return Status::newFatal( 'geodata-multiple-primary' );
 			} else {
 				$geoData->addPrimary( $coord );
@@ -138,6 +141,7 @@ class CoordinatesParserFunction {
 		} else {
 			$geoData->addSecondary( $coord );
 		}
+		$geoData->setToParserOutput( $this->output );
 		return Status::newGood();
 	}
 
