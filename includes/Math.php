@@ -53,7 +53,7 @@ class Math {
 	/**
 	 * Sign function
 	 *
-	 * @param Float $x Value to get sign of
+	 * @param float $x Value to get sign of
 	 * @return int
 	 */
 	public static function sign( $x ) {

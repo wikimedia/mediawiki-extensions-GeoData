@@ -150,7 +150,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			if ( $coord1->distance == $coord2->distance ) {
 				return 0;
 			}
-			return ( $coord1->distance < $coord2->distance ) ? - 1 : 1;
+			return ( $coord1->distance < $coord2->distance ) ? -1 : 1;
 		} );
 
 		if ( !count( $coordinates ) ) {
