@@ -3,6 +3,7 @@
 namespace GeoData;
 
 use InvalidArgumentException;
+use JsonSerializable;
 use LogicException;
 use ParserOutput;
 use Wikimedia\Assert\Assert;
@@ -10,7 +11,7 @@ use Wikimedia\Assert\Assert;
 /**
  * Class that holds output of a parse opertion
  */
-class CoordinatesOutput {
+class CoordinatesOutput implements JsonSerializable {
 	/**
 	 * Key used to store this object in the ParserOutput extension data.
 	 * Visible for testing only.
@@ -42,18 +43,29 @@ class CoordinatesOutput {
 	}
 
 	/**
+	 * Write the coords to ParserOutput object.
+	 * @param ParserOutput $parserOutput
+	 */
+	public function setToParserOutput( ParserOutput $parserOutput ) {
+		$parserOutput->setExtensionData( self::GEO_DATA_COORDS_OUTPUT, $this );
+	}
+
+	/**
 	 * Get the CoordinatesOutput attached to this ParserOutput
 	 * @param ParserOutput $parserOutput
 	 * @return CoordinatesOutput|null existing CoordinatesOutput or null
 	 */
 	public static function getFromParserOutput( ParserOutput $parserOutput ) {
-		$coordsOuput = $parserOutput->getExtensionData( self::GEO_DATA_COORDS_OUTPUT );
-		if ( $coordsOuput !== null ) {
-			Assert::invariant( $coordsOuput instanceof CoordinatesOutput,
+		$coordsOutput = $parserOutput->getExtensionData( self::GEO_DATA_COORDS_OUTPUT );
+		if ( $coordsOutput !== null ) {
+			if ( is_array( $coordsOutput ) ) {
+				$coordsOutput = self::newFromJson( $coordsOutput );
+			}
+			Assert::invariant( $coordsOutput instanceof CoordinatesOutput,
 				'ParserOutput extension data ' . self::GEO_DATA_COORDS_OUTPUT .
 				' must be an instance of CoordinatesOutput' );
 		}
-		return $coordsOuput;
+		return $coordsOutput;
 	}
 
 	/**
@@ -117,5 +129,32 @@ class CoordinatesOutput {
 			array_unshift( $res, $this->primary );
 		}
 		return $res;
+	}
+
+	public function jsonSerialize() {
+		return [
+			'limitExceeded' => $this->limitExceeded,
+			'primary' => $this->primary ? $this->primary->jsonSerialize() : $this->primary,
+			'secondary' => array_map( function ( Coord $coord ) {
+				return $coord->jsonSerialize();
+			}, $this->secondary )
+		];
+	}
+
+	/**
+	 * Instantiate a CoordinatesOutput from $json array created with self::jsonSerialize.
+	 *
+	 * @param array $jsonArray
+	 * @return static
+	 * @see self::jsonSerialize
+	 */
+	public static function newFromJson( array $jsonArray ) : self {
+		$coordOutput = new CoordinatesOutput();
+		$coordOutput->limitExceeded = $jsonArray['limitExceeded'];
+		$coordOutput->primary = $jsonArray['primary'] ? Coord::newFromJson( $jsonArray['primary'] ) : false;
+		$coordOutput->secondary = array_map( function ( array $jsonCoord ) {
+			return Coord::newFromJson( $jsonCoord );
+		}, $jsonArray['secondary'] );
+		return $coordOutput;
 	}
 }

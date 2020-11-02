@@ -111,7 +111,41 @@ class CoordTest extends MediaWikiTestCase {
 				false,
 				'Compare globes strictly'
 			],
+			[
+				new Coord( 10, 20, '01', [
+					'id' => 1,
+					'primary' => true,
+					'dim' => 2,
+					'type' => 'testing',
+					'name' => 'very testing',
+					'country' => 'Russia',
+					'region' => 'world',
+				] ),
+				new Coord( 10, 20, '01', [
+					'id' => 1,
+					'primary' => true,
+					'dim' => 2,
+					'type' => 'testing',
+					'name' => 'very testing',
+					'country' => 'Russia',
+					'region' => 'world',
+				] ),
+				true,
+				'With extra fields'
+			]
 		];
+	}
+
+	/**
+	 * Test that serialization-deserialization works.
+	 * @dataProvider provideFullyEquals
+	 * @covers \GeoData\Coord::jsonSerialize
+	 * @covers \GeoData\Coord::newFromJson
+	 * @param $coord
+	 */
+	public function testSerializeDeserialize( Coord $coord ) {
+		$deserialized = Coord::newFromJson( $coord->jsonSerialize() );
+		$this->assertTrue( $coord->fullyEqualsTo( $deserialized ) );
 	}
 
 	/**
