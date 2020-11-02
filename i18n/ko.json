@@ -26,5 +26,6 @@
 	"geodata-unknown-globe-category-desc": "여기 있는 문서는 좌표에 알 수 없는 <code>globe</code> 변수를 사용하고 있습니다.",
 	"geodata-unknown-region-category": "잘못된 지역 값으로 된 문서",
 	"geodata-unknown-region-category-desc": "여기 있는 문서는 좌표 틀의 <code>region</code> 변수에 잘못된 값을 사용하고 있습니다.",
-	"geodata-api-help-coordinates-format": "형식: 위도와 경도를 파이프(<kbd>|</kbd>)로 구분합니다."
+	"geodata-api-help-coordinates-format": "형식: 위도와 경도를 파이프(<kbd>|</kbd>)로 구분합니다.",
+	"geodata-search-timeout": "GeoData 검색 시간이 만료되었습니다. 일부 결과만 표시됩니다."
 }
