@@ -28,6 +28,7 @@
 	"apihelp-query+geosearch-param-bbox": "검색할 경계 상자: 왼쪽 상단 및 오른쪽 하단 모서리의 좌표는 파이프(<kbd>|</kbd>)로 구분합니다.",
 	"apihelp-query+geosearch-param-coord": "검색할 주위의 좌표입니다.",
 	"apihelp-query+geosearch-param-radius": "미터 단위로 반경을 검색합니다.",
+	"apihelp-query+geosearch-param-maxdim": "거리가 이 값 이하인 개체로 검색을 제한합니다. 단위: 미터",
 	"apihelp-query+geosearch-param-limit": "반환할 문서의 최대 개수입니다.",
 	"apihelp-query+geosearch-param-globe": "검색할 지구본입니다. 자세한 내용은 [[mw:Special:MyLanguage/Extension:GeoData#Glossary]]를 참조하세요.",
 	"apihelp-query+geosearch-param-namespace": "검색할 이름공간입니다.",
