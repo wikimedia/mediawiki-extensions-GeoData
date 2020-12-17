@@ -12,7 +12,7 @@ use Title;
  * Trait for geo based features.
  */
 trait CirrusGeoFeature {
-	// Default radius, in meters
+	/** @var int Default radius, in meters */
 	private static $DEFAULT_RADIUS = 5000;
 
 	/**

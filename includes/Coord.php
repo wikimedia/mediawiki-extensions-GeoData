@@ -69,7 +69,7 @@ class Coord implements JsonSerializable {
 	/**
 	 * Constructs a Coord object from a database row
 	 *
-	 * @param object $row
+	 * @param \stdClass $row
 	 * @return Coord
 	 */
 	public static function newFromRow( $row ) {
@@ -197,6 +197,7 @@ class Coord implements JsonSerializable {
 		return $result;
 	}
 
+	/** @var string[] */
 	private static $fieldMapping = [
 		'id' => 'gt_id',
 		'lat' => 'gt_lat',

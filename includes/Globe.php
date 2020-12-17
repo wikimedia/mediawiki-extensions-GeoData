@@ -46,6 +46,9 @@ class Globe {
 		}
 	}
 
+	/**
+	 * @return array
+	 */
 	private static function getData() {
 		global $wgGlobes;
 

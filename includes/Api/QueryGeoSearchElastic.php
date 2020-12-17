@@ -11,6 +11,7 @@ use MWNamespace;
 use Title;
 
 class QueryGeoSearchElastic extends QueryGeoSearch {
+	/** @var array|null */
 	private $params;
 
 	/**
@@ -254,6 +255,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		if ( isset( $this->params['maxdim'] ) && $coord->dim > $this->params['maxdim'] ) {
 			return false;
 		}
+		// @phan-suppress-next-line PhanTypeArraySuspiciousNullable $params always set here
 		$primary = $this->params['primary'];
 		if ( ( $primary == 'primary' && !$coord->primary )
 			|| ( $primary == 'secondary' && $coord->primary )

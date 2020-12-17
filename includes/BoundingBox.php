@@ -7,7 +7,15 @@ namespace GeoData;
  * Currently, only Earth is supported
  */
 class BoundingBox {
-	public $lat1, $lon1, $lat2, $lon2;
+	/** @var float */
+	public $lat1;
+	/** @var float */
+	public $lon1;
+	/** @var float */
+	public $lat2;
+	/** @var float */
+	public $lon2;
+	/** @var string */
 	public $globe;
 
 	/**

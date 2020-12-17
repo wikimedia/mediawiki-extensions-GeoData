@@ -142,6 +142,10 @@ class Hooks {
 		self::doLinksUpdate( $data, $linksUpdate->mId, $ticket );
 	}
 
+	/**
+	 * @param Title $title
+	 * @return Coord|null
+	 */
 	private static function getCoordinatesIfFile( Title $title ) {
 		if ( $title->getNamespace() != NS_FILE ) {
 			return null;

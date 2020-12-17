@@ -24,8 +24,10 @@ class CoordinatesParserFunction {
 	 */
 	private $output;
 
-	private $named = [],
-		$unnamed = [];
+	/** @var (string|true)[] */
+	private $named = [];
+	/** @var string[] */
+	private $unnamed = [];
 
 	/** @var Globe */
 	private $globe;
@@ -164,6 +166,10 @@ class CoordinatesParserFunction {
 		$this->globe = new Globe( $globe );
 	}
 
+	/**
+	 * @param Coord $coord
+	 * @return Status
+	 */
 	private function applyTagArgs( Coord $coord ) {
 		global $wgTypeToDim, $wgDefaultDim, $wgGeoDataWarningLevel;
 		$args = $this->named;
@@ -193,7 +199,7 @@ class CoordinatesParserFunction {
 			}
 		}
 		if ( isset( $args['scale'] ) && is_numeric( $args['scale'] ) && $args['scale'] > 0 ) {
-			$coord->dim = intval( $args['scale'] / 10 );
+			$coord->dim = intval( (int)$args['scale'] / 10 );
 		}
 		if ( isset( $args['dim'] ) ) {
 			$dim = $this->parseDim( $args['dim'] );
@@ -218,6 +224,10 @@ class CoordinatesParserFunction {
 		return Status::newGood();
 	}
 
+	/**
+	 * @param string $str
+	 * @return string[]
+	 */
 	private function parseGeoHackArgs( $str ) {
 		$result = [];
 		// per GeoHack docs, spaces and underscores are equivalent
@@ -233,6 +243,10 @@ class CoordinatesParserFunction {
 		return $result;
 	}
 
+	/**
+	 * @param string|int $str
+	 * @return string|int|false
+	 */
 	private function parseDim( $str ) {
 		if ( is_numeric( $str ) ) {
 			return $str > 0 ? $str : false;
@@ -299,6 +313,13 @@ class CoordinatesParserFunction {
 		return Status::newGood( new Coord( (float)$lat, (float)$lon, $globe->getName() ) );
 	}
 
+	/**
+	 * @param string[] $parts
+	 * @param float $min
+	 * @param float $max
+	 * @param int[] $suffixes
+	 * @return float|false
+	 */
 	private function parseOneCoord( $parts, $min, $max, $suffixes ) {
 		$count = count( $parts );
 		$multiplier = 1;
@@ -342,7 +363,7 @@ class CoordinatesParserFunction {
 			$currentMax = 59.99999999;
 
 			$alreadyFractional = $part != intval( $part );
-			$value += $part * $multiplier * Math::sign( $value );
+			$value += (float)$part * $multiplier * Math::sign( $value );
 			$multiplier /= 60;
 		}
 		if ( $min == 0 && $value < 0 ) {
@@ -358,7 +379,7 @@ class CoordinatesParserFunction {
 	 * Parses coordinate suffix such as N, S, E or W
 	 *
 	 * @param string $str String to test
-	 * @param array $suffixes
+	 * @param int[] $suffixes
 	 * @return int Sign modifier or 0 if not a suffix
 	 */
 	private function parseSuffix( $str, array $suffixes ) {
