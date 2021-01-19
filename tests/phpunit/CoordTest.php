@@ -141,7 +141,6 @@ class CoordTest extends MediaWikiTestCase {
 	 * @dataProvider provideFullyEquals
 	 * @covers \GeoData\Coord::jsonSerialize
 	 * @covers \GeoData\Coord::newFromJson
-	 * @param $coord
 	 */
 	public function testSerializeDeserialize( Coord $coord ) {
 		$deserialized = Coord::newFromJson( $coord->jsonSerialize() );
