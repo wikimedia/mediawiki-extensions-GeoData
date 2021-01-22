@@ -72,7 +72,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 				$title = Title::newFromRow( $row );
 				$vals = [
 					'pageid' => intval( $row->page_id ),
-					'ns' => intval( $title->getNamespace() ),
+					'ns' => $title->getNamespace(),
 					'title' => $title->getPrefixedText(),
 					'lat' => floatval( $row->gt_lat ),
 					'lon' => floatval( $row->gt_lon ),

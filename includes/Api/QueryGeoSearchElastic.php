@@ -189,7 +189,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 				$title = $titles[$id];
 				$vals = [
 					'pageid' => intval( $coord->pageId ),
-					'ns' => intval( $title->getNamespace() ),
+					'ns' => $title->getNamespace(),
 					'title' => $title->getPrefixedText(),
 					'lat' => floatval( $coord->lat ),
 					'lon' => floatval( $coord->lon ),
