@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"1233qwer1234qwer4",
 			"FF11",
 			"Fitoschido",
 			"Kghbln",
@@ -32,5 +33,5 @@
 	"geodata-search-feature-invalid-distance": "Die Geodistanz „$2“, die in „$1“ angegeben wurde, konnte nicht geparst werden.",
 	"geodata-search-feature-unknown-title": "Der Titel „$2“, der in „$1“ angegeben wurde, ist nicht vorhanden.",
 	"geodata-search-feature-title-no-coordinates": "Der Titel „$2“, der in „$1“ angegeben wurde, besitzt keine Koordinaten.",
-	"geodata-search-timeout": "Die GeoData-Suche hat eine Zeitüberschreitng. Nur Teile des Ergebnisses sind verfügbar."
+	"geodata-search-timeout": "Zeitüberschreitng bei der GeoData-Suche. Nur Teile des Ergebnisses sind verfügbar."
 }
