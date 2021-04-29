@@ -287,28 +287,19 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	public function testParseGeoNearbyTitle( $expected, $value ) {
 		// Replace database with one that will return our fake coordinates if asked
 		$db = $this->createMock( IDatabase::class );
-		$db->expects( $this->any() )
-			->method( 'select' )
+		$db->method( 'select' )
 			->with( 'geo_tags', $this->anything(), $this->anything(), $this->anything() )
-			->will( $this->returnValue( [
+			->willReturn( [
 				(object)[ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321 ],
-			] ) );
+			] );
 		// Tell LinkCache all titles not explicitly added don't exist
-		$db->expects( $this->any() )
-			->method( 'selectRow' )
+		$db->method( 'selectRow' )
 			->with( 'page', $this->anything(), $this->anything(), $this->anything() )
-			->will( $this->returnValue( false ) );
+			->willReturn( false );
 		// Inject mock database into a mock LoadBalancer
 		$lb = $this->createMock( LoadBalancer::class );
-		$lb->expects( $this->any() )
-			->method( 'getConnection' )
-			->will( $this->returnValue( $db ) );
-		$lb->expects( $this->any() )
-			->method( 'getConnectionRef' )
-			->will( $this->returnValue( $db ) );
-		$lb->expects( $this->any() )
-			->method( 'getMaintenanceConnectionRef' )
-			->will( $this->returnValue( $db ) );
+		$lb->method( $this->logicalOr( 'getConnection', 'getConnectionRef', 'getMaintenanceConnectionRef' ) )
+			->willReturn( $db );
 		$this->setService( 'DBLoadBalancer', $lb );
 
 		// Inject fake San Francisco page into LinkCache so it "exists"
