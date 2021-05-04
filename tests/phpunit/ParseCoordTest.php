@@ -28,7 +28,7 @@ class ParseCoordTest extends MediaWikiTestCase {
 
 		$parser = $this->getMockBuilder( Parser::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getContentLanguage' ] )
+			->onlyMethods( [ 'getContentLanguage' ] )
 			->getMock();
 
 		$parser->method( 'getContentLanguage' )

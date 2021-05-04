@@ -142,7 +142,7 @@ class CoordinatesOutput implements JsonSerializable {
 		return [
 			'limitExceeded' => $this->limitExceeded,
 			'primary' => $this->primary ? $this->primary->jsonSerialize() : $this->primary,
-			'secondary' => array_map( function ( Coord $coord ) {
+			'secondary' => array_map( static function ( Coord $coord ) {
 				return $coord->jsonSerialize();
 			}, $this->secondary )
 		];
@@ -160,7 +160,7 @@ class CoordinatesOutput implements JsonSerializable {
 		$coordOutput = new CoordinatesOutput();
 		$coordOutput->limitExceeded = $jsonArray['limitExceeded'];
 		$coordOutput->primary = $jsonArray['primary'] ? Coord::newFromJson( $jsonArray['primary'] ) : false;
-		$coordOutput->secondary = array_map( function ( array $jsonCoord ) {
+		$coordOutput->secondary = array_map( static function ( array $jsonCoord ) {
 			return Coord::newFromJson( $jsonCoord );
 		}, $jsonArray['secondary'] );
 		return $coordOutput;

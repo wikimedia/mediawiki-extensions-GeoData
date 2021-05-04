@@ -204,14 +204,14 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_TYPE => $propTypes,
 				ApiBase::PARAM_DFLT => 'globe',
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( $i ) use ( $propTypes ) {
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( static function ( $i ) use ( $propTypes ) {
 					return 'apihelp-query+coordinates-paramvalue-prop-' . $propTypes[$i];
 				}, array_flip( $propTypes ) ),
 			],
 			'primary' => [
 				ApiBase::PARAM_TYPE => $primaryTypes,
 				ApiBase::PARAM_DFLT => 'primary',
-				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( $i ) use ( $primaryTypes ) {
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( static function ( $i ) use ( $primaryTypes ) {
 					return 'apihelp-query+coordinates-paramvalue-primary-' . $primaryTypes[$i];
 				}, array_flip( $primaryTypes ) ),
 			],

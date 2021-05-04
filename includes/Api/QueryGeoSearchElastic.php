@@ -72,7 +72,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 
 		$query = new \Elastica\Query();
 		$fields = array_map(
-			function ( $prop ) {
+			static function ( $prop ) {
 				return "coordinates.$prop";
 			},
 			array_merge(
@@ -147,7 +147,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			}
 		}
 
-		usort( $coordinates, function ( $coord1, $coord2 ) {
+		usort( $coordinates, static function ( $coord1, $coord2 ) {
 			if ( $coord1->distance == $coord2->distance ) {
 				return 0;
 			}
