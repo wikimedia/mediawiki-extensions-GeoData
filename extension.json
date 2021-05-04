@@ -8,7 +8,7 @@
 	"license-name": "WTFPL",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.34.0"
+		"MediaWiki": ">= 1.36.0"
 	},
 	"APIPropModules": {
 		"coordinates": "GeoData\\Api\\QueryCoordinates"

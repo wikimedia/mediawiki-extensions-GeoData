@@ -23,7 +23,7 @@ class UpdateIndexGranularity extends Maintenance {
 
 		$batchSize = $this->getBatchSize();
 		$id = 0;
-		$dbw = $this->getDB( DB_MASTER );
+		$dbw = $this->getDB( DB_PRIMARY );
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		do {
