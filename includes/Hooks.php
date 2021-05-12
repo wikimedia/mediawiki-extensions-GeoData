@@ -16,6 +16,7 @@ use GeoData\Search\CirrusNearTitleFilterFeature;
 use GeoData\Search\CoordinatesIndexField;
 use LinksUpdate;
 use LocalFile;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use OutputPage;
@@ -139,6 +140,23 @@ class Hooks {
 			$data[] = $coordFromMetadata;
 		}
 
+		if ( !$linksUpdate->mId ) {
+			$linksUpdate->mId = $linksUpdate->getTitle()->getArticleID( Title::READ_LATEST );
+		}
+		if ( !$linksUpdate->mId ) {
+			// Probably due to concurrent deletion or renaming of the page
+			$logger = LoggerFactory::getInstance( 'SecondaryDataUpdate' );
+			$logger->notice(
+				'LinksUpdate: The Title object yields no ID. Perhaps the page was deleted?',
+				[
+					'page_title' => $linksUpdate->getTitle()->getPrefixedDBkey(),
+					'cause_action' => $linksUpdate->getCauseAction(),
+					'cause_agent' => $linksUpdate->getCauseAgent()
+				]
+			);
+			// nothing to do
+			return;
+		}
 		self::doLinksUpdate( $data, $linksUpdate->mId, $ticket );
 	}
 
