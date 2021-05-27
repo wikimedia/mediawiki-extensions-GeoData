@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"NegativeTwelveDollars"
-		]
-	},
-	"apierror-geodata-nocoord": "Koordinate strani neznane.",
-	"apierror-geodata-badcoord": "Napačna koordinata"
-}
