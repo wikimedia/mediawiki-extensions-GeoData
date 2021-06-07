@@ -6,6 +6,7 @@
 			"Dalba",
 			"Ebraminio",
 			"Fitoschido",
+			"Huji",
 			"Ladsgroup",
 			"Mjbmr",
 			"Reza1615",
@@ -13,7 +14,7 @@
 		]
 	},
 	"geodata-desc": "افزودن ذخیره‌سازی مختصات جغرافیایی و کارآمدی بازیابی",
-	"geodata-bad-input": "متغییرهای نامعتبر در <nowiki>{{#coordinates:}}</nowiki> واردشده‌است.",
+	"geodata-bad-input": "متغیرهای نامعتبر در <nowiki>{{#coordinates:}}</nowiki> واردشده‌است.",
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: عرض جغرافیایی نامعتبر",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: طول جغرافیایی نامعتبر",
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: گونهٔ تشخیص داده نشده \"$1\"",
