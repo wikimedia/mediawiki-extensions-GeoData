@@ -294,7 +294,12 @@ class GeoFeatureTest extends MediaWikiTestCase {
 			] );
 		// Tell LinkCache all titles not explicitly added don't exist
 		$db->method( 'selectRow' )
-			->with( 'page', $this->anything(), $this->anything(), $this->anything() )
+			->with(
+				$this->logicalOr( 'page', [ 'page' ] ),
+				$this->anything(),
+				$this->anything(),
+				$this->anything()
+			)
 			->willReturn( false );
 		// Inject mock database into a mock LoadBalancer
 		$lb = $this->createMock( LoadBalancer::class );
