@@ -14,7 +14,7 @@ use MediaWikiTestCase;
  * @group GeoData
  */
 class GeoSearchTest extends MediaWikiTestCase {
-	public function setUp() : void {
+	public function setUp(): void {
 		$this->setMwGlobals( 'wgAPIListModules',
 			[
 				'geosearch' => [

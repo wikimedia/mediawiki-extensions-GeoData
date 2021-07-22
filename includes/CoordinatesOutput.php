@@ -113,7 +113,7 @@ class CoordinatesOutput implements JsonSerializable {
 	/**
 	 * @return bool Whether this output has primary coordinates
 	 */
-	public function hasPrimary() : bool {
+	public function hasPrimary(): bool {
 		return (bool)$this->primary;
 	}
 
@@ -156,7 +156,7 @@ class CoordinatesOutput implements JsonSerializable {
 	 * @return static
 	 * @see self::jsonSerialize
 	 */
-	public static function newFromJson( array $jsonArray ) : self {
+	public static function newFromJson( array $jsonArray ): self {
 		$coordOutput = new CoordinatesOutput();
 		$coordOutput->limitExceeded = $jsonArray['limitExceeded'];
 		$coordOutput->primary = $jsonArray['primary'] ? Coord::newFromJson( $jsonArray['primary'] ) : false;

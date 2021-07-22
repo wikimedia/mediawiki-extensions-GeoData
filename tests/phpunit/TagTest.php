@@ -17,7 +17,7 @@ use Title;
  */
 class TagTest extends MediaWikiTestCase {
 
-	public function setUp() : void {
+	public function setUp(): void {
 		parent::setUp();
 		// reset to default
 		$this->setMwGlobals( 'wgDefaultDim', 1000 );

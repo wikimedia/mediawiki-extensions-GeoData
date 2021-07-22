@@ -261,7 +261,7 @@ class Coord implements JsonSerializable {
 	 * @param array $json
 	 * @return static
 	 */
-	public static function newFromJson( array $json ) : self {
+	public static function newFromJson( array $json ): self {
 		return new Coord(
 			$json['lat'],
 			$json['lon'],
