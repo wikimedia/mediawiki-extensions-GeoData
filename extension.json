@@ -34,7 +34,6 @@
 		"OutputPageParserOutput": "GeoData\\Hooks::onOutputPageParserOutput",
 		"SearchIndexFields": "GeoData\\Hooks::onSearchIndexFields",
 		"SearchDataForIndex": "GeoData\\Hooks::onSearchDataForIndex",
-		"ParserTestTables": "GeoData\\Hooks::onParserTestTables",
 		"CirrusSearchAddQueryFeatures": "GeoData\\Hooks::onCirrusSearchAddQueryFeatures",
 		"ApiQuery::moduleManager": "GeoData\\Hooks::onApiQueryModuleManager"
 	},

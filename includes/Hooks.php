@@ -378,16 +378,6 @@ class Hooks {
 	}
 
 	/**
-	 * Add to the tables cloned for parser testing
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserTestTables
-	 *
-	 * @param array &$tables The tables to duplicate structure of
-	 */
-	public static function onParserTestTables( &$tables ) {
-		$tables[] = 'geo_tags';
-	}
-
-	/**
 	 * ApiQuery::moduleManager hook to conditionally register
 	 * geosearch API module
 	 *
