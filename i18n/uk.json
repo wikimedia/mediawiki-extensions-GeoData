@@ -3,6 +3,7 @@
 		"authors": [
 			"Ahonc",
 			"Base",
+			"DDPAT",
 			"DixonD",
 			"Fitoschido",
 			"Piramidion",
@@ -17,7 +18,7 @@
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: невпізнаний тип «$1»",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: невпізнаний глобус «$1»",
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: недопустимий формат коду регіону",
-	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: не можна мати більш ніж один первинний теґ на сторінку",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: не можна мати більш ніж один первинний тег на сторінку",
 	"geodata-limit-exceeded": "Було перевершено обмеження в $1 {{PLURAL:$1|теґ|теґи|теґів}} <nowiki>{{#coordinates:}}</nowiki> на сторінку",
 	"geodata-broken-tags-category": "Сторінки з некоректно вказаними координатами",
 	"geodata-broken-tags-category-desc": "На сторінці є неправильний теґ <code><nowiki>{{#coordinates:}}</nowiki></code>.",
