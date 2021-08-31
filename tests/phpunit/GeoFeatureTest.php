@@ -16,8 +16,10 @@ use HashConfig;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use Title;
+use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LoadBalancer;
+use Wikimedia\Rdbms\MaintainableDBConnRef;
 
 /**
  * This program is free software; you can redistribute it and/or modify
@@ -286,25 +288,31 @@ class GeoFeatureTest extends MediaWikiTestCase {
 	 */
 	public function testParseGeoNearbyTitle( $expected, $value ) {
 		// Replace database with one that will return our fake coordinates if asked
-		$db = $this->createMock( IDatabase::class );
-		$db->method( 'select' )
-			->with( 'geo_tags', $this->anything(), $this->anything(), $this->anything() )
-			->willReturn( [
-				(object)[ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321 ],
-			] );
-		// Tell LinkCache all titles not explicitly added don't exist
-		$db->method( 'selectRow' )
-			->with(
-				$this->logicalOr( 'page', [ 'page' ] ),
-				$this->anything(),
-				$this->anything(),
-				$this->anything()
-			)
-			->willReturn( false );
+		$dbMocker = function ( $db ) {
+			$db->method( 'select' )
+				->with( 'geo_tags', $this->anything(), $this->anything(), $this->anything() )
+				->willReturn( [
+					(object)[ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321 ],
+				] );
+			// Tell LinkCache all titles not explicitly added don't exist
+			$db->method( 'selectRow' )
+				->with(
+					$this->logicalOr( 'page', [ 'page' ] ),
+					$this->anything(),
+					$this->anything(),
+					$this->anything()
+				)
+				->willReturn( false );
+			return $db;
+		};
 		// Inject mock database into a mock LoadBalancer
 		$lb = $this->createMock( LoadBalancer::class );
-		$lb->method( $this->logicalOr( 'getConnection', 'getConnectionRef', 'getMaintenanceConnectionRef' ) )
-			->willReturn( $db );
+		$lb->method( 'getConnection' )
+			->willReturn( $dbMocker( $this->createMock( IDatabase::class ) ) );
+		$lb->method( 'getConnectionRef' )
+			->willReturn( $dbMocker( $this->createMock( DBConnRef::class ) ) );
+		$lb->method( 'getMaintenanceConnectionRef' )
+			->willReturn( $dbMocker( $this->createMock( MaintainableDBConnRef::class ) ) );
 		$this->setService( 'DBLoadBalancer', $lb );
 
 		// Inject fake San Francisco page into LinkCache so it "exists"
