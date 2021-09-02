@@ -4,7 +4,7 @@ namespace GeoData;
 
 use MediaWiki\MediaWikiServices;
 use Title;
-use Wikimedia\Rdbms\Database;
+use Wikimedia\Rdbms\IDatabase;
 
 class GeoData {
 	/**
@@ -24,7 +24,7 @@ class GeoData {
 	 * Retrieves all coordinates for the given page id
 	 *
 	 * @param int $pageId ID of the page
-	 * @param array $conds Conditions for Database::select()
+	 * @param array $conds Conditions for IDatabase::select()
 	 * @param int $dbType Database to select from DB_PRIMARY or DB_REPLICA
 	 * @return Coord[]
 	 */
@@ -41,7 +41,7 @@ class GeoData {
 
 	/**
 	 * @param int $dbType DB_PRIMARY or DB_REPLICA
-	 * @return Database
+	 * @return IDatabase
 	 */
 	private static function getDB( $dbType ) {
 		return MediaWikiServices::getInstance()
