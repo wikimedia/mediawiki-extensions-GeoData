@@ -24,7 +24,7 @@ class Searcher extends ElasticsearchIntermediary {
 	public function __construct( User $user = null ) {
 		/** @var SearchConfig $config */
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'CirrusSearch' );
-		/** @phan-suppress-next-line PhanTypeMismatchArgument */
+		'@phan-var SearchConfig $config';
 		$connection = new \CirrusSearch\Connection( $config );
 
 		parent::__construct( $connection, $user, 0 );
