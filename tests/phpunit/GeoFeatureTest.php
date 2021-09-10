@@ -13,7 +13,7 @@ use GeoData\Search\CirrusNearTitleBoostFeature;
 use GeoData\Search\CirrusNearTitleFilterFeature;
 use GeoData\Search\GeoRadiusFunctionScoreBuilder;
 use HashConfig;
-use MediaWiki\MediaWikiServices;
+use LinkCacheTestTrait;
 use MediaWikiTestCase;
 use Title;
 use Wikimedia\Rdbms\DBConnRef;
@@ -45,6 +45,7 @@ use Wikimedia\Rdbms\MaintainableDBConnRef;
  * @group GeoData
  */
 class GeoFeatureTest extends MediaWikiTestCase {
+	use LinkCacheTestTrait;
 
 	/** @var KeywordFeatureAssertions */
 	private $kwAssert;
@@ -316,11 +317,9 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		$this->setService( 'DBLoadBalancer', $lb );
 
 		// Inject fake San Francisco page into LinkCache so it "exists"
-		MediaWikiServices::getInstance()->getLinkCache()
-			->addGoodLinkObj( 7654321, Title::newFromText( 'San Francisco' ) );
+		$this->addGoodLinkObject( 7654321, Title::newFromText( 'San Francisco' ) );
 		// Inject fake page with comma in it as well
-		MediaWikiServices::getInstance()->getLinkCache()
-			->addGoodLinkObj( 1234567, Title::newFromText( 'Washington, D.C.' ) );
+		$this->addGoodLinkObject( 1234567, Title::newFromText( 'Washington, D.C.' ) );
 
 		$config = new HashConfig( [ 'DefaultGlobe' => 'earth' ] );
 
@@ -424,8 +423,7 @@ class GeoFeatureTest extends MediaWikiTestCase {
 		$query = $keyAndValue[0] . ':"' . $keyAndValue[1] . '"';
 
 		// Inject fake page into LinkCache so it "exists"
-		MediaWikiServices::getInstance()->getLinkCache()
-			->addGoodLinkObj( 98765, Title::newFromText( 'GeoFeatureTest-GeoWarnings-Page' ) );
+		$this->addGoodLinkObject( 98765, Title::newFromText( 'GeoFeatureTest-GeoWarnings-Page' ) );
 
 		$this->kwAssert->assertWarnings( $feature, $expected, $query );
 	}
