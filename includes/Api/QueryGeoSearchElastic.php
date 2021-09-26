@@ -7,7 +7,7 @@ use ApiQuery;
 use FormatJson;
 use GeoData\Coord;
 use GeoData\Searcher;
-use MWNamespace;
+use MediaWiki\MediaWikiServices;
 use Title;
 
 class QueryGeoSearchElastic extends QueryGeoSearch {
@@ -84,7 +84,9 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 
 		$nested = new \Elastica\Query\Nested();
 		$nested->setPath( 'coordinates' )->setQuery( $filter );
-		if ( count( $namespaces ) < count( MWNamespace::getValidNamespaces() ) ) {
+		if ( count( $namespaces ) <
+			count( MediaWikiServices::getInstance()->getNamespaceInfo()->getValidNamespaces() )
+		) {
 			$outerFilter = new \Elastica\Query\BoolQuery();
 			$outerFilter->addFilter( $nested );
 			$outerFilter->addFilter( new \Elastica\Query\Terms( 'namespace', $namespaces ) );
