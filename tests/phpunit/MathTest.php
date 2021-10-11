@@ -4,14 +4,14 @@ namespace GeoData\Test;
 
 use GeoData\Coord;
 use GeoData\Math;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \GeoData\Math
  *
  * @group GeoData
  */
-class MathTest extends MediaWikiTestCase {
+class MathTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \GeoData\Math::distance
 	 * @dataProvider getDistanceData

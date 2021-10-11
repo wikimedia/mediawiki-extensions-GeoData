@@ -3,14 +3,14 @@
 namespace GeoData\Test;
 
 use GeoData\BoundingBox;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \GeoData\BoundingBox
  *
  * @group GeoData
  */
-class BoundingBoxTest extends MediaWikiTestCase {
+class BoundingBoxTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \GeoData\BoundingBox::center
 	 * @dataProvider provideCenter

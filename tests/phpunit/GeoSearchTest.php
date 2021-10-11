@@ -6,14 +6,14 @@ use ApiMain;
 use ApiUsageException;
 use FauxRequest;
 use GeoData\Api\QueryGeoSearch;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \GeoData\Api\QueryGeoSearch
  *
  * @group GeoData
  */
-class GeoSearchTest extends MediaWikiTestCase {
+class GeoSearchTest extends MediaWikiIntegrationTestCase {
 	public function setUp(): void {
 		$this->setMwGlobals( 'wgAPIListModules',
 			[

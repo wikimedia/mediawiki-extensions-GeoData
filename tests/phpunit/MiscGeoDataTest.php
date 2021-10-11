@@ -3,12 +3,12 @@
 namespace GeoData\Test;
 
 use GeoData\Api\QueryGeoSearchDb;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @group GeoData
  */
-class MiscGeoDataTest extends MediaWikiTestCase {
+class MiscGeoDataTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \GeoData\Api\QueryGeoSearchDb::intRange
 	 * @dataProvider getIntRangeData

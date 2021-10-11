@@ -4,14 +4,14 @@ namespace GeoData\Test;
 
 use GeoData\Globe;
 use GeoData\Math;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \GeoData\Globe
  *
  * @group GeoData
  */
-class GlobeTest extends MediaWikiTestCase {
+class GlobeTest extends MediaWikiIntegrationTestCase {
 	public function testEarth() {
 		$g = new Globe( 'earth' );
 		$this->assertEquals( 'earth', $g->getName() );

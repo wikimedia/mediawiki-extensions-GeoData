@@ -14,7 +14,7 @@ use GeoData\Search\CirrusNearTitleFilterFeature;
 use GeoData\Search\GeoRadiusFunctionScoreBuilder;
 use HashConfig;
 use LinkCacheTestTrait;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 use Title;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
@@ -44,14 +44,14 @@ use Wikimedia\Rdbms\MaintainableDBConnRef;
  * @covers \GeoData\Search\CirrusNearTitleFilterFeature
  * @group GeoData
  */
-class GeoFeatureTest extends MediaWikiTestCase {
+class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	use LinkCacheTestTrait;
 
 	/** @var KeywordFeatureAssertions */
 	private $kwAssert;
 
 	public function __construct( $name = null, array $data = [], $dataName = '' ) {
-		MediaWikiTestCase::__construct( $name, $data, $dataName );
+		MediaWikiIntegrationTestCase::__construct( $name, $data, $dataName );
 	}
 
 	protected function setUp(): void {

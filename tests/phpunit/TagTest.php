@@ -5,7 +5,7 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\CoordinatesOutput;
 use MediaWiki\MediaWikiServices;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 use ParserOptions;
 use Title;
 
@@ -15,7 +15,7 @@ use Title;
  * @covers \GeoData\CoordinatesOutput::getFromParserOutput()
  * @group GeoData
  */
-class TagTest extends MediaWikiTestCase {
+class TagTest extends MediaWikiIntegrationTestCase {
 
 	public function setUp(): void {
 		parent::setUp();

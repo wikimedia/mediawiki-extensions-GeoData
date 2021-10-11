@@ -6,7 +6,7 @@ use GeoData\Coord;
 use GeoData\CoordinatesParserFunction;
 use GeoData\Globe;
 use Language;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 use Parser;
 use Wikimedia\TestingAccessWrapper;
 
@@ -15,7 +15,7 @@ use Wikimedia\TestingAccessWrapper;
  *
  * @group GeoData
  */
-class ParseCoordTest extends MediaWikiTestCase {
+class ParseCoordTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \GeoData\CoordinatesParserFunction::parseCoordinates
 	 * @dataProvider getCases
