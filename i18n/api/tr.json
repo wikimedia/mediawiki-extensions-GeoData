@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"McDutchie",
 			"MuratTheTurkish"
 		]
 	},
@@ -14,7 +15,7 @@
 	"apihelp-query+coordinates-paramvalue-prop-dim": "Nesnenin metre cinsinden yaklaşık boyutu.",
 	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alfa-2 ülke kodu (ör. <samp>US</samp> veya <samp>RU</samp>).",
 	"apihelp-query+coordinates-paramvalue-prop-region": "ISO 3166-2 bölge kodu (kısa çizgiden sonraki ISO 3166-2 kodunun bir parçası; örneğin <samp>FL</samp> veya <samp>MOS</samp>).",
-	"apihelp-query+coordinates-paramvalue-prop-globe": "Koordinatların hangi karasal gövdeye göreceli olduğu (ör. <samp>ay</samp> veya <samp>pluto</samp>). Dünya varsayılanı. Ayrıntılar için [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] sayfasına bakın.",
+	"apihelp-query+coordinates-paramvalue-prop-globe": "Koordinatların hangi karasal gövdeye göreceli olduğu (ör. <samp>moon</samp> veya <samp>pluto</samp>). Dünya varsayılanı. Ayrıntılar için [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] sayfasına bakın.",
 	"apihelp-query+coordinates-param-primary": "Ne tür koordinatlar döndürülecek.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "Maddenin konusunun konumu. Her başlık için en fazla bir birincil koordinat vardır.",
 	"apihelp-query+coordinates-paramvalue-primary-secondary": "Maddede bahsedilen bazı nesnelerin konumu. Herhangi bir sayıda ikincil koordinat bir başlık ile ilişkilendirilebilir.",
