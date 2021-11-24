@@ -10,7 +10,8 @@
 			"Ladsgroup",
 			"Mjbmr",
 			"Reza1615",
-			"جواد"
+			"جواد",
+			"Jeeputer"
 		]
 	},
 	"geodata-desc": "افزودن ذخیره‌سازی مختصات جغرافیایی و کارآمدی بازیابی",
@@ -26,7 +27,7 @@
 	"geodata-broken-tags-category-desc": "صفحه برچسب ناهنجار <code><nowiki>{{#coordinates:}}</nowiki></code> دارد.",
 	"geodata-unknown-type-category": "صفحه‌ها با نوع تعریف‌نشده از مختصات",
 	"geodata-unknown-type-category-desc": "صفحه از مقدار تعریف‌نشده برای پارامتر <code>type</code> در مختصات استفاده می‌کند.",
-	"geodata-unknown-globe-category": "صفحه‌ها با ارزش جهانی ناشناخته",
+	"geodata-unknown-globe-category": "صفحه‌ها با ارزش سراسری ناشناخته",
 	"geodata-unknown-globe-category-desc": "صفحه از مقدار تعریف‌نشده برای پارامتر <code>globe</code> در مختصات استفاده می‌کند.",
 	"geodata-unknown-region-category": "صفحه‌ها با ارزش ناحیه‌ای نامعتبر",
 	"geodata-unknown-region-category-desc": "صفحه از مقدار تعریف‌نشده برای پارامتر <code>region</code> در مختصات استفاده می‌کند.",

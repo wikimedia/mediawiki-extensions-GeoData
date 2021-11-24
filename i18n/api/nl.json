@@ -3,9 +3,14 @@
 		"authors": [
 			"Mainframe98",
 			"McDutchie",
-			"Siebrand"
+			"Siebrand",
+			"Romaine"
 		]
 	},
 	"apihelp-query+coordinates-paramvalue-prop-name": "Naam van het object.",
-	"apihelp-query+geosearch-description": "Geeft pagina's terug met coördinaten die zich in een bepaald gebied bevinden."
+	"apihelp-query+geosearch-description": "Geeft pagina's terug met coördinaten die zich in een bepaald gebied bevinden.",
+	"apihelp-query+geosearch-param-namespace": "Naamruimtes om in te zoeken.",
+	"apierror-geodata-nocoord": "Paginacoördinaten onbekend.",
+	"apierror-geodata-noprimarycoord": "Pagina $1 heeft geen primaire coördinaten.",
+	"apierror-geodata-notonearth": "De coördinaten van deze pagina zijn niet op Aarde."
 }
