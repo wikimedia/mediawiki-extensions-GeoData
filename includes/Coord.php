@@ -73,12 +73,20 @@ class Coord implements JsonSerializable {
 	 * @return Coord
 	 */
 	public static function newFromRow( $row ) {
-		$c = new Coord( $row->gt_lat, $row->gt_lon );
-		foreach ( self::$fieldMapping as $field => $column ) {
-			if ( isset( $row->$column ) ) {
-				$c->$field = $row->$column;
-			}
-		}
+		$c = new Coord(
+			(float)$row->gt_lat,
+			(float)$row->gt_lon,
+			$row->gt_globe ?? null
+		);
+
+		$c->id = $row->gt_id ?? 0;
+		$c->primary = (bool)( $row->gt_primary ?? false );
+		$c->dim = ( $row->gt_dim ?? null ) === null ? null : (int)$row->gt_dim;
+		$c->type = $row->gt_type ?? null;
+		$c->name = $row->gt_name ?? null;
+		$c->country = $row->gt_country ?? null;
+		$c->region = $row->gt_region ?? null;
+
 		return $c;
 	}
 
