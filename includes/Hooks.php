@@ -168,7 +168,8 @@ class Hooks {
 		if ( $title->getNamespace() != NS_FILE ) {
 			return null;
 		}
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
+			->findFile( $title, [ 'ignoreRedirect' => true ] );
 		if ( !$file ) {
 			return null;
 		}
