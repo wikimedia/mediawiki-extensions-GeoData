@@ -11,7 +11,12 @@
 		"MediaWiki": ">= 1.37.0"
 	},
 	"APIPropModules": {
-		"coordinates": "GeoData\\Api\\QueryCoordinates"
+		"coordinates": {
+			"class": "GeoData\\Api\\QueryCoordinates",
+			"services": [
+				"WikiPageFactory"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"GeoData": [

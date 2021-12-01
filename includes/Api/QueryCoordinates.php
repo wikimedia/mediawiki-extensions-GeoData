@@ -9,6 +9,7 @@ use GeoData\Coord;
 use GeoData\GeoData;
 use GeoData\Globe;
 use GeoData\Math;
+use MediaWiki\Page\WikiPageFactory;
 use MWException;
 use Title;
 
@@ -18,12 +19,17 @@ use Title;
  */
 class QueryCoordinates extends ApiQueryBase {
 
+	/** @var WikiPageFactory */
+	private $wikiPageFactory;
+
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
+	 * @param WikiPageFactory $wikiPageFactory
 	 */
-	public function __construct( ApiQuery $query, $moduleName ) {
+	public function __construct( ApiQuery $query, $moduleName, WikiPageFactory $wikiPageFactory ) {
 		parent::__construct( $query, $moduleName, 'co' );
+		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	public function execute() {
@@ -119,6 +125,19 @@ class QueryCoordinates extends ApiQueryBase {
 					'apierror-invalidtitle',
 					wfEscapeWikiText( $params['distancefrompage'] )
 				] );
+			}
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
+			$page = $this->wikiPageFactory->newFromTitle( $title );
+			if ( !$page->exists() ) {
+				$this->dieWithError( [
+					'apierror-invalidtitle',
+					wfEscapeWikiText( $params['distancefrompage'] )
+				] );
+			}
+			$redirectTarget = $page->getRedirectTarget();
+			if ( $redirectTarget ) {
+				$title = $redirectTarget;
+				$page = $this->wikiPageFactory->newFromTitle( $title );
 			}
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$coord = GeoData::getPageCoordinates( $title );
