@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Yfdyh000"
+			"Yfdyh000",
+			"Xiplus"
 		]
 	},
 	"apihelp-query+coordinates-description": "返回指定页面的地理坐标。",
@@ -31,7 +32,7 @@
 	"apihelp-query+geosearch-param-maxdim": "限制搜索到不大于此值的对象，单位为米。",
 	"apihelp-query+geosearch-param-limit": "返回页面的最大数量。",
 	"apihelp-query+geosearch-param-globe": "要搜索的星球。参见[[mw:Special:MyLanguage/Extension:GeoData#Glossary]]获取详情。",
-	"apihelp-query+geosearch-param-namespace": "搜索的名字空间。",
+	"apihelp-query+geosearch-param-namespace": "搜索的命名空间。",
 	"apihelp-query+geosearch-param-prop": "要返回的额外坐标属性。（总是返回以下值的属性：<var>lat</var>、<var>lon</var>，以及<var>primary</var>或<var>secondary</var>之一作为布尔值标记。）",
 	"apihelp-query+geosearch-param-primary": "要返回的坐标类型。",
 	"apihelp-query+geosearch-param-debug": "是否应该返回调试信息。",

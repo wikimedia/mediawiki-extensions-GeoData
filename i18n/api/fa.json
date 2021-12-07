@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Alirezaaa",
-			"Ladsgroup"
+			"Ladsgroup",
+			"Jeeputer"
 		]
 	},
 	"apihelp-query+coordinates-description": "مختصات صفحات داده‌شده را برمیگرداند.",
 	"apihelp-query+coordinates-summary": "مختصات صفحات داده‌شده را برمیگرداند.",
 	"apihelp-query+coordinates-param-limit": "تعداد مختصات برای بازگرداندن.",
-	"apihelp-query+coordinates-param-prop": "کدام ویژگی‌های اضافی مختصات برگردانده شود.",
+	"apihelp-query+coordinates-param-prop": "ویژگی‌های اضافی مختصات برای برگرداندن. (ویژگی‌هایی که همواره برگردانده می‌شوند: <var>lat</var>، <var>lon</var> و <var>primary</var> یا <var>secondary</var> بع‌عنوان پرچم بولی.)",
 	"apihelp-query+coordinates-paramvalue-prop-name": "نام شی.",
 	"apihelp-query+coordinates-paramvalue-prop-dim": "اندازه حدودی شی به متر.",
 	"apihelp-query+coordinates-param-primary": "نوع مختصات برای بازگرداندن.",
@@ -20,7 +21,7 @@
 	"apihelp-query+geosearch-param-radius": "شعاع جستجو به متر.",
 	"apihelp-query+geosearch-param-limit": "حداکثر شمار صفحات برای بازگرداندن.",
 	"apihelp-query+geosearch-param-namespace": "فضاهای نامی برای جستجو",
-	"apihelp-query+geosearch-param-prop": "کدام ویژگی‌های اضافی مختصات برگردانده شود.",
+	"apihelp-query+geosearch-param-prop": "ویژگی‌های اضافی مختصات برای برگرداندن. (ویژگی‌هایی که همواره برگردانده می‌شوند: <var>lat</var>، <var>lon</var> و <var>primary</var> یا <var>secondary</var> بع‌عنوان پرچم بولی.)",
 	"apihelp-query+geosearch-param-primary": "نوع مختصات برای بازگرداندن.",
 	"apierror-geodata-nocoord": "مختصات صفحه تعریف نشده‌است.",
 	"apierror-geodata-noprimarycoord": "صفحهٔ $1 هیچ مختصات اولیه‌ای ندارد.",

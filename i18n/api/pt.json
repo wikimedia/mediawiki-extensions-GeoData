@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"McDutchie"
 		]
 	},
 	"apihelp-query+coordinates-description": "Devolve as coordenadas das páginas fornecidas.",
@@ -13,7 +14,7 @@
 	"apihelp-query+coordinates-paramvalue-prop-dim": "Tamanho aproximado do objeto em metros.",
 	"apihelp-query+coordinates-paramvalue-prop-country": "Código do país ISO 3166-1 alpha-2 (por exemplo, <samp>US</samp> ou <samp>RU</samp>).",
 	"apihelp-query+coordinates-paramvalue-prop-region": "Código da região ISO 3166-2 (a parte do código ISO 3166-2 após o traço; por exemplo, <samp>FL</samp> ou <samp>MOS</samp>).",
-	"apihelp-query+coordinates-paramvalue-prop-globe": "O corpo celestial do qual as coordenadas são relativas (por exemplo, <samp>lua</samp> ou <samp>plutão</samp>). Por omissão, tem o valor Terra. Consulte [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] para mais detalhes.",
+	"apihelp-query+coordinates-paramvalue-prop-globe": "O corpo celestial do qual as coordenadas são relativas (por exemplo, <samp>moon</samp> ou <samp>pluto</samp>). Por omissão, tem o valor Terra. Consulte [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] para mais detalhes.",
 	"apihelp-query+coordinates-param-primary": "Tipo de coordenadas a serem devolvidas.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "A localização do assunto do artigo. Existe no máximo uma coordenada primária por título.",
 	"apihelp-query+coordinates-paramvalue-primary-secondary": "A localização de um objeto que é mencionado no artigo. Qualquer número de coordenadas secundárias podem ser associadas a um título.",

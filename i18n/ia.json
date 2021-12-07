@@ -14,7 +14,17 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: non pote haber plus de un etiquetta primari per pagina",
 	"geodata-limit-exceeded": "Le limite de $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|etiquetta|etiquettas}} per pagina ha essite excedite",
 	"geodata-broken-tags-category": "Paginas con etiquettas mal formate de coordinatas",
+	"geodata-broken-tags-category-desc": "Le pagina ha un etiquetta <code><nowiki>{{#coordinates:}}</nowiki></code> mal formate.",
 	"geodata-unknown-type-category": "Paginas con typo incognite de coordinatas",
+	"geodata-unknown-type-category-desc": "Le pagina usa un valor incognite del parametro <code>type</code> pro le coordinatas.",
 	"geodata-unknown-globe-category": "Paginas con valor de globo incognite",
-	"geodata-unknown-region-category": "Paginas con valor de region incognite"
+	"geodata-unknown-globe-category-desc": "Le pagina usa un valor incognite del parametro <code>globe</code> pro le coordinatas.",
+	"geodata-unknown-region-category": "Paginas con valor de region incognite",
+	"geodata-unknown-region-category-desc": "Le pagina usa un valor non valide del parametro <code>region</code> pro le coordinatas.",
+	"geodata-api-help-coordinates-format": "Formato: Latitude e longitude separate per un barra vertical (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "Le geo-coordinatas '$2' fornite a '$1' non poteva esser interpretate.",
+	"geodata-search-feature-invalid-distance": "Le geo-distantia '$2' fornite a '$1' non poteva esser interpretate.",
+	"geodata-search-feature-unknown-title": "Le titulo '$2' fornite a '$1' non existe.",
+	"geodata-search-feature-title-no-coordinates": "Le titulo '$2' fornite a '$1' non ha coordinatas.",
+	"geodata-search-timeout": "Le recerca GeoData ha expirate. Solo resultatos partial es disponibile."
 }
