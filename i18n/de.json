@@ -6,7 +6,9 @@
 			"Kghbln",
 			"Metalhead64",
 			"Predatorix",
-			"Tiin"
+			"Tiin",
+			"1233qwer1234qwer4",
+			"Umherirrender"
 		]
 	},
 	"geodata-desc": "Ergänzt Funktionen zum Speichern und Abrufen geografischer Koordinaten",
@@ -30,5 +32,6 @@
 	"geodata-search-feature-invalid-coordinates": "Die Geokoordinaten „$2“, die in „$1“ angegeben wurden, konnten nicht geparst werden.",
 	"geodata-search-feature-invalid-distance": "Die Geodistanz „$2“, die in „$1“ angegeben wurde, konnte nicht geparst werden.",
 	"geodata-search-feature-unknown-title": "Der Titel „$2“, der in „$1“ angegeben wurde, ist nicht vorhanden.",
-	"geodata-search-feature-title-no-coordinates": "Der Titel „$2“, der in „$1“ angegeben wurde, besitzt keine Koordinaten."
+	"geodata-search-feature-title-no-coordinates": "Der Titel „$2“, der in „$1“ angegeben wurde, besitzt keine Koordinaten.",
+	"geodata-search-timeout": "Zeitüberschreitng bei der GeoData-Suche. Nur Teile des Ergebnisses sind verfügbar."
 }

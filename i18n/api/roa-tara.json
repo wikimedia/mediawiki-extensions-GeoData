@@ -6,5 +6,7 @@
 	},
 	"apihelp-query+coordinates-description": "Torne le coordinate de le pàggen indicate.",
 	"apihelp-query+coordinates-summary": "Torne le coordinate de le pàggen indicate.",
-	"apihelp-query+coordinates-param-limit": "Quanda coordinate adda turnà."
+	"apihelp-query+coordinates-param-limit": "Quanda coordinate adda turnà.",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Nome de l'oggette.",
+	"apihelp-query+geosearch-param-radius": "Cirche 'u ragge in metre."
 }

@@ -4,7 +4,8 @@
 			"Ainali",
 			"Boivie",
 			"Lokal Profil",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"JRyan"
 		]
 	},
 	"geodata-desc": "Lägger till funktionalitet för att lagra och hämta geografiska koordinater",
@@ -24,5 +25,10 @@
 	"geodata-unknown-globe-category-desc": "Sidan använder ett okänt värde för <code>globe</code>-parametern för koordinater.",
 	"geodata-unknown-region-category": "Sidor med ogiltigt regionvärde",
 	"geodata-unknown-region-category-desc": "Sidan använder ett okänt värde för <code>region</code>-parametern för koordinater.",
-	"geodata-api-help-coordinates-format": "Format: Latitud och longitud separerade av lodstreck (<kbd>|</kbd>)."
+	"geodata-api-help-coordinates-format": "Format: Latitud och longitud separerade av lodstreck (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "Geokoordinaterna '$2' till '$1' kunde inte analyseras.",
+	"geodata-search-feature-invalid-distance": "Det geografiska avståndet '$2' till '$1' kunde inte analyseras.",
+	"geodata-search-feature-unknown-title": "Titeln '$2' till '$1' existerar inte.",
+	"geodata-search-feature-title-no-coordinates": "Titeln '$2' till '$1' har inga koordinater.",
+	"geodata-search-timeout": "GeoData-sökningen tog slut. Endast delvisa resultat är tillgängliga."
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Codenstory",
 			"Kwj2772",
-			"Ykhwong"
+			"Ykhwong",
+			"McDutchie"
 		]
 	},
 	"apihelp-query+coordinates-description": "주어진 문서의 지리 좌표를 반환합니다.",
@@ -15,7 +16,7 @@
 	"apihelp-query+coordinates-paramvalue-prop-dim": "객체의 대략적인 크기. (단위: 미터)",
 	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alpha-2 국가 코드 (예: <samp>US</samp> 또는 <samp>RU</samp>).",
 	"apihelp-query+coordinates-paramvalue-prop-region": "ISO 3166-2 지역 코드 (대시 다음의 ISO 3166-2 코드 부분. 예: <samp>FL</samp> 또는 <samp>MOS</samp>).",
-	"apihelp-query+coordinates-paramvalue-prop-globe": "좌표와 관계 있는 천체 (예시: <samp>달</samp> 또는 <samp>명왕성</samp>). 기본값은 지구입니다. 자세한 사항은 [[mw:Special:MyLanguage/Extension:GeoData#Glossary]]를 참조하세요.",
+	"apihelp-query+coordinates-paramvalue-prop-globe": "좌표와 관계 있는 천체 (예시: <samp>moon</samp> 또는 <samp>pluto</samp>). 기본값은 지구입니다. 자세한 사항은 [[mw:Special:MyLanguage/Extension:GeoData#Glossary]]를 참조하세요.",
 	"apihelp-query+coordinates-param-primary": "반환할 좌표의 종류입니다.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "문서 주제의 위치입니다. 제목 당 최대 하나의 기본 좌표에 위치합니다.",
 	"apihelp-query+coordinates-paramvalue-primary-secondary": "본문에서 언급한 일부 객체의 위치입니다. 여러 보조 좌표를 제목과 연결할 수 있습니다.",
@@ -28,6 +29,7 @@
 	"apihelp-query+geosearch-param-bbox": "검색할 경계 상자: 왼쪽 상단 및 오른쪽 하단 모서리의 좌표는 파이프(<kbd>|</kbd>)로 구분합니다.",
 	"apihelp-query+geosearch-param-coord": "검색할 주위의 좌표입니다.",
 	"apihelp-query+geosearch-param-radius": "미터 단위로 반경을 검색합니다.",
+	"apihelp-query+geosearch-param-maxdim": "거리가 이 값 이하인 개체로 검색을 제한합니다. 단위: 미터",
 	"apihelp-query+geosearch-param-limit": "반환할 문서의 최대 개수입니다.",
 	"apihelp-query+geosearch-param-globe": "검색할 지구본입니다. 자세한 내용은 [[mw:Special:MyLanguage/Extension:GeoData#Glossary]]를 참조하세요.",
 	"apihelp-query+geosearch-param-namespace": "검색할 이름공간입니다.",

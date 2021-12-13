@@ -5,6 +5,13 @@
 			"Ranveig"
 		]
 	},
+	"geodata-bad-input": "Ugyldige argument vart sende til <nowiki>{{#coordinates:}}</nowiki>-funksjonen",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: ugyldig breiddegrad",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ugyldig lengdegrad",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: ukjend type «$1»",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: ukjend globe «$1»",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: ugyldig regionkodeformat",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: kan ikkje ha meir enn éin primærtagg per side",
 	"geodata-broken-tags-category": "Sider med feil i koordinattaggane",
 	"geodata-unknown-type-category": "Sider med ukjende koordinattypar",
 	"geodata-unknown-globe-category": "Sider med ukjend globe-verdi",

@@ -9,7 +9,8 @@
 			"Lucky",
 			"Thibaut120094",
 			"Urhixidur",
-			"Wladek92"
+			"Wladek92",
+			"McDutchie"
 		]
 	},
 	"apihelp-query+coordinates-description": "Retourne les coordonnées de la page référencée.",
@@ -21,7 +22,7 @@
 	"apihelp-query+coordinates-paramvalue-prop-dim": "Taille approximative de l'objet en mètres.",
 	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 code alphanumérique sur 2 caractères (alpha-2) du pays (par exemple <samp>US</samp> ou <samp>RU</samp>).",
 	"apihelp-query+coordinates-paramvalue-prop-region": "Code de région ISO 3166-2 (la partie du code ISO 3166-2 après le tiret ; par ex. <samp>FL</samp> ou <samp>MOS</samp>).",
-	"apihelp-query+coordinates-paramvalue-prop-globe": "À quel corps terrestre sont relatives les coordonnées (par ex. <samp>Lune</samp> ou <samp>Pluton</samp>). Par défaut, la Terre. Voir [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] pour plus de détails.",
+	"apihelp-query+coordinates-paramvalue-prop-globe": "À quel corps terrestre sont relatives les coordonnées (par ex. <samp>moon</samp> ou <samp>pluto</samp>). Par défaut, la Terre. Voir [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] pour plus de détails.",
 	"apihelp-query+coordinates-param-primary": "Quel type de coordonnées renvoyer.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "Géolocalisation du sujet de l'article. Il ne peut y avoir qu'une coordonnée primaire par titre.",
 	"apihelp-query+coordinates-paramvalue-primary-secondary": "L’emplacement d’un objet mentionné dans l’article. Un nombre quelconque de coordonnées secondaires peut être associé avec un titre.",

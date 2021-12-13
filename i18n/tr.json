@@ -2,15 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"Sadrettin"
+			"Sadrettin",
+			"MuratTheTurkish"
 		]
 	},
 	"geodata-desc": "Coğrafi koordinat depolama ve erişim işlevselliği ekler",
 	"geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki> işlevine geçersiz argümanlar iletildi",
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: geçersiz enlem",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: geçersiz boylam",
-	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tanınmayan tür \"$1\"",
-	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: tanınmayan küre \"$1\"",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tanınmayan \"$1\" türü",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: tanınmayan \"$1\" küresi",
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: geçersiz bölge kodu biçimi",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: sayfa başına birden fazla birincil etiket olamaz",
 	"geodata-limit-exceeded": "Sayfa başına $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|etiket|etiket}} sınırı aşıldı",

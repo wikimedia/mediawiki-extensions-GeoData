@@ -30,5 +30,6 @@
 	"geodata-search-feature-invalid-coordinates": "提供给“$1”的地理坐标“$2”不能解析。",
 	"geodata-search-feature-invalid-distance": "提供给“$1”的地理距离“$2”不能解析。",
 	"geodata-search-feature-unknown-title": "提供给“$1”的地标题“$2”不存在。",
-	"geodata-search-feature-title-no-coordinates": "提供给“$1”的地标题“$2”不包含任何坐标。"
+	"geodata-search-feature-title-no-coordinates": "提供给“$1”的地标题“$2”不包含任何坐标。",
+	"geodata-search-timeout": "GeoData搜索超时。只有部分结果可用。"
 }
