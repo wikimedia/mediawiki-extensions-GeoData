@@ -254,7 +254,7 @@ class Hooks {
 	 * @param LocalFile $file
 	 */
 	public static function onFileUpload( LocalFile $file ) {
-		$wp = WikiPage::factory( $file->getTitle() );
+		$wp = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $file->getTitle() );
 		$po = $wp->makeParserOptions( 'canonical' );
 		$pout = $wp->getParserOutput( $po );
 		if ( !$pout ) {
