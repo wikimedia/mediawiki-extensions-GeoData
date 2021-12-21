@@ -12,6 +12,7 @@ use Elastica\Search;
 use MediaWiki\MediaWikiServices;
 use StatusValue;
 use User;
+use WikiMap;
 
 /**
  * Performs ES searches via CirrusSearch infrastructure
@@ -41,7 +42,7 @@ class Searcher extends ElasticsearchIntermediary {
 	 */
 	public function performSearch( \Elastica\Query $query, array $namespaces, $queryType ) {
 		$indexType = $this->connection->pickIndexTypeForNamespaces( $namespaces );
-		$pageType = $this->connection->getPageType( wfWikiID(), $indexType );
+		$pageType = $this->connection->getPageType( WikiMap::getCurrentWikiId(), $indexType );
 		$search = $pageType->createSearch( $query );
 
 		$this->connection->setTimeout( $this->getClientTimeout( $queryType ) );
