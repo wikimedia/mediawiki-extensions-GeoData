@@ -154,15 +154,8 @@ class Hooks {
 		if ( !$file ) {
 			return null;
 		}
-		$metadata = $file->getMetadata();
-
-		\Wikimedia\suppressWarnings();
-		$metadata = unserialize( $metadata );
-		\Wikimedia\restoreWarnings();
-
-		if ( isset( $metadata ) && isset( $metadata['GPSLatitude'] )
-			&& isset( $metadata['GPSLongitude'] )
-		) {
+		$metadata = $file->getMetadataItems( [ 'GPSLatitude', 'GPSLongitude' ] );
+		if ( isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];
 			$globe = new Globe( 'earth' );
