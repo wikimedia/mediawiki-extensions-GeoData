@@ -1,17 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
-			"Farras"
+			"Farras",
+			"Daud I.F. Argana"
 		]
 	},
+	"geodata-desc": "Menambahkan fungsionalitas penyimpanan dan pengambilan koordinat geografis",
+	"geodata-bad-input": "Argumen-argumen yang tidak sah telah diberikan kepada fungsi <nowiki>{{#coordinates:}}</nowiki>",
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: lintang salah",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: bujur salah",
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: jenis tidak dikenal \"$1\"",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: globe tidak dikenal \"$1\"",
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: format kode wilayah tidak sah",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: tidak bisa memiliki lebih dari satu tag utama per halaman",
 	"geodata-limit-exceeded": "Batas $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tag}} per halaman telah dilewati",
 	"geodata-broken-tags-category": "Halaman dengan tag koordinat rusak",
+	"geodata-broken-tags-category-desc": "Halaman berikut memiliki tag <code><nowiki>{{#coordinates:}}</nowiki></code> yang rusak.",
 	"geodata-unknown-type-category": "Halaman dengan jenis koordinat tidak dikenal",
+	"geodata-unknown-type-category-desc": "Halaman berikut menggunakan nilai parameter <code>type</code> yang tidak dikenal untuk koordinat.",
 	"geodata-unknown-globe-category": "Halaman dengan nilai globe tidak dikenal",
-	"geodata-unknown-region-category": "Halaman dengan nilai wilayah tidak dikenal"
+	"geodata-unknown-globe-category-desc": "Halaman berikut menggunakan nilai parameter <code>globe</code> yang tidak dikenal untuk koordinat.",
+	"geodata-unknown-region-category": "Halaman dengan nilai wilayah tidak dikenal",
+	"geodata-unknown-region-category-desc": "Halaman berikut menggunakan nilai parameter <code>region</code> yang tidak sah untuk koordinat.",
+	"geodata-api-help-coordinates-format": "Format: garis lintang dan bujur dipisahkan oleh tanda pipa (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "Koordinat geo '$2' yang diberikan ke '$1\" tidak bisa diuraikan.",
+	"geodata-search-feature-invalid-distance": "Jarak geo '$2' yang diberikan ke '$1\" tidak bisa diuraikan.",
+	"geodata-search-feature-unknown-title": "Judul '$2\" yang diberikan ke '$1' tidak ada.",
+	"geodata-search-feature-title-no-coordinates": "Judul '$2\" yang diberikan ke '$1' tidak punya koordinat.",
+	"geodata-search-timeout": "Waktu pencarian GeoData telah habis. Hanya sebagian hasil yang tersedia."
 }
