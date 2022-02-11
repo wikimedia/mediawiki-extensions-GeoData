@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jon Harald Søby",
 			"Max Semenik",
 			"MaxSem",
 			"Nemo bis",
@@ -17,13 +18,13 @@
 	"geodata-bad-region": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as fatal error message.\n\n\"region\" is the argument name.\nThis message means that the value of the argument \"region\" is unrecognized.\n\nParameters:\n* $1 - (Unused) region code",
 	"geodata-multiple-primary": "{{doc-important|Do not translate <code>#coordinates</code>.}}\nUsed as error message.",
 	"geodata-limit-exceeded": "Used as fatal error message. Parameters:\n* $1 - number of tags; value of the global variable <code>$wgMaxCoordinatesPerPage</code>",
-	"geodata-broken-tags-category": "Name of the tracking category",
+	"geodata-broken-tags-category": "{{tracking category name}}\nName of the tracking category",
 	"geodata-broken-tags-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-broken-tags-category}} tracking category.",
-	"geodata-unknown-type-category": "Name of the tracking category",
+	"geodata-unknown-type-category": "{{tracking category name}}\nName of the tracking category",
 	"geodata-unknown-type-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-type-category}} tracking category.",
-	"geodata-unknown-globe-category": "Name of the tracking category",
+	"geodata-unknown-globe-category": "{{tracking category name}}\nName of the tracking category",
 	"geodata-unknown-globe-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-globe-category}} tracking category.",
-	"geodata-unknown-region-category": "Name of the tracking category",
+	"geodata-unknown-region-category": "{{tracking category name}}\nName of the tracking category",
 	"geodata-unknown-region-category-desc": "Description on [[Special:TrackingCategories]] for the {{msg-mw|geodata-unknown-region-category}} tracking category.",
 	"geodata-api-help-coordinates-format": "{{doc-apihelp-param|||description=coordinate format documentation for GeoData parameters}}",
 	"geodata-search-feature-invalid-coordinates": "Warning shown to users when providing invalid coordinates to a geo search keyword.",
