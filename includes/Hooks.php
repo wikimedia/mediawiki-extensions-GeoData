@@ -41,30 +41,11 @@ class Hooks {
 	 * @throws MWException
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
-		global $wgGeoDataBackend;
-
-		// T193855 - the extension registry doesn't load extension configuration before
-		if ( !isset( $wgGeoDataBackend ) ) {
-			$wgGeoDataBackend = 'db';
-		}
-		if ( $wgGeoDataBackend != 'db' && $wgGeoDataBackend != 'elastic' ) {
-			throw new MWException( "Unrecognized backend '$wgGeoDataBackend'" );
-		}
-		switch ( $updater->getDB()->getType() ) {
-			case 'sqlite':
-			case 'mysql':
-				$dir = __DIR__;
-
-				if ( $wgGeoDataBackend != 'db' ) {
-					$updater->addExtensionTable( 'geo_tags', "$dir/../sql/externally-backed.sql" );
-				} else {
-					$updater->addExtensionTable( 'geo_tags', "$dir/../sql/db-backed.sql" );
-				}
-				break;
-			default:
-				throw new MWException(
-					'GeoData extension currently supports only MySQL and SQLite'
-				);
+		$base = __DIR__ . '/../sql';
+		$dbType = $updater->getDB()->getType();
+		$updater->addExtensionTable( 'geo_tags', "$base/$dbType/tables-generated.sql" );
+		if ( $dbType !== 'postgres' ) {
+			$updater->addExtensionField( 'geo_tags', 'gt_lon_int', "$base/patch-geo_tags-add-lat_int-lon_int.sql" );
 		}
 	}
 
