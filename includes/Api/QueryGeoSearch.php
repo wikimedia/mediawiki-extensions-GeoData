@@ -11,6 +11,7 @@ use GeoData\Coord;
 use GeoData\GeoData;
 use GeoData\Globe;
 use Title;
+use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use WikiPage;
 
@@ -163,55 +164,55 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 
 		$params = [
 			'coord' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 				ApiBase::PARAM_HELP_MSG_APPEND => [
 					'geodata-api-help-coordinates-format',
 				],
 			],
 			'page' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'bbox' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'radius' => [
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => min( self::DEFAULT_RADIUS, $wgMaxGeoSearchRadius ),
+				ParamValidator::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_DEFAULT => min( self::DEFAULT_RADIUS, $wgMaxGeoSearchRadius ),
 				IntegerDef::PARAM_MIN => self::MIN_RADIUS,
 				IntegerDef::PARAM_MAX => $wgMaxGeoSearchRadius,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
 			],
 			'maxdim' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 			],
 			'limit' => [
-				ApiBase::PARAM_DFLT => 10,
-				ApiBase::PARAM_TYPE => 'limit',
+				ParamValidator::PARAM_DEFAULT => 10,
+				ParamValidator::PARAM_TYPE => 'limit',
 				IntegerDef::PARAM_MIN => 1,
 				IntegerDef::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				IntegerDef::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			],
 			// @todo: globe selection disabled until we have a real use case
 			'globe' => [
-				ApiBase::PARAM_TYPE => (array)$wgDefaultGlobe,
-				ApiBase::PARAM_DFLT => $wgDefaultGlobe,
+				ParamValidator::PARAM_TYPE => (array)$wgDefaultGlobe,
+				ParamValidator::PARAM_DEFAULT => $wgDefaultGlobe,
 			],
 			'namespace' => [
-				ApiBase::PARAM_TYPE => 'namespace',
-				ApiBase::PARAM_DFLT => NS_MAIN,
-				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => 'namespace',
+				ParamValidator::PARAM_DEFAULT => NS_MAIN,
+				ParamValidator::PARAM_ISMULTI => true,
 			],
 			'prop' => [
-				ApiBase::PARAM_TYPE => $propTypes,
-				ApiBase::PARAM_DFLT => 'globe',
-				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => $propTypes,
+				ParamValidator::PARAM_DEFAULT => 'globe',
+				ParamValidator::PARAM_ISMULTI => true,
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( static function ( $i ) use ( $propTypes ) {
 					return 'apihelp-query+coordinates-paramvalue-prop-' . $propTypes[$i];
 				}, array_flip( $propTypes ) ),
 			],
 			'primary' => [
-				ApiBase::PARAM_TYPE => $primaryTypes,
-				ApiBase::PARAM_DFLT => 'primary',
+				ParamValidator::PARAM_TYPE => $primaryTypes,
+				ParamValidator::PARAM_DEFAULT => 'primary',
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( static function ( $i ) use ( $primaryTypes ) {
 					return 'apihelp-query+coordinates-paramvalue-primary-' . $primaryTypes[$i];
 				}, array_flip( $primaryTypes ) ),
@@ -219,7 +220,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		];
 		if ( $wgGeoDataDebug ) {
 			$params['debug'] = [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			];
 		}
 		return $params;

@@ -12,6 +12,7 @@ use GeoData\Math;
 use MediaWiki\Page\WikiPageFactory;
 use MWException;
 use Title;
+use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 /**
@@ -173,35 +174,35 @@ class QueryCoordinates extends ApiQueryBase {
 	public function getAllowedParams() {
 		return [
 			'limit' => [
-				ApiBase::PARAM_DFLT => 10,
-				ApiBase::PARAM_TYPE => 'limit',
+				ParamValidator::PARAM_DEFAULT => 10,
+				ParamValidator::PARAM_TYPE => 'limit',
 				IntegerDef::PARAM_MIN => 1,
 				IntegerDef::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				IntegerDef::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			],
 			'continue' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
 			],
 			'prop' => [
-				ApiBase::PARAM_TYPE => [ 'type', 'name', 'dim', 'country', 'region', 'globe' ],
-				ApiBase::PARAM_DFLT => 'globe',
-				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => [ 'type', 'name', 'dim', 'country', 'region', 'globe' ],
+				ParamValidator::PARAM_DEFAULT => 'globe',
+				ParamValidator::PARAM_ISMULTI => true,
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
 			'primary' => [
-				ApiBase::PARAM_TYPE => [ 'primary', 'secondary', 'all' ],
-				ApiBase::PARAM_DFLT => 'primary',
+				ParamValidator::PARAM_TYPE => [ 'primary', 'secondary', 'all' ],
+				ParamValidator::PARAM_DEFAULT => 'primary',
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
 			'distancefrompoint' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 				ApiBase::PARAM_HELP_MSG_APPEND => [
 					'geodata-api-help-coordinates-format',
 				],
 			],
 			'distancefrompage' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 		];
 	}
