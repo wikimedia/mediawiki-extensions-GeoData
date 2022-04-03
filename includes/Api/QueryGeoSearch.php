@@ -11,6 +11,7 @@ use GeoData\Coord;
 use GeoData\GeoData;
 use GeoData\Globe;
 use Title;
+use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use WikiPage;
 
 class QueryGeoSearch extends ApiQueryGeneratorBase {
@@ -176,8 +177,8 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			'radius' => [
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => min( self::DEFAULT_RADIUS, $wgMaxGeoSearchRadius ),
-				ApiBase::PARAM_MIN => self::MIN_RADIUS,
-				ApiBase::PARAM_MAX => $wgMaxGeoSearchRadius,
+				IntegerDef::PARAM_MIN => self::MIN_RADIUS,
+				IntegerDef::PARAM_MAX => $wgMaxGeoSearchRadius,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
 			],
 			'maxdim' => [
@@ -186,9 +187,9 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			'limit' => [
 				ApiBase::PARAM_DFLT => 10,
 				ApiBase::PARAM_TYPE => 'limit',
-				ApiBase::PARAM_MIN => 1,
-				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
-				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
+				IntegerDef::PARAM_MIN => 1,
+				IntegerDef::PARAM_MAX => ApiBase::LIMIT_BIG1,
+				IntegerDef::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			],
 			// @todo: globe selection disabled until we have a real use case
 			'globe' => [
