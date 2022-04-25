@@ -43,7 +43,7 @@ class Searcher extends ElasticsearchIntermediary {
 	public function performSearch( \Elastica\Query $query, array $namespaces, $queryType ) {
 		$indexType = $this->connection->pickIndexTypeForNamespaces( $namespaces );
 		$pageType = $this->connection->getPageType( WikiMap::getCurrentWikiId(), $indexType );
-		$search = $pageType->createSearch( $query );
+		$search = $pageType->getIndex()->createSearch( $query );
 
 		$this->connection->setTimeout( $this->getClientTimeout( $queryType ) );
 		$search->setOption( Search::OPTION_TIMEOUT, $this->getTimeout( $queryType ) );
