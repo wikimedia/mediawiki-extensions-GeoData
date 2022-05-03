@@ -23,7 +23,7 @@ class MathTest extends MediaWikiIntegrationTestCase {
 
 	public function getDistanceData() {
 		return [
-			// just run against a few values from teh internets...
+			// just run against a few values from the internets...
 			[ 55.75, 37.6167, 59.95, 30.3167, 635000, 'Moscow to St. Bumtown' ],
 			[ 51.5, -0.1167, 52.35, 4.9167, 357520, 'London to Amsterdam' ],
 			[ 40.7142, -74.0064, 37.775, -122.418, 4125910, 'New York to San Francisco' ],
