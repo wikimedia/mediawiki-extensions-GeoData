@@ -3,6 +3,7 @@
 namespace GeoData;
 
 use CirrusSearch\ElasticsearchIntermediary;
+use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\SearchRequestLog;
 use ConfigException;
@@ -18,6 +19,10 @@ use WikiMap;
  * Performs ES searches via CirrusSearch infrastructure
  */
 class Searcher extends ElasticsearchIntermediary {
+
+	/** @var SearchConfig */
+	private $config;
+
 	/**
 	 * @param User|null $user
 	 * @throws ConfigException
@@ -26,6 +31,7 @@ class Searcher extends ElasticsearchIntermediary {
 		/** @var SearchConfig $config */
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'CirrusSearch' );
 		'@phan-var SearchConfig $config';
+		$this->config = $config;
 		$connection = new \CirrusSearch\Connection( $config );
 
 		parent::__construct( $connection, $user, 0 );
@@ -90,5 +96,14 @@ class Searcher extends ElasticsearchIntermediary {
 			$extra,
 			$namespaces
 		);
+	}
+
+	/**
+	 * @param int[] $namespaces
+	 * @return array[] Rescore configurations as used by elasticsearch.
+	 */
+	public function getRelevanceRescoreConfigurations( array $namespaces ): array {
+		$searchContext = new SearchContext( $this->config, $namespaces );
+		return $searchContext->getRescore();
 	}
 }

@@ -185,6 +185,11 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			'maxdim' => [
 				ParamValidator::PARAM_TYPE => 'integer',
 			],
+			'sort' => [
+				ParamValidator::PARAM_TYPE => [ 'distance', 'relevance' ],
+				ParamValidator::PARAM_DEFAULT => 'distance',
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
+			],
 			'limit' => [
 				ParamValidator::PARAM_DEFAULT => 10,
 				ParamValidator::PARAM_TYPE => 'limit',

@@ -364,6 +364,7 @@ class Hooks {
 			$moduleManager->addModule(
 				'geosearch',
 				'list',
+				// Subclasses for grep: QueryGeoSearchDb, QueryGeoSearchElastic
 				QueryGeoSearch::class . ucfirst( $wgGeoDataBackend )
 			);
 		}

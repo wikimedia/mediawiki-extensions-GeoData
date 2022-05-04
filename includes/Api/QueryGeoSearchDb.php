@@ -26,6 +26,10 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 		parent::run( $resultPageSet );
 		$params = $this->extractRequestParams();
 
+		if ( $params['sort'] === 'relevance' ) {
+			$this->dieWithError( 'apierror-geodata-norelevancesort', 'no-relevance-sort' );
+		}
+
 		$this->addTables( 'geo_tags' );
 		$this->addFields( [ 'gt_lat', 'gt_lon', 'gt_primary' ] );
 		$mapping = Coord::getFieldMapping();

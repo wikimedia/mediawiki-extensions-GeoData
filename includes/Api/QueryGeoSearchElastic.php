@@ -95,7 +95,17 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			$query->setPostFilter( $nested );
 		}
 
-		$query->addSort( [
+		$searcher = new Searcher( $this->getUser() );
+
+		if ( $params['sort'] === 'relevance' ) {
+			// Should be in sync with
+			// https://gerrit.wikimedia.org/g/mediawiki/extensions/CirrusSearch/+/ae9c7338/includes/Search/SearchRequestBuilder.php#97
+			$rescores = $searcher->getRelevanceRescoreConfigurations( $namespaces );
+			if ( $rescores !== [] ) {
+				$query->setParam( 'rescore', $rescores );
+			}
+		} else {
+			$query->addSort( [
 				'_geo_distance' => [
 					'nested' => [
 						'path' => 'coordinates',
@@ -109,9 +119,10 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 					'unit' => 'm'
 				]
 			] );
+		}
+
 		$query->setSize( $params['limit'] );
 
-		$searcher = new Searcher( $this->getUser() );
 		$status = $searcher->performSearch( $query, $namespaces, 'GeoData_spatial_search' );
 		if ( !$status->isOk() ) {
 			$this->dieStatus( $status );
@@ -149,17 +160,20 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			}
 		}
 
-		usort( $coordinates, static function ( $coord1, $coord2 ) {
-			if ( $coord1->distance == $coord2->distance ) {
-				return 0;
-			}
-			return ( $coord1->distance < $coord2->distance ) ? -1 : 1;
-		} );
-
 		if ( !count( $coordinates ) ) {
 			// No results, no point in doing anything else
 			return;
 		}
+
+		if ( $params['sort'] === 'distance' ) {
+			usort( $coordinates, static function ( $coord1, $coord2 ) {
+				if ( $coord1->distance == $coord2->distance ) {
+					return 0;
+				}
+				return ( $coord1->distance < $coord2->distance ) ? -1 : 1;
+			} );
+		}
+
 		$this->addWhere( [ 'page_id' => array_keys( $ids ) ] );
 		$this->addTables( 'page' );
 		if ( $resultPageSet === null ) {
