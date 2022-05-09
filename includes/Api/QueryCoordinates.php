@@ -34,7 +34,7 @@ class QueryCoordinates extends ApiQueryBase {
 		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
-	public function execute() {
+	public function execute(): void {
 		$titles = $this->getPageSet()->getGoodTitles();
 		if ( $titles === [] ) {
 			return;
@@ -109,7 +109,7 @@ class QueryCoordinates extends ApiQueryBase {
 	 * @return Coord|null
 	 * @throws MWException
 	 */
-	private function getFromCoord( array $params ) {
+	private function getFromCoord( array $params ): ?Coord {
 		$this->requireMaxOneParameter( $params, 'distancefrompoint', 'distancefrompage' );
 		$globe = new Globe( 'earth' );
 		if ( $params['distancefrompoint'] !== null ) {

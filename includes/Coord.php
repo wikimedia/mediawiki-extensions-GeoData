@@ -85,10 +85,10 @@ class Coord implements JsonSerializable {
 	 * Constructs a Coord object from a database row
 	 *
 	 * @param \stdClass $row
-	 * @return Coord
+	 * @return self
 	 */
-	public static function newFromRow( $row ) {
-		$c = new Coord(
+	public static function newFromRow( $row ): self {
+		$c = new self(
 			(float)$row->gt_lat,
 			(float)$row->gt_lon,
 			$row->gt_globe ?? null
@@ -108,18 +108,18 @@ class Coord implements JsonSerializable {
 	/**
 	 * @return Globe
 	 */
-	public function getGlobeObj() {
+	public function getGlobeObj(): Globe {
 		return new Globe( $this->globe );
 	}
 
 	/**
 	 * Compares this coordinates with the given coordinates
 	 *
-	 * @param Coord $coord Coordinate to compare with
+	 * @param self|null $coord Coordinate to compare with
 	 * @param int $precision Comparison precision
 	 * @return bool
 	 */
-	public function equalsTo( $coord, $precision = 6 ) {
+	public function equalsTo( $coord, $precision = 6 ): bool {
 		return isset( $coord )
 			&& round( $this->lat, $precision ) == round( $coord->lat, $precision )
 			&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
@@ -129,11 +129,11 @@ class Coord implements JsonSerializable {
 	/**
 	 * Compares all the fields of this object with the given coordinates object
 	 *
-	 * @param Coord $coord Coordinate to compare with
+	 * @param self $coord Coordinate to compare with
 	 * @param int $precision Comparison precision
 	 * @return bool
 	 */
-	public function fullyEqualsTo( $coord, $precision = 6 ) {
+	public function fullyEqualsTo( $coord, $precision = 6 ): bool {
 		return $this->equalsTo( $coord, $precision )
 			&& $this->primary == $coord->primary
 			&& $this->dim === $coord->dim
@@ -148,7 +148,7 @@ class Coord implements JsonSerializable {
 	 *
 	 * @return bool
 	 */
-	public function isValid() {
+	public function isValid(): bool {
 		return $this->getGlobeObj()->coordinatesAreValid( $this->lat, $this->lon );
 	}
 
@@ -158,7 +158,7 @@ class Coord implements JsonSerializable {
 	 * @param float $radius
 	 * @return BoundingBox
 	 */
-	public function bboxAround( $radius ) {
+	public function bboxAround( $radius ): BoundingBox {
 		if ( $radius <= 0 ) {
 			return new BoundingBox( $this->lat, $this->lon, $this->lat, $this->lon, $this->globe );
 		}
@@ -195,7 +195,7 @@ class Coord implements JsonSerializable {
 	 * @param int $pageId ID of page associated with this coordinate
 	 * @return array Associative array in format 'field' => 'value'
 	 */
-	public function getRow( $pageId ) {
+	public function getRow( $pageId ): array {
 		global $wgGeoDataIndexGranularity, $wgGeoDataBackend;
 		$row = [ 'gt_page_id' => $pageId ];
 		foreach ( self::FIELD_MAPPING as $field => $column ) {
@@ -212,7 +212,7 @@ class Coord implements JsonSerializable {
 	 * Returns these coordinates as an associative array
 	 * @return array
 	 */
-	public function getAsArray() {
+	public function getAsArray(): array {
 		$result = [];
 		foreach ( self::FIELD_MAPPING as $field => $_ ) {
 			$result[$field] = $this->$field;
@@ -233,10 +233,10 @@ class Coord implements JsonSerializable {
 	 * @internal
 	 * @see self::jsonSerialize
 	 * @param array $json
-	 * @return static
+	 * @return self
 	 */
 	public static function newFromJson( array $json ): self {
-		return new Coord(
+		return new self(
 			$json['lat'],
 			$json['lon'],
 			$json['globe'],

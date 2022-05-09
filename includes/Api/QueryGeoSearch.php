@@ -71,7 +71,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	 * @param Globe $globe
 	 * @return BoundingBox
 	 */
-	private function parseBbox( $bbox, Globe $globe ) {
+	private function parseBbox( string $bbox, Globe $globe ): BoundingBox {
 		global $wgMaxGeoSearchRadius;
 
 		$parts = explode( '|', $bbox );
@@ -98,7 +98,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	/**
 	 * @param ApiPageSet|null $resultPageSet
 	 */
-	protected function run( $resultPageSet = null ) {
+	protected function run( $resultPageSet = null ): void {
 		$params = $this->extractRequestParams();
 
 		$globe = new Globe( $params['globe'] );

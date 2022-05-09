@@ -25,7 +25,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	/**
 	 * @param ApiPageSet|null $resultPageSet
 	 */
-	protected function run( $resultPageSet = null ) {
+	protected function run( $resultPageSet = null ): void {
 		global $wgDefaultGlobe;
 
 		parent::run( $resultPageSet );
@@ -238,7 +238,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	 *
 	 * @return Coord
 	 */
-	private function makeCoord( array $hit ) {
+	private function makeCoord( array $hit ): Coord {
 		$lat = $hit['coord']['lat'];
 		$lon = $hit['coord']['lon'];
 		$coord = new Coord( $lat, $lon );
@@ -257,7 +257,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	 *
 	 * @return bool If false these coordinates should be discarded
 	 */
-	private function filterCoord( Coord $coord ) {
+	private function filterCoord( Coord $coord ): bool {
 		if ( !$this->bbox && $coord->distance > $this->radius ) {
 			return false;
 		}
@@ -283,7 +283,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	 * @param \Elastica\ResultSet $resultSet
 	 * @param \Elastica\Query $query
 	 */
-	private function addDebugInfo( \Elastica\ResultSet $resultSet, \Elastica\Query $query ) {
+	private function addDebugInfo( \Elastica\ResultSet $resultSet, \Elastica\Query $query ): void {
 		$ti = $resultSet->getResponse()->getTransferInfo();
 		$neededData = [
 			'url',

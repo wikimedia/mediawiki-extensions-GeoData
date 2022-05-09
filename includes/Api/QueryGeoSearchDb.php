@@ -20,7 +20,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 	/**
 	 * @param ApiPageSet|null $resultPageSet
 	 */
-	protected function run( $resultPageSet = null ) {
+	protected function run( $resultPageSet = null ): void {
 		global $wgDefaultGlobe;
 
 		parent::run( $resultPageSet );
@@ -98,7 +98,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 		}
 	}
 
-	protected function addCoordFilter() {
+	protected function addCoordFilter(): void {
 		$bbox = $this->bbox ?: $this->coord->bboxAround( $this->radius );
 		$this->addWhereFld( 'gt_lat_int', self::intRange( $bbox->lat1, $bbox->lat2 ) );
 		$this->addWhereFld( 'gt_lon_int', self::intRange( $bbox->lon1, $bbox->lon2 ) );
@@ -121,7 +121,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 	 *
 	 * @return array
 	 */
-	public static function intRange( $start, $end, $granularity = null ) {
+	public static function intRange( float $start, float $end, int $granularity = null ): array {
 		global $wgGeoDataIndexGranularity;
 
 		if ( !$granularity ) {

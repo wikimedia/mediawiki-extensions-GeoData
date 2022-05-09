@@ -38,9 +38,9 @@ class BoundingBox {
 	 *
 	 * @param Coord $topLeft
 	 * @param Coord $bottomRight
-	 * @return BoundingBox
+	 * @return self
 	 */
-	public static function newFromPoints( Coord $topLeft, Coord $bottomRight ) {
+	public static function newFromPoints( Coord $topLeft, Coord $bottomRight ): self {
 		return new self( $topLeft->lat, $topLeft->lon, $bottomRight->lat, $bottomRight->lon,
 			$topLeft->globe );
 	}
@@ -48,14 +48,14 @@ class BoundingBox {
 	/**
 	 * @return Coord Top left corner of this bounding box
 	 */
-	public function topLeft() {
+	public function topLeft(): Coord {
 		return new Coord( $this->lat1, $this->lon1, $this->globe );
 	}
 
 	/**
 	 * @return Coord Bottom right corner of this bounding box
 	 */
-	public function bottomRight() {
+	public function bottomRight(): Coord {
 		return new Coord( $this->lat2, $this->lon2, $this->globe );
 	}
 
@@ -77,7 +77,7 @@ class BoundingBox {
 	 *
 	 * @return Coord
 	 */
-	public function center() {
+	public function center(): Coord {
 		$lon = ( $this->lon2 + $this->lon1 ) / 2.0;
 		if ( $this->lon1 > $this->lon2 ) {
 			// Wrap around

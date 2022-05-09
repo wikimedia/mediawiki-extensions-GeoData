@@ -11,8 +11,8 @@ use Elastica\Exception\ExceptionInterface;
 use Elastica\Exception\ResponseException;
 use Elastica\Search;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use StatusValue;
-use User;
 use WikiMap;
 
 /**
@@ -24,10 +24,10 @@ class Searcher extends ElasticsearchIntermediary {
 	private $config;
 
 	/**
-	 * @param User|null $user
+	 * @param UserIdentity|null $user
 	 * @throws ConfigException
 	 */
-	public function __construct( User $user = null ) {
+	public function __construct( UserIdentity $user = null ) {
 		/** @var SearchConfig $config */
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'CirrusSearch' );
 		'@phan-var SearchConfig $config';
@@ -46,7 +46,7 @@ class Searcher extends ElasticsearchIntermediary {
 	 * @return \StatusValue Holds a \Elastica\ResultSet
 	 * @throws ExceptionInterface
 	 */
-	public function performSearch( \Elastica\Query $query, array $namespaces, $queryType ) {
+	public function performSearch( \Elastica\Query $query, array $namespaces, string $queryType ): StatusValue {
 		$indexSuffix = $this->connection->pickIndexSuffixForNamespaces( $namespaces );
 		$index = $this->connection->getIndex( WikiMap::getCurrentWikiId(), $indexSuffix );
 		$search = $index->createSearch( $query );
@@ -88,7 +88,7 @@ class Searcher extends ElasticsearchIntermediary {
 		$queryType,
 		array $extra = [],
 		array $namespaces = null
-	) {
+	): SearchRequestLog {
 		return new SearchRequestLog(
 			$this->connection->getClient(),
 			$description,

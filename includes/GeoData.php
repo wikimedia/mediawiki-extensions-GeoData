@@ -28,7 +28,7 @@ class GeoData {
 	 * @param int $dbType Database to select from DB_PRIMARY or DB_REPLICA
 	 * @return Coord[]
 	 */
-	public static function getAllCoordinates( $pageId, $conds = [], $dbType = DB_REPLICA ) {
+	public static function getAllCoordinates( int $pageId, array $conds = [], int $dbType = DB_REPLICA ): array {
 		$db = self::getDB( $dbType );
 		$conds['gt_page_id'] = $pageId;
 		$columns = array_values( Coord::FIELD_MAPPING );
@@ -44,7 +44,7 @@ class GeoData {
 	 * @param int $dbType DB_PRIMARY or DB_REPLICA
 	 * @return IDatabase
 	 */
-	private static function getDB( $dbType ) {
+	private static function getDB( int $dbType ): IDatabase {
 		return MediaWikiServices::getInstance()
 			->getDBLoadBalancer()
 			->getConnection( $dbType );
