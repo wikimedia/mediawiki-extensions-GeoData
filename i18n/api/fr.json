@@ -10,6 +10,7 @@
 			"McDutchie",
 			"Thibaut120094",
 			"Urhixidur",
+			"Verdy p",
 			"Wladek92"
 		]
 	},
@@ -36,6 +37,9 @@
 	"apihelp-query+geosearch-param-coord": "Coordonnées autour desquelles chercher.",
 	"apihelp-query+geosearch-param-page": "Titre de page similaire à la recherche",
 	"apihelp-query+geosearch-param-radius": "Rayon de recherche, en mètres.",
+	"apihelp-query+geosearch-param-sort": "Détermine l’ordre de tri des résultats renvoyés.",
+	"apihelp-query+geosearch-paramvalue-sort-distance": "Classer les pages par leur distance au centre.",
+	"apihelp-query+geosearch-paramvalue-sort-relevance": "Classer les pages par leur pertinence selon [[mw:Extension:CirrusSearch|CirrusSearch]], de façon similaire à ce que fait [[Special:Search]]. Actuellement pris en charge seulement sur les wikis qui utilisent le moteur ElasticSearch, voir [[mw:Extension:GeoData#Search backends]].",
 	"apihelp-query+geosearch-param-maxdim": "Restreindre la recherche à des objets qui ne sont pas plus que cela, en mètres.",
 	"apihelp-query+geosearch-param-limit": "Nombre maximal de pages à retourner",
 	"apihelp-query+geosearch-param-globe": "Globe sur lequel chercher. Voir [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] pour les détails.",
@@ -47,6 +51,7 @@
 	"apihelp-query+geosearch-example-2": "Rechercher dans une boîte délimitante",
 	"apierror-geodata-nocoord": "Coordonnées de la page inconnues.",
 	"apierror-geodata-noprimarycoord": "La page $1 n’a pas de coordonnées primaires.",
+	"apierror-geodata-norelevancesort": "Le classement des résultats par pertinence n’est actuellement pris en charge que que les wikis qui utilisent le moteur ElasticSearch.",
 	"apierror-geodata-notonearth": "Les coordonnées de cette page ne sont pas sur la terre.",
 	"apierror-geodata-invalidbox": "Boîte englobante non valide.",
 	"apierror-geodata-boxtoobig": "La boîte englobante est trop grande",
