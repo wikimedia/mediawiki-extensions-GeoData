@@ -4,14 +4,14 @@ namespace GeoData\Test;
 
 use GeoData\Coord;
 use GeoData\Math;
-use MediaWikiIntegrationTestCase;
+use MediaWikiUnitTestCase;
 
 /**
  * @covers \GeoData\Math
  *
  * @group GeoData
  */
-class MathTest extends MediaWikiIntegrationTestCase {
+class MathTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers \GeoData\Math::distance
 	 * @dataProvider getDistanceData
@@ -28,6 +28,26 @@ class MathTest extends MediaWikiIntegrationTestCase {
 			[ 51.5, -0.1167, 52.35, 4.9167, 357520, 'London to Amsterdam' ],
 			[ 40.7142, -74.0064, 37.775, -122.418, 4125910, 'New York to San Francisco' ],
 			[ 0, 179, 0, -179, 222390, 'Wrap around zero' ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideWrapAroundPairs
+	 */
+	public function testWrapAround( array $coord, array $expected ) {
+		Math::wrapAround( $coord[0], $coord[1], -180, 180 );
+		$this->assertSame( $expected, $coord );
+	}
+
+	public function provideWrapAroundPairs() {
+		return [
+			[ [ +000.0, +000.0 ], [ +000.0, +000.0 ] ],
+			[ [ -180.0, +179.0 ], [ -180.0, +179.0 ] ],
+			[ [ -180.0, +180.0 ], [ -180.0, +180.0 ] ],
+			[ [ -181.0, +182.0 ], [ +179.0, -178.0 ] ],
+			[ [ -361.0, +361.0 ], [ -001.0, +001.0 ] ],
+			[ [ -538.0, +538.0 ], [ -178.0, +178.0 ] ],
+			[ [ -722.0, +722.0 ], [ -002.0, +002.0 ] ],
 		];
 	}
 
@@ -53,4 +73,23 @@ class MathTest extends MediaWikiIntegrationTestCase {
 			[ -179.95 ],
 		];
 	}
+
+	/**
+	 * @dataProvider provideSignedValues
+	 */
+	public function testSign( float $value, int $expected ) {
+		$this->assertSame( $expected, Math::sign( $value ) );
+	}
+
+	public function provideSignedValues() {
+		return [
+			[ 0.0, 1 ],
+			[ -0.0, 1 ],
+			[ 0.02, 1 ],
+			[ -0.02, -1 ],
+			[ 300, 1 ],
+			[ -300, -1 ],
+		];
+	}
+
 }

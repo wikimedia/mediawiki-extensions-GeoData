@@ -22,7 +22,7 @@ class Math {
 	 * @param float $lon2
 	 * @return float Distance in meters
 	 */
-	public static function distance( $lat1, $lon1, $lat2, $lon2 ) {
+	public static function distance( $lat1, $lon1, $lat2, $lon2 ): float {
 		$lat1 = deg2rad( $lat1 );
 		$lon1 = deg2rad( $lon1 );
 		$lat2 = deg2rad( $lat2 );
@@ -41,25 +41,18 @@ class Math {
 	 * @param float $min
 	 * @param float $max
 	 */
-	public static function wrapAround( &$from, &$to, $min, $max ) {
-		if ( $from < $min ) {
-			$from = $max - ( $min - $from );
-		}
-		if ( $to > $max ) {
-			$to = $min + $to - $max;
-		}
+	public static function wrapAround( &$from, &$to, $min, $max ): void {
+		$range = $max - $min;
+		$from = $min + fmod( 2 * $range - $min + $from, $range );
+		// The edge case on the right should not wrap around, e.g. +180 should not become -180
+		$to = $max - fmod( 2 * $range + $max - $to, $range );
 	}
 
 	/**
-	 * Sign function
-	 *
-	 * @param float $x Value to get sign of
-	 * @return int
+	 * @param float $x
+	 * @return int 1 or -1
 	 */
-	public static function sign( $x ) {
-		if ( $x >= 0 ) {
-			return 1;
-		}
-		return -1;
+	public static function sign( $x ): int {
+		return $x < 0 ? -1 : 1;
 	}
 }
