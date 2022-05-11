@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brettchenweber",
 			"FF-11",
 			"FF11",
 			"Metalhead64",
@@ -17,7 +18,7 @@
 	"apihelp-query+coordinates-paramvalue-prop-dim": "Geschätzte Größe des Objekts in Metern.",
 	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alpha-2 Ländercode (z.&nbsp;B. <samp>US</samp> oder <samp>RU</samp>)",
 	"apihelp-query+coordinates-paramvalue-prop-region": "ISO 3166-2-Regionalcode (der Teil des ISO 3166-2-Codes nach dem Bindestrich; z.B. <samp>FL</samp> oder <samp>MOS</samp>).",
-	"apihelp-query+coordinates-paramvalue-prop-globe": "Auf welchen Himmelskörper sich die Koordinaten beziehen (z.B. <samp>moon</samp> oder <samp>pluto</samp>). Voreingestellt ist die Erde. Siehe  [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] für Details.",
+	"apihelp-query+coordinates-paramvalue-prop-globe": "Auf welchen Himmelskörper sich die Koordinaten beziehen (z. B. <samp>moon</samp> oder <samp>pluto</samp>). Voreingestellt ist die Erde. Siehe  [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] für Details.",
 	"apihelp-query+coordinates-param-primary": "Ob nur primäre Koordinaten („primär“), sekundäre („sekundär“) oder beide („alle“) zurückgegeben werden sollen.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "Der Ort, an dem sich das Thema des Artikels befindet. Es gibt höchstens eine Primärkoordinate pro Titel.",
 	"apihelp-query+coordinates-paramvalue-primary-secondary": "Der Ort eines Objekts, das in dem Artikel erwähnt wird. Eine beliebige Anzahl von sekundären Koordinaten kann mit einem Titel verknüpft werden.",
