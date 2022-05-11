@@ -32,10 +32,9 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 
 		$this->addTables( 'geo_tags' );
 		$this->addFields( [ 'gt_lat', 'gt_lon', 'gt_primary' ] );
-		$mapping = Coord::getFieldMapping();
 		foreach ( $params['prop'] as $prop ) {
-			if ( isset( $mapping[$prop] ) ) {
-				$this->addFields( $mapping[$prop] );
+			if ( isset( Coord::FIELD_MAPPING[$prop] ) ) {
+				$this->addFields( Coord::FIELD_MAPPING[$prop] );
 			}
 		}
 		$this->addWhereFld( 'gt_globe', $this->coord->globe );
@@ -81,11 +80,11 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 					'primary' => boolval( $row->gt_primary ),
 				];
 				foreach ( $params['prop'] as $prop ) {
-					if ( isset( $mapping[$prop] ) && isset( $row->{$mapping[$prop]} ) ) {
-						$field = $mapping[$prop];
+					$column = Coord::FIELD_MAPPING[$prop] ?? null;
+					if ( $column && isset( $row->$column ) ) {
 						// Don't output default globe
-						if ( !( $prop === 'globe' && $row->$field === $wgDefaultGlobe ) ) {
-							$vals[$prop] = $row->$field;
+						if ( !( $prop === 'globe' && $row->$column === $wgDefaultGlobe ) ) {
+							$vals[$prop] = $row->$column;
 						}
 					}
 				}

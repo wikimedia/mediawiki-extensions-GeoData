@@ -31,7 +31,8 @@ class GeoData {
 	public static function getAllCoordinates( $pageId, $conds = [], $dbType = DB_REPLICA ) {
 		$db = self::getDB( $dbType );
 		$conds['gt_page_id'] = $pageId;
-		$res = $db->select( 'geo_tags', Coord::getColumns(), $conds, __METHOD__ );
+		$columns = array_values( Coord::FIELD_MAPPING );
+		$res = $db->select( 'geo_tags', $columns, $conds, __METHOD__ );
 		$coords = [];
 		foreach ( $res as $row ) {
 			$coords[] = Coord::newFromRow( $row );

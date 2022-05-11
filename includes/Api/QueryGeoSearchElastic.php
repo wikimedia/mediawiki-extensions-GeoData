@@ -242,7 +242,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		$lat = $hit['coord']['lat'];
 		$lon = $hit['coord']['lon'];
 		$coord = new Coord( $lat, $lon );
-		foreach ( Coord::getFields() as $field ) {
+		foreach ( Coord::FIELD_MAPPING as $field => $_ ) {
 			if ( isset( $hit[$field] ) ) {
 				$coord->$field = $hit[$field];
 			}

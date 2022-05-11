@@ -8,6 +8,21 @@ use JsonSerializable;
  * Class representing coordinates
  */
 class Coord implements JsonSerializable {
+
+	/** Mapping from properties of this class to database columns */
+	public const FIELD_MAPPING = [
+		'id' => 'gt_id',
+		'lat' => 'gt_lat',
+		'lon' => 'gt_lon',
+		'globe' => 'gt_globe',
+		'primary' => 'gt_primary',
+		'dim' => 'gt_dim',
+		'type' => 'gt_type',
+		'name' => 'gt_name',
+		'country' => 'gt_country',
+		'region' => 'gt_region',
+	];
+
 	/** @var float Latitude of the point in degrees */
 	public $lat;
 
@@ -60,7 +75,7 @@ class Coord implements JsonSerializable {
 		$this->globe = $globe ?? $wgDefaultGlobe;
 
 		foreach ( $extraFields as $key => $value ) {
-			if ( isset( self::$fieldMapping[$key] ) ) {
+			if ( isset( self::FIELD_MAPPING[$key] ) ) {
 				$this->$key = $value;
 			}
 		}
@@ -183,7 +198,7 @@ class Coord implements JsonSerializable {
 	public function getRow( $pageId ) {
 		global $wgGeoDataIndexGranularity, $wgGeoDataBackend;
 		$row = [ 'gt_page_id' => $pageId ];
-		foreach ( self::$fieldMapping as $field => $column ) {
+		foreach ( self::FIELD_MAPPING as $field => $column ) {
 			$row[$column] = $this->$field;
 		}
 		if ( $wgGeoDataBackend == 'db' ) {
@@ -199,59 +214,10 @@ class Coord implements JsonSerializable {
 	 */
 	public function getAsArray() {
 		$result = [];
-		foreach ( self::getFields() as $field ) {
+		foreach ( self::FIELD_MAPPING as $field => $_ ) {
 			$result[$field] = $this->$field;
 		}
 		return $result;
-	}
-
-	/** @var string[] */
-	private static $fieldMapping = [
-		'id' => 'gt_id',
-		'lat' => 'gt_lat',
-		'lon' => 'gt_lon',
-		'globe' => 'gt_globe',
-		'primary' => 'gt_primary',
-		'dim' => 'gt_dim',
-		'type' => 'gt_type',
-		'name' => 'gt_name',
-		'country' => 'gt_country',
-		'region' => 'gt_region',
-	];
-
-	/**
-	 * Returns a mapping from properties of this class to database columns
-	 *
-	 * @return string[]
-	 */
-	public static function getFieldMapping() {
-		return self::$fieldMapping;
-	}
-
-	/**
-	 * Returns names of properties of this class that are saved to database
-	 *
-	 * @return string[]
-	 */
-	public static function getFields() {
-		static $fields = null;
-		if ( !$fields ) {
-			$fields = array_keys( self::$fieldMapping );
-		}
-		return $fields;
-	}
-
-	/**
-	 * Returns names of database columns used to store properties of this class
-	 *
-	 * @return string[]
-	 */
-	public static function getColumns() {
-		static $columns = null;
-		if ( !$columns ) {
-			$columns = array_values( self::$fieldMapping );
-		}
-		return $columns;
 	}
 
 	/**

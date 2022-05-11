@@ -44,10 +44,9 @@ class QueryCoordinates extends ApiQueryBase {
 		$from = $this->getFromCoord( $params );
 		$this->addTables( 'geo_tags' );
 		$this->addFields( [ 'gt_id', 'gt_page_id', 'gt_lat', 'gt_lon', 'gt_primary', 'gt_globe' ] );
-		$mapping = Coord::getFieldMapping();
 		foreach ( $params['prop'] as $prop ) {
-			if ( isset( $mapping[$prop] ) ) {
-				$this->addFields( $mapping[$prop] );
+			if ( isset( Coord::FIELD_MAPPING[$prop] ) ) {
+				$this->addFields( Coord::FIELD_MAPPING[$prop] );
 			}
 		}
 		$this->addWhereFld( 'gt_page_id', array_keys( $titles ) );
@@ -87,9 +86,9 @@ class QueryCoordinates extends ApiQueryBase {
 				'primary' => boolval( $row->gt_primary ),
 			];
 			foreach ( $params['prop'] as $prop ) {
-				if ( isset( $mapping[$prop] ) && isset( $row->{$mapping[$prop]} ) ) {
-					$field = $mapping[$prop];
-					$vals[$prop] = $row->$field;
+				$column = Coord::FIELD_MAPPING[$prop] ?? null;
+				if ( $column && isset( $row->$column ) ) {
+					$vals[$prop] = $row->$column;
 				}
 			}
 			if ( $from && $row->gt_globe == $from->globe ) {
