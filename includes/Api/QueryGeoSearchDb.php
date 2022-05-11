@@ -62,10 +62,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 		}
 		// sort in PHP because sorting via SQL would involve a filesort
 		usort( $rows, static function ( $row1, $row2 ) {
-			if ( $row1->dist == $row2->dist ) {
-				return 0;
-			}
-			return ( $row1->dist < $row2->dist ) ? -1 : 1;
+			return $row1->dist - $row2->dist;
 		} );
 		$result = $this->getResult();
 		foreach ( $rows as $row ) {

@@ -167,10 +167,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 
 		if ( $params['sort'] === 'distance' ) {
 			usort( $coordinates, static function ( $coord1, $coord2 ) {
-				if ( $coord1->distance == $coord2->distance ) {
-					return 0;
-				}
-				return ( $coord1->distance < $coord2->distance ) ? -1 : 1;
+				return $coord1->distance - $coord2->distance;
 			} );
 		}
 
