@@ -12,6 +12,14 @@ use MediaWikiIntegrationTestCase;
  * @group GeoData
  */
 class GlobeTest extends MediaWikiIntegrationTestCase {
+
+	public function testGlobalGlobesConfiguration() {
+		$this->setMwGlobals( 'wgGlobes', [ 'fantasy' => [ 'lon' => [ 0, 99 ] ] ] );
+		$globe = new Globe( 'fantasy' );
+		$this->assertTrue( $globe->isKnown() );
+		$this->assertSame( 99, $globe->getMaxLongitude() );
+	}
+
 	public function testEarth() {
 		$g = new Globe( 'earth' );
 		$this->assertEquals( 'earth', $g->getName() );

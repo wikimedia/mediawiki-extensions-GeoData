@@ -13,45 +13,39 @@ class Globe {
 	private $radius;
 
 	/** @var float */
-	private $minLon;
+	private $minLon = -360;
 
 	/** @var float */
-	private $maxLon;
+	private $maxLon = 360;
 
-	/** @var int */
-	private $east;
+	/** @var int either -1 or +1 */
+	private $east = 1;
 
 	/** @var bool */
-	private $known;
+	private $known = false;
 
 	/**
 	 * @param string $name Internal globe name
 	 */
 	public function __construct( $name ) {
+		global $wgGlobes;
+
 		$this->name = $name;
 
-		$globes = self::getData();
-		if ( isset( $globes[$name] ) ) {
-			$data = $globes[$name];
+		$data = $wgGlobes[$name] ?? self::getData()[$name] ?? null;
+		if ( $data !== null ) {
 			$this->radius = $data['radius'] ?? null;
-			$this->minLon = $data['lon'][0];
+			$this->minLon = $data['lon'][0] ?? 0;
 			$this->maxLon = $data['lon'][1];
-			$this->east = $data['east'];
+			$this->east = $data['east'] ?? 1;
 			$this->known = true;
-		} else {
-			$this->minLon = -360;
-			$this->maxLon = 360;
-			$this->east = 1;
-			$this->known = false;
 		}
 	}
 
 	/**
-	 * @return array
+	 * @return array[]
 	 */
 	private static function getData() {
-		global $wgGlobes;
-
 		static $data = [];
 		if ( $data ) {
 			return $data;
@@ -102,8 +96,6 @@ class Globe {
 			// ???
 			'pluto'     => $east360 + [ 'radius' => 1187000.0 ],
 		];
-
-		$data = $wgGlobes + $data;
 
 		return $data;
 	}
