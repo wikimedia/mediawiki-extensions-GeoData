@@ -69,7 +69,7 @@ class CirrusNearCoordFilterFeature extends SimpleKeywordFeature implements Filte
 	 * @param string $valueDelimiter
 	 * @param string $suffix
 	 * @param WarningCollector $warningCollector
-	 * @return array|false|null
+	 * @return array
 	 */
 	public function parseValue(
 		$key,

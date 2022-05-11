@@ -231,7 +231,7 @@ class Coord implements JsonSerializable {
 	 * Instantiate a Coord from $json array created with self::jsonSerialize.
 	 *
 	 * @internal
-	 * @see self::jsonSerialize
+	 * @see jsonSerialize
 	 * @param array $json
 	 * @return self
 	 */

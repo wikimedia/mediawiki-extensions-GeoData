@@ -38,9 +38,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 		$this->config = $config;
 	}
 
-	/**
-	 * @return array|string[]
-	 */
+	/** @inheritDoc */
 	protected function getKeywords() {
 		return [ 'boost-nearcoord' ];
 	}
@@ -74,7 +72,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 	 * @param string $valueDelimiter
 	 * @param string $suffix
 	 * @param WarningCollector $warningCollector
-	 * @return array|false|null
+	 * @return array
 	 */
 	public function parseValue(
 		$key,

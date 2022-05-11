@@ -32,7 +32,7 @@ class CoordinatesOutput implements JsonSerializable {
 	 * @note The changes made to the CoordinatesOutput object are not stored
 	 * back into the ParserOutput until self::setToParserOutput is called.
 	 *
-	 * @see self::setToParserOutput
+	 * @see setToParserOutput
 	 * @param ParserOutput $parserOutput
 	 * @return CoordinatesOutput
 	 */
@@ -154,7 +154,7 @@ class CoordinatesOutput implements JsonSerializable {
 	 * @internal
 	 * @param array $jsonArray
 	 * @return static
-	 * @see self::jsonSerialize
+	 * @see jsonSerialize
 	 */
 	public static function newFromJson( array $jsonArray ): self {
 		$coordOutput = new CoordinatesOutput();

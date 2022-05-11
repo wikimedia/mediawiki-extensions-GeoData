@@ -51,17 +51,12 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
-	/**
-	 * @param array $params
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getCacheMode( $params ) {
 		return 'public';
 	}
 
-	/**
-	 * @param ApiPageSet $resultPageSet
-	 */
+	/** @inheritDoc */
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -154,9 +149,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		}
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getAllowedParams() {
 		global $wgMaxGeoSearchRadius, $wgDefaultGlobe, $wgGeoDataDebug;
 		$propTypes = [ 'type', 'name', 'dim', 'country', 'region', 'globe' ];
@@ -231,10 +224,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		return $params;
 	}
 
-	/**
-	 * @see ApiBase::getExamplesMessages()
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
 			'action=query&list=geosearch&gsradius=10000&gscoord=37.786971|-122.399677'
@@ -244,9 +234,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:GeoData#list.3Dgeosearch';
 	}

@@ -159,17 +159,12 @@ class QueryCoordinates extends ApiQueryBase {
 		return null;
 	}
 
-	/**
-	 * @param array $params
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getCacheMode( $params ) {
 		return 'public';
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getAllowedParams() {
 		return [
 			'limit' => [
@@ -206,10 +201,7 @@ class QueryCoordinates extends ApiQueryBase {
 		];
 	}
 
-	/**
-	 * @see ApiBase::getExamplesMessages()
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
 			'action=query&prop=coordinates&titles=Main%20Page'
@@ -217,9 +209,7 @@ class QueryCoordinates extends ApiQueryBase {
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:GeoData#prop.3Dcoordinates';
 	}

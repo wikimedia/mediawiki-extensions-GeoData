@@ -117,9 +117,8 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 	 *
 	 * @param float $start
 	 * @param float $end
-	 * @param int|null $granularity
-	 *
-	 * @return array
+	 * @param int|null $granularity Defaults to $wgGeoDataIndexGranularity
+	 * @return int[]
 	 */
 	public static function intRange( float $start, float $end, int $granularity = null ): array {
 		global $wgGeoDataIndexGranularity;

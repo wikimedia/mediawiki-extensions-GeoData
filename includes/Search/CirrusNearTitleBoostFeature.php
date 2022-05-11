@@ -37,9 +37,7 @@ class CirrusNearTitleBoostFeature extends SimpleKeywordFeature implements BoostF
 		$this->config = $config;
 	}
 
-	/**
-	 * @return array|string[]
-	 */
+	/** @inheritDoc */
 	protected function getKeywords() {
 		return [ 'boost-neartitle' ];
 	}

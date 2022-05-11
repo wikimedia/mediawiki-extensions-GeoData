@@ -281,7 +281,7 @@ class CoordinatesParserFunction {
 	 * Parses coordinates
 	 * See https://en.wikipedia.org/wiki/Template:Coord for sample inputs
 	 *
-	 * @param array $parts Array of coordinate components
+	 * @param string[] $parts Array of coordinate components
 	 * @param Globe $globe Globe these coordinates belong to
 	 * @return Status Operation status, in case of success its value is a Coord object
 	 */
