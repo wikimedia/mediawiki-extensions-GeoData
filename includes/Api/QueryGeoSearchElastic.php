@@ -160,7 +160,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			}
 		}
 
-		if ( !count( $coordinates ) ) {
+		if ( $coordinates === [] ) {
 			// No results, no point in doing anything else
 			return;
 		}

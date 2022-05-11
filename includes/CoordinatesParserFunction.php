@@ -232,13 +232,11 @@ class CoordinatesParserFunction {
 		$result = [];
 		// per GeoHack docs, spaces and underscores are equivalent
 		$str = str_replace( '_', ' ', $str );
-		$parts = explode( ' ', $str );
-		foreach ( $parts as $arg ) {
+		foreach ( explode( ' ', $str ) as $arg ) {
 			$keyVal = explode( ':', $arg, 2 );
-			if ( count( $keyVal ) != 2 ) {
-				continue;
+			if ( isset( $keyVal[1] ) ) {
+				$result[$keyVal[0]] = $keyVal[1];
 			}
-			$result[$keyVal[0]] = $keyVal[1];
 		}
 		return $result;
 	}
@@ -268,7 +266,7 @@ class CoordinatesParserFunction {
 	 */
 	private function errorText( Status $s ) {
 		$errors = array_merge( $s->getErrorsArray(), $s->getWarningsArray() );
-		if ( !count( $errors ) ) {
+		if ( $errors === [] ) {
 			return '';
 		}
 		$err = $errors[0];
