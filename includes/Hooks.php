@@ -2,13 +2,15 @@
 
 namespace GeoData;
 
-use ApiModuleManager;
+use ApiQuery;
 use Article;
 use CirrusSearch\CirrusSearch;
 use CirrusSearch\SearchConfig;
 use ContentHandler;
 use DatabaseUpdater;
 use GeoData\Api\QueryGeoSearch;
+use GeoData\Api\QueryGeoSearchDb;
+use GeoData\Api\QueryGeoSearchElastic;
 use GeoData\Search\CirrusNearCoordBoostFeature;
 use GeoData\Search\CirrusNearCoordFilterFeature;
 use GeoData\Search\CirrusNearTitleBoostFeature;
@@ -353,24 +355,6 @@ class Hooks {
 	}
 
 	/**
-	 * ApiQuery::moduleManager hook to conditionally register
-	 * geosearch API module
-	 *
-	 * @param ApiModuleManager $moduleManager
-	 */
-	public static function onApiQueryModuleManager( ApiModuleManager $moduleManager ) {
-		global $wgGeoDataBackend;
-		if ( !$moduleManager->isDefined( 'geosearch', 'list' ) ) {
-			$moduleManager->addModule(
-				'geosearch',
-				'list',
-				// Subclasses for grep: QueryGeoSearchDb, QueryGeoSearchElastic
-				QueryGeoSearch::class . ucfirst( $wgGeoDataBackend )
-			);
-		}
-	}
-
-	/**
 	 * Add geo-search feature to search syntax
 	 * @param SearchConfig $config
 	 * @param array &$features
@@ -380,5 +364,23 @@ class Hooks {
 		$features[] = new CirrusNearTitleFilterFeature( $config );
 		$features[] = new CirrusNearCoordBoostFeature( $config );
 		$features[] = new CirrusNearCoordFilterFeature( $config );
+	}
+
+	/**
+	 * @param ApiQuery $query
+	 * @param string $moduleName
+	 * @return QueryGeoSearch
+	 */
+	public static function createQueryGeoSearchBackend( ApiQuery $query, $moduleName ): QueryGeoSearch {
+		$geoDataBackend = $query->getConfig()->get( 'GeoDataBackend' );
+
+		switch ( strtolower( $geoDataBackend ) ) {
+			case 'db':
+				return new QueryGeoSearchDb( $query, $moduleName );
+			case 'elastic':
+				return new QueryGeoSearchElastic( $query, $moduleName );
+			default:
+				throw new \RuntimeException( 'GeoDataBackend data backend cannot be empty' );
+		}
 	}
 }

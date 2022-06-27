@@ -10,6 +10,12 @@
 	"requires": {
 		"MediaWiki": ">= 1.38.0"
 	},
+	"APIListModules": {
+		"geosearch": {
+			"class": "GeoData\\Api\\QueryGeoSearch",
+			"factory": "GeoData\\Hooks::createQueryGeoSearchBackend"
+		}
+	},
 	"APIPropModules": {
 		"coordinates": {
 			"class": "GeoData\\Api\\QueryCoordinates",
@@ -39,8 +45,7 @@
 		"OutputPageParserOutput": "GeoData\\Hooks::onOutputPageParserOutput",
 		"SearchIndexFields": "GeoData\\Hooks::onSearchIndexFields",
 		"SearchDataForIndex": "GeoData\\Hooks::onSearchDataForIndex",
-		"CirrusSearchAddQueryFeatures": "GeoData\\Hooks::onCirrusSearchAddQueryFeatures",
-		"ApiQuery::moduleManager": "GeoData\\Hooks::onApiQueryModuleManager"
+		"CirrusSearchAddQueryFeatures": "GeoData\\Hooks::onCirrusSearchAddQueryFeatures"
 	},
 	"TrackingCategories": [
 		"geodata-broken-tags-category",
