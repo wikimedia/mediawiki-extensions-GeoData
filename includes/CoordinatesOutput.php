@@ -138,7 +138,7 @@ class CoordinatesOutput implements JsonSerializable {
 	/**
 	 * @return array
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return [
 			'limitExceeded' => $this->limitExceeded,
 			'primary' => $this->primary ? $this->primary->jsonSerialize() : $this->primary,
