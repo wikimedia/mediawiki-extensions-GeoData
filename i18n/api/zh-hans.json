@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
+			"Tr jason",
 			"Xiplus",
 			"Yfdyh000"
 		]
@@ -29,6 +30,9 @@
 	"apihelp-query+geosearch-param-coord": "协调要搜索位置的周围。",
 	"apihelp-query+geosearch-param-page": "围绕要搜索页面的页面标题。",
 	"apihelp-query+geosearch-param-radius": "搜索半径（米）。",
+	"apihelp-query+geosearch-param-sort": "设置返回结果的排序。",
+	"apihelp-query+geosearch-paramvalue-sort-distance": "按页面到中心的距离对页面进行排名。",
+	"apihelp-query+geosearch-paramvalue-sort-relevance": "根据 [[mw:Extension:CirrusSearch|CirrusSearch]] 对页面的相关性进行排名，类似于 [[Special:Search]] 的做法。目前仅在使用 ElasticSearch 后端的 wiki 上受支持，请参阅 [[mw:Extension:GeoData#Search backends]]。",
 	"apihelp-query+geosearch-param-maxdim": "限制搜索到不大于此值的对象，单位为米。",
 	"apihelp-query+geosearch-param-limit": "返回页面的最大数量。",
 	"apihelp-query+geosearch-param-globe": "要搜索的星球。参见[[mw:Special:MyLanguage/Extension:GeoData#Glossary]]获取详情。",
