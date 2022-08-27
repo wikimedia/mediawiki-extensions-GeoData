@@ -121,7 +121,7 @@ class QueryCoordinates extends ApiQueryBase {
 		}
 		if ( $params['distancefrompage'] !== null ) {
 			$title = Title::newFromText( $params['distancefrompage'] );
-			if ( !$title ) {
+			if ( !$title || !$title->exists() ) {
 				$this->dieWithError( [
 					'apierror-invalidtitle',
 					wfEscapeWikiText( $params['distancefrompage'] )
@@ -129,19 +129,11 @@ class QueryCoordinates extends ApiQueryBase {
 			}
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$page = $this->wikiPageFactory->newFromTitle( $title );
-			if ( !$page->exists() ) {
-				$this->dieWithError( [
-					'apierror-invalidtitle',
-					wfEscapeWikiText( $params['distancefrompage'] )
-				] );
-			}
 			$redirectTarget = $page->getRedirectTarget();
 			if ( $redirectTarget ) {
 				$title = $redirectTarget;
-				$page = $this->wikiPageFactory->newFromTitle( $title );
 			}
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-			$coord = GeoData::getPageCoordinates( $title );
+			$coord = GeoData::getPageCoordinates( $title->getArticleID() );
 			if ( !$coord ) {
 				$this->dieWithError(
 					[

@@ -182,6 +182,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		$res = $this->select( __METHOD__ );
 
 		if ( $resultPageSet === null ) {
+			/** @var Title[] $titles */
 			$titles = [];
 			foreach ( $res as $row ) {
 				$titles[$row->page_id] = Title::newFromRow( $row );
@@ -198,7 +199,6 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 				if ( !isset( $titles[$id] ) ) {
 					continue;
 				}
-				/** @var Title $title */
 				$title = $titles[$id];
 				$vals = [
 					'pageid' => intval( $coord->pageId ),

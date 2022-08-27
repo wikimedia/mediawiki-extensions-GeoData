@@ -114,11 +114,13 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 					[ 'apierror-missingtitle-byname', wfEscapeWikiText( $t->getPrefixedText() ) ], 'missingtitle'
 				);
 			}
-			$this->coord = GeoData::getPageCoordinates( $t );
+
+			$pageId = $t->getArticleID();
+			$this->coord = GeoData::getPageCoordinates( $pageId );
 			if ( !$this->coord ) {
 				$this->dieWithError( 'apierror-geodata-nocoord', 'no-coordinates' );
 			}
-			$this->idToExclude = $t->getArticleID();
+			$this->idToExclude = $pageId;
 		} elseif ( isset( $params['bbox'] ) ) {
 			$this->bbox = $this->parseBbox( $params['bbox'], $globe );
 			// Even when using bbox, we need a center to sort by distance

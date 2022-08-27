@@ -3,21 +3,17 @@
 namespace GeoData;
 
 use MediaWiki\MediaWikiServices;
-use Title;
 use Wikimedia\Rdbms\IDatabase;
 
 class GeoData {
 	/**
 	 * Returns primary coordinates of the given page, if any
-	 * @param Title $title
+	 * @param int $pageId
 	 * @return Coord|bool Coordinates or false
 	 */
-	public static function getPageCoordinates( Title $title ) {
-		$coords = self::getAllCoordinates( $title->getArticleID(), [ 'gt_primary' => 1 ] );
-		if ( $coords ) {
-			return $coords[0];
-		}
-		return false;
+	public static function getPageCoordinates( int $pageId ) {
+		$coords = self::getAllCoordinates( $pageId, [ 'gt_primary' => 1 ] );
+		return $coords ? $coords[0] : false;
 	}
 
 	/**

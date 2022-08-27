@@ -62,7 +62,8 @@ trait CirrusGeoFeature {
 			}
 		}
 
-		$coord = GeoData::getPageCoordinates( $title );
+		$pageId = $title->getArticleID();
+		$coord = GeoData::getPageCoordinates( $pageId );
 		if ( !$coord ) {
 			$warningCollector->addWarning(
 				'geodata-search-feature-title-no-coordinates',
@@ -71,7 +72,7 @@ trait CirrusGeoFeature {
 			return [ null, 0, '' ];
 		}
 
-		return [ $coord, $radius, $title->getArticleID() ];
+		return [ $coord, $radius, $pageId ];
 	}
 
 	/**
