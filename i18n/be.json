@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Artsiom91"
+			"Artsiom91",
+			"Amire80"
 		]
 	},
 	"geodata-broken-tags-category": "Старонкі з некарэктнымі тэгамі каардынат",
-	"geodata-broken-tags-category-desc": "Старонка з некарэктнымі тэгамі <code><nowiki>{{#coordinates:}}</nowiki></code>"
+	"geodata-broken-tags-category-desc": "Старонка з некарэктнымі тэгамі <code><nowiki>{{#coordinates:}}</nowiki></code>",
+	"geodata-unknown-type-category": "Старонкі з нявызначаным type каардынатаў",
+	"geodata-unknown-globe-category": "Старонкі з нявызначаным globe каардынатаў",
+	"geodata-unknown-region-category": "Старонкі з няслушным region каардынатаў"
 }
