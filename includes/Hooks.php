@@ -6,6 +6,7 @@ use ApiQuery;
 use Article;
 use CirrusSearch\CirrusSearch;
 use CirrusSearch\SearchConfig;
+use Config;
 use ContentHandler;
 use DatabaseUpdater;
 use GeoData\Api\QueryGeoSearch;
@@ -18,9 +19,11 @@ use GeoData\Search\CirrusNearTitleFilterFeature;
 use GeoData\Search\CoordinatesIndexField;
 use LinksUpdate;
 use LocalFile;
+use MediaWiki\Content\Hook\SearchDataForIndexHook;
+use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 use MWException;
-use OutputPage;
 use Parser;
 use ParserOutput;
 use SearchEngine;
@@ -32,7 +35,22 @@ use WikiPage;
  * Hook handlers
  * @todo: tests
  */
-class Hooks {
+class Hooks implements SearchDataForIndexHook, OutputPageParserOutputHook {
+
+	/**
+	 * @var Config
+	 */
+	private $config;
+
+	/**
+	 * Construct this hook handler
+	 *
+	 * @param Config $config
+	 */
+	public function __construct( Config $config ) {
+		$this->config = $config;
+	}
+
 	/**
 	 * LoadExtensionSchemaUpdates hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
@@ -205,22 +223,18 @@ class Hooks {
 	}
 
 	/**
-	 * OutputPageParserOutput hook handler
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
-	 *
-	 * @param OutputPage $out
-	 * @param ParserOutput $po
+	 * @inheritDoc
 	 */
-	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $po ) {
-		global $wgGeoDataInJS;
+	public function onOutputPageParserOutput( $out, $po ): void {
+		$geoDataInJS = $this->config->get( 'GeoDataInJS' );
 
-		if ( $wgGeoDataInJS && CoordinatesOutput::getFromParserOutput( $po ) ) {
+		if ( $geoDataInJS && CoordinatesOutput::getFromParserOutput( $po ) ) {
 			$coord = CoordinatesOutput::getFromParserOutput( $po )->getPrimary();
 			if ( !$coord ) {
 				return;
 			}
 			$result = [];
-			foreach ( $wgGeoDataInJS as $param ) {
+			foreach ( $geoDataInJS as $param ) {
 				if ( isset( $coord->$param ) ) {
 					$result[$param] = $coord->$param;
 				}
@@ -238,9 +252,10 @@ class Hooks {
 	 * @param array &$fields
 	 * @param SearchEngine $engine
 	 */
-	public static function onSearchIndexFields( array &$fields, SearchEngine $engine ) {
-		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
-		if ( !$wgGeoDataUseCirrusSearch && $wgGeoDataBackend !== 'elastic' ) {
+	public function onSearchIndexFields( array &$fields, SearchEngine $engine ) {
+		$useCirrus = $this->config->get( 'GeoDataUseCirrusSearch' );
+		$backend = $this->config->get( 'GeoDataBackend' );
+		if ( !$useCirrus && $backend !== 'elastic' ) {
 			return;
 		}
 		if ( $engine instanceof CirrusSearch ) {
@@ -255,24 +270,52 @@ class Hooks {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function onSearchDataForIndex(
+		&$fields,
+		$handler,
+		$page,
+		$output,
+		$engine
+	) {
+		self::doSearchDataForIndex( $fields, $output, $page );
+	}
+
+	/**
 	 * SearchDataForIndex hook handler
 	 *
-	 * @param array[] &$fields
-	 * @param ContentHandler $contentHandler
+	 * @param array &$fields
+	 * @param ContentHandler $handler
 	 * @param WikiPage $page
-	 * @param ParserOutput $parserOutput
-	 * @param SearchEngine $searchEngine
+	 * @param ParserOutput $output
+	 * @param SearchEngine $engine
+	 * @param RevisionRecord $revision
 	 */
-	public static function onSearchDataForIndex(
+	public function onSearchDataForIndex2(
 		array &$fields,
-		ContentHandler $contentHandler,
+		ContentHandler $handler,
 		WikiPage $page,
-		ParserOutput $parserOutput,
-		SearchEngine $searchEngine
+		ParserOutput $output,
+		SearchEngine $engine,
+		RevisionRecord $revision
 	) {
-		global $wgGeoDataUseCirrusSearch, $wgGeoDataBackend;
+		self::doSearchDataForIndex( $fields, $output, $page );
+	}
 
-		if ( ( $wgGeoDataUseCirrusSearch || $wgGeoDataBackend == 'elastic' ) ) {
+	/**
+	 * Attach coordinates to the index document
+	 *
+	 * @param array &$fields
+	 * @param ParserOutput $parserOutput
+	 * @param WikiPage $page
+	 * @return void
+	 */
+	private function doSearchDataForIndex( array &$fields, ParserOutput $parserOutput, WikiPage $page ): void {
+		$useCirrus = $this->config->get( 'GeoDataUseCirrusSearch' );
+		$backend = $this->config->get( 'GeoDataBackend' );
+
+		if ( ( $useCirrus || $backend == 'elastic' ) ) {
 			$coordsOutput = CoordinatesOutput::getFromParserOutput( $parserOutput );
 			$allCoords = $coordsOutput !== null ? $coordsOutput->getAll() : [];
 			$coords = [];
