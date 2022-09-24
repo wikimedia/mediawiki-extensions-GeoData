@@ -5,7 +5,6 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\CoordinatesParserFunction;
 use GeoData\Globe;
-use Language;
 use MediaWikiIntegrationTestCase;
 use Parser;
 use Wikimedia\TestingAccessWrapper;
@@ -32,7 +31,7 @@ class ParseCoordTest extends MediaWikiIntegrationTestCase {
 			->getMock();
 
 		$parser->method( 'getContentLanguage' )
-			->willReturn( Language::factory( 'en' ) );
+			->willReturn( $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'en' ) );
 
 		$function->parser = $parser;
 
