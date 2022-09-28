@@ -30,5 +30,5 @@
 	"geodata-search-feature-invalid-distance": "המרחק הגאוגרפי \"$2\" שסופק ל־\"$1\" לא יכול להתפענח.",
 	"geodata-search-feature-unknown-title": "הכותרת \"$2\" שסופקה ל־\"$1\" אינה קיימת.",
 	"geodata-search-feature-title-no-coordinates": "בכותרת \"$2\" שסופקה ל־\"$1\" אין שום נקודות ציון.",
-	"geodata-search-timeout": "חיפוש נתונים גאוגרפיים לא החזיר תוצאות בזמן הרצוי. זמינות רק תוצאות חלקיות."
+	"geodata-search-timeout": "זמן חיפוש הנתונים הגאוגרפיים פג. זמינות רק תוצאות חלקיות."
 }
