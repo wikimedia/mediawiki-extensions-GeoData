@@ -61,6 +61,7 @@ class Searcher extends ElasticsearchIntermediary {
 			if ( !$result->getResponse()->isOk() ) {
 				$req = $this->connection->getClient()->getLastRequest();
 				// Not really the right exception, this is probably a status code problem.
+				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 				throw new ResponseException( $req, $result->getResponse() );
 			}
 			$this->success();
