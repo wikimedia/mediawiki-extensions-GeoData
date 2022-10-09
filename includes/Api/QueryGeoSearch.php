@@ -114,7 +114,6 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 					[ 'apierror-missingtitle-byname', wfEscapeWikiText( $t->getPrefixedText() ) ], 'missingtitle'
 				);
 			}
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$this->coord = GeoData::getPageCoordinates( $t );
 			if ( !$this->coord ) {
 				$this->dieWithError( 'apierror-geodata-nocoord', 'no-coordinates' );
