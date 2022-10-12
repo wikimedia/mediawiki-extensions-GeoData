@@ -10,5 +10,6 @@
 	"geodata-unknown-type-category-desc": "Stran za koordinate uporablja neznano vrednost <code>type</code>.",
 	"geodata-unknown-globe-category": "Strani z neznano globusno vrednostjo",
 	"geodata-unknown-globe-category-desc": "Stran za koordinate uporablja neznano vrednost parametra <code>globe</code>.",
-	"geodata-unknown-region-category": "Strani z neveljavno vrednostjo regije"
+	"geodata-unknown-region-category": "Strani z neveljavno vrednostjo regije",
+	"geodata-unknown-region-category-desc": "Stran vsebuje neveljavno vrdnost parametra <code>region</code> za koordinate."
 }
