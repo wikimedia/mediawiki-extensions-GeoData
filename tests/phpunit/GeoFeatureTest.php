@@ -6,7 +6,6 @@ use CirrusSearch\CirrusSearch;
 use CirrusSearch\CrossSearchStrategy;
 use CirrusSearch\HashSearchConfig;
 use CirrusSearch\Query\KeywordFeatureAssertions;
-use GeoData\Search\CirrusGeoFeature;
 use GeoData\Search\CirrusNearCoordBoostFeature;
 use GeoData\Search\CirrusNearCoordFilterFeature;
 use GeoData\Search\CirrusNearTitleBoostFeature;
@@ -119,7 +118,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider parseDistanceProvider
 	 */
 	public function testParseDistance( $expected, $distance ) {
-		$this->assertEquals( $expected, CirrusGeoFeature::parseDistance( $distance ) );
+		// Call the method via a random class that uses the trait since you
+		// can't call trait methods directly in PHP 8.1+
+		$this->assertEquals( $expected, CirrusNearCoordFilterFeature::parseDistance( $distance ) );
 	}
 
 	public function parseGeoNearbyProvider() {
