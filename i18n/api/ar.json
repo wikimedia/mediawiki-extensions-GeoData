@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"ديفيد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Meno25"
 		]
 	},
 	"apihelp-query+coordinates-description": "إرجاع إحداثيات الصفحات المعينة.",
@@ -28,6 +29,9 @@
 	"apihelp-query+geosearch-param-coord": "إحاثيات حوله للبحث.",
 	"apihelp-query+geosearch-param-page": "عنوان صفحة حوله للبحث.",
 	"apihelp-query+geosearch-param-radius": "نصف قطر البحث بالأمتار.",
+	"apihelp-query+geosearch-param-sort": "تعيين ترتيب الفرز للنتائج التي تم إرجاعها.",
+	"apihelp-query+geosearch-paramvalue-sort-distance": "رتب الصفحات حسب المسافة التي تفصلها عن المركز.",
+	"apihelp-query+geosearch-paramvalue-sort-relevance": "رتب الصفحات حسب أهميتها وفقًا لـ [[mw:Extension:CirrusSearch|CirrusSearch]] ، على غرار الطريقة التي يقوم بها [[Special:Search]]. حاليًا مدعوم فقط على مواقع wiki التي تستخدم الواجهة الخلفية ElasticSearch ، راجع [[mw:Extension:GeoData#Search backends]].",
 	"apihelp-query+geosearch-param-maxdim": "قصر البحث على كائنات لا تزيد عن هذا، بالأمتار.",
 	"apihelp-query+geosearch-param-limit": "الحد الأقصى لعدد الصفحات المطلوب عرضها.",
 	"apihelp-query+geosearch-param-globe": "الكرة الأرضية للبحث عنها، انظر [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] للتفاصيل.",
@@ -39,6 +43,7 @@
 	"apihelp-query+geosearch-example-2": "ابحث في صندوق محيط",
 	"apierror-geodata-nocoord": "إحداثيات الصفحة غير معروفة.",
 	"apierror-geodata-noprimarycoord": "ليست لدى الصفحة $1 أية إحداثيات أساسية.",
+	"apierror-geodata-norelevancesort": "لا يتم حاليًا دعم ترتيب النتائج حسب الصلة إلا على مواقع wiki التي تستخدم الواجهة الخلفية ElasticSearch.",
 	"apierror-geodata-notonearth": "إحداثيات هذه الصفحة ليست على الأرض.",
 	"apierror-geodata-invalidbox": "صندوق محيط غير صالح.",
 	"apierror-geodata-boxtoobig": "صندوق المحيط كبير للغاية",
