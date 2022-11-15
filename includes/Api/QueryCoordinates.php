@@ -56,15 +56,11 @@ class QueryCoordinates extends ApiQueryBase {
 		);
 
 		if ( isset( $params['continue'] ) ) {
-			$parts = explode( '|', $params['continue'], 3 );
-			$this->dieContinueUsageIf( count( $parts ) !== 2 );
-			$this->dieContinueUsageIf( !is_numeric( $parts[0] ) );
-			$this->dieContinueUsageIf( !is_numeric( $parts[1] ) );
-			$parts[0] = intval( $parts[0] );
-			$parts[1] = intval( $parts[1] );
-			$this->addWhere(
-				"gt_page_id > {$parts[0]} OR ( gt_page_id = {$parts[0]} AND gt_id >= {$parts[1]} )"
-			);
+			$parts = $this->parseContinueParamOrDie( $params['continue'], [ 'int', 'int' ] );
+			$this->addWhere( $this->getDB()->buildComparison( '>=', [
+				'gt_page_id' => $parts[0],
+				'gt_id' => $parts[1],
+			] ) );
 		} else {
 			$this->addOption( 'USE INDEX', 'gt_page_id' );
 		}
