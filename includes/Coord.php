@@ -70,8 +70,8 @@ class Coord implements JsonSerializable {
 	public function __construct( $lat, $lon, $globe = null, $extraFields = [] ) {
 		global $wgDefaultGlobe;
 
-		$this->lat = $lat;
-		$this->lon = $lon;
+		$this->lat = (float)$lat;
+		$this->lon = (float)$lon;
 		$this->globe = $globe ?? $wgDefaultGlobe;
 
 		foreach ( $extraFields as $key => $value ) {

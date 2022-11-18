@@ -370,7 +370,7 @@ class CoordinatesParserFunction {
 		if ( $value < $min || $value > $max ) {
 			return false;
 		}
-		return $value;
+		return (float)$value;
 	}
 
 	/**
