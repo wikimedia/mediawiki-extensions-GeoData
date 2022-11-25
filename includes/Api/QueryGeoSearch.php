@@ -67,8 +67,6 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	 * @return BoundingBox
 	 */
 	private function parseBbox( string $bbox, Globe $globe ): BoundingBox {
-		global $wgMaxGeoSearchRadius;
-
 		$parts = explode( '|', $bbox );
 		$vals = array_map( 'floatval', $parts );
 		if ( count( $parts ) != 4
@@ -81,9 +79,8 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		}
 		$bbox = new BoundingBox( $vals[0], $vals[1], $vals[2], $vals[3] );
 		$area = $bbox->area();
-		if ( $area > $wgMaxGeoSearchRadius * $wgMaxGeoSearchRadius * 4
-			|| $area < 100
-		) {
+		$maxRadius = $this->getConfig()->get( 'MaxGeoSearchRadius' );
+		if ( $area > $maxRadius * $maxRadius * 4 || $area < 100 ) {
 			$this->dieWithError( 'apierror-geodata-boxtoobig', 'toobig' );
 		}
 
@@ -152,9 +149,11 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 
 	/** @inheritDoc */
 	public function getAllowedParams() {
-		global $wgMaxGeoSearchRadius, $wgDefaultGlobe, $wgGeoDataDebug;
 		$propTypes = [ 'type', 'name', 'dim', 'country', 'region', 'globe' ];
 		$primaryTypes = [ 'primary', 'secondary', 'all' ];
+		$config = $this->getConfig();
+		$maxRadius = $config->get( 'MaxGeoSearchRadius' );
+		$defaultGlobe = $config->get( 'DefaultGlobe' );
 
 		$params = [
 			'coord' => [
@@ -171,9 +170,9 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			],
 			'radius' => [
 				ParamValidator::PARAM_TYPE => 'integer',
-				ParamValidator::PARAM_DEFAULT => min( self::DEFAULT_RADIUS, $wgMaxGeoSearchRadius ),
+				ParamValidator::PARAM_DEFAULT => min( self::DEFAULT_RADIUS, $maxRadius ),
 				IntegerDef::PARAM_MIN => self::MIN_RADIUS,
-				IntegerDef::PARAM_MAX => $wgMaxGeoSearchRadius,
+				IntegerDef::PARAM_MAX => $maxRadius,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
 			],
 			'maxdim' => [
@@ -193,8 +192,8 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			],
 			// @todo: globe selection disabled until we have a real use case
 			'globe' => [
-				ParamValidator::PARAM_TYPE => (array)$wgDefaultGlobe,
-				ParamValidator::PARAM_DEFAULT => $wgDefaultGlobe,
+				ParamValidator::PARAM_TYPE => (array)$defaultGlobe,
+				ParamValidator::PARAM_DEFAULT => $defaultGlobe,
 			],
 			'namespace' => [
 				ParamValidator::PARAM_TYPE => 'namespace',
@@ -217,7 +216,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 				}, array_flip( $primaryTypes ) ),
 			],
 		];
-		if ( $wgGeoDataDebug ) {
+		if ( $config->get( 'GeoDataDebug' ) ) {
 			$params['debug'] = [
 				ParamValidator::PARAM_TYPE => 'boolean',
 			];
