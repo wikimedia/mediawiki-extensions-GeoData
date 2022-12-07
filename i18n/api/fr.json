@@ -10,7 +10,8 @@
 			"McDutchie",
 			"Thibaut120094",
 			"Urhixidur",
-			"Wladek92"
+			"Wladek92",
+			"Verdy p"
 		]
 	},
 	"apihelp-query+coordinates-description": "Retourne les coordonnées de la page référencée.",
@@ -20,8 +21,8 @@
 	"apihelp-query+coordinates-paramvalue-prop-type": "Type de l’objet sur lequel pointent les coordonnées. Voir [[mw:Special:MyLanguage/Extension:GeoData#Usage]] pour les détails.",
 	"apihelp-query+coordinates-paramvalue-prop-name": "Nom de l'objet.",
 	"apihelp-query+coordinates-paramvalue-prop-dim": "Taille approximative de l'objet en mètres.",
-	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 code alphanumérique sur 2 caractères (alpha-2) du pays (par exemple <samp>US</samp> ou <samp>RU</samp>).",
-	"apihelp-query+coordinates-paramvalue-prop-region": "Code de région ISO 3166-2 (la partie du code ISO 3166-2 après le tiret ; par ex. <samp>FL</samp> ou <samp>MOS</samp>).",
+	"apihelp-query+coordinates-paramvalue-prop-country": "Code ISO 3166-1 alphanumérique sur 2 caractères du pays (par exemple <samp>US</samp> ou <samp>RU</samp>).",
+	"apihelp-query+coordinates-paramvalue-prop-region": "Code de région ISO 3166-2 (la partie du code ISO 3166-2 après le code de pays et le tiret ; par ex. <samp>FL</samp> pour l’État de Floride ou <samp>MOS</samp> pour l’oblast de Moscou).",
 	"apihelp-query+coordinates-paramvalue-prop-globe": "À quel corps terrestre sont relatives les coordonnées (par ex. <samp>moon</samp> ou <samp>pluto</samp>). Par défaut, la Terre. Voir [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] pour plus de détails.",
 	"apihelp-query+coordinates-param-primary": "Quel type de coordonnées renvoyer.",
 	"apihelp-query+coordinates-paramvalue-primary-primary": "Géolocalisation du sujet de l'article. Il ne peut y avoir qu'une coordonnée primaire par titre.",
