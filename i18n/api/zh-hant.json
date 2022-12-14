@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"捍粵者"
 		]
 	},
 	"apihelp-query+coordinates-description": "回傳指定頁面的座標。",
@@ -28,7 +29,7 @@
 	"apihelp-query+geosearch-param-page": "要搜尋的頁面標題周圍。",
 	"apihelp-query+geosearch-param-radius": "搜尋以公尺為單位的半徑。",
 	"apihelp-query+geosearch-param-sort": "設定回傳結果的排序。",
-	"apihelp-query+geosearch-paramvalue-sort-distance": "按頁面到中心的距離來對頁面進行排名。",
+	"apihelp-query+geosearch-paramvalue-sort-distance": "按頁面到中心的距離排名頁面",
 	"apihelp-query+geosearch-paramvalue-sort-relevance": "依據 [[mw:Extension:CirrusSearch|CirrusSearch]] 對頁面的相關性進行排名，這類似於 [[Special:Search]] 的做法。目前僅被支援在使用 ElasticSearch 後端的 wiki 上，詳情請參閱 [[mw:Extension:GeoData#Search backends]]。",
 	"apihelp-query+geosearch-param-maxdim": "限制搜尋目標不可大於以公尺為單位。",
 	"apihelp-query+geosearch-param-limit": "回傳頁面數量的最大值。",
@@ -41,7 +42,7 @@
 	"apihelp-query+geosearch-example-2": "在定界框裡搜尋",
 	"apierror-geodata-nocoord": "頁面座標不明。",
 	"apierror-geodata-noprimarycoord": "頁面 $1 沒有主要座標。",
-	"apierror-geodata-norelevancesort": "目前僅在使用 ElasticSearch 後端的 wiki 上支援按相關性對結果進行排名。",
+	"apierror-geodata-norelevancesort": "目前只有用ElasticSearch後端的wiki可按相關度排名結果。",
 	"apierror-geodata-notonearth": "此頁面的座標不在地球上。",
 	"apierror-geodata-invalidbox": "無效定界框。",
 	"apierror-geodata-boxtoobig": "定界框太大",
