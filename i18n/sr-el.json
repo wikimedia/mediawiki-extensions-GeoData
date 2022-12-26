@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Milicevic01",
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Kizule"
 		]
 	},
-	"geodata-desc": "Dodaje funkcionalnost skladištenja i pronalaženja geografskih koordinata",
+	"geodata-desc": "Dodaje funkcionalnost skladištenja i pronalazenja geografskih koordinata",
 	"geodata-broken-tags-category": "Stranice sa neispravnim koordinatama",
 	"geodata-unknown-type-category": "Stranice sa nepoznatom vrstom koordinata",
 	"geodata-unknown-globe-category": "Stranice sa nepoznatom vrednosti za globus",
