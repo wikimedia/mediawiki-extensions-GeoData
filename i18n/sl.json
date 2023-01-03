@@ -5,11 +5,26 @@
 		]
 	},
 	"geodata-desc": "Doda funkcijo shranjevanja in priklica geografskih koordinat",
+	"geodata-bad-input": "Funkciji <nowiki>{{#coordinates:}}</nowiki> so bili posredovani neveljavni argumenti",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: neveljavna zemljepisna širina",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: neveljavna zemljepisna dolžina",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: neprepoznana vrsta »$1«",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: neprepoznan globus »$1«",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: neveljaven zapis oznake regije",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: ne more imeti več kot ene primarne značke na stran",
+	"geodata-limit-exceeded": "Presežena je bila omejitev $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|značka|znački|značke}} na stran",
+	"geodata-broken-tags-category": "Strani z napačno zapisanimi koordinatnimi značkami",
 	"geodata-broken-tags-category-desc": "Stran vsebuje napačno oblikovano značko <code><nowiki>{{#coordinates:}}</nowiki></code>.",
 	"geodata-unknown-type-category": "Strani z neznano vrsto koordinat",
 	"geodata-unknown-type-category-desc": "Stran za koordinate uporablja neznano vrednost <code>type</code>.",
 	"geodata-unknown-globe-category": "Strani z neznano globusno vrednostjo",
 	"geodata-unknown-globe-category-desc": "Stran za koordinate uporablja neznano vrednost parametra <code>globe</code>.",
 	"geodata-unknown-region-category": "Strani z neveljavno vrednostjo regije",
-	"geodata-unknown-region-category-desc": "Stran vsebuje neveljavno vrdnost parametra <code>region</code> za koordinate."
+	"geodata-unknown-region-category-desc": "Stran vsebuje neveljavno vrdnost parametra <code>region</code> za koordinate.",
+	"geodata-api-help-coordinates-format": "Zapis: zemljepisna širina in dolžina, ločeni z navpičnico (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "Geografskih koordinat »$2«, ki sta bili posredovani »$1«, ni bilo mogoče razčleniti.",
+	"geodata-search-feature-invalid-distance": "Geografske razdalje »$2«, predložene »$1«, ni bilo mogoče razčleniti.",
+	"geodata-search-feature-unknown-title": "Naslov »$2«, predložen »$1«, ne obstaja.",
+	"geodata-search-feature-title-no-coordinates": "Naslov »$2«, predložen »$1«, nima nobenih koordinat.",
+	"geodata-search-timeout": "Časovna omejitev iskanja GeoData je potekla. Na voljo so samo delni rezultati."
 }
