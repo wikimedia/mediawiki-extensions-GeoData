@@ -1,9 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"NegativeTwelveDollars"
+			"NegativeTwelveDollars",
+			"Eleassar"
 		]
 	},
+	"apihelp-query+coordinates-example-1": "Pridobi seznam koordinat strani [[Main Page]]",
+	"apihelp-query+geosearch-param-coord": "Koordinate, okoli katerih naj poteka iskanje.",
+	"apihelp-query+geosearch-param-page": "Naslov strani, v bližini katerega želite iskati",
+	"apihelp-query+geosearch-param-radius": "Polmer iskanja v metrih.",
+	"apihelp-query+geosearch-paramvalue-sort-relevance": "Razvrsti strani po ustreznosti s [[mw:Extension:CirrusSearch|CirrusSearch]], podobno kot to počne [[Special:Search]]. Trenutno podprto samo v vikijih, ki uporabljajo zaledje ElasticSearch; glejte [[mw:Extension:GeoData#Search backends]].",
+	"apihelp-query+geosearch-param-namespace": "Imenski prostori za iskanje.",
 	"apierror-geodata-nocoord": "Koordinate strani neznane.",
+	"apierror-geodata-norelevancesort": "Razvrščanje zadetkov po ustreznosti je trenutno podprto samo v vikijih, ki uporabljajo zaledje ElasticSearch.",
 	"apierror-geodata-badcoord": "Napačna koordinata"
 }
