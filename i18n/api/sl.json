@@ -13,5 +13,6 @@
 	"apihelp-query+geosearch-param-namespace": "Imenski prostori za iskanje.",
 	"apierror-geodata-nocoord": "Koordinate strani neznane.",
 	"apierror-geodata-norelevancesort": "Razvrščanje zadetkov po ustreznosti je trenutno podprto samo v vikijih, ki uporabljajo zaledje ElasticSearch.",
+	"apierror-geodata-notonearth": "Koordinate te strani niso na Zemlji.",
 	"apierror-geodata-badcoord": "Napačna koordinata"
 }
