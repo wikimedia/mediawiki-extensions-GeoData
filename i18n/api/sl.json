@@ -11,5 +11,6 @@
 	"apihelp-query+geosearch-param-radius": "Polmer iskanja v metrih.",
 	"apihelp-query+geosearch-param-namespace": "Imenski prostori za iskanje.",
 	"apierror-geodata-nocoord": "Koordinate strani neznane.",
+	"apierror-geodata-notonearth": "Koordinate te strani niso na Zemlji.",
 	"apierror-geodata-badcoord": "Napačna koordinata"
 }
