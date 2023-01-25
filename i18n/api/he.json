@@ -24,7 +24,7 @@
 	"apihelp-query+coordinates-example-1": "קבלת נקודות ציון מ־[[Main Page]]",
 	"apihelp-query+geosearch-description": "החזרת דפים שיש להם נקודות ציון שנמצאות באזור מסוים.",
 	"apihelp-query+geosearch-summary": "החזרת דפים שיש להם נקודות ציון שנמצאות באזור מסוים.",
-	"apihelp-query+geosearch-param-bbox": "תיבת הגבלה שבה ייעשה החיפוש: נקודות ציון מופרדת במקל (<kbd>|</kbd>) של הפינות משמאל למעלה ומימין למטה.",
+	"apihelp-query+geosearch-param-bbox": "תיבת הגבלה שבה ייעשה החיפוש: נקודות ציון מופרדת בקו ניצב (<kbd>|</kbd>) של הפינות משמאל למעלה ומימין למטה.",
 	"apihelp-query+geosearch-param-coord": "נקודות ציון שסביבן ייעשה החיפוש.",
 	"apihelp-query+geosearch-param-page": "שם הדף שסביבו צריך לחפש.",
 	"apihelp-query+geosearch-param-radius": "רדיוס חיפוש במטרים.",
