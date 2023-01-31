@@ -16,7 +16,7 @@
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: 인식할 수 없는 \"$1\" 유형",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: 인식할 수 없는 \"$1\" 세계",
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: 잘못된 지역 코드 형식",
-	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: 문서당 기본 태그 하나 이상을 가질 수 없습니다",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: 한 문서에 1개를 초과한 기본 태그를 가질 수 없습니다",
 	"geodata-limit-exceeded": "문서당 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|태그}} $1개 제한을 초과했습니다",
 	"geodata-broken-tags-category": "좌표 태그가 잘못된 문서",
 	"geodata-broken-tags-category-desc": "문서에 잘못된 형식의 <code><nowiki>{{#coordinates:}}</nowiki></code> 태그가 있습니다.",
