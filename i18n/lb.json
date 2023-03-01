@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"geodata-desc": "Setzt Funktionalitéite vum Späicheren an Ofruffe vu geographesche Koordinaten dobäi",
@@ -16,5 +17,5 @@
 	"geodata-unknown-globe-category": "Säite mat engem onbekannte Wäert fir de Globus",
 	"geodata-unknown-region-category": "Säite mat engem onbekannte Wäert fir d'Regioun",
 	"geodata-search-feature-invalid-coordinates": "D'Geo-Koordinaten '$2' déi op '$1' ugi goufe konnten net duergestallt ginn.",
-	"geodata-search-feature-unknown-title": "Den Titel '$2' deen op '$1' ugi gouf gëtt et net."
+	"geodata-search-feature-unknown-title": "Den Titel '$2', deen op '$1' ugi gouf, gëtt et net."
 }
