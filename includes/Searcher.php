@@ -12,8 +12,8 @@ use Elastica\Exception\ResponseException;
 use Elastica\Search;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\WikiMap\WikiMap;
 use StatusValue;
-use WikiMap;
 
 /**
  * Performs ES searches via CirrusSearch infrastructure
