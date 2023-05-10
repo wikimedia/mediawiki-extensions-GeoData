@@ -5,5 +5,22 @@
 			"Nokeoo"
 		]
 	},
-	"geodata-unknown-type-category": "Puslapiai su nežinomu koordinačių tipu"
+	"geodata-desc": "Prideda geografinių koordinačių saugojimo ir gavimo funkcijas",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: neteisinga platuma",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: neteisinga ilguma",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: neatpažintas tipas „$1“",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: neatpažintas gaublys „$1“",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: negalimas regiono kodo formatas",
+	"geodata-broken-tags-category": "Puslapiai su netinkamai suformuotomis koordinačių žymomis",
+	"geodata-broken-tags-category-desc": "Puslapis turi netinkamai suformuotą <code><nowiki>{{#coordinates:}}</nowiki></code> žymą.",
+	"geodata-unknown-type-category": "Puslapiai su nežinomu koordinačių tipu",
+	"geodata-unknown-type-category-desc": "Puslapis koordinatėms naudoja nežinomą <code>type</code> parametro reikšmę.",
+	"geodata-unknown-globe-category": "Puslapiai su nežinoma gaublio reikšme",
+	"geodata-unknown-globe-category-desc": "Puslapis koordinatėms naudoja nežinomą <code>globe</code> parametro reikšmę.",
+	"geodata-unknown-region-category": "Puslapiai su netinkama regiono reikšme",
+	"geodata-unknown-region-category-desc": "Puslapis koordinatėms naudoja netinkamą <code>region</code> parametro reikšmę.",
+	"geodata-api-help-coordinates-format": "Formatas: platuma ir ilguma, atskirtos brūkšniu (<kbd>|</kbd>).",
+	"geodata-search-feature-unknown-title": "Pavadinimas „$2“, pateiktas „$1“, neegzistuoja.",
+	"geodata-search-feature-title-no-coordinates": "Pavadinimas „$2“, pateiktas „$1“, neturi koordinačių.",
+	"geodata-search-timeout": "Geoduomenų paieškos laikas baigėsi. Galimi tik daliniai rezultatai."
 }
