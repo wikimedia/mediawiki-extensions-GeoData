@@ -1,12 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Nokeoo"
 		]
 	},
+	"apihelp-query+coordinates-description": "Grąžina nurodytų puslapių koordinates.",
+	"apihelp-query+coordinates-summary": "Grąžina nurodytų puslapių koordinates.",
 	"apihelp-query+coordinates-param-limit": "Kiek koordinačių gražinti.",
+	"apihelp-query+coordinates-paramvalue-prop-name": "Objekto pavadinimas.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Apytikslis objekto dydis metrais.",
+	"apihelp-query+coordinates-paramvalue-prop-country": "ISO 3166-1 alfa-2 šalies kodas (pvz., <samp>US</samp> ar <samp>RU</samp>).",
+	"apihelp-query+coordinates-paramvalue-prop-region": "ISO 3166-2 regiono kodas (ISO 3166-2 kodo dalis po brūkšnio, pvz., <samp>FL</samp> ar <samp>MOS</samp>).",
+	"apihelp-query+coordinates-param-primary": "Kokias koordinates grąžinti.",
 	"apihelp-query+geosearch-param-radius": "Paieškos spindulys metrais.",
 	"apihelp-query+geosearch-param-limit": "Maksimalus grąžinamų puslapių skaičius.",
+	"apihelp-query+geosearch-param-namespace": "Vardų sritys paieiškai.",
+	"apihelp-query+geosearch-param-primary": "Kokias koordinates grąžinti.",
 	"apierror-geodata-nocoord": "Puslapio koordinatės nežinomos.",
 	"apierror-geodata-noprimarycoord": "Puslapis $1 neturi padinių koordinačių.",
 	"apierror-geodata-notonearth": "Šio puslapio koordinatorės nėra Žemėje.",
