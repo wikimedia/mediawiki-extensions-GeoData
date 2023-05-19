@@ -4,8 +4,8 @@ namespace GeoData\Test;
 
 use ApiMain;
 use ApiUsageException;
-use FauxRequest;
 use GeoData\Api\QueryGeoSearch;
+use MediaWiki\Request\FauxRequest;
 use MediaWikiIntegrationTestCase;
 
 /**
