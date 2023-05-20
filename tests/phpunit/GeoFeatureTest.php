@@ -61,7 +61,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$this->kwAssert = new KeywordFeatureAssertions( $this );
 	}
 
-	public function parseDistanceProvider() {
+	public static function parseDistanceProvider() {
 		return [
 			'unknown units returns null' => [
 				null,
@@ -123,7 +123,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, CirrusNearCoordFilterFeature::parseDistance( $distance ) );
 	}
 
-	public function parseGeoNearbyProvider() {
+	public static function parseGeoNearbyProvider() {
 		return [
 			'random input' => [
 				[ null, 0 ],
@@ -224,7 +224,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$this->kwAssert->assertFilter( $filterFeature, $query, $filterQuery, null, $searchConfig );
 	}
 
-	public function parseGeoNearbyTitleProvider() {
+	public static function parseGeoNearbyTitleProvider() {
 		return [
 			'basic page lookup' => [
 				[
@@ -364,7 +364,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$this->kwAssert->assertFilter( $filterFeature, $query, $filterQuery, null, $searchConfig );
 	}
 
-	public function geoWarningsProvider() {
+	public static function geoWarningsProvider() {
 		return [
 			'coordinates must be two or three pieces' => [
 				[ [ 'geodata-search-feature-invalid-coordinates', 'nearcoord', 'hi' ] ],

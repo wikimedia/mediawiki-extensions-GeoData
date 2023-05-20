@@ -65,7 +65,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @dataProvider getLooseData
+	 * @dataProvider provideLooseData
 	 */
 	public function testLooseTagParsing( $input, $expected, $langCode = false ) {
 		if ( $langCode ) {
@@ -76,14 +76,14 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @dataProvider getStrictData
+	 * @dataProvider provideStrictData
 	 */
 	public function testStrictTagParsing( $input, $expected ) {
 		$this->setWarnings( 'fail' );
 		$this->assertParse( $input, $expected );
 	}
 
-	public function getLooseData() {
+	public static function provideLooseData() {
 		return [
 			// Basics
 			[
@@ -199,7 +199,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		];
 	}
 
-	public function getStrictData() {
+	public static function provideStrictData() {
 		return [
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RUS-MOS}}',

@@ -63,7 +63,7 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $globe->coordinatesAreValid( $lat, $lon ) );
 	}
 
-	public function provideCoordinatesValidation() {
+	public static function provideCoordinatesValidation() {
 		return [
 			[ 'earth', 0, 0, true ],
 			[ 'earth', 90, 180, true ],

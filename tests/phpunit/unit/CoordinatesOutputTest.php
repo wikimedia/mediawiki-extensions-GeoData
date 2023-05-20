@@ -9,7 +9,7 @@ use ParserOutput;
 
 class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 
-	public function provideCoordOutputs() {
+	public static function provideCoordOutputs() {
 		yield 'empty' => [ new CoordinatesOutput() ];
 		$limited = new CoordinatesOutput();
 		$limited->limitExceeded = true;

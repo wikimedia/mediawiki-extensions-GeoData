@@ -14,14 +14,14 @@ use MediaWikiUnitTestCase;
 class MathTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers \GeoData\Math::distance
-	 * @dataProvider getDistanceData
+	 * @dataProvider provideDistanceData
 	 */
 	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist, $name ) {
 		$this->assertEqualsWithDelta( $dist, Math::distance( $lat1, $lon1, $lat2, $lon2 ),
 			$dist / 1000, "testDistance():  $name" );
 	}
 
-	public function getDistanceData() {
+	public static function provideDistanceData() {
 		return [
 			// just run against a few values from the internets...
 			[ 55.75, 37.6167, 59.95, 30.3167, 635000, 'Moscow to St. Bumtown' ],
@@ -39,7 +39,7 @@ class MathTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $coord );
 	}
 
-	public function provideWrapAroundPairs() {
+	public static function provideWrapAroundPairs() {
 		return [
 			[ [ +000.0, +000.0 ], [ +000.0, +000.0 ] ],
 			[ [ -180.0, +179.0 ], [ -180.0, +179.0 ] ],
@@ -54,7 +54,7 @@ class MathTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers \GeoData\Coord::bboxAround
 	 * @covers \GeoData\Math::wrapAround
-	 * @dataProvider getRectData
+	 * @dataProvider provideRectData
 	 * @todo test directly now that this function is public
 	 */
 	public function testRectWrapAround( $lon ) {
@@ -65,7 +65,7 @@ class MathTest extends MediaWikiUnitTestCase {
 		$this->assertLessThanOrEqual( 180, $bbox->lon2 );
 	}
 
-	public function getRectData() {
+	public static function provideRectData() {
 		return [
 			[ 180 ],
 			[ -180 ],
@@ -81,7 +81,7 @@ class MathTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, Math::sign( $value ) );
 	}
 
-	public function provideSignedValues() {
+	public static function provideSignedValues() {
 		return [
 			[ 0.0, 1 ],
 			[ -0.0, 1 ],

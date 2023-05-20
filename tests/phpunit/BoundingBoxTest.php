@@ -22,7 +22,7 @@ class BoundingBoxTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $lonExpected, $center->lon, 'Comparing longitudes...' );
 	}
 
-	public function provideCenter() {
+	public static function provideCenter() {
 		return [
 			[ 15, 15, 10, 10, 20, 20 ],
 			[ 15, -180, 10, 175, 20, -175 ],

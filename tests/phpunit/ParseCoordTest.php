@@ -17,7 +17,7 @@ use Wikimedia\TestingAccessWrapper;
 class ParseCoordTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \GeoData\CoordinatesParserFunction::parseCoordinates
-	 * @dataProvider getCases
+	 * @dataProvider provideCases
 	 */
 	public function testParseCoordinates( $parts, $result, $globe = 'earth' ) {
 		$formatted = '"' . implode( '|', $parts ) . '"';
@@ -52,7 +52,7 @@ class ParseCoordTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function getCases() {
+	public static function provideCases() {
 		return [
 			// basics
 			[ [ 0, 0 ], new Coord( 0, 0 ) ],

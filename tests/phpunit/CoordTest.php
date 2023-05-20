@@ -30,7 +30,7 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function provideEquals() {
+	public static function provideEquals() {
 		$testCases = [
 			[
 				new Coord( 10, 20, null, [ 'dim' => 123, 'type' => 'not',   'country' => 'not',
@@ -41,10 +41,10 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 				'Equality with other fileds differing',
 			],
 		];
-		return array_merge( $testCases, $this->provideAlwaysEqualCoords() );
+		return array_merge( $testCases, self::provideAlwaysEqualCoords() );
 	}
 
-	private function provideAlwaysEqualCoords() {
+	private static function provideAlwaysEqualCoords() {
 		return [
 			[
 				new Coord( 10, 20 ),
@@ -163,7 +163,7 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function provideFullyEquals() {
+	public static function provideFullyEquals() {
 		$testCases = [
 			[
 				new Coord( 10, 20, null, [ 'primary' => true ] ),
@@ -271,7 +271,7 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 			],
 		];
 
-		return array_merge( $this->provideAlwaysEqualCoords(), $testCases );
+		return array_merge( self::provideAlwaysEqualCoords(), $testCases );
 	}
 
 	/**
@@ -297,7 +297,7 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $expected->equalsTo( $c->getGlobeObj() ) );
 	}
 
-	public function provideGlobeObj() {
+	public static function provideGlobeObj() {
 		return [
 			[ null, new Globe( 'earth' ) ],
 			[ 'earth', new Globe( 'earth' ) ],

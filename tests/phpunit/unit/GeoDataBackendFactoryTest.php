@@ -36,7 +36,7 @@ class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 		self::assertInstanceOf( $expectedClass, $queryGeoSearchBackend );
 	}
 
-	public function provider(): array {
+	public static function provider(): array {
 		return [
 			[ 'elastic', QueryGeoSearchElastic::class ],
 			[ 'db', QueryGeoSearchDb::class ],

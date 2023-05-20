@@ -41,7 +41,7 @@ class GeoSearchTest extends MediaWikiIntegrationTestCase {
 		$this->request( $params );
 	}
 
-	public function provideRequiredParams() {
+	public static function provideRequiredParams() {
 		return [
 			[
 				[],

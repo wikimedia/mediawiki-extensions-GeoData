@@ -11,13 +11,13 @@ use MediaWikiIntegrationTestCase;
 class MiscGeoDataTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers \GeoData\Api\QueryGeoSearchDb::intRange
-	 * @dataProvider getIntRangeData
+	 * @dataProvider provideIntRangeData
 	 */
 	public function testIntRange( $min, $max, $expected ) {
 		$this->assertEquals( $expected, QueryGeoSearchDb::intRange( $min, $max ) );
 	}
 
-	public function getIntRangeData() {
+	public static function provideIntRangeData() {
 		return [
 			[ 37.697, 37.877, [ 377, 378, 379 ] ],
 			[ 9.99, 10.01, [ 100 ] ],
