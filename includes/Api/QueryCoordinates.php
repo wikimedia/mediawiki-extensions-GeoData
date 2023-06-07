@@ -10,7 +10,6 @@ use GeoData\GeoData;
 use GeoData\Globe;
 use GeoData\Math;
 use MediaWiki\Page\WikiPageFactory;
-use MWException;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
@@ -103,7 +102,6 @@ class QueryCoordinates extends ApiQueryBase {
 	/**
 	 * @param array $params
 	 * @return Coord|null
-	 * @throws MWException
 	 */
 	private function getFromCoord( array $params ): ?Coord {
 		$this->requireMaxOneParameter( $params, 'distancefrompoint', 'distancefrompage' );

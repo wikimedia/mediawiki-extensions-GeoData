@@ -23,7 +23,6 @@ use MediaWiki\Content\Hook\SearchDataForIndexHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
-use MWException;
 use Parser;
 use ParserOutput;
 use SearchEngine;
@@ -56,7 +55,6 @@ class Hooks implements SearchDataForIndexHook, OutputPageParserOutputHook {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
 	 *
 	 * @param DatabaseUpdater $updater
-	 * @throws MWException
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		$base = __DIR__ . '/../sql';

@@ -3,7 +3,6 @@
 namespace GeoData;
 
 use Language;
-use MWException;
 use Parser;
 use ParserOutput;
 use PPFrame;
@@ -38,7 +37,6 @@ class CoordinatesParserFunction {
 	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 * @param PPNode[] $args
-	 * @throws MWException
 	 * @return mixed
 	 */
 	public function coordinates( Parser $parser, PPFrame $frame, array $args ) {
