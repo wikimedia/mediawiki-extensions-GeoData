@@ -7,6 +7,7 @@ use JsonSerializable;
 use LogicException;
 use ParserOutput;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Parsoid\Core\ContentMetadataCollector;
 
 /**
  * Class that holds output of a parse opertion
@@ -39,18 +40,14 @@ class CoordinatesOutput implements JsonSerializable {
 	public static function getOrBuildFromParserOutput(
 		ParserOutput $parserOutput
 	): CoordinatesOutput {
-		$coord = self::getFromParserOutput( $parserOutput );
-		if ( $coord === null ) {
-			$coord = new CoordinatesOutput();
-		}
-		return $coord;
+		return self::getFromParserOutput( $parserOutput ) ?? new CoordinatesOutput();
 	}
 
 	/**
 	 * Write the coords to ParserOutput object.
-	 * @param ParserOutput $parserOutput
+	 * @param ContentMetadataCollector $parserOutput
 	 */
-	public function setToParserOutput( ParserOutput $parserOutput ) {
+	public function setToParserOutput( ContentMetadataCollector $parserOutput ) {
 		$parserOutput->setExtensionData( self::GEO_DATA_COORDS_OUTPUT, $this->jsonSerialize() );
 	}
 
