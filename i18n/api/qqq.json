@@ -8,7 +8,6 @@
 			"Shirayuki"
 		]
 	},
-	"apihelp-query+coordinates-description": "{{doc-apihelp-description|query+coordinates}}",
 	"apihelp-query+coordinates-summary": "{{doc-apihelp-summary|query+coordinates}}",
 	"apihelp-query+coordinates-param-limit": "{{doc-apihelp-param|query+coordinates|limit}}",
 	"apihelp-query+coordinates-param-prop": "{{doc-apihelp-param|query+coordinates|prop}}",
@@ -25,7 +24,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "{{doc-apihelp-param|query+coordinates|distancefrompoint}}",
 	"apihelp-query+coordinates-param-distancefrompage": "{{doc-apihelp-param|query+coordinates|distancefrompage}}",
 	"apihelp-query+coordinates-example-1": "{{doc-apihelp-example|query+coordinates}}",
-	"apihelp-query+geosearch-description": "{{doc-apihelp-description|query+geosearch}}",
 	"apihelp-query+geosearch-summary": "{{doc-apihelp-summary|query+geosearch}}",
 	"apihelp-query+geosearch-param-bbox": "{{doc-apihelp-param|query+geosearch|bbox}}",
 	"apihelp-query+geosearch-param-coord": "{{doc-apihelp-param|query+geosearch|coord}}",
