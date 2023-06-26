@@ -8,7 +8,6 @@
 			"WikiPhoenix"
 		]
 	},
-	"apihelp-query+coordinates-description": "Returnerar koordinaterna för den angivna sidan.",
 	"apihelp-query+coordinates-summary": "Returnerar koordinaterna för de angivna sidorna.",
 	"apihelp-query+coordinates-param-limit": "Hur många koordinater som ska returneras.",
 	"apihelp-query+coordinates-param-prop": "Vilka extra koordinategenskaper som ska återkommas. (Egenskaper som alltid återkommes: <var>lat</var>, <var>lon</var> och antingen <var>primary</var> eller <var>secondary</var> som en boolean flagga.)",
@@ -25,7 +24,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Returnera distans i meter för alla resultat på jorden från de givna koordinater.",
 	"apihelp-query+coordinates-param-distancefrompage": "Returnera distans i meter för alla resultat på jorden från koordinaterna för denna sida.",
 	"apihelp-query+coordinates-example-1": "Få en lista med koordinater för [[Main Page]]",
-	"apihelp-query+geosearch-description": "Returnerar sidor med koordinaterna kring den angivna punkten.",
 	"apihelp-query+geosearch-summary": "Returnerar sidor med koordinater som finns i ett visst område.",
 	"apihelp-query+geosearch-param-bbox": "Avgränsningsruta att söka i: rör <kbd></kbd> separata koordinater för övre vänstra och nedre högra hörnen.",
 	"apihelp-query+geosearch-param-coord": "Koordinat kring vilken sökningen ska ske.",

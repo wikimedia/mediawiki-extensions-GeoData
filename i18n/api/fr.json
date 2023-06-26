@@ -14,7 +14,6 @@
 			"Wladek92"
 		]
 	},
-	"apihelp-query+coordinates-description": "Retourne les coordonnées de la page référencée.",
 	"apihelp-query+coordinates-summary": "Retourne les coordonnées des pages fournies.",
 	"apihelp-query+coordinates-param-limit": "Combien de coordonnées à renvoyer.",
 	"apihelp-query+coordinates-param-prop": "Quelles propriétés de coordonnées supplémentaires retourner. (Propriétés toujours retournées : <var>lat</var>, <var>lon</var> et un des drapeaux booléens <var>primary</var> ou <var>secondary</var>).",
@@ -31,7 +30,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Renvoyer la distance en mètres des coordonnées géographiques de chaque résultat valide mesurée depuis le point de coordonnées fournies.",
 	"apihelp-query+coordinates-param-distancefrompage": "Renvoyer la distance en mètres des coordonnées géographiques de chaque résultat valide depuis le point de coordonnées de cette page.",
 	"apihelp-query+coordinates-example-1": "Obtenir une liste des coordonnées de la [[Main Page|Page principale]]",
-	"apihelp-query+geosearch-description": "Renvoie les pages ayant des coordonnées situées dans une zone donnée.",
 	"apihelp-query+geosearch-summary": "Renvoie les pages qui ont des coordonnées situées dans une zone donnée.",
 	"apihelp-query+geosearch-param-bbox": "Boîte englobant la zone à rechercher : coordonnées séparées par une barre verticale (|) des coins supérieur gauche et inférieur droit.",
 	"apihelp-query+geosearch-param-coord": "Coordonnées autour desquelles chercher.",

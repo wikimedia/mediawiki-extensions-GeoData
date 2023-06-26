@@ -5,14 +5,12 @@
 			"अभय नातू"
 		]
 	},
-	"apihelp-query+coordinates-description": "दिलेल्या पानाच्या समन्वयकाचा परतावा देते.",
 	"apihelp-query+coordinates-param-limit": "किती समन्वयकांचा परतावा हवा.",
 	"apihelp-query+coordinates-param-prop": "समन्वयकाच्या कोणत्या अतिरिक्त गुणधर्मांचा परतावा हवा.",
 	"apihelp-query+coordinates-param-primary": "फक्त प्राथमिक(\"primary\"), माध्यमिक(\"secondary\") किंवा दोन्ही (\"all\") समन्वयकांचा परतावा द्यायचा काय.",
 	"apihelp-query+coordinates-param-distancefrompoint": "या समन्वयकांच्या पासून, पृथ्वीवरच्या प्रत्येक निकालांचे मिटरमधील अंतराचा परतावा देते.",
 	"apihelp-query+coordinates-param-distancefrompage": "या पानाच्या समन्वयकांच्या पासून, पृथ्वीवरच्या प्रत्येक निकालांचे मिटरमधील अंतराचा परतावा देते.",
 	"apihelp-query+coordinates-example-1": "[[Main Page|मुखपृष्ठ]] या लेखाच्या समन्वयकांची यादी मिळवा",
-	"apihelp-query+geosearch-description": "त्या पानांचा परतावा देते,ज्यांचे समन्वयक विशिष्ट क्षेत्रात आहेत.",
 	"apihelp-query+geosearch-param-coord": "कोणत्या समन्वयकाभोवताल शोधावयाचे.",
 	"apihelp-query+geosearch-param-page": "ज्या सभोवताल शोधावयाचे त्या पानाचे शीर्षक.",
 	"apihelp-query+geosearch-param-radius": "शोधत्रिज्या मीटरमध्ये.",

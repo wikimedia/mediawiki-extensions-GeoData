@@ -6,7 +6,6 @@
 			"MuratTheTurkish"
 		]
 	},
-	"apihelp-query+coordinates-description": "Belirli sayfaların koordinatlarını döndürür.",
 	"apihelp-query+coordinates-summary": "Belirli sayfaların koordinatlarını döndürür.",
 	"apihelp-query+coordinates-param-limit": "Geri dönmek için kaç koordinat.",
 	"apihelp-query+coordinates-param-prop": "Hangi ek koordinat özellikleri döndürülecek. (Her zaman döndürülen özellikler: bir boole bayrağı olarak <var>lat</var>, <var>lon</var> ve <var>primary</var> veya <var>secondary</var>.)",
@@ -23,7 +22,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Verilen her koordinattan geçerli her sonucun coğrafi koordinatlarından metre cinsinden dönüş mesafesi.",
 	"apihelp-query+coordinates-param-distancefrompage": "Bu sayfanın koordinatlarından geçerli her sonucun coğrafi koordinatlarından metre cinsinden dönüş mesafesi.",
 	"apihelp-query+coordinates-example-1": "[[Main Page]] sayfasının koordinatlarının bir listesini alın",
-	"apihelp-query+geosearch-description": "Belirli bir alanda bulunan koordinatları olan sayfaları döndürür.",
 	"apihelp-query+geosearch-summary": "Belirli bir alanda bulunan koordinatları olan sayfaları döndürür.",
 	"apihelp-query+geosearch-param-bbox": "Aramak için sınırlayıcı kutu: boru (<kbd>|</kbd>) sol üst ve sağ alt köşelerin ayrılmış koordinatları.",
 	"apihelp-query+geosearch-param-coord": "Aranacak yeri koordine edin.",

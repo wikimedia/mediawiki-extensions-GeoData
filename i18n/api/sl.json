@@ -5,7 +5,6 @@
 			"NegativeTwelveDollars"
 		]
 	},
-	"apihelp-query+coordinates-description": "Vrne koordinate navedenih strani.",
 	"apihelp-query+coordinates-summary": "Vrne koordinate navedenih strani.",
 	"apihelp-query+coordinates-param-limit": "Koliko koordinat naj bo vrnjenih.",
 	"apihelp-query+coordinates-param-prop": "Katere dodatne lastnosti koordinat naj bodo vrnjene. (Lastnosti, ki so vedno vrnjene: <var>lat</var>, <var>lon</var> in bodisi <var>primary</var> ali <var>secondary</var> kot Boolova zastavica.)",
@@ -22,7 +21,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Vrnitev razdalje v metrih iz geografskih koordinat vsakega veljavnega rezultata iz predloženh koordinat.",
 	"apihelp-query+coordinates-param-distancefrompage": "Vrnitev razdalje v metrih iz geografskih koordinat vsakega veljavnega rezultata iz koordinat te strani.",
 	"apihelp-query+coordinates-example-1": "Pridobi seznam koordinat strani [[Main Page]]",
-	"apihelp-query+geosearch-description": "Vrne strani s koordinatami na določenem območju.",
 	"apihelp-query+geosearch-summary": "Vrne strani s koordinatami na določenem območju.",
 	"apihelp-query+geosearch-param-bbox": "Omejevalno polje za iskanje: koordinate, ločene z navpičnico (<kbd>|</kbd>), v zgornjem levem in spodnjem desnem kotu.",
 	"apihelp-query+geosearch-param-coord": "Koordinate, okoli katerih naj poteka iskanje.",

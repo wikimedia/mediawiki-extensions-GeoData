@@ -4,7 +4,6 @@
 			"McDutchie"
 		]
 	},
-	"apihelp-query+coordinates-description": "Restitue le coordinatas del paginas indicate.",
 	"apihelp-query+coordinates-summary": "Restitue le coordinatas del paginas indicate.",
 	"apihelp-query+coordinates-param-limit": "Quante coordinatas restituer.",
 	"apihelp-query+coordinates-param-prop": "Qual proprietates additional de coordinatas restituer. (Proprietates sempre restituite: <var>lat</var>, <var>lon</var>, e sia <var>primary</var> o <var>secondary</var> como valor boolean.)",
@@ -21,7 +20,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Restituer le distantia in metros del coordinatas geographic de cata resultato valide a partir del coordinatas indicate.",
 	"apihelp-query+coordinates-param-distancefrompage": "Restituer le distantia in metros del coordinatas geographic de cata resultato valide a partir del coordinatas indicate.",
 	"apihelp-query+coordinates-example-1": "Obtener un lista de coordinatas del [[Main Page|pagina principal]]",
-	"apihelp-query+geosearch-description": "Restitue paginas con coordinatas situate in un certe area.",
 	"apihelp-query+geosearch-summary": "Restitue paginas con coordinatas situate in un certe area.",
 	"apihelp-query+geosearch-param-bbox": "Rectangulo delimitator in le qual cercar; coordinatas del angulos superior sinistre e inferior dextre, separate per un barra vertical (<kbd>|</kbd>).",
 	"apihelp-query+geosearch-param-coord": "Coordinata circa le qual cercar.",

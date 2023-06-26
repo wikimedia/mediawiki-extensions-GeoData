@@ -5,7 +5,6 @@
 			"Nokeoo"
 		]
 	},
-	"apihelp-query+coordinates-description": "Grąžina nurodytų puslapių koordinates.",
 	"apihelp-query+coordinates-summary": "Grąžina nurodytų puslapių koordinates.",
 	"apihelp-query+coordinates-param-limit": "Kiek koordinačių gražinti.",
 	"apihelp-query+coordinates-paramvalue-prop-name": "Objekto pavadinimas.",

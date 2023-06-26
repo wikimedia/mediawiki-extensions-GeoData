@@ -5,7 +5,6 @@
 			"捍粵者"
 		]
 	},
-	"apihelp-query+coordinates-description": "回傳指定頁面的座標。",
 	"apihelp-query+coordinates-summary": "回傳指定頁面的座標。",
 	"apihelp-query+coordinates-param-limit": "要回傳的座標數量。",
 	"apihelp-query+coordinates-param-prop": "要回傳的額外座標參數。（能返回的參數是：<var>lat</var>、<var>lon</var>、以及 <var>primary</var> 與 <var>secondary</var> 其一作為的布林標記。）",
@@ -22,7 +21,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "回傳來自指定座標的各有效結果地理座標以公尺為單位的距離。",
 	"apihelp-query+coordinates-param-distancefrompage": "回傳來自此頁面上座標的各有效結果地理座標以公尺為單位的距離。",
 	"apihelp-query+coordinates-example-1": "取得 [[Main Page]] 的座標清單",
-	"apihelp-query+geosearch-description": "回傳含有位於某一區域座標的頁面。",
 	"apihelp-query+geosearch-summary": "回傳含有位於某一區域座標的頁面。",
 	"apihelp-query+geosearch-param-bbox": "要搜尋的定界框：以豎線符號分隔左上角與右下角的座標（<kbd>|</kbd>）。",
 	"apihelp-query+geosearch-param-coord": "要搜尋的座標周圍。",

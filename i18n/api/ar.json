@@ -6,7 +6,6 @@
 			"محمد أحمد عبد الفتاح"
 		]
 	},
-	"apihelp-query+coordinates-description": "إرجاع إحداثيات الصفحات المعينة.",
 	"apihelp-query+coordinates-summary": "إرجاع إحداثيات الصفحات المعينة.",
 	"apihelp-query+coordinates-param-limit": "كم عدد الإحداثيات للعودة.",
 	"apihelp-query+coordinates-param-prop": "أي خصائص إحداثيات إضافية للعرض. (الخصائص التي يتم عرضها دائما: <var>lat</var>, <var>lon</var> وإما <var>primary</var> أو <var>secondary</var>  كعلم منطقي.)",
@@ -23,7 +22,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "عودة المسافة بالأمتار من الإحداثيات الجغرافية لكل نتيجة صحيحة من الإحداثيات المعطاة.",
 	"apihelp-query+coordinates-param-distancefrompage": "عودة المسافة بالأمتار من الإحداثيات الجغرافية لكل نتيجة صحيحة من إحداثيات هذه الصفحة.",
 	"apihelp-query+coordinates-example-1": "الحصول على قائمة بإحداثيات [[Main Page]]",
-	"apihelp-query+geosearch-description": "إرجاع الصفحات ذات الإحداثيات الموجودة في منطقة معينة.",
 	"apihelp-query+geosearch-summary": "إرجاع الصفحات ذات الإحداثيات الموجودة في منطقة معينة.",
 	"apihelp-query+geosearch-param-bbox": "مربع الإحاطة للبحث في: أنبوب (<kbd>|</kbd>) يفصل الإحداثيات من الزوايا في أعلى وأسفل اليمين.",
 	"apihelp-query+geosearch-param-coord": "إحاثيات حوله للبحث.",

@@ -7,7 +7,6 @@
 			"Ата"
 		]
 	},
-	"apihelp-query+coordinates-description": "Повертає координати даної сторінки.",
 	"apihelp-query+coordinates-summary": "Повертає координати заданих сторінок.",
 	"apihelp-query+coordinates-param-limit": "Скільки координат повернути.",
 	"apihelp-query+coordinates-param-prop": "Які додаткові властивості координат повернути. (Властивості, що завжди видаються: <var>lat</var>, <var>lon</var> та або <var>primary</var>, або <var>secondary</var> як логічний прапорець).",
@@ -24,7 +23,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Повертає відстань у метрах із географічних координат кожного дійсного результату із заданих координат.",
 	"apihelp-query+coordinates-param-distancefrompage": "Повертає відстань у метрах із географічних координат кожного дійсного результату з координат цієї сторінки.",
 	"apihelp-query+coordinates-example-1": "Отримати список координат [[Main Page|Головної сторінки]]",
-	"apihelp-query+geosearch-description": "Повертає сторінки, що мають координати, розташовані навколо певної місцевості.",
 	"apihelp-query+geosearch-summary": "Повертає сторінки, що мають координати, розташовані навколо певної місцевості.",
 	"apihelp-query+geosearch-param-bbox": "Обмежувальний прямокутник, у якому проводити пошук: координати верхнього лівого та нижнього правого кутків, розділені вертикальною рискою (<kbd>|</kbd>).",
 	"apihelp-query+geosearch-param-coord": "Координати навколо яких шукати.",

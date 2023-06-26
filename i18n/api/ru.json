@@ -7,7 +7,6 @@
 			"Vlad5250"
 		]
 	},
-	"apihelp-query+coordinates-description": "Возвращает координаты заданных страниц.",
 	"apihelp-query+coordinates-summary": "Возвращает координаты заданных страниц.",
 	"apihelp-query+coordinates-param-limit": "Сколько координат возвращать.",
 	"apihelp-query+coordinates-param-prop": "Какие дополнительные координатные свойства возвращать. (Свойства, которые всегда даются: <var>lat</var>, <var>lon</var>, и или <var>primary</var> или <var>secondary</var> как Булевой флаг.)",
@@ -24,7 +23,6 @@
 	"apihelp-query+coordinates-param-distancefrompoint": "Дать расстояние в метрах от географических координат для каждого действительного результата из данных координат",
 	"apihelp-query+coordinates-param-distancefrompage": "Дать расстояние в метрах от географических координат для каждого действительного результата из координат по этой странице.",
 	"apihelp-query+coordinates-example-1": "Получить список координат на [[Main Page|Заглавной странице]]",
-	"apihelp-query+geosearch-description": "Даёт страницы с координатами, размещёнными в определённом регионе.",
 	"apihelp-query+geosearch-summary": "Даёт страницы с координатами, размещёнными в определённом регионе.",
 	"apihelp-query+geosearch-param-bbox": "В каком ограничивающем поле необходимо искать: координаты верхнено левого и нижнего правого углов, разделённые выпрямленной чертой (<kbd>|</kbd>).",
 	"apihelp-query+geosearch-param-coord": "Вокруг какой координаты необходимо искать.",
