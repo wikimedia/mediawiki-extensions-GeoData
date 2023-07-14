@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piano1forte2"
+		]
+	},
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Approximate size of the object in metres.",
+	"apihelp-query+coordinates-param-distancefrompoint": "Return distance in metres from the geographical coordinates of every valid result from the given coordinates.",
+	"apihelp-query+geosearch-param-radius": "Search radius in metres.",
+	"apihelp-query+geosearch-param-maxdim": "Restrict search to objects no larger than this, in metres."
+}
