@@ -15,7 +15,6 @@ use HashConfig;
 use LinkCacheTestTrait;
 use MediaWikiIntegrationTestCase;
 use Title;
-use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LoadBalancer;
 use Wikimedia\Rdbms\MaintainableDBConnRef;
@@ -311,8 +310,6 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$lb = $this->createMock( LoadBalancer::class );
 		$lb->method( 'getConnection' )
 			->willReturn( $dbMocker( $this->createMock( IDatabase::class ) ) );
-		$lb->method( 'getConnectionRef' )
-			->willReturn( $dbMocker( $this->createMock( DBConnRef::class ) ) );
 		$lb->method( 'getMaintenanceConnectionRef' )
 			->willReturn( $dbMocker( $this->createMock( MaintainableDBConnRef::class ) ) );
 		$this->setService( 'DBLoadBalancer', $lb );
