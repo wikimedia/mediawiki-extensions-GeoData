@@ -6,7 +6,7 @@ use CirrusSearch\WarningCollector;
 use Config;
 use GeoData\GeoData;
 use GeoData\Globe;
-use Title;
+use MediaWiki\MediaWikiServices;
 
 /**
  * Trait for geo based features.
@@ -28,7 +28,8 @@ trait CirrusGeoFeature {
 	 *  Coordinate returned will be null.
 	 */
 	public function parseGeoNearbyTitle( WarningCollector $warningCollector, $key, $text ) {
-		$title = Title::newFromText( $text );
+		$titleFactory = MediaWikiServices::getInstance()->getTitleFactory();
+		$title = $titleFactory->newFromText( $text );
 		if ( $title && $title->exists() ) {
 			// Default radius if not provided: 5km
 			$radius = self::$DEFAULT_RADIUS;
@@ -52,7 +53,7 @@ trait CirrusGeoFeature {
 				);
 				return [ null, 0, '' ];
 			}
-			$title = Title::newFromText( $pieces[1] );
+			$title = $titleFactory->newFromText( $pieces[1] );
 			if ( !$title || !$title->exists() ) {
 				$warningCollector->addWarning(
 					"geodata-search-feature-unknown-title",

@@ -34,7 +34,9 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	private function assertParse( $input, $expected ) {
 		$p = MediaWikiServices::getInstance()->getParser()->getFreshParser();
 		$opt = ParserOptions::newFromAnon();
-		$out = $p->parse( $input, Title::newMainPage(), $opt );
+		$title = Title::makeTitle( NS_MAIN, __METHOD__ );
+		$title->setContentModel( CONTENT_MODEL_WIKITEXT );
+		$out = $p->parse( $input, $title, $opt );
 		if ( !$expected ) {
 			$this->assertNull( CoordinatesOutput::getFromParserOutput( $out ),
 				'Expected a failure but a result was found: ' .

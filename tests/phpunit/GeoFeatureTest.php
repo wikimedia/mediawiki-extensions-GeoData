@@ -2,7 +2,6 @@
 
 namespace GeoData;
 
-use CirrusSearch\CirrusSearch;
 use CirrusSearch\CrossSearchStrategy;
 use CirrusSearch\HashSearchConfig;
 use CirrusSearch\Query\KeywordFeatureAssertions;
@@ -15,7 +14,11 @@ use HashConfig;
 use LinkCacheTestTrait;
 use MediaWikiIntegrationTestCase;
 use Title;
+use TitleFactory;
+use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\LoadBalancer;
 use Wikimedia\Rdbms\MaintainableDBConnRef;
 
@@ -48,15 +51,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	/** @var KeywordFeatureAssertions */
 	private $kwAssert;
 
-	public function __construct( $name = null, array $data = [], $dataName = '' ) {
-		MediaWikiIntegrationTestCase::__construct( $name, $data, $dataName );
-	}
-
 	protected function setUp(): void {
 		parent::setUp();
-		if ( !class_exists( CirrusSearch::class ) ) {
-			$this->markTestSkipped( 'CirrusSearch not installed, skipping' );
-		}
+		$this->markTestSkippedIfExtensionNotLoaded( 'CirrusSearch' );
 		$this->kwAssert = new KeywordFeatureAssertions( $this );
 	}
 
@@ -420,8 +417,31 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$feature = $features[$keyAndValue[0]];
 		$query = $keyAndValue[0] . ':"' . $keyAndValue[1] . '"';
 
-		// Inject fake page into LinkCache so it "exists"
-		$this->addGoodLinkObject( 98765, Title::newFromText( 'GeoFeatureTest-GeoWarnings-Page' ) );
+		// Inject fake page into LinkCache and force its page ID so it "exists"
+		$titleText = 'GeoFeatureTest-GeoWarnings-Page';
+		$title = Title::makeTitle( NS_MAIN, $titleText );
+		$title->resetArticleID( 98765 );
+		$this->addGoodLinkObject( 98765, $title );
+		$titleFactory = $this->getMockBuilder( TitleFactory::class )
+			->onlyMethods( [ 'newFromText' ] )
+			->getMock();
+		$titleFactory->method( 'newFromText' )->willReturnCallback(
+			static function ( $text, $ns ) use ( $title, $titleText ) {
+				if ( $text === $titleText ) {
+					return $title;
+				}
+				$ret = Title::newFromText( $text, $ns );
+				if ( $ret ) {
+					$ret->resetArticleID( 0 );
+				}
+				return $ret;
+			} );
+		$this->setService( 'TitleFactory', $titleFactory );
+		$db = $this->createMock( IReadableDatabase::class );
+		$db->method( 'select' )->willReturn( new FakeResultWrapper( [] ) );
+		$lb = $this->createMock( ILoadBalancer::class );
+		$lb->method( 'getConnection' )->with( DB_REPLICA )->willReturn( $db );
+		$this->setService( 'DBLoadBalancer', $lb );
 
 		$this->kwAssert->assertWarnings( $feature, $expected, $query );
 	}
