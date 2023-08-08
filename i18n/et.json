@@ -17,7 +17,7 @@
 	"geodata-broken-tags-category-desc": "Leheküljel on väärdunud silt <code><nowiki>{{#coordinates:}}</nowiki></code>.",
 	"geodata-unknown-type-category": "Tundmatut tüüpi koordinaatidega leheküljed",
 	"geodata-unknown-type-category-desc": "Lehekülg kasutab koordinaatide juures parameetri <code>type</code> tundmatut väärtust.",
-	"geodata-unknown-globe-category": "Tundmatu taevakeha väärtusega leheküljed",
+	"geodata-unknown-globe-category": "Tundmatu taevakehaväärtusega leheküljed",
 	"geodata-unknown-globe-category-desc": "Lehekülg kasutab koordinaatide juures parameetri <code>globe</code> tundmatut väärtust.",
 	"geodata-unknown-region-category": "Vigase piirkonnaväärtusega leheküljed",
 	"geodata-unknown-region-category-desc": "Lehekülg kasutab koordinaatide juures parameetri <code>region</code> vigast väärtust."
