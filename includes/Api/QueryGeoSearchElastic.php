@@ -8,7 +8,7 @@ use FormatJson;
 use GeoData\Coord;
 use GeoData\Searcher;
 use MediaWiki\MediaWikiServices;
-use Title;
+use MediaWiki\Title\Title;
 
 class QueryGeoSearchElastic extends QueryGeoSearch {
 	/** @var array|null */

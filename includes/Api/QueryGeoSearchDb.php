@@ -6,7 +6,7 @@ use ApiPageSet;
 use ApiQuery;
 use GeoData\Coord;
 use GeoData\Math;
-use Title;
+use MediaWiki\Title\Title;
 
 class QueryGeoSearchDb extends QueryGeoSearch {
 	/**

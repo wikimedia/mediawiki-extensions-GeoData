@@ -23,10 +23,10 @@ use MediaWiki\Content\Hook\SearchDataForIndexHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\Title;
 use Parser;
 use ParserOutput;
 use SearchEngine;
-use Title;
 use User;
 use WikiPage;
 

@@ -10,7 +10,7 @@ use GeoData\GeoData;
 use GeoData\Globe;
 use GeoData\Math;
 use MediaWiki\Page\WikiPageFactory;
-use Title;
+use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 

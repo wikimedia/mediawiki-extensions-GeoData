@@ -5,9 +5,9 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\CoordinatesOutput;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use ParserOptions;
-use Title;
 
 /**
  * @covers \GeoData\CoordinatesParserFunction
