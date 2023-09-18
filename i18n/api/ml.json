@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Praveenp"
 		]
 	},
 	"apihelp-query+coordinates-param-limit": "എത്ര നിർദ്ദേശാങ്കങ്ങൾ തിരിച്ചുനൽകണം.",
-	"apihelp-query+coordinates-param-primary": "പ്രാഥമിക നിർദ്ദേശാങ്കൾ (\"primary\") അല്ലെങ്കിൽ ദ്വിതീയം (\"secondary\")  മാത്രമോ അല്ലെങ്കിൽ രണ്ടും കൂടെ (\"all\") ആണോ തിരിച്ചുനൽകേണ്ടത്.",
+	"apihelp-query+coordinates-param-primary": "പ്രാഥമിക നിർദ്ദേശാങ്കൾ (\"primary\") അല്ലെങ്കിൽ ദ്വിതീയം (\"secondary\") മാത്രമോ അല്ലെങ്കിൽ രണ്ടും കൂടെ (\"all\") ആണോ തിരിച്ചുനൽകേണ്ടത്.",
 	"apihelp-query+coordinates-param-distancefrompoint": "ഭൂമിയിലെ എല്ലാ ഫലങ്ങളിലും ഈ നിർദ്ദേശാങ്കങ്ങളിൽ നിന്നുമുള്ള ദൂരം മീറ്ററിൽ തിരിച്ചുനൽകുക.",
 	"apihelp-query+coordinates-param-distancefrompage": "ഭൂമിയിലെ എല്ലാ ഫലങ്ങളിലും ഈ താളിലെ നിർദ്ദേശാങ്കങ്ങളിൽ നിന്നുമുള്ള ദൂരം മീറ്ററിൽ തിരിച്ചുനൽകുക.",
 	"apihelp-query+coordinates-example-1": "[[Main Page|പ്രധാന താളിലെ]] നിർദ്ദേശാങ്കങ്ങളുടെ പട്ടിക എടുക്കുക",
@@ -16,6 +17,6 @@
 	"apihelp-query+geosearch-param-limit": "പരമാവധി തിരിച്ചുനൽകേണ്ട താളുകളുടെ എണ്ണം.",
 	"apihelp-query+geosearch-param-globe": "തിരയേണ്ട ഗോളം (സ്വതേ \"ഭൂമി\").",
 	"apihelp-query+geosearch-param-namespace": "തിരയേണ്ട നാമമേഖലകൾ.",
-	"apihelp-query+geosearch-param-primary": "പ്രാഥമിക നിർദ്ദേശാങ്കൾ (\"primary\") അല്ലെങ്കിൽ ദ്വിതീയം (\"secondary\")  മാത്രമോ അല്ലെങ്കിൽ രണ്ടും കൂടെ (\"all\") ആണോ തിരിച്ചുനൽകേണ്ടത്.",
+	"apihelp-query+geosearch-param-primary": "പ്രാഥമിക നിർദ്ദേശാങ്കൾ (\"primary\") അല്ലെങ്കിൽ ദ്വിതീയം (\"secondary\") മാത്രമോ അല്ലെങ്കിൽ രണ്ടും കൂടെ (\"all\") ആണോ തിരിച്ചുനൽകേണ്ടത്.",
 	"apihelp-query+geosearch-example-1": "37° 47′ 13.1″ വ, 122° 23′ 58.84″ പ എന്ന നിർദ്ദേശാങ്ക ബിന്ദുവിന് സമീപം തിരയുക."
 }
