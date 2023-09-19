@@ -3,13 +3,14 @@
 		"authors": [
 			"ديفيد",
 			"محمد أحمد عبد الفتاح",
-			"Meno25"
+			"Meno25",
+			"Amire80"
 		]
 	},
 	"apihelp-query+coordinates-description": "إرجاع إحداثيات الصفحات المعينة.",
 	"apihelp-query+coordinates-summary": "إرجاع إحداثيات الصفحات المعينة.",
 	"apihelp-query+coordinates-param-limit": "كم عدد الإحداثيات للعودة.",
-	"apihelp-query+coordinates-param-prop": "أي خصائص إحداثيات إضافية للعرض. (الخصائص التي يتم عرضها دائما: <var>lat</var>, <var>lon</var> وإما <var>primary</var> أو <var>secondary</var>  كعلم منطقي.)",
+	"apihelp-query+coordinates-param-prop": "أي خصائص إحداثيات إضافية للعرض. (الخصائص التي يتم عرضها دائما: <var>lat</var>, <var>lon</var> وإما <var>primary</var> أو <var>secondary</var> كعلم منطقي.)",
 	"apihelp-query+coordinates-paramvalue-prop-type": "نوع الكائن الذي تشير إليه الإحداثيات، انظر [[mw:Special:MyLanguage/Extension:GeoData#Usage]] للتفاصيل.",
 	"apihelp-query+coordinates-paramvalue-prop-name": "اسم الكائن.",
 	"apihelp-query+coordinates-paramvalue-prop-dim": "الحجم التقريبي للكائن بالأمتار.",
