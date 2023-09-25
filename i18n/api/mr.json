@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"V.narsikar",
-			"अभय नातू"
+			"अभय नातू",
+			"Amire80"
 		]
 	},
 	"apihelp-query+coordinates-description": "दिलेल्या पानाच्या समन्वयकाचा परतावा देते.",
@@ -23,5 +24,5 @@
 	"apihelp-query+geosearch-param-prop": "समन्वयकाच्या कोणत्या अतिरिक्त गुणधर्मांचा परतावा द्यायचा.",
 	"apihelp-query+geosearch-param-primary": "फक्त प्राथमिक(\"primary\"), माध्यमिक(\"secondary\") किंवा दोन्ही (\"all\") समन्वयकांचा परतावा द्यायचा काय.",
 	"apihelp-query+geosearch-param-debug": "गणकदोषाविना माहितीचा परतावा द्यायचा काय.",
-	"apihelp-query+geosearch-example-1": "37° 47′ 13.1″ N, 122° 23′ 58.84″ W  हे समन्वयक असलेल्या बिंदूसभोवताल शोधा"
+	"apihelp-query+geosearch-example-1": "37° 47′ 13.1″ N, 122° 23′ 58.84″ W हे समन्वयक असलेल्या बिंदूसभोवताल शोधा"
 }
