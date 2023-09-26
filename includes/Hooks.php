@@ -3,12 +3,12 @@
 namespace GeoData;
 
 use ApiQuery;
-use Article;
 use CirrusSearch\CirrusSearch;
 use CirrusSearch\SearchConfig;
 use Config;
+use Content;
 use ContentHandler;
-use DatabaseUpdater;
+use File;
 use GeoData\Api\QueryGeoSearch;
 use GeoData\Api\QueryGeoSearchDb;
 use GeoData\Api\QueryGeoSearchElastic;
@@ -18,10 +18,14 @@ use GeoData\Search\CirrusNearTitleBoostFeature;
 use GeoData\Search\CirrusNearTitleFilterFeature;
 use GeoData\Search\CoordinatesIndexField;
 use LinksUpdate;
-use LocalFile;
+use ManualLogEntry;
 use MediaWiki\Content\Hook\SearchDataForIndexHook;
+use MediaWiki\Hook\FileUploadHook;
+use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
+use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Hook\ArticleDeleteCompleteHook;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use Parser;
@@ -34,7 +38,14 @@ use WikiPage;
  * Hook handlers
  * @todo: tests
  */
-class Hooks implements SearchDataForIndexHook, OutputPageParserOutputHook {
+class Hooks implements
+	SearchDataForIndexHook,
+	OutputPageParserOutputHook,
+	ParserFirstCallInitHook,
+	ArticleDeleteCompleteHook,
+	LinksUpdateCompleteHook,
+	FileUploadHook
+{
 
 	/**
 	 * @var Config
@@ -51,27 +62,12 @@ class Hooks implements SearchDataForIndexHook, OutputPageParserOutputHook {
 	}
 
 	/**
-	 * LoadExtensionSchemaUpdates hook handler
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
-	 *
-	 * @param DatabaseUpdater $updater
-	 */
-	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
-		$base = __DIR__ . '/../sql';
-		$dbType = $updater->getDB()->getType();
-		$updater->addExtensionTable( 'geo_tags', "$base/$dbType/tables-generated.sql" );
-		if ( $dbType !== 'postgres' ) {
-			$updater->addExtensionField( 'geo_tags', 'gt_lon_int', "$base/patch-geo_tags-add-lat_int-lon_int.sql" );
-		}
-	}
-
-	/**
 	 * ParserFirstCallInit hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserFirstCallInit
 	 *
 	 * @param Parser $parser
 	 */
-	public static function onParserFirstCallInit( Parser $parser ) {
+	public function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 'coordinates',
 			[ new CoordinatesParserFunction(), 'coordinates' ],
 			Parser::SFH_OBJECT_ARGS
@@ -82,12 +78,17 @@ class Hooks implements SearchDataForIndexHook, OutputPageParserOutputHook {
 	 * ArticleDeleteComplete hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete
 	 *
-	 * @param Article $article
+	 * @param WikiPage $article
 	 * @param User $user
 	 * @param string $reason
 	 * @param int $id
+	 * @param Content|null $content
+	 * @param ManualLogEntry $logEntry
+	 * @param int $archivedRevisionCount
 	 */
-	public static function onArticleDeleteComplete( $article, User $user, $reason, $id ) {
+	public function onArticleDeleteComplete( $article, $user, $reason, $id,
+		$content, $logEntry, $archivedRevisionCount
+	) {
 		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->delete( 'geo_tags', [ 'gt_page_id' => $id ], __METHOD__ );
 	}
@@ -99,7 +100,7 @@ class Hooks implements SearchDataForIndexHook, OutputPageParserOutputHook {
 	 * @param LinksUpdate $linksUpdate
 	 * @param int|null $ticket
 	 */
-	public static function onLinksUpdateComplete( LinksUpdate $linksUpdate, $ticket = null ) {
+	public function onLinksUpdateComplete( $linksUpdate, $ticket ) {
 		$out = $linksUpdate->getParserOutput();
 		$data = [];
 		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
@@ -200,9 +201,11 @@ class Hooks implements SearchDataForIndexHook, OutputPageParserOutputHook {
 	 * FileUpload hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileUpload
 	 *
-	 * @param LocalFile $file
+	 * @param File $file
+	 * @param bool $reupload
+	 * @param bool $hasDescription
 	 */
-	public static function onFileUpload( LocalFile $file ) {
+	public function onFileUpload( $file, $reupload, $hasDescription ) {
 		$wp = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $file->getTitle() );
 		$po = $wp->makeParserOptions( 'canonical' );
 		$pout = $wp->getParserOutput( $po );
@@ -215,7 +218,7 @@ class Hooks implements SearchDataForIndexHook, OutputPageParserOutputHook {
 			// in a deferred AutoCommitUdpate update, so it should be safe anyway).
 			$lu = new LinksUpdate( $file->getTitle(), $pout );
 			\DeferredUpdates::addCallableUpdate( function () use ( $lu ) {
-				self::onLinksUpdateComplete( $lu );
+				$this->onLinksUpdateComplete( $lu, null );
 			} );
 		}
 	}

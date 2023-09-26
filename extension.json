@@ -42,14 +42,17 @@
 			"services": [
 				"MainConfig"
 			]
+		},
+		"schema": {
+			"class": "GeoData\\SchemaHooks"
 		}
 	},
 	"Hooks": {
-		"LoadExtensionSchemaUpdates": "GeoData\\Hooks::onLoadExtensionSchemaUpdates",
-		"ParserFirstCallInit": "GeoData\\Hooks::onParserFirstCallInit",
-		"ArticleDeleteComplete": "GeoData\\Hooks::onArticleDeleteComplete",
-		"LinksUpdateComplete": "GeoData\\Hooks::onLinksUpdateComplete",
-		"FileUpload": "GeoData\\Hooks::onFileUpload",
+		"LoadExtensionSchemaUpdates": "schema",
+		"ParserFirstCallInit": "geodata",
+		"ArticleDeleteComplete": "geodata",
+		"LinksUpdateComplete": "geodata",
+		"FileUpload": "geodata",
 		"OutputPageParserOutput": "geodata",
 		"SearchIndexFields": "geodata",
 		"SearchDataForIndex": {
