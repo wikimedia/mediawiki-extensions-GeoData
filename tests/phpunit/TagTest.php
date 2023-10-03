@@ -32,7 +32,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function assertParse( $input, $expected ) {
-		$p = MediaWikiServices::getInstance()->getParser()->getFreshParser();
+		$p = MediaWikiServices::getInstance()->getParserFactory()->getInstance();
 		$opt = ParserOptions::newFromAnon();
 		$title = Title::makeTitle( NS_MAIN, __METHOD__ );
 		$title->setContentModel( CONTENT_MODEL_WIKITEXT );
