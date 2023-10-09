@@ -8,6 +8,9 @@
 	"geodata-broken-tags-category": "Старонкі з некарэктнымі тэгамі каардынат",
 	"geodata-broken-tags-category-desc": "Старонка з некарэктнымі тэгамі <code><nowiki>{{#coordinates:}}</nowiki></code>",
 	"geodata-unknown-type-category": "Старонкі з нявызначаным type каардынатаў",
+	"geodata-unknown-type-category-desc": "Старонка ўжывае невядомае значэнне параметра <code>type</code> для каардынат.",
 	"geodata-unknown-globe-category": "Старонкі з нявызначаным globe каардынатаў",
-	"geodata-unknown-region-category": "Старонкі з няслушным region каардынатаў"
+	"geodata-unknown-globe-category-desc": "Старонка ўжывае невядомае значэнне параметра <code>globe</code> для каардынат.",
+	"geodata-unknown-region-category": "Старонкі з няслушным region каардынатаў",
+	"geodata-unknown-region-category-desc": "Старонка ўжывае некарэктнае значэнне параметра <code>region</code> для каардынат."
 }
