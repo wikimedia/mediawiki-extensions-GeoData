@@ -8,7 +8,7 @@
 			"Toliño"
 		]
 	},
-	"geodata-desc": "Engade unha funcionalidade de almacenamento e de extracción de coordenadas xeográficas.",
+	"geodata-desc": "Engade unha funcionalidade de almacenamento e de extracción de coordenadas xeográficas",
 	"geodata-bad-input": "Pasáronselle argumentos incorrectos á función <nowiki>{{#coordinates:}}</nowiki>",
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: Latitude incorrecta",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: Lonxitude incorrecta",
@@ -26,8 +26,9 @@
 	"geodata-unknown-region-category": "Páxinas con valores de rexión incorrectos",
 	"geodata-unknown-region-category-desc": "A páxina usa un valor incorrecto do parámetro <code>region</code> para as coordenadas.",
 	"geodata-api-help-coordinates-format": "Formato: latitude e lonxitude separadas por unha barra vertical (<kbd>|</kbd>).",
-	"geodata-search-feature-invalid-coordinates": "Non se puideron analizar as xeocoordenadas '$2' proporcionadas a '$1'.",
-	"geodata-search-feature-invalid-distance": "A distancia xeográfica '$2' proporcionada en '$1' non puido ser analizada.",
-	"geodata-search-feature-unknown-title": "O título '$2' proporcionado a '$1' non existe.",
-	"geodata-search-feature-title-no-coordinates": "O título '$2' proporcionado a '$1' non ten coordenadas."
+	"geodata-search-feature-invalid-coordinates": "Non se puideron analizar as coordenadas xeográficas \"$2\" proporcionadas a \"$1\".",
+	"geodata-search-feature-invalid-distance": "A distancia xeográfica \"$2\" proporcionada en \"$1\" non puido ser analizada.",
+	"geodata-search-feature-unknown-title": "O título \"$2\" proporcionado a \"$1\" non existe.",
+	"geodata-search-feature-title-no-coordinates": "O título \"$2\" proporcionado a \"$1\" non ten coordenadas.",
+	"geodata-search-timeout": "A procura de datos xeográficos excedeu o tempo límite. Só están dispoñibles resultados parciais."
 }
