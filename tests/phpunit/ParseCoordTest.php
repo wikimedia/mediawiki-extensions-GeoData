@@ -37,14 +37,11 @@ class ParseCoordTest extends MediaWikiIntegrationTestCase {
 
 		$s = $function->parseCoordinates( $parts, new Globe( $globe ) );
 
-		$val = $s->value;
 		if ( $result === false ) {
-			$this->assertFalse( $s->isGood(), "Parsing of $formatted was expected to fail" );
+			$this->assertStatusNotGood( $s, "Parsing of $formatted was expected to fail" );
 		} else {
-			$msg = $s->isGood() ? '' : $s->getWikiText();
-			$this->assertTrue( $s->isGood(),
-				"Parsing of $formatted was expected to succeed, but it failed: $msg"
-			);
+			$this->assertStatusGood( $s, "Parsing of $formatted was expected to succeed, but it failed" );
+			$val = $s->getValue();
 			$this->assertTrue( $val->equalsTo( $result ),
 				"Parsing of $formatted was expected to yield something close to"
 				. " ({$result->lat}, {$result->lon}), but yielded ({$val->lat}, {$val->lon})"
