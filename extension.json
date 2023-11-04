@@ -43,6 +43,9 @@
 				"MainConfig"
 			]
 		},
+		"cirrussearch": {
+			"class": "GeoData\\CirrusSearchHooks"
+		},
 		"schema": {
 			"class": "GeoData\\SchemaHooks"
 		}
@@ -60,7 +63,7 @@
 			"deprecated": true
 		},
 		"SearchDataForIndex2": "geodata",
-		"CirrusSearchAddQueryFeatures": "GeoData\\Hooks::onCirrusSearchAddQueryFeatures"
+		"CirrusSearchAddQueryFeatures": "cirrussearch"
 	},
 	"TrackingCategories": [
 		"geodata-broken-tags-category",

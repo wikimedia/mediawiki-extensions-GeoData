@@ -4,7 +4,6 @@ namespace GeoData;
 
 use ApiQuery;
 use CirrusSearch\CirrusSearch;
-use CirrusSearch\SearchConfig;
 use Config;
 use Content;
 use ContentHandler;
@@ -12,10 +11,6 @@ use File;
 use GeoData\Api\QueryGeoSearch;
 use GeoData\Api\QueryGeoSearchDb;
 use GeoData\Api\QueryGeoSearchElastic;
-use GeoData\Search\CirrusNearCoordBoostFeature;
-use GeoData\Search\CirrusNearCoordFilterFeature;
-use GeoData\Search\CirrusNearTitleBoostFeature;
-use GeoData\Search\CirrusNearTitleFilterFeature;
 use GeoData\Search\CoordinatesIndexField;
 use LinksUpdate;
 use ManualLogEntry;
@@ -353,18 +348,6 @@ class Hooks implements
 		unset( $result['lon'] );
 
 		return $result;
-	}
-
-	/**
-	 * Add geo-search feature to search syntax
-	 * @param SearchConfig $config
-	 * @param array &$features
-	 */
-	public static function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$features ) {
-		$features[] = new CirrusNearTitleBoostFeature( $config );
-		$features[] = new CirrusNearTitleFilterFeature( $config );
-		$features[] = new CirrusNearCoordBoostFeature( $config );
-		$features[] = new CirrusNearCoordFilterFeature( $config );
 	}
 
 	/**
