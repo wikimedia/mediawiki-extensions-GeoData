@@ -4,7 +4,8 @@
 			"Hansmuller",
 			"Mainframe98",
 			"SPQRobin",
-			"Siebrand"
+			"Siebrand",
+			"McDutchie"
 		]
 	},
 	"geodata-desc": "Voegt geografische coördinatenopslag en weergavefunctionaliteit toe",
@@ -23,5 +24,11 @@
 	"geodata-unknown-globe-category": "Pagina's met onbekende waarde voor wereldbol",
 	"geodata-unknown-globe-category-desc": "De pagina gebruikt een onbekende waarde voor de parameter <code>globe</code> voor coördinaten.",
 	"geodata-unknown-region-category": "Pagina's met ongeldige waarde voor regio",
-	"geodata-unknown-region-category-desc": "De pagina gebruikt een onbekende waarde voor de parameter <code>region</code> voor coördinaten."
+	"geodata-unknown-region-category-desc": "De pagina gebruikt een onbekende waarde voor de parameter <code>region</code> voor coördinaten.",
+	"geodata-api-help-coordinates-format": "Formaat: lengte- en breedtegraad gescheiden door een sluisteken (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "De geografische coördinaten ‘$2’ die zijn opgegeven voor ‘$1’ konden niet worden verwerkt.",
+	"geodata-search-feature-invalid-distance": "De geografische afstand ‘$2’ die is opgegeven voor ‘$1’ kan niet worden verwerkt.",
+	"geodata-search-feature-unknown-title": "De titel ‘$2’ die is opgegeven voor ‘$1’ bestaat niet.",
+	"geodata-search-feature-title-no-coordinates": "De titel ‘$2’ die is opgegeven voor ‘$1’ bevat geen coördinaten.",
+	"geodata-search-timeout": "De zoektijd is verlopen bij het zoeken naar GeoData, dus zijn er slechts gedeeltelijke resultaten beschikbaar."
 }
