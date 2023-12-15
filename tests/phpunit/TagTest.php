@@ -21,6 +21,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		parent::setUp();
 		// reset to default
 		$this->setMwGlobals( 'wgDefaultDim', 1000 );
+		$this->clearHooks( [ 'ParserAfterTidy' ] );
 	}
 
 	private function setWarnings( $level ) {
