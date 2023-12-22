@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aishik Rehman",
 			"Mohammed Galib Hasan",
 			"আফতাবুজ্জামান"
 		]
@@ -15,5 +16,5 @@
 	"apihelp-query+geosearch-param-coord": "কাছাকাছি স্থানাঙ্ক যা অনুসন্ধান করতে হবে।",
 	"apihelp-query+geosearch-param-page": "কাছাকাছি পাতার শিরোনাম যা অনুসন্ধান করতে হবে।",
 	"apihelp-query+geosearch-param-radius": "মিটার ব্যাসার্ধে অনুসন্ধান করে।",
-	"apierror-geodata-noprimarycoord": "$1 পাতাটির কোন প্রাথমিক স্থানাঙ্ক নেই।"
+	"apierror-geodata-noprimarycoord": "$1 পাতাটির কোনো প্রাথমিক স্থানাঙ্ক নেই।"
 }
