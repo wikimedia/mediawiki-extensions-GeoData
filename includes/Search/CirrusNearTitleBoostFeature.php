@@ -10,7 +10,7 @@ use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\WarningCollector;
-use Config;
+use MediaWiki\Config\Config;
 
 /**
  * Applies geo boosting to the query by providing a Title.

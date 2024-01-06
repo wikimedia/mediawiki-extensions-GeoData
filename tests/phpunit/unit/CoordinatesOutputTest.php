@@ -4,8 +4,8 @@ namespace MediaWiki\Tests\GeoData;
 
 use GeoData\Coord;
 use GeoData\CoordinatesOutput;
+use MediaWiki\Parser\ParserOutput;
 use MediaWikiUnitTestCase;
-use ParserOutput;
 
 class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 

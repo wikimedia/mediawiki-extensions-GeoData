@@ -5,7 +5,7 @@ namespace GeoData;
 use InvalidArgumentException;
 use JsonSerializable;
 use LogicException;
-use ParserOutput;
+use MediaWiki\Parser\ParserOutput;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Core\ContentMetadataCollector;
 

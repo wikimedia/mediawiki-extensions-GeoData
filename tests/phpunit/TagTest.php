@@ -5,6 +5,7 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\CoordinatesOutput;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 use ParserOptions;
@@ -58,12 +59,12 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testCoordinatesOutput() {
-		$output = new \ParserOutput();
+		$output = new ParserOutput();
 		$inExtData = new CoordinatesOutput();
 		$output->setExtensionData( CoordinatesOutput::GEO_DATA_COORDS_OUTPUT, $inExtData );
 		$this->assertSame( $inExtData, CoordinatesOutput::getFromParserOutput( $output ) );
 
-		$output = new \ParserOutput();
+		$output = new ParserOutput();
 		$this->assertNotNull( CoordinatesOutput::getOrBuildFromParserOutput( $output ) );
 	}
 

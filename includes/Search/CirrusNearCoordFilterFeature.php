@@ -8,9 +8,9 @@ use CirrusSearch\Query\FilterQueryFeature;
 use CirrusSearch\Query\SimpleKeywordFeature;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\WarningCollector;
-use Config;
 use Elastica\Query\AbstractQuery;
 use GeoData\Coord;
+use MediaWiki\Config\Config;
 
 /**
  * Applies geo filtering to the query by providing coordinates.

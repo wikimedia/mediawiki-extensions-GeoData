@@ -3,9 +3,9 @@
 namespace GeoData\Search;
 
 use CirrusSearch\WarningCollector;
-use Config;
 use GeoData\GeoData;
 use GeoData\Globe;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 
 /**

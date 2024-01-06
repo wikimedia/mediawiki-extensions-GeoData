@@ -5,6 +5,7 @@ namespace GeoData\Test;
 use GeoData\Api\QueryGeoSearchDb;
 use GeoData\Api\QueryGeoSearchElastic;
 use GeoData\Hooks;
+use MediaWiki\Config\HashConfig;
 
 /**
  * @covers \GeoData\Hooks::createQueryGeoSearchBackend
@@ -16,7 +17,7 @@ class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 		$apiMain = $this->createMock( \ApiMain::class );
 		$apiMain->method( 'getContext' )->willReturn( $context );
 
-		$config = new \HashConfig( [ 'GeoDataBackend' => $backend ] );
+		$config = new HashConfig( [ 'GeoDataBackend' => $backend ] );
 
 		$apiQuery = $this->createMock( \ApiQuery::class );
 

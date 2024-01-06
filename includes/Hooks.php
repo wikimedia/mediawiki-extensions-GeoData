@@ -4,7 +4,6 @@ namespace GeoData;
 
 use ApiQuery;
 use CirrusSearch\CirrusSearch;
-use Config;
 use Content;
 use ContentHandler;
 use File;
@@ -12,21 +11,23 @@ use GeoData\Api\QueryGeoSearch;
 use GeoData\Api\QueryGeoSearchDb;
 use GeoData\Api\QueryGeoSearchElastic;
 use GeoData\Search\CoordinatesIndexField;
-use LinksUpdate;
 use ManualLogEntry;
+use MediaWiki\Config\Config;
 use MediaWiki\Content\Hook\SearchDataForIndexHook;
+use MediaWiki\Deferred\DeferredUpdates;
+use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleDeleteCompleteHook;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use Parser;
-use ParserOutput;
 use SearchEngine;
-use User;
 use WikiPage;
 
 /**
@@ -212,7 +213,7 @@ class Hooks implements
 			// Make sure this has outer transaction scope (though the hook fires
 			// in a deferred AutoCommitUdpate update, so it should be safe anyway).
 			$lu = new LinksUpdate( $file->getTitle(), $pout );
-			\DeferredUpdates::addCallableUpdate( function () use ( $lu ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $lu ) {
 				$this->onLinksUpdateComplete( $lu, null );
 			} );
 		}

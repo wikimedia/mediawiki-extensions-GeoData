@@ -3,11 +3,11 @@
 namespace GeoData;
 
 use Language;
+use MediaWiki\Parser\ParserOutput;
+use MediaWiki\Status\Status;
 use Parser;
-use ParserOutput;
 use PPFrame;
 use PPNode;
-use Status;
 
 /**
  * Handler for the #coordinates parser function
