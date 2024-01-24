@@ -3,7 +3,8 @@
 		"authors": [
 			"Fryed-peach",
 			"Kkairri",
-			"Shirayuki"
+			"Shirayuki",
+			"Ant176"
 		]
 	},
 	"geodata-desc": "緯度経度を保存/取得する機能を追加する",
@@ -16,7 +17,11 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: 各ページで primary のタグは複数指定できません",
 	"geodata-limit-exceeded": "<nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|タグ}}の各ページ$1個までという上限を超えています",
 	"geodata-broken-tags-category": "座標タグに誤りがあるページ",
+	"geodata-broken-tags-category-desc": "ページに誤った形式の <code><nowiki>{{#coordinates:}}</nowiki></code> タグがあります。",
 	"geodata-unknown-type-category": "種別不明の座標があるページ",
+	"geodata-unknown-type-category-desc": "このページでは、座標の <code>type</code> 引数に不明な値が使用されています。",
 	"geodata-unknown-globe-category": "天体不明の座標があるページ",
-	"geodata-unknown-region-category": "地域不明の座標があるページ"
+	"geodata-unknown-globe-category-desc": "このページでは、座標の <code>globe</code> 引数に不明な値が使用されています。",
+	"geodata-unknown-region-category": "地域不明の座標があるページ",
+	"geodata-unknown-region-category-desc": "このページでは、座標の <code>region</code> 引数に無効な値が使用されています。"
 }
