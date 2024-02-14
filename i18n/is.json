@@ -1,13 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Snævar"
+			"Snævar",
+			"Stefán Örvar Sigmundsson"
 		]
 	},
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: ógild breiddargráða",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ógild lengdargráða",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: óþekktur hnöttur \"$1\"",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: getur ekki haft fleiri en eitt aðalhnit á síðu",
-	"geodata-broken-tags-category": "Síður með vitlaus hnita tög",
-	"geodata-unknown-type-category": "Síður með vitlausa gerð hnita"
+	"geodata-broken-tags-category": "Síður með gölluð hnitamerki",
+	"geodata-unknown-type-category": "Síður með vitlausa gerð hnita",
+	"geodata-unknown-type-category-desc": "Síðan notar óþekkt gildi <code>type</code>-færibreytunnar fyrir hnit.",
+	"geodata-unknown-globe-category": "Síður með óþekkt hnattgildi",
+	"geodata-unknown-globe-category-desc": "Síðan notar óþekkt gildi <code>globe</code>-færibreytunnar fyrir hnit.",
+	"geodata-unknown-region-category": "Síður með ógilt svæðisgildi",
+	"geodata-unknown-region-category-desc": "Síðan notar óþekkt gildi <code>region</code>-færibreytunnar fyrir hnit."
 }
