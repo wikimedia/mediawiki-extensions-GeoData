@@ -5,7 +5,8 @@
 			"Tr jason",
 			"Xiplus",
 			"Yfdyh000",
-			"LittlePaw365"
+			"LittlePaw365",
+			"Anterdc99"
 		]
 	},
 	"apihelp-query+coordinates-description": "返回指定页面的地理坐标。",
@@ -45,6 +46,7 @@
 	"apihelp-query+geosearch-example-2": "在边界框内搜索",
 	"apierror-geodata-nocoord": "页面坐标位置。",
 	"apierror-geodata-noprimarycoord": "页面$1没有主要坐标。",
+	"apierror-geodata-norelevancesort": "目前仅在使用ElasticSearch后端的wiki上支持按相关性对结果进行排名。",
 	"apierror-geodata-notonearth": "此页面的坐标不在地球上。",
 	"apierror-geodata-invalidbox": "无效的边框。",
 	"apierror-geodata-boxtoobig": "边框太大",
