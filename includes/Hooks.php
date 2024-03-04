@@ -20,11 +20,11 @@ use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleDeleteCompleteHook;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use Parser;
 use SearchEngine;
@@ -113,12 +113,8 @@ class Hooks implements
 		self::doLinksUpdate( $data, $linksUpdate->getPageId(), $ticket );
 	}
 
-	/**
-	 * @param Title $title
-	 * @return Coord|null
-	 */
-	private static function getCoordinatesIfFile( Title $title ) {
-		if ( $title->getNamespace() != NS_FILE ) {
+	private static function getCoordinatesIfFile( LinkTarget $title ): ?Coord {
+		if ( !$title->inNamespace( NS_FILE ) ) {
 			return null;
 		}
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
