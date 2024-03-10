@@ -55,7 +55,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 	 *  string.
 	 */
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
-		list( $coord, $radius ) = $this->parseValue( $key, $value, $quotedValue, '', '', $context );
+		[ $coord, $radius ] = $this->parseValue( $key, $value, $quotedValue, '', '', $context );
 		if ( $coord !== null ) {
 			$context->addCustomRescoreComponent(
 				$this->buildBoostFunction( $context->getConfig(), $coord, $radius )
@@ -94,7 +94,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 		KeywordFeatureNode $node,
 		QueryBuildingContext $context
 	) {
-		list( $coord, $radius ) = $node->getParsedValue();
+		[ $coord, $radius ] = $node->getParsedValue();
 		if ( $coord !== null ) {
 			return $this->buildBoostFunction( $context->getSearchConfig(), $coord, $radius );
 		}

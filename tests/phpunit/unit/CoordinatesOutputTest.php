@@ -81,7 +81,7 @@ class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 		} else {
 			$this->assertFalse( $actual->getPrimary() );
 		}
-		$this->assertSame( count( $expected->getSecondary() ), count( $actual->getSecondary() ) );
+		$this->assertSameSize( $expected->getSecondary(), $actual->getSecondary() );
 		foreach ( $expected->getSecondary() as $i => $coord ) {
 			$this->assertTrue( $coord->fullyEqualsTo( $actual->getSecondary()[$i] ) );
 		}

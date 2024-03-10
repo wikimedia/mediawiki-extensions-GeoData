@@ -58,7 +58,7 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements Filte
 	 *  string.
 	 */
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
-		list( $coord, $radius, $excludedPageId ) = $this->parseGeoNearbyTitle( $context, $key, $value );
+		[ $coord, $radius, $excludedPageId ] = $this->parseGeoNearbyTitle( $context, $key, $value );
 		$filter = null;
 		if ( $coord !== null ) {
 			$filter = $this->doGetFilterQuery( $context->getConfig(), $coord, $radius, $excludedPageId );
@@ -116,7 +116,7 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements Filte
 	 * @return AbstractQuery|null
 	 */
 	public function getFilterQuery( KeywordFeatureNode $node, QueryBuildingContext $context ) {
-		list( $coord, $radius, $excludedPageId ) = $context->getKeywordExpandedData( $node );
+		[ $coord, $radius, $excludedPageId ] = $context->getKeywordExpandedData( $node );
 		if ( $coord === null ) {
 			return null;
 		}

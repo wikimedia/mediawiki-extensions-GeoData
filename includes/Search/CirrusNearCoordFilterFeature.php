@@ -57,7 +57,7 @@ class CirrusNearCoordFilterFeature extends SimpleKeywordFeature implements Filte
 	 *  string.
 	 */
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
-		list( $coord, $radius ) = $this->parseValue( $key, $value, $quotedValue,
+		[ $coord, $radius ] = $this->parseValue( $key, $value, $quotedValue,
 			'', '', $context );
 		return [ $this->doGetFilterquery( $coord, $radius ), false ];
 	}
@@ -103,7 +103,7 @@ class CirrusNearCoordFilterFeature extends SimpleKeywordFeature implements Filte
 	 * @return AbstractQuery|null
 	 */
 	public function getFilterQuery( KeywordFeatureNode $node, QueryBuildingContext $context ) {
-		list( $coord, $radius ) = $node->getParsedValue();
+		[ $coord, $radius ] = $node->getParsedValue();
 		return $this->doGetFilterquery( $coord, $radius );
 	}
 }

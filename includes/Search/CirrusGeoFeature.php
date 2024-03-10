@@ -108,9 +108,9 @@ trait CirrusGeoFeature {
 				);
 				return [ null, 0 ];
 			}
-			list( , $lat, $lon ) = $pieces;
+			[ , $lat, $lon ] = $pieces;
 		} elseif ( count( $pieces ) === 2 ) {
-			list( $lat, $lon ) = $pieces;
+			[ $lat, $lon ] = $pieces;
 		} else {
 			$warningCollector->addWarning(
 				'geodata-search-feature-invalid-coordinates',

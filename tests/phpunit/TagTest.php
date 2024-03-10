@@ -127,7 +127,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 			// Other geohack params
 			[
 				'{{#coordinates: 10|20}}',
-				new Coord( 10, 20, 'earth',  [ 'dim' => 1000 ] ),
+				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-mos}}',

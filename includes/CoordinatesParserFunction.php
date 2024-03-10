@@ -291,7 +291,7 @@ class CoordinatesParserFunction {
 		if ( !is_array( $parts ) || $count < 2 || $count > 8 || ( $count % 2 ) ) {
 			return Status::newFatal( 'geodata-bad-input' );
 		}
-		list( $latArr, $lonArr ) = array_chunk( $parts, $count / 2 );
+		[ $latArr, $lonArr ] = array_chunk( $parts, $count / 2 );
 
 		$lat = $this->parseOneCoord( $latArr, -90, 90, $latSuffixes );
 		if ( $lat === false ) {

@@ -54,7 +54,7 @@ class CirrusNearTitleBoostFeature extends SimpleKeywordFeature implements BoostF
 	 *  string.
 	 */
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
-		list( $coord, $radius ) = $this->parseGeoNearbyTitle( $context, $key, $value );
+		[ $coord, $radius ] = $this->parseGeoNearbyTitle( $context, $key, $value );
 		if ( $coord ) {
 			$context->addCustomRescoreComponent(
 				new GeoRadiusFunctionScoreBuilder( $context->getConfig(), $negated ? 0.1 : 1, $coord, $radius )
@@ -87,7 +87,7 @@ class CirrusNearTitleBoostFeature extends SimpleKeywordFeature implements BoostF
 		KeywordFeatureNode $node,
 		QueryBuildingContext $context
 	) {
-		list( $coord, $radius ) = $context->getKeywordExpandedData( $node );
+		[ $coord, $radius ] = $context->getKeywordExpandedData( $node );
 		if ( $coord !== null ) {
 			return new GeoRadiusFunctionScoreBuilder( $context->getSearchConfig(), 1,
 				$coord, $radius );

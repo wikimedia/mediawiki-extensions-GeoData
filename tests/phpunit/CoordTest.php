@@ -33,8 +33,8 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 	public static function provideEquals() {
 		$testCases = [
 			[
-				new Coord( 10, 20, null, [ 'dim' => 123, 'type' => 'not',   'country' => 'not',
-					'primary' => true,  'name' => 'not' ] ),
+				new Coord( 10, 20, null, [ 'dim' => 123, 'type' => 'not', 'country' => 'not',
+					'primary' => true, 'name' => 'not' ] ),
 				new Coord( 10, 20, null, [ 'dim' => 456, 'type' => 'equal', 'country' => 'equal',
 					'primary' => false, 'name' => 'equal' ] ),
 				true,

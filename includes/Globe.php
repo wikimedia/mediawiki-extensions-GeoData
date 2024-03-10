@@ -52,8 +52,8 @@ class Globe {
 		}
 
 		$earth   = [ 'lon' => [ -180, 180 ], 'east' => +1 ];
-		$east360 = [ 'lon' => [ 0, 360 ],    'east' => +1 ];
-		$west360 = [ 'lon' => [ 0, 360 ],    'east' => -1 ];
+		$east360 = [ 'lon' => [ 0, 360 ], 'east' => +1 ];
+		$west360 = [ 'lon' => [ 0, 360 ], 'east' => -1 ];
 
 		/**
 		 * Format:
