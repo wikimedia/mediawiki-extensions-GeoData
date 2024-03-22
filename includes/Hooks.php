@@ -85,7 +85,7 @@ class Hooks implements
 	public function onArticleDeleteComplete( $article, $user, $reason, $id,
 		$content, $logEntry, $archivedRevisionCount
 	) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = MediaWikiServices::getInstance()->getConnectionProvider()->getPrimaryDatabase();
 		$dbw->delete( 'geo_tags', [ 'gt_page_id' => $id ], __METHOD__ );
 	}
 
@@ -172,7 +172,7 @@ class Hooks implements
 			}
 		}
 
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = $services->getConnectionProvider()->getPrimaryDatabase();
 		$lbFactory = $services->getDBLoadBalancerFactory();
 		$ticket = $ticket ?: $lbFactory->getEmptyTransactionTicket( __METHOD__ );
 		$batchSize = $services->getMainConfig()->get( 'UpdateRowsPerQuery' );
