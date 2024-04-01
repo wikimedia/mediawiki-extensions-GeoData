@@ -120,7 +120,7 @@ class Coord implements JsonSerializable {
 	 * @return bool
 	 */
 	public function equalsTo( $coord, $precision = 6 ): bool {
-		return isset( $coord )
+		return $coord !== null
 			&& round( $this->lat, $precision ) == round( $coord->lat, $precision )
 			&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
 			&& $this->globe === $coord->globe;
