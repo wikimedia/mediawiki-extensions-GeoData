@@ -86,7 +86,11 @@ class Hooks implements
 		$content, $logEntry, $archivedRevisionCount
 	) {
 		$dbw = MediaWikiServices::getInstance()->getConnectionProvider()->getPrimaryDatabase();
-		$dbw->delete( 'geo_tags', [ 'gt_page_id' => $id ], __METHOD__ );
+		$dbw->newDeleteQueryBuilder()
+			->deleteFrom( 'geo_tags' )
+			->where( [ 'gt_page_id' => $id ] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	/**
@@ -179,12 +183,20 @@ class Hooks implements
 
 		$deleteIds = array_keys( $delete );
 		foreach ( array_chunk( $deleteIds, $batchSize ) as $deleteIdBatch ) {
-			$dbw->delete( 'geo_tags', [ 'gt_id' => $deleteIdBatch ], __METHOD__ );
+			$dbw->newDeleteQueryBuilder()
+				->deleteFrom( 'geo_tags' )
+				->where( [ 'gt_id' => $deleteIdBatch ] )
+				->caller( __METHOD__ )
+				->execute();
 			$lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
 		}
 
 		foreach ( array_chunk( $add, $batchSize ) as $addBatch ) {
-			$dbw->insert( 'geo_tags', $addBatch, __METHOD__ );
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'geo_tags' )
+				->rows( $addBatch )
+				->caller( __METHOD__ )
+				->execute();
 			$lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
 		}
 	}
