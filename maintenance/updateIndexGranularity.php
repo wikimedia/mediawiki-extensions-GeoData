@@ -36,14 +36,15 @@ class UpdateIndexGranularity extends Maintenance {
 				$id = $row->gt_id;
 				$ids[] = $id;
 			}
-			$dbw->update( 'geo_tags',
-				[
+			$dbw->newUpdateQueryBuilder()
+				->update( 'geo_tags' )
+				->set( [
 					"gt_lat_int = ROUND(gt_lat * $wgGeoDataIndexGranularity)",
 					"gt_lon_int = ROUND(gt_lon * $wgGeoDataIndexGranularity)"
-				],
-				[ 'gt_id' => $ids ],
-				__METHOD__
-			);
+				] )
+				->where( [ 'gt_id' => $ids ] )
+				->caller( __METHOD__ )
+				->execute();
 			$this->commitTransaction( $dbw, __METHOD__ );
 
 			$this->output( "$id\n" );
