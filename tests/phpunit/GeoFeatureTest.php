@@ -289,9 +289,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$dbMocker = function ( $db ) {
 			$db->method( 'select' )
 				->with( 'geo_tags', $this->anything(), $this->anything(), $this->anything() )
-				->willReturn( [
+				->willReturn( new FakeResultWrapper( [
 					(object)[ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321 ],
-				] );
+				] ) );
 			// Tell LinkCache all titles not explicitly added don't exist
 			$db->method( 'selectRow' )
 				->with(
