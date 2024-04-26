@@ -39,11 +39,12 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 		}
 		$this->addWhereFld( 'gt_globe', $this->coord->globe );
 		$this->addWhere( 'gt_page_id = page_id' );
+		$dbr = $this->getDB();
 		if ( $this->idToExclude ) {
-			$this->addWhere( "gt_page_id <> {$this->idToExclude}" );
+			$this->addWhere( $dbr->expr( 'gt_page_id', '!=', $this->idToExclude ) );
 		}
 		if ( isset( $params['maxdim'] ) ) {
-			$this->addWhere( 'gt_dim < ' . intval( $params['maxdim'] ) );
+			$this->addWhere( $dbr->expr( 'gt_dim', '<', intval( $params['maxdim'] ) ) );
 		}
 		$primary = $params['primary'];
 		$this->addWhereIf( [ 'gt_primary' => intval( $primary === 'primary' ) ], $primary !== 'all' );

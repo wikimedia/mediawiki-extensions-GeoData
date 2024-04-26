@@ -27,11 +27,13 @@ class UpdateIndexGranularity extends Maintenance {
 			$ids = [];
 
 			$this->beginTransaction( $dbw, __METHOD__ );
-			$res = $dbw->select( 'geo_tags', 'gt_id',
-				[ "gt_id > $id" ],
-				__METHOD__,
-				[ 'LIMIT' => $batchSize ]
-			);
+			$res = $dbw->newSelectQueryBuilder()
+				->select( 'gt_id' )
+				->from( 'geo_tags' )
+				->where( $dbw->expr( 'gt_id', '>', $id ) )
+				->limit( $batchSize )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 			foreach ( $res as $row ) {
 				$id = $row->gt_id;
 				$ids[] = $id;

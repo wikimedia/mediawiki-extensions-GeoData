@@ -28,7 +28,12 @@ class GeoData {
 		$db = self::getDB( $dbType );
 		$conds['gt_page_id'] = $pageId;
 		$columns = array_values( Coord::FIELD_MAPPING );
-		$res = $db->select( 'geo_tags', $columns, $conds, __METHOD__ );
+		$res = $db->newSelectQueryBuilder()
+			->select( $columns )
+			->from( 'geo_tags' )
+			->where( $conds )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		$coords = [];
 		foreach ( $res as $row ) {
 			$coords[] = Coord::newFromRow( $row );

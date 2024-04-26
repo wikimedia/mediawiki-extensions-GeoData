@@ -21,6 +21,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\LoadBalancer;
 use Wikimedia\Rdbms\MaintainableDBConnRef;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * This program is free software; you can redistribute it and/or modify
@@ -287,11 +288,14 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	public function testParseGeoNearbyTitle( $expected, $value ) {
 		// Replace database with one that will return our fake coordinates if asked
 		$dbMocker = function ( $db ) {
-			$db->method( 'select' )
-				->with( 'geo_tags', $this->anything(), $this->anything(), $this->anything() )
+			$queryBuilder = $this->createMock( SelectQueryBuilder::class );
+			$queryBuilder->method( $this->logicalOr( 'select', 'from', 'where', 'caller' ) )->willReturnSelf();
+			$queryBuilder->method( 'fetchResultSet' )
 				->willReturn( new FakeResultWrapper( [
 					(object)[ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321 ],
 				] ) );
+			$db->method( 'newSelectQueryBuilder' )
+				->willReturn( $queryBuilder );
 			// Tell LinkCache all titles not explicitly added don't exist
 			$db->method( 'selectRow' )
 				->with(
@@ -437,8 +441,11 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 				return $ret;
 			} );
 		$this->setService( 'TitleFactory', $titleFactory );
+		$queryBuilder = $this->createMock( SelectQueryBuilder::class );
+		$queryBuilder->method( $this->logicalOr( 'select', 'from', 'where', 'caller' ) )->willReturnSelf();
+		$queryBuilder->method( 'fetchResultSet' )->willReturn( new FakeResultWrapper( [] ) );
 		$db = $this->createMock( IReadableDatabase::class );
-		$db->method( 'select' )->willReturn( new FakeResultWrapper( [] ) );
+		$db->method( 'newSelectQueryBuilder' )->willReturn( $queryBuilder );
 		$lb = $this->createMock( ILoadBalancer::class );
 		$lb->method( 'getConnection' )->with( DB_REPLICA )->willReturn( $db );
 		$this->setService( 'DBLoadBalancer', $lb );
