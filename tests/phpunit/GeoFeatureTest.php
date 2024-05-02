@@ -20,7 +20,6 @@ use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\LoadBalancer;
-use Wikimedia\Rdbms\MaintainableDBConnRef;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
@@ -311,8 +310,6 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$lb = $this->createMock( LoadBalancer::class );
 		$lb->method( 'getConnection' )
 			->willReturn( $dbMocker( $this->createMock( IDatabase::class ) ) );
-		$lb->method( 'getMaintenanceConnectionRef' )
-			->willReturn( $dbMocker( $this->createMock( MaintainableDBConnRef::class ) ) );
 		$this->setService( 'DBLoadBalancer', $lb );
 
 		// Inject fake San Francisco page into LinkCache so it "exists"
