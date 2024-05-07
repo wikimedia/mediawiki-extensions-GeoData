@@ -9,8 +9,7 @@ class Globe {
 
 	public const EARTH = 'earth';
 
-	/** @var string */
-	private $name;
+	private string $name;
 
 	/** @var float|null */
 	private $radius;
@@ -30,7 +29,7 @@ class Globe {
 	/**
 	 * @param string $name Internal globe name
 	 */
-	public function __construct( $name ) {
+	public function __construct( string $name = self::EARTH ) {
 		global $wgGlobes;
 
 		$this->name = $name;
@@ -105,9 +104,8 @@ class Globe {
 
 	/**
 	 * Globe internal name
-	 * @return string
 	 */
-	public function getName() {
+	public function getName(): string {
 		return $this->name;
 	}
 

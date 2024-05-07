@@ -299,8 +299,8 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 
 	public static function provideGlobeObj() {
 		return [
-			[ null, new Globe( Globe::EARTH ) ],
-			[ Globe::EARTH, new Globe( Globe::EARTH ) ],
+			[ null, new Globe() ],
+			[ Globe::EARTH, new Globe() ],
 			[ 'moon', new Globe( 'moon' ) ],
 			[ 'something nonexistent', new Globe( 'something nonexistent' ) ],
 		];

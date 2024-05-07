@@ -21,7 +21,7 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testEarth() {
-		$g = new Globe( Globe::EARTH );
+		$g = new Globe();
 		$this->assertEquals( Globe::EARTH, $g->getName() );
 		$this->assertTrue( $g->isKnown() );
 		$this->assertEquals( -180, $g->getMinLongitude() );

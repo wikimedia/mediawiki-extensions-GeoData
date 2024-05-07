@@ -130,7 +130,7 @@ class Hooks implements
 		if ( isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];
-			$globe = new Globe( Globe::EARTH );
+			$globe = new Globe();
 			if ( $globe->coordinatesAreValid( $lat, $lon )
 				// https://phabricator.wikimedia.org/T165800
 				&& ( $lat != 0 || $lon != 0 )

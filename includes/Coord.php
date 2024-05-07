@@ -32,8 +32,8 @@ class Coord implements JsonSerializable {
 	/** @var int Tag id, needed for selective replacement and paging */
 	public $id;
 
-	/** @var string Name of planet or other astronomic body on which the coordinates reside */
-	public $globe;
+	/** Name of planet or other astronomic body on which the coordinates reside */
+	public string $globe;
 
 	/** @var bool Whether this coordinate is primary
 	 * (defines the principal location of article subject) or secondary (just mentioned in text)
@@ -67,12 +67,12 @@ class Coord implements JsonSerializable {
 	 * @param string|null $globe
 	 * @param array $extraFields
 	 */
-	public function __construct( $lat, $lon, $globe = null, $extraFields = [] ) {
+	public function __construct( $lat, $lon, string $globe = null, $extraFields = [] ) {
 		global $wgDefaultGlobe;
 
 		$this->lat = (float)$lat;
 		$this->lon = (float)$lon;
-		$this->globe = $globe ?? $wgDefaultGlobe;
+		$this->globe = $globe ?? $wgDefaultGlobe ?? Globe::EARTH;
 
 		foreach ( $extraFields as $key => $value ) {
 			if ( isset( self::FIELD_MAPPING[$key] ) ) {
@@ -105,9 +105,6 @@ class Coord implements JsonSerializable {
 		return $c;
 	}
 
-	/**
-	 * @return Globe
-	 */
 	public function getGlobeObj(): Globe {
 		return new Globe( $this->globe );
 	}
