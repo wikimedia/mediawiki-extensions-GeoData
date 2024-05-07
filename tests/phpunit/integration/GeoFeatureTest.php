@@ -11,7 +11,6 @@ use GeoData\Search\CirrusNearTitleBoostFeature;
 use GeoData\Search\CirrusNearTitleFilterFeature;
 use GeoData\Search\GeoRadiusFunctionScoreBuilder;
 use LinkCacheTestTrait;
-use MediaWiki\Config\HashConfig;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWikiIntegrationTestCase;
@@ -184,10 +183,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider parseGeoNearbyProvider
 	 */
 	public function testParseGeoNearby( $expected, $value ) {
-		$config = new HashConfig( [ 'DefaultGlobe' => Globe::EARTH ] );
 		$features = [
-			new CirrusNearCoordFilterFeature( $config ),
-			new CirrusNearCoordBoostFeature( $config )
+			new CirrusNearCoordFilterFeature(),
+			new CirrusNearCoordBoostFeature()
 		];
 		foreach ( $features as $feature ) {
 			$query = $feature->getKeywordPrefixes()[0] . ':"' . $value . '"';
@@ -200,7 +198,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 			$boostFunction = new GeoRadiusFunctionScoreBuilder( $searchConfig, 1,
 				new Coord( $expected[0]['lat'], $expected[0]['lon'], $expected[0]['globe'] ), $expected[1] );
 		}
-		$boostFeature = new CirrusNearCoordBoostFeature( $config );
+		$boostFeature = new CirrusNearCoordBoostFeature();
 		$query = $boostFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
 		$this->kwAssert->assertBoost( $boostFeature, $query, $boostFunction, null, $searchConfig );
 
@@ -211,7 +209,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 				$expected[1]
 			);
 		}
-		$filterFeature = new CirrusNearCoordFilterFeature( $config );
+		$filterFeature = new CirrusNearCoordFilterFeature();
 		$query = $filterFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
 		$this->kwAssert->assertFilter( $filterFeature, $query, $filterQuery, null, $searchConfig );
 	}
@@ -396,10 +394,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGeoWarnings( $expected, array $keyAndValue ) {
 		$features = [];
-		$config = new HashConfig( [ 'DefaultGlobe' => Globe::EARTH ] );
-		$feature = new CirrusNearCoordBoostFeature( $config );
+		$feature = new CirrusNearCoordBoostFeature();
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;
-		$feature = new CirrusNearCoordFilterFeature( $config );
+		$feature = new CirrusNearCoordFilterFeature();
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;
 		$feature = new CirrusNearTitleFilterFeature();
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;

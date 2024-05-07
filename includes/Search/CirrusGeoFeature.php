@@ -6,7 +6,6 @@ use CirrusSearch\WarningCollector;
 use GeoData\Coord;
 use GeoData\GeoData;
 use GeoData\Globe;
-use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -85,7 +84,6 @@ trait CirrusGeoFeature {
 	 *   <radius>,<lat>,<lon>
 	 *
 	 * @param WarningCollector $warningCollector
-	 * @param Config $config
 	 * @param string $key
 	 * @param string $text
 	 * @return array{array{lat:float,lon:float,globe:string}|null,int} Two member array with
@@ -93,7 +91,6 @@ trait CirrusGeoFeature {
 	 */
 	public function parseGeoNearby(
 		WarningCollector $warningCollector,
-		Config $config,
 		$key,
 		$text
 	) {
@@ -120,7 +117,7 @@ trait CirrusGeoFeature {
 			return [ null, 0 ];
 		}
 
-		$globe = new Globe( $config->get( 'DefaultGlobe' ) );
+		$globe = new Globe();
 		if ( !$globe->coordinatesAreValid( $lat, $lon ) ) {
 			$warningCollector->addWarning(
 				'geodata-search-feature-invalid-coordinates',

@@ -5,6 +5,7 @@ namespace GeoData\Api;
 use ApiPageSet;
 use ApiQuery;
 use GeoData\Coord;
+use GeoData\Globe;
 use GeoData\Math;
 use MediaWiki\Title\Title;
 
@@ -21,8 +22,6 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 	 * @param ApiPageSet|null $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ): void {
-		global $wgDefaultGlobe;
-
 		parent::run( $resultPageSet );
 		$params = $this->extractRequestParams();
 
@@ -84,7 +83,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 					$column = Coord::FIELD_MAPPING[$prop] ?? null;
 					if ( $column && isset( $row->$column ) ) {
 						// Don't output default globe
-						if ( !( $prop === 'globe' && $row->$column === $wgDefaultGlobe ) ) {
+						if ( !( $prop === 'globe' && $row->$column === Globe::EARTH ) ) {
 							$vals[$prop] = $row->$column;
 						}
 					}

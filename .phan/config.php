@@ -15,13 +15,6 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 	]
 );
 
-$cfg['globals_type_map'] = array_merge(
-	$cfg['globals_type_map'],
-	[
-		'wgDefaultGlobe' => 'string',
-	]
-);
-
 // Interfaces can be caught, we intentionally annotate with the interface
 $cfg['suppress_issue_types'][] = 'PhanTypeInvalidThrowsIsInterface';
 

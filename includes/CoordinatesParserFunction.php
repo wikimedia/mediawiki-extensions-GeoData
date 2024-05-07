@@ -145,7 +145,6 @@ class CoordinatesParserFunction {
 	 * Merges parameters with decoded GeoHack data, sets default globe
 	 */
 	private function processArgs(): void {
-		global $wgDefaultGlobe;
 		// fear not of overwriting the stuff we've just received from the geohack param,
 		// it has minimum precedence
 		if ( isset( $this->named['geohack'] ) ) {
@@ -155,7 +154,7 @@ class CoordinatesParserFunction {
 		}
 		$globe = ( isset( $this->named['globe'] ) && $this->named['globe'] )
 			? $this->getLanguage()->lc( $this->named['globe'] )
-			: $wgDefaultGlobe;
+			: Globe::EARTH;
 
 		$this->globe = new Globe( $globe );
 	}

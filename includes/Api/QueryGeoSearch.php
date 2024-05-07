@@ -148,7 +148,6 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		$primaryTypes = [ 'primary', 'secondary', 'all' ];
 		$config = $this->getConfig();
 		$maxRadius = $config->get( 'MaxGeoSearchRadius' );
-		$defaultGlobe = $config->get( 'DefaultGlobe' );
 
 		$params = [
 			'coord' => [
@@ -187,8 +186,8 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			],
 			// @todo: globe selection disabled until we have a real use case
 			'globe' => [
-				ParamValidator::PARAM_TYPE => (array)$defaultGlobe,
-				ParamValidator::PARAM_DEFAULT => $defaultGlobe,
+				ParamValidator::PARAM_TYPE => [ Globe::EARTH ],
+				ParamValidator::PARAM_DEFAULT => Globe::EARTH,
 			],
 			'namespace' => [
 				ParamValidator::PARAM_TYPE => 'namespace',

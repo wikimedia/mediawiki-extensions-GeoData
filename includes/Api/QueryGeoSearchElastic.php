@@ -188,7 +188,6 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 				$titles[$row->page_id] = Title::newFromRow( $row );
 			}
 
-			$defaultGlobe = $this->getConfig()->get( 'DefaultGlobe' );
 			$limit = $params['limit'];
 			$result = $this->getResult();
 
@@ -213,7 +212,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 
 				foreach ( $params['prop'] as $prop ) {
 					// Don't output default globe
-					if ( !( $prop === 'globe' && $coord->$prop === $defaultGlobe ) ) {
+					if ( !( $prop === 'globe' && $coord->$prop === Globe::EARTH ) ) {
 						$vals[$prop] = $coord->$prop;
 					}
 				}
@@ -243,7 +242,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	private function makeCoord( array $hit ): Coord {
 		$lat = $hit['coord']['lat'];
 		$lon = $hit['coord']['lon'];
-		$globe = $hit['coord']['globe'] ?? $this->getConfig()->get( 'DefaultGlobe' );
+		$globe = $hit['coord']['globe'] ?? Globe::EARTH;
 		$coord = new Coord( $lat, $lon, $globe );
 		foreach ( Coord::FIELD_MAPPING as $field => $_ ) {
 			if ( isset( $hit[$field] ) ) {

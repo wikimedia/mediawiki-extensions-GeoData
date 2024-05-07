@@ -11,7 +11,6 @@ use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\WarningCollector;
 use GeoData\Coord;
-use MediaWiki\Config\Config;
 
 /**
  * Applies geo boosting to the query by providing coordinates.
@@ -25,12 +24,6 @@ use MediaWiki\Config\Config;
  */
 class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostFunctionFeature {
 	use CirrusGeoFeature;
-
-	private Config $config;
-
-	public function __construct( Config $config ) {
-		$this->config = $config;
-	}
 
 	/** @inheritDoc */
 	protected function getKeywords() {
@@ -66,7 +59,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 		$suffix,
 		WarningCollector $warningCollector
 	) {
-		return $this->parseGeoNearby( $warningCollector, $this->config, $key, $value );
+		return $this->parseGeoNearby( $warningCollector, $key, $value );
 	}
 
 	/**

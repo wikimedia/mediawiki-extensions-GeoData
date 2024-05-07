@@ -10,7 +10,6 @@ use CirrusSearch\Search\SearchContext;
 use CirrusSearch\WarningCollector;
 use Elastica\Query\AbstractQuery;
 use GeoData\Coord;
-use MediaWiki\Config\Config;
 
 /**
  * Applies geo filtering to the query by providing coordinates.
@@ -25,12 +24,6 @@ use MediaWiki\Config\Config;
  */
 class CirrusNearCoordFilterFeature extends SimpleKeywordFeature implements FilterQueryFeature {
 	use CirrusGeoFeature;
-
-	private Config $config;
-
-	public function __construct( Config $config ) {
-		$this->config = $config;
-	}
 
 	/**
 	 * @return string[]
@@ -63,7 +56,7 @@ class CirrusNearCoordFilterFeature extends SimpleKeywordFeature implements Filte
 		$suffix,
 		WarningCollector $warningCollector
 	) {
-		return $this->parseGeoNearby( $warningCollector, $this->config, $key, $value );
+		return $this->parseGeoNearby( $warningCollector, $key, $value );
 	}
 
 	/**
