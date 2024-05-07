@@ -83,6 +83,6 @@ class BoundingBox {
 			$lon += ( $lon < 0 ) ? 180 : -180;
 		}
 
-		return new Coord( ( $this->lat1 + $this->lat2 ) / 2.0, $lon );
+		return new Coord( ( $this->lat1 + $this->lat2 ) / 2.0, $lon, $this->globe );
 	}
 }

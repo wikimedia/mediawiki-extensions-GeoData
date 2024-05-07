@@ -16,10 +16,11 @@ class BoundingBoxTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideCenter
 	 */
 	public function testCenter( $latExpected, $lonExpected, $lat1, $lon1, $lat2, $lon2 ) {
-		$bbox = new BoundingBox( $lat1, $lon1, $lat2, $lon2 );
+		$bbox = new BoundingBox( $lat1, $lon1, $lat2, $lon2, 'moon' );
 		$center = $bbox->center();
 		$this->assertEquals( $latExpected, $center->lat, 'Comparing latitudes...' );
 		$this->assertEquals( $lonExpected, $center->lon, 'Comparing longitudes...' );
+		$this->assertSame( 'moon', $center->globe );
 	}
 
 	public static function provideCenter() {
