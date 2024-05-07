@@ -128,6 +128,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		}
 
 		$this->addMessagesFromStatus( $status );
+		/** @var \Elastica\ResultSet $resultSet */
 		$resultSet = $status->getValue();
 
 		if ( isset( $params['debug'] ) && $params['debug'] ) {
@@ -242,7 +243,8 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	private function makeCoord( array $hit ): Coord {
 		$lat = $hit['coord']['lat'];
 		$lon = $hit['coord']['lon'];
-		$coord = new Coord( $lat, $lon, $this->getConfig()->get( 'DefaultGlobe' ) );
+		$globe = $hit['coord']['globe'] ?? $this->getConfig()->get( 'DefaultGlobe' );
+		$coord = new Coord( $lat, $lon, $globe );
 		foreach ( Coord::FIELD_MAPPING as $field => $_ ) {
 			if ( isset( $hit[$field] ) ) {
 				$coord->$field = $hit[$field];
