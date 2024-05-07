@@ -11,7 +11,6 @@ use CirrusSearch\SearchConfig;
 use CirrusSearch\WarningCollector;
 use Elastica\Query\AbstractQuery;
 use GeoData\Coord;
-use MediaWiki\Config\Config;
 
 /**
  * Applies geo filtering to the query by providing a Title.
@@ -26,18 +25,6 @@ use MediaWiki\Config\Config;
  */
 class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements FilterQueryFeature {
 	use CirrusGeoFeature;
-
-	/**
-	 * @var Config
-	 */
-	private $config;
-
-	/**
-	 * @param Config $config
-	 */
-	public function __construct( Config $config ) {
-		$this->config = $config;
-	}
 
 	/**
 	 * @return string[]

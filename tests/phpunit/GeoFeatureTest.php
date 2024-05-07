@@ -313,14 +313,12 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		// Inject fake page with comma in it as well
 		$this->addGoodLinkObject( 1234567, Title::newFromText( 'Washington, D.C.' ) );
 
-		$config = new HashConfig( [ 'DefaultGlobe' => Globe::EARTH ] );
-
 		/**
 		 * @var $features \CirrusSearch\Query\SimpleKeywordFeature[]
 		 */
 		$features = [];
-		$features[] = new CirrusNearTitleBoostFeature( $config );
-		$features[] = new CirrusNearTitleFilterFeature( $config );
+		$features[] = new CirrusNearTitleBoostFeature();
+		$features[] = new CirrusNearTitleFilterFeature();
 		if ( $expected[0] !== null ) {
 			$expected[0] = new Coord( $expected[0]['lat'], $expected[0]['lon'] );
 		}
@@ -333,7 +331,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		}
 
 		$searchConfig = new HashSearchConfig( [] );
-		$boostFeature = new CirrusNearTitleBoostFeature( $searchConfig );
+		$boostFeature = new CirrusNearTitleBoostFeature();
 		$boostFunction = null;
 		if ( $expected[0] !== null ) {
 			$boostFunction = new GeoRadiusFunctionScoreBuilder( $searchConfig, 1,
@@ -347,7 +345,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 			$filterQuery = CirrusNearTitleFilterFeature::createQuery( $expected[0],
 				$expected[1], $expected[2] );
 		}
-		$filterFeature = new CirrusNearTitleFilterFeature( $searchConfig );
+		$filterFeature = new CirrusNearTitleFilterFeature();
 		$query = $filterFeature->getKeywordPrefixes()[0] . ':"' . $value . '"';
 		$this->kwAssert->assertFilter( $filterFeature, $query, $filterQuery, null, $searchConfig );
 	}
@@ -403,9 +401,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;
 		$feature = new CirrusNearCoordFilterFeature( $config );
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;
-		$feature = new CirrusNearTitleFilterFeature( $config );
+		$feature = new CirrusNearTitleFilterFeature();
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;
-		$feature = new CirrusNearTitleBoostFeature( $config );
+		$feature = new CirrusNearTitleBoostFeature();
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;
 
 		$feature = $features[$keyAndValue[0]];

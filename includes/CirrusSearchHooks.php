@@ -22,8 +22,8 @@ class CirrusSearchHooks implements
 	 * @param array &$features
 	 */
 	public function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$features ): void {
-		$features[] = new CirrusNearTitleBoostFeature( $config );
-		$features[] = new CirrusNearTitleFilterFeature( $config );
+		$features[] = new CirrusNearTitleBoostFeature();
+		$features[] = new CirrusNearTitleFilterFeature();
 		$features[] = new CirrusNearCoordBoostFeature( $config );
 		$features[] = new CirrusNearCoordFilterFeature( $config );
 	}

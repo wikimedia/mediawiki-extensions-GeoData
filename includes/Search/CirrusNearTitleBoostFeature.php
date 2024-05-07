@@ -10,7 +10,6 @@ use CirrusSearch\Search\Rescore\BoostFunctionBuilder;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\WarningCollector;
-use MediaWiki\Config\Config;
 
 /**
  * Applies geo boosting to the query by providing a Title.
@@ -24,18 +23,6 @@ use MediaWiki\Config\Config;
  */
 class CirrusNearTitleBoostFeature extends SimpleKeywordFeature implements BoostFunctionFeature {
 	use CirrusGeoFeature;
-
-	/**
-	 * @var Config
-	 */
-	private $config;
-
-	/**
-	 * @param Config $config
-	 */
-	public function __construct( Config $config ) {
-		$this->config = $config;
-	}
 
 	/** @inheritDoc */
 	protected function getKeywords() {
