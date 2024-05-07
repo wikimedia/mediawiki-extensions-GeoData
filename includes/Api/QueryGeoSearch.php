@@ -100,7 +100,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
 				$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
 			}
-			$this->coord = new Coord( floatval( $arr[0] ), floatval( $arr[1] ), $params['globe'] );
+			$this->coord = new Coord( floatval( $arr[0] ), floatval( $arr[1] ), $globe->getName() );
 		} elseif ( isset( $params['page'] ) ) {
 			$t = Title::newFromText( $params['page'] );
 			if ( !$t || !$t->canExist() ) {

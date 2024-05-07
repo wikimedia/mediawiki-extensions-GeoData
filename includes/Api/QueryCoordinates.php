@@ -111,7 +111,7 @@ class QueryCoordinates extends ApiQueryBase {
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
 				$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
 			}
-			return new Coord( (float)$arr[0], (float)$arr[1] );
+			return new Coord( (float)$arr[0], (float)$arr[1], $globe->getName() );
 		}
 		if ( $params['distancefrompage'] !== null ) {
 			$title = Title::newFromText( $params['distancefrompage'] );

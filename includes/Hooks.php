@@ -135,7 +135,7 @@ class Hooks implements
 				// https://phabricator.wikimedia.org/T165800
 				&& ( $lat != 0 || $lon != 0 )
 			) {
-				$coord = new Coord( $lat, $lon );
+				$coord = new Coord( $lat, $lon, $globe->getName() );
 				$coord->primary = true;
 				return $coord;
 			}
