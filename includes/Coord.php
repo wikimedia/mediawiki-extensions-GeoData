@@ -64,15 +64,13 @@ class Coord implements JsonSerializable {
 	/**
 	 * @param float $lat
 	 * @param float $lon
-	 * @param string|null $globe
+	 * @param string $globe
 	 * @param array $extraFields
 	 */
-	public function __construct( $lat, $lon, string $globe = null, $extraFields = [] ) {
-		global $wgDefaultGlobe;
-
+	public function __construct( $lat, $lon, string $globe = Globe::EARTH, $extraFields = [] ) {
 		$this->lat = (float)$lat;
 		$this->lon = (float)$lon;
-		$this->globe = $globe ?? $wgDefaultGlobe ?? Globe::EARTH;
+		$this->globe = $globe;
 
 		foreach ( $extraFields as $key => $value ) {
 			if ( isset( self::FIELD_MAPPING[$key] ) ) {
@@ -91,7 +89,7 @@ class Coord implements JsonSerializable {
 		$c = new self(
 			(float)$row->gt_lat,
 			(float)$row->gt_lon,
-			$row->gt_globe ?? null
+			$row->gt_globe
 		);
 
 		$c->id = $row->gt_id ?? 0;

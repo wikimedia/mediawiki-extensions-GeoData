@@ -291,7 +291,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 			$queryBuilder->method( $this->logicalOr( 'select', 'from', 'where', 'caller' ) )->willReturnSelf();
 			$queryBuilder->method( 'fetchResultSet' )
 				->willReturn( new FakeResultWrapper( [
-					(object)[ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321 ],
+					(object)[ 'gt_lat' => 1.2345, 'gt_lon' => 5.4321, 'gt_globe' => Globe::EARTH ],
 				] ) );
 			$db->method( 'newSelectQueryBuilder' )
 				->willReturn( $queryBuilder );
@@ -326,7 +326,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$features[] = new CirrusNearTitleBoostFeature( $config );
 		$features[] = new CirrusNearTitleFilterFeature( $config );
 		if ( $expected[0] !== null ) {
-			$expected[0] = new Coord( $expected[0]['lat'], $expected[0]['lon'], Globe::EARTH );
+			$expected[0] = new Coord( $expected[0]['lat'], $expected[0]['lon'] );
 		}
 		foreach ( $features as $feature ) {
 			$query = $feature->getKeywordPrefixes()[0] . ':"' . $value . '"';

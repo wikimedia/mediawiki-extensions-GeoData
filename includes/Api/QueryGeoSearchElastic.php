@@ -27,8 +27,6 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	 * @param ApiPageSet|null $resultPageSet
 	 */
 	protected function run( $resultPageSet = null ): void {
-		global $wgDefaultGlobe;
-
 		parent::run( $resultPageSet );
 		// @fixme: refactor to make this unnecessary
 		$this->resetQueryParams();
@@ -189,6 +187,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 				$titles[$row->page_id] = Title::newFromRow( $row );
 			}
 
+			$defaultGlobe = $this->getConfig()->get( 'DefaultGlobe' );
 			$limit = $params['limit'];
 			$result = $this->getResult();
 
@@ -213,7 +212,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 
 				foreach ( $params['prop'] as $prop ) {
 					// Don't output default globe
-					if ( !( $prop === 'globe' && $coord->$prop === $wgDefaultGlobe ) ) {
+					if ( !( $prop === 'globe' && $coord->$prop === $defaultGlobe ) ) {
 						$vals[$prop] = $coord->$prop;
 					}
 				}
@@ -243,7 +242,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	private function makeCoord( array $hit ): Coord {
 		$lat = $hit['coord']['lat'];
 		$lon = $hit['coord']['lon'];
-		$coord = new Coord( $lat, $lon );
+		$coord = new Coord( $lat, $lon, $this->getConfig()->get( 'DefaultGlobe' ) );
 		foreach ( Coord::FIELD_MAPPING as $field => $_ ) {
 			if ( isset( $hit[$field] ) ) {
 				$coord->$field = $hit[$field];

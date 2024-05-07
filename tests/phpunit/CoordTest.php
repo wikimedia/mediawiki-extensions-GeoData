@@ -33,12 +33,12 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 	public static function provideEquals() {
 		$testCases = [
 			[
-				new Coord( 10, 20, null, [ 'dim' => 123, 'type' => 'not', 'country' => 'not',
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 123, 'type' => 'not', 'country' => 'not',
 					'primary' => true, 'name' => 'not' ] ),
-				new Coord( 10, 20, null, [ 'dim' => 456, 'type' => 'equal', 'country' => 'equal',
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 456, 'type' => 'equal', 'country' => 'equal',
 					'primary' => false, 'name' => 'equal' ] ),
 				true,
-				'Equality with other fileds differing',
+				'Equality with other fields differing',
 			],
 		];
 		return array_merge( $testCases, self::provideAlwaysEqualCoords() );
@@ -77,7 +77,7 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 				'Equality with globe set'
 			],
 			[
-				new Coord( 10, 20, Globe::EARTH ),
+				new Coord( 10, 20 ),
 				new Coord( 10, 20, 'moon' ),
 				false,
 				'Inequality due to globe'
@@ -166,106 +166,106 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 	public static function provideFullyEquals() {
 		$testCases = [
 			[
-				new Coord( 10, 20, null, [ 'primary' => true ] ),
-				new Coord( 10, 20, null, [ 'primary' => false ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'primary' => true ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'primary' => false ] ),
 				false,
 				'Strict inequality: primary'
 			],
 			[
-				new Coord( 10, 20, null, [ 'dim' => 123 ] ),
-				new Coord( 10, 20, null, [ 'dim' => 456 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 123 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 456 ] ),
 				false,
 				'Strict inequality: dim'
 			],
 			[
-				new Coord( 10, 20, null, [ 'type' => 'not' ] ),
-				new Coord( 10, 20, null, [ 'type' => 'equal' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => 'not' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => 'equal' ] ),
 				false,
 				'Strict inequality: type'
 			],
 			[
-				new Coord( 10, 20, null, [ 'name' => 'not' ] ),
-				new Coord( 10, 20, null, [ 'name' => 'equal' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'name' => 'not' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'name' => 'equal' ] ),
 				false,
 				'Strict inequality: name'
 			],
 			[
-				new Coord( 10, 20, null, [ 'country' => 'not' ] ),
-				new Coord( 10, 20, null, [ 'country' => 'equal' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'country' => 'not' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'country' => 'equal' ] ),
 				false,
 				'Strict inequality: country'
 			],
 			[
-				new Coord( 10, 20, null, [ 'region' => 'not' ] ),
-				new Coord( 10, 20, null, [ 'region' => 'equal' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'region' => 'not' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'region' => 'equal' ] ),
 				false,
 				'Strict inequality: region'
 			],
 			// Now make sure comparison is type-aware when needed
 			[
-				new Coord( 10, 20, null, [ 'primary' => 'yes' ] ),
-				new Coord( 10, 20, null, [ 'primary' => true ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'primary' => 'yes' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'primary' => true ] ),
 				true,
 				'Strict inequality: compare primary as booleanish'
 			],
 			[
-				new Coord( 10, 20, null, [ 'dim' => 123 ] ),
-				new Coord( 10, 20, null, [ 'dim' => 123.0 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 123 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 123.0 ] ),
 				false,
 				'Strict inequality: dim'
 			],
 			[
-				new Coord( 10, 20, null, [ 'type' => '01' ] ),
-				new Coord( 10, 20, null, [ 'type' => '1' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => '01' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => '1' ] ),
 				false,
 				'Strict inequality: type'
 			],
 			[
-				new Coord( 10, 20, null, [ 'name' => '01' ] ),
-				new Coord( 10, 20, null, [ 'name' => '1' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'name' => '01' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'name' => '1' ] ),
 				false,
 				'Strict inequality: name'
 			],
 			[
-				new Coord( 10, 20, null, [ 'country' => '01' ] ),
-				new Coord( 10, 20, null, [ 'country' => '1' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'country' => '01' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'country' => '1' ] ),
 				false,
 				'Strict inequality: country'
 			],
 			[
-				new Coord( 10, 20, null, [ 'region' => '01' ] ),
-				new Coord( 10, 20, null, [ 'region' => '1' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'region' => '01' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'region' => '1' ] ),
 				false,
 				'Strict inequality: region'
 			],
 			// Null must never match anything
 			[
-				new Coord( 10, 20, null, [ 'dim' => 0 ] ),
-				new Coord( 10, 20, null, [ 'dim' => null ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 0 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => null ] ),
 				false,
 				'Strict inequality: dim comparison with null'
 			],
 			[
-				new Coord( 10, 20, null, [ 'type' => '' ] ),
-				new Coord( 10, 20, null, [ 'type' => null ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => '' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => null ] ),
 				false,
 				'Strict inequality: type comparison with null'
 			],
 			[
-				new Coord( 10, 20, null, [ 'name' => '' ] ),
-				new Coord( 10, 20, null, [ 'name' => null ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'name' => '' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'name' => null ] ),
 				false,
 				'Strict inequality: name comparison with null'
 			],
 			[
-				new Coord( 10, 20, null, [ 'country' => '0' ] ),
-				new Coord( 10, 20, null, [ 'country' => null ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'country' => '0' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'country' => null ] ),
 				false,
 				'Strict inequality: country comparison with null'
 			],
 			[
-				new Coord( 10, 20, null, [ 'region' => '0' ] ),
-				new Coord( 10, 20, null, [ 'region' => null ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'region' => '0' ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'region' => null ] ),
 				false,
 				'Strict inequality: region comparison with null'
 			],
@@ -292,14 +292,13 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GeoData\Coord::getGlobeObj
 	 * @dataProvider provideGlobeObj
 	 */
-	public function testGlobeObj( $name, Globe $expected ) {
+	public function testGlobeObj( string $name, Globe $expected ) {
 		$c = new Coord( 10, 20, $name );
 		$this->assertTrue( $expected->equalsTo( $c->getGlobeObj() ) );
 	}
 
 	public static function provideGlobeObj() {
 		return [
-			[ null, new Globe() ],
 			[ Globe::EARTH, new Globe() ],
 			[ 'moon', new Globe( 'moon' ) ],
 			[ 'something nonexistent', new Globe( 'something nonexistent' ) ],
