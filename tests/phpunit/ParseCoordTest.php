@@ -19,7 +19,7 @@ class ParseCoordTest extends MediaWikiIntegrationTestCase {
 	 * @covers \GeoData\CoordinatesParserFunction::parseCoordinates
 	 * @dataProvider provideCases
 	 */
-	public function testParseCoordinates( array $parts, $result, string $globe = 'earth' ) {
+	public function testParseCoordinates( array $parts, $result, string $globe = Globe::EARTH ) {
 		$formatted = '"' . implode( '|', $parts ) . '"';
 
 		/** @var CoordinatesParserFunction $function */

@@ -4,6 +4,7 @@ namespace GeoData\Test;
 
 use GeoData\Coord;
 use GeoData\CoordinatesOutput;
+use GeoData\Globe;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
@@ -92,7 +93,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 			// Basics
 			[
 				'{{#coordinates: 10|20|primary}}',
-				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 100|20|primary}}',
@@ -104,30 +105,30 @@ class TagTest extends MediaWikiIntegrationTestCase {
 			],
 			[
 				'{{#coordinates: 10| primary		|	20}}',
-				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			[
 				// empty parameter instead of primary
 				'{{#coordinates: 10 | |	20 }}',
-				new Coord( 10, 20, 'earth', [ 'primary' => false, 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'primary' => false, 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: primary|10|20}}',
-				new Coord( 10, 20, 'earth', [ 'primary' => true, 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'primary' => true, 'dim' => 1000 ] ),
 			],
 			// type
 			[
 				'{{#coordinates: 10|20|type:landmark}}',
-				new Coord( 10, 20, 'earth', [ 'type' => 'landmark', 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => 'landmark', 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|type:city(666)}}',
-				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			// Other geohack params
 			[
 				'{{#coordinates: 10|20}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-mos}}',
@@ -139,66 +140,66 @@ class TagTest extends MediaWikiIntegrationTestCase {
 			],
 			[
 				'{{#coordinates: 10|20|_dim:3Km_}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 3000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 3000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|foo:bar dim:100m}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 100 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 100 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|dim:-300}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|dim:-10km}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|dim:1L}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 1000 ] ),
 			],
 			// dim fallbacks
 			[
 				'{{#coordinates: 10|20|type:city}}',
-				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|type:city(2000)}}',
-				new Coord( 10, 20, 'earth', [ 'type' => 'city', 'dim' => 10000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => 'city', 'dim' => 10000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|type:lulz}}',
-				new Coord( 10, 20, 'earth', [ 'type' => 'lulz', 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => 'lulz', 'dim' => 1000 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|scale:50000}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 5000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 5000 ] ),
 			],
 			// https://phabricator.wikimedia.org/T48181
 			[
 				'{{#coordinates: 2.5|3,5}}',
-				new Coord( 2.5, 3.5, 'earth', [ 'dim' => 1000 ] ),
+				new Coord( 2.5, 3.5, Globe::EARTH, [ 'dim' => 1000 ] ),
 				'de',
 			],
 			// https://phabricator.wikimedia.org/T49090
 			[
 				'{{#coordinates: -3.29237|-60.624889|globe=}}',
-				new Coord( -3.29237, -60.624889, 'earth', [ 'dim' => 1000 ] ),
+				new Coord( -3.29237, -60.624889, Globe::EARTH, [ 'dim' => 1000 ] ),
 			],
 			// Lowercase type
 			[
 				'{{#coordinates: 10|20|type:sOmEtHiNg}}',
-				new Coord( 10, 20, 'earth', [ 'type' => 'something', 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'type' => 'something', 'dim' => 1000 ] ),
 			],
 			// https://phabricator.wikimedia.org/T218941 : bogus scale
 			[
 				'{{#coordinates:10|20|scale=boom!}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 1000 ] ),
 			],
 			// Negative scale
 			[
 				'{{#coordinates:10|20|scale=-3}}',
-				new Coord( 10, 20, 'earth', [ 'dim' => 1000 ] ),
+				new Coord( 10, 20, Globe::EARTH, [ 'dim' => 1000 ] ),
 			]
 		];
 	}

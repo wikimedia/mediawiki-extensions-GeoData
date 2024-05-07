@@ -21,8 +21,8 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testEarth() {
-		$g = new Globe( 'earth' );
-		$this->assertEquals( 'earth', $g->getName() );
+		$g = new Globe( Globe::EARTH );
+		$this->assertEquals( Globe::EARTH, $g->getName() );
 		$this->assertTrue( $g->isKnown() );
 		$this->assertEquals( -180, $g->getMinLongitude() );
 		$this->assertEquals( 180, $g->getMaxLongitude() );
@@ -65,10 +65,10 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 
 	public static function provideCoordinatesValidation() {
 		return [
-			[ 'earth', 0, 0, true ],
-			[ 'earth', 90, 180, true ],
-			[ 'earth', 90.001, 0, false ],
-			[ 'earth', 0, -181, false ],
+			[ Globe::EARTH, 0, 0, true ],
+			[ Globe::EARTH, 90, 180, true ],
+			[ Globe::EARTH, 90.001, 0, false ],
+			[ Globe::EARTH, 0, -181, false ],
 			[ 'moon', 0, 0, true ],
 			[ 'moon', 89, -179, true ],
 			[ 'moon', 0, 181, false ],

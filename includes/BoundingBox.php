@@ -25,7 +25,7 @@ class BoundingBox {
 	 * @param float $lon2
 	 * @param string $globe
 	 */
-	public function __construct( $lat1, $lon1, $lat2, $lon2, $globe = 'earth' ) {
+	public function __construct( $lat1, $lon1, $lat2, $lon2, $globe = Globe::EARTH ) {
 		$this->lat1 = $lat1;
 		$this->lon1 = $lon1;
 		$this->lat2 = $lat2;

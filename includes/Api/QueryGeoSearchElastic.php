@@ -6,6 +6,7 @@ use ApiPageSet;
 use ApiQuery;
 use FormatJson;
 use GeoData\Coord;
+use GeoData\Globe;
 use GeoData\Searcher;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
@@ -42,7 +43,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			$filter->addMustNot( new \Elastica\Query\Term( [ '_id' => $this->idToExclude ] ) );
 		}
 		// Only Earth is supported
-		$nestedPropsFilter->addFilter( new \Elastica\Query\Term( [ 'coordinates.globe' => 'earth' ] ) );
+		$nestedPropsFilter->addFilter( new \Elastica\Query\Term( [ 'coordinates.globe' => Globe::EARTH ] ) );
 		if ( isset( $params['maxdim'] ) ) {
 			$nestedPropsFilter->addFilter( new \Elastica\Query\Range( 'coordinates.dim',
 					[ 'to' => $params['maxdim'] ] ) );

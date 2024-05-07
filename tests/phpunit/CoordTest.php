@@ -77,7 +77,7 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 				'Equality with globe set'
 			],
 			[
-				new Coord( 10, 20, 'earth' ),
+				new Coord( 10, 20, Globe::EARTH ),
 				new Coord( 10, 20, 'moon' ),
 				false,
 				'Inequality due to globe'
@@ -299,8 +299,8 @@ class CoordTest extends MediaWikiIntegrationTestCase {
 
 	public static function provideGlobeObj() {
 		return [
-			[ null, new Globe( 'earth' ) ],
-			[ 'earth', new Globe( 'earth' ) ],
+			[ null, new Globe( Globe::EARTH ) ],
+			[ Globe::EARTH, new Globe( Globe::EARTH ) ],
 			[ 'moon', new Globe( 'moon' ) ],
 			[ 'something nonexistent', new Globe( 'something nonexistent' ) ],
 		];

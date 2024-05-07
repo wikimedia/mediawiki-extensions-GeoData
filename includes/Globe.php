@@ -6,6 +6,9 @@ namespace GeoData;
  * Immutable representation of a celestial body
  */
 class Globe {
+
+	public const EARTH = 'earth';
+
 	/** @var string */
 	private $name;
 
@@ -64,7 +67,7 @@ class Globe {
 		 * Radii taken from Wikipedia. Globes that are too irregular in shape don't have radius set.
 		 */
 		$data = [
-			'earth'     => $earth + [ 'radius' => Math::EARTH_RADIUS ],
+			self::EARTH => $earth + [ 'radius' => Math::EARTH_RADIUS ],
 			'mercury'   => $west360 + [ 'radius' => 2439700.0 ],
 			'venus'     => $east360 + [ 'radius' => 6051800.0 ],
 			'moon'      => $earth + [ 'radius' => 1737100.0 ],

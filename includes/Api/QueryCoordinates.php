@@ -105,13 +105,13 @@ class QueryCoordinates extends ApiQueryBase {
 	 */
 	private function getFromCoord( array $params ): ?Coord {
 		$this->requireMaxOneParameter( $params, 'distancefrompoint', 'distancefrompage' );
-		$globe = new Globe( 'earth' );
+		$globe = new Globe( Globe::EARTH );
 		if ( $params['distancefrompoint'] !== null ) {
 			$arr = explode( '|', $params['distancefrompoint'] );
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
 				$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
 			}
-			return new Coord( (float)$arr[0], (float)$arr[1], 'earth' );
+			return new Coord( (float)$arr[0], (float)$arr[1], Globe::EARTH );
 		}
 		if ( $params['distancefrompage'] !== null ) {
 			$title = Title::newFromText( $params['distancefrompage'] );
@@ -137,7 +137,7 @@ class QueryCoordinates extends ApiQueryBase {
 					'no-coordinates'
 				);
 			}
-			if ( $coord->globe != 'earth' ) {
+			if ( $coord->globe !== Globe::EARTH ) {
 				$this->dieWithError( 'apierror-geodata-notonearth', 'notonearth' );
 			}
 			return $coord;

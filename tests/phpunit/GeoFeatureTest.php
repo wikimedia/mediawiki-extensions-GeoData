@@ -135,21 +135,21 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 			],
 			'valid coordinate, default radius' => [
 				[
-					[ 'lat' => 1.2345, 'lon' => 2.3456, 'globe' => 'earth' ],
+					[ 'lat' => 1.2345, 'lon' => 2.3456, 'globe' => Globe::EARTH ],
 					5000,
 				],
 				'1.2345,2.3456',
 			],
 			'valid coordinate, specific radius in meters' => [
 				[
-					[ 'lat' => -5.4321, 'lon' => 42.345, 'globe' => 'earth' ],
+					[ 'lat' => -5.4321, 'lon' => 42.345, 'globe' => Globe::EARTH ],
 					4321,
 				],
 				'4321m,-5.4321,42.345',
 			],
 			'valid coordinate, specific radius in kilmeters' => [
 				[
-					[ 'lat' => 0, 'lon' => 42.345, 'globe' => 'earth' ],
+					[ 'lat' => 0, 'lon' => 42.345, 'globe' => Globe::EARTH ],
 					7000,
 				],
 				'7km,0,42.345',
@@ -172,7 +172,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 			],
 			'valid coordinate with spaces' => [
 				[
-					[ 'lat' => 1.2345, 'lon' => 9.8765, 'globe' => 'earth' ],
+					[ 'lat' => 1.2345, 'lon' => 9.8765, 'globe' => Globe::EARTH ],
 					5000
 				],
 				'1.2345, 9.8765'
@@ -184,7 +184,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider parseGeoNearbyProvider
 	 */
 	public function testParseGeoNearby( $expected, $value ) {
-		$config = new HashConfig( [ 'DefaultGlobe' => 'earth' ] );
+		$config = new HashConfig( [ 'DefaultGlobe' => Globe::EARTH ] );
 		$features = [
 			new CirrusNearCoordFilterFeature( $config ),
 			new CirrusNearCoordBoostFeature( $config )
@@ -195,7 +195,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		}
 
 		$searchConfig = new HashSearchConfig( [
-			'DefaultGlobe' => 'earth',
+			'DefaultGlobe' => Globe::EARTH,
 			'GeoDataRadiusScoreOverrides' => [],
 
 		] );
@@ -317,7 +317,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		// Inject fake page with comma in it as well
 		$this->addGoodLinkObject( 1234567, Title::newFromText( 'Washington, D.C.' ) );
 
-		$config = new HashConfig( [ 'DefaultGlobe' => 'earth' ] );
+		$config = new HashConfig( [ 'DefaultGlobe' => Globe::EARTH ] );
 
 		/**
 		 * @var $features \CirrusSearch\Query\SimpleKeywordFeature[]
@@ -326,7 +326,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$features[] = new CirrusNearTitleBoostFeature( $config );
 		$features[] = new CirrusNearTitleFilterFeature( $config );
 		if ( $expected[0] !== null ) {
-			$expected[0] = new Coord( $expected[0]['lat'], $expected[0]['lon'], 'earth' );
+			$expected[0] = new Coord( $expected[0]['lat'], $expected[0]['lon'], Globe::EARTH );
 		}
 		foreach ( $features as $feature ) {
 			$query = $feature->getKeywordPrefixes()[0] . ':"' . $value . '"';
@@ -337,7 +337,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		}
 		$searchConfig = new HashSearchConfig( [
 			'GeoDataRadiusScoreOverrides' => [],
-			'DefaultGlobe' => 'earth',
+			'DefaultGlobe' => Globe::EARTH,
 		] );
 
 		$boostFeature = new CirrusNearTitleBoostFeature( $searchConfig );
@@ -405,7 +405,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGeoWarnings( $expected, array $keyAndValue ) {
 		$features = [];
-		$config = new HashConfig( [ 'DefaultGlobe' => 'earth' ] );
+		$config = new HashConfig( [ 'DefaultGlobe' => Globe::EARTH ] );
 		$feature = new CirrusNearCoordBoostFeature( $config );
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;
 		$feature = new CirrusNearCoordFilterFeature( $config );
