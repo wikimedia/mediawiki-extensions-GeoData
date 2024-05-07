@@ -194,11 +194,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 			$this->kwAssert->assertParsedValue( $feature, $query, $expected );
 		}
 
-		$searchConfig = new HashSearchConfig( [
-			'DefaultGlobe' => Globe::EARTH,
-			'GeoDataRadiusScoreOverrides' => [],
-
-		] );
+		$searchConfig = new HashSearchConfig( [] );
 		$boostFunction = null;
 		if ( $expected[0] !== null ) {
 			$boostFunction = new GeoRadiusFunctionScoreBuilder( $searchConfig, 1,
@@ -335,11 +331,8 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 			$this->kwAssert->assertCrossSearchStrategy( $feature, $query,
 				CrossSearchStrategy::hostWikiOnlyStrategy() );
 		}
-		$searchConfig = new HashSearchConfig( [
-			'GeoDataRadiusScoreOverrides' => [],
-			'DefaultGlobe' => Globe::EARTH,
-		] );
 
+		$searchConfig = new HashSearchConfig( [] );
 		$boostFeature = new CirrusNearTitleBoostFeature( $searchConfig );
 		$boostFunction = null;
 		if ( $expected[0] !== null ) {

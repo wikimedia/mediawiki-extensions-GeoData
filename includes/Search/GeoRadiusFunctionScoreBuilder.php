@@ -11,7 +11,6 @@ use GeoData\Coord;
  * Builds a boost for documents based on geocoordinates.
  * Initialized by special syntax in user query.
  * @see CirrusGeoFeature
- * @package GeoData
  */
 class GeoRadiusFunctionScoreBuilder extends FunctionScoreBuilder {
 	/**

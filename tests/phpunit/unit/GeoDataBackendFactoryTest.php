@@ -12,7 +12,7 @@ use MediaWiki\Config\HashConfig;
  */
 class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 	protected function mockApiQuery( $backend ) {
-		$context = $this->createMock( \IContextSource::class );
+		$context = $this->createNoOpMock( \IContextSource::class );
 
 		$apiMain = $this->createMock( \ApiMain::class );
 		$apiMain->method( 'getContext' )->willReturn( $context );
