@@ -61,8 +61,9 @@ class BoundingBox {
 	 */
 	public function area() {
 		$midLat = ( $this->lat2 + $this->lat1 ) / 2;
-		$vert = Math::distance( $this->lat1, 0, $this->lat2, 0 );
-		$horz = Math::distance( $midLat, $this->lon1, $midLat, $this->lon2 );
+		$radius = ( new Globe( $this->globe ) )->getRadius();
+		$vert = Math::distance( $this->lat1, 0, $this->lat2, 0, $radius );
+		$horz = Math::distance( $midLat, $this->lon1, $midLat, $this->lon2, $radius );
 
 		return $horz * $vert;
 	}

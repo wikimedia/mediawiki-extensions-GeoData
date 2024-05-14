@@ -181,7 +181,8 @@ class Coord implements JsonSerializable {
 	 * @return float Distance in metres
 	 */
 	public function distanceTo( Coord $coord ): float {
-		return Math::distance( $this->lat, $this->lon, $coord->lat, $coord->lon );
+		return Math::distance( $this->lat, $this->lon, $coord->lat, $coord->lon,
+			$this->getGlobeObj()->getRadius() );
 	}
 
 	/**

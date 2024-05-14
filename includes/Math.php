@@ -20,16 +20,17 @@ class Math {
 	 * @param float $lon1
 	 * @param float $lat2
 	 * @param float $lon2
+	 * @param float $radius
 	 * @return float Distance in meters
 	 */
-	public static function distance( $lat1, $lon1, $lat2, $lon2 ): float {
+	public static function distance( $lat1, $lon1, $lat2, $lon2, float $radius ): float {
 		$lat1 = deg2rad( $lat1 );
 		$lon1 = deg2rad( $lon1 );
 		$lat2 = deg2rad( $lat2 );
 		$lon2 = deg2rad( $lon2 );
 		$sin1 = sin( ( $lat2 - $lat1 ) / 2 );
 		$sin2 = sin( ( $lon2 - $lon1 ) / 2 );
-		return 2 * self::EARTH_RADIUS *
+		return 2 * $radius *
 			asin( sqrt( $sin1 * $sin1 + cos( $lat1 ) * cos( $lat2 ) * $sin2 * $sin2 ) );
 	}
 

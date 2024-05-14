@@ -4,6 +4,7 @@ namespace GeoData\Test;
 
 use GeoData\BoundingBox;
 use GeoData\Coord;
+use GeoData\Globe;
 use MediaWikiUnitTestCase;
 
 /**
@@ -24,8 +25,10 @@ class BoundingBoxTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideArea
 	 */
-	public function testArea( int $expected, float $lat1, float $lon1, float $lat2, float $lon2 ) {
-		$bbox = new BoundingBox( $lat1, $lon1, $lat2, $lon2 );
+	public function testArea( int $expected, float $lat1, float $lon1, float $lat2, float $lon2,
+		string $globe = Globe::EARTH
+	) {
+		$bbox = new BoundingBox( $lat1, $lon1, $lat2, $lon2, $globe );
 		$this->assertSame( $expected, (int)$bbox->area() );
 	}
 
@@ -37,6 +40,9 @@ class BoundingBoxTest extends MediaWikiUnitTestCase {
 			[ 6182, 60, 0, 60.001, 0.001 ],
 			[ 1077, 85, 0, 85.001, 0.001 ],
 			[ 21, 89.9, 0, 89.901, 0.001 ],
+			[ 7612, 52, 13, 52.001, 13.001, Globe::EARTH ],
+			[ 2154, 52, 13, 52.001, 13.001, 'mars' ],
+			[ 565, 52, 13, 52.001, 13.001, 'moon' ],
 		];
 	}
 

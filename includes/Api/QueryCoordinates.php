@@ -8,7 +8,6 @@ use ApiQueryBase;
 use GeoData\Coord;
 use GeoData\GeoData;
 use GeoData\Globe;
-use GeoData\Math;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -87,7 +86,7 @@ class QueryCoordinates extends ApiQueryBase {
 			}
 			if ( $from && $row->gt_globe == $from->globe ) {
 				$vals['dist'] = round(
-					Math::distance( $from->lat, $from->lon, $row->gt_lat, $row->gt_lon ),
+					$from->distanceTo( Coord::newFromRow( $row ) ),
 					1
 				);
 			}

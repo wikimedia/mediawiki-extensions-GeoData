@@ -243,9 +243,12 @@ class CoordTest extends MediaWikiUnitTestCase {
 		for ( $i = 0; $i < 90; $i += 5 ) {
 			$coord = new Coord( $i, $i );
 			$bbox = $coord->bboxAround( 5000 );
-			$this->assertEqualsWithDelta( 10000, Math::distance( $bbox->lat1, $i, $bbox->lat2, $i ),
+			$radius = $coord->getGlobeObj()->getRadius();
+			$this->assertEqualsWithDelta( 10000,
+				Math::distance( $bbox->lat1, $i, $bbox->lat2, $i, $radius ),
 				1, 'Testing latitude' );
-			$this->assertEqualsWithDelta( 10000, Math::distance( $i, $bbox->lon1, $i, $bbox->lon2 ),
+			$this->assertEqualsWithDelta( 10000,
+				Math::distance( $i, $bbox->lon1, $i, $bbox->lon2, $radius ),
 				1, 'Testing longitude' );
 		}
 	}

@@ -6,7 +6,6 @@ use ApiPageSet;
 use ApiQuery;
 use GeoData\Coord;
 use GeoData\Globe;
-use GeoData\Math;
 use MediaWiki\Title\Title;
 
 class QueryGeoSearchDb extends QueryGeoSearch {
@@ -56,7 +55,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 
 		$rows = [];
 		foreach ( $res as $row ) {
-			$row->dist = Math::distance( $this->coord->lat, $this->coord->lon, $row->gt_lat, $row->gt_lon );
+			$row->dist = $this->coord->distanceTo( Coord::newFromRow( $row ) );
 			$rows[] = $row;
 		}
 		// sort in PHP because sorting via SQL would involve a filesort
