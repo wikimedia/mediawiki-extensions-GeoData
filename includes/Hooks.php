@@ -131,9 +131,9 @@ class Hooks implements
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];
 			$globe = new Globe();
-			if ( $globe->coordinatesAreValid( $lat, $lon )
-				// https://phabricator.wikimedia.org/T165800
-				&& ( $lat != 0 || $lon != 0 )
+			// T165800: Skip files with meaningless 0, 0 coordinates
+			if ( ( $lat || $lon ) &&
+				$globe->coordinatesAreValid( $lat, $lon )
 			) {
 				$coord = new Coord( $lat, $lon, $globe->getName() );
 				$coord->primary = true;

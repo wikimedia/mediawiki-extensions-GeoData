@@ -100,7 +100,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			// Should be in sync with
 			// https://gerrit.wikimedia.org/g/mediawiki/extensions/CirrusSearch/+/ae9c7338/includes/Search/SearchRequestBuilder.php#97
 			$rescores = $searcher->getRelevanceRescoreConfigurations( $namespaces );
-			if ( $rescores !== [] ) {
+			if ( $rescores ) {
 				$query->setParam( 'rescore', $rescores );
 			}
 		} else {

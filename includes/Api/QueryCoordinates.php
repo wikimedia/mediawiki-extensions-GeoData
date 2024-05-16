@@ -35,7 +35,7 @@ class QueryCoordinates extends ApiQueryBase {
 
 	public function execute(): void {
 		$titles = $this->getPageSet()->getGoodTitles();
-		if ( $titles === [] ) {
+		if ( !$titles ) {
 			return;
 		}
 

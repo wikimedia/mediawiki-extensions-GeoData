@@ -363,7 +363,7 @@ class CoordinatesParserFunction {
 			$multiplier /= 60;
 		}
 		if ( $min == 0 && $value < 0 ) {
-			$value = $max + $value;
+			$value += $max;
 		}
 		if ( $value < $min || $value > $max ) {
 			return false;

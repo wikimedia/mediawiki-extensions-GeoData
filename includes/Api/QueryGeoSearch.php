@@ -20,7 +20,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	private const DEFAULT_RADIUS = 500;
 
 	/**
-	 * @var Coord The center of search area
+	 * @var Coord|null The center of search area
 	 */
 	protected $coord;
 

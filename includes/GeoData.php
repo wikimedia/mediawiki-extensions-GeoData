@@ -8,12 +8,10 @@ use Wikimedia\Rdbms\IReadableDatabase;
 class GeoData {
 	/**
 	 * Returns primary coordinates of the given page, if any
-	 * @param int $pageId
-	 * @return Coord|bool Coordinates or false
 	 */
-	public static function getPageCoordinates( int $pageId ) {
+	public static function getPageCoordinates( int $pageId ): ?Coord {
 		$coords = self::getAllCoordinates( $pageId, [ 'gt_primary' => 1 ] );
-		return $coords ? $coords[0] : false;
+		return $coords[0] ?? null;
 	}
 
 	/**
