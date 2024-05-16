@@ -24,7 +24,7 @@ class CoordinatesOutput implements JsonSerializable {
 	/** @var Coord|false */
 	private $primary = false;
 	/** @var Coord[] */
-	private $secondary = [];
+	private array $secondary = [];
 
 	/**
 	 * Fetch the current CoordinatesOutput attached to this ParserOutput
@@ -34,8 +34,6 @@ class CoordinatesOutput implements JsonSerializable {
 	 * back into the ParserOutput until self::setToParserOutput is called.
 	 *
 	 * @see setToParserOutput
-	 * @param ParserOutput $parserOutput
-	 * @return CoordinatesOutput
 	 */
 	public static function getOrBuildFromParserOutput(
 		ParserOutput $parserOutput
@@ -45,7 +43,6 @@ class CoordinatesOutput implements JsonSerializable {
 
 	/**
 	 * Write the coords to ParserOutput object.
-	 * @param ContentMetadataCollector $parserOutput
 	 */
 	public function setToParserOutput( ContentMetadataCollector $parserOutput ) {
 		$parserOutput->setExtensionData( self::GEO_DATA_COORDS_OUTPUT, $this->jsonSerialize() );
@@ -69,10 +66,7 @@ class CoordinatesOutput implements JsonSerializable {
 		return $coordsOutput;
 	}
 
-	/**
-	 * @return int
-	 */
-	public function getCount() {
+	public function getCount(): int {
 		return count( $this->secondary ) + ( $this->primary ? 1 : 0 );
 	}
 
@@ -82,7 +76,7 @@ class CoordinatesOutput implements JsonSerializable {
 	 * @param Coord $c
 	 * @throws LogicException
 	 */
-	public function addPrimary( Coord $c ) {
+	public function addPrimary( Coord $c ): void {
 		if ( $this->primary ) {
 			throw new LogicException( 'Primary coordinates already set' );
 		}
@@ -93,7 +87,7 @@ class CoordinatesOutput implements JsonSerializable {
 	 * @param Coord $c
 	 * @throws InvalidArgumentException
 	 */
-	public function addSecondary( Coord $c ) {
+	public function addSecondary( Coord $c ): void {
 		if ( $c->primary ) {
 			throw new InvalidArgumentException( 'Attempt to pass primary coordinates as secondary' );
 		}
@@ -117,14 +111,14 @@ class CoordinatesOutput implements JsonSerializable {
 	/**
 	 * @return Coord[]
 	 */
-	public function getSecondary() {
+	public function getSecondary(): array {
 		return $this->secondary;
 	}
 
 	/**
 	 * @return Coord[]
 	 */
-	public function getAll() {
+	public function getAll(): array {
 		$res = $this->secondary;
 		if ( $this->primary ) {
 			array_unshift( $res, $this->primary );
@@ -132,9 +126,6 @@ class CoordinatesOutput implements JsonSerializable {
 		return $res;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function jsonSerialize(): array {
 		return [
 			'limitExceeded' => $this->limitExceeded,

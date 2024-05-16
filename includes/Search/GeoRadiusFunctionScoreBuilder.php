@@ -17,10 +17,7 @@ class GeoRadiusFunctionScoreBuilder extends FunctionScoreBuilder {
 	 * Default feature weight
 	 */
 	private const DEFAULT_WEIGHT = 2;
-	/**
-	 * @var Coord
-	 */
-	private $coord;
+	private Coord $coord;
 	/**
 	 * @var int
 	 */
@@ -42,9 +39,6 @@ class GeoRadiusFunctionScoreBuilder extends FunctionScoreBuilder {
 		$this->radius = $radius;
 	}
 
-	/**
-	 * @param FunctionScore $functionScore
-	 */
 	public function append( FunctionScore $functionScore ) {
 		$functionScore->addWeightFunction( $this->weight,
 			CirrusNearTitleFilterFeature::createQuery( $this->coord, $this->radius ) );

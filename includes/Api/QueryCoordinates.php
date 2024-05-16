@@ -20,8 +20,7 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  */
 class QueryCoordinates extends ApiQueryBase {
 
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
+	private WikiPageFactory $wikiPageFactory;
 
 	/**
 	 * @param ApiQuery $query
@@ -99,10 +98,6 @@ class QueryCoordinates extends ApiQueryBase {
 		}
 	}
 
-	/**
-	 * @param array $params
-	 * @return Coord|null
-	 */
 	private function getFromCoord( array $params ): ?Coord {
 		$this->requireMaxOneParameter( $params, 'distancefrompoint', 'distancefrompage' );
 		$globe = new Globe();

@@ -23,8 +23,7 @@ class Globe {
 	/** @var int either -1 or +1 */
 	private $east = 1;
 
-	/** @var bool */
-	private $known = false;
+	private bool $known = false;
 
 	/**
 	 * @param string $name Internal globe name
@@ -47,7 +46,7 @@ class Globe {
 	/**
 	 * @return array[]
 	 */
-	private static function getData() {
+	private static function getData(): array {
 		static $data = [];
 		if ( $data ) {
 			return $data;
@@ -143,18 +142,15 @@ class Globe {
 
 	/**
 	 * Returns whether this globe is registered (and hence, we know its properties)
-	 * @return bool
 	 */
-	public function isKnown() {
+	public function isKnown(): bool {
 		return $this->known;
 	}
 
 	/**
 	 * Compares this globe to another
-	 * @param Globe $other
-	 * @return bool
 	 */
-	public function equalsTo( Globe $other ) {
+	public function equalsTo( Globe $other ): bool {
 		return $this->name === $other->name;
 	}
 
@@ -162,9 +158,8 @@ class Globe {
 	 * Checks whether given coordinates are valid
 	 * @param int|float|string $lat
 	 * @param int|float|string $lon
-	 * @return bool
 	 */
-	public function coordinatesAreValid( $lat, $lon ) {
+	public function coordinatesAreValid( $lat, $lon ): bool {
 		if ( !is_numeric( $lat ) || !is_numeric( $lon ) ) {
 			return false;
 		}

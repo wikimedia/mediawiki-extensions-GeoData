@@ -283,8 +283,6 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 
 	/**
 	 * Adds debug information to API result
-	 * @param \Elastica\ResultSet $resultSet
-	 * @param \Elastica\Query $query
 	 */
 	private function addDebugInfo( \Elastica\ResultSet $resultSet, \Elastica\Query $query ): void {
 		$ti = $resultSet->getResponse()->getTransferInfo();

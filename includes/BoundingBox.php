@@ -34,10 +34,6 @@ class BoundingBox {
 
 	/**
 	 * Constructs a bounding box from 2 corner coordinates
-	 *
-	 * @param Coord $topLeft
-	 * @param Coord $bottomRight
-	 * @return self
 	 */
 	public static function newFromPoints( Coord $topLeft, Coord $bottomRight ): self {
 		return new self( $topLeft->lat, $topLeft->lon, $bottomRight->lat, $bottomRight->lon,
@@ -73,8 +69,6 @@ class BoundingBox {
 
 	/**
 	 * Returns center of this bounding box
-	 *
-	 * @return Coord
 	 */
 	public function center(): Coord {
 		$lon = ( $this->lon2 + $this->lon1 ) / 2.0;

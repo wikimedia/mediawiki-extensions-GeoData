@@ -140,8 +140,6 @@ class Coord implements JsonSerializable {
 
 	/**
 	 * Checks whether current coordinates are within current globe's allowed range
-	 *
-	 * @return bool
 	 */
 	public function isValid(): bool {
 		return $this->getGlobeObj()->coordinatesAreValid( $this->lat, $this->lon );
@@ -181,7 +179,7 @@ class Coord implements JsonSerializable {
 	 * @param Coord $coord
 	 * @return float Distance in metres
 	 */
-	public function distanceTo( Coord $coord ) {
+	public function distanceTo( Coord $coord ): float {
 		return Math::distance( $this->lat, $this->lon, $coord->lat, $coord->lon );
 	}
 
@@ -205,7 +203,6 @@ class Coord implements JsonSerializable {
 
 	/**
 	 * Returns these coordinates as an associative array
-	 * @return array
 	 */
 	public function getAsArray(): array {
 		$result = [];
@@ -215,9 +212,6 @@ class Coord implements JsonSerializable {
 		return $result;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function jsonSerialize(): array {
 		return $this->getAsArray();
 	}
@@ -227,8 +221,6 @@ class Coord implements JsonSerializable {
 	 *
 	 * @internal
 	 * @see jsonSerialize
-	 * @param array $json
-	 * @return self
 	 */
 	public static function newFromJson( array $json ): self {
 		return new self(

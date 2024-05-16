@@ -61,11 +61,6 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		$this->run( $resultPageSet );
 	}
 
-	/**
-	 * @param string $bbox
-	 * @param Globe $globe
-	 * @return BoundingBox
-	 */
 	private function parseBbox( string $bbox, Globe $globe ): BoundingBox {
 		$parts = explode( '|', $bbox );
 		$vals = array_map( 'floatval', $parts );

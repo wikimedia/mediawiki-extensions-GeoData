@@ -20,8 +20,7 @@ use StatusValue;
  */
 class Searcher extends ElasticsearchIntermediary {
 
-	/** @var SearchConfig */
-	private $config;
+	private SearchConfig $config;
 
 	/**
 	 * @param UserIdentity|null $user

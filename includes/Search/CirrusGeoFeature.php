@@ -3,6 +3,7 @@
 namespace GeoData\Search;
 
 use CirrusSearch\WarningCollector;
+use GeoData\Coord;
 use GeoData\GeoData;
 use GeoData\Globe;
 use MediaWiki\Config\Config;
@@ -23,11 +24,11 @@ trait CirrusGeoFeature {
 	 * @param WarningCollector $warningCollector
 	 * @param string $key Key used to trigger feature
 	 * @param string $text user input to parse
-	 * @return array Three member array with Coordinate object, integer radius
+	 * @return array{?Coord,int,int|string} Three member array with Coordinate object, integer radius
 	 *  in meters, and page id to exclude from results.. When invalid the
 	 *  Coordinate returned will be null.
 	 */
-	public function parseGeoNearbyTitle( WarningCollector $warningCollector, $key, $text ) {
+	public function parseGeoNearbyTitle( WarningCollector $warningCollector, $key, $text ): array {
 		$titleFactory = MediaWikiServices::getInstance()->getTitleFactory();
 		$title = $titleFactory->newFromText( $text );
 		if ( $title && $title->exists() ) {
@@ -87,8 +88,8 @@ trait CirrusGeoFeature {
 	 * @param Config $config
 	 * @param string $key
 	 * @param string $text
-	 * @return array Two member array with Coordinate object, and integer radius
-	 *  in meters. When invalid the Coordinate returned will be null.
+	 * @return array{array{lat:float,lon:float,globe:string}|null,int} Two member array with
+	 *  coordinates and integer radius in meters. When invalid the coordinates will be null.
 	 */
 	public function parseGeoNearby(
 		WarningCollector $warningCollector,

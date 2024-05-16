@@ -26,14 +26,8 @@ use MediaWiki\Config\Config;
 class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostFunctionFeature {
 	use CirrusGeoFeature;
 
-	/**
-	 * @var Config
-	 */
-	private $config;
+	private Config $config;
 
-	/**
-	 * @param Config $config
-	 */
 	public function __construct( Config $config ) {
 		$this->config = $config;
 	}
@@ -43,17 +37,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 		return [ 'boost-nearcoord' ];
 	}
 
-	/**
-	 * @param SearchContext $context
-	 * @param string $key The keyword
-	 * @param string $value The value attached to the keyword with quotes stripped
-	 * @param string $quotedValue The original value in the search string, including quotes if used
-	 * @param bool $negated Is the search negated? Not used to generate the returned AbstractQuery,
-	 *  that will be negated as necessary. Used for any other building/context necessary.
-	 * @return array Two element array, first an AbstractQuery or null to apply to the
-	 *  query. Second a boolean indicating if the quotedValue should be kept in the search
-	 *  string.
-	 */
+	/** @inheritDoc */
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
 		[ $coord, $radius ] = $this->parseValue( $key, $value, $quotedValue, '', '', $context );
 		if ( $coord !== null ) {
@@ -72,7 +56,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 	 * @param string $valueDelimiter
 	 * @param string $suffix
 	 * @param WarningCollector $warningCollector
-	 * @return array
+	 * @return array{array{lat:float,lon:float,globe:string}|null,int}
 	 */
 	public function parseValue(
 		$key,
@@ -103,7 +87,7 @@ class CirrusNearCoordBoostFeature extends SimpleKeywordFeature implements BoostF
 
 	/**
 	 * @param SearchConfig $config
-	 * @param array $coord
+	 * @param array{lat:float,lon:float,globe:string} $coord
 	 * @param int $radius
 	 * @return GeoRadiusFunctionScoreBuilder
 	 */

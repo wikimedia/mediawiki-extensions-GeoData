@@ -26,7 +26,7 @@ class CoordinatesIndexField extends NestedIndexField {
 	 * @param SearchEngine $engine
 	 * @return CoordinatesIndexField
 	 */
-	public static function build( $name, SearchConfig $config, SearchEngine $engine ) {
+	public static function build( $name, SearchConfig $config, SearchEngine $engine ): self {
 		$nested = new self( $name, $config );
 		$nested->addSubfield( 'coord', new GeoPointIndexField( 'coord', $config ) );
 		// Setting analyzer to keyword is similar to index => not_analyzed

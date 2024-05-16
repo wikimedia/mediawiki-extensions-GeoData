@@ -16,12 +16,8 @@ class CoordinatesParserFunction {
 	/**
 	 * @var Parser used for processing the current coordinates() call
 	 */
-	private $parser;
-
-	/**
-	 * @var ParserOutput
-	 */
-	private $output;
+	private Parser $parser;
+	private ParserOutput $output;
 
 	/** @var (string|true)[] */
 	private $named = [];
@@ -148,7 +144,7 @@ class CoordinatesParserFunction {
 	/**
 	 * Merges parameters with decoded GeoHack data, sets default globe
 	 */
-	private function processArgs() {
+	private function processArgs(): void {
 		global $wgDefaultGlobe;
 		// fear not of overwriting the stuff we've just received from the geohack param,
 		// it has minimum precedence
@@ -224,9 +220,9 @@ class CoordinatesParserFunction {
 
 	/**
 	 * @param string $str
-	 * @return string[]
+	 * @return array<string,string>
 	 */
-	private function parseGeoHackArgs( $str ) {
+	private function parseGeoHackArgs( $str ): array {
 		$result = [];
 		// per GeoHack docs, spaces and underscores are equivalent
 		$str = str_replace( '_', ' ', $str );
@@ -262,7 +258,7 @@ class CoordinatesParserFunction {
 	 * @param Status $s
 	 * @return string
 	 */
-	private function errorText( Status $s ) {
+	private function errorText( Status $s ): string {
 		$errors = array_merge( $s->getErrorsArray(), $s->getWarningsArray() );
 		if ( $errors === [] ) {
 			return '';
@@ -313,10 +309,10 @@ class CoordinatesParserFunction {
 	 * @param string[] $parts
 	 * @param float $min
 	 * @param float $max
-	 * @param int[] $suffixes
+	 * @param array<string,int> $suffixes
 	 * @return float|false
 	 */
-	private function parseOneCoord( $parts, $min, $max, $suffixes ) {
+	private function parseOneCoord( $parts, $min, $max, array $suffixes ) {
 		$count = count( $parts );
 		$multiplier = 1;
 		$value = 0;
@@ -375,10 +371,10 @@ class CoordinatesParserFunction {
 	 * Parses coordinate suffix such as N, S, E or W
 	 *
 	 * @param string $str String to test
-	 * @param int[] $suffixes
+	 * @param array<string,int> $suffixes
 	 * @return int Sign modifier or 0 if not a suffix
 	 */
-	private function parseSuffix( $str, array $suffixes ) {
+	private function parseSuffix( $str, array $suffixes ): int {
 		$str = $this->getLanguage()->uc( trim( $str ) );
 		return $suffixes[$str] ?? 0;
 	}

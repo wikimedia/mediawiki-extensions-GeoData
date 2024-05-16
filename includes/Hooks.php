@@ -43,16 +43,8 @@ class Hooks implements
 	FileUploadHook
 {
 
-	/**
-	 * @var Config
-	 */
-	private $config;
+	private Config $config;
 
-	/**
-	 * Construct this hook handler
-	 *
-	 * @param Config $config
-	 */
 	public function __construct( Config $config ) {
 		$this->config = $config;
 	}
