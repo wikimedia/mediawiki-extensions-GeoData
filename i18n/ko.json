@@ -6,7 +6,8 @@
 			"Priviet",
 			"SeoJeongHo",
 			"Ykhwong",
-			"아라"
+			"아라",
+			"Suleiman the Magnificent Television"
 		]
 	},
 	"geodata-desc": "지리적 좌표 저장 및 검색 기능을 추가합니다",
@@ -28,6 +29,7 @@
 	"geodata-unknown-region-category-desc": "여기 있는 문서는 좌표 틀의 <code>region</code> 변수에 잘못된 값을 사용하고 있습니다.",
 	"geodata-api-help-coordinates-format": "형식: 위도와 경도를 파이프(<kbd>|</kbd>)로 구분합니다.",
 	"geodata-search-feature-invalid-coordinates": "'$1'에 대한 지리 좌표 '$2'를 처리하지 못했습니다.",
+	"geodata-search-feature-invalid-distance": "'$1'에 제공된 지리 거리는 '$2'로 분석할 수 없었습니다.",
 	"geodata-search-feature-unknown-title": "'$1'에 제공된 '$2' 제목이 존재하지 않습니다.",
 	"geodata-search-feature-title-no-coordinates": "'$1'에 제공된 '$2' 제목에 좌표가 없습니다.",
 	"geodata-search-timeout": "GeoData 검색 시간이 만료되었습니다. 일부 결과만 표시됩니다."
