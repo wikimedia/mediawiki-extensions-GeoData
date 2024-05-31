@@ -115,9 +115,9 @@
 		},
 		"GeoDataWarningLevel": {
 			"value": {
-				"unknown type": "track",
-				"unknown globe": "none",
-				"invalid region": "track"
+				"unknown type": null,
+				"unknown globe": null,
+				"invalid region": null
 			},
 			"description": "Customizable error handling for some parameters of the {{#coordinates:…}} parser function. \"unknown type\" is triggered when a \"type=\" is used that's not listed in $wgTypeToDim. \"unknown globe\" is triggered when the \"globe=\" is neither one of the hardcoded ones nor listed in $wgGlobes. \"invalid region\" is triggered when the syntax of the \"region=\" parameter is not correct. The value \"fail\" makes the parser function fail with an error. \"warn\" adds one of the \"geodata-unknown-…-category\" tracking categories to the page. Other values do nothing."
 		},

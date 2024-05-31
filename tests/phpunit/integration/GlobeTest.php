@@ -27,7 +27,7 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( -180, $g->getMinLongitude() );
 		$this->assertEquals( 180, $g->getMaxLongitude() );
 		$this->assertSame( 1, $g->getEastSign() );
-		$this->assertEquals( Math::EARTH_RADIUS, $g->getRadius(), 1 );
+		$this->assertSame( Math::EARTH_RADIUS, $g->getRadius() );
 	}
 
 	public function testMars() {
@@ -37,7 +37,7 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( 0, $g->getMinLongitude() );
 		$this->assertEquals( 360, $g->getMaxLongitude() );
 		$this->assertSame( 1, $g->getEastSign() );
-		$this->assertEquals( 3389500, $g->getRadius(), 1 );
+		$this->assertSame( 3389500.0, $g->getRadius() );
 	}
 
 	public function testUnknown() {

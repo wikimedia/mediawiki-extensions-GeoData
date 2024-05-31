@@ -168,7 +168,7 @@ class CoordinatesParserFunction {
 		$args = $this->named;
 		$coord->primary = isset( $args['primary'] );
 		if ( !$this->globe->isKnown() ) {
-			switch ( $wgGeoDataWarningLevel['unknown globe'] ) {
+			switch ( $wgGeoDataWarningLevel['unknown globe'] ?? null ) {
 				case 'fail':
 					return Status::newFatal( 'geodata-bad-globe', $coord->globe );
 				case 'warn':
@@ -182,7 +182,7 @@ class CoordinatesParserFunction {
 			if ( isset( $wgTypeToDim[$coord->type] ) ) {
 				$coord->dim = $wgTypeToDim[$coord->type];
 			} else {
-				switch ( $wgGeoDataWarningLevel['unknown type'] ) {
+				switch ( $wgGeoDataWarningLevel['unknown type'] ?? null ) {
 					case 'fail':
 						return Status::newFatal( 'geodata-bad-type', $coord->type );
 					case 'warn':
@@ -207,10 +207,12 @@ class CoordinatesParserFunction {
 				$coord->country = $m[1];
 				$coord->region = $m[2] ?? null;
 			} else {
-				if ( $wgGeoDataWarningLevel['invalid region'] == 'fail' ) {
-					return Status::newFatal( 'geodata-bad-region', $args['region'] );
-				} elseif ( $wgGeoDataWarningLevel['invalid region'] == 'warn' ) {
-					$this->parser->addTrackingCategory( 'geodata-unknown-region-category' );
+				switch ( $wgGeoDataWarningLevel['invalid region'] ?? null ) {
+					case 'fail':
+						return Status::newFatal( 'geodata-bad-region', $args['region'] );
+					case 'warn':
+						$this->parser->addTrackingCategory( 'geodata-unknown-region-category' );
+						break;
 				}
 			}
 		}

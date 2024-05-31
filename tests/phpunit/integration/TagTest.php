@@ -26,14 +26,6 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		$this->clearHooks( [ 'ParserAfterTidy' ] );
 	}
 
-	private function setWarnings( $level ) {
-		global $wgGeoDataWarningLevel;
-
-		$this->setMwGlobals( 'wgGeoDataWarningLevel',
-			array_fill_keys( array_keys( $wgGeoDataWarningLevel ), $level )
-		);
-	}
-
 	private function assertParse( $input, $expected ) {
 		$p = MediaWikiServices::getInstance()->getParserFactory()->getInstance();
 		$opt = ParserOptions::newFromAnon();
@@ -76,7 +68,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		if ( $langCode ) {
 			$this->setContentLang( $langCode );
 		}
-		$this->setWarnings( 'none' );
+		$this->overrideConfigValue( 'GeoDataWarningLevel', [] );
 		$this->assertParse( $input, $expected );
 	}
 
@@ -84,7 +76,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideStrictData
 	 */
 	public function testStrictTagParsing( $input, $expected ) {
-		$this->setWarnings( 'fail' );
+		$this->overrideConfigValue( 'GeoDataWarningLevel', [ 'invalid region' => 'fail' ] );
 		$this->assertParse( $input, $expected );
 	}
 

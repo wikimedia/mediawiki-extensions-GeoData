@@ -222,7 +222,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 				}
 			}
 		} else {
-			$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+			$db = $this->getDB();
 			$resultPageSet->populateFromQueryResult( $db, $res );
 			$res->rewind();
 			foreach ( $res as $row ) {
