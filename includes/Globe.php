@@ -14,14 +14,14 @@ class Globe {
 	/** @var float|null */
 	private $radius;
 
-	/** @var float */
+	/** @var float Defaults to -360 for unknown globes, or to 0 for known globes */
 	private $minLon = -360;
 
-	/** @var float */
+	/** @var float Defaults to +360 for unknown globes */
 	private $maxLon = 360;
 
-	/** @var int either -1 or +1 */
-	private $east = 1;
+	/** @var int Sign for values going to the East, either -1 or +1 */
+	private $east = +1;
 
 	private bool $known = false;
 
@@ -37,8 +37,8 @@ class Globe {
 		if ( $data !== null ) {
 			$this->radius = $data['radius'] ?? null;
 			$this->minLon = $data['lon'][0] ?? 0;
-			$this->maxLon = $data['lon'][1];
-			$this->east = $data['east'] ?? 1;
+			$this->maxLon = $data['lon'][1] ?? $this->minLon + 360;
+			$this->east = $data['east'] ?? +1;
 			$this->known = true;
 		}
 	}
@@ -58,8 +58,8 @@ class Globe {
 
 		/**
 		 * Format:
-		 * 'lon' => array of [minimum value, maximum value]
-		 * 'east' => sign 1 degree East would have
+		 * 'lon' => Array of minimum and maximum longitude, defaults to [ 0, 360 ]
+		 * 'east' => If values going to the East are positive or negative, defaults to +1
 		 * 'radius' => mean radius in meters (optional)
 		 * Coordinate systems mostly taken from http://planetarynames.wr.usgs.gov/TargetCoordinates
 		 * Radii taken from Wikipedia. Globes that are too irregular in shape don't have radius set.

@@ -14,10 +14,13 @@ use MediaWikiIntegrationTestCase;
 class GlobeTest extends MediaWikiIntegrationTestCase {
 
 	public function testGlobalGlobesConfiguration() {
-		$this->setMwGlobals( 'wgGlobes', [ 'fantasy' => [ 'lon' => [ 0, 99 ] ] ] );
+		$this->setMwGlobals( 'wgGlobes', [ 'fantasy' => [ 'lon' => [ -60 ] ] ] );
 		$globe = new Globe( 'fantasy' );
 		$this->assertTrue( $globe->isKnown() );
-		$this->assertSame( 99, $globe->getMaxLongitude() );
+		$this->assertSame( -60, $globe->getMinLongitude() );
+		$this->assertSame( 300, $globe->getMaxLongitude() );
+		$this->assertSame( 1, $globe->getEastSign() );
+		$this->assertNull( $globe->getRadius() );
 	}
 
 	public function testEarth() {
