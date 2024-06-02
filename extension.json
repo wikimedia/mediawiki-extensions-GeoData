@@ -73,10 +73,12 @@
 	],
 	"config": {
 		"MaxGeoSearchRadius": {
-			"value": 10000
+			"value": 10000,
+			"description": "Maximum radius in meters users can use for the \"radius=\" parameter in \"list=geosearch\" API queries."
 		},
 		"MaxCoordinatesPerPage": {
-			"value": 500
+			"value": 500,
+			"description": "Maximum number of {{#coordinates:…}} parser functions that can be used on a single page. Usages beyond this limit will be ignored and not render anything. Set to 0 for unlimited."
 		},
 		"TypeToDim": {
 			"value": {
@@ -100,44 +102,54 @@
 				"pass": 1000,
 				"camera": 1000,
 				"landmark": 1000
-			}
+			},
+			"description": "Default viewing radius in meters for coordinates that don't specify their own \"dim=\" or \"scale=\", but have a \"type=\". This list also defines what an \"unknown type\" is, see $wgGeoDataWarningLevel."
 		},
 		"DefaultDim": {
-			"value": 1000
+			"value": 1000,
+			"description": "Default viewing radius in meters for coordinates that don't specify their own \"dim=\", \"scale=\", or \"type=\" (see $wgTypeToDim)."
 		},
 		"Globes": {
-			"value": []
+			"value": [],
+			"description": "Allows to specify additional globes, in addition to the globes hardcoded in Globe.php. Array keys are lowercase globe names. Values are arrays with the elements \"lon\" (a 2-element array with minimum and maximum longitude), \"east\" (one of the signs -1 or +1), and \"radius\" in meters (optional)."
 		},
 		"GeoDataWarningLevel": {
 			"value": {
 				"unknown type": "track",
 				"unknown globe": "none",
 				"invalid region": "track"
-			}
+			},
+			"description": "Customizable error handling for some parameters of the {{#coordinates:…}} parser function. \"unknown type\" is triggered when a \"type=\" is used that's not listed in $wgTypeToDim. \"unknown globe\" is triggered when the \"globe=\" is neither one of the hardcoded ones nor listed in $wgGlobes. \"invalid region\" is triggered when the syntax of the \"region=\" parameter is not correct. The value \"fail\" makes the parser function fail with an error. \"warn\" adds one of the \"geodata-unknown-…-category\" tracking categories to the page. Other values do nothing."
 		},
 		"GeoDataIndexGranularity": {
-			"value": 10
+			"value": 10,
+			"description": "How precise \"list=geosearch\" API queries are when $wgGeoDataBackend is set to \"db\". Higher values are more precise, e.g. 10 means 1/10 of a degree. Note you probably want to run the updateIndexGranularity maintenance script when you change this. Doesn't have any effect when $wgGeoDataBackend is set to \"elastic\"."
 		},
 		"GeoDataBackend": {
-			"value": "db"
+			"value": "db",
+			"description": "To switch to either the default \"db\" or \"elastic\" backend."
 		},
 		"GeoDataInJS": {
 			"value": [
 				"lat",
 				"lon"
-			]
+			],
+			"description": "Which elements from the page's primary coordinates should be exposed via \"mw.config.get( 'wgCoordinates' )\" in JavaScript. Possible elements are \"lat\", \"lon\", \"globe\", \"primary\", \"dim\", \"type\", \"name\", \"country\", and \"region\". Set to an empty array to not expose anything."
 		},
 		"GeoDataUseCirrusSearch": {
-			"value": false
+			"value": false,
+			"description": "Forces coordinates to be added to the CirrusSearch index even if $wgGeoDataBackend is set to \"db\". This is ignored and the indexing always happens when $wgGeoDataBackend is set to \"elastic\"."
 		},
 		"GeoDataRadiusScoreOverrides": {
 			"value": {
 				"config_override": "GeoDataPreferGeoRadiusWeight",
 				"uri_param_override": "geodataPreferGeoRadiusWeight"
-			}
+			},
+			"description": "Additional ways to influence the boost factor used for the \"boost-nearcoord:\" and \"boost-neartitle:\" CirrusSearch features. The hardcoded default is currently 2.0. \"config_override\" specifies the name of another configuration variable that, when it exists, replaces the default. \"uri_param_override\" is the name of a URL parameter that can be used to manually specify a different factor, e.g. for testing."
 		},
 		"GeoDataDebug": {
-			"value": false
+			"value": false,
+			"description": "Allows to use the \"debug=1\" parameter in \"list=geosearch\" API queries. Currently only has an effect when $wgGeoDataBackend is set to \"elastic\"."
 		}
 	},
 	"manifest_version": 2
