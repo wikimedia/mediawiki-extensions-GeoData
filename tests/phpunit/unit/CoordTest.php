@@ -304,4 +304,17 @@ class CoordTest extends MediaWikiUnitTestCase {
 			[ 'something nonexistent', new Globe( 'something nonexistent' ) ],
 		];
 	}
+
+	public function testGetRow() {
+		$coord = new Coord( 1.234, 9.876, 'mars' );
+		$row = $coord->getRow( 9, 100 );
+		$this->assertSame( 9, $row['gt_page_id'] );
+		$this->assertSame( 'mars', $row['gt_globe'] );
+		$this->assertSame( 123, $row['gt_lat_int'] );
+		$this->assertSame( 988, $row['gt_lon_int'] );
+
+		$row = $coord->getRow( 1000, null );
+		$this->assertArrayNotHasKey( 'gt_lat_int', $row );
+	}
+
 }

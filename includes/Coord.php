@@ -185,18 +185,19 @@ class Coord implements JsonSerializable {
 
 	/**
 	 * Returns this object's representation suitable for insertion into the DB via Databse::insert()
+	 *
 	 * @param int $pageId ID of page associated with this coordinate
+	 * @param int|float|null $indexGranularity
 	 * @return array Associative array in format 'field' => 'value'
 	 */
-	public function getRow( $pageId ): array {
-		global $wgGeoDataIndexGranularity, $wgGeoDataBackend;
+	public function getRow( $pageId, $indexGranularity ): array {
 		$row = [ 'gt_page_id' => $pageId ];
 		foreach ( self::FIELD_MAPPING as $field => $column ) {
 			$row[$column] = $this->$field;
 		}
-		if ( $wgGeoDataBackend == 'db' ) {
-			$row['gt_lat_int'] = round( $this->lat * $wgGeoDataIndexGranularity );
-			$row['gt_lon_int'] = round( $this->lon * $wgGeoDataIndexGranularity );
+		if ( $indexGranularity ) {
+			$row['gt_lat_int'] = (int)round( $this->lat * $indexGranularity );
+			$row['gt_lon_int'] = (int)round( $this->lon * $indexGranularity );
 		}
 		return $row;
 	}

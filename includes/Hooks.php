@@ -21,6 +21,7 @@ use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleDeleteCompleteHook;
 use MediaWiki\Parser\ParserOutput;
@@ -143,6 +144,9 @@ class Hooks implements
 	 */
 	private static function doLinksUpdate( array $coords, $pageId, $ticket ) {
 		$services = MediaWikiServices::getInstance();
+		$config = $services->getMainConfig();
+		$indexGranularity = $config->get( 'GeoDataBackend' ) === 'db' ?
+			$config->get( 'GeoDataIndexGranularity' ) : null;
 
 		$add = [];
 		$delete = [];
@@ -164,14 +168,14 @@ class Hooks implements
 				}
 			}
 			if ( !$match ) {
-				$add[] = $new->getRow( $pageId );
+				$add[] = $new->getRow( $pageId, $indexGranularity );
 			}
 		}
 
 		$dbw = $services->getConnectionProvider()->getPrimaryDatabase();
 		$lbFactory = $services->getDBLoadBalancerFactory();
 		$ticket = $ticket ?: $lbFactory->getEmptyTransactionTicket( __METHOD__ );
-		$batchSize = $services->getMainConfig()->get( 'UpdateRowsPerQuery' );
+		$batchSize = $config->get( MainConfigNames::UpdateRowsPerQuery );
 
 		$deleteIds = array_keys( $delete );
 		foreach ( array_chunk( $deleteIds, $batchSize ) as $deleteIdBatch ) {
