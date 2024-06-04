@@ -25,7 +25,7 @@ class GeoSearchTest extends MediaWikiIntegrationTestCase {
 		parent::setUp();
 	}
 
-	private function request( array $params ) {
+	private function request( array $params ): void {
 		$params += [ 'action' => 'query', 'list' => 'geosearch' ];
 		$request = new FauxRequest( $params );
 

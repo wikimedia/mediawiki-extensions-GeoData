@@ -26,7 +26,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		$this->clearHooks( [ 'ParserAfterTidy' ] );
 	}
 
-	private function assertParse( $input, $expected ) {
+	private function assertParse( string $input, ?Coord $expected ): void {
 		$p = MediaWikiServices::getInstance()->getParserFactory()->getInstance();
 		$opt = ParserOptions::newFromAnon();
 		$title = Title::makeTitle( NS_MAIN, __METHOD__ );
@@ -64,7 +64,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider provideLooseData
 	 */
-	public function testLooseTagParsing( $input, $expected, $langCode = false ) {
+	public function testLooseTagParsing( string $input, ?Coord $expected, string $langCode = null ) {
 		if ( $langCode ) {
 			$this->setContentLang( $langCode );
 		}
@@ -75,7 +75,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider provideStrictData
 	 */
-	public function testStrictTagParsing( $input, $expected ) {
+	public function testStrictTagParsing( string $input, ?Coord $expected ) {
 		$this->overrideConfigValue( 'GeoDataWarningLevel', [ 'invalid region' => 'fail' ] );
 		$this->assertParse( $input, $expected );
 	}
@@ -89,11 +89,11 @@ class TagTest extends MediaWikiIntegrationTestCase {
 			],
 			[
 				'{{#coordinates: 100|20|primary}}',
-				false,
+				null,
 			],
 			[
 				'{{#coordinates: 10|2000|primary}}',
-				false,
+				null,
 			],
 			[
 				'{{#coordinates: 10| primary		|	20}}',
@@ -200,19 +200,19 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		return [
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RUS-MOS}}',
-				false,
+				null,
 			],
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-}}',
-				false,
+				null,
 			],
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10|region=RU-longvalue}}',
-				false,
+				null,
 			],
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:РУ-МОС}}',
-				false,
+				null,
 			],
 		];
 	}

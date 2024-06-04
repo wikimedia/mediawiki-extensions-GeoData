@@ -2,6 +2,7 @@
 
 namespace GeoData\Test;
 
+use ApiQuery;
 use GeoData\Api\QueryGeoSearchDb;
 use GeoData\Api\QueryGeoSearchElastic;
 use GeoData\Hooks;
@@ -11,7 +12,8 @@ use MediaWiki\Config\HashConfig;
  * @covers \GeoData\Hooks::createQueryGeoSearchBackend
  */
 class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
-	protected function mockApiQuery( $backend ) {
+
+	protected function mockApiQuery( string $backend = '' ): ApiQuery {
 		$context = $this->createNoOpMock( \IContextSource::class );
 
 		$apiMain = $this->createMock( \ApiMain::class );
@@ -19,7 +21,7 @@ class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 
 		$config = new HashConfig( [ 'GeoDataBackend' => $backend ] );
 
-		$apiQuery = $this->createMock( \ApiQuery::class );
+		$apiQuery = $this->createMock( ApiQuery::class );
 
 		$apiQuery->method( 'getMain' )->willReturn( $apiMain );
 		$apiQuery->method( 'getConfig' )->willReturn( $config );
@@ -45,7 +47,7 @@ class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 	}
 
 	public function testCreateQueryGeoSearchBackendThrowErrorWhenBackendIsNotSet() {
-		$apiQuery = $this->mockApiQuery( '' );
+		$apiQuery = $this->mockApiQuery();
 
 		$this->expectException( \RuntimeException::class );
 		$this->expectExceptionMessage( 'GeoDataBackend data backend cannot be empty' );

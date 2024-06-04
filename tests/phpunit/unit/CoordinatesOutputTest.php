@@ -28,7 +28,6 @@ class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideCoordOutputs
-	 * @param CoordinatesOutput $output
 	 */
 	public function testSerializeDeserialize( CoordinatesOutput $output ) {
 		$deserialized = CoordinatesOutput::newFromJson( $output->jsonSerialize() );
@@ -69,7 +68,7 @@ class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 		$this->assertSameCoordOutputs( $coordinatesOutput, CoordinatesOutput::getFromParserOutput( $parserOutput ) );
 	}
 
-	private function assertSameCoordOutputs( CoordinatesOutput $expected, CoordinatesOutput $actual ) {
+	private function assertSameCoordOutputs( CoordinatesOutput $expected, CoordinatesOutput $actual ): void {
 		$this->assertSame( $expected->limitExceeded, $actual->limitExceeded );
 		if ( $expected->getPrimary() ) {
 			$this->assertTrue( $expected->getPrimary()->fullyEqualsTo( $actual->getPrimary() ) );

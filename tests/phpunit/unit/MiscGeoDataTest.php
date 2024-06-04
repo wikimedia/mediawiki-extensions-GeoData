@@ -13,7 +13,7 @@ class MiscGeoDataTest extends MediaWikiUnitTestCase {
 	 * @covers \GeoData\Api\QueryGeoSearchDb::intRange
 	 * @dataProvider provideIntRangeData
 	 */
-	public function testIntRange( $min, $max, $expected ) {
+	public function testIntRange( float $min, float $max, array $expected ) {
 		$this->assertEquals( $expected, QueryGeoSearchDb::intRange( $min, $max, 10 ) );
 	}
 

@@ -43,7 +43,14 @@ class BoundingBoxTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideCenter
 	 */
-	public function testCenter( $latExpected, $lonExpected, $lat1, $lon1, $lat2, $lon2 ) {
+	public function testCenter(
+		float $latExpected,
+		float $lonExpected,
+		float $lat1,
+		float $lon1,
+		float $lat2,
+		float $lon2
+	) {
 		$bbox = new BoundingBox( $lat1, $lon1, $lat2, $lon2, 'moon' );
 		$center = $bbox->center();
 		$this->assertEquals( $latExpected, $center->lat, 'Comparing latitudes...' );

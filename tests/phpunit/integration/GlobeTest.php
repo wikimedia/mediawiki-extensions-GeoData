@@ -53,15 +53,11 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideCoordinatesValidation
-	 * @param string $globeName
-	 * @param float $lat
-	 * @param float $lon
-	 * @param bool $expected
 	 */
-	public function testCoordinatesValidation( $globeName, $lat, $lon, $expected ) {
+	public function testCoordinatesValidation( string $globeName, $lat, $lon, bool $expected ) {
 		$globe = new Globe( $globeName );
 
-		$this->assertEquals( $expected, $globe->coordinatesAreValid( $lat, $lon ) );
+		$this->assertSame( $expected, $globe->coordinatesAreValid( $lat, $lon ) );
 	}
 
 	public static function provideCoordinatesValidation() {

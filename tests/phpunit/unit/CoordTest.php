@@ -31,11 +31,8 @@ class CoordTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideEquals
-	 * @param Coord $coord1
-	 * @param Coord $coord2
-	 * @param bool $matchExpected
 	 */
-	public function testEquals( $coord1, $coord2, $matchExpected ) {
+	public function testEquals( Coord $coord1, ?Coord $coord2, bool $matchExpected ) {
 		$this->assertEquals( $matchExpected, $coord1->equalsTo( $coord2 ) );
 		if ( $coord2 ) {
 			$this->assertEquals( $matchExpected, $coord2->equalsTo( $coord1 ) );
@@ -143,12 +140,8 @@ class CoordTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideFullyEquals
-	 *
-	 * @param Coord $coord1
-	 * @param Coord $coord2
-	 * @param bool $matchExpected
 	 */
-	public function testFullyEquals( $coord1, $coord2, $matchExpected ) {
+	public function testFullyEquals( Coord $coord1, ?Coord $coord2, bool $matchExpected ) {
 		$this->assertEquals( $matchExpected, $coord1->fullyEqualsTo( $coord2 ) );
 		if ( $coord2 ) {
 			$this->assertEquals( $matchExpected, $coord2->fullyEqualsTo( $coord1 ) );

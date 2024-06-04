@@ -14,6 +14,7 @@ use LinkCacheTestTrait;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWikiIntegrationTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -87,7 +88,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 				'1mi',
 			],
 			'two miles rounds up' => [
-				'3219',
+				3219,
 				'2mi',
 			],
 			'1000 feet rounds up' => [
@@ -112,10 +113,10 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider parseDistanceProvider
 	 */
-	public function testParseDistance( $expected, $distance ) {
+	public function testParseDistance( ?int $expected, string $distance ) {
 		// Call the method via a random class that uses the trait since you
 		// can't call trait methods directly in PHP 8.1+
-		$this->assertEquals( $expected, CirrusNearCoordFilterFeature::parseDistance( $distance ) );
+		$this->assertSame( $expected, CirrusNearCoordFilterFeature::parseDistance( $distance ) );
 	}
 
 	public static function parseGeoNearbyProvider() {
@@ -182,7 +183,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider parseGeoNearbyProvider
 	 */
-	public function testParseGeoNearby( $expected, $value ) {
+	public function testParseGeoNearby( array $expected, string $value ) {
 		$features = [
 			new CirrusNearCoordFilterFeature(),
 			new CirrusNearCoordBoostFeature()
@@ -278,9 +279,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider parseGeoNearbyTitleProvider
 	 */
-	public function testParseGeoNearbyTitle( $expected, $value ) {
+	public function testParseGeoNearbyTitle( array $expected, string $value ) {
 		// Replace database with one that will return our fake coordinates if asked
-		$dbMocker = function ( $db ) {
+		$dbMocker = function ( MockObject $db ) {
 			$queryBuilder = $this->createMock( SelectQueryBuilder::class );
 			$queryBuilder->method( $this->logicalOr( 'select', 'from', 'where', 'caller' ) )->willReturnSelf();
 			$queryBuilder->method( 'fetchResultSet' )
@@ -392,7 +393,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider geoWarningsProvider
 	 */
-	public function testGeoWarnings( $expected, array $keyAndValue ) {
+	public function testGeoWarnings( array $expected, array $keyAndValue ) {
 		$features = [];
 		$feature = new CirrusNearCoordBoostFeature();
 		$features[$feature->getKeywordPrefixes()[0]] = $feature;

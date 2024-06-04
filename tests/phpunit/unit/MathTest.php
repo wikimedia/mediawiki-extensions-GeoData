@@ -15,7 +15,7 @@ class MathTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideDistanceData
 	 */
-	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist ) {
+	public function testDistance( float $lat1, float $lon1, float $lat2, float $lon2, int $dist ) {
 		$this->assertEqualsWithDelta( $dist, Math::distance( $lat1, $lon1, $lat2, $lon2 ),
 			$dist / 1000 );
 	}
@@ -54,7 +54,7 @@ class MathTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideRectData
 	 * @todo test directly now that this function is public
 	 */
-	public function testRectWrapAround( $lon ) {
+	public function testRectWrapAround( float $lon ) {
 		$coord = new Coord( 20, $lon );
 		$bbox = $coord->bboxAround( 10000 );
 		$this->assertGreaterThan( $bbox->lon2, $bbox->lon1 );
