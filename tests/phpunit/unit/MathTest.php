@@ -16,18 +16,18 @@ class MathTest extends MediaWikiUnitTestCase {
 	 * @covers \GeoData\Math::distance
 	 * @dataProvider provideDistanceData
 	 */
-	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist, $name ) {
+	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist ) {
 		$this->assertEqualsWithDelta( $dist, Math::distance( $lat1, $lon1, $lat2, $lon2 ),
-			$dist / 1000, "testDistance():  $name" );
+			$dist / 1000 );
 	}
 
 	public static function provideDistanceData() {
 		return [
 			// just run against a few values from the internets...
-			[ 55.75, 37.6167, 59.95, 30.3167, 635000, 'Moscow to St. Bumtown' ],
-			[ 51.5, -0.1167, 52.35, 4.9167, 357520, 'London to Amsterdam' ],
-			[ 40.7142, -74.0064, 37.775, -122.418, 4125910, 'New York to San Francisco' ],
-			[ 0, 179, 0, -179, 222390, 'Wrap around zero' ],
+			'Moscow to St. Bumtown' => [ 55.75, 37.6167, 59.95, 30.3167, 635000 ],
+			'London to Amsterdam' => [ 51.5, -0.1167, 52.35, 4.9167, 357520 ],
+			'New York to San Francisco' => [ 40.7142, -74.0064, 37.775, -122.418, 4125910 ],
+			'Wrap around zero' => [ 0, 179, 0, -179, 222390 ],
 		];
 	}
 

@@ -43,21 +43,17 @@ class GeoSearchTest extends MediaWikiIntegrationTestCase {
 
 	public static function provideRequiredParams() {
 		return [
-			[
+			'coord, page or bbox are required' => [
 				[],
-				'coord, page or bbox are required'
 			],
-			[
+			'Must have only one of coord, page or bbox' => [
 				[ 'gscoord' => '1|2', 'gspage' => 'foo' ],
-				'Must have only one of coord, page or bbox'
 			],
-			// @fixme: [
+			// @fixme: 'Fail if bounding box is too big' => [
 			// [ 'gsbbox' => '10|170|-10|-170' ],
-			// 'Fail if bounding box is too big'
 			// ],
-			[
+			'Fail if bounding box is too small' => [
 				[ 'gsbbox' => '10|170|10|170' ],
-				'Fail if bounding box is too small'
 			],
 		];
 	}
