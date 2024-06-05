@@ -16,7 +16,6 @@ use Wikimedia\TestingAccessWrapper;
  */
 class ParseCoordTest extends MediaWikiIntegrationTestCase {
 	/**
-	 * @covers \GeoData\CoordinatesParserFunction::parseCoordinates
 	 * @dataProvider provideCases
 	 */
 	public function testParseCoordinates( array $parts, $result, string $globe = Globe::EARTH ) {

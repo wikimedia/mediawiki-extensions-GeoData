@@ -12,7 +12,6 @@ use MediaWikiUnitTestCase;
  */
 class BoundingBoxTest extends MediaWikiUnitTestCase {
 	/**
-	 * @covers \GeoData\BoundingBox::center
 	 * @dataProvider provideCenter
 	 */
 	public function testCenter( $latExpected, $lonExpected, $lat1, $lon1, $lat2, $lon2 ) {

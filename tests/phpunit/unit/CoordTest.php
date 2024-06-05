@@ -16,7 +16,6 @@ use MediaWikiUnitTestCase;
 class CoordTest extends MediaWikiUnitTestCase {
 
 	/**
-	 * @covers \GeoData\Coord::equalsTo
 	 * @dataProvider provideEquals
 	 * @param Coord $coord1
 	 * @param Coord $coord2
@@ -122,8 +121,6 @@ class CoordTest extends MediaWikiUnitTestCase {
 	/**
 	 * Test that serialization-deserialization works.
 	 * @dataProvider provideFullyEquals
-	 * @covers \GeoData\Coord::jsonSerialize
-	 * @covers \GeoData\Coord::newFromJson
 	 */
 	public function testSerializeDeserialize( Coord $coord ) {
 		$deserialized = Coord::newFromJson( $coord->jsonSerialize() );
@@ -131,7 +128,6 @@ class CoordTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \GeoData\Coord::fullyEqualsTo
 	 * @dataProvider provideFullyEquals
 	 *
 	 * @param Coord $coord1
@@ -236,9 +232,6 @@ class CoordTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	/**
-	 * @covers \GeoData\Coord::bboxAround
-	 */
 	public function testBboxAround() {
 		for ( $i = 0; $i < 90; $i += 5 ) {
 			$coord = new Coord( $i, $i );
@@ -251,7 +244,6 @@ class CoordTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \GeoData\Coord::getGlobeObj
 	 * @dataProvider provideGlobeObj
 	 */
 	public function testGlobeObj( string $name, Globe $expected ) {

@@ -7,6 +7,9 @@ use GeoData\CoordinatesOutput;
 use MediaWiki\Parser\ParserOutput;
 use MediaWikiUnitTestCase;
 
+/**
+ * @covers \GeoData\CoordinatesOutput
+ */
 class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 
 	public static function provideCoordOutputs() {
@@ -25,8 +28,6 @@ class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideCoordOutputs
-	 * @covers \GeoData\CoordinatesOutput::jsonSerialize
-	 * @covers \GeoData\CoordinatesOutput::newFromJson
 	 * @param CoordinatesOutput $output
 	 */
 	public function testSerializeDeserialize( CoordinatesOutput $output ) {
@@ -36,8 +37,6 @@ class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideCoordOutputs
-	 * @covers \GeoData\CoordinatesOutput::getFromParserOutput
-	 * @covers \GeoData\CoordinatesOutput::setToParserOutput
 	 */
 	public function testParserOutput( CoordinatesOutput $coordinatesOutput ) {
 		$parserOutput = new ParserOutput();
@@ -48,8 +47,6 @@ class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideCoordOutputs
-	 * @covers \GeoData\CoordinatesOutput::getFromParserOutput
-	 * @covers \GeoData\CoordinatesOutput::setToParserOutput
 	 */
 	public function testParserOutputForwardCompat( CoordinatesOutput $coordinatesOutput ) {
 		$parserOutput = new ParserOutput();
@@ -62,8 +59,6 @@ class CoordinatesOutputTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideCoordOutputs
-	 * @covers \GeoData\CoordinatesOutput::getFromParserOutput
-	 * @covers \GeoData\CoordinatesOutput::setToParserOutput
 	 */
 	public function testParserOutputBackwardCompat( CoordinatesOutput $coordinatesOutput ) {
 		$parserOutput = new ParserOutput();

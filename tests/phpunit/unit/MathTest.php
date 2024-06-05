@@ -13,7 +13,6 @@ use MediaWikiUnitTestCase;
  */
 class MathTest extends MediaWikiUnitTestCase {
 	/**
-	 * @covers \GeoData\Math::distance
 	 * @dataProvider provideDistanceData
 	 */
 	public function testDistance( $lat1, $lon1, $lat2, $lon2, $dist ) {
@@ -52,8 +51,6 @@ class MathTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \GeoData\Coord::bboxAround
-	 * @covers \GeoData\Math::wrapAround
 	 * @dataProvider provideRectData
 	 * @todo test directly now that this function is public
 	 */
