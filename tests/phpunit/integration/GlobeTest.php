@@ -28,6 +28,7 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( 180, $g->getMaxLongitude() );
 		$this->assertSame( 1, $g->getEastSign() );
 		$this->assertSame( Math::EARTH_RADIUS, $g->getRadius() );
+		$this->assertTrue( $g->equalsTo( new Globe() ) );
 	}
 
 	public function testMars() {
@@ -65,6 +66,7 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 
 	public static function provideCoordinatesValidation() {
 		return [
+			[ Globe::EARTH, 'not a number', 0, false ],
 			[ Globe::EARTH, 0, 0, true ],
 			[ Globe::EARTH, 90, 180, true ],
 			[ Globe::EARTH, 90.001, 0, false ],

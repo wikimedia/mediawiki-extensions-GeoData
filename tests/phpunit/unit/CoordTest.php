@@ -15,6 +15,20 @@ use MediaWikiUnitTestCase;
  */
 class CoordTest extends MediaWikiUnitTestCase {
 
+	public function testNewFromRow() {
+		$coord = Coord::newFromRow( (object)[
+			'gt_lat' => 1,
+			'gt_lon' => 2,
+			'gt_globe' => 'fantasy',
+			'gt_dim' => '5',
+		] );
+		$this->assertSame( 1.0, $coord->lat );
+		$this->assertSame( 2.0, $coord->lon );
+		$this->assertSame( 'fantasy', $coord->globe );
+		$this->assertFalse( $coord->primary );
+		$this->assertSame( 5, $coord->dim );
+	}
+
 	/**
 	 * @dataProvider provideEquals
 	 * @param Coord $coord1
@@ -249,6 +263,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 	public function testGlobeObj( string $name, Globe $expected ) {
 		$c = new Coord( 10, 20, $name );
 		$this->assertTrue( $expected->equalsTo( $c->getGlobeObj() ) );
+		$this->assertTrue( $c->isValid() );
 	}
 
 	public static function provideGlobeObj() {
