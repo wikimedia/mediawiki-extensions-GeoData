@@ -21,7 +21,7 @@ class UpdateIndexGranularity extends Maintenance {
 
 		$batchSize = $this->getBatchSize();
 		$id = 0;
-		$dbw = $this->getDB( DB_PRIMARY );
+		$dbw = $this->getPrimaryDB();
 
 		do {
 			$ids = [];
