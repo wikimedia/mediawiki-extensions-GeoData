@@ -251,6 +251,24 @@ class CoordTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @dataProvider provideBoundingBoxes
+	 */
+	public function testBoundingBoxesWithGlobes( string $globe, float $expected ) {
+		$coord = new Coord( 0, 0, $globe );
+		$bbox = $coord->bboxAround( 5000 );
+		$this->assertEqualsWithDelta( $expected, $bbox->lat2, 0.001 );
+		$this->assertEqualsWithDelta( $expected, $bbox->lon2, 0.001 );
+	}
+
+	public function provideBoundingBoxes() {
+		return [
+			[ Globe::EARTH, 0.045 ],
+			[ 'mars', 0.085 ],
+			[ 'moon', 0.165 ],
+		];
+	}
+
+	/**
 	 * @dataProvider provideGlobeObj
 	 */
 	public function testGlobeObj( string $name, Globe $expected ) {

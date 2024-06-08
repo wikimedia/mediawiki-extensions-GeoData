@@ -155,10 +155,11 @@ class Coord implements JsonSerializable {
 		if ( $radius <= 0 ) {
 			return new BoundingBox( $this->lat, $this->lon, $this->lat, $this->lon, $this->globe );
 		}
-		$r2lat = rad2deg( $radius / Math::EARTH_RADIUS );
+		$globe = $this->getGlobeObj();
+		$r2lat = rad2deg( $radius / $globe->getRadius() );
 		// @todo: doesn't work around poles, should we care?
 		if ( abs( $this->lat ) < 89.9 ) {
-			$r2lon = rad2deg( $radius / cos( deg2rad( $this->lat ) ) / Math::EARTH_RADIUS );
+			$r2lon = rad2deg( $radius / cos( deg2rad( $this->lat ) ) / $globe->getRadius() );
 		} else {
 			$r2lon = 0.1;
 		}
