@@ -7,6 +7,7 @@ use GeoData\Api\QueryGeoSearchDb;
 use GeoData\Api\QueryGeoSearchElastic;
 use GeoData\Hooks;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\Context\IContextSource;
 
 /**
  * @covers \GeoData\Hooks::createQueryGeoSearchBackend
@@ -14,7 +15,7 @@ use MediaWiki\Config\HashConfig;
 class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 
 	protected function mockApiQuery( string $backend = '' ): ApiQuery {
-		$context = $this->createNoOpMock( \IContextSource::class );
+		$context = $this->createNoOpMock( IContextSource::class );
 
 		$apiMain = $this->createMock( \ApiMain::class );
 		$apiMain->method( 'getContext' )->willReturn( $context );

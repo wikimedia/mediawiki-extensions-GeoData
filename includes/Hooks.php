@@ -18,16 +18,16 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
 use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\LinksUpdateCompleteHook;
-use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\Hook\OutputPageParserOutputHook;
 use MediaWiki\Page\Hook\ArticleDeleteCompleteHook;
+use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\User;
-use Parser;
 use SearchEngine;
 use WikiPage;
 

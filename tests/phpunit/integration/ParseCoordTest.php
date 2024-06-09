@@ -5,8 +5,8 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\CoordinatesParserFunction;
 use GeoData\Globe;
+use MediaWiki\Parser\Parser;
 use MediaWikiIntegrationTestCase;
-use Parser;
 use Wikimedia\TestingAccessWrapper;
 
 /**

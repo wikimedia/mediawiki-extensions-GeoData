@@ -3,9 +3,9 @@
 namespace GeoData;
 
 use Language;
+use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Status\Status;
-use Parser;
 use PPFrame;
 use PPNode;
 
