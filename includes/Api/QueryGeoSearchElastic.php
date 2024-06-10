@@ -55,9 +55,11 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		}
 
 		if ( $this->bbox ) {
+			$coord1 = $this->bbox->topLeft();
+			$coord2 = $this->bbox->bottomRight();
 			$distanceFilter = new \Elastica\Query\GeoBoundingBox( 'coordinates.coord', [
-					[ 'lat' => $this->bbox->lat1, 'lon' => $this->bbox->lon1 ],
-					[ 'lat' => $this->bbox->lat2, 'lon' => $this->bbox->lon2 ],
+					[ 'lat' => $coord1->lat, 'lon' => $coord1->lon ],
+					[ 'lat' => $coord2->lat, 'lon' => $coord2->lon ],
 				] );
 		} else {
 			$distanceFilter =

@@ -7,15 +7,14 @@ namespace GeoData;
  * Currently, only Earth is supported
  */
 class BoundingBox {
-	/** @var float */
-	public $lat1;
-	/** @var float */
-	public $lon1;
-	/** @var float */
-	public $lat2;
-	/** @var float */
-	public $lon2;
-	public string $globe;
+
+	private Coord $coord1;
+	private Coord $coord2;
+
+	private function __construct( Coord $topLeft, Coord $bottomRight ) {
+		$this->coord1 = $topLeft;
+		$this->coord2 = $bottomRight;
+	}
 
 	/**
 	 * @param float $lat1
@@ -24,34 +23,38 @@ class BoundingBox {
 	 * @param float $lon2
 	 * @param string $globe
 	 */
-	public function __construct( $lat1, $lon1, $lat2, $lon2, string $globe = Globe::EARTH ) {
-		$this->lat1 = $lat1;
-		$this->lon1 = $lon1;
-		$this->lat2 = $lat2;
-		$this->lon2 = $lon2;
-		$this->globe = $globe;
+	public static function newFromNumbers( $lat1, $lon1, $lat2, $lon2, string $globe ): self {
+		return new self( new Coord( $lat1, $lon1, $globe ), new Coord( $lat2, $lon2, $globe ) );
 	}
 
 	/**
 	 * Constructs a bounding box from 2 corner coordinates
 	 */
 	public static function newFromPoints( Coord $topLeft, Coord $bottomRight ): self {
-		return new self( $topLeft->lat, $topLeft->lon, $bottomRight->lat, $bottomRight->lon,
-			$topLeft->globe );
+		return new self( $topLeft, $bottomRight );
+	}
+
+	/**
+	 * @internal Temporary helper method until we find a better solution
+	 */
+	public function wrapAround(): void {
+		Math::wrapAround( $this->coord1->lat, $this->coord2->lat, -90, 90 );
+		// FIXME: This is not correct for other globes!
+		Math::wrapAround( $this->coord1->lon, $this->coord2->lon, -180, 180 );
 	}
 
 	/**
 	 * @return Coord Top left corner of this bounding box
 	 */
 	public function topLeft(): Coord {
-		return new Coord( $this->lat1, $this->lon1, $this->globe );
+		return $this->coord1;
 	}
 
 	/**
 	 * @return Coord Bottom right corner of this bounding box
 	 */
 	public function bottomRight(): Coord {
-		return new Coord( $this->lat2, $this->lon2, $this->globe );
+		return $this->coord2;
 	}
 
 	/**
@@ -60,10 +63,10 @@ class BoundingBox {
 	 * @return float
 	 */
 	public function area() {
-		$midLat = ( $this->lat2 + $this->lat1 ) / 2;
-		$radius = ( new Globe( $this->globe ) )->getRadius();
-		$vert = Math::distance( $this->lat1, 0, $this->lat2, 0, $radius );
-		$horz = Math::distance( $midLat, $this->lon1, $midLat, $this->lon2, $radius );
+		$midLat = ( $this->coord2->lat + $this->coord1->lat ) / 2;
+		$radius = $this->coord1->getGlobeObj()->getRadius();
+		$vert = Math::distance( $this->coord1->lat, 0, $this->coord2->lat, 0, $radius );
+		$horz = Math::distance( $midLat, $this->coord1->lon, $midLat, $this->coord2->lon, $radius );
 
 		return $horz * $vert;
 	}
@@ -72,12 +75,12 @@ class BoundingBox {
 	 * Returns center of this bounding box
 	 */
 	public function center(): Coord {
-		$lon = ( $this->lon2 + $this->lon1 ) / 2.0;
-		if ( $this->lon1 > $this->lon2 ) {
+		$lon = ( $this->coord2->lon + $this->coord1->lon ) / 2.0;
+		if ( $this->coord1->lon > $this->coord2->lon ) {
 			// Wrap around
 			$lon += ( $lon < 0 ) ? 180 : -180;
 		}
 
-		return new Coord( ( $this->lat1 + $this->lat2 ) / 2.0, $lon, $this->globe );
+		return new Coord( ( $this->coord1->lat + $this->coord2->lat ) / 2.0, $lon, $this->coord1->globe );
 	}
 }

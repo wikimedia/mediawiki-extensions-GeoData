@@ -57,9 +57,11 @@ class MathTest extends MediaWikiUnitTestCase {
 	public function testRectWrapAround( float $lon ) {
 		$coord = new Coord( 20, $lon );
 		$bbox = $coord->bboxAround( 10000 );
-		$this->assertGreaterThan( $bbox->lon2, $bbox->lon1 );
-		$this->assertGreaterThanOrEqual( -180, $bbox->lon1 );
-		$this->assertLessThanOrEqual( 180, $bbox->lon2 );
+		$coord1 = $bbox->topLeft();
+		$coord2 = $bbox->bottomRight();
+		$this->assertGreaterThan( $coord2->lon, $coord1->lon );
+		$this->assertGreaterThanOrEqual( -180, $coord1->lon );
+		$this->assertLessThanOrEqual( 180, $coord2->lon );
 	}
 
 	public static function provideRectData() {

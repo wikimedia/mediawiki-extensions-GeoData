@@ -65,7 +65,7 @@ class Coord implements JsonSerializable {
 	 * @param float $lat
 	 * @param float $lon
 	 * @param string $globe
-	 * @param array $extraFields
+	 * @param array<string,mixed> $extraFields
 	 */
 	public function __construct( $lat, $lon, string $globe = Globe::EARTH, $extraFields = [] ) {
 		$this->lat = (float)$lat;
@@ -153,7 +153,7 @@ class Coord implements JsonSerializable {
 	 */
 	public function bboxAround( $radius ): BoundingBox {
 		if ( $radius <= 0 ) {
-			return new BoundingBox( $this->lat, $this->lon, $this->lat, $this->lon, $this->globe );
+			return BoundingBox::newFromPoints( $this, $this );
 		}
 		$globe = $this->getGlobeObj();
 		$r2lat = rad2deg( $radius / $globe->getRadius() );
@@ -163,14 +163,14 @@ class Coord implements JsonSerializable {
 		} else {
 			$r2lon = 0.1;
 		}
-		$res = new BoundingBox( $this->lat - $r2lat,
+		$res = BoundingBox::newFromNumbers(
+			$this->lat - $r2lat,
 			$this->lon - $r2lon,
 			$this->lat + $r2lat,
 			$this->lon + $r2lon,
 			$this->globe
 		);
-		Math::wrapAround( $res->lat1, $res->lat2, -90, 90 );
-		Math::wrapAround( $res->lon1, $res->lon2, -180, 180 );
+		$res->wrapAround();
 		return $res;
 	}
 
@@ -189,7 +189,7 @@ class Coord implements JsonSerializable {
 	 * Returns this object's representation suitable for insertion into the DB via Databse::insert()
 	 *
 	 * @param int $pageId ID of page associated with this coordinate
-	 * @param int|float|null $indexGranularity
+	 * @param int|null $indexGranularity E.g. 10 for 1/10 of a degree
 	 * @return array Associative array in format 'field' => 'value'
 	 */
 	public function getRow( $pageId, $indexGranularity ): array {

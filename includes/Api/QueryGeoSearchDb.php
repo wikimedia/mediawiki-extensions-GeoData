@@ -100,14 +100,16 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 
 	protected function addCoordFilter(): void {
 		$bbox = $this->bbox ?: $this->coord->bboxAround( $this->radius );
-		$this->addWhereFld( 'gt_lat_int', self::intRange( $bbox->lat1, $bbox->lat2 ) );
-		$this->addWhereFld( 'gt_lon_int', self::intRange( $bbox->lon1, $bbox->lon2 ) );
+		$coord1 = $bbox->topLeft();
+		$coord2 = $bbox->bottomRight();
+		$this->addWhereFld( 'gt_lat_int', self::intRange( $coord1->lat, $coord2->lat ) );
+		$this->addWhereFld( 'gt_lon_int', self::intRange( $coord1->lon, $coord2->lon ) );
 
-		$this->addWhereRange( 'gt_lat', 'newer', (string)$bbox->lat1, (string)$bbox->lat2, false );
-		if ( $bbox->lon1 > $bbox->lon2 ) {
-			$this->addWhere( "gt_lon < {$bbox->lon2} OR gt_lon > {$bbox->lon1}" );
+		$this->addWhereRange( 'gt_lat', 'newer', (string)$coord1->lat, (string)$coord2->lat, false );
+		if ( $coord1->lon > $coord2->lon ) {
+			$this->addWhere( "gt_lon < {$coord2->lon} OR gt_lon > {$coord1->lon}" );
 		} else {
-			$this->addWhereRange( 'gt_lon', 'newer', (string)$bbox->lon1, (string)$bbox->lon2, false );
+			$this->addWhereRange( 'gt_lon', 'newer', (string)$coord1->lon, (string)$coord2->lon, false );
 		}
 		$this->addOption( 'USE INDEX', [ 'geo_tags' => 'gt_spatial' ] );
 	}

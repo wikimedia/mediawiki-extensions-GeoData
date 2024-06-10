@@ -28,7 +28,7 @@ class BoundingBoxTest extends MediaWikiUnitTestCase {
 	public function testArea( int $expected, float $lat1, float $lon1, float $lat2, float $lon2,
 		string $globe = Globe::EARTH
 	) {
-		$bbox = new BoundingBox( $lat1, $lon1, $lat2, $lon2, $globe );
+		$bbox = BoundingBox::newFromNumbers( $lat1, $lon1, $lat2, $lon2, $globe );
 		$this->assertSame( $expected, (int)$bbox->area() );
 	}
 
@@ -57,7 +57,7 @@ class BoundingBoxTest extends MediaWikiUnitTestCase {
 		float $lat2,
 		float $lon2
 	) {
-		$bbox = new BoundingBox( $lat1, $lon1, $lat2, $lon2, 'moon' );
+		$bbox = BoundingBox::newFromNumbers( $lat1, $lon1, $lat2, $lon2, 'moon' );
 		$center = $bbox->center();
 		$this->assertEquals( $latExpected, $center->lat, 'Comparing latitudes...' );
 		$this->assertEquals( $lonExpected, $center->lon, 'Comparing longitudes...' );

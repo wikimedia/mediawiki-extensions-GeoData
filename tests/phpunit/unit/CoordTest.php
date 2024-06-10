@@ -243,12 +243,14 @@ class CoordTest extends MediaWikiUnitTestCase {
 		for ( $i = 0; $i < 90; $i += 5 ) {
 			$coord = new Coord( $i, $i );
 			$bbox = $coord->bboxAround( 5000 );
+			$coord1 = $bbox->topLeft();
+			$coord2 = $bbox->bottomRight();
 			$radius = $coord->getGlobeObj()->getRadius();
 			$this->assertEqualsWithDelta( 10000,
-				Math::distance( $bbox->lat1, $i, $bbox->lat2, $i, $radius ),
+				Math::distance( $coord1->lat, $i, $coord2->lat, $i, $radius ),
 				1, 'Testing latitude' );
 			$this->assertEqualsWithDelta( 10000,
-				Math::distance( $i, $bbox->lon1, $i, $bbox->lon2, $radius ),
+				Math::distance( $i, $coord1->lon, $i, $coord2->lon, $radius ),
 				1, 'Testing longitude' );
 		}
 	}
@@ -259,8 +261,9 @@ class CoordTest extends MediaWikiUnitTestCase {
 	public function testBoundingBoxesWithGlobes( string $globe, float $expected ) {
 		$coord = new Coord( 0, 0, $globe );
 		$bbox = $coord->bboxAround( 5000 );
-		$this->assertEqualsWithDelta( $expected, $bbox->lat2, 0.001 );
-		$this->assertEqualsWithDelta( $expected, $bbox->lon2, 0.001 );
+		$coord2 = $bbox->bottomRight();
+		$this->assertEqualsWithDelta( $expected, $coord2->lat, 0.001 );
+		$this->assertEqualsWithDelta( $expected, $coord2->lon, 0.001 );
 	}
 
 	public function provideBoundingBoxes() {

@@ -72,7 +72,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		) {
 			$this->dieWithError( 'apierror-geodata-invalidbox', 'invalid-bbox' );
 		}
-		$bbox = new BoundingBox( $vals[0], $vals[1], $vals[2], $vals[3] );
+		$bbox = BoundingBox::newFromNumbers( $vals[0], $vals[1], $vals[2], $vals[3], $globe->getName() );
 		$area = $bbox->area();
 		$maxRadius = $this->getConfig()->get( 'MaxGeoSearchRadius' );
 		if ( $area > $maxRadius * $maxRadius * 4 || $area < 100 ) {
