@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"MaGa"
+		]
+	},
+	"geodata-broken-tags-category": "Stranice s neispravnim koordinatama",
+	"geodata-unknown-type-category": "Stranice s nepoznatom vrstom koordinata",
+	"geodata-unknown-region-category": "Stranice s nevaljalom oznakom regije"
+}
