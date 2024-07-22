@@ -6,6 +6,7 @@ use CirrusSearch\ElasticsearchIntermediary;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\SearchRequestLog;
+use CirrusSearch\Util;
 use Elastica\Exception\ExceptionInterface;
 use Elastica\Exception\ResponseException;
 use Elastica\Search;
@@ -53,27 +54,29 @@ class Searcher extends ElasticsearchIntermediary {
 		$this->connection->setTimeout( $this->getClientTimeout( $queryType ) );
 		$search->setOption( Search::OPTION_TIMEOUT, $this->getTimeout( $queryType ) );
 
-		try {
-			$log = $this->newLog( 'performing {queryType}', $queryType, [], $namespaces );
-			$this->start( $log );
-			$result = $search->search();
-			if ( !$result->getResponse()->isOk() ) {
-				$req = $this->connection->getClient()->getLastRequest();
-				// Not really the right exception, this is probably a status code problem.
-				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-				throw new ResponseException( $req, $result->getResponse() );
+		$work = function () use ( $search, $queryType, $namespaces ) {
+			try {
+				$log = $this->newLog( 'performing {queryType}', $queryType, [], $namespaces );
+				$this->start( $log );
+				$result = $search->search();
+				if ( !$result->getResponse()->isOk() ) {
+					$req = $this->connection->getClient()->getLastRequest();
+					// Not really the right exception, this is probably a status code problem.
+					// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+					throw new ResponseException( $req, $result->getResponse() );
+				}
+				$this->success();
+				$status = StatusValue::newGood( $result );
+				if ( $result->getResponse()->getData()['timed_out'] ?? false ) {
+					// only partial results returned
+					$status->warning( 'geodata-search-timeout' );
+				}
+				return $status;
+			} catch ( ExceptionInterface $ex ) {
+				return $this->failure( $ex );
 			}
-			$this->success();
-		} catch ( ExceptionInterface $ex ) {
-			return $this->failure( $ex );
-		}
-
-		$status = StatusValue::newGood( $result );
-		if ( $result->getResponse()->getData()['timed_out'] ?? false ) {
-			// only partial results returned
-			$status->warning( 'geodata-search-timeout' );
-		}
-		return $status;
+		};
+		return Util::doPoolCounterWork( $queryType, $this->user, $work );
 	}
 
 	/**
