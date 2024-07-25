@@ -20,5 +20,11 @@
 	"geodata-unknown-globe-category": "Йевзаш йоцу глобус йолу агӀонаш",
 	"geodata-unknown-globe-category-desc": "АгӀонгахь параметран нийса доцу маьӀна ду <code>globe</code> координаташна.",
 	"geodata-unknown-region-category": "Регион нийса йоцу агӀонаш",
-	"geodata-unknown-region-category-desc": "АгӀонгахь параметран нийса доцу маьӀна ду <code>region</code> координаташна."
+	"geodata-unknown-region-category-desc": "АгӀонгахь параметран нийса доцу маьӀна ду <code>region</code> координаташна.",
+	"geodata-api-help-coordinates-format": "Формат: Шоралла а, дохалла а вертикалан сизца къастийна (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "\"$1\" билгалйаьхна \"$2\" геокоординаташ дӀасакъасто йиш йац.",
+	"geodata-search-feature-invalid-distance": "«$1» билгалйаьккхина «$2» геодистанци дӀасакъасто йиш йац.",
+	"geodata-search-feature-unknown-title": "\"$1\" тӀехь йазйина \"$2\" цӀе йац.",
+	"geodata-search-feature-title-no-coordinates": "\"$1\" тӀехь йазйина йолу \"$2\" цӀе цхьа а координаташ доцуш йу.",
+	"geodata-search-timeout": "GeoData леха хан чекхйаьлла. Цхьана декъан жамӀаш бен дац."
 }
