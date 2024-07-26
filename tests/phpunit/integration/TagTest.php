@@ -22,7 +22,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	public function setUp(): void {
 		parent::setUp();
 		// reset to default
-		$this->setMwGlobals( 'wgDefaultDim', 1000 );
+		$this->overrideConfigValue( 'DefaultDim', 1000 );
 		$this->clearHooks( [ 'ParserAfterTidy' ] );
 	}
 

@@ -14,7 +14,7 @@ use MediaWikiIntegrationTestCase;
 class GlobeTest extends MediaWikiIntegrationTestCase {
 
 	public function testGlobalGlobesConfiguration() {
-		$this->setMwGlobals( 'wgGlobes', [ 'fantasy' => [ 'lon' => [ -60 ] ] ] );
+		$this->overrideConfigValue( 'Globes', [ 'fantasy' => [ 'lon' => [ -60 ] ] ] );
 		$globe = new Globe( 'fantasy' );
 		$this->assertTrue( $globe->isKnown() );
 		$this->assertSame( -60, $globe->getMinLongitude() );

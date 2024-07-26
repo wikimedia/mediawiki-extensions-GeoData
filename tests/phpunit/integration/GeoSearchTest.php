@@ -5,6 +5,7 @@ namespace GeoData\Test;
 use ApiMain;
 use ApiUsageException;
 use GeoData\Api\QueryGeoSearch;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxRequest;
 use MediaWikiIntegrationTestCase;
 
@@ -15,7 +16,7 @@ use MediaWikiIntegrationTestCase;
  */
 class GeoSearchTest extends MediaWikiIntegrationTestCase {
 	public function setUp(): void {
-		$this->setMwGlobals( 'wgAPIListModules',
+		$this->overrideConfigValue( MainConfigNames::APIListModules,
 			[
 				'geosearch' => [
 					'class' => QueryGeoSearch::class
