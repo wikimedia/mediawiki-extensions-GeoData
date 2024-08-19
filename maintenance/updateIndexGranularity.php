@@ -17,8 +17,6 @@ class UpdateIndexGranularity extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgGeoDataIndexGranularity;
-
 		$batchSize = $this->getBatchSize();
 		$id = 0;
 		$dbw = $this->getPrimaryDB();
@@ -38,11 +36,12 @@ class UpdateIndexGranularity extends Maintenance {
 				$id = $row->gt_id;
 				$ids[] = $id;
 			}
+			$indexGranularity = $this->getConfig()->get( 'GeoDataIndexGranularity' );
 			$dbw->newUpdateQueryBuilder()
 				->update( 'geo_tags' )
 				->set( [
-					"gt_lat_int = ROUND(gt_lat * $wgGeoDataIndexGranularity)",
-					"gt_lon_int = ROUND(gt_lon * $wgGeoDataIndexGranularity)"
+					"gt_lat_int = ROUND(gt_lat * $indexGranularity)",
+					"gt_lon_int = ROUND(gt_lon * $indexGranularity)"
 				] )
 				->where( [ 'gt_id' => $ids ] )
 				->caller( __METHOD__ )

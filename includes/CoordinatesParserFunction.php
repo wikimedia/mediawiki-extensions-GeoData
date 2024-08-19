@@ -3,6 +3,7 @@
 namespace GeoData;
 
 use Language;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Status\Status;
@@ -113,10 +114,10 @@ class CoordinatesParserFunction {
 	 * @return Status whether save went OK
 	 */
 	private function applyCoord( Coord $coord ) {
-		global $wgMaxCoordinatesPerPage;
-
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$maxCoordinatesPerPage = $config->get( 'MaxCoordinatesPerPage' );
 		$geoData = CoordinatesOutput::getOrBuildFromParserOutput( $this->output );
-		if ( $wgMaxCoordinatesPerPage >= 0 && $geoData->getCount() >= $wgMaxCoordinatesPerPage ) {
+		if ( $maxCoordinatesPerPage >= 0 && $geoData->getCount() >= $maxCoordinatesPerPage ) {
 			if ( $geoData->limitExceeded ) {
 				$geoData->setToParserOutput( $this->output );
 				return Status::newFatal( '' );
@@ -124,7 +125,7 @@ class CoordinatesParserFunction {
 			$geoData->limitExceeded = true;
 			$geoData->setToParserOutput( $this->output );
 			return Status::newFatal( 'geodata-limit-exceeded',
-				$this->getLanguage()->formatNum( $wgMaxCoordinatesPerPage )
+				$this->getLanguage()->formatNum( $maxCoordinatesPerPage )
 			);
 		}
 		if ( $coord->primary ) {
@@ -164,11 +165,15 @@ class CoordinatesParserFunction {
 	 * @return Status
 	 */
 	private function applyTagArgs( Coord $coord ) {
-		global $wgTypeToDim, $wgDefaultDim, $wgGeoDataWarningLevel;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$typeToDim = $config->get( 'TypeToDim' );
+		$defaultDim = $config->get( 'DefaultDim' );
+		$geoDataWarningLevel = $config->get( 'GeoDataWarningLevel' );
+
 		$args = $this->named;
 		$coord->primary = isset( $args['primary'] );
 		if ( !$this->globe->isKnown() ) {
-			switch ( $wgGeoDataWarningLevel['unknown globe'] ?? null ) {
+			switch ( $geoDataWarningLevel['unknown globe'] ?? null ) {
 				case 'fail':
 					return Status::newFatal( 'geodata-bad-globe', $coord->globe );
 				case 'warn':
@@ -176,13 +181,13 @@ class CoordinatesParserFunction {
 					break;
 			}
 		}
-		$coord->dim = $wgDefaultDim;
+		$coord->dim = $defaultDim;
 		if ( isset( $args['type'] ) ) {
 			$coord->type = mb_strtolower( preg_replace( '/\(.*?\).*$/', '', $args['type'] ) );
-			if ( isset( $wgTypeToDim[$coord->type] ) ) {
-				$coord->dim = $wgTypeToDim[$coord->type];
+			if ( isset( $typeToDim[$coord->type] ) ) {
+				$coord->dim = $typeToDim[$coord->type];
 			} else {
-				switch ( $wgGeoDataWarningLevel['unknown type'] ?? null ) {
+				switch ( $geoDataWarningLevel['unknown type'] ?? null ) {
 					case 'fail':
 						return Status::newFatal( 'geodata-bad-type', $coord->type );
 					case 'warn':
@@ -207,7 +212,7 @@ class CoordinatesParserFunction {
 				$coord->country = $m[1];
 				$coord->region = $m[2] ?? null;
 			} else {
-				switch ( $wgGeoDataWarningLevel['invalid region'] ?? null ) {
+				switch ( $geoDataWarningLevel['invalid region'] ?? null ) {
 					case 'fail':
 						return Status::newFatal( 'geodata-bad-region', $args['region'] );
 					case 'warn':

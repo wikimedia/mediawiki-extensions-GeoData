@@ -6,6 +6,7 @@ use ApiPageSet;
 use ApiQuery;
 use GeoData\Coord;
 use GeoData\Globe;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
 class QueryGeoSearchDb extends QueryGeoSearch {
@@ -120,10 +121,8 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 	 * @return int[]
 	 */
 	public static function intRange( float $start, float $end, int $granularity = null ): array {
-		global $wgGeoDataIndexGranularity;
-
 		if ( !$granularity ) {
-			$granularity = $wgGeoDataIndexGranularity;
+			$granularity = MediaWikiServices::getInstance()->getMainConfig()->get( 'GeoDataIndexGranularity' );
 		}
 		$start = round( $start * $granularity );
 		$end = round( $end * $granularity );
