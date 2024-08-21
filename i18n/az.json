@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toghrul Rahimli"
+			"Toghrul Rahimli",
+			"Nemoralis"
 		]
 	},
-	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: hər səhifədə birdən artıq koordinat ola bilməz"
+	"geodata-desc": "Coğrafi koordinatların saxlanması və axtarışı funksiyasını əlavə edir",
+	"geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki> funksiyasına səhv məlumatlar daxil edilib",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: hər səhifədə birdən artıq koordinat ola bilməz",
+	"geodata-broken-tags-category": "Yanlış koordinat teqləri olan səhifələr"
 }
