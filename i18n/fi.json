@@ -6,7 +6,9 @@
 			"Stryn",
 			"Valtlait",
 			"VezonThunder",
-			"Zache"
+			"Zache",
+			"Samoasambia",
+			"Valtlai"
 		]
 	},
 	"geodata-desc": "Lisää maantieteellisten koordinaattien säilöntä- ja hakutoiminnot",
@@ -16,10 +18,15 @@
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tuntematon tyyppi ”$1”",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: tuntematon karttapallo ”$1”",
 	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: virheellinen aluekoodin muoto",
-	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>:  sivulla ei voi olla kuin yksi ensisijainen koordinaattimerkintä",
-	"geodata-limit-exceeded": "Raja  $1  <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1| tag|tags}} sivulla on ylitetty",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: sivulla ei voi olla kuin yksi ensisijainen koordinaattimerkintä",
+	"geodata-limit-exceeded": "Raja $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1| merkintä|merkintää}} per sivu on ylitetty",
 	"geodata-broken-tags-category": "Sivut, joissa on virheellisessä muodossa olevia koordinaatteja",
+	"geodata-broken-tags-category-desc": "Sivulla on virheellisessä muodossa oleva <code><nowiki>{{#coordinates:}}</nowiki></code>-elementti.",
 	"geodata-unknown-type-category": "Sivut, joissa koordinaatin tyyppi on tuntematon",
+	"geodata-unknown-type-category-desc": "Sivu käyttää tuntematonta <code>type</code>-parametrin arvoa koordinaateille.",
 	"geodata-unknown-globe-category": "Sivut, joissa on tuntematon globe-arvo",
-	"geodata-unknown-region-category": "Sivut, joissa on virheellinen alueen arvo"
+	"geodata-unknown-globe-category-desc": "Sivu käyttää tuntematonta <code>globe</code>-parametrin arvoa koordinaateille.",
+	"geodata-unknown-region-category": "Sivut, joissa on virheellinen alueen arvo",
+	"geodata-unknown-region-category-desc": "Sivu käyttää tuntematonta <code>region</code>-parametrin arvoa koordinaateille.",
+	"geodata-api-help-coordinates-format": "Muoto: Leveys- ja pituusasteet erotetaan pystyviivoilla (<kbd>|</kbd>)."
 }
