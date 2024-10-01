@@ -21,12 +21,7 @@ class QueryCoordinates extends ApiQueryBase {
 
 	private WikiPageFactory $wikiPageFactory;
 
-	/**
-	 * @param ApiQuery $query
-	 * @param string $moduleName
-	 * @param WikiPageFactory $wikiPageFactory
-	 */
-	public function __construct( ApiQuery $query, $moduleName, WikiPageFactory $wikiPageFactory ) {
+	public function __construct( ApiQuery $query, string $moduleName, WikiPageFactory $wikiPageFactory ) {
 		parent::__construct( $query, $moduleName, 'co' );
 		$this->wikiPageFactory = $wikiPageFactory;
 	}

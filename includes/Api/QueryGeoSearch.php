@@ -39,11 +39,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	 */
 	protected $idToExclude;
 
-	/**
-	 * @param ApiQuery $query
-	 * @param string $moduleName
-	 */
-	public function __construct( ApiQuery $query, $moduleName ) {
+	public function __construct( ApiQuery $query, string $moduleName ) {
 		parent::__construct( $query, $moduleName, 'gs' );
 	}
 

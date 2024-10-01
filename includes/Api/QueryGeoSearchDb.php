@@ -10,11 +10,8 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
 class QueryGeoSearchDb extends QueryGeoSearch {
-	/**
-	 * @param ApiQuery $query
-	 * @param string $moduleName
-	 */
-	public function __construct( ApiQuery $query, $moduleName ) {
+
+	public function __construct( ApiQuery $query, string $moduleName ) {
 		parent::__construct( $query, $moduleName );
 	}
 
