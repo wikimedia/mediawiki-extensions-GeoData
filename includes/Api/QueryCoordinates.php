@@ -94,7 +94,7 @@ class QueryCoordinates extends ApiQueryBase {
 
 	private function getFromCoord( array $params ): ?Coord {
 		$this->requireMaxOneParameter( $params, 'distancefrompoint', 'distancefrompage' );
-		$globe = new Globe();
+		$globe = new Globe( Globe::EARTH );
 		if ( $params['distancefrompoint'] !== null ) {
 			$arr = explode( '|', $params['distancefrompoint'] );
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {

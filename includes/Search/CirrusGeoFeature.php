@@ -117,7 +117,7 @@ trait CirrusGeoFeature {
 			return [ null, 0 ];
 		}
 
-		$globe = new Globe();
+		$globe = new Globe( Globe::EARTH );
 		if ( !$globe->coordinatesAreValid( $lat, $lon ) ) {
 			$warningCollector->addWarning(
 				'geodata-search-feature-invalid-coordinates',

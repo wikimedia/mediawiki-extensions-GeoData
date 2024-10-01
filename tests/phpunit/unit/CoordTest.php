@@ -275,19 +275,19 @@ class CoordTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @dataProvider provideGlobeObj
+	 * @dataProvider provideGlobeNames
 	 */
-	public function testGlobeObj( string $name, Globe $expected ) {
+	public function testGlobeObj( string $name ) {
 		$c = new Coord( 10, 20, $name );
-		$this->assertTrue( $expected->equalsTo( $c->getGlobeObj() ) );
+		$this->assertTrue( $c->getGlobeObj()->equalsTo( new Globe( $name ) ) );
 		$this->assertTrue( $c->isValid() );
 	}
 
-	public static function provideGlobeObj() {
+	public static function provideGlobeNames() {
 		return [
-			[ Globe::EARTH, new Globe() ],
-			[ 'moon', new Globe( 'moon' ) ],
-			[ 'something nonexistent', new Globe( 'something nonexistent' ) ],
+			[ Globe::EARTH ],
+			[ 'moon' ],
+			[ 'something nonexistent' ],
 		];
 	}
 

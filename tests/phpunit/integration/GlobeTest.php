@@ -24,14 +24,14 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testEarth() {
-		$g = new Globe();
+		$g = new Globe( Globe::EARTH );
 		$this->assertEquals( Globe::EARTH, $g->getName() );
 		$this->assertTrue( $g->isKnown() );
 		$this->assertEquals( -180, $g->getMinLongitude() );
 		$this->assertEquals( 180, $g->getMaxLongitude() );
 		$this->assertSame( 1, $g->getEastSign() );
 		$this->assertSame( Math::EARTH_RADIUS, $g->getRadius() );
-		$this->assertTrue( $g->equalsTo( new Globe() ) );
+		$this->assertTrue( $g->equalsTo( new Globe( Globe::EARTH ) ) );
 	}
 
 	public function testMars() {

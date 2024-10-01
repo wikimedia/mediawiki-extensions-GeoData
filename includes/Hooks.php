@@ -140,7 +140,7 @@ class Hooks implements
 		if ( isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
 			$lat = $metadata['GPSLatitude'];
 			$lon = $metadata['GPSLongitude'];
-			$globe = new Globe();
+			$globe = new Globe( Globe::EARTH );
 			// T165800: Skip files with meaningless 0, 0 coordinates
 			if ( ( $lat || $lon ) &&
 				$globe->coordinatesAreValid( $lat, $lon )

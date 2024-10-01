@@ -28,7 +28,7 @@ class Globe {
 	/**
 	 * @param string $name Internal globe name
 	 */
-	public function __construct( string $name = self::EARTH ) {
+	public function __construct( string $name ) {
 		global $wgGlobes;
 
 		$this->name = $name;
