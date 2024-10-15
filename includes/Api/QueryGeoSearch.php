@@ -39,6 +39,19 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	 */
 	protected $idToExclude;
 
+	public static function factory( ApiQuery $query, string $moduleName ): self {
+		$geoDataBackend = $query->getConfig()->get( 'GeoDataBackend' );
+
+		switch ( strtolower( $geoDataBackend ) ) {
+			case 'db':
+				return new QueryGeoSearchDb( $query, $moduleName );
+			case 'elastic':
+				return new QueryGeoSearchElastic( $query, $moduleName );
+			default:
+				throw new \RuntimeException( 'GeoDataBackend data backend cannot be empty' );
+		}
+	}
+
 	public function __construct( ApiQuery $query, string $moduleName ) {
 		parent::__construct( $query, $moduleName, 'gs' );
 	}

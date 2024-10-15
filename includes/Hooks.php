@@ -2,14 +2,10 @@
 
 namespace GeoData;
 
-use ApiQuery;
 use CirrusSearch\CirrusSearch;
 use Content;
 use ContentHandler;
 use File;
-use GeoData\Api\QueryGeoSearch;
-use GeoData\Api\QueryGeoSearchDb;
-use GeoData\Api\QueryGeoSearchElastic;
 use GeoData\Search\CoordinatesIndexField;
 use ManualLogEntry;
 use MediaWiki\Config\Config;
@@ -369,21 +365,4 @@ class Hooks implements
 		return $result;
 	}
 
-	/**
-	 * @param ApiQuery $query
-	 * @param string $moduleName
-	 * @return QueryGeoSearch
-	 */
-	public static function createQueryGeoSearchBackend( ApiQuery $query, $moduleName ): QueryGeoSearch {
-		$geoDataBackend = $query->getConfig()->get( 'GeoDataBackend' );
-
-		switch ( strtolower( $geoDataBackend ) ) {
-			case 'db':
-				return new QueryGeoSearchDb( $query, $moduleName );
-			case 'elastic':
-				return new QueryGeoSearchElastic( $query, $moduleName );
-			default:
-				throw new \RuntimeException( 'GeoDataBackend data backend cannot be empty' );
-		}
-	}
 }

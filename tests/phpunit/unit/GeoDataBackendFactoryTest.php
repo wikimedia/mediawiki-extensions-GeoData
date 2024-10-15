@@ -3,14 +3,14 @@
 namespace GeoData\Test;
 
 use ApiQuery;
+use GeoData\Api\QueryGeoSearch;
 use GeoData\Api\QueryGeoSearchDb;
 use GeoData\Api\QueryGeoSearchElastic;
-use GeoData\Hooks;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\IContextSource;
 
 /**
- * @covers \GeoData\Hooks::createQueryGeoSearchBackend
+ * @covers \GeoData\Api\QueryGeoSearch::factory
  */
 class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 
@@ -33,9 +33,9 @@ class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provider
 	 */
-	public function testCreateQueryGeoSearchBackend( string $geoDataBackend, string $expectedClass ) {
+	public function testFactory( string $geoDataBackend, string $expectedClass ) {
 		$apiQuery = $this->mockApiQuery( $geoDataBackend );
-		$queryGeoSearchBackend = Hooks::createQueryGeoSearchBackend( $apiQuery, 'test' );
+		$queryGeoSearchBackend = QueryGeoSearch::factory( $apiQuery, 'test' );
 
 		self::assertInstanceOf( $expectedClass, $queryGeoSearchBackend );
 	}
@@ -47,11 +47,11 @@ class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 		];
 	}
 
-	public function testCreateQueryGeoSearchBackendThrowErrorWhenBackendIsNotSet() {
+	public function testFactoryThrowErrorWhenBackendIsNotSet() {
 		$apiQuery = $this->mockApiQuery();
 
 		$this->expectException( \RuntimeException::class );
 		$this->expectExceptionMessage( 'GeoDataBackend data backend cannot be empty' );
-		Hooks::createQueryGeoSearchBackend( $apiQuery, 'test' );
+		QueryGeoSearch::factory( $apiQuery, 'test' );
 	}
 }
