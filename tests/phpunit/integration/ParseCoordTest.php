@@ -22,7 +22,9 @@ class ParseCoordTest extends MediaWikiIntegrationTestCase {
 		$formatted = '"' . implode( '|', $parts ) . '"';
 
 		/** @var CoordinatesParserFunction $function */
-		$function = TestingAccessWrapper::newFromObject( new CoordinatesParserFunction );
+		$function = TestingAccessWrapper::newFromObject( new CoordinatesParserFunction(
+			$this->getServiceContainer()->getMainConfig()
+		) );
 
 		$parser = $this->getMockBuilder( Parser::class )
 			->disableOriginalConstructor()

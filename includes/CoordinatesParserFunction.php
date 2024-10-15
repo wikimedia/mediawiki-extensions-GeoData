@@ -3,7 +3,7 @@
 namespace GeoData;
 
 use Language;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Config\Config;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Status\Status;
@@ -27,6 +27,14 @@ class CoordinatesParserFunction {
 
 	/** @var Globe */
 	private $globe;
+
+	private Config $config;
+
+	public function __construct(
+		Config $config
+	) {
+		$this->config = $config;
+	}
 
 	/**
 	 * #coordinates parser function callback
@@ -114,8 +122,7 @@ class CoordinatesParserFunction {
 	 * @return Status whether save went OK
 	 */
 	private function applyCoord( Coord $coord ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$maxCoordinatesPerPage = $config->get( 'MaxCoordinatesPerPage' );
+		$maxCoordinatesPerPage = $this->config->get( 'MaxCoordinatesPerPage' );
 		$geoData = CoordinatesOutput::getOrBuildFromParserOutput( $this->output );
 		if ( $maxCoordinatesPerPage >= 0 && $geoData->getCount() >= $maxCoordinatesPerPage ) {
 			if ( $geoData->limitExceeded ) {
@@ -165,10 +172,9 @@ class CoordinatesParserFunction {
 	 * @return Status
 	 */
 	private function applyTagArgs( Coord $coord ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$typeToDim = $config->get( 'TypeToDim' );
-		$defaultDim = $config->get( 'DefaultDim' );
-		$geoDataWarningLevel = $config->get( 'GeoDataWarningLevel' );
+		$typeToDim = $this->config->get( 'TypeToDim' );
+		$defaultDim = $this->config->get( 'DefaultDim' );
+		$geoDataWarningLevel = $this->config->get( 'GeoDataWarningLevel' );
 
 		$args = $this->named;
 		$coord->primary = isset( $args['primary'] );

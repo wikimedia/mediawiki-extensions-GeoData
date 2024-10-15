@@ -71,7 +71,7 @@ class Hooks implements
 	 */
 	public function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 'coordinates',
-			[ new CoordinatesParserFunction(), 'coordinates' ],
+			[ new CoordinatesParserFunction( $this->config ), 'coordinates' ],
 			Parser::SFH_OBJECT_ARGS
 		);
 	}
