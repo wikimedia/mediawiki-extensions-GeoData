@@ -5,7 +5,6 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\CoordinatesOutput;
 use GeoData\Globe;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
@@ -27,7 +26,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function assertParse( string $input, ?Coord $expected ): void {
-		$p = MediaWikiServices::getInstance()->getParserFactory()->getInstance();
+		$p = $this->getServiceContainer()->getParserFactory()->getInstance();
 		$opt = ParserOptions::newFromAnon();
 		$title = Title::makeTitle( NS_MAIN, __METHOD__ );
 		$title->setContentModel( CONTENT_MODEL_WIKITEXT );
