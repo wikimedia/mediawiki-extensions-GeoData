@@ -40,7 +40,11 @@
 		"geodata": {
 			"class": "GeoData\\Hooks",
 			"services": [
-				"MainConfig"
+				"MainConfig",
+				"ConnectionProvider",
+				"DBLoadBalancerFactory",
+				"RepoGroup",
+				"WikiPageFactory"
 			]
 		},
 		"cirrussearch": {

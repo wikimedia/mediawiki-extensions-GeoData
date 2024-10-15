@@ -21,14 +21,17 @@ use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\Hook\OutputPageParserOutputHook;
 use MediaWiki\Page\Hook\ArticleDeleteCompleteHook;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\User;
+use RepoGroup;
 use SearchEngine;
+use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\LBFactory;
 use WikiPage;
 
 /**
@@ -45,9 +48,23 @@ class Hooks implements
 {
 
 	private Config $config;
+	private IConnectionProvider $connectionProvider;
+	private LBFactory $lbFactory;
+	private RepoGroup $repoGroup;
+	private WikiPageFactory $wikiPageFactory;
 
-	public function __construct( Config $config ) {
+	public function __construct(
+		Config $config,
+		IConnectionProvider $connectionProvider,
+		LBFactory $lbFactory,
+		RepoGroup $repoGroup,
+		WikiPageFactory $wikiPageFactory
+	) {
 		$this->config = $config;
+		$this->connectionProvider = $connectionProvider;
+		$this->lbFactory = $lbFactory;
+		$this->repoGroup = $repoGroup;
+		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	/**
@@ -78,7 +95,7 @@ class Hooks implements
 	public function onArticleDeleteComplete( $article, $user, $reason, $id,
 		$content, $logEntry, $archivedRevisionCount
 	) {
-		$dbw = MediaWikiServices::getInstance()->getConnectionProvider()->getPrimaryDatabase();
+		$dbw = $this->connectionProvider->getPrimaryDatabase();
 		$dbw->newDeleteQueryBuilder()
 			->deleteFrom( 'geo_tags' )
 			->where( [ 'gt_page_id' => $id ] )
@@ -96,7 +113,7 @@ class Hooks implements
 	public function onLinksUpdateComplete( $linksUpdate, $ticket ) {
 		$out = $linksUpdate->getParserOutput();
 		$data = [];
-		$coordFromMetadata = self::getCoordinatesIfFile( $linksUpdate->getTitle() );
+		$coordFromMetadata = $this->getCoordinatesIfFile( $linksUpdate->getTitle() );
 		$coordsOutput = CoordinatesOutput::getFromParserOutput( $out );
 		if ( $coordsOutput ) {
 			// Use coordinates from file metadata unless overridden on description page
@@ -107,14 +124,14 @@ class Hooks implements
 		} elseif ( $coordFromMetadata ) {
 			$data[] = $coordFromMetadata;
 		}
-		self::doLinksUpdate( $data, $linksUpdate->getPageId(), $ticket );
+		$this->doLinksUpdate( $data, $linksUpdate->getPageId(), $ticket );
 	}
 
-	private static function getCoordinatesIfFile( LinkTarget $title ): ?Coord {
+	private function getCoordinatesIfFile( LinkTarget $title ): ?Coord {
 		if ( !$title->inNamespace( NS_FILE ) ) {
 			return null;
 		}
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
+		$file = $this->repoGroup->getLocalRepo()
 			->findFile( $title, [ 'ignoreRedirect' => true ] );
 		if ( !$file ) {
 			return null;
@@ -142,11 +159,9 @@ class Hooks implements
 	 * @param int|null $ticket
 	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
 	 */
-	private static function doLinksUpdate( array $coords, $pageId, $ticket ) {
-		$services = MediaWikiServices::getInstance();
-		$config = $services->getMainConfig();
-		$indexGranularity = $config->get( 'GeoDataBackend' ) === 'db' ?
-			$config->get( 'GeoDataIndexGranularity' ) : null;
+	private function doLinksUpdate( array $coords, $pageId, $ticket ) {
+		$indexGranularity = $this->config->get( 'GeoDataBackend' ) === 'db' ?
+			$this->config->get( 'GeoDataIndexGranularity' ) : null;
 
 		$add = [];
 		$delete = [];
@@ -172,10 +187,9 @@ class Hooks implements
 			}
 		}
 
-		$dbw = $services->getConnectionProvider()->getPrimaryDatabase();
-		$lbFactory = $services->getDBLoadBalancerFactory();
-		$ticket = $ticket ?: $lbFactory->getEmptyTransactionTicket( __METHOD__ );
-		$batchSize = $config->get( MainConfigNames::UpdateRowsPerQuery );
+		$dbw = $this->connectionProvider->getPrimaryDatabase();
+		$ticket = $ticket ?: $this->lbFactory->getEmptyTransactionTicket( __METHOD__ );
+		$batchSize = $this->config->get( MainConfigNames::UpdateRowsPerQuery );
 
 		$deleteIds = array_keys( $delete );
 		foreach ( array_chunk( $deleteIds, $batchSize ) as $deleteIdBatch ) {
@@ -184,7 +198,7 @@ class Hooks implements
 				->where( [ 'gt_id' => $deleteIdBatch ] )
 				->caller( __METHOD__ )
 				->execute();
-			$lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
+			$this->lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
 		}
 
 		foreach ( array_chunk( $add, $batchSize ) as $addBatch ) {
@@ -193,7 +207,7 @@ class Hooks implements
 				->rows( $addBatch )
 				->caller( __METHOD__ )
 				->execute();
-			$lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
+			$this->lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
 		}
 	}
 
@@ -206,7 +220,7 @@ class Hooks implements
 	 * @param bool $hasDescription
 	 */
 	public function onFileUpload( $file, $reupload, $hasDescription ) {
-		$wp = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $file->getTitle() );
+		$wp = $this->wikiPageFactory->newFromTitle( $file->getTitle() );
 		$po = $wp->makeParserOptions( 'canonical' );
 		$pout = $wp->getParserOutput( $po );
 		if ( !$pout ) {
@@ -333,7 +347,7 @@ class Hooks implements
 					);
 					continue;
 				}
-				$coords[] = self::coordToElastic( $coord );
+				$coords[] = $this->coordToElastic( $coord );
 			}
 			$fields['coordinates'] = $coords;
 		}
@@ -345,7 +359,7 @@ class Hooks implements
 	 * @param Coord $coord
 	 * @return array
 	 */
-	public static function coordToElastic( Coord $coord ) {
+	private function coordToElastic( Coord $coord ) {
 		$result = $coord->getAsArray();
 		$result['coord'] = [ 'lat' => $coord->lat, 'lon' => $coord->lon ];
 		unset( $result['id'] );
