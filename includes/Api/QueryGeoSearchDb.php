@@ -6,13 +6,19 @@ use ApiPageSet;
 use ApiQuery;
 use GeoData\Coord;
 use GeoData\Globe;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Config\Config;
 use MediaWiki\Title\Title;
 
 class QueryGeoSearchDb extends QueryGeoSearch {
+	private Config $config;
 
-	public function __construct( ApiQuery $query, string $moduleName ) {
+	public function __construct(
+		ApiQuery $query,
+		string $moduleName,
+		Config $config
+	) {
 		parent::__construct( $query, $moduleName );
+		$this->config = $config;
 	}
 
 	/**
@@ -99,8 +105,8 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 		$bbox = $this->bbox ?: $this->coord->bboxAround( $this->radius );
 		$coord1 = $bbox->topLeft();
 		$coord2 = $bbox->bottomRight();
-		$this->addWhereFld( 'gt_lat_int', self::intRange( $coord1->lat, $coord2->lat ) );
-		$this->addWhereFld( 'gt_lon_int', self::intRange( $coord1->lon, $coord2->lon ) );
+		$this->addWhereFld( 'gt_lat_int', $this->intRange( $coord1->lat, $coord2->lat ) );
+		$this->addWhereFld( 'gt_lon_int', $this->intRange( $coord1->lon, $coord2->lon ) );
 
 		$this->addWhereRange( 'gt_lat', 'newer', (string)$coord1->lat, (string)$coord2->lat, false );
 		if ( $coord1->lon > $coord2->lon ) {
@@ -116,13 +122,10 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 	 *
 	 * @param float $start
 	 * @param float $end
-	 * @param int|null $granularity Defaults to $wgGeoDataIndexGranularity
 	 * @return int[]
 	 */
-	public static function intRange( float $start, float $end, int $granularity = null ): array {
-		if ( !$granularity ) {
-			$granularity = MediaWikiServices::getInstance()->getMainConfig()->get( 'GeoDataIndexGranularity' );
-		}
+	public function intRange( float $start, float $end ): array {
+		$granularity = $this->config->get( 'GeoDataIndexGranularity' );
 		$start = round( $start * $granularity );
 		$end = round( $end * $granularity );
 		// @todo: works only on Earth

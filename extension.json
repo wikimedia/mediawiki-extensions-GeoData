@@ -13,7 +13,11 @@
 	"APIListModules": {
 		"geosearch": {
 			"class": "GeoData\\Api\\QueryGeoSearch",
-			"factory": "GeoData\\Api\\QueryGeoSearch::factory"
+			"factory": "GeoData\\Api\\QueryGeoSearch::factory",
+			"services": [
+				"MainConfig",
+				"NamespaceInfo"
+			]
 		}
 	},
 	"APIPropModules": {

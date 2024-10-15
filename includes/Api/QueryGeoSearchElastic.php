@@ -8,15 +8,21 @@ use FormatJson;
 use GeoData\Coord;
 use GeoData\Globe;
 use GeoData\Searcher;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
 
 class QueryGeoSearchElastic extends QueryGeoSearch {
 	/** @var array|null */
 	private $params;
+	private NamespaceInfo $namespaceInfo;
 
-	public function __construct( ApiQuery $query, string $moduleName ) {
+	public function __construct(
+		ApiQuery $query,
+		string $moduleName,
+		NamespaceInfo $namespaceInfo
+	) {
 		parent::__construct( $query, $moduleName );
+		$this->namespaceInfo = $namespaceInfo;
 	}
 
 	/**
@@ -82,7 +88,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		$nested = new \Elastica\Query\Nested();
 		$nested->setPath( 'coordinates' )->setQuery( $filter );
 		if ( count( $namespaces ) <
-			count( MediaWikiServices::getInstance()->getNamespaceInfo()->getValidNamespaces() )
+			count( $this->namespaceInfo->getValidNamespaces() )
 		) {
 			$outerFilter = new \Elastica\Query\BoolQuery();
 			$outerFilter->addFilter( $nested );

@@ -2,7 +2,11 @@
 
 namespace GeoData\Test;
 
+use ApiMain;
+use ApiQuery;
 use GeoData\Api\QueryGeoSearchDb;
+use MediaWiki\Config\HashConfig;
+use MediaWiki\Context\IContextSource;
 use MediaWikiUnitTestCase;
 
 /**
@@ -14,7 +18,24 @@ class MiscGeoDataTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideIntRangeData
 	 */
 	public function testIntRange( float $min, float $max, array $expected ) {
-		$this->assertEquals( $expected, QueryGeoSearchDb::intRange( $min, $max, 10 ) );
+		$context = $this->createNoOpMock( IContextSource::class );
+
+		$apiMain = $this->createMock( ApiMain::class );
+		$apiMain->method( 'getContext' )->willReturn( $context );
+
+		$apiBase = $this->createMock( ApiQuery::class );
+		$apiBase->method( 'getMain' )->willReturn( $apiMain );
+
+		$config = new HashConfig( [
+			'GeoDataIndexGranularity' => 10,
+		] );
+
+		$queryGeoSearchDb = new QueryGeoSearchDb(
+			$apiBase,
+			'test',
+			$config
+		);
+		$this->assertEquals( $expected, $queryGeoSearchDb->intRange( $min, $max ) );
 	}
 
 	public static function provideIntRangeData() {

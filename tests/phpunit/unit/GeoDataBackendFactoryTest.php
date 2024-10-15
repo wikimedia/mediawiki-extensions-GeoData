@@ -8,6 +8,7 @@ use GeoData\Api\QueryGeoSearchDb;
 use GeoData\Api\QueryGeoSearchElastic;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Title\NamespaceInfo;
 
 /**
  * @covers \GeoData\Api\QueryGeoSearch::factory
@@ -35,7 +36,10 @@ class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 	 */
 	public function testFactory( string $geoDataBackend, string $expectedClass ) {
 		$apiQuery = $this->mockApiQuery( $geoDataBackend );
-		$queryGeoSearchBackend = QueryGeoSearch::factory( $apiQuery, 'test' );
+		$queryGeoSearchBackend = QueryGeoSearch::factory( $apiQuery, 'test',
+			new HashConfig( [] ),
+			$this->createMock( NamespaceInfo::class )
+		);
 
 		self::assertInstanceOf( $expectedClass, $queryGeoSearchBackend );
 	}
@@ -52,6 +56,9 @@ class GeoDataBackendFactoryTest extends \MediaWikiUnitTestCase {
 
 		$this->expectException( \RuntimeException::class );
 		$this->expectExceptionMessage( 'GeoDataBackend data backend cannot be empty' );
-		QueryGeoSearch::factory( $apiQuery, 'test' );
+		QueryGeoSearch::factory( $apiQuery, 'test',
+			new HashConfig( [] ),
+			$this->createMock( NamespaceInfo::class )
+		);
 	}
 }

@@ -10,6 +10,8 @@ use GeoData\BoundingBox;
 use GeoData\Coord;
 use GeoData\GeoData;
 use GeoData\Globe;
+use MediaWiki\Config\Config;
+use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
@@ -39,14 +41,19 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	 */
 	protected $idToExclude;
 
-	public static function factory( ApiQuery $query, string $moduleName ): self {
+	public static function factory(
+		ApiQuery $query,
+		string $moduleName,
+		Config $config,
+		NamespaceInfo $namespaceInfo
+	): self {
 		$geoDataBackend = $query->getConfig()->get( 'GeoDataBackend' );
 
 		switch ( strtolower( $geoDataBackend ) ) {
 			case 'db':
-				return new QueryGeoSearchDb( $query, $moduleName );
+				return new QueryGeoSearchDb( $query, $moduleName, $config );
 			case 'elastic':
-				return new QueryGeoSearchElastic( $query, $moduleName );
+				return new QueryGeoSearchElastic( $query, $moduleName, $namespaceInfo );
 			default:
 				throw new \RuntimeException( 'GeoDataBackend data backend cannot be empty' );
 		}
