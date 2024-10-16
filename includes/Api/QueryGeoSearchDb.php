@@ -2,10 +2,10 @@
 
 namespace GeoData\Api;
 
-use ApiPageSet;
-use ApiQuery;
 use GeoData\Coord;
 use GeoData\Globe;
+use MediaWiki\Api\ApiPageSet;
+use MediaWiki\Api\ApiQuery;
 use MediaWiki\Config\Config;
 use MediaWiki\Title\Title;
 

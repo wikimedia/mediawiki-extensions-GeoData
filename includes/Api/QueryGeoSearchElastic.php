@@ -2,12 +2,21 @@
 
 namespace GeoData\Api;
 
-use ApiPageSet;
-use ApiQuery;
-use FormatJson;
+use Elastica\Query;
+use Elastica\Query\BoolQuery;
+use Elastica\Query\GeoBoundingBox;
+use Elastica\Query\GeoDistance;
+use Elastica\Query\Nested;
+use Elastica\Query\Range;
+use Elastica\Query\Term;
+use Elastica\Query\Terms;
+use Elastica\ResultSet;
 use GeoData\Coord;
 use GeoData\Globe;
 use GeoData\Searcher;
+use MediaWiki\Api\ApiPageSet;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
 
@@ -36,22 +45,22 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		$params = $this->params = $this->extractRequestParams();
 		$namespaces = array_map( 'intval', $params['namespace'] );
 
-		$filter = new \Elastica\Query\BoolQuery();
-		$nestedPropsFilter = new \Elastica\Query\BoolQuery();
+		$filter = new BoolQuery();
+		$nestedPropsFilter = new BoolQuery();
 
 		if ( $this->idToExclude ) {
-			$filter->addMustNot( new \Elastica\Query\Term( [ '_id' => $this->idToExclude ] ) );
+			$filter->addMustNot( new Term( [ '_id' => $this->idToExclude ] ) );
 		}
 		// Only Earth is supported
-		$nestedPropsFilter->addFilter( new \Elastica\Query\Term( [ 'coordinates.globe' => Globe::EARTH ] ) );
+		$nestedPropsFilter->addFilter( new Term( [ 'coordinates.globe' => Globe::EARTH ] ) );
 		if ( isset( $params['maxdim'] ) ) {
-			$nestedPropsFilter->addFilter( new \Elastica\Query\Range( 'coordinates.dim',
+			$nestedPropsFilter->addFilter( new Range( 'coordinates.dim',
 					[ 'to' => $params['maxdim'] ] ) );
 		}
 
 		$primary = $params['primary'];
 		if ( $primary !== 'all' ) {
-			$nestedPropsFilter->addFilter( new \Elastica\Query\Term( [
+			$nestedPropsFilter->addFilter( new Term( [
 					'coordinates.primary' => $primary === 'primary'
 				] ) );
 		}
@@ -59,13 +68,13 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		if ( $this->bbox ) {
 			$coord1 = $this->bbox->topLeft();
 			$coord2 = $this->bbox->bottomRight();
-			$distanceFilter = new \Elastica\Query\GeoBoundingBox( 'coordinates.coord', [
+			$distanceFilter = new GeoBoundingBox( 'coordinates.coord', [
 					[ 'lat' => $coord1->lat, 'lon' => $coord1->lon ],
 					[ 'lat' => $coord2->lat, 'lon' => $coord2->lon ],
 				] );
 		} else {
 			$distanceFilter =
-				new \Elastica\Query\GeoDistance( 'coordinates.coord',
+				new GeoDistance( 'coordinates.coord',
 					[ 'lat' => $this->coord->lat, 'lon' => $this->coord->lon ],
 					$this->radius . 'm' );
 		}
@@ -73,7 +82,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		$filter->addFilter( $nestedPropsFilter );
 		$filter->addFilter( $distanceFilter );
 
-		$query = new \Elastica\Query();
+		$query = new Query();
 		$fields = array_map(
 			static function ( $prop ) {
 				return "coordinates.$prop";
@@ -85,14 +94,14 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		);
 		$query->setParam( '_source', $fields );
 
-		$nested = new \Elastica\Query\Nested();
+		$nested = new Nested();
 		$nested->setPath( 'coordinates' )->setQuery( $filter );
 		if ( count( $namespaces ) <
 			count( $this->namespaceInfo->getValidNamespaces() )
 		) {
-			$outerFilter = new \Elastica\Query\BoolQuery();
+			$outerFilter = new BoolQuery();
 			$outerFilter->addFilter( $nested );
-			$outerFilter->addFilter( new \Elastica\Query\Terms( 'namespace', $namespaces ) );
+			$outerFilter->addFilter( new Terms( 'namespace', $namespaces ) );
 			$query->setPostFilter( $outerFilter );
 		} else {
 			$query->setPostFilter( $nested );
@@ -132,7 +141,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		}
 
 		$this->addMessagesFromStatus( $status );
-		/** @var \Elastica\ResultSet $resultSet */
+		/** @var ResultSet $resultSet */
 		$resultSet = $status->getValue();
 
 		if ( isset( $params['debug'] ) && $params['debug'] ) {
@@ -287,7 +296,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 	/**
 	 * Adds debug information to API result
 	 */
-	private function addDebugInfo( \Elastica\ResultSet $resultSet, \Elastica\Query $query ): void {
+	private function addDebugInfo( ResultSet $resultSet, Query $query ): void {
 		$ti = $resultSet->getResponse()->getTransferInfo();
 		$neededData = [
 			'url',

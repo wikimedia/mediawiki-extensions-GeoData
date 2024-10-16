@@ -2,17 +2,18 @@
 
 namespace GeoData\Api;
 
-use ApiBase;
-use ApiPageSet;
-use ApiQuery;
-use ApiQueryGeneratorBase;
 use GeoData\BoundingBox;
 use GeoData\Coord;
 use GeoData\GeoData;
 use GeoData\Globe;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiPageSet;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryGeneratorBase;
 use MediaWiki\Config\Config;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
+use RuntimeException;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use WikiPage;
@@ -55,7 +56,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			case 'elastic':
 				return new QueryGeoSearchElastic( $query, $moduleName, $namespaceInfo );
 			default:
-				throw new \RuntimeException( 'GeoDataBackend data backend cannot be empty' );
+				throw new RuntimeException( 'GeoDataBackend data backend cannot be empty' );
 		}
 	}
 

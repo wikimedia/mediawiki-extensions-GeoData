@@ -2,6 +2,7 @@
 
 namespace GeoData;
 
+use CirrusSearch\Connection;
 use CirrusSearch\ElasticsearchIntermediary;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
@@ -9,6 +10,7 @@ use CirrusSearch\SearchRequestLog;
 use CirrusSearch\Util;
 use Elastica\Exception\ExceptionInterface;
 use Elastica\Exception\ResponseException;
+use Elastica\Query;
 use Elastica\Search;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\MediaWikiServices;
@@ -32,7 +34,7 @@ class Searcher extends ElasticsearchIntermediary {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'CirrusSearch' );
 		'@phan-var SearchConfig $config';
 		$this->config = $config;
-		$connection = new \CirrusSearch\Connection( $config );
+		$connection = new Connection( $config );
 
 		parent::__construct( $connection, $user, 0 );
 	}
@@ -40,13 +42,13 @@ class Searcher extends ElasticsearchIntermediary {
 	/**
 	 * Perform search
 	 *
-	 * @param \Elastica\Query $query
+	 * @param Query $query
 	 * @param int[] $namespaces Namespaces used
 	 * @param string $queryType Query description for logging
-	 * @return \StatusValue Holds a \Elastica\ResultSet
+	 * @return StatusValue Holds a \Elastica\ResultSet
 	 * @throws ExceptionInterface
 	 */
-	public function performSearch( \Elastica\Query $query, array $namespaces, string $queryType ): StatusValue {
+	public function performSearch( Query $query, array $namespaces, string $queryType ): StatusValue {
 		$indexSuffix = $this->connection->pickIndexSuffixForNamespaces( $namespaces );
 		$index = $this->connection->getIndex( WikiMap::getCurrentWikiId(), $indexSuffix );
 		$search = $index->createSearch( $query );

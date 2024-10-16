@@ -3,12 +3,12 @@
 namespace GeoData;
 
 use CirrusSearch\CirrusSearch;
-use Content;
-use ContentHandler;
 use File;
 use GeoData\Search\CoordinatesIndexField;
 use ManualLogEntry;
 use MediaWiki\Config\Config;
+use MediaWiki\Content\Content;
+use MediaWiki\Content\ContentHandler;
 use MediaWiki\Content\Hook\SearchDataForIndexHook;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Deferred\LinksUpdate\LinksUpdate;

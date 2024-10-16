@@ -2,9 +2,9 @@
 
 namespace GeoData\Test;
 
-use ApiMain;
-use ApiUsageException;
 use GeoData\Api\QueryGeoSearch;
+use MediaWiki\Api\ApiMain;
+use MediaWiki\Api\ApiUsageException;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Request\FauxRequest;
 use MediaWikiIntegrationTestCase;

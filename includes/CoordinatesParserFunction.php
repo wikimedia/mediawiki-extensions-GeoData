@@ -2,8 +2,8 @@
 
 namespace GeoData;
 
-use Language;
 use MediaWiki\Config\Config;
+use MediaWiki\Language\Language;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Status\Status;

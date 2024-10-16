@@ -62,7 +62,7 @@ class CirrusNearCoordFilterFeature extends SimpleKeywordFeature implements Filte
 	/**
 	 * @param array|null $coord
 	 * @param int $radius
-	 * @return \Elastica\Query\AbstractQuery|null
+	 * @return AbstractQuery|null
 	 */
 	protected function doGetFilterquery( $coord, $radius ) {
 		$filter = null;

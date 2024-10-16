@@ -10,6 +10,10 @@ use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\WarningCollector;
 use Elastica\Query\AbstractQuery;
+use Elastica\Query\BoolQuery;
+use Elastica\Query\GeoDistance;
+use Elastica\Query\Nested;
+use Elastica\Query\Term;
 use GeoData\Coord;
 
 /**
@@ -66,11 +70,11 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements Filte
 	 * @return AbstractQuery
 	 */
 	public static function createQuery( Coord $coord, $radius, $docIdToExclude = '' ) {
-		$query = new \Elastica\Query\BoolQuery();
-		$query->addFilter( new \Elastica\Query\Term( [ 'coordinates.globe' => $coord->globe ] ) );
-		$query->addFilter( new \Elastica\Query\Term( [ 'coordinates.primary' => true ] ) );
+		$query = new BoolQuery();
+		$query->addFilter( new Term( [ 'coordinates.globe' => $coord->globe ] ) );
+		$query->addFilter( new Term( [ 'coordinates.primary' => true ] ) );
 
-		$distanceFilter = new \Elastica\Query\GeoDistance(
+		$distanceFilter = new GeoDistance(
 			'coordinates.coord',
 			[ 'lat' => $coord->lat, 'lon' => $coord->lon ],
 			$radius . 'm'
@@ -78,10 +82,10 @@ class CirrusNearTitleFilterFeature extends SimpleKeywordFeature implements Filte
 		$query->addFilter( $distanceFilter );
 
 		if ( $docIdToExclude !== '' ) {
-			$query->addMustNot( new \Elastica\Query\Term( [ '_id' => $docIdToExclude ] ) );
+			$query->addMustNot( new Term( [ '_id' => $docIdToExclude ] ) );
 		}
 
-		$nested = new \Elastica\Query\Nested();
+		$nested = new Nested();
 		$nested->setPath( 'coordinates' )->setQuery( $query );
 
 		return $nested;

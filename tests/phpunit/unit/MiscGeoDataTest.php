@@ -2,9 +2,9 @@
 
 namespace GeoData\Test;
 
-use ApiMain;
-use ApiQuery;
 use GeoData\Api\QueryGeoSearchDb;
+use MediaWiki\Api\ApiMain;
+use MediaWiki\Api\ApiQuery;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\IContextSource;
 use MediaWikiUnitTestCase;
