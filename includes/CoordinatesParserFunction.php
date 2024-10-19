@@ -6,9 +6,9 @@ use MediaWiki\Config\Config;
 use MediaWiki\Language\Language;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
+use MediaWiki\Parser\PPFrame;
+use MediaWiki\Parser\PPNode;
 use MediaWiki\Status\Status;
-use PPFrame;
-use PPNode;
 
 /**
  * Handler for the #coordinates parser function

@@ -5,10 +5,10 @@ namespace GeoData\Test;
 use GeoData\Coord;
 use GeoData\CoordinatesOutput;
 use GeoData\Globe;
+use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use ParserOptions;
 
 /**
  * @covers \GeoData\CoordinatesParserFunction
