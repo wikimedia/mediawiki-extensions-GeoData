@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Geraki",
-			"KATRINE1992"
+			"KATRINE1992",
+			"McDutchie"
 		]
 	},
 	"geodata-desc": "Προσθέτει λειτουργία αποθήκευσης και ανάκτησης γεωγραφικών συντεταγμένων",
