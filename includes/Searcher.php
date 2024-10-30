@@ -29,7 +29,7 @@ class Searcher extends ElasticsearchIntermediary {
 	 * @param UserIdentity|null $user
 	 * @throws ConfigException
 	 */
-	public function __construct( UserIdentity $user = null ) {
+	public function __construct( ?UserIdentity $user = null ) {
 		/** @var SearchConfig $config */
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'CirrusSearch' );
 		'@phan-var SearchConfig $config';
@@ -92,7 +92,7 @@ class Searcher extends ElasticsearchIntermediary {
 		$description,
 		$queryType,
 		array $extra = [],
-		array $namespaces = null
+		?array $namespaces = null
 	): SearchRequestLog {
 		return new SearchRequestLog(
 			$this->connection->getClient(),
