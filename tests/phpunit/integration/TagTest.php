@@ -63,7 +63,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider provideLooseData
 	 */
-	public function testLooseTagParsing( string $input, ?Coord $expected, string $langCode = null ) {
+	public function testLooseTagParsing( string $input, ?Coord $expected, ?string $langCode = null ) {
 		if ( $langCode ) {
 			$this->setContentLang( $langCode );
 		}
