@@ -2,8 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"V.narsikar",
-			"अभय नातू",
-			"Amire80"
+			"अभय नातू"
 		]
 	},
 	"apihelp-query+coordinates-description": "दिलेल्या पानाच्या समन्वयकाचा परतावा देते.",
