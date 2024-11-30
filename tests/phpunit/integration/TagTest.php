@@ -41,7 +41,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		$this->assertNotNull( CoordinatesOutput::getFromParserOutput( $out ) );
 		$all = CoordinatesOutput::getFromParserOutput( $out )->getAll();
 		$this->assertCount( 1, $all,
-			'A result was expected, but there was error: ' . strip_tags( $out->getText() ) );
+			'A result was expected, but there was error: ' . strip_tags( $out->getRawText() ) );
 		/** @var Coord $coord */
 		$coord = $all[0];
 		$this->assertTrue( $coord->fullyEqualsTo( $expected ),
