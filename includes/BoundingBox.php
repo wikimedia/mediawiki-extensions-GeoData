@@ -21,9 +21,9 @@ class BoundingBox {
 	 * @param float $lon1
 	 * @param float $lat2
 	 * @param float $lon2
-	 * @param string $globe
+	 * @param Globe|string $globe
 	 */
-	public static function newFromNumbers( $lat1, $lon1, $lat2, $lon2, string $globe ): self {
+	public static function newFromNumbers( $lat1, $lon1, $lat2, $lon2, $globe ): self {
 		return new self( new Coord( $lat1, $lon1, $globe ), new Coord( $lat2, $lon2, $globe ) );
 	}
 
@@ -56,7 +56,7 @@ class BoundingBox {
 		$lon2 = $coord->lon + $r2lon;
 		Math::wrapAround( $lat1, $lat2, -90, 90 );
 		Math::wrapAround( $lon1, $lon2, $globe->getMinLongitude(), $globe->getMaxLongitude() );
-		return self::newFromNumbers( $lat1, $lon1, $lat2, $lon2, $coord->globe );
+		return self::newFromNumbers( $lat1, $lon1, $lat2, $lon2, $globe );
 	}
 
 	/**

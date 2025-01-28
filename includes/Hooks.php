@@ -141,7 +141,7 @@ class Hooks implements
 			if ( ( $lat || $lon ) &&
 				$globe->coordinatesAreValid( $lat, $lon )
 			) {
-				$coord = new Coord( $lat, $lon, $globe->getName() );
+				$coord = new Coord( $lat, $lon, $globe );
 				$coord->primary = true;
 				return $coord;
 			}
@@ -333,7 +333,7 @@ class Hooks implements
 
 			/** @var Coord $coord */
 			foreach ( $allCoords as $coord ) {
-				if ( $coord->globe !== Globe::EARTH ) {
+				if ( !$coord->sameGlobe( Globe::EARTH ) ) {
 					continue;
 				}
 				if ( !$coord->isValid() ) {

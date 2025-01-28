@@ -89,7 +89,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 		) {
 			$this->dieWithError( 'apierror-geodata-invalidbox', 'invalid-bbox' );
 		}
-		$bbox = BoundingBox::newFromNumbers( $vals[0], $vals[1], $vals[2], $vals[3], $globe->getName() );
+		$bbox = BoundingBox::newFromNumbers( $vals[0], $vals[1], $vals[2], $vals[3], $globe );
 		$area = $bbox->area();
 		$maxRadius = $this->getConfig()->get( 'MaxGeoSearchRadius' );
 		if ( $area > $maxRadius * $maxRadius * 4 || $area < 100 ) {
@@ -112,7 +112,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
 				$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
 			}
-			$this->coord = new Coord( floatval( $arr[0] ), floatval( $arr[1] ), $globe->getName() );
+			$this->coord = new Coord( floatval( $arr[0] ), floatval( $arr[1] ), $globe );
 		} elseif ( isset( $params['page'] ) ) {
 			$t = Title::newFromText( $params['page'] );
 			if ( !$t || !$t->canExist() ) {

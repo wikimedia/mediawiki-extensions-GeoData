@@ -61,7 +61,7 @@ class BoundingBoxTest extends MediaWikiUnitTestCase {
 		$center = $bbox->center();
 		$this->assertEquals( $latExpected, $center->lat, 'Comparing latitudes...' );
 		$this->assertEquals( $lonExpected, $center->lon, 'Comparing longitudes...' );
-		$this->assertSame( 'moon', $center->globe );
+		$this->assertTrue( $center->sameGlobe( 'moon' ) );
 	}
 
 	public static function provideCenter() {

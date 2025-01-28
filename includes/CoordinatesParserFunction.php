@@ -314,7 +314,7 @@ class CoordinatesParserFunction {
 		if ( $lon === false ) {
 			return Status::newFatal( 'geodata-bad-longitude' );
 		}
-		return Status::newGood( new Coord( (float)$lat, (float)$lon, $globe->getName() ) );
+		return Status::newGood( new Coord( (float)$lat, (float)$lon, $globe ) );
 	}
 
 	/**

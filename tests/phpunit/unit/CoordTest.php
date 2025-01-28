@@ -25,7 +25,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 		] );
 		$this->assertSame( 1.0, $coord->lat );
 		$this->assertSame( 2.0, $coord->lon );
-		$this->assertSame( 'fantasy', $coord->globe );
+		$this->assertTrue( $coord->sameGlobe( 'fantasy' ) );
 		$this->assertFalse( $coord->primary );
 		$this->assertSame( 5, $coord->dim );
 	}
@@ -281,6 +281,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 	public function testGlobeObj( string $name ) {
 		$c = new Coord( 10, 20, $name );
 		$this->assertTrue( $c->getGlobeObj()->equalsTo( new Globe( $name ) ) );
+		$this->assertTrue( $c->sameGlobe( $name ) );
 		$this->assertTrue( $c->isValid() );
 	}
 

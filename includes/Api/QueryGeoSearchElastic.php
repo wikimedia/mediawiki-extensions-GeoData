@@ -277,7 +277,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			return false;
 		}
 		// Only one globe is supported for search, this is future-proof
-		if ( $coord->globe != $this->coord->globe ) {
+		if ( !$this->coord->sameGlobe( $coord ) ) {
 			return false;
 		}
 		if ( isset( $this->params['maxdim'] ) && $coord->dim > $this->params['maxdim'] ) {

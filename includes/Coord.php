@@ -64,13 +64,13 @@ class Coord implements JsonSerializable {
 	/**
 	 * @param float $lat
 	 * @param float $lon
-	 * @param string $globe
+	 * @param Globe|string $globe
 	 * @param array<string,mixed> $extraFields
 	 */
-	public function __construct( $lat, $lon, string $globe = Globe::EARTH, $extraFields = [] ) {
+	public function __construct( $lat, $lon, $globe = Globe::EARTH, $extraFields = [] ) {
 		$this->lat = (float)$lat;
 		$this->lon = (float)$lon;
-		$this->globe = $globe;
+		$this->globe = $globe instanceof Globe ? $globe->getName() : $globe;
 
 		foreach ( $extraFields as $key => $value ) {
 			if ( isset( self::FIELD_MAPPING[$key] ) ) {
@@ -108,17 +108,28 @@ class Coord implements JsonSerializable {
 	}
 
 	/**
+	 * @param self|Globe|string $other
+	 * @return bool
+	 */
+	public function sameGlobe( $other ): bool {
+		if ( $other instanceof self ) {
+			$other = $other->globe;
+		}
+		return $this->getGlobeObj()->equalsTo( $other );
+	}
+
+	/**
 	 * Compares this coordinates with the given coordinates
 	 *
-	 * @param self|null $coord Coordinate to compare with
+	 * @param self|null $other Coordinate to compare with
 	 * @param int $precision Comparison precision
 	 * @return bool
 	 */
-	public function equalsTo( $coord, $precision = 6 ): bool {
-		return $coord !== null
-			&& round( $this->lat, $precision ) == round( $coord->lat, $precision )
-			&& round( $this->lon, $precision ) == round( $coord->lon, $precision )
-			&& $this->globe === $coord->globe;
+	public function equalsTo( $other, $precision = 6 ): bool {
+		return $other !== null
+			&& round( $this->lat, $precision ) == round( $other->lat, $precision )
+			&& round( $this->lon, $precision ) == round( $other->lon, $precision )
+			&& $this->sameGlobe( $other );
 	}
 
 	/**

@@ -79,7 +79,7 @@ class QueryCoordinates extends ApiQueryBase {
 					$vals[$prop] = $row->$column;
 				}
 			}
-			if ( $from && $row->gt_globe == $from->globe ) {
+			if ( $from && $from->sameGlobe( $row->gt_globe ) ) {
 				$vals['dist'] = round(
 					$from->distanceTo( Coord::newFromRow( $row ) ),
 					1
@@ -100,7 +100,7 @@ class QueryCoordinates extends ApiQueryBase {
 			if ( count( $arr ) != 2 || !$globe->coordinatesAreValid( $arr[0], $arr[1] ) ) {
 				$this->dieWithError( 'apierror-geodata-badcoord', 'invalid-coord' );
 			}
-			return new Coord( (float)$arr[0], (float)$arr[1], $globe->getName() );
+			return new Coord( (float)$arr[0], (float)$arr[1], $globe );
 		}
 		if ( $params['distancefrompage'] !== null ) {
 			$title = Title::newFromText( $params['distancefrompage'] );
@@ -126,7 +126,7 @@ class QueryCoordinates extends ApiQueryBase {
 					'no-coordinates'
 				);
 			}
-			if ( $coord->globe !== Globe::EARTH ) {
+			if ( !$coord->sameGlobe( Globe::EARTH ) ) {
 				$this->dieWithError( 'apierror-geodata-notonearth', 'notonearth' );
 			}
 			return $coord;

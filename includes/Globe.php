@@ -149,9 +149,12 @@ class Globe {
 
 	/**
 	 * Compares this globe to another
+	 *
+	 * @param Globe|string $other
+	 * @return bool
 	 */
-	public function equalsTo( Globe $other ): bool {
-		return $this->name === $other->name;
+	public function equalsTo( $other ): bool {
+		return $this->name === ( $other instanceof Globe ? $other->name : $other );
 	}
 
 	/**

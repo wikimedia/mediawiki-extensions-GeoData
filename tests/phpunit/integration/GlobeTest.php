@@ -32,6 +32,7 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( 1, $g->getEastSign() );
 		$this->assertSame( Math::EARTH_RADIUS, $g->getRadius() );
 		$this->assertTrue( $g->equalsTo( new Globe( Globe::EARTH ) ) );
+		$this->assertTrue( $g->equalsTo( Globe::EARTH ) );
 	}
 
 	public function testMars() {
