@@ -35,12 +35,28 @@ class BoundingBox {
 	}
 
 	/**
-	 * @internal Temporary helper method until we find a better solution
+	 * Returns a bounding rectangle around this coordinate
 	 */
-	public function wrapAround(): void {
-		Math::wrapAround( $this->coord1->lat, $this->coord2->lat, -90, 90 );
-		// FIXME: This is not correct for other globes!
-		Math::wrapAround( $this->coord1->lon, $this->coord2->lon, -180, 180 );
+	public static function newFromRadius( Coord $coord, int $radius ): self {
+		if ( $radius <= 0 ) {
+			return self::newFromPoints( $coord, $coord );
+		}
+
+		$globe = $coord->getGlobeObj();
+		$r2lat = rad2deg( $radius / $globe->getRadius() );
+		// @todo: doesn't work around poles, should we care?
+		if ( abs( $coord->lat ) < 89.9 ) {
+			$r2lon = rad2deg( $radius / cos( deg2rad( $coord->lat ) ) / $globe->getRadius() );
+		} else {
+			$r2lon = 0.1;
+		}
+		$lat1 = $coord->lat - $r2lat;
+		$lon1 = $coord->lon - $r2lon;
+		$lat2 = $coord->lat + $r2lat;
+		$lon2 = $coord->lon + $r2lon;
+		Math::wrapAround( $lat1, $lat2, -90, 90 );
+		Math::wrapAround( $lon1, $lon2, $globe->getMinLongitude(), $globe->getMaxLongitude() );
+		return self::newFromNumbers( $lat1, $lon1, $lat2, $lon2, $coord->globe );
 	}
 
 	/**

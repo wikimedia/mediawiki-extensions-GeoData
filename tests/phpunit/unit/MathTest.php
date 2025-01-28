@@ -2,6 +2,7 @@
 
 namespace GeoData\Test;
 
+use GeoData\BoundingBox;
 use GeoData\Coord;
 use GeoData\Math;
 use MediaWikiUnitTestCase;
@@ -56,7 +57,7 @@ class MathTest extends MediaWikiUnitTestCase {
 	 */
 	public function testRectWrapAround( float $lon ) {
 		$coord = new Coord( 20, $lon );
-		$bbox = $coord->bboxAround( 10000 );
+		$bbox = BoundingBox::newFromRadius( $coord, 10000 );
 		$coord1 = $bbox->topLeft();
 		$coord2 = $bbox->bottomRight();
 		$this->assertGreaterThan( $coord2->lon, $coord1->lon );

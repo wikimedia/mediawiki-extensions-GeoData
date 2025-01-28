@@ -33,7 +33,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	protected $bbox;
 
 	/**
-	 * @var int Search radius
+	 * @var int Search radius in meter
 	 */
 	protected $radius;
 

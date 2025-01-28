@@ -2,6 +2,7 @@
 
 namespace GeoData\Test;
 
+use GeoData\BoundingBox;
 use GeoData\Coord;
 use GeoData\Globe;
 use GeoData\Math;
@@ -242,7 +243,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 	public function testBboxAround() {
 		for ( $i = 0; $i < 90; $i += 5 ) {
 			$coord = new Coord( $i, $i );
-			$bbox = $coord->bboxAround( 5000 );
+			$bbox = BoundingBox::newFromRadius( $coord, 5000 );
 			$coord1 = $bbox->topLeft();
 			$coord2 = $bbox->bottomRight();
 			$radius = $coord->getGlobeObj()->getRadius();
@@ -260,7 +261,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 	 */
 	public function testBoundingBoxesWithGlobes( string $globe, float $expected ) {
 		$coord = new Coord( 0, 0, $globe );
-		$bbox = $coord->bboxAround( 5000 );
+		$bbox = BoundingBox::newFromRadius( $coord, 5000 );
 		$coord2 = $bbox->bottomRight();
 		$this->assertEqualsWithDelta( $expected, $coord2->lat, 0.001 );
 		$this->assertEqualsWithDelta( $expected, $coord2->lon, 0.001 );

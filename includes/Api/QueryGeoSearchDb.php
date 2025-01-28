@@ -2,6 +2,7 @@
 
 namespace GeoData\Api;
 
+use GeoData\BoundingBox;
 use GeoData\Coord;
 use GeoData\Globe;
 use MediaWiki\Api\ApiPageSet;
@@ -102,7 +103,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 	}
 
 	protected function addCoordFilter(): void {
-		$bbox = $this->bbox ?: $this->coord->bboxAround( $this->radius );
+		$bbox = $this->bbox ?: BoundingBox::newFromRadius( $this->coord, $this->radius );
 		$coord1 = $bbox->topLeft();
 		$coord2 = $bbox->bottomRight();
 		$this->addWhereFld( 'gt_lat_int', $this->intRange( $coord1->lat, $coord2->lat ) );

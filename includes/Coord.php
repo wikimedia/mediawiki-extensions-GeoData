@@ -146,35 +146,6 @@ class Coord implements JsonSerializable {
 	}
 
 	/**
-	 * Returns a bounding rectangle around this coordinate
-	 *
-	 * @param float $radius
-	 * @return BoundingBox
-	 */
-	public function bboxAround( $radius ): BoundingBox {
-		if ( $radius <= 0 ) {
-			return BoundingBox::newFromPoints( $this, $this );
-		}
-		$globe = $this->getGlobeObj();
-		$r2lat = rad2deg( $radius / $globe->getRadius() );
-		// @todo: doesn't work around poles, should we care?
-		if ( abs( $this->lat ) < 89.9 ) {
-			$r2lon = rad2deg( $radius / cos( deg2rad( $this->lat ) ) / $globe->getRadius() );
-		} else {
-			$r2lon = 0.1;
-		}
-		$res = BoundingBox::newFromNumbers(
-			$this->lat - $r2lat,
-			$this->lon - $r2lon,
-			$this->lat + $r2lat,
-			$this->lon + $r2lon,
-			$this->globe
-		);
-		$res->wrapAround();
-		return $res;
-	}
-
-	/**
 	 * Returns a distance from these coordinates to another ones
 	 *
 	 * @param Coord $coord
