@@ -37,8 +37,8 @@ class CoordinatesOutput implements JsonSerializable {
 	 */
 	public static function getOrBuildFromParserOutput(
 		ParserOutput $parserOutput
-	): CoordinatesOutput {
-		return self::getFromParserOutput( $parserOutput ) ?? new CoordinatesOutput();
+	): self {
+		return self::getFromParserOutput( $parserOutput ) ?? new self();
 	}
 
 	/**
@@ -51,7 +51,7 @@ class CoordinatesOutput implements JsonSerializable {
 	/**
 	 * Get the CoordinatesOutput attached to this ParserOutput
 	 * @param ParserOutput $parserOutput
-	 * @return CoordinatesOutput|null existing CoordinatesOutput or null
+	 * @return self|null existing CoordinatesOutput or null
 	 */
 	public static function getFromParserOutput( ParserOutput $parserOutput ) {
 		$coordsOutput = $parserOutput->getExtensionData( self::GEO_DATA_COORDS_OUTPUT );
@@ -59,7 +59,7 @@ class CoordinatesOutput implements JsonSerializable {
 			if ( is_array( $coordsOutput ) ) {
 				$coordsOutput = self::newFromJson( $coordsOutput );
 			}
-			Assert::invariant( $coordsOutput instanceof CoordinatesOutput,
+			Assert::invariant( $coordsOutput instanceof self,
 				'ParserOutput extension data ' . self::GEO_DATA_COORDS_OUTPUT .
 				' must be an instance of CoordinatesOutput' );
 		}
@@ -145,7 +145,7 @@ class CoordinatesOutput implements JsonSerializable {
 	 * @see jsonSerialize
 	 */
 	public static function newFromJson( array $jsonArray ): self {
-		$coordOutput = new CoordinatesOutput();
+		$coordOutput = new self();
 		$coordOutput->limitExceeded = $jsonArray['limitExceeded'];
 		$coordOutput->primary = $jsonArray['primary'] ? Coord::newFromJson( $jsonArray['primary'] ) : false;
 		$coordOutput->secondary = array_map( static function ( array $jsonCoord ) {
