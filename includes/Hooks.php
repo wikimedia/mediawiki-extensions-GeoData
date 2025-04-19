@@ -3,32 +3,32 @@
 namespace GeoData;
 
 use CirrusSearch\CirrusSearch;
-use File;
 use GeoData\Search\CoordinatesIndexField;
-use ManualLogEntry;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\Content;
 use MediaWiki\Content\ContentHandler;
 use MediaWiki\Content\Hook\SearchDataForIndexHook;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\LinksUpdateCompleteHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Output\Hook\OutputPageParserOutputHook;
 use MediaWiki\Page\Hook\ArticleDeleteCompleteHook;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\User;
-use RepoGroup;
 use SearchEngine;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\LBFactory;
-use WikiPage;
 
 /**
  * Hook handlers

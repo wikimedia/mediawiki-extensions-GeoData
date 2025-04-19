@@ -11,12 +11,12 @@ use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
 use MediaWiki\Config\Config;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
 use RuntimeException;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
-use WikiPage;
 
 class QueryGeoSearch extends ApiQueryGeneratorBase {
 	private const MIN_RADIUS = 10;
