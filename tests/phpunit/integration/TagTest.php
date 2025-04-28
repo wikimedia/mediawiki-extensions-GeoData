@@ -31,18 +31,17 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		$title = Title::makeTitle( NS_MAIN, __METHOD__ );
 		$title->setContentModel( CONTENT_MODEL_WIKITEXT );
 		$out = $p->parse( $input, $title, $opt );
+		$coordinatesOutput = CoordinatesOutput::getFromParserOutput( $out );
+
 		if ( !$expected ) {
-			$this->assertNull( CoordinatesOutput::getFromParserOutput( $out ),
-				'Expected a failure but a result was found: ' .
-					print_r( CoordinatesOutput::getFromParserOutput( $out ), true )
-			);
+			$this->assertNull( $coordinatesOutput );
 			return;
 		}
-		$this->assertNotNull( CoordinatesOutput::getFromParserOutput( $out ) );
-		$all = CoordinatesOutput::getFromParserOutput( $out )->getAll();
+
+		$this->assertInstanceOf( CoordinatesOutput::class, $coordinatesOutput );
+		$all = $coordinatesOutput->getAll();
 		$this->assertCount( 1, $all,
 			'A result was expected, but there was error: ' . strip_tags( $out->getRawText() ) );
-		/** @var Coord $coord */
 		$coord = $all[0];
 		$this->assertTrue( $coord->fullyEqualsTo( $expected ),
 			'Comparing ' . print_r( $coord, true ) .
