@@ -58,7 +58,7 @@ class Coord implements JsonSerializable {
 	/** @var int */
 	public $pageId;
 
-	/** @var float Distance in metres */
+	/** @var float Distance in meters */
 	public $distance;
 
 	/**
@@ -146,10 +146,10 @@ class Coord implements JsonSerializable {
 	}
 
 	/**
-	 * Returns a distance from these coordinates to another ones
+	 * Calculates the distance between this and another pair of coordinates.
 	 *
 	 * @param Coord $coord
-	 * @return float Distance in metres
+	 * @return float Distance in meters
 	 */
 	public function distanceTo( Coord $coord ): float {
 		return Math::distance( $this->lat, $this->lon, $coord->lat, $coord->lon,
