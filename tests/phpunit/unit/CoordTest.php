@@ -267,7 +267,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 		$this->assertEqualsWithDelta( $expected, $coord2->lon, 0.001 );
 	}
 
-	public function provideBoundingBoxes() {
+	public static function provideBoundingBoxes() {
 		return [
 			[ Globe::EARTH, 0.045 ],
 			[ 'mars', 0.085 ],
