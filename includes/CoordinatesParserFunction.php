@@ -8,7 +8,7 @@ use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Parser\PPFrame;
 use MediaWiki\Parser\PPNode;
-use MediaWiki\Status\Status;
+use StatusValue;
 
 /**
  * Handler for the #coordinates parser function
@@ -42,7 +42,7 @@ class CoordinatesParserFunction {
 	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 * @param PPNode[] $args
-	 * @return mixed
+	 * @return string|array
 	 */
 	public function coordinates( Parser $parser, PPFrame $frame, array $args ) {
 		$this->parser = $parser;
@@ -77,7 +77,7 @@ class CoordinatesParserFunction {
 	/**
 	 * @return Language Current parsing language
 	 */
-	private function getLanguage() {
+	private function getLanguage(): Language {
 		return $this->parser->getContentLanguage();
 	}
 
@@ -86,7 +86,7 @@ class CoordinatesParserFunction {
 	 * @param PPFrame $frame
 	 * @param PPNode[] $args
 	 */
-	private function parseArgs( $frame, $args ) {
+	private function parseArgs( PPFrame $frame, array $args ): void {
 		$first = trim( $frame->expand( array_shift( $args ) ) );
 		$this->addArg( $first );
 		foreach ( $args as $arg ) {
@@ -101,10 +101,9 @@ class CoordinatesParserFunction {
 	}
 
 	/**
-	 * Add an unnamed parameter to the list, turining it into a named one if needed
-	 * @param string $value Parameter
+	 * Add an unnamed parameter to the list, turning it into a named one if needed
 	 */
-	private function addArg( $value ) {
+	private function addArg( string $value ): void {
 		$primary = $this->parser->getMagicWordFactory()->get( 'primary' );
 		if ( $primary->match( $value ) ) {
 			$this->named['primary'] = true;
@@ -119,26 +118,26 @@ class CoordinatesParserFunction {
 	 * Applies a coordinate to parser output
 	 *
 	 * @param Coord $coord
-	 * @return Status whether save went OK
+	 * @return StatusValue whether save went OK
 	 */
-	private function applyCoord( Coord $coord ) {
+	private function applyCoord( Coord $coord ): StatusValue {
 		$maxCoordinatesPerPage = $this->config->get( 'MaxCoordinatesPerPage' );
 		$geoData = CoordinatesOutput::getOrBuildFromParserOutput( $this->output );
 		if ( $maxCoordinatesPerPage >= 0 && $geoData->getCount() >= $maxCoordinatesPerPage ) {
 			if ( $geoData->limitExceeded ) {
 				$geoData->setToParserOutput( $this->output );
-				return Status::newFatal( '' );
+				return StatusValue::newFatal( '' );
 			}
 			$geoData->limitExceeded = true;
 			$geoData->setToParserOutput( $this->output );
-			return Status::newFatal( 'geodata-limit-exceeded',
+			return StatusValue::newFatal( 'geodata-limit-exceeded',
 				$this->getLanguage()->formatNum( $maxCoordinatesPerPage )
 			);
 		}
 		if ( $coord->primary ) {
 			if ( $geoData->hasPrimary() ) {
 				$geoData->setToParserOutput( $this->output );
-				return Status::newFatal( 'geodata-multiple-primary' );
+				return StatusValue::newFatal( 'geodata-multiple-primary' );
 			} else {
 				$geoData->addPrimary( $coord );
 			}
@@ -146,7 +145,7 @@ class CoordinatesParserFunction {
 			$geoData->addSecondary( $coord );
 		}
 		$geoData->setToParserOutput( $this->output );
-		return Status::newGood();
+		return StatusValue::newGood();
 	}
 
 	/**
@@ -167,11 +166,7 @@ class CoordinatesParserFunction {
 		$this->globe = new Globe( $globe );
 	}
 
-	/**
-	 * @param Coord $coord
-	 * @return Status
-	 */
-	private function applyTagArgs( Coord $coord ) {
+	private function applyTagArgs( Coord $coord ): StatusValue {
 		$typeToDim = $this->config->get( 'TypeToDim' );
 		$defaultDim = $this->config->get( 'DefaultDim' );
 		$geoDataWarningLevel = $this->config->get( 'GeoDataWarningLevel' );
@@ -181,7 +176,7 @@ class CoordinatesParserFunction {
 		if ( !$this->globe->isKnown() ) {
 			switch ( $geoDataWarningLevel['unknown globe'] ?? null ) {
 				case 'fail':
-					return Status::newFatal( 'geodata-bad-globe', $coord->globe );
+					return StatusValue::newFatal( 'geodata-bad-globe', wfEscapeWikiText( $coord->globe ) );
 				case 'warn':
 					$this->parser->addTrackingCategory( 'geodata-unknown-globe-category' );
 					break;
@@ -195,7 +190,7 @@ class CoordinatesParserFunction {
 			} else {
 				switch ( $geoDataWarningLevel['unknown type'] ?? null ) {
 					case 'fail':
-						return Status::newFatal( 'geodata-bad-type', $coord->type );
+						return StatusValue::newFatal( 'geodata-bad-type', wfEscapeWikiText( $coord->type ) );
 					case 'warn':
 						$this->parser->addTrackingCategory( 'geodata-unknown-type-category' );
 						break;
@@ -207,8 +202,8 @@ class CoordinatesParserFunction {
 		}
 		if ( isset( $args['dim'] ) ) {
 			$dim = $this->parseDim( $args['dim'] );
-			if ( $dim !== false ) {
-				$coord->dim = intval( $dim );
+			if ( $dim !== null ) {
+				$coord->dim = $dim;
 			}
 		}
 		$coord->name = $args['name'] ?? null;
@@ -220,21 +215,21 @@ class CoordinatesParserFunction {
 			} else {
 				switch ( $geoDataWarningLevel['invalid region'] ?? null ) {
 					case 'fail':
-						return Status::newFatal( 'geodata-bad-region', $args['region'] );
+						return StatusValue::newFatal( 'geodata-bad-region', wfEscapeWikiText( $args['region'] ) );
 					case 'warn':
 						$this->parser->addTrackingCategory( 'geodata-unknown-region-category' );
 						break;
 				}
 			}
 		}
-		return Status::newGood();
+		return StatusValue::newGood();
 	}
 
 	/**
 	 * @param string $str
 	 * @return array<string,string>
 	 */
-	private function parseGeoHackArgs( $str ): array {
+	private function parseGeoHackArgs( string $str ): array {
 		$result = [];
 		// per GeoHack docs, spaces and underscores are equivalent
 		$str = str_replace( '_', ' ', $str );
@@ -247,40 +242,28 @@ class CoordinatesParserFunction {
 		return $result;
 	}
 
-	/**
-	 * @param string|int $str
-	 * @return string|int|false
-	 */
-	private function parseDim( $str ) {
-		if ( is_numeric( $str ) ) {
-			return $str > 0 ? $str : false;
+	private function parseDim( string $dim ): ?int {
+		if ( preg_match( '/^(\d+)(km|m)$/i', $dim, $matches ) ) {
+			$dim = (int)$matches[1];
+			if ( strtolower( $matches[2] ) === 'km' ) {
+				$dim *= 1000;
+			}
 		}
-		if ( !preg_match( '/^(\d+)(km|m)$/i', $str, $m ) ) {
-			return false;
-		}
-		if ( strtolower( $m[2] ) == 'km' ) {
-			return (int)$m[1] * 1000;
-		}
-		return $m[1];
+		return is_numeric( $dim ) && $dim > 0 ? (int)$dim : null;
 	}
 
 	/**
 	 * Returns wikitext of status error message in content language
 	 *
-	 * @param Status $s
-	 * @return string
+	 * @param StatusValue $status
+	 * @return string Wikitext
 	 */
-	private function errorText( Status $s ): string {
-		$errors = array_merge( $s->getErrorsArray(), $s->getWarningsArray() );
-		if ( $errors === [] ) {
+	private function errorText( StatusValue $status ): string {
+		$errors = $status->getMessages();
+		if ( !$errors || !$errors[0]->getKey() ) {
 			return '';
 		}
-		$err = $errors[0];
-		$message = array_shift( $err );
-		if ( $message === '' ) {
-			return '';
-		}
-		return wfMessage( $message )->params( $err )->inContentLanguage()->plain();
+		return wfMessage( $errors[0] )->inContentLanguage()->plain();
 	}
 
 	/**
@@ -289,21 +272,21 @@ class CoordinatesParserFunction {
 	 *
 	 * @param string[] $parts Array of coordinate components
 	 * @param Globe $globe Globe these coordinates belong to
-	 * @return Status Operation status, in case of success its value is a Coord object
+	 * @return StatusValue Operation status, in case of success its value is a Coord object
 	 */
-	private function parseCoordinates( $parts, Globe $globe ) {
+	private function parseCoordinates( array $parts, Globe $globe ): StatusValue {
 		$latSuffixes = [ 'N' => 1, 'S' => -1 ];
 		$lonSuffixes = [ 'E' => $globe->getEastSign(), 'W' => -$globe->getEastSign() ];
 
 		$count = count( $parts );
-		if ( !is_array( $parts ) || $count < 2 || $count > 8 || ( $count % 2 ) ) {
-			return Status::newFatal( 'geodata-bad-input' );
+		if ( $count < 2 || $count > 8 || ( $count % 2 ) ) {
+			return StatusValue::newFatal( 'geodata-bad-input' );
 		}
 		[ $latArr, $lonArr ] = array_chunk( $parts, $count / 2 );
 
 		$lat = $this->parseOneCoord( $latArr, -90, 90, $latSuffixes );
 		if ( $lat === false ) {
-			return Status::newFatal( 'geodata-bad-latitude' );
+			return StatusValue::newFatal( 'geodata-bad-latitude' );
 		}
 
 		$lon = $this->parseOneCoord( $lonArr,
@@ -312,9 +295,9 @@ class CoordinatesParserFunction {
 			$lonSuffixes
 		);
 		if ( $lon === false ) {
-			return Status::newFatal( 'geodata-bad-longitude' );
+			return StatusValue::newFatal( 'geodata-bad-longitude' );
 		}
-		return Status::newGood( new Coord( (float)$lat, (float)$lon, $globe ) );
+		return StatusValue::newGood( new Coord( (float)$lat, (float)$lon, $globe ) );
 	}
 
 	/**
@@ -386,7 +369,7 @@ class CoordinatesParserFunction {
 	 * @param array<string,int> $suffixes
 	 * @return int Sign modifier or 0 if not a suffix
 	 */
-	private function parseSuffix( $str, array $suffixes ): int {
+	private function parseSuffix( string $str, array $suffixes ): int {
 		$str = $this->getLanguage()->uc( trim( $str ) );
 		return $suffixes[$str] ?? 0;
 	}
