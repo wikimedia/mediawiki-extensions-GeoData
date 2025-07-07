@@ -15,6 +15,7 @@ use MediaWikiIntegrationTestCase;
  * @covers \GeoData\CoordinatesOutput::getOrBuildFromParserOutput()
  * @covers \GeoData\CoordinatesOutput::getFromParserOutput()
  * @group GeoData
+ * @group Database
  */
 class TagTest extends MediaWikiIntegrationTestCase {
 
