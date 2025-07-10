@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apihelp-query+coordinates-paramvalue-prop-name": "Объектан цӀе.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Объектан гергара барам метрашца.",
+	"apihelp-query+coordinates-param-primary": "Муьлхачу тайпана координаташ йухадерзо.",
+	"apihelp-query+geosearch-param-radius": "Лехаран радиус метрашца.",
+	"apihelp-query+geosearch-param-sort": "Йухадерзийначу жамӀийн дӀасакъастаран рогӀалла билгалйоккху.",
+	"apihelp-query+geosearch-param-namespace": "Лехамна цӀеран меттигаш.",
+	"apihelp-query+geosearch-param-primary": "Муьлхачу тайпана координаташ йухадерзо.",
+	"apierror-geodata-nocoord": "АгӀонан координаташ девзаш дац."
+}
