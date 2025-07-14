@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Joseph",
 			"McDutchie",
 			"MuratTheTurkish"
 		]
@@ -28,7 +29,7 @@
 	"apihelp-query+geosearch-param-page": "Etrafında aranacak sayfanın başlığı.",
 	"apihelp-query+geosearch-param-radius": "Metre cinsinden arayın.",
 	"apihelp-query+geosearch-param-maxdim": "Aramayı metre cinsinden bundan daha büyük olmayan nesnelerle sınırlandırın.",
-	"apihelp-query+geosearch-param-limit": "Döndürülecek maksimum sayfa sayısı.",
+	"apihelp-query+geosearch-param-limit": "Döndürülecek en fazla sayfa sayısı.",
 	"apihelp-query+geosearch-param-globe": "Dünya aranacak. Ayrıntılar için [[mw:Special:MyLanguage/Extension:GeoData#Glossary]] sayfasına bakın.",
 	"apihelp-query+geosearch-param-namespace": "Aranacak ad alanları.",
 	"apihelp-query+geosearch-param-prop": "Hangi ek koordinat özellikleri döndürülecek. (Her zaman döndürülen özellikler: bir boole bayrağı olarak <var>lat</var>, <var>lon</var> ve <var>primary</var> veya <var>secondary</var>.)",
