@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apihelp-query+coordinates-paramvalue-prop-name": "Объектан цӀе.",
+	"apihelp-query+coordinates-paramvalue-prop-dim": "Объектан гергара барам метрашца.",
+	"apihelp-query+coordinates-param-primary": "Муьлхачу тайпана координаташ йухадерзо.",
+	"apihelp-query+geosearch-param-radius": "Лехаран радиус метрашца.",
+	"apihelp-query+geosearch-param-sort": "Йухадерзийначу жамӀийн дӀасакъастаран рогӀалла билгалйоккху.",
+	"apihelp-query+geosearch-param-namespace": "Лехамна цӀеран меттигаш.",
+	"apihelp-query+geosearch-param-primary": "Муьлхачу тайпана координаташ йухадерзо.",
+	"apihelp-query+geosearch-param-debug": "Нисдо информаци йухайерзо йеза йа ца йеза.",
+	"apihelp-query+geosearch-example-1": "Координатийн тӀадаман уллехь леха 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
+	"apihelp-query+geosearch-example-2": "Доза тоьхначу меттигехь леха",
+	"apierror-geodata-nocoord": "АгӀонан координаташ девзаш дац.",
+	"apierror-geodata-noprimarycoord": "«$1» агӀонан йуьхьанцара координаташ йац.",
+	"apierror-geodata-notonearth": "АгӀонан координаташ Лаьтта тӀехь йац.",
+	"apierror-geodata-invalidbox": "Нийса доцу дозанаш.",
+	"apierror-geodata-boxtoobig": "Дозанийн меттиг тӀех йоккха йу",
+	"apierror-geodata-badcoord": "Йихкина нийса йоцу координаташ"
+}
