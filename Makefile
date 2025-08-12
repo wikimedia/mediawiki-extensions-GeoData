@@ -2,4 +2,4 @@ MW_INSTALL_PATH ?= ../..
 
 default:
 
-	cd ${MW_INSTALL_PATH}/tests/phpunit && php phpunit.php --group=GeoData
+	${MW_INSTALL_PATH}/vendor/bin/phpunit --group=GeoData
