@@ -11,7 +11,7 @@ use MediaWikiUnitTestCase;
 /**
  * @covers \GeoData\Coord
  *
- * @todo: More tests
+ * @todo More tests
  * @group GeoData
  */
 class CoordTest extends MediaWikiUnitTestCase {

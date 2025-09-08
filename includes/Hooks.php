@@ -32,7 +32,7 @@ use Wikimedia\Rdbms\LBFactory;
 
 /**
  * Hook handlers
- * @todo: tests
+ * @todo tests
  */
 class Hooks implements
 	SearchDataForIndexHook,
