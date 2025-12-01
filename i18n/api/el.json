@@ -3,7 +3,8 @@
 		"authors": [
 			"KATRINE1992",
 			"McDutchie",
-			"Norhorn"
+			"Norhorn",
+			"Jimkats"
 		]
 	},
 	"apihelp-query+coordinates-param-prop": "Ποιες επιπλέον ιδιότητες παραμέτρων πρέπει να επαναφερθούν. (Ιδιότητες που πάντα επαναφέρονται: <var>lat</var>, <var>lon</var>, και είτε <var>primary</var> ή <var>secondary</var> ως σηματοδότηση.)",
