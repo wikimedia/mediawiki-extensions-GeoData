@@ -23,15 +23,13 @@ use MediaWiki\Title\Title;
 class QueryGeoSearchElastic extends QueryGeoSearch {
 	/** @var array|null */
 	private $params;
-	private NamespaceInfo $namespaceInfo;
 
 	public function __construct(
 		ApiQuery $query,
 		string $moduleName,
-		NamespaceInfo $namespaceInfo
+		private readonly NamespaceInfo $namespaceInfo,
 	) {
 		parent::__construct( $query, $moduleName );
-		$this->namespaceInfo = $namespaceInfo;
 	}
 
 	/**

@@ -19,11 +19,12 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  */
 class QueryCoordinates extends ApiQueryBase {
 
-	private WikiPageFactory $wikiPageFactory;
-
-	public function __construct( ApiQuery $query, string $moduleName, WikiPageFactory $wikiPageFactory ) {
+	public function __construct(
+		ApiQuery $query,
+		string $moduleName,
+		private readonly WikiPageFactory $wikiPageFactory
+	) {
 		parent::__construct( $query, $moduleName, 'co' );
-		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	public function execute(): void {

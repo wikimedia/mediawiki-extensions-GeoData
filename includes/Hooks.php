@@ -43,24 +43,13 @@ class Hooks implements
 	FileUploadHook
 {
 
-	private Config $config;
-	private IConnectionProvider $connectionProvider;
-	private LBFactory $lbFactory;
-	private RepoGroup $repoGroup;
-	private WikiPageFactory $wikiPageFactory;
-
 	public function __construct(
-		Config $config,
-		IConnectionProvider $connectionProvider,
-		LBFactory $lbFactory,
-		RepoGroup $repoGroup,
-		WikiPageFactory $wikiPageFactory
+		private readonly Config $config,
+		private readonly IConnectionProvider $connectionProvider,
+		private readonly LBFactory $lbFactory,
+		private readonly RepoGroup $repoGroup,
+		private readonly WikiPageFactory $wikiPageFactory,
 	) {
-		$this->config = $config;
-		$this->connectionProvider = $connectionProvider;
-		$this->lbFactory = $lbFactory;
-		$this->repoGroup = $repoGroup;
-		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	/**
