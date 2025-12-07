@@ -7,19 +7,14 @@ use GeoData\Coord;
 use GeoData\Globe;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
-use MediaWiki\Config\Config;
 use MediaWiki\Title\Title;
 
 class QueryGeoSearchDb extends QueryGeoSearch {
-	private Config $config;
-
 	public function __construct(
 		ApiQuery $query,
 		string $moduleName,
-		Config $config
 	) {
 		parent::__construct( $query, $moduleName );
-		$this->config = $config;
 	}
 
 	/**
@@ -126,7 +121,7 @@ class QueryGeoSearchDb extends QueryGeoSearch {
 	 * @return int[]
 	 */
 	public function intRange( float $start, float $end ): array {
-		$granularity = $this->config->get( 'GeoDataIndexGranularity' );
+		$granularity = $this->getConfig()->get( 'GeoDataIndexGranularity' );
 		$start = round( $start * $granularity );
 		$end = round( $end * $granularity );
 		// @todo: works only on Earth

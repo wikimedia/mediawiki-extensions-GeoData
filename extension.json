@@ -15,7 +15,6 @@
 			"class": "GeoData\\Api\\QueryGeoSearch",
 			"factory": "GeoData\\Api\\QueryGeoSearch::factory",
 			"services": [
-				"MainConfig",
 				"NamespaceInfo"
 			]
 		}

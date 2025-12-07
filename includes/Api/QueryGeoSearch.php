@@ -10,7 +10,6 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
-use MediaWiki\Config\Config;
 use MediaWiki\Page\WikiPage;
 use MediaWiki\Title\NamespaceInfo;
 use MediaWiki\Title\Title;
@@ -45,14 +44,13 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 	public static function factory(
 		ApiQuery $query,
 		string $moduleName,
-		Config $config,
 		NamespaceInfo $namespaceInfo
 	): self {
 		$geoDataBackend = $query->getConfig()->get( 'GeoDataBackend' );
 
 		switch ( strtolower( $geoDataBackend ) ) {
 			case 'db':
-				return new QueryGeoSearchDb( $query, $moduleName, $config );
+				return new QueryGeoSearchDb( $query, $moduleName );
 			case 'elastic':
 				return new QueryGeoSearchElastic( $query, $moduleName, $namespaceInfo );
 			default:

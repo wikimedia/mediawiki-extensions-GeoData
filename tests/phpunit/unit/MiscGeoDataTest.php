@@ -18,7 +18,7 @@ class MiscGeoDataTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideIntRangeData
 	 */
 	public function testIntRange( float $min, float $max, array $expected ) {
-		$context = $this->createNoOpMock( IContextSource::class );
+		$context = $this->createNoOpMock( IContextSource::class, [ 'getConfig' ] );
 
 		$apiMain = $this->createMock( ApiMain::class );
 		$apiMain->method( 'getContext' )->willReturn( $context );
@@ -29,11 +29,11 @@ class MiscGeoDataTest extends MediaWikiUnitTestCase {
 		$config = new HashConfig( [
 			'GeoDataIndexGranularity' => 10,
 		] );
+		$context->method( 'getConfig' )->willReturn( $config );
 
 		$queryGeoSearchDb = new QueryGeoSearchDb(
 			$apiBase,
 			'test',
-			$config
 		);
 		$this->assertEquals( $expected, $queryGeoSearchDb->intRange( $min, $max ) );
 	}

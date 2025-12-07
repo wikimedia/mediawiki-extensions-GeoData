@@ -40,7 +40,6 @@ class GeoDataBackendFactoryTest extends MediaWikiUnitTestCase {
 	public function testFactory( string $geoDataBackend, string $expectedClass ) {
 		$apiQuery = $this->mockApiQuery( $geoDataBackend );
 		$queryGeoSearchBackend = QueryGeoSearch::factory( $apiQuery, 'test',
-			new HashConfig( [] ),
 			$this->createMock( NamespaceInfo::class )
 		);
 
@@ -60,7 +59,6 @@ class GeoDataBackendFactoryTest extends MediaWikiUnitTestCase {
 		$this->expectException( RuntimeException::class );
 		$this->expectExceptionMessage( 'GeoDataBackend data backend cannot be empty' );
 		QueryGeoSearch::factory( $apiQuery, 'test',
-			new HashConfig( [] ),
 			$this->createMock( NamespaceInfo::class )
 		);
 	}
