@@ -7,6 +7,21 @@
 	},
 	"geodata-desc": "Coğrafi koordinatların saxlanması və axtarışı funksiyasını əlavə edir",
 	"geodata-bad-input": "<nowiki>{{#coordinates:}}</nowiki> funksiyasına səhv məlumatlar daxil edilib",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: yanlış en dairəsi",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: yanlış uzunluq dairəsi",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: tanınmayan \"$1\" tipi",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: tanınmayan qlobus: \"$1\"",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: yanlış region kodu formatı",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: hər səhifədə birdən artıq koordinat ola bilməz",
-	"geodata-broken-tags-category": "Yanlış koordinat teqləri olan səhifələr"
+	"geodata-limit-exceeded": "Hər səhifə üçün olan $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|teqi}} limiti aşılıb",
+	"geodata-broken-tags-category": "Yanlış koordinat teqləri olan səhifələr",
+	"geodata-broken-tags-category-desc": "Bu səhifədə səhv formatda olan <code><nowiki>{{#coordinates:}}</nowiki></code> teqi var.",
+	"geodata-unknown-type-category": "Naməlum koordinat tipi səhifələr",
+	"geodata-unknown-type-category-desc": "Səhifə koordinatların <code>type</code> parametrində naməlum dəyərdən istifadə edir.",
+	"geodata-unknown-globe-category": "Qlobus dəyəri bilinməyən səhifələr",
+	"geodata-unknown-globe-category-desc": "Səhifə koordinatların <code>globe</code> parametrində naməlum dəyərdən istifadə edir.",
+	"geodata-unknown-region-category": "Yanlış region dəyəri olan səhifələr",
+	"geodata-unknown-region-category-desc": "Səhifə koordinatların <code>region</code> parametrində naməlum dəyərdən istifadə edir.",
+	"geodata-api-help-coordinates-format": "Format: En və uzunluq dairəsi, xətt (<kbd>|</kbd>) ilə ayrılmış formatda.",
+	"geodata-search-feature-invalid-coordinates": "'$1' üçün verilən '$2' coğrafi koordinatlar təhlil edilə bilmədi."
 }
