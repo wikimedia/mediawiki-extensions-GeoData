@@ -111,7 +111,6 @@ class QueryCoordinates extends ApiQueryBase {
 					wfEscapeWikiText( $params['distancefrompage'] )
 				] );
 			}
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$page = $this->wikiPageFactory->newFromTitle( $title );
 			$redirectTarget = $page->getRedirectTarget();
 			if ( $redirectTarget ) {
