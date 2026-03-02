@@ -269,7 +269,7 @@ class CoordinatesParserFunction {
 	 *
 	 * @param string[] $parts Array of coordinate components
 	 * @param Globe $globe Globe these coordinates belong to
-	 * @return StatusValue Operation status, in case of success its value is a Coord object
+	 * @return StatusValue<Coord> Operation status, in case of success its value is a Coord object
 	 */
 	private function parseCoordinates( array $parts, Globe $globe ): StatusValue {
 		$latSuffixes = [ 'N' => 1, 'S' => -1 ];

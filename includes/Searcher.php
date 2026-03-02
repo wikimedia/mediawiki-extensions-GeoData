@@ -11,6 +11,7 @@ use CirrusSearch\Util;
 use Elastica\Exception\ExceptionInterface;
 use Elastica\Exception\ResponseException;
 use Elastica\Query;
+use Elastica\ResultSet;
 use Elastica\Search;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\MediaWikiServices;
@@ -45,7 +46,7 @@ class Searcher extends ElasticsearchIntermediary {
 	 * @param Query $query
 	 * @param int[] $namespaces Namespaces used
 	 * @param string $queryType Query description for logging
-	 * @return StatusValue Holds a \Elastica\ResultSet
+	 * @return StatusValue<ResultSet>
 	 * @throws ExceptionInterface
 	 */
 	public function performSearch( Query $query, array $namespaces, string $queryType ): StatusValue {

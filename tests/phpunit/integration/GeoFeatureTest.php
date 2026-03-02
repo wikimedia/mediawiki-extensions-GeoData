@@ -5,6 +5,7 @@ namespace GeoData;
 use CirrusSearch\CrossSearchStrategy;
 use CirrusSearch\HashSearchConfig;
 use CirrusSearch\Query\KeywordFeatureAssertions;
+use CirrusSearch\Query\SimpleKeywordFeature;
 use GeoData\Search\CirrusNearCoordBoostFeature;
 use GeoData\Search\CirrusNearCoordFilterFeature;
 use GeoData\Search\CirrusNearTitleBoostFeature;
@@ -312,12 +313,11 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		// Inject fake page with comma in it as well
 		$this->addGoodLinkObject( 1234567, Title::newFromText( 'Washington, D.C.' ) );
 
-		/**
-		 * @var $features \CirrusSearch\Query\SimpleKeywordFeature[]
-		 */
-		$features = [];
-		$features[] = new CirrusNearTitleBoostFeature();
-		$features[] = new CirrusNearTitleFilterFeature();
+		/** @var SimpleKeywordFeature[] $features */
+		$features = [
+			new CirrusNearTitleBoostFeature(),
+			new CirrusNearTitleFilterFeature(),
+		];
 		if ( $expected[0] !== null ) {
 			$expected[0] = new Coord( $expected[0]['lat'], $expected[0]['lon'] );
 		}
