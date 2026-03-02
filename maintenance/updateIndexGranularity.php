@@ -26,20 +26,16 @@ class UpdateIndexGranularity extends Maintenance {
 		$dbw = $this->getPrimaryDB();
 
 		do {
-			$ids = [];
-
 			$this->beginTransaction( $dbw, __METHOD__ );
-			$res = $dbw->newSelectQueryBuilder()
+			$ids = $dbw->newSelectQueryBuilder()
 				->select( 'gt_id' )
 				->from( 'geo_tags' )
 				->where( $dbw->expr( 'gt_id', '>', $id ) )
+				->orderBy( 'gt_id' )
 				->limit( $batchSize )
 				->caller( __METHOD__ )
-				->fetchResultSet();
-			foreach ( $res as $row ) {
-				$id = $row->gt_id;
-				$ids[] = $id;
-			}
+				->fetchFieldValues();
+			$id = array_last( $ids );
 			$indexGranularity = $this->getConfig()->get( 'GeoDataIndexGranularity' );
 			$dbw->newUpdateQueryBuilder()
 				->update( 'geo_tags' )
