@@ -82,13 +82,8 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 
 		$query = new Query();
 		$fields = array_map(
-			static function ( $prop ) {
-				return "coordinates.$prop";
-			},
-			array_merge(
-				[ 'coord', 'primary' ],
-				$params['prop']
-			)
+			static fn ( $prop ) => "coordinates.$prop",
+			[ 'coord', 'primary', ...$params['prop'] ]
 		);
 		$query->setParam( '_source', $fields );
 
