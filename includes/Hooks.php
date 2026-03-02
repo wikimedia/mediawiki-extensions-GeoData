@@ -60,16 +60,17 @@ class Hooks implements
 	 */
 	public function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 'coordinates',
-			[ new CoordinatesParserFunction( $this->config ), 'coordinates' ],
+			( new CoordinatesParserFunction( $this->config ) )->coordinates( ... ),
 			Parser::SFH_OBJECT_ARGS
 		);
 	}
 
 	/**
 	 * ArticleDeleteComplete hook handler
+	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete
 	 *
-	 * @param WikiPage $article
+	 * @param WikiPage $wikiPage
 	 * @param User $user
 	 * @param string $reason
 	 * @param int $id
@@ -77,7 +78,8 @@ class Hooks implements
 	 * @param ManualLogEntry $logEntry
 	 * @param int $archivedRevisionCount
 	 */
-	public function onArticleDeleteComplete( $article, $user, $reason, $id,
+	public function onArticleDeleteComplete(
+		$wikiPage, $user, $reason, $id,
 		$content, $logEntry, $archivedRevisionCount
 	) {
 		$dbw = $this->connectionProvider->getPrimaryDatabase();
@@ -122,14 +124,13 @@ class Hooks implements
 			return null;
 		}
 		$metadata = $file->getMetadataItems( [ 'GPSLatitude', 'GPSLongitude' ] );
-		if ( isset( $metadata['GPSLatitude'] ) && isset( $metadata['GPSLongitude'] ) ) {
-			$lat = $metadata['GPSLatitude'];
-			$lon = $metadata['GPSLongitude'];
+		// T165800: Skip files with meaningless 0, 0 coordinates
+		if ( !empty( $metadata['GPSLatitude'] ) || !empty( $metadata['GPSLongitude'] ) ) {
+			$lat = $metadata['GPSLatitude'] ?? 0;
+			$lon = $metadata['GPSLongitude'] ?? 0;
+			// We assume GPS exist only on Earth
 			$globe = new Globe( Globe::EARTH );
-			// T165800: Skip files with meaningless 0, 0 coordinates
-			if ( ( $lat || $lon ) &&
-				$globe->coordinatesAreValid( $lat, $lon )
-			) {
+			if ( $globe->coordinatesAreValid( $lat, $lon ) ) {
 				$coord = new Coord( $lat, $lon, $globe );
 				$coord->primary = true;
 				return $coord;
@@ -150,7 +151,7 @@ class Hooks implements
 
 		$add = [];
 		$delete = [];
-		$primary = ( isset( $coords[0] ) && $coords[0]->primary ) ? $coords[0] : null;
+		$primary = isset( $coords[0] ) && $coords[0]->primary ? $coords[0] : null;
 		foreach ( GeoData::getAllCoordinates( $pageId, [], DB_PRIMARY ) as $old ) {
 			$delete[$old->id] = $old;
 		}
@@ -225,23 +226,25 @@ class Hooks implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onOutputPageParserOutput( $out, $po ): void {
+	public function onOutputPageParserOutput( $outputPage, $parserOutput ): void {
 		$geoDataInJS = $this->config->get( 'GeoDataInJS' );
+		if ( !$geoDataInJS ) {
+			return;
+		}
 
-		if ( $geoDataInJS && CoordinatesOutput::getFromParserOutput( $po ) ) {
-			$coord = CoordinatesOutput::getFromParserOutput( $po )->getPrimary();
-			if ( !$coord ) {
-				return;
+		$coord = CoordinatesOutput::getFromParserOutput( $parserOutput )?->getPrimary();
+		if ( !$coord ) {
+			return;
+		}
+
+		$result = [];
+		foreach ( $geoDataInJS as $param ) {
+			if ( isset( $coord->$param ) ) {
+				$result[$param] = $coord->$param;
 			}
-			$result = [];
-			foreach ( $geoDataInJS as $param ) {
-				if ( isset( $coord->$param ) ) {
-					$result[$param] = $coord->$param;
-				}
-			}
-			if ( $result ) {
-				$out->addJsConfigVars( 'wgCoordinates', $result );
-			}
+		}
+		if ( $result ) {
+			$outputPage->addJsConfigVars( 'wgCoordinates', $result );
 		}
 	}
 
@@ -253,15 +256,13 @@ class Hooks implements
 	 * @param SearchEngine $engine
 	 */
 	public function onSearchIndexFields( array &$fields, SearchEngine $engine ) {
-		$useCirrus = $this->config->get( 'GeoDataUseCirrusSearch' );
-		$backend = $this->config->get( 'GeoDataBackend' );
-		if ( !$useCirrus && $backend !== 'elastic' ) {
+		if ( !$this->config->get( 'GeoDataUseCirrusSearch' ) &&
+			$this->config->get( 'GeoDataBackend' ) !== 'elastic'
+		) {
 			return;
 		}
+
 		if ( $engine instanceof CirrusSearch ) {
-			/**
-			 * @var CirrusSearch $engine
-			 */
 			$fields['coordinates'] = CoordinatesIndexField::build(
 				'coordinates', $engine->getConfig(), $engine );
 		} else {
@@ -312,39 +313,36 @@ class Hooks implements
 	 * @return void
 	 */
 	private function doSearchDataForIndex( array &$fields, ParserOutput $parserOutput, WikiPage $page ): void {
-		$useCirrus = $this->config->get( 'GeoDataUseCirrusSearch' );
-		$backend = $this->config->get( 'GeoDataBackend' );
-
-		if ( ( $useCirrus || $backend == 'elastic' ) ) {
-			$coordsOutput = CoordinatesOutput::getFromParserOutput( $parserOutput );
-			$allCoords = $coordsOutput !== null ? $coordsOutput->getAll() : [];
-			$coords = [];
-
-			/** @var Coord $coord */
-			foreach ( $allCoords as $coord ) {
-				if ( !$coord->sameGlobe( Globe::EARTH ) ) {
-					continue;
-				}
-				if ( !$coord->isValid() ) {
-					wfDebugLog( 'CirrusSearchChangeFailed',
-						"Invalid coordinates [{$coord->lat}, {$coord->lon}] on page "
-							. $page->getTitle()->getPrefixedText()
-					);
-					continue;
-				}
-				$coords[] = $this->coordToElastic( $coord );
-			}
-			$fields['coordinates'] = $coords;
+		if ( !$this->config->get( 'GeoDataUseCirrusSearch' ) &&
+			$this->config->get( 'GeoDataBackend' ) !== 'elastic'
+		) {
+			return;
 		}
+
+		$coordsOutput = CoordinatesOutput::getFromParserOutput( $parserOutput );
+		$allCoords = $coordsOutput ? $coordsOutput->getAll() : [];
+		$coords = [];
+
+		foreach ( $allCoords as $coord ) {
+			if ( !$coord->sameGlobe( Globe::EARTH ) ) {
+				continue;
+			}
+			if ( !$coord->isValid() ) {
+				wfDebugLog( 'CirrusSearchChangeFailed',
+					"Invalid coordinates [{$coord->lat}, {$coord->lon}] on page "
+					. $page->getTitle()->getPrefixedText()
+				);
+				continue;
+			}
+			$coords[] = $this->coordToElastic( $coord );
+		}
+		$fields['coordinates'] = $coords;
 	}
 
 	/**
 	 * Transforms coordinates into an array for insertion onto Elasticsearch
-	 *
-	 * @param Coord $coord
-	 * @return array
 	 */
-	private function coordToElastic( Coord $coord ) {
+	private function coordToElastic( Coord $coord ): array {
 		$result = $coord->getAsArray();
 		$result['coord'] = [ 'lat' => $coord->lat, 'lon' => $coord->lon ];
 		unset( $result['id'] );

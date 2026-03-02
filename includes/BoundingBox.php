@@ -4,7 +4,6 @@ namespace GeoData;
 
 /**
  * Class that represents a bounding box
- * Currently, only Earth is supported
  */
 class BoundingBox {
 

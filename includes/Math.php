@@ -10,7 +10,6 @@ namespace GeoData;
  * All the functions that accept coordinates assume that they're in degrees, not radians.
  */
 class Math {
-	public const EARTH_RADIUS = 6371010.0;
 
 	/**
 	 * Calculates distance between two coordinates

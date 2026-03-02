@@ -19,10 +19,8 @@ class CoordinatesOutput implements JsonSerializable {
 	 */
 	public const GEO_DATA_COORDS_OUTPUT = 'GeoDataCoordsOutput';
 
-	/** @var bool */
-	public $limitExceeded = false;
-	/** @var Coord|false */
-	private $primary = false;
+	public bool $limitExceeded = false;
+	private ?Coord $primary = null;
 	/** @var Coord[] */
 	private array $secondary = [];
 
@@ -94,10 +92,7 @@ class CoordinatesOutput implements JsonSerializable {
 		$this->secondary[] = $c;
 	}
 
-	/**
-	 * @return Coord|false
-	 */
-	public function getPrimary() {
+	public function getPrimary(): ?Coord {
 		return $this->primary;
 	}
 
@@ -130,9 +125,10 @@ class CoordinatesOutput implements JsonSerializable {
 		return [
 			'limitExceeded' => $this->limitExceeded,
 			'primary' => $this->primary ? $this->primary->jsonSerialize() : $this->primary,
-			'secondary' => array_map( static function ( Coord $coord ) {
-				return $coord->jsonSerialize();
-			}, $this->secondary )
+			'secondary' => array_map(
+				static fn ( Coord $coord ) => $coord->jsonSerialize(),
+				$this->secondary
+			)
 		];
 	}
 
@@ -147,10 +143,8 @@ class CoordinatesOutput implements JsonSerializable {
 	public static function newFromJson( array $jsonArray ): self {
 		$coordOutput = new self();
 		$coordOutput->limitExceeded = $jsonArray['limitExceeded'];
-		$coordOutput->primary = $jsonArray['primary'] ? Coord::newFromJson( $jsonArray['primary'] ) : false;
-		$coordOutput->secondary = array_map( static function ( array $jsonCoord ) {
-			return Coord::newFromJson( $jsonCoord );
-		}, $jsonArray['secondary'] );
+		$coordOutput->primary = $jsonArray['primary'] ? Coord::newFromJson( $jsonArray['primary'] ) : null;
+		$coordOutput->secondary = array_map( Coord::newFromJson( ... ), $jsonArray['secondary'] );
 		return $coordOutput;
 	}
 }

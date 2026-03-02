@@ -4,6 +4,7 @@ namespace GeoData\Test;
 
 use GeoData\BoundingBox;
 use GeoData\Coord;
+use GeoData\Globe;
 use GeoData\Math;
 use MediaWikiUnitTestCase;
 
@@ -17,7 +18,7 @@ class MathTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideDistanceData
 	 */
 	public function testDistance( float $lat1, float $lon1, float $lat2, float $lon2, int $expected ) {
-		$distance = Math::distance( $lat1, $lon1, $lat2, $lon2, Math::EARTH_RADIUS );
+		$distance = Math::distance( $lat1, $lon1, $lat2, $lon2, Globe::EARTH_RADIUS );
 		$this->assertEqualsWithDelta( $expected, $distance, 1000 );
 	}
 

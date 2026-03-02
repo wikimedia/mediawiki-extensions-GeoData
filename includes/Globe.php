@@ -8,6 +8,7 @@ namespace GeoData;
 class Globe {
 
 	public const EARTH = 'earth';
+	public const EARTH_RADIUS = 6371010.0;
 
 	private string $name;
 
@@ -52,9 +53,9 @@ class Globe {
 			return $data;
 		}
 
-		$earth   = [ 'lon' => [ -180, 180 ], 'east' => +1 ];
-		$east360 = [ 'lon' => [ 0, 360 ], 'east' => +1 ];
-		$west360 = [ 'lon' => [ 0, 360 ], 'east' => -1 ];
+		$earth   = [ 'lon' => [ -180 ] ];
+		$east360 = [];
+		$west360 = [ 'east' => -1 ];
 
 		/**
 		 * Format:
@@ -65,7 +66,7 @@ class Globe {
 		 * Radii taken from Wikipedia. Globes that are too irregular in shape don't have radius set.
 		 */
 		$data = [
-			self::EARTH => $earth + [ 'radius' => Math::EARTH_RADIUS ],
+			self::EARTH => $earth + [ 'radius' => self::EARTH_RADIUS ],
 			'mercury'   => $west360 + [ 'radius' => 2439700.0 ],
 			'venus'     => $east360 + [ 'radius' => 6051800.0 ],
 			'moon'      => $earth + [ 'radius' => 1737100.0 ],

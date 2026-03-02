@@ -21,9 +21,9 @@ class CoordinatesParserFunction {
 	private ParserOutput $output;
 
 	/** @var (string|true)[] */
-	private $named = [];
+	private array $named = [];
 	/** @var string[] */
-	private $unnamed = [];
+	private array $unnamed = [];
 
 	/** @var Globe */
 	private $globe;

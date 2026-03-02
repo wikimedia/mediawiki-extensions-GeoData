@@ -3,7 +3,6 @@
 namespace GeoData\Test;
 
 use GeoData\Globe;
-use GeoData\Math;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -30,7 +29,7 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( -180, $g->getMinLongitude() );
 		$this->assertEquals( 180, $g->getMaxLongitude() );
 		$this->assertSame( 1, $g->getEastSign() );
-		$this->assertSame( Math::EARTH_RADIUS, $g->getRadius() );
+		$this->assertSame( Globe::EARTH_RADIUS, $g->getRadius() );
 		$this->assertTrue( $g->equalsTo( new Globe( Globe::EARTH ) ) );
 		$this->assertTrue( $g->equalsTo( Globe::EARTH ) );
 	}
