@@ -151,10 +151,11 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			$this->dieDebug( __METHOD__, 'Unexpected result set returned by Elasticsearch' );
 		}
 
+		/** @var array<int,true> $ids */
 		$ids = [];
 		$coordinates = [];
 		foreach ( $data['hits']['hits'] as $page ) {
-			$id = $page['_id'];
+			$id = (int)$page['_id'];
 			foreach ( $page['_source']['coordinates'] as $coordArray ) {
 				$coord = $this->makeCoord( $coordArray );
 				if ( !$this->filterCoord( $coord ) ) {
@@ -166,7 +167,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 			}
 		}
 
-		if ( $coordinates === [] ) {
+		if ( !$coordinates ) {
 			// No results, no point in doing anything else
 			return;
 		}
@@ -188,7 +189,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		$res = $this->select( __METHOD__ );
 
 		if ( $resultPageSet === null ) {
-			/** @var Title[] $titles */
+			/** @var array<int,Title> $titles */
 			$titles = [];
 			foreach ( $res as $row ) {
 				$titles[$row->page_id] = Title::newFromRow( $row );
@@ -207,7 +208,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 				}
 				$title = $titles[$id];
 				$vals = [
-					'pageid' => intval( $coord->pageId ),
+					'pageid' => $id,
 					'ns' => $title->getNamespace(),
 					'title' => $title->getPrefixedText(),
 					'lat' => floatval( $coord->lat ),
