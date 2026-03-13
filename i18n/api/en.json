@@ -40,7 +40,6 @@
 	"apierror-geodata-nocoord": "Page coordinates unknown.",
 	"apierror-geodata-noprimarycoord": "Page $1 has no primary coordinates.",
 	"apierror-geodata-norelevancesort": "Ranking results by relevance is currently only supported on wikis that use the ElasticSearch backend.",
-	"apierror-geodata-notonearth": "This page's coordinates are not on Earth.",
 	"apierror-geodata-invalidbox": "Invalid bounding box.",
 	"apierror-geodata-boxtoobig": "Bounding box is too big",
 	"apierror-geodata-badcoord": "Invalid coordinate provided"

@@ -49,8 +49,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		if ( $this->idToExclude ) {
 			$filter->addMustNot( new Term( [ '_id' => $this->idToExclude ] ) );
 		}
-		// Only Earth is supported
-		$nestedPropsFilter->addFilter( new Term( [ 'coordinates.globe' => Globe::EARTH ] ) );
+		$nestedPropsFilter->addFilter( new Term( [ 'coordinates.globe' => $params['globe'] ] ) );
 		if ( isset( $params['maxdim'] ) ) {
 			$nestedPropsFilter->addFilter( new Range( 'coordinates.dim',
 					[ 'to' => $params['maxdim'] ] ) );

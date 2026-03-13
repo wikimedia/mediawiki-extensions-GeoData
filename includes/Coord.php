@@ -157,7 +157,8 @@ class Coord implements JsonSerializable {
 	}
 
 	/**
-	 * Calculates the distance between this and another pair of coordinates.
+	 * Calculates the distance between this and another pair of coordinates. Assumes the two are on
+	 * the same globe. No exception is thrown if this is not the case!
 	 *
 	 * @param Coord $coord
 	 * @return float Distance in meters

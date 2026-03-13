@@ -44,7 +44,6 @@
 	"apierror-geodata-nocoord": "{{doc-apierror}}",
 	"apierror-geodata-noprimarycoord": "{{doc-apierror}}\n\nParameters:\n* $1 - Page name",
 	"apierror-geodata-norelevancesort": "{{doc-apierror}}",
-	"apierror-geodata-notonearth": "{{doc-apierror}}",
 	"apierror-geodata-invalidbox": "{{doc-apierror}}",
 	"apierror-geodata-boxtoobig": "{{doc-apierror}}",
 	"apierror-geodata-badcoord": "{{doc-apierror}}"
