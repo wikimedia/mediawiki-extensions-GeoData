@@ -79,7 +79,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 		];
 		yield 'Inequality due to globe' => [
 			new Coord( 10, 20 ),
-			new Coord( 10, 20, 'moon' ),
+			new Coord( 10, 20, Globe::MOON ),
 			false,
 		];
 		yield 'Inequality with globes equal' => [
@@ -271,7 +271,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 		return [
 			[ Globe::EARTH, 0.045 ],
 			[ 'mars', 0.085 ],
-			[ 'moon', 0.165 ],
+			[ Globe::MOON, 0.165 ],
 		];
 	}
 
@@ -288,7 +288,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 	public static function provideGlobeNames() {
 		return [
 			[ Globe::EARTH ],
-			[ 'moon' ],
+			[ Globe::MOON ],
 			[ 'something nonexistent' ],
 		];
 	}

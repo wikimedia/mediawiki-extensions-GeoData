@@ -9,6 +9,7 @@ class Globe {
 
 	public const EARTH = 'earth';
 	public const EARTH_RADIUS = 6371010.0;
+	public const MOON = 'moon';
 
 	private string $name;
 
@@ -69,7 +70,7 @@ class Globe {
 			self::EARTH => $earth + [ 'radius' => self::EARTH_RADIUS ],
 			'mercury'   => $west360 + [ 'radius' => 2439700.0 ],
 			'venus'     => $east360 + [ 'radius' => 6051800.0 ],
-			'moon'      => $earth + [ 'radius' => 1737100.0 ],
+			self::MOON => $earth + [ 'radius' => 1737100.0 ],
 			// Assuming MDIM 2.1
 			'mars'      => $east360 + [ 'radius' => 3389500.0 ],
 			'phobos'    => $west360,

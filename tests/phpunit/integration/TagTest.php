@@ -123,11 +123,11 @@ class TagTest extends MediaWikiIntegrationTestCase {
 			],
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU-mos}}',
-				new Coord( 10, 20, 'moon', [ 'country' => 'RU', 'region' => 'MOS', 'dim' => 10 ] ),
+				new Coord( 10, 20, Globe::MOON, [ 'country' => 'RU', 'region' => 'MOS', 'dim' => 10 ] ),
 			],
 			[
 				'{{#coordinates:10|20|globe:Moon dim:10_region:RU}}',
-				new Coord( 10, 20, 'moon', [ 'country' => 'RU', 'dim' => 10 ] ),
+				new Coord( 10, 20, Globe::MOON, [ 'country' => 'RU', 'dim' => 10 ] ),
 			],
 			[
 				'{{#coordinates: 10|20|_dim:3Km_}}',
