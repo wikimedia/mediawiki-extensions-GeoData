@@ -281,9 +281,11 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testParseGeoNearbyTitle( array $expected, string $value ) {
 		// Replace database with one that will return our fake coordinates if asked
-		$dbMocker = function ( MockObject $db ) {
+		$dbMocker = function ( IReadableDatabase&MockObject $db ) {
 			$queryBuilder = $this->createMock( SelectQueryBuilder::class );
-			$queryBuilder->method( $this->logicalOr( 'select', 'from', 'where', 'caller' ) )->willReturnSelf();
+			$queryBuilder->method( $this->logicalOr( ...array_map( $this->identicalTo( ... ), [
+				'select', 'from', 'where', 'caller'
+			] ) ) )->willReturnSelf();
 			$queryBuilder->method( 'fetchResultSet' )
 				->willReturn( new FakeResultWrapper( [
 					(object)[
@@ -296,12 +298,7 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 				->willReturn( $queryBuilder );
 			// Tell LinkCache all titles not explicitly added don't exist
 			$db->method( 'selectRow' )
-				->with(
-					$this->logicalOr( 'page', [ 'page' ] ),
-					$this->anything(),
-					$this->anything(),
-					$this->anything()
-				)
+				->with( $this->identicalTo( [ 'page' ] ) )
 				->willReturn( false );
 			return $db;
 		};
@@ -416,7 +413,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$this->setService( 'TitleFactory', $titleFactory );
 
 		$queryBuilder = $this->createMock( SelectQueryBuilder::class );
-		$queryBuilder->method( $this->logicalOr( 'select', 'from', 'where', 'caller' ) )->willReturnSelf();
+		$queryBuilder->method( $this->logicalOr( ...array_map( $this->identicalTo( ... ), [
+			'select', 'from', 'where', 'caller'
+		] ) ) )->willReturnSelf();
 		$queryBuilder->method( 'fetchResultSet' )->willReturn( new FakeResultWrapper( [] ) );
 		$db = $this->createMock( IReadableDatabase::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturn( $queryBuilder );
