@@ -270,7 +270,7 @@ class CoordTest extends MediaWikiUnitTestCase {
 	public static function provideBoundingBoxes() {
 		return [
 			[ Globe::EARTH, 0.045 ],
-			[ 'mars', 0.085 ],
+			[ Globe::MARS, 0.085 ],
 			[ Globe::MOON, 0.165 ],
 		];
 	}
@@ -294,10 +294,10 @@ class CoordTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetRow() {
-		$coord = new Coord( 1.234, 9.876, 'mars' );
+		$coord = new Coord( 1.234, 9.876, Globe::MARS );
 		$row = $coord->getRow( 9, 100 );
 		$this->assertSame( 9, $row['gt_page_id'] );
-		$this->assertSame( 'mars', $row['gt_globe'] );
+		$this->assertSame( Globe::MARS, $row['gt_globe'] );
 		$this->assertSame( 123, $row['gt_lat_int'] );
 		$this->assertSame( 988, $row['gt_lon_int'] );
 

@@ -107,12 +107,12 @@ class ParseCoordTest extends MediaWikiIntegrationTestCase {
 			[ [ 25, 60, 10, 0 ], 'geodata-bad-latitude' ],
 			[ [ 25, 0, 0, 10, 0, 60 ], 'geodata-bad-longitude' ],
 			// coordinate validation and normalisation (non-Earth)
-			[ [ 10, 20 ], new Coord( 10, 20, 'mars' ), 'mars' ],
-			[ [ 110, 20 ], 'geodata-bad-latitude', 'mars' ],
+			[ [ 10, 20 ], new Coord( 10, 20, Globe::MARS ), Globe::MARS ],
+			[ [ 110, 20 ], 'geodata-bad-latitude', Globe::MARS ],
 			// Asimov Crater
-			[ [ 47, 0, 'S', 355, 3, 'W' ], new Coord( -47, 4.95, 'mars' ), 'mars' ],
+			[ [ 47, 0, 'S', 355, 3, 'W' ], new Coord( -47, 4.95, Globe::MARS ), Globe::MARS ],
 			// Quetzalpetlatl Corona
-			[ [ 68, 'S', 357, 'E' ], new Coord( -68, 357, 'venus' ), 'venus' ],
+			[ [ 68, 'S', 357, 'E' ], new Coord( -68, 357, Globe::VENUS ), Globe::VENUS ],
 		];
 	}
 }

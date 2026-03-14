@@ -35,8 +35,8 @@ class GlobeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testMars() {
-		$g = new Globe( 'mars' );
-		$this->assertEquals( 'mars', $g->getName() );
+		$g = new Globe( Globe::MARS );
+		$this->assertEquals( Globe::MARS, $g->getName() );
 		$this->assertTrue( $g->isKnown() );
 		$this->assertSame( 0, $g->getMinLongitude() );
 		$this->assertEquals( 360, $g->getMaxLongitude() );

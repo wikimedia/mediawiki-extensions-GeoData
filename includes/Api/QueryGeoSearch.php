@@ -200,7 +200,12 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 				IntegerDef::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			],
 			'globe' => [
-				ParamValidator::PARAM_TYPE => [ Globe::EARTH, Globe::MOON ],
+				ParamValidator::PARAM_TYPE => [
+					Globe::EARTH,
+					Globe::MOON,
+					Globe::MARS,
+					Globe::VENUS,
+				],
 				ParamValidator::PARAM_DEFAULT => Globe::EARTH,
 			],
 			'namespace' => [
