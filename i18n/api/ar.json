@@ -42,7 +42,6 @@
 	"apierror-geodata-nocoord": "إحداثيات الصفحة غير معروفة.",
 	"apierror-geodata-noprimarycoord": "ليست لدى الصفحة $1 أية إحداثيات أساسية.",
 	"apierror-geodata-norelevancesort": "لا يتم حاليًا دعم ترتيب النتائج حسب الصلة إلا على مواقع wiki التي تستخدم الواجهة الخلفية ElasticSearch.",
-	"apierror-geodata-notonearth": "إحداثيات هذه الصفحة ليست على الأرض.",
 	"apierror-geodata-invalidbox": "صندوق محيط غير صالح.",
 	"apierror-geodata-boxtoobig": "صندوق المحيط كبير للغاية",
 	"apierror-geodata-badcoord": "أدخلت إحداثيات غير صالحة"

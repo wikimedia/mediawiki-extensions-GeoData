@@ -45,7 +45,6 @@
 	"apierror-geodata-nocoord": "Die Seitenkoordinaten sind unbekannt.",
 	"apierror-geodata-noprimarycoord": "Die Seite $1 hat keine primären Koordinaten.",
 	"apierror-geodata-norelevancesort": "Das Ranking der Ergebnisse nach Relevanz wird derzeit nur bei Wikis unterstützt, die das ElasticSearch-Backend verwenden.",
-	"apierror-geodata-notonearth": "Die Koordinaten der Seite befinden sich nicht auf der Erde.",
 	"apierror-geodata-invalidbox": "Ungültige Bounding Box.",
 	"apierror-geodata-boxtoobig": "Die Bounding Box ist zu groß",
 	"apierror-geodata-badcoord": "Ungültige Koordinaten angegeben"

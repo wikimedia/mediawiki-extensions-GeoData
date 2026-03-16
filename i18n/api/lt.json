@@ -18,6 +18,5 @@
 	"apihelp-query+geosearch-param-primary": "Kokias koordinates grąžinti.",
 	"apierror-geodata-nocoord": "Puslapio koordinatės nežinomos.",
 	"apierror-geodata-noprimarycoord": "Puslapis $1 neturi padinių koordinačių.",
-	"apierror-geodata-notonearth": "Šio puslapio koordinatorės nėra Žemėje.",
 	"apierror-geodata-badcoord": "Pateikta negaliojanti koordinatė"
 }

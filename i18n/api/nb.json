@@ -40,7 +40,6 @@
 	"apierror-geodata-nocoord": "Sidekoordinater ukjent.",
 	"apierror-geodata-noprimarycoord": "Siden $1 har ingen primærkoordinater.",
 	"apierror-geodata-norelevancesort": "Rangering av resultater etter relevans støttes for tiden kun på wikier som bruker ElasticSearch-bakstykket.",
-	"apierror-geodata-notonearth": "Denne sidens koordinater er ikke på jorda.",
 	"apierror-geodata-invalidbox": "Ugyldig grenseboks.",
 	"apierror-geodata-boxtoobig": "Grenseboksen er for stor.",
 	"apierror-geodata-badcoord": "Ugyldig koordinat oppgitt"

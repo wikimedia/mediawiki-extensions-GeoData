@@ -39,7 +39,6 @@
 	"apihelp-query+geosearch-example-2": "Пошук в обмежувальному паралелепіпеді",
 	"apierror-geodata-nocoord": "Координати сторінки невідомі.",
 	"apierror-geodata-noprimarycoord": "Сторінка $1 не має основних координат.",
-	"apierror-geodata-notonearth": "Координати цієї сторінки не на Землі.",
 	"apierror-geodata-invalidbox": "Недійсне обмежувальне вікно.",
 	"apierror-geodata-boxtoobig": "Обмежувальне вікно надто велике",
 	"apierror-geodata-badcoord": "Вказано неправильні координати"

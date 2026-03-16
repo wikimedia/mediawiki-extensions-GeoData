@@ -40,7 +40,6 @@
 	"apihelp-query+geosearch-example-2": "Pesquisar em uma caixa delimitadora",
 	"apierror-geodata-nocoord": "Coordenadas da página desconhecidas.",
 	"apierror-geodata-noprimarycoord": "Página $1 não tem coordenadas primárias.",
-	"apierror-geodata-notonearth": "As coordenadas desta página não estão na Terra.",
 	"apierror-geodata-invalidbox": "Caixa delimitadora inválida.",
 	"apierror-geodata-boxtoobig": "A caixa de encadernação é muito grande",
 	"apierror-geodata-badcoord": "Coordenadas inválidas fornecidas"

@@ -26,6 +26,5 @@
 	"apihelp-query+geosearch-param-primary": "نوع مختصات برای بازگرداندن.",
 	"apierror-geodata-nocoord": "مختصات صفحه تعریف نشده است.",
 	"apierror-geodata-noprimarycoord": "صفحهٔ $1 هیچ مختصات اولیه‌ای ندارد.",
-	"apierror-geodata-notonearth": "مختصات این صفحه روی زمین نیست.",
 	"apierror-geodata-badcoord": "مختصات نامعتبر ارائه شده است"
 }

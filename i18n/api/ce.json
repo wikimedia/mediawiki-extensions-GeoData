@@ -40,7 +40,6 @@
 	"apierror-geodata-nocoord": "АгӀонан координаташ девзаш дац.",
 	"apierror-geodata-noprimarycoord": "«$1» агӀонан йуьхьанцара координаташ йац.",
 	"apierror-geodata-norelevancesort": "ЖамӀаш ранжировка йар нийса хиларца карарчу хенахь бен ца леладо ElasticSearch бекэнд лелош йолчу викишкахь.",
-	"apierror-geodata-notonearth": "АгӀонан координаташ Лаьтта тӀехь йац.",
 	"apierror-geodata-invalidbox": "Нийса доцу дозанаш.",
 	"apierror-geodata-boxtoobig": "Дозанийн меттиг тӀех йоккха йу",
 	"apierror-geodata-badcoord": "Йихкина нийса йоцу координаташ"

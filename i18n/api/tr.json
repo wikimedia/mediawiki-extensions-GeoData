@@ -39,7 +39,6 @@
 	"apihelp-query+geosearch-example-2": "Sınırlayıcı bir kutuda arayın",
 	"apierror-geodata-nocoord": "Sayfa koordinatları bilinmiyor.",
 	"apierror-geodata-noprimarycoord": "$1 sayfasının birincil koordinatı yok.",
-	"apierror-geodata-notonearth": "Bu sayfanın koordinatları Dünya'da değil.",
 	"apierror-geodata-invalidbox": "Geçersiz sınırlayıcı kutu.",
 	"apierror-geodata-boxtoobig": "Sınırlayıcı kutu çok büyük",
 	"apierror-geodata-badcoord": "Geçersiz koordinat sağlandı"

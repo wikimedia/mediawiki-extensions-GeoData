@@ -50,7 +50,6 @@
 	"apierror-geodata-nocoord": "Coordonnées de la page inconnues.",
 	"apierror-geodata-noprimarycoord": "La page $1 n’a pas de coordonnées primaires.",
 	"apierror-geodata-norelevancesort": "Le classement des résultats par pertinence n’est actuellement pris en charge que que les wikis qui utilisent le moteur ElasticSearch.",
-	"apierror-geodata-notonearth": "Les coordonnées de cette page ne sont pas sur la Terre.",
 	"apierror-geodata-invalidbox": "Boîte englobante non valide.",
 	"apierror-geodata-boxtoobig": "La boîte englobante est trop grande",
 	"apierror-geodata-badcoord": "Coordonnées soumises non valides"

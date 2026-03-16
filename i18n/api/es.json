@@ -38,6 +38,5 @@
 	"apihelp-query+geosearch-example-1": "Buscar alrededor del punto con coordenadas 37° 47′ 13.1″ N, 122° 23′ 58.84″ O",
 	"apierror-geodata-nocoord": "Coordenadas de página desconocidas.",
 	"apierror-geodata-noprimarycoord": "La página $1 no tiene coordenadas primarias.",
-	"apierror-geodata-notonearth": "Las coordenadas de esta página no están en la Tierra.",
 	"apierror-geodata-badcoord": "La coordenada proporcionada no es válida"
 }

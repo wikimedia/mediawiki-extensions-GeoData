@@ -36,7 +36,6 @@
 	"apihelp-query+geosearch-example-2": "guetar nun cuadru de llende",
 	"apierror-geodata-nocoord": "Coordenaes de páxina desconocíes.",
 	"apierror-geodata-noprimarycoord": "La páxina $1 nun tien coordenaes primaries.",
-	"apierror-geodata-notonearth": "Les coordenaes d'esta páxina nun tán na Tierra.",
 	"apierror-geodata-invalidbox": "Cuadru de llende inválidu.",
 	"apierror-geodata-boxtoobig": "El cuadru de llende ye demasiao grande",
 	"apierror-geodata-badcoord": "La coordenada proporcionada nun ye válida"

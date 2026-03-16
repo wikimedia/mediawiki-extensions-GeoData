@@ -41,7 +41,6 @@
 	"apierror-geodata-nocoord": "Координатите на страницата се непознати.",
 	"apierror-geodata-noprimarycoord": "Страницата „$1“ нема главни координати.",
 	"apierror-geodata-norelevancesort": "Рангирањето на исходни ставки по релевантност во моментов е поддржано само на викија што ја користат задницата ElasticSearch.",
-	"apierror-geodata-notonearth": "Координатите на страницава не се наоѓаат на Земјата.",
 	"apierror-geodata-invalidbox": "Неважечка ограничувачко поле.",
 	"apierror-geodata-boxtoobig": "Ограничувачкото поле е преголемо",
 	"apierror-geodata-badcoord": "Укажана е неважечка координата"

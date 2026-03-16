@@ -41,7 +41,6 @@
 	"apierror-geodata-nocoord": "Koordinate strani neznane.",
 	"apierror-geodata-noprimarycoord": "Stran $1 nima primarnih koordinat.",
 	"apierror-geodata-norelevancesort": "Razvrščanje zadetkov po ustreznosti je trenutno podprto samo v vikijih, ki uporabljajo zaledje ElasticSearch.",
-	"apierror-geodata-notonearth": "Koordinate te strani niso na Zemlji.",
 	"apierror-geodata-invalidbox": "Neveljavno omejevalno polje.",
 	"apierror-geodata-boxtoobig": "Omejevalno polje je preveliko",
 	"apierror-geodata-badcoord": "Napačna koordinata"

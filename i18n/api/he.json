@@ -41,7 +41,6 @@
 	"apierror-geodata-nocoord": "נקודות הציון של הדף אינן ידועות.",
 	"apierror-geodata-noprimarycoord": "בדף $1 אין נקודות ציון ראשיות.",
 	"apierror-geodata-norelevancesort": "דירוג תוצאות לפי רלוונטיות נתמך עכשיו רק באתרי ויקי שמשתמשים בשרת ElasticSearch.",
-	"apierror-geodata-notonearth": "נקודות הציון של הדף אינן בכדור הארץ.",
 	"apierror-geodata-invalidbox": "תיבה תוחמת בלתי־תקינה.",
 	"apierror-geodata-boxtoobig": "תיבה תוחמת גדולה מדי.",
 	"apierror-geodata-badcoord": "ניתנו נקודות ציון בלתי־תקינות"

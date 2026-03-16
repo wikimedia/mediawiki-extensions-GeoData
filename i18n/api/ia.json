@@ -40,7 +40,6 @@
 	"apierror-geodata-nocoord": "Le coordinatas del pagina es incognite.",
 	"apierror-geodata-noprimarycoord": "Le pagina $1 non ha coordinatas primari.",
 	"apierror-geodata-norelevancesort": "Le classamento de resultatos per relevantia es actualmente supportate solo sur wikis que usa le motor de recerca ElasticSearch.",
-	"apierror-geodata-notonearth": "Le coordinatas de iste pagina non es sur le Terra.",
 	"apierror-geodata-invalidbox": "Rectangulo delimitator invalide.",
 	"apierror-geodata-boxtoobig": "Le rectangulo delimitator es troppo grande.",
 	"apierror-geodata-badcoord": "Coordinata non valide fornite."

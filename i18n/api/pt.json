@@ -41,7 +41,6 @@
 	"apierror-geodata-nocoord": "Coordenadas de página desconhecidas.",
 	"apierror-geodata-noprimarycoord": "A página $1 não tem coordenadas primárias.",
 	"apierror-geodata-norelevancesort": "A classificação de resultados por relevância só é atualmente suportada em wikis que usam o motor de pesquisa ElasticSearch.",
-	"apierror-geodata-notonearth": "As coordenadas desta página não são na Terra.",
 	"apierror-geodata-invalidbox": "Retângulo limítrofe inválido.",
 	"apierror-geodata-boxtoobig": "O retângulo limítrofe é demasiado grande",
 	"apierror-geodata-badcoord": "Foi fornecida uma coordenada inválida"

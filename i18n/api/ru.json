@@ -39,7 +39,6 @@
 	"apihelp-query+geosearch-example-2": "Поиск в ограничивающем поле",
 	"apierror-geodata-nocoord": "Координаты страницы неизвестны.",
 	"apierror-geodata-noprimarycoord": "Страница «$1» не имеет основных координат.",
-	"apierror-geodata-notonearth": "Координаты страницы не расположены на Земле.",
 	"apierror-geodata-invalidbox": "Неверное ограничивающее поле.",
 	"apierror-geodata-boxtoobig": "Ограничивающее поле слишком большое",
 	"apierror-geodata-badcoord": "Предоставлены неверные координаты"

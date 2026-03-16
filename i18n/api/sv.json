@@ -40,7 +40,6 @@
 	"apihelp-query+geosearch-example-2": "Sök i en avgränsningsruta",
 	"apierror-geodata-nocoord": "Sidkoordinater okända.",
 	"apierror-geodata-noprimarycoord": "Sida $1 har inga primära koordinater.",
-	"apierror-geodata-notonearth": "Denna sidans koordinater är inte på jorden.",
 	"apierror-geodata-invalidbox": "Ogiltig avgränsningsruta.",
 	"apierror-geodata-boxtoobig": "Avgräningsrutan är för stor.",
 	"apierror-geodata-badcoord": "Ogiltig koordinat angavs"
