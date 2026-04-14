@@ -4,8 +4,8 @@ namespace GeoData\Search;
 
 use CirrusSearch\Search\NestedIndexField;
 use CirrusSearch\SearchConfig;
-use SearchEngine;
-use SearchIndexField;
+use MediaWiki\Search\SearchEngine;
+use MediaWiki\Search\SearchIndexField;
 
 /**
  * Nested type for CirrusSearch mapping
