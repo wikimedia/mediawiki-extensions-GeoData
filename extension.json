@@ -8,7 +8,7 @@
 	"license-name": "WTFPL",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.46"
+		"MediaWiki": ">= 1.47.0"
 	},
 	"APIListModules": {
 		"geosearch": {
