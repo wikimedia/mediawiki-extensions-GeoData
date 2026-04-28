@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"apihelp-query+coordinates-paramvalue-prop-name": "Numm vum Objet.",
@@ -10,5 +11,5 @@
 	"apierror-geodata-nocoord": "Koordinate vun der Säit onbekannt.",
 	"apierror-geodata-noprimarycoord": "Säit $1 huet keng primär Koordinaten.",
 	"apierror-geodata-notonearth": "D'Koordinate vun dëser Säit sinn net op der Äerd.",
-	"apierror-geodata-badcoord": "Net valabel Koordinaten uginn"
+	"apierror-geodata-badcoord": "Ongülteg Koordinaten uginn"
 }
