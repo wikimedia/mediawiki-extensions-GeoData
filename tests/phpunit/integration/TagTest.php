@@ -42,7 +42,7 @@ class TagTest extends MediaWikiIntegrationTestCase {
 		$this->assertInstanceOf( CoordinatesOutput::class, $coordinatesOutput );
 		$all = $coordinatesOutput->getAll();
 		$this->assertCount( 1, $all,
-			'A result was expected, but there was error: ' . strip_tags( $out->getRawText() ) );
+			'A result was expected, but there was error: ' . strip_tags( $out->getContentHolderText() ) );
 		$coord = $all[0];
 		$this->assertTrue( $coord->fullyEqualsTo( $expected ),
 			'Comparing ' . print_r( $coord, true ) .
