@@ -43,7 +43,7 @@
 	"apierror-geodata-nocoord": "Paginacoördinaten onbekend.",
 	"apierror-geodata-noprimarycoord": "Pagina $1 heeft geen primaire coördinaten.",
 	"apierror-geodata-norelevancesort": "Het rangschikken van resultaten op relevantie wordt momenteel alleen ondersteund op wiki’s die de ElasticSearch-backend gebruiken.",
-	"apierror-geodata-invalidbox": "Ongeldig selectiekader.",
+	"apierror-geodata-invalidbox": "Onjuist selectiekader.",
 	"apierror-geodata-boxtoobig": "Het selectiekader is te groot.",
 	"apierror-geodata-badcoord": "Ongeldige coördinaat opgegeven."
 }
