@@ -4,7 +4,8 @@
 			"Codenstory",
 			"Kwj2772",
 			"McDutchie",
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
 	"apihelp-query+coordinates-summary": "주어진 문서의 지리 좌표를 반환합니다.",
@@ -26,13 +27,25 @@
 	"apihelp-query+geosearch-summary": "특정 지역에 위치한 좌표가 있는 문서를 반환합니다.",
 	"apihelp-query+geosearch-param-bbox": "검색할 경계 상자: 왼쪽 상단 및 오른쪽 하단 모서리의 좌표는 파이프(<kbd>|</kbd>)로 구분합니다.",
 	"apihelp-query+geosearch-param-coord": "검색할 주위의 좌표입니다.",
+	"apihelp-query+geosearch-param-page": "검색할 문서 제목입니다.",
 	"apihelp-query+geosearch-param-radius": "미터 단위로 반경을 검색합니다.",
+	"apihelp-query+geosearch-param-sort": "반환된 결과의 정렬 순서를 설정합니다.",
+	"apihelp-query+geosearch-paramvalue-sort-distance": "중심에서 부터의 거리에 따라 문서 순위를 매깁니다.",
+	"apihelp-query+geosearch-paramvalue-sort-relevance": "[[mw:Extension:CirrusSearch|CirrusSearch]]를 사용하여 [[Special:Search]]와 유사하게 관련성 순으로 문서 순위를 매깁니다. 현재는 ElasticSearch 백엔드를 사용하는 위키에서만 지원됩니다. [[mw:Extension:GeoData#Search backends]]를 참조하세요.",
 	"apihelp-query+geosearch-param-maxdim": "거리가 이 값 이하인 개체로 검색을 제한합니다. 단위: 미터",
 	"apihelp-query+geosearch-param-limit": "반환할 문서의 최대 개수입니다.",
 	"apihelp-query+geosearch-param-globe": "검색할 지구본입니다. 자세한 내용은 [[mw:Special:MyLanguage/Extension:GeoData#Glossary]]를 참조하세요.",
 	"apihelp-query+geosearch-param-namespace": "검색할 이름공간입니다.",
+	"apihelp-query+geosearch-param-prop": "반환할 추가 좌표 속성 값입니다. (항상 반환되는 속성: <var>lat</var>, <var>lon</var>, 그리고 불린 플래그 형태의 <var>primary</var>와 <var>secondary</var> 중 하나.)",
 	"apihelp-query+geosearch-param-primary": "반환할 좌표의 종류입니다.",
+	"apihelp-query+geosearch-param-debug": "디버그 정보가 반환되어야 하는지 여부입니다.",
+	"apihelp-query+geosearch-example-1": "37° 47′ 13.1″ N, 122° 23′ 58.84″ W 좌표점 주변을 검색합니다",
+	"apihelp-query+geosearch-example-2": "경계 상자 내에서 검색",
 	"apierror-geodata-nocoord": "페이지 좌표를 알 수 없습니다.",
+	"apierror-geodata-noprimarycoord": "문서 $1에 주 좌표가 없습니다.",
+	"apierror-geodata-norelevancesort": "관련성 순으로 결과를 정렬하는 기능은 현재 ElasticSearch 백엔드를 사용하는 위키에서만 지원됩니다.",
 	"apierror-geodata-notonearth": "이 페이지의 좌표는 지구에 없습니다.",
+	"apierror-geodata-invalidbox": "잘못된 경계 상자입니다.",
+	"apierror-geodata-boxtoobig": "경계 상자가 너무 큽니다",
 	"apierror-geodata-badcoord": "유효하지 않은 좌표가 지정되었습니다"
 }

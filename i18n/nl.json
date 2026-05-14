@@ -14,7 +14,7 @@
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ongeldige lengtegraad",
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: type \"$1\" niet herkend",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: wereldbol \"$1\" niet herkend",
-	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: ongeldig formaat van de regiocode",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: onjuiste opmaak van de regiocode",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: er kan niet meer dan één primair label per pagina zijn",
 	"geodata-limit-exceeded": "De limiet van $1 <nowiki>{{#coordinates:}}</nowiki>-{{PLURAL:$1|label|labels}} per pagina is overschreden",
 	"geodata-broken-tags-category": "Pagina's met onjuiste coördinatenlabels",
