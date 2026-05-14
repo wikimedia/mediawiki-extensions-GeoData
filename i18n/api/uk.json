@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Base",
+			"Movses",
 			"Piramidion",
 			"Vlad5250",
 			"Ата"
@@ -24,7 +25,7 @@
 	"apihelp-query+coordinates-param-distancefrompage": "Повертає відстань у метрах із географічних координат кожного дійсного результату з координат цієї сторінки.",
 	"apihelp-query+coordinates-example-1": "Отримати список координат [[Main Page|Головної сторінки]]",
 	"apihelp-query+geosearch-summary": "Повертає сторінки, що мають координати, розташовані навколо певної місцевості.",
-	"apihelp-query+geosearch-param-bbox": "Обмежувальний прямокутник, у якому проводити пошук: координати верхнього лівого та нижнього правого кутків, розділені вертикальною рискою (<kbd>|</kbd>).",
+	"apihelp-query+geosearch-param-bbox": "Рамка межі, де проводити пошук: координати верхнього лівого та нижнього правого кутків, розділені вертикальною рискою (<kbd>|</kbd>).",
 	"apihelp-query+geosearch-param-coord": "Координати навколо яких шукати.",
 	"apihelp-query+geosearch-param-page": "Назва сторінки навколо якої шукати.",
 	"apihelp-query+geosearch-param-radius": "Радіус пошуку в метрах.",
@@ -36,10 +37,10 @@
 	"apihelp-query+geosearch-param-primary": "Який вид координат видати.",
 	"apihelp-query+geosearch-param-debug": "Чи показувати інформацію, що використовується для відлагодження.",
 	"apihelp-query+geosearch-example-1": "Шукати навколо точки з координатами 37° 47′ 13.1″ N, 122° 23′ 58.84″ W",
-	"apihelp-query+geosearch-example-2": "Пошук в обмежувальному паралелепіпеді",
+	"apihelp-query+geosearch-example-2": "Пошук у рамці межі",
 	"apierror-geodata-nocoord": "Координати сторінки невідомі.",
 	"apierror-geodata-noprimarycoord": "Сторінка $1 не має основних координат.",
-	"apierror-geodata-invalidbox": "Недійсне обмежувальне вікно.",
-	"apierror-geodata-boxtoobig": "Обмежувальне вікно надто велике",
+	"apierror-geodata-invalidbox": "Недійсна рамка межі.",
+	"apierror-geodata-boxtoobig": "Рамка межі занадто велика",
 	"apierror-geodata-badcoord": "Вказано неправильні координати"
 }
