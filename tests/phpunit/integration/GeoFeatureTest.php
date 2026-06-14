@@ -309,9 +309,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$this->setService( 'DBLoadBalancer', $lb );
 
 		// Inject fake San Francisco page into LinkCache so it "exists"
-		$this->addGoodLinkObject( 7654321, Title::newFromText( 'San Francisco' ) );
+		$this->addGoodLinkObject( 7654321, Title::makeTitle( NS_MAIN, 'San Francisco' ) );
 		// Inject fake page with comma in it as well
-		$this->addGoodLinkObject( 1234567, Title::newFromText( 'Washington, D.C.' ) );
+		$this->addGoodLinkObject( 1234567, Title::makeTitle( NS_MAIN, 'Washington, D.C.' ) );
 
 		/** @var SimpleKeywordFeature[] $features */
 		$features = [
