@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"apihelp-query+coordinates-summary": "د ورکړل شويو مخونو همغږۍ بېرته راگرځوي.",
+	"apihelp-query+coordinates-param-limit": "څو همغږۍ بېرته راگرځول کېږي."
+}
