@@ -32,7 +32,7 @@
 	"apihelp-query+geosearch-param-sort": "반환된 결과의 정렬 순서를 설정합니다.",
 	"apihelp-query+geosearch-paramvalue-sort-distance": "중심에서 부터의 거리에 따라 문서 순위를 매깁니다.",
 	"apihelp-query+geosearch-paramvalue-sort-relevance": "[[mw:Extension:CirrusSearch|CirrusSearch]]를 사용하여 [[Special:Search]]와 유사하게 관련성 순으로 문서 순위를 매깁니다. 현재는 일래스틱서치 백엔드를 사용하는 위키에서만 지원됩니다. [[mw:Extension:GeoData#Search backends]]를 참조하세요.",
-	"apihelp-query+geosearch-param-maxdim": "거리가 이 값 이하인 개체로 검색을 제한합니다. 단위: 미터",
+	"apihelp-query+geosearch-param-maxdim": "거리가 이 값 이하인 객체로 검색을 제한합니다. 단위: 미터",
 	"apihelp-query+geosearch-param-limit": "반환할 문서의 최대 개수입니다.",
 	"apihelp-query+geosearch-param-globe": "검색할 지구본입니다. 자세한 내용은 [[mw:Special:MyLanguage/Extension:GeoData#Glossary]]를 참조하세요.",
 	"apihelp-query+geosearch-param-namespace": "검색할 이름공간입니다.",
