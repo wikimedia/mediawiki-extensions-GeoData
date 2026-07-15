@@ -2,20 +2,31 @@
 	"@metadata": {
 		"authors": [
 			"Christian List",
-			"Saederup92"
+			"Saederup92",
+			"Steenth"
 		]
 	},
 	"geodata-desc": "Tilføjer funktionalitet til lagring og indlæsning af geografiske koordinater",
-	"geodata-bad-input": "Ugyldige argumenter er givet til <nowiki>{{#coordinates:}}</nowiki> funktionen",
+	"geodata-bad-input": "Ugyldige argumenter er blevet sendt til <nowiki>{{#coordinates:}}</nowiki>-funktionen",
 	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: ugyldig breddegrad",
 	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ugyldig længdegrad",
 	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: ukendt type \"$1\"",
 	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: ukendt globe \"$1\"",
-	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: ugyldigt region kodeformat",
-	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: kan ikke have mere end én primær tag per side",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: ugyldigt regionkodeformat",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: kan ikke have mere end én primær tag pr. side",
 	"geodata-limit-exceeded": "Grænsen på $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|tag|tags}} er overskredet",
 	"geodata-broken-tags-category": "Sider med fejlagtige koordinattags",
+	"geodata-broken-tags-category-desc": "Siden har en forkert udformning <code><nowiki>{{#coordinates:}}</nowiki></code> mærke.",
 	"geodata-unknown-type-category": "Sider med ukendt type af koordinater",
+	"geodata-unknown-type-category-desc": "Siden bruger en ukendt værdi af <code>type</code>-parameteren for koordinater.",
 	"geodata-unknown-globe-category": "Sider med ukendt globe værdi",
-	"geodata-unknown-region-category": "Sider med ugyldig region værdi"
+	"geodata-unknown-globe-category-desc": "Siden bruger en ukendt værdi af <code>globe</code>-parameteren til koordinater.",
+	"geodata-unknown-region-category": "Sider med ugyldig regionsværdi",
+	"geodata-unknown-region-category-desc": "Siden bruger en ugyldig værdi af <code>region</code>-parameteren for koordinater.",
+	"geodata-api-help-coordinates-format": "Format: Breddegrad og længdegrad adskilt af lodret streg (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "De geografiske koordinater '$2', der blev angivet til '$1', kunne ikke tolkes.",
+	"geodata-search-feature-invalid-distance": "Den geografiske afstand '$2' angivet til '$1' kunne ikke tolkes.",
+	"geodata-search-feature-unknown-title": "Titlen '$2', der er givet til '$1', findes ikke.",
+	"geodata-search-feature-title-no-coordinates": "Titlen '$2', der er angivet til '$1', har ingen koordinater.",
+	"geodata-search-timeout": "GeoData-søgningen er udløbet. Kun delvise resultater er tilgængelige."
 }

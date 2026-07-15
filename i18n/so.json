@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"geodata-desc": "Waxay ku dartaa kaydinta iyo soo celinta xogta isku duwayaasha juqraafiyeed",
+	"geodata-bad-input": "Dood aan sax ahayn ayaa lagu gudbiyay shaqada <nowiki>{{#coordinates:}}</nowiki>",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: loolka aan sax ahayn",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: dhererka aan sax ahayn",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: nooc aan la aqoon \"$1\"",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: adduunka aan la aqoon \"$1\"",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: qaabka koodhka gobolka waa khaldan",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: bog kasta ma yeelan karo in ka badan hal calaamada oo aasaasi ah",
+	"geodata-limit-exceeded": "Xadka $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|caalamd|calaamada}} boggiiba waa la dhaafay",
+	"geodata-broken-tags-category": "Bogag leh calaamado isku duwayaal oo si khaldan loo sameeyay",
+	"geodata-broken-tags-category-desc": "Boggu wuxuu leeyahay calaamad khaldan oo ah <code><nowiki>{{#coordinates:}}</nowiki></code>.",
+	"geodata-unknown-type-category": "Bogag leh nooc aan la aqoon oo isku duwayaal",
+	"geodata-unknown-type-category-desc": "Boggu wuxuu isticmaalayaa qiime aan la aqoon oo ah xuduudaha <code>type</code> ee isku duwayaasha.",
+	"geodata-unknown-globe-category": "Bogag leh qiime globe ah oo aan la aqoon",
+	"geodata-unknown-globe-category-desc": "Boggu wuxuu isticmaalayaa qiime aan la aqoon oo ah xuduudaha <code>globe</code> ee isku duwayaasha.",
+	"geodata-unknown-region-category": "Bogag leh qiime gobol oo aan sax ahayn",
+	"geodata-unknown-region-category-desc": "Boggu wuxuu isticmaalayaa qiime aan sax ahayn oo ah xuduudaha <code>region</code> ee isku duwayaasha.",
+	"geodata-api-help-coordinates-format": "Qaabka: Loolka iyo dhererka oo lagu kala saaray calaamadda tuubo (<kbd>|</kbd>).",
+	"geodata-search-feature-invalid-coordinates": "Isku duwayaasha juqraafiyeed ee '$2' ee la siiyay '$1' lama falanqeyn karo.",
+	"geodata-search-feature-invalid-distance": "Fogaanta juqraafiyeed ee '$2' ee la siiyay '$1' lama falanqeyn karo.",
+	"geodata-search-feature-unknown-title": "Cinwaanka '$2' ee la siiyay '$1' ma jiro.",
+	"geodata-search-feature-title-no-coordinates": "Cinwaanka '$2' ee la siiyay '$1' ma laha wax isku duwayaal.",
+	"geodata-search-timeout": "Raadinta GeoData way dhaaftay waqtiga. Kaliya natiijooyin qayb ah ayaa la heli karaa."
+}
