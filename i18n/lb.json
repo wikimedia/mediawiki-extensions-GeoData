@@ -7,15 +7,19 @@
 		]
 	},
 	"geodata-desc": "Setzt Funktionalitéite vum Späicheren an Ofruffe vu geographesche Koordinaten dobäi",
-	"geodata-bad-input": "Et goufen net valabel Argumenter un d'Funktioun <nowiki>{{#coordinates:}}</nowiki> virugereecht",
-	"geodata-bad-type": "<code><nowiki>{{#coordinates:}}</nowiki></code>: onbekannte Koordinatentyp \"$1\"",
-	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: de Format vum code vun der Regioun ass net valabel",
+	"geodata-bad-input": "Et goufen ongülteg Argumenter un d'Funktioun <nowiki>{{#coordinates:}}</nowiki> virugereecht",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: ongültege Breedegrad",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ongültege Längegrad",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>: onbekannten Typ „$1“",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>: onbekannten Globus „$1“",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: ongültegt Format vum Code vun der Regioun",
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: Et kann nëmmen e primären Tag pro Säit ginn",
 	"geodata-limit-exceeded": "D'Limit vu(n) $1 <nowiki>{{#coordinates:}}</nowiki> {{PLURAL:$1|Tag|Tags}} pro Säit gouf depasséiert",
 	"geodata-broken-tags-category": "Säite mat Koordinaten, wou e Feeler an de Koordinaten ass",
 	"geodata-unknown-type-category": "Säite mat engem onbekannten Typ vu Koordinaten",
 	"geodata-unknown-globe-category": "Säite mat engem onbekannte Wäert fir de Globus",
 	"geodata-unknown-region-category": "Säite mat engem onbekannte Wäert fir d'Regioun",
-	"geodata-search-feature-invalid-coordinates": "D'Geo-Koordinaten '$2' déi op '$1' ugi goufe konnten net duergestallt ginn.",
-	"geodata-search-feature-unknown-title": "Den Titel '$2', deen op '$1' ugi gouf, gëtt et net."
+	"geodata-search-feature-invalid-coordinates": "D'Geo-Koordinaten „$2“, déi u(n) „$1“ geliwwert goufen, konnten net geparst ginn.",
+	"geodata-search-feature-unknown-title": "Den Titel „$2“, deen u(n) „$1“ geliwwert gouf, gëtt et net.",
+	"geodata-search-feature-title-no-coordinates": "Den Titel „$2“, deen u(n) „$1“ geliwwert gouf, huet keng Koordinaten."
 }

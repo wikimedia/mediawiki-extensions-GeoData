@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"geodata-desc": "د ځمک‌پوهنيزه همغږۍ زېرمه‌کولو او بېرته ترلاسه‌کولو کړنچاره ورگډوي",
+	"geodata-bad-input": "ناسم دليلونه دې ته ورکړل شوې دي<nowiki>{{#coordinates:}}</nowiki> کړنچار",
+	"geodata-bad-latitude": "<nowiki>{{#coordinates:}}</nowiki>: ناسم ځمک‌لنډوالی",
+	"geodata-bad-longitude": "<nowiki>{{#coordinates:}}</nowiki>: ناسم ځمک‌اوږدوالی",
+	"geodata-bad-type": "<nowiki>{{#coordinates:}}</nowiki>:د \"$1\" ناپېژندل شوی ډول",
+	"geodata-bad-globe": "<nowiki>{{#coordinates:}}</nowiki>:د \"$1\" ناپېژندل شوې نړۍ",
+	"geodata-bad-region": "<nowiki>{{#coordinates:}}</nowiki>: د سيمې کوډ ناسمه بڼه",
+	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: هر مخ کې له يو څخه زيات نښلنونه نشي لرلی",
+	"geodata-limit-exceeded": "په هر مخ کې د $1 <nowiki>{{#coordinates:}}</nowiki> بريد څخه {{PLURAL:$1|نښلن ډېر شوی دی|نښلنونه ډېر شوي دي}}",
+	"geodata-broken-tags-category": "هغه مخونه چې بدبڼي همغږي نښلنونه لري",
+	"geodata-broken-tags-category-desc": "مخ بدبڼی <code><nowiki>{{#coordinates:}}</nowiki></code> نښلن لري.",
+	"geodata-unknown-type-category": "هغه مخونه چې نامالومه همغږۍ ډول لري.",
+	"geodata-unknown-type-category-desc": "مخ د همغږۍ لپاره د <code>ډول</code> پاراميتر نامالومه ارزښت کاروي.",
+	"geodata-unknown-globe-category": "هغه مخونه چې د ناپېژانده نړۍ ارزښت لري",
+	"geodata-unknown-globe-category-desc": "مخ د همغږۍ لپاره د <code>نړۍ</code> پاراميتر نامالومه ارزښت کاروي.",
+	"geodata-unknown-region-category": "هغه مخونه چې د سيمې ناسم ارزښت لري",
+	"geodata-unknown-region-category-desc": "مخ د همغږۍ لپاره د <code>سيمې</code> پاراميتر ناچله ارزښت کاروي.",
+	"geodata-api-help-coordinates-format": "بڼه:ځمک‌لنډوالی او ځمک‌اوږدوالی پايپ نښې (<kbd>|</kbd>) سره بېل شوې دي.",
+	"geodata-search-feature-invalid-coordinates": "هغه ځمکني همغږيتوبونه چې '$2'، '$1' ته چمتو کړې وه، ټوټه نشوه.",
+	"geodata-search-feature-invalid-distance": "هغه ځمکني همغږيتوبونه چې '$2'، '$1' ته چمتو کړې وه، ټوټه نشوه.",
+	"geodata-search-feature-unknown-title": "هغه سرليک چې '$2'، '$1' ته چمتو کړی وو، شتون نلري.",
+	"geodata-search-feature-title-no-coordinates": "هغه سرليک چې '$2'، '$1' ته چمتو کړی وو، هېڅ همغږي نلري.",
+	"geodata-search-timeout": "ځمک‌اومتوک لټون پای ته ورسېد. يوازې برخيزې پايلې شتون لري."
+}
