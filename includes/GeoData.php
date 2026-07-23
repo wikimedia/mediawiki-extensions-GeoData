@@ -19,11 +19,11 @@ class GeoData {
 	 *
 	 * @param int $pageId ID of the page
 	 * @param array $conds Conditions for {@see IReadableDatabase::select}
-	 * @param int $dbType Database to select from DB_PRIMARY or DB_REPLICA
+	 * @param bool $usePrimary Whether to use the primary database (`true`) or a replica (`false`)
 	 * @return Coord[]
 	 */
-	public static function getAllCoordinates( int $pageId, array $conds = [], int $dbType = DB_REPLICA ): array {
-		$db = self::getDB( $dbType );
+	public static function getAllCoordinates( int $pageId, array $conds = [], bool $usePrimary = false ): array {
+		$db = self::getDB( $usePrimary );
 		$conds['gt_page_id'] = $pageId;
 		$columns = array_values( Coord::FIELD_MAPPING );
 		$res = $db->newSelectQueryBuilder()
@@ -39,13 +39,8 @@ class GeoData {
 		return $coords;
 	}
 
-	/**
-	 * @param int $dbType DB_PRIMARY or DB_REPLICA
-	 * @return IReadableDatabase
-	 */
-	private static function getDB( int $dbType ): IReadableDatabase {
-		return MediaWikiServices::getInstance()
-			->getDBLoadBalancer()
-			->getConnection( $dbType );
+	private static function getDB( bool $usePrimary ): IReadableDatabase {
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		return $usePrimary ? $connectionProvider->getPrimaryDatabase() : $connectionProvider->getReplicaDatabase();
 	}
 }

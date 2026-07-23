@@ -152,7 +152,7 @@ class Hooks implements
 		$add = [];
 		$delete = [];
 		$primary = isset( $coords[0] ) && $coords[0]->primary ? $coords[0] : null;
-		foreach ( GeoData::getAllCoordinates( $pageId, [], DB_PRIMARY ) as $old ) {
+		foreach ( GeoData::getAllCoordinates( $pageId, [], true ) as $old ) {
 			$delete[$old->id] = $old;
 		}
 		foreach ( $coords as $new ) {

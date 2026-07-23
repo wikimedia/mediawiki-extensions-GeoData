@@ -17,10 +17,10 @@ use MediaWiki\Title\TitleFactory;
 use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Wikimedia\Rdbms\FakeResultWrapper;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IReadableDatabase;
-use Wikimedia\Rdbms\LoadBalancer;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
@@ -302,8 +302,15 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 				->willReturn( false );
 			return $db;
 		};
-		// Inject mock database into a mock LoadBalancer
-		$lb = $this->createMock( LoadBalancer::class );
+		// Make a mock ConnectionProvider return the mock database, then inject it
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$connectionProvider->method( 'getReplicaDatabase' )
+			->willReturn( $dbMocker( $this->createMock( IDatabase::class ) ) );
+		$this->setService( 'ConnectionProvider', $connectionProvider );
+
+		// LinkCache uses its own DBLoadBalancer service (unrelated to GeoData's
+		// ConnectionProvider), so it needs its own mock database too
+		$lb = $this->createMock( ILoadBalancer::class );
 		$lb->method( 'getConnection' )
 			->willReturn( $dbMocker( $this->createMock( IDatabase::class ) ) );
 		$this->setService( 'DBLoadBalancer', $lb );
@@ -420,9 +427,9 @@ class GeoFeatureTest extends MediaWikiIntegrationTestCase {
 		$db = $this->createMock( IReadableDatabase::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturn( $queryBuilder );
 
-		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnection' )->with( DB_REPLICA )->willReturn( $db );
-		$this->setService( 'DBLoadBalancer', $lb );
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$connectionProvider->method( 'getReplicaDatabase' )->willReturn( $db );
+		$this->setService( 'ConnectionProvider', $connectionProvider );
 
 		[ $keyword, $value ] = $keyAndValue;
 		$feature = match ( $keyword ) {
