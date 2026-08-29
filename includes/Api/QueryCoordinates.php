@@ -7,7 +7,7 @@ use GeoData\GeoData;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
-use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
@@ -21,7 +21,7 @@ class QueryCoordinates extends ApiQueryBase {
 	public function __construct(
 		ApiQuery $query,
 		string $moduleName,
-		private readonly WikiPageFactory $wikiPageFactory
+		private readonly RedirectLookup $redirectLookup
 	) {
 		parent::__construct( $query, $moduleName, 'co' );
 	}
@@ -120,10 +120,9 @@ class QueryCoordinates extends ApiQueryBase {
 				] );
 			}
 
-			$page = $this->wikiPageFactory->newFromTitle( $title );
-			$redirectTarget = $page->getRedirectTarget();
+			$redirectTarget = $this->redirectLookup->getRedirectTarget( $title->toPageIdentity() );
 			if ( $redirectTarget ) {
-				$title = $redirectTarget;
+				$title = Title::newFromLinkTarget( $redirectTarget );
 			}
 			$coord = GeoData::getPageCoordinates( $title->getArticleID() );
 			if ( !$coord ) {

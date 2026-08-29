@@ -23,7 +23,7 @@
 		"coordinates": {
 			"class": "GeoData\\Api\\QueryCoordinates",
 			"services": [
-				"WikiPageFactory"
+				"RedirectLookup"
 			]
 		}
 	},
