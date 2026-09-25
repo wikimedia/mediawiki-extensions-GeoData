@@ -5,7 +5,8 @@
 			"Chrumps",
 			"Matma Rex",
 			"Rail",
-			"Railfail536"
+			"Railfail536",
+			"PanWor"
 		]
 	},
 	"geodata-desc": "Dodaje funkcje przechowywania i pobierania współrzędnych geograficznych",
@@ -18,7 +19,7 @@
 	"geodata-multiple-primary": "<nowiki>{{#coordinates:}}</nowiki>: nie można podać więcej niż jednego tagu podstawowego na stronie",
 	"geodata-limit-exceeded": "Ograniczenie $1 {{PLURAL:$1|znacznika|znaczników|znaczników}} <nowiki>{{#coordinates:}}</nowiki>  na stronie zostało przekroczone",
 	"geodata-broken-tags-category": "Strony z niepoprawnymi znacznikami współrzędnych geograficznych",
-	"geodata-broken-tags-category-desc": "Strona posiada niepoprawny tag <code><nowiki>{{#coordinates:}}</nowiki></code>.",
+	"geodata-broken-tags-category-desc": "Strona ma niepoprawny tag <code><nowiki>{{#coordinates:}}</nowiki></code>.",
 	"geodata-unknown-type-category": "Strony ze współrzędnymi nieznanego typu",
 	"geodata-unknown-type-category-desc": "Strona używa nieznanej wartości parametru <code>type</code>.",
 	"geodata-unknown-globe-category": "Strony z nieznaną wartością globu",
