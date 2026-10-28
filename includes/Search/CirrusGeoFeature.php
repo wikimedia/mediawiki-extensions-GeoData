@@ -13,7 +13,7 @@ use MediaWiki\MediaWikiServices;
  */
 trait CirrusGeoFeature {
 	/** @var int Default radius, in meters */
-	private static $DEFAULT_RADIUS = 5000;
+	private const int DEFAULT_RADIUS = 5000;
 
 	/**
 	 * radius, if provided, must have either m or km suffix. Valid formats:
@@ -32,7 +32,7 @@ trait CirrusGeoFeature {
 		$title = $titleFactory->newFromText( $text );
 		if ( $title && $title->exists() ) {
 			// Default radius if not provided: 5km
-			$radius = self::$DEFAULT_RADIUS;
+			$radius = self::DEFAULT_RADIUS;
 		} else {
 			// If the provided value is not a title try to extract a radius prefix
 			// from the beginning. If $text has a valid radius prefix see if the
@@ -96,7 +96,7 @@ trait CirrusGeoFeature {
 	) {
 		$pieces = explode( ',', $text, 3 );
 		// Default radius if not provided: 5km
-		$radius = self::$DEFAULT_RADIUS;
+		$radius = self::DEFAULT_RADIUS;
 		if ( count( $pieces ) === 3 ) {
 			$radius = self::parseDistance( $pieces[0] );
 			if ( $radius === null ) {
