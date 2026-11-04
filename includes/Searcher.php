@@ -6,7 +6,7 @@ use CirrusSearch\Connection;
 use CirrusSearch\ElasticsearchIntermediary;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\SearchConfig;
-use CirrusSearch\SearchRequestLog;
+use CirrusSearch\SearcherTrait;
 use CirrusSearch\Util;
 use Elastica\Exception\ExceptionInterface;
 use Elastica\Exception\ResponseException;
@@ -23,6 +23,7 @@ use StatusValue;
  * Performs ES searches via CirrusSearch infrastructure
  */
 class Searcher extends ElasticsearchIntermediary {
+	use SearcherTrait;
 
 	private SearchConfig $config;
 
@@ -80,28 +81,6 @@ class Searcher extends ElasticsearchIntermediary {
 			}
 		};
 		return Util::doPoolCounterWork( $queryType, $this->user, $work );
-	}
-
-	/**
-	 * @param string $description
-	 * @param string $queryType
-	 * @param string[] $extra
-	 * @param array|null $namespaces
-	 * @return SearchRequestLog
-	 */
-	protected function newLog(
-		$description,
-		$queryType,
-		array $extra = [],
-		?array $namespaces = null
-	): SearchRequestLog {
-		return new SearchRequestLog(
-			$this->connection->getClient(),
-			$description,
-			$queryType,
-			$extra,
-			$namespaces
-		);
 	}
 
 	/**
