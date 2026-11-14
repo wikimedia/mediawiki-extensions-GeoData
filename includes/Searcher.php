@@ -58,9 +58,9 @@ class Searcher extends ElasticsearchIntermediary {
 		$this->connection->setTimeout( $this->getClientTimeout( $queryType ) );
 		$search->setOption( Search::OPTION_TIMEOUT, $this->getTimeout( $queryType ) );
 
-		$work = function () use ( $search, $queryType, $namespaces ) {
+		$log = $this->newLog( 'performing {queryType}', $queryType, [], $namespaces );
+		$work = function () use ( $search, $log ) {
 			try {
-				$log = $this->newLog( 'performing {queryType}', $queryType, [], $namespaces );
 				$this->start( $log );
 				$result = $search->search();
 				if ( !$result->getResponse()->isOk() ) {
@@ -80,7 +80,7 @@ class Searcher extends ElasticsearchIntermediary {
 				return $this->failure( $ex );
 			}
 		};
-		return Util::doPoolCounterWork( $queryType, $this->user, $work );
+		return Util::doPoolCounterWork( $queryType, $this->user, $work, null, $log );
 	}
 
 	/**
