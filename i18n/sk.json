@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luky001"
+			"Luky001",
+			"Wizzard"
 		]
 	},
-	"geodata-desc": "Pridáva funkcionality na ukladanie a načítanie zemepisných súradníc"
+	"geodata-desc": "Pridáva funkcionality na ukladanie a načítanie zemepisných súradníc",
+	"geodata-broken-tags-category": "Stránky s nesprávnymi značkami zemepisných súradníc"
 }
