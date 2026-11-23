@@ -41,7 +41,7 @@ class QueryGeoSearchElastic extends QueryGeoSearch {
 		$this->resetQueryParams();
 
 		$params = $this->params = $this->extractRequestParams();
-		$namespaces = array_map( 'intval', $params['namespace'] );
+		$namespaces = array_map( intval( ... ), $params['namespace'] );
 
 		$filter = new BoolQuery();
 		$nestedPropsFilter = new BoolQuery();

@@ -78,7 +78,7 @@ class QueryGeoSearch extends ApiQueryGeneratorBase {
 
 	private function parseBbox( string $bbox, Globe $globe ): BoundingBox {
 		$parts = explode( '|', $bbox );
-		$vals = array_map( 'floatval', $parts );
+		$vals = array_map( floatval( ... ), $parts );
 		if ( count( $parts ) != 4
 			// Pass $parts here for extra validation
 			|| !$globe->coordinatesAreValid( $parts[0], $parts[1] )
